@@ -4,8 +4,19 @@ Android-Bootstrap
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device-2013-11-01-155630_framed.png "Device Image")
 
 #Features
+* Bootstrap buttons as per Bootstrap v3
+* Rounded buttons
+* Disabled buttons
+* Various sized buttons (large to extra small)
+* Just text buttons
+* Left, right, left and right, or just icon button
+* Font Awesome text as per Font Awesome v4
 
 #Coming Soon...
+* tabs
+* working with the action bar
+* animating icons
+* edit texts
 
 #Installation
 
