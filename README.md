@@ -17,7 +17,7 @@ Android-Bootstrap
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_rounded.png "rounded bootstrap buttons")
 
 ## Others
-![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_other.png "other bootstrap buttons")
+![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_others.png "other bootstrap buttons")
 
 ## Sizes
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_sizes.png "sized bootstrap buttons")
