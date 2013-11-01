@@ -46,7 +46,7 @@ The above code inserts a default button with a heart icon to the left. The follo
 
 `android:enabled="false"` disabled buttons appear more opaque, the default is true (buttons are enabled)
 
-`androidbootstrap:size="large"` Size of the button as per [Bootstrap CSS Button sizes])(http://getbootstrap.com/css/#buttons-sizes)
+`androidbootstrap:size="large"` Size of the button as per [Bootstrap CSS Button sizes](http://getbootstrap.com/css/#buttons-sizes)
 
 `android:textSize="12sp"` Text size must always be in sp!
 
@@ -64,9 +64,9 @@ The above code inserts a default button with a heart icon to the left. The follo
 
 `fontawesometext:icon="fa-github"` the icon to place, as per the [Font Awesome Cheat Sheet](http://fortawesome.github.io/Font-Awesome/cheatsheet/) 
 
-`android:textSize="12sp"`
+`android:textSize="12sp"` Text size must always be in sp!
 
-`android:textColor="@color/bbutton_primary"`
+`android:textColor="@color/bbutton_primary"` you can change the textColor or background to any color, including the Bootstrap colours by typing bbutton_ and the type of colour e.g. bbutton_danger for the red danger colour.
 
 #Examples
 
