@@ -3,14 +3,32 @@ Android-Bootstrap
 
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device-2013-11-01-155630_framed.png "Device Image")
 
-#Current Capabilities
+#Features
 
 #Coming Soon...
+
+#Installation
+
+download the AndroidBootstrap library, import the library into your Android workspace, on the project you wish to use it in right click properties, add AndroidBootstrap as a library!
+
+*WARNING: YOU MUST ALSO INCLUDE the fontawesome-webfont.ttf FILE INTO YOUR OWN PROJECTS ASSETS*
 
 #How to use
 
 ## Basic Bootstrap Button
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons.png "regular bootstrap buttons")
+
+```xml
+<com.beardedhen.androidbootstrap.BootstrapButton
+    android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+    android:text="Default"
+    androidbootstrap:type="default"
+    androidbootstrap:icon_left="fa-heart"
+    android:layout_margin="10dp"
+/>
+```
+
 
 
 ## Rounded Bootstrap Button
