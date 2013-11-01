@@ -24,7 +24,6 @@ xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
 
 
 ```xml
-
 <!-- basic button -->
 <com.beardedhen.androidbootstrap.BootstrapButton
     android:layout_width="wrap_content"
@@ -49,8 +48,24 @@ The above code inserts a default button with a heart icon to the left. The follo
 
 `androidbootstrap:size="large"`
 
-#Font Awesome Text
+`android:textSize="12sp"`
 
+#Font Awesome Text
+```xml
+<!-- basic text-->
+<com.beardedhen.androidbootstrap.FontAwesomeText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    fontawesometext:icon="fa-github"
+    android:layout_margin="10dp" 
+    android:textSize="32sp"
+/>
+
+`fontawesometext:icon="fa-github"`
+
+`android:textSize="12sp"`
+
+`android:textColor="@color/bbutton_primary"`
 
 #Examples
 
