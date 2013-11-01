@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BootstrapButton">
+        <attr name="type" format="string"/>
+        <attr name="icon_left" format="string"/>
+        <attr name="icon_right" format="string"/>
+        <attr name="roundedCorners" format="boolean"/>
+        <attr name="size" format="string"/>
+        <attr name="android:textSize"/>
+        <attr name="android:text"/>
+        <attr name="android:enabled"/>
+
+    </declare-styleable>
+    
+     <declare-styleable name="FontAwesomeText">
+        <attr name="icon" format="string"/>
+        <attr name="android:textSize"/>
+        <attr name="android:textColor"/>
+
+    </declare-styleable>
+</resources>
+

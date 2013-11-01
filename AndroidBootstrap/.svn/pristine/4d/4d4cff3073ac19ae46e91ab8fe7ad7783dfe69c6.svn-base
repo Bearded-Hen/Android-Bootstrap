@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BButton">
+        
+        <attr name="type" format="string"/>
+        <attr name="icon_left" format="string"/>
+        <attr name="icon_right" format="string"/>
+        <attr name="roundedCorners" format="boolean"/>
+        <attr name="size" format="string"/>
+        
+        <attr name="android:textSize"/>
+        <attr name="android:text"/>
+        <attr name="android:enabled"/>
+
+    </declare-styleable>
+</resources>
+
