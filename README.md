@@ -13,12 +13,21 @@ download the AndroidBootstrap library, import the library into your Android work
 
 *WARNING: YOU MUST ALSO INCLUDE the fontawesome-webfont.ttf FILE INTO YOUR OWN PROJECTS ASSETS*
 
+In each layout file, paste the following two lines below `xmlns:android="http://schemas.android.com/apk/res/android"`
+
+```xml
+xmlns:androidbootstrap="http://schemas.android.com/apk/res-auto"
+xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+```
+
 #How to use
 
-## Basic Bootstrap Button
+## Bootstrap Buttons
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons.png "regular bootstrap buttons")
 
 ```xml
+
+<!-- basic button -->
 <com.beardedhen.androidbootstrap.BootstrapButton
     android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
@@ -28,8 +37,14 @@ download the AndroidBootstrap library, import the library into your Android work
     android:layout_margin="10dp"
 />
 ```
+The above code inserts a default button with a heart icon to the left. The following attributes can be added to any BootstrapButton
 
-
+`androidbootstrap:type="default"` 
+`androidbootstrap:icon_left="fa-heart"` 
+`androidbootstrap:icon_right="fa-trophy"`
+`androidbootstrap:roundedCorners="true"`
+`android:enabled="false"` 
+`androidbootstrap:size="large"`
 
 ## Rounded Bootstrap Button
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_rounded.png "rounded bootstrap buttons")
