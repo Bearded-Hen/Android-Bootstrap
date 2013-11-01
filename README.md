@@ -19,6 +19,9 @@ Android-Bootstrap
 ## Others
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_other.png "other bootstrap buttons")
 
+## Sizes
+![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_sizes.png "sized bootstrap buttons")
+
 ## Disabled
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_disabled.png "disabled bootstrap buttons")
 
