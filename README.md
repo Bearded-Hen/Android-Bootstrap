@@ -49,24 +49,33 @@ The above code inserts a default button with a heart icon to the left. The follo
 
 `androidbootstrap:size="large"`
 
+#Font Awesome Text
+
+
 #Examples
 
 Please find included an AndroidBootstrapTest project. Inside the activity_main.xml layout file is examples of how to achieve each of the following buttons:
 
 Bootstrap Buttons
+
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons.png "regular bootstrap buttons")
 
 Rounded Bootstrap Button
+
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_rounded.png "rounded bootstrap buttons")
 
 Others
+
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_others.png "other bootstrap buttons")
 
 Sizes
+
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_sizes.png "sized bootstrap buttons")
 
 Disabled
+
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/buttons_disabled.png "disabled bootstrap buttons")
 
 Font Awesome Text
+
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/font_awesome_text.png "font_awesome_text")
