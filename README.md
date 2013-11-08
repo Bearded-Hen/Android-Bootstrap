@@ -1,7 +1,7 @@
 Android-Bootstrap
 =================
 
-![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device-2013-11-01-155630_framed.png "Device Image")
+![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
 
 #Features
 * Bootstrap buttons as per Bootstrap v3
@@ -11,12 +11,12 @@ Android-Bootstrap
 * Just text buttons
 * Left, right, left and right, or just icon button
 * Font Awesome text as per Font Awesome v4
+* Animations to Font Awesome Text items
+* EditText backgrounds
 
 #Coming Soon...
 * tabs
 * working with the action bar
-* animating icons
-* edit texts
 
 #Installation
 
@@ -79,6 +79,47 @@ The above code inserts a default button with a heart icon to the left. The follo
 
 `android:textColor="@color/bbutton_primary"` you can change the textColor or background to any color, including the Bootstrap colours by typing bbutton_ and the type of colour e.g. bbutton_danger for the red danger colour.
 
+#Animations
+
+```java
+//get access to some FontAwesomeText items in the layout
+FontAwesomeText tv1 = (FontAwesomeText) findViewById(R.id.lblOne);
+FontAwesomeText tv2 = (FontAwesomeText) findViewById(R.id.lblTwo);
+FontAwesomeText tv3 = (FontAwesomeText) findViewById(R.id.lblThree);
+
+//flashing forever FAST
+tv1.startFlashing(this, true, FontAwesomeText.AnimationSpeed.FAST);
+
+//rotating clockwise slowly
+tv2.startRotate(this, true, FontAwesomeText.AnimationSpeed.SLOW);
+
+//rotating anti-clockwise at medium speed
+tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
+```
+
+##Flashing Animations
+
+`startFlashing(Context context, boolean forever, AnimationSpeed speed);`
+
+@param context the current applications context
+@param forever whether the item should flash repeatedly or just once
+@param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW / FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST 
+
+## Rotation Animation 
+
+`startRotate(Context context, boolean clockwise, AnimationSpeed speed);`
+
+@param context the current applications context
+@param clockwise true for clockwise, false for anti clockwise spinning
+@param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW / 
+FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST 
+
+#EditText
+
+There are two drawable items
+- @drawable/edittext_background
+- @drawable/edittext_background_rounded
+
 #Examples
 
 Please find included an AndroidBootstrapTest project. Inside the activity_main.xml layout file is examples of how to achieve each of the following buttons:
@@ -106,3 +147,8 @@ Disabled
 Font Awesome Text
 
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/font_awesome_text.png "font_awesome_text")
+
+EditText
+
+![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/edittext_background.png "edit text backgrounds")
+
