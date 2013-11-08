@@ -102,7 +102,9 @@ tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
 `startFlashing(Context context, boolean forever, AnimationSpeed speed);`
 
 @param context the current applications context
+
 @param forever whether the item should flash repeatedly or just once
+
 @param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW / FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST 
 
 ## Rotation Animation 
@@ -110,7 +112,9 @@ tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
 `startRotate(Context context, boolean clockwise, AnimationSpeed speed);`
 
 @param context the current applications context
+
 @param clockwise true for clockwise, false for anti clockwise spinning
+
 @param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW / 
 FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST 
 
