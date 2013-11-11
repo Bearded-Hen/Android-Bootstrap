@@ -4,6 +4,7 @@ Android-Bootstrap
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
 
 #Features
+* Uses min SDK 7 which is Android 2.1 (Tested on a device running Android 2.2)
 * Bootstrap buttons as per Bootstrap v3
 * Rounded buttons
 * Disabled buttons

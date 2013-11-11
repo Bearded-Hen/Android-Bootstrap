@@ -2,7 +2,10 @@ package com.beardedhen.bbuttontest;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
+import com.beardedhen.bbutton.BootstrapButton;
 import com.beardedhen.bbutton.FontAwesomeText;
 
 public class MainActivity extends Activity {
@@ -25,6 +28,15 @@ public class MainActivity extends Activity {
 		
 		//rotating anti-clockwise at medium speed
 		tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
+		
+		BootstrapButton button = (BootstrapButton)findViewById(R.id.btnOne);
+		
+		button.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.d("BButton", "pressed button");	
+			}
+		});
 		
 	}
 

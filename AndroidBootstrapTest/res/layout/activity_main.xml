@@ -121,11 +121,12 @@
             />
         <com.beardedhen.bbutton.BootstrapButton
             android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Primary"
             bbutton:type="primary"
             bbutton:icon_right="fa-trophy"
             android:layout_margin="10dp"
+            android:id="@+id/btnOne"
             />
         <com.beardedhen.bbutton.BootstrapButton
             android:layout_width="wrap_content"
@@ -535,5 +536,14 @@
                     android:layout_gravity="bottom" />
 
     
+                <com.beardedhen.bbutton.BootstrapButton
+            android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+            android:text="Info"
+            bbutton:type="info"
+            bbutton:roundedCorners="true"
+            bbutton:icon_left="fa-briefcase"
+            android:layout_margin="10dp"
+            />
 </LinearLayout>
 </ScrollView>
