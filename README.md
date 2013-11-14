@@ -28,8 +28,8 @@ download the AndroidBootstrap library, import the library into your Android work
 In each layout file, paste the following two lines below `xmlns:android="http://schemas.android.com/apk/res/android"`
 
 ```xml
-xmlns:androidbootstrap="http://schemas.android.com/apk/res-auto"
-xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+xmlns:bbutton="http://schemas.android.com/apk/res-auto"
+xmlns:fatext="http://schemas.android.com/apk/res-auto"
 ```
 
 #How to use
