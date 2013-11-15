@@ -1,4 +1,4 @@
-package com.beardedhen.bbutton;
+package com.beardedhen.androidbootstrap;
 
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -19,12 +19,16 @@ import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.R;
+
 public class FontAwesomeText extends FrameLayout {
 
 	private static Typeface font;
 	private static Map<String, String> faMap;
 
 	private TextView tv;
+	
+	private static final String FA_ICON_QUESTION = "fa-question";
 	
 	public enum AnimationSpeed
 	{
@@ -73,8 +77,8 @@ public class FontAwesomeText extends FrameLayout {
 		float fontSize = 14.0f;
 		
 		//icon
-		if (a.getString(R.styleable.FontAwesomeText_icon) != null) {
-			icon = faMap.get( a.getString(R.styleable.FontAwesomeText_icon) );
+		if (a.getString(R.styleable.FontAwesomeText_fa_icon) != null) {
+			icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
 		}
 		
 		//font size
@@ -98,7 +102,8 @@ public class FontAwesomeText extends FrameLayout {
 			tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
 		}
 		
-		tv.setText(icon);
+		setIcon(icon);
+		
 		tv.setTypeface(font);
 		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
 		
@@ -232,5 +237,21 @@ public class FontAwesomeText extends FrameLayout {
 		tv.clearAnimation();
 	}
 	
+	
+	/**
+	 * Used to set the icon for a FontAwesomeText item
+	 * @param faIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
+	 */
+	public void setIcon(String faIcon) {
+		
+		String icon = faMap.get(faIcon);
+		
+		if (icon == null)
+		{
+			icon = faMap.get(FA_ICON_QUESTION);
+		}
+		
+		tv.setText(icon);
+	}
 	
 }
