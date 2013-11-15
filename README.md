@@ -65,16 +65,16 @@ The above code inserts a default button with a heart icon to the left. The follo
 #Font Awesome Text
 ```xml
 <!-- basic text-->
-<com.beardedhen.androidbootstrap.FontAwesomeText
+<com.beardedhen.bbutton.FontAwesomeText
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    fontawesometext:icon="fa-github"
+    fatext:icon="fa-github"
     android:layout_margin="10dp" 
     android:textSize="32sp"
 />
 ```
 
-`fontawesometext:icon="fa-github"` the icon to place, as per the [Font Awesome Cheat Sheet](http://fortawesome.github.io/Font-Awesome/cheatsheet/) 
+`fatext:icon="fa-github"` the icon to place, as per the [Font Awesome Cheat Sheet](http://fortawesome.github.io/Font-Awesome/cheatsheet/) 
 
 `android:textSize="12sp"` Text size must always be in sp!
 
