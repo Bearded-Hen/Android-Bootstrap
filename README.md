@@ -9,6 +9,8 @@ Apologies for any inconvenience this may cause, hopefully there won't be any mor
 
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
 
+If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen) or email danielle@beardedhen.com 
+
 #Features
 * Uses min SDK 7 which is Android 2.1 (Tested on a device running Android 2.2)
 * Bootstrap buttons as per Bootstrap v3
@@ -20,6 +22,7 @@ Apologies for any inconvenience this may cause, hopefully there won't be any mor
 * Font Awesome text as per Font Awesome v4
 * Animations to Font Awesome Text items
 * EditText backgrounds
+
 
 #How to use
 
