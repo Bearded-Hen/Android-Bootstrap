@@ -23,7 +23,7 @@ Apologies for any inconvenience this may cause, hopefully there won't be any mor
 
 #How to use
 
-Please look at the [wiki](wiki/home)
+Please look at the [wiki](wiki) for help on how to use [bootstrap buttons](wiki/Bootstrap-Button) and [font awesome texts](wiki/Font-Awesome-Text)
 
 #Examples
 
