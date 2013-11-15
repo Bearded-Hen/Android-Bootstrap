@@ -24,16 +24,6 @@
     
     <include layout="@layout/bootstrap_button_size_buttons_example" />
     
-    <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Success"
-            bootstrapbutton:bb_icon_left="fa-android"
-            bootstrapbutton:bb_icon_right="fa-android"
-            bootstrapbutton:bb_roundedCorners="true"
-            bootstrapbutton:bb_type="success" />
-    
     <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
