@@ -36,7 +36,8 @@ public class MainActivity extends Activity {
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.d("BButton", "pressed button 1");	
+				Log.d("BButton", "pressed button 1");
+				//change button 1's text, left icon, and type
 				button1.setText("hello");
 				button1.setLeftIcon("fa-star");
 				button1.setBootstrapType("success");
@@ -47,6 +48,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Log.d("BButton", "pressed button 2");	
+				//disable the button
 				button2.setBootstrapButtonEnabled(false);
 			}
 		});
@@ -55,6 +57,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Log.d("BButton", "pressed button 3");	
+				//change the first FontAwesomeText to a star
 				tv1.setIcon("fa-star");
 			}
 		});
