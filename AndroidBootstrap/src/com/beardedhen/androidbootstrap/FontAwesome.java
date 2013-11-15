@@ -1,4 +1,4 @@
-package com.beardedhen.bbutton;
+package com.beardedhen.androidbootstrap;
 
 import java.util.HashMap;
 import java.util.Map;

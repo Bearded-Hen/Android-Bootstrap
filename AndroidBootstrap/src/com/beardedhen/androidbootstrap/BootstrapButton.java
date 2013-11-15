@@ -1,4 +1,4 @@
-package com.beardedhen.bbutton;
+package com.beardedhen.androidbootstrap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.R;
+ 
+
 public class BootstrapButton extends FrameLayout {
 
 	private static Map<String, BootstrapTypes> bbuttonTypeMap;
@@ -24,6 +27,14 @@ public class BootstrapButton extends FrameLayout {
 	private static Typeface font;
 	
 	private static Map<String, String> faMap;
+	
+	private TextView lblMiddle;
+	private TextView lblRight;
+	private TextView lblLeft;
+	private ViewGroup layout;
+	private boolean roundedCorners = false;
+	
+	private static final String FA_ICON_QUESTION = "fa-question";
 	
 	static{
 		
@@ -114,35 +125,34 @@ public class BootstrapButton extends FrameLayout {
 		String iconLeft = "";
 		String iconRight = "";
 		String text = "";
-		boolean roundedCorners = false;
+		//boolean roundedCorners = false;
 		float fontSize = 14.0f;
 		float scale = getResources().getDisplayMetrics().density; //for padding
 		String size = "default";
 		int paddingA = (int) (10 *scale + 0.5f);
 		int paddingB = (int) (15 *scale + 0.5f);
 		
-		
-		
+
 		//attribute values
 		
-		if (a.getString(R.styleable.BootstrapButton_type) != null) {
-			bootstrapType = a.getString(R.styleable.BootstrapButton_type);
+		if (a.getString(R.styleable.BootstrapButton_bb_type) != null) {
+			bootstrapType = a.getString(R.styleable.BootstrapButton_bb_type);
 		}
 		
-		if (a.getString(R.styleable.BootstrapButton_roundedCorners) != null) {
-			roundedCorners = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false) ;
+		if (a.getString(R.styleable.BootstrapButton_bb_roundedCorners) != null) {
+			roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false) ;
 		}
 		
-		if(a.getString(R.styleable.BootstrapButton_size) != null) {
-			size = a.getString(R.styleable.BootstrapButton_size);
+		if(a.getString(R.styleable.BootstrapButton_bb_size) != null) {
+			size = a.getString(R.styleable.BootstrapButton_bb_size);
 		}
 		
-		if ( a.getString(R.styleable.BootstrapButton_icon_left) != null) {
-			iconLeft = faMap.get( a.getString(R.styleable.BootstrapButton_icon_left) );
+		if ( a.getString(R.styleable.BootstrapButton_bb_icon_left) != null) {
+			iconLeft =  a.getString(R.styleable.BootstrapButton_bb_icon_left );
 		}
 		
-		if(a.getString(R.styleable.BootstrapButton_icon_right) != null) {
-			iconRight = faMap.get( a.getString(R.styleable.BootstrapButton_icon_right) );
+		if(a.getString(R.styleable.BootstrapButton_bb_icon_right) != null) {
+			iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right );
 		}
 		
 		if(a.getString(R.styleable.BootstrapButton_android_text) != null) {
@@ -199,11 +209,14 @@ public class BootstrapButton extends FrameLayout {
 		}
 	
 		//get layout items
-		ViewGroup layout = (ViewGroup) v.findViewById(R.id.layout);
-		TextView lblLeft = (TextView) v.findViewById(R.id.lblLeft);
-		TextView lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
-		TextView lblRight = (TextView) v.findViewById(R.id.lblRight);
+		layout = (ViewGroup) v.findViewById(R.id.layout);
+		lblLeft = (TextView) v.findViewById(R.id.lblLeft);
+		lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
+		lblRight = (TextView) v.findViewById(R.id.lblRight);
 
+		//set the background
+		//setBootstrapType(bootstrapType);
+		
 		//get the correct background type
 		if(roundedCorners == true)
 		{
@@ -245,7 +258,8 @@ public class BootstrapButton extends FrameLayout {
         //set up the padding
         
         if (iconLeft.length() > 0) {
-        	lblLeft.setText(iconLeft);
+        	//lblLeft.setText(iconLeft);
+        	setLeftIcon(iconLeft);
         	lblLeft.setVisibility(View.VISIBLE);
         	
         	if (onlyIcon == false){
@@ -262,7 +276,8 @@ public class BootstrapButton extends FrameLayout {
         }
          
         if (iconRight.length() > 0) {
-        	lblRight.setText(iconRight);
+        	//lblRight.setText(iconRight);
+        	setRightIcon(iconRight);
         	lblRight.setVisibility(View.VISIBLE);
         	
         	if (onlyIcon == false){
@@ -281,12 +296,11 @@ public class BootstrapButton extends FrameLayout {
         {
         	lblMiddle.setPadding(paddingA, 0, paddingA, 0);
         }
+        this.setClickable(true);
         
-        layout.setEnabled(enabled);
+        this.setEnabled(enabled);
 
         layout.setPadding(0, paddingB, 0, paddingB);
-        
-        this.setClickable(true);
         
 		addView(v);
 	}
@@ -304,6 +318,86 @@ public class BootstrapButton extends FrameLayout {
             }
 		}
 
+	}
+	
+	
+	/**
+	 * Changes the button text
+	 * @param text - String value for what is displayed on the button
+	 */
+	public void setText(String text) {
+		lblMiddle.setText(text);
+	}
+	
+
+	/**
+	 * Changes the left icon on a BootstrapButton
+	 * @param leftIcon- String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
+	 */
+	public void setLeftIcon(String leftIcon) {
+		
+		String icon = faMap.get(leftIcon);
+		
+		if (icon == null)
+		{
+			icon = faMap.get(FA_ICON_QUESTION);
+		}
+		
+		lblLeft.setText(icon);
+	}
+	
+	/**
+	 * Changes the right icon on a BootstrapButton
+	 * @param rightIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
+	 */
+	public void setRightIcon(String rightIcon) {
+		
+		String icon = faMap.get(rightIcon);
+		
+		if (icon == null)
+		{
+			icon = faMap.get(FA_ICON_QUESTION);
+		}
+		
+		lblRight.setText(icon);
+		
+	}
+	
+	/**
+	 * Changes the type of BootstrapButton
+	 * @param bootstrapType - String value for the type of button e.g. "primary"
+	 */
+	public void setBootstrapType(String bootstrapType) {
+
+		BootstrapTypes type = null;
+		
+		//get the correct background type
+		if (roundedCorners == true) {
+			type = bbuttonTypeMapRounded.get(bootstrapType);
+		} else {
+			type = bbuttonTypeMap.get(bootstrapType);
+		}
+		
+		//set up as default
+		if (type == null) {
+			type = BootstrapTypes.DEFAULT;
+		}
+		
+		
+		layout.setBackgroundResource(type.backgroundDrawable);
+		lblLeft.setTextColor(getResources().getColor(type.textColour));
+		lblMiddle.setTextColor(getResources().getColor(type.textColour));
+		lblRight.setTextColor(getResources().getColor(type.textColour));
+
+	}
+	
+	/**
+	 * Specifies whether the BootstrapButton is enabled or disabled
+	 * @param enabled - boolean state for either enabled or disabled
+	 */
+	public void setBootstrapButtonEnabled(boolean enabled)
+	{
+		this.setEnabled(enabled);
 	}
 	
 }
