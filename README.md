@@ -3,9 +3,9 @@ Android-Bootstrap
 
 **NOTE TO PREVIOUS USERS**
 * You will need to remove any imports in your project and re-import - this was because the package names were innacurate, hopefully they're much tidier now
-* It was brought up that the layout attributes weren't actually that unique which caused an issue if you had more than one library for a project. I have prefixed all Bootstrap button attributes with "bb_" and Font Awesome Text with "fa_" so hopefully it won't become an issue in future.
+* It was brought up that the layout attributes weren't actually that unique which caused an issue if you had more than one library for a project. I have prefixed all Bootstrap button attributes with "bb_" and Font Awesome Text with "fa_" so hopefully it won't ever be an issue in future.
 
-Apologies for any inconvenience this may cause, hopefully there won't be any more updates which break any previous work in future!
+Apologies for any inconvenience this may cause, hopefully this means there won't be any more updates which break previous versions in future!
 
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
 
