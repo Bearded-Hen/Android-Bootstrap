@@ -23,7 +23,7 @@ Apologies for any inconvenience this may cause, hopefully there won't be any mor
 
 #How to use
 
-Please look at the [wiki](/wiki) for help on how to use [bootstrap buttons](/wiki/Bootstrap-Button) and [font awesome texts](/wiki/Font-Awesome-Text)
+Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki) for help on how to use [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button) and [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
 
 #Examples
 
