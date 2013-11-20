@@ -254,4 +254,12 @@ public class FontAwesomeText extends FrameLayout {
 		tv.setText(icon);
 	}
 	
+	/**
+	 * Used to set the text color of the underlying text view.
+	 * @param color - Integer value representing a color resource.
+	 */
+	public void setTextColor(int color) {
+		tv.setTextColor(color);
+	}
+	
 }
