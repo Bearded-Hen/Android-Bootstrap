@@ -1,0 +1,2 @@
+include ':AndroidBootstrap'
+include ':AndroidBootstrapTest'

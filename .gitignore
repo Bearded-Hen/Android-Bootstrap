@@ -54,9 +54,6 @@ Thumbs.db
 
 # gradle directory
 .gradle
-gradlew
-gradlew.bat
-gradle/
 build/
 
 #for oh-my-zsh jira plugin (https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#jira)
