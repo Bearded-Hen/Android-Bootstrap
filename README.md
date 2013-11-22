@@ -26,7 +26,7 @@ If you have any questions, issues, or just want to let us know where you're usin
 
 #How to use
 
-Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki) for help especially the [installation guide](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text) if you have never installed a library before
+Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki) for help especially the [installation guide](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Installation-Guide) if you have never installed a library before
 
 - [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button) 
 - [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
