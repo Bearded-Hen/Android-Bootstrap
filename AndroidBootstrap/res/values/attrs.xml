@@ -17,7 +17,17 @@
         <attr name="fa_icon" format="string"/>
         <attr name="android:textSize"/>
         <attr name="android:textColor"/>
-
+      </declare-styleable>
+      
+     <declare-styleable name="BootstrapEditText">
+        <attr name="be_roundedCorners" format="boolean"/>
+        <attr name="be_state" format="string"/>
+        <attr name="android:textSize"/>
+        <attr name="android:text"/>
+        <attr name="android:hint"/>
+        <attr name="android:enabled"/>
+        
     </declare-styleable>
+    
 </resources>
 

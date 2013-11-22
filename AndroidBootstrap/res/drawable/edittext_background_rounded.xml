@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">   
-	<solid android:color="@color/white"/> 
-	<stroke android:color="@color/bbutton_edittext_border" android:width="1dp"/>  
-	<corners android:radius="5dp" />
-</shape>  
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:state_focused="true"><shape>
+        <solid android:color="@color/white" />
+        <stroke android:width="1dp" android:color="@color/bbutton_primary" />
+        <corners android:radius="5dp" />
+    </shape></item>   
+    
+<item><shape android:shape="rectangle">
+        <solid android:color="@color/white" />
+        <stroke android:width="1dp" android:color="@color/bbutton_edittext_border" />
+        <corners android:radius="5dp" />
+    </shape></item>
+
+</selector>

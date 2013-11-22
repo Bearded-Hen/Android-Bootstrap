@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.FontAwesomeText;
 
 public class MainActivity extends Activity {
@@ -29,6 +30,11 @@ public class MainActivity extends Activity {
 		//rotating anti-clockwise at medium speed
 		tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
 		
+		
+		final BootstrapEditText txtOne = (BootstrapEditText)findViewById(R.id.txtOne);
+		
+		
+		
 		final BootstrapButton button1 = (BootstrapButton)findViewById(R.id.btnOne);
 		final BootstrapButton button2 = (BootstrapButton)findViewById(R.id.btnTwo);
 		final BootstrapButton button3 = (BootstrapButton)findViewById(R.id.btnThree);
@@ -50,6 +56,7 @@ public class MainActivity extends Activity {
 				Log.d("BButton", "pressed button 2");	
 				//disable the button
 				button2.setBootstrapButtonEnabled(false);
+				Log.d("BButton", "text= " + txtOne.getText().toString());
 			}
 		});
 		

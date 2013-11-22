@@ -4,7 +4,7 @@
     xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content" 
+    android:layout_height="wrap_content"
     >
 
 <LinearLayout 
@@ -34,15 +34,14 @@
             android:padding="10dp"
             android:singleLine="true" />
 
-        <EditText
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/txtOne"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_margin="10dp"
-            android:background="@drawable/edittext_background_rounded"
-            android:hint="rounded"
-            android:padding="10dp"
-            android:singleLine="true" />
+            android:hint="rounded" 
+            bootstrapbutton:be_roundedCorners="true"
+            bootstrapbutton:be_state="success"/>
     
         
     </LinearLayout>
