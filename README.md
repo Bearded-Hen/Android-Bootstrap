@@ -3,7 +3,7 @@ Android-Bootstrap
 
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
 
-If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen) or email danielle@beardedhen.com 
+If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen) or email danielle@de-velopment.com 
 
 #Features
 * Uses min SDK 7 which is Android 2.1 (Tested on a device running Android 2.2)
