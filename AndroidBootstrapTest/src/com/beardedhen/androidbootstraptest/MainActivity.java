@@ -2,6 +2,8 @@ package com.beardedhen.androidbootstraptest;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 
@@ -30,9 +32,24 @@ public class MainActivity extends Activity {
 		//rotating anti-clockwise at medium speed
 		tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
 		
-		
 		final BootstrapEditText txtOne = (BootstrapEditText)findViewById(R.id.txtOne);
 		
+		txtOne.addTextChangedListener(new TextWatcher(){
+	        public void afterTextChanged(Editable s) {
+	        	//not needed
+	        }
+	        public void beforeTextChanged(CharSequence s, int start, int count, int after){
+	        	//not needed
+	        }
+	        public void onTextChanged(CharSequence s, int start, int before, int count){
+	        	//not needed
+	        	Log.d("BButton", s.toString());
+	        	if(s.toString().length() > 4)
+	        	{
+	        		txtOne.setSuccess();
+	        	}
+	        }
+	    }); 
 		
 		
 		final BootstrapButton button1 = (BootstrapButton)findViewById(R.id.btnOne);
@@ -56,7 +73,6 @@ public class MainActivity extends Activity {
 				Log.d("BButton", "pressed button 2");	
 				//disable the button
 				button2.setBootstrapButtonEnabled(false);
-				Log.d("BButton", "text= " + txtOne.getText().toString());
 			}
 		});
 		

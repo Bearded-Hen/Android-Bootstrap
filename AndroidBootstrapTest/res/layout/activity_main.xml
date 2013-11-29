@@ -24,26 +24,9 @@
     
     <include layout="@layout/bootstrap_button_size_buttons_example" />
     
-    <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="10dp"
-            android:background="@drawable/edittext_background"
-            android:hint="EditText"
-            android:padding="10dp"
-            android:singleLine="true" />
-
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/txtOne"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="rounded" 
-            bootstrapbutton:be_roundedCorners="true"
-            bootstrapbutton:be_state="success"/>
-    
-        
+ 	<include layout="@layout/bootstrap_edit_text_example" />
+ 	
+ 	
     </LinearLayout>
 
 </ScrollView>

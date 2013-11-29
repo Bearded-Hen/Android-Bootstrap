@@ -39,8 +39,8 @@ public class BootstrapEditText extends EditText {
 		
 		TypedArray a = getContext().obtainStyledAttributes(attrs,  R.styleable.BootstrapEditText);
 		
+		//get defaults
 		float fontSize = 14.0f;
-		
 		String state = "default";
 		String text = "";
 		String hint = "";
@@ -61,31 +61,35 @@ public class BootstrapEditText extends EditText {
 			}
 		}
 		
+		//rounded corners
 		if(a.getString(R.styleable.BootstrapEditText_be_roundedCorners) != null) {
 			roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
 		}
 		
+		//state
 		if(a.getString(R.styleable.BootstrapEditText_be_state) != null) {
 			state = a.getString(R.styleable.BootstrapEditText_be_state);
 		}
 		
+		//text
 		if(a.getString(R.styleable.BootstrapEditText_android_text) != null) {
 			text = a.getString(R.styleable.BootstrapEditText_android_text);
 		}
 		
+		//hint
 		if(a.getString(R.styleable.BootstrapEditText_android_hint) != null) {
 			hint = a.getString(R.styleable.BootstrapEditText_android_hint);
 		}
 		
+		//enabled
 		if(a.getString(R.styleable.BootstrapEditText_android_enabled) != null) {
 			enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
 		}
 		
+		//set values
 		this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-		
 		this.setText(text);
-		this.setHint(hint);
-		
+		this.setHint(hint);		
 		this.setEnabled(enabled);
 		
 		if (enabled){
@@ -140,25 +144,45 @@ public class BootstrapEditText extends EditText {
 		setBackgroundDrawable(state);
 	}
 	
-	
+	/**
+	 * Set the BootstrapEditText to a successful state
+	 */
 	public void setSuccess()
 	{
 		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_SUCCESS);
 	}
 	
+	/**
+	 * Set the BootstrapEditText to a warning state
+	 */
 	public void setWarning()
 	{
 		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_WARNING);
 	}
 	
+	/**
+	 * Set the BootstrapEditText to a danger state
+	 */
 	public void setDanger()
 	{
 		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_DANGER);
 	}
 	
+	/**
+	 * Set the BootstrapEditText to a default state
+	 */
 	public void setDefault()
 	{
 		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_DEFAULT);
+	}
+	
+	/**
+	 * Specifies whether the BootstrapEditText is enabled or disabled
+	 * @param enabled - boolean state for either enabled or disabled
+	 */
+	public void setBootstrapEditTextEnabled(boolean enabled)
+	{
+		this.setEnabled(enabled);
 	}
 	
 }

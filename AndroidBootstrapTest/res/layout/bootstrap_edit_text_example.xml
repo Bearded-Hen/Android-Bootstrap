@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Bootstrap Edit Text" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/txtOne"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="rounded" 
+            bootstrapbutton:be_roundedCorners="true"
+            android:gravity="center"/>
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="rounded" 
+            bootstrapbutton:be_roundedCorners="true"
+            bootstrapbutton:be_state="success"/>
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="rounded" 
+            bootstrapbutton:be_roundedCorners="true"
+            bootstrapbutton:be_state="warning"/>
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="rounded" 
+            bootstrapbutton:be_roundedCorners="true"
+            bootstrapbutton:be_state="danger"/>
+         
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="hint" 
+            />
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="hint" 
+            bootstrapbutton:be_state="success"/>
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="hint" 
+            bootstrapbutton:be_state="warning"/>
+         <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="hint" 
+            bootstrapbutton:be_state="danger"/>
+            
+            
+            
+            
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>
