@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Sized Buttons" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Large"
+                bootstrapbutton:bb_icon_left="fa-rocket"
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="large"
+                bootstrapbutton:bb_type="primary" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="default"
+                bootstrapbutton:bb_icon_left="fa-smile-o"
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="primary" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Small"
+                bootstrapbutton:bb_icon_left="fa-puzzle-piece"
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="small"
+                bootstrapbutton:bb_type="primary" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="xsmall"
+                bootstrapbutton:bb_icon_left="fa-ticket"
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="xsmall"
+                bootstrapbutton:bb_type="primary" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

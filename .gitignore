@@ -1,0 +1,61 @@
+# Copyright: Benjamin Weiss (keyboardsurfer) https://github.com/keyboardsurfer
+# Under CC-BY-SA V3.0 (https://creativecommons.org/licenses/by-sa/3.0/legalcode)
+
+# svn files
+.svn
+
+# built application files
+*.apk
+*.ap_
+*.jar
+
+# lint folder
+lint
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+classes/
+gen-external-apklibs/
+
+# maven output folder
+target
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+.metadata
+.settings
+
+# IntelliJ files
+.idea
+*.iml
+
+# OSX files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# vi swap files
+*.swp
+
+# backup files
+*.bak
+
+# gradle directory
+.gradle
+build/
+
+#for oh-my-zsh jira plugin (https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#jira)
+.jira-url
+atlassian-ide-plugin.xml
