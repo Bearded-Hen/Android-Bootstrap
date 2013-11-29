@@ -59,3 +59,4 @@ build/
 #for oh-my-zsh jira plugin (https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#jira)
 .jira-url
 atlassian-ide-plugin.xml
+
