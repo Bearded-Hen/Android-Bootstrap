@@ -1,6 +1,11 @@
 Android-Bootstrap
 =================
 
+**NOTE TO PREVIOUS USERS**
+* You will need to remove any imports in your project and re-import in your java files, and change the component names in your layouts - this was because the package names didn't change when I renamed my library project, hopefully they make a lot more sense now.
+* It was brought up that the layout attributes weren't actually unique which caused an issue if you had more than one library. I have prefixed all Bootstrap button attributes with "bb_" and Font Awesome Text with "fa_" so hopefully it won't ever be an issue in future.
+
+Apologies for any inconvenience these changes may cause, hopefully this means there won't be any more updates which break previous versions in future!
 
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
 
@@ -16,12 +21,12 @@ If you have any questions, issues, or just want to let us know where you're usin
 * Left, right, left and right, or just icon button
 * Font Awesome text as per Font Awesome v4
 * Animations to Font Awesome Text items
-* Bootstrap Edit Text backgrounds and states
+* EditText backgrounds
 
 
 #How to use
 
-Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki) for help on how to use [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button) and [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text) and [bootstrap edit texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Edit-Text)
+Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki) for help on how to use [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button) and [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
 
 #Examples
 
@@ -53,8 +58,5 @@ Font Awesome Text
 
 EditText
 
-![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_edit_text.png "edit text backgrounds")
-
-Rounded Edit text
-![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_edit_text_rounded.png "edit text backgrounds rounded")
+![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/edittext_background.png "edit text backgrounds")
 
