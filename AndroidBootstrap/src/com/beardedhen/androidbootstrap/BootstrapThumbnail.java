@@ -28,12 +28,14 @@ public class BootstrapThumbnail extends FrameLayout
 	private ViewGroup container;
 	private LinearLayout placeholder;
 	private TextView dimensionsLabel;
+	private boolean roundedCorners = true;
 	
 	static{
 		
 		bThumbnailTypeMap = new HashMap<String, ThumbnailTypes>();
 		
-		bThumbnailTypeMap.put("default", ThumbnailTypes.DEFAULT);
+		bThumbnailTypeMap.put("rounded", ThumbnailTypes.ROUNDED);//default is rounded if user doesn't specify to use square
+		bThumbnailTypeMap.put("square", ThumbnailTypes.SQUARE);
 	}
 	
 	public BootstrapThumbnail(Context context, AttributeSet attrs, int defStyle) 
@@ -57,8 +59,9 @@ public class BootstrapThumbnail extends FrameLayout
 	//set up the bootstrap types
 	private enum ThumbnailTypes
 	{		
-		DEFAULT(R.drawable.bthumbnail_container_default,R.drawable.bthumbnail_placeholder_default);
-
+		ROUNDED(R.drawable.bthumbnail_container_rounded, R.drawable.bthumbnail_placeholder_default),
+		SQUARE(R.drawable.bthumbnail_container_square, R.drawable.bthumbnail_placeholder_default);
+		
 		private int containerDrawable;
 		private int placeholderDrawable;
 		
@@ -87,7 +90,7 @@ public class BootstrapThumbnail extends FrameLayout
 		
 		//defaults
 		ThumbnailTypes type = null;
-		String thumbnailType = "default";
+		String thumbnailType = "rounded";
 		String text = "";
 		//boolean roundedCorners = false;
 		float fontSize = 14.0f;
@@ -105,6 +108,10 @@ public class BootstrapThumbnail extends FrameLayout
 		
 		if(a.getString(R.styleable.BootstrapThumbnail_bt_width) != null) {
 			height = a.getInt(R.styleable.BootstrapThumbnail_bt_height, 0);
+		}
+		
+		if(a.getString(R.styleable.BootstrapThumbnail_bt_roundedCorners) != null){
+			roundedCorners = a.getBoolean(R.styleable.BootstrapThumbnail_bt_roundedCorners, false) ;
 		}
 	
 		a.recycle();
@@ -124,13 +131,14 @@ public class BootstrapThumbnail extends FrameLayout
 		
 		type = bThumbnailTypeMap.get(thumbnailType);
 
-		
-		//set up as default
-		if (type == null)
+		//get the correct background type
+		if(roundedCorners == true)
 		{
-			type = ThumbnailTypes.DEFAULT;
+			type = bThumbnailTypeMap.get("rounded");
+		} else {
+			type = bThumbnailTypeMap.get("square");
 		}
-	
+		
 		//apply the background type
 		container.setBackgroundResource(type.containerDrawable);
 		placeholder.setBackgroundResource(type.placeholderDrawable);

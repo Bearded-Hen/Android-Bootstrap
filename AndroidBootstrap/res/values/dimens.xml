@@ -5,4 +5,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 	<dimen name="bbuton_rounded_corner_radius">5dp</dimen>
 	<dimen name="bthumbnail_padding">8dp</dimen>
+	<dimen name="bthumbnail_rounded_corner_radius">3dp</dimen>
 </resources>

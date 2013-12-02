@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:bootstrapthumbnail="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Bootstrap Thumbnail" />
+        android:text="Bootstrap Thumbnails (Rounded and Square)" />
     
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -26,40 +26,85 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                bootstrapbutton:bt_width="500"
-                bootstrapbutton:bt_height="375" />
+                bootstrapthumbnail:bt_width="500"
+                bootstrapthumbnail:bt_height="375" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/thumbnailTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                bootstrapbutton:bt_width="380"
-                bootstrapbutton:bt_height="280" />
+                bootstrapthumbnail:bt_width="380"
+                bootstrapthumbnail:bt_height="280" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/thumbnailThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                bootstrapbutton:bt_width="260"
-                bootstrapbutton:bt_height="180" />
+                bootstrapthumbnail:bt_width="260"
+                bootstrapthumbnail:bt_height="180" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/thumbnailFour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                bootstrapbutton:bt_width="140"
-                bootstrapbutton:bt_height="140" />
+                bootstrapthumbnail:bt_width="140"
+                bootstrapthumbnail:bt_height="140" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/thumbnailFive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                bootstrapbutton:bt_width="75"
-                bootstrapbutton:bt_height="75" />
+                bootstrapthumbnail:bt_width="75"
+                bootstrapthumbnail:bt_height="75" />
+            
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/squareThumbnailOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                bootstrapthumbnail:bt_roundedCorners="false"
+                bootstrapthumbnail:bt_width="500"
+                bootstrapthumbnail:bt_height="375" />
+            
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/squareThumbnailTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                bootstrapthumbnail:bt_roundedCorners="false"
+                bootstrapthumbnail:bt_width="380"
+                bootstrapthumbnail:bt_height="280" />
+            
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/squareThumbnailThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                bootstrapthumbnail:bt_roundedCorners="false"
+                bootstrapthumbnail:bt_width="260"
+                bootstrapthumbnail:bt_height="180" />
+            
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/squareThumbnailFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                bootstrapthumbnail:bt_roundedCorners="false"
+                bootstrapthumbnail:bt_width="140"
+                bootstrapthumbnail:bt_height="140" />
+            
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/squareThumbnailFive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                bootstrapthumbnail:bt_roundedCorners="false"
+                bootstrapthumbnail:bt_width="75"
+                bootstrapthumbnail:bt_height="75" />
 
             
 
