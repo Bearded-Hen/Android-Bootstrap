@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,6 +76,8 @@ public class BootstrapThumbnail extends FrameLayout
 	{
 		LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
 			    Context.LAYOUT_INFLATER_SERVICE);
+		
+		readFont(getContext());
 
 		//get font
 		//readFont(getContext());
@@ -133,20 +136,29 @@ public class BootstrapThumbnail extends FrameLayout
 		placeholder.setBackgroundResource(type.placeholderDrawable);
 		//dimensionsLabel.setTextColor(getResources().getColor(type.textColour));
 		
+		int paddingP = (int) (((Math.sqrt(width * height)) / 100) * 4);
+		
 		int padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
 		if(padding > 8)
 			padding = 8;
 		if(padding < 4)
 			padding = 4;
+		//fontSize = padding * 2;
+
+	    int paddingDP = (int) (padding * scale + 0.5f);
+	    int paddingDPP = (int) (paddingP * scale + 0.5f);
+
 		
-		container.setPadding(8, 8, 8, 8);
+		
+		container.setPadding(paddingDP, paddingDP, paddingDP, paddingDP);
+		placeholder.setPadding(paddingDPP, paddingDPP, paddingDPP, paddingDPP);
 		
 		
 		//set the font awesome icon typeface
 		dimensionsLabel.setTypeface(font);
 		
 		//set up the font size
-		dimensionsLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+		//dimensionsLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
 		
 		//dimensionsLabel.setPadding(paddingB, 0, paddingB, 0);
         
@@ -164,4 +176,19 @@ public class BootstrapThumbnail extends FrameLayout
         
 		addView(v);
 	}
+	
+	//static class to read in font
+		private static void readFont(Context context)
+		{
+			
+			if(font == null){	
+				try {
+				font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
+				} catch (Exception e) {
+	                Log.e("BootstrapButton", "Could not get typeface because " + e.getMessage());
+	                font = Typeface.DEFAULT;
+	            }
+			}
+
+		}
 }

@@ -12,14 +12,19 @@
         android:layout_height="match_parent"
         android:id="@+id/placeholder"
         android:orientation="vertical"
-        android:gravity="center" >
+        android:gravity="center" 
+        android:padding="16dp">
         
-        <TextView
-		     android:id="@+id/dimensionsLabel"   
-		     android:layout_height="wrap_content"
-		     android:layout_width="wrap_content"
-		     android:textColor="@color/bthumbnail_font"
-    	/>
+        <com.beardedhen.androidbootstrap.AutoResizeTextView
+            android:id="@+id/dimensionsLabel"   
+	        android:layout_width="match_parent"
+	        android:layout_height="100dp"
+	        android:ellipsize="none"
+	        android:gravity="center"
+	        android:maxLines="1"
+	        android:textSize="14sp" 
+	        android:textColor="@color/bthumbnail_font" /> <!-- maximum size -->
+
         
     </LinearLayout>
     

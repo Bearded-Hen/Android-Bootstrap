@@ -30,7 +30,7 @@
                 bootstrapbutton:bt_height="375" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
-                android:id="@+id/thumbnailOne"
+                android:id="@+id/thumbnailTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -38,7 +38,7 @@
                 bootstrapbutton:bt_height="280" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
-                android:id="@+id/thumbnailOne"
+                android:id="@+id/thumbnailThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -46,7 +46,7 @@
                 bootstrapbutton:bt_height="180" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
-                android:id="@+id/thumbnailOne"
+                android:id="@+id/thumbnailFour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -54,7 +54,7 @@
                 bootstrapbutton:bt_height="140" />
             
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
-                android:id="@+id/thumbnailOne"
+                android:id="@+id/thumbnailFive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
