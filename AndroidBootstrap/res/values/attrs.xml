@@ -29,5 +29,11 @@
         
     </declare-styleable>
     
+     <declare-styleable name="BootstrapThumbnail">
+         <attr name="bt_width" format="integer"/> 
+         <attr name="bt_height" format="integer"/>
+         <attr name="android:text"/>
+     </declare-styleable>
+    
 </resources>
 
