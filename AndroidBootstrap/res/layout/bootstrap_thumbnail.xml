@@ -15,15 +15,15 @@
         android:gravity="center" 
         android:padding="16dp">
         
-        <com.beardedhen.androidbootstrap.AutoResizeTextView
+        <com.beardedhen.androidbootstrap.utils.AutoResizeTextView
             android:id="@+id/dimensionsLabel"   
 	        android:layout_width="match_parent"
 	        android:layout_height="100dp"
 	        android:ellipsize="none"
 	        android:gravity="center"
 	        android:maxLines="1"
-	        android:textSize="14sp" 
-	        android:textColor="@color/bthumbnail_font" /> <!-- maximum size -->
+	        android:textSize="100sp" 
+	        android:textColor="@color/bthumbnail_font"/>
 
         
     </LinearLayout>

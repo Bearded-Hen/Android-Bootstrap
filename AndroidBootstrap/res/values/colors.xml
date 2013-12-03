@@ -57,7 +57,7 @@
 	<color name="bbutton_inverse_disabled_edge">#a5141414</color>
 	
 	<color name="bthumbnail_background">#ffffffff</color>
-	<color name="bthumbnail_placeholder">#dbdbdb</color>
+	<color name="bthumbnail_placeholder">#e9e9e9</color>
 	<color name="bthumbnail_border">#dbdbdb</color>
 	<color name="bthumbnail_font">#7e7e7e</color>
 	

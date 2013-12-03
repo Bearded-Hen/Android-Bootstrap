@@ -9,20 +9,25 @@ import java.util.Map;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class BootstrapThumbnail extends FrameLayout
 {
+	private static final int DEFAULT_WIDTH = 150; //width of thumbnail when no width is given
+	private static final int DEFAULT_HEIGHT = 150;//height of thumbnail when no height is given
+	private static final int DEFAULT_MAX_PADDING = 8; //8dp is max padding size when padding isn't specified by user
+	private static final int DEFAULT_MIN_PADDING = 4; //4dp
+	private static final String DEFAULT_TYPE = "rounded";
 	
-
 	private static Map<String, ThumbnailTypes> bThumbnailTypeMap;
 	private static Typeface font;
 	private ViewGroup container;
@@ -30,8 +35,7 @@ public class BootstrapThumbnail extends FrameLayout
 	private TextView dimensionsLabel;
 	private boolean roundedCorners = true;
 	
-	static{
-		
+	static{	
 		bThumbnailTypeMap = new HashMap<String, ThumbnailTypes>();
 		
 		bThumbnailTypeMap.put("rounded", ThumbnailTypes.ROUNDED);//default is rounded if user doesn't specify to use square
@@ -56,6 +60,11 @@ public class BootstrapThumbnail extends FrameLayout
 		initialise(null);
 	}
 	
+	public void setImage(int drawable)
+	{
+		this.placeholder.setBackgroundResource(drawable);
+	}
+	
 	//set up the bootstrap types
 	private enum ThumbnailTypes
 	{		
@@ -64,14 +73,11 @@ public class BootstrapThumbnail extends FrameLayout
 		
 		private int containerDrawable;
 		private int placeholderDrawable;
-		
-		//private int textColour;
-		
+
 		ThumbnailTypes(int containerDrawable, int placeholderDrawable)
 		{
 			this.containerDrawable = containerDrawable;
 			this.placeholderDrawable = placeholderDrawable;
-			//this.textColour = textColour;
 		}
 	}
 	
@@ -82,41 +88,54 @@ public class BootstrapThumbnail extends FrameLayout
 		
 		readFont(getContext());
 
-		//get font
-		//readFont(getContext());
-
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 			    R.styleable.BootstrapThumbnail);
 		
 		//defaults
 		ThumbnailTypes type = null;
-		String thumbnailType = "rounded";
+		String thumbnailType = DEFAULT_TYPE;
 		String text = "";
-		//boolean roundedCorners = false;
-		float fontSize = 14.0f;
+		int imageDrawable = 0;
 		float scale = getResources().getDisplayMetrics().density; //for padding
-		int width = 75;
-		int height = 75;
-		int paddingA = (int) (10 *scale + 0.5f);
-		int paddingB = (int) (15 *scale + 0.5f);
-		
+		int width = DEFAULT_WIDTH;
+		int height = DEFAULT_HEIGHT;	
+		int padding = 0;
+		int paddingDP = 0;
 
 		//attribute values	
 		if(a.getString(R.styleable.BootstrapThumbnail_bt_width) != null) {
-			width = a.getInt(R.styleable.BootstrapThumbnail_bt_width, 0);
+			width = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_width, 0);
+			Log.v("width", Integer.toString(width));
 		}
 		
-		if(a.getString(R.styleable.BootstrapThumbnail_bt_width) != null) {
-			height = a.getInt(R.styleable.BootstrapThumbnail_bt_height, 0);
+		if(a.getString(R.styleable.BootstrapThumbnail_bt_height) != null) {
+			height = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_height, 0);
+		}
+		
+		if(a.getString(R.styleable.BootstrapThumbnail_android_padding) != null) {
+			paddingDP = (int) a.getDimension(R.styleable.BootstrapThumbnail_android_padding, 0);
+		}
+		else{
+			padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
+			if(padding > DEFAULT_MAX_PADDING)
+				padding = DEFAULT_MAX_PADDING;
+			if(padding < DEFAULT_MIN_PADDING)
+				padding = DEFAULT_MIN_PADDING;
+			
+			paddingDP = (int) (padding * scale + 0.5f);//container padding in DP
 		}
 		
 		if(a.getString(R.styleable.BootstrapThumbnail_bt_roundedCorners) != null){
 			roundedCorners = a.getBoolean(R.styleable.BootstrapThumbnail_bt_roundedCorners, false) ;
 		}
+		
+		if(a.getString(R.styleable.BootstrapThumbnail_bt_image) != null){
+			imageDrawable = a.getResourceId(R.styleable.BootstrapThumbnail_bt_image, 0);
+		}
 	
 		a.recycle();
 		
-		text = width + "x" + height;
+		text = (int)(width/scale) + "x" + (int)(height/scale);
 		View v = inflator.inflate(R.layout.bootstrap_thumbnail, null, false);
 	
 		//get layout items
@@ -124,10 +143,8 @@ public class BootstrapThumbnail extends FrameLayout
 		placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
 		dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
 		
-		placeholder.setLayoutParams(new LinearLayout.LayoutParams(width,height));
-
-		//set the background
-		//setBootstrapType(bootstrapType);
+		Log.v("size", "width:" + width + " height:" + height);
+		
 		
 		type = bThumbnailTypeMap.get(thumbnailType);
 
@@ -141,62 +158,56 @@ public class BootstrapThumbnail extends FrameLayout
 		
 		//apply the background type
 		container.setBackgroundResource(type.containerDrawable);
-		placeholder.setBackgroundResource(type.placeholderDrawable);
-		//dimensionsLabel.setTextColor(getResources().getColor(type.textColour));
 		
+		//if no image is provided by user
+		if(imageDrawable == 0){
+			//set default grey placeholder background
+			placeholder.setBackgroundResource(type.placeholderDrawable);
+			
+			//set the text 
+	        if(text.length() > 0){        	
+	        	dimensionsLabel.setText(text);
+	        	dimensionsLabel.setVisibility(View.VISIBLE);        	
+	        }
+		}
+		else{		
+			//set background to user's provided image
+			placeholder.setBackgroundResource(imageDrawable);
+			
+			//remove textview dimensions
+			dimensionsLabel.setVisibility(View.GONE);
+		}
+			
+		//placeholder padding
 		int paddingP = (int) (((Math.sqrt(width * height)) / 100) * 4);
-		
-		int padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
-		if(padding > 8)
-			padding = 8;
-		if(padding < 4)
-			padding = 4;
-		//fontSize = padding * 2;
 
-	    int paddingDP = (int) (padding * scale + 0.5f);
-	    int paddingDPP = (int) (paddingP * scale + 0.5f);
+		//convert to DP	    
+	    int paddingDPP = (int) (paddingP * scale + 0.5f);//placeholder padding in DP
 
-		
-		
 		container.setPadding(paddingDP, paddingDP, paddingDP, paddingDP);
 		placeholder.setPadding(paddingDPP, paddingDPP, paddingDPP, paddingDPP);
 		
+		placeholder.setLayoutParams(new LinearLayout.LayoutParams(width,height));
 		
 		//set the font awesome icon typeface
 		dimensionsLabel.setTypeface(font);
-		
-		//set up the font size
-		//dimensionsLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-		
-		//dimensionsLabel.setPadding(paddingB, 0, paddingB, 0);
-        
-        //set the text 
-        if(text.length() > 0){
-        	dimensionsLabel.setText(text);
-        	dimensionsLabel.setVisibility(View.VISIBLE);
-        }
 
         this.setClickable(true);
-        
-        //this.setEnabled(enabled);
-
-        //layout.setPadding(0, paddingB, 0, paddingB);
-        
+                
 		addView(v);
 	}
 	
 	//static class to read in font
-		private static void readFont(Context context)
-		{
-			
-			if(font == null){	
-				try {
-				font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
-				} catch (Exception e) {
-	                Log.e("BootstrapButton", "Could not get typeface because " + e.getMessage());
-	                font = Typeface.DEFAULT;
-	            }
-			}
-
+	private static void readFont(Context context)
+	{		
+		if(font == null){	
+			try {
+			font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
+			} catch (Exception e) {
+                Log.e("BootstrapButton", "Could not get typeface because " + e.getMessage());
+                font = Typeface.DEFAULT;
+            }
 		}
+
+	}
 }
