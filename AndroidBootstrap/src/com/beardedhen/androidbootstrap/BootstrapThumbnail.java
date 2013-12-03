@@ -112,8 +112,8 @@ public class BootstrapThumbnail extends FrameLayout
 			height = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_height, 0);
 		}
 		
-		if(a.getString(R.styleable.BootstrapThumbnail_android_padding) != null) {
-			paddingDP = (int) a.getDimension(R.styleable.BootstrapThumbnail_android_padding, 0);
+		if(a.getString(R.styleable.BootstrapThumbnail_bt_inside_padding) != null) {
+			paddingDP = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_inside_padding, 0);
 		}
 		else{
 			padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
