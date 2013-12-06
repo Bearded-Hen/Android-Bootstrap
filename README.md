@@ -56,4 +56,3 @@ EditText
 
 Rounded Edit text
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_edit_text_rounded.png "edit text backgrounds rounded")
-
