@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class BootstrapButton extends FrameLayout {
 	private TextView lblLeft;
 	private ViewGroup layout;
 	private boolean roundedCorners = false;
+	private boolean fillparent = false;
 	
 	private static final String FA_ICON_QUESTION = "fa-question";
 	
@@ -158,10 +160,24 @@ public class BootstrapButton extends FrameLayout {
 		if(a.getString(R.styleable.BootstrapButton_android_text) != null) {
 			text = a.getString(R.styleable.BootstrapButton_android_text);
 		}
+		String gravity = "";
+		if(a.getString(R.styleable.BootstrapButton_bb_text_gravity) != null) {
+			gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
+		}
 		
 		boolean enabled = true;
 		if(a.getString(R.styleable.BootstrapButton_android_enabled) != null) {
 			enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
+		}
+		
+		int layoutWidth = 0;
+		if(a.getString(R.styleable.BootstrapButton_android_layout_width) != null) {
+			layoutWidth = a.getInt(R.styleable.BootstrapButton_android_layout_width, 0);
+		}
+		
+		//works even if it's fill_parent or match_parent 
+		if( (layoutWidth == LayoutParams.MATCH_PARENT)) {
+			fillparent = true;
 		}
 		
 		if(a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
@@ -185,9 +201,13 @@ public class BootstrapButton extends FrameLayout {
 		}
 		
 		a.recycle();
+		View v = null;
+		if(fillparent){
+			v = inflator.inflate(R.layout.bootstrap_button_fill, null, false);
+		} else {
+			 v = inflator.inflate(R.layout.bootstrap_button, null, false);
+		}
 		
-		
-		View v = inflator.inflate(R.layout.bootstrap_button, null, false);
 		
 		//set up font sizes and padding for different button sizes
 		if(size.equals("large")){
@@ -246,6 +266,13 @@ public class BootstrapButton extends FrameLayout {
         lblMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
         lblRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
 		
+        //deal with gravity
+        
+        if(gravity.length() > 0) {
+        	setTextGravity(gravity);
+        }
+        
+        
         boolean onlyIcon = true;
         
         //set the text 
@@ -400,4 +427,19 @@ public class BootstrapButton extends FrameLayout {
 		this.setEnabled(enabled);
 	}
 	
+	
+	/**
+	 * Changes the gravity for the text on a bootstrap button that is not wrap_content
+	 * @param gravity - string for either center, right, or left.
+	 */
+	public void setTextGravity(String gravity) {
+		if(gravity.equals("left")) {
+			lblMiddle.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+		} else if (gravity.equals("center")) {
+			lblMiddle.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+		} else if (gravity.equals("right")) {
+			lblMiddle.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+		}
+ 
+	}
 }

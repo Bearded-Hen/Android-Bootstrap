@@ -56,6 +56,8 @@ public class MainActivity extends Activity {
 		final BootstrapButton button1 = (BootstrapButton)findViewById(R.id.btnOne);
 		final BootstrapButton button2 = (BootstrapButton)findViewById(R.id.btnTwo);
 		final BootstrapButton button3 = (BootstrapButton)findViewById(R.id.btnThree);
+		final BootstrapButton buttonBig = (BootstrapButton)findViewById(R.id.btnBig);
+		
 		
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -83,6 +85,14 @@ public class MainActivity extends Activity {
 				Log.d("BButton", "pressed button 3");	
 				//change the first FontAwesomeText to a star
 				tv1.setIcon("fa-star");
+			}
+		});
+		
+		buttonBig.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.d("BButton", "pressed button big");	
+				buttonBig.setTextGravity("center");
 			}
 		});
 		
