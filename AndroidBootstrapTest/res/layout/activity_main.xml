@@ -11,35 +11,17 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
-    
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        	android:id="@+id/btnBig"
-             android:layout_width="fill_parent"
-             android:layout_height="200dp"
-             android:layout_margin="10dp"
-             android:text="Primary"
-             bootstrapbutton:bb_icon_right="fa-cloud"
-             bootstrapbutton:bb_roundedCorners="true"
-             bootstrapbutton:bb_type="primary"
-             bootstrapbutton:bb_text_gravity="right" />
-    
-    <include layout="@layout/font_awesome_text_example" />
-    
-    <include layout="@layout/bootstrap_button_basic_buttons_example" />
-    
-    <include layout="@layout/bootstrap_button_rounded_buttons_example" />
-    
-    <include layout="@layout/bootstrap_button_disabled_buttons_example" />
-    
-    <include layout="@layout/bootstrap_button_other_buttons_example" />
-    
-    <include layout="@layout/bootstrap_button_size_buttons_example" />
-    
- 	<include layout="@layout/bootstrap_edit_text_example" />
- 	
- 	<include layout="@layout/bootstrap_thumbnail_example" />
- 	
- 	
+
+    <include layout="@layout/bootstrap_fontawesome_example"/>
+    <include layout="@layout/bootstrap_button_example" />
+    <include layout="@layout/bootstrap_button_disabled_example" />
+    <include layout="@layout/bootstrap_button_rounded_example" />
+    <include layout="@layout/bootstrap_button_gradient_rounded_example" />
+    <include layout="@layout/bootstrap_thumbnail_example"/>
+ 	<include layout="@layout/bootstrap_edittext_example"/>
+
+    <include layout="@layout/bootstrap_typography_example"/>
+
     </LinearLayout>
 
 </ScrollView>

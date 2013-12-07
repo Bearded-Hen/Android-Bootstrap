@@ -1,7 +1,22 @@
 Android-Bootstrap
 =================
+<h3>Changes:</h3>
+* BootstrapButton now extends Button (removes code like set setBootstrapButtonEnabled(boolean enabled) since it gets these methods from Button
+* User no longer has to download the WebAwesome font and put it in their project
+* Changed button colors to brighter colors
+* Added Gradient Buttons
+* Added Purple Button
+* Changed filenames so they are more consistent
+* Added styles to buttons and edittexts
+* Added a theme
+* There might be more but I can't think right now
 
-![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
+<h3>Working On:</h3>
+* Experimenting with Typography so users can do things like:
+    <code>com.beardedhen.androidbootstrap.typography.heading</code> to get a nice looking heading without having to apply styles themselves, but everything can still be overridden by the user if they want. This is already working actually, but I am still working on it.
+
+![alt text](https://raw.github.com/theDazzler/Android-Bootstrap/develop/images/device_image_2.png "Device Image")
+![alt text](https://raw.github.com/theDazzler/Android-Bootstrap/develop/images/device_image3.png "Device Image")
 
 If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen) or email support@beardedhen.com 
 

@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Theme -->
+    <declare-styleable name="BootstrapTheme">
+        <attr name="bootstrapButtonStyle" format="reference"/>
+        <attr name="bootstrapEditTextStyle" format="reference" />
+        <attr name="bootstrapHeadingStyle" format="reference" />
+    </declare-styleable>
+    <!-- -->
+
     <declare-styleable name="BootstrapButton">
         <attr name="bb_type" format="string"/>
         <attr name="bb_icon_left" format="string"/>
         <attr name="bb_icon_right" format="string"/>
         <attr name="bb_roundedCorners" format="boolean"/>
-        <attr name="bb_text_alignment" format="string"/>
         <attr name="bb_size" format="string"/>
-        <attr name="bb_text_gravity" format="string"/>
-        <attr name="android:textSize"/>
-        <attr name="android:text"/>
-        <attr name="android:enabled"/>
-		<attr name="android:layout_width"/>
+        <attr name="bb_gradient" format="boolean" />
     </declare-styleable>
-    
+
      <declare-styleable name="FontAwesomeText">
         <attr name="fa_icon" format="string"/>
         <attr name="android:textSize"/>
@@ -29,15 +32,20 @@
         <attr name="android:enabled"/>
         
     </declare-styleable>
-    
-     <declare-styleable name="BootstrapThumbnail"> 
-         <attr name="bt_roundedCorners" format="boolean"/>
-         <attr name="bt_image" format="integer"/>
-         <attr name="bt_width" format="dimension"/>
-         <attr name="bt_height" format="dimension"/>
-         <attr name="bt_inside_padding" format="dimension"/>
-         <attr name="android:text"/>
-     </declare-styleable>
+
+    <declare-styleable name="BootstrapThumbnail">
+        <attr name="bt_roundedCorners" format="boolean"/>
+        <attr name="bt_image" format="integer"/>
+        <attr name="bt_width" format="dimension"/>
+        <attr name="bt_height" format="dimension"/>
+        <attr name="bt_inside_padding" format="dimension"/>
+        <attr name="android:text"/>
+    </declare-styleable>
+
+    <!-- Typography -->
+    <declare-styleable name="BootstrapTypography">
+        <attr name="bt_test" format="boolean" />
+    </declare-styleable>
     
 </resources>
 

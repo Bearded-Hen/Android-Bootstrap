@@ -2,64 +2,113 @@
 <resources>
     <color name="white">#ffffffff</color>
 	<color name="black">#ff000000</color>
-	<color name="bbutton_edittext_border">#ccc</color>
-	<color name="bbutton_edittext_disabled">#ffe0e0e0</color>
+	<color name="button_edittext_border">#ccc</color>
+	<color name="button_edittext_disabled">#ffe0e0e0</color>
 	
-	<color name="bbutton_primary">#ff428bca</color>
-	<color name="bbutton_primary_edge">#ff357ebd</color>
-	<color name="bbutton_primary_pressed">#ff3276b1</color>
-	<color name="bbutton_primary_pressed_edge">#ff285e8e</color>
-	<color name="bbutton_primary_disabled">#a5428bca</color>
-	<color name="bbutton_primary_disabled_edge">#a5357ebd</color>
+	<color name="button_primary">#ff428bca</color>
+	<color name="button_primary_edge">#ff357ebd</color>
+	<color name="button_primary_pressed">#256ca8</color>
+	<color name="button_primary_pressed_edge">#ff285e8e</color>
+	<color name="button_primary_disabled">#a5428bca</color>
+	<color name="button_primary_disabled_edge">#a5357ebd</color>
+
+    <color name="button_primary_gradient_dark">#1a5e98</color>
+    <color name="button_primary_gradient_medium">#ff428bca</color>
+    <color name="button_primary_gradient_light">#539ad7</color>
+    <color name="button_primary_gradient_border">#276fad</color>
+    <color name="button_primary_gradient_pressed_shadow">#0c487c</color>
 	
-	<color name="bbutton_danger">#ffd9534f</color>
-	<color name="bbutton_danger_edge">#ffd43f3a</color>
-	<color name="bbutton_danger_pressed">#ffd2322d</color>
-	<color name="bbutton_danger_pressed_edge">#ffac2925</color>	
-	<color name="bbutton_danger_disabled">#a5d9534f</color>
-	<color name="bbutton_danger_disabled_edge">#a5d43f3a</color>
+	<color name="button_danger">#ff4444</color>
+	<color name="button_danger_edge">#db1313</color>
+	<color name="button_danger_pressed">#e21d1d</color>
+	<color name="button_danger_pressed_edge">#ffac2925</color>	
+	<color name="button_danger_disabled">#ff9494</color>
+	<color name="button_danger_disabled_edge">#ff7979</color>
+
+    <color name="button_danger_gradient_dark">#cc0000</color>
+    <color name="button_danger_gradient_medium">#ff4444</color>
+    <color name="button_danger_gradient_light">#ff5f5f</color>
+    <color name="button_danger_gradient_border">#cc0000</color>
+    <color name="button_danger_gradient_pressed_shadow">#8f0000</color>
+
 	
+	<color name="button_success">#99cc00</color>
+	<color name="button_success_edge">#83b600</color>
+	<color name="button_success_pressed">#7caf00</color>
+	<color name="button_success_pressed_edge">#ff398439</color>
+	<color name="button_success_disabled">#d3e992</color>
+	<color name="button_success_disabled_edge">#c5e26d</color>
+
+    <color name="button_success_gradient_dark">#669900</color>
+    <color name="button_success_gradient_medium">#99cc00</color>
+    <color name="button_success_gradient_light">#a8d324</color>
+    <color name="button_success_gradient_border">#7caf00</color>
+    <color name="button_success_gradient_pressed_shadow">#476a00</color>
+
+	<color name="button_warning">#ffbb33</color>
+	<color name="button_warning_edge">#ffa713</color>
+	<color name="button_warning_pressed">#ffa00e</color>
+	<color name="button_warning_pressed_edge">#ffd58512</color>
+	<color name="button_warning_disabled">#ffe3a0</color>
+	<color name="button_warning_disabled_edge">#ffd980</color>
+
+    <color name="button_warning_gradient_dark">#ff8a00</color>
+    <color name="button_warning_gradient_medium">#ffbb33</color>
+    <color name="button_warning_gradient_light">#ffc641</color>
+    <color name="button_warning_gradient_border">#ffa713</color>
+    <color name="button_warning_gradient_pressed_shadow">#d57300</color>
 	
-	<color name="bbutton_success">#ff5cb85c</color>
-	<color name="bbutton_success_edge">#ff4cae4c</color>
-	<color name="bbutton_success_pressed">#ff47a447</color>
-	<color name="bbutton_success_pressed_edge">#ff398439</color>
-	<color name="bbutton_success_disabled">#a55cb85c</color>
-	<color name="bbutton_success_disabled_edge">#a54cae4c</color>
+	<color name="button_info">#33b5e5</color>
+	<color name="button_info_edge">#1da9da</color>
+	<color name="button_info_pressed">#16a5d7</color>
+	<color name="button_info_pressed_edge">#ff269abc</color>
+	<color name="button_info_disabled">#a8dff4</color>
+	<color name="button_info_disabled_edge">#8ad5f0</color>
+
+    <color name="button_info_gradient_dark">#0099cc</color>
+    <color name="button_info_gradient_medium">#33b5e5</color>
+    <color name="button_info_gradient_light">#50c0e9</color>
+    <color name="button_info_gradient_border">#0099cc</color>
+    <color name="button_info_gradient_pressed_shadow">#00779e</color>
 	
+	<color name="button_default">#ffffffff</color>
+	<color name="button_default_edge">#ffcccccc</color>
+	<color name="button_default_pressed">#ffebebeb</color>
+	<color name="button_default_pressed_edge">#ffadadad</color>
+	<color name="button_default_disabled">#a5ffffff</color>
+	<color name="button_default_disabled_edge">#a5cccccc</color>
+
+    <color name="button_default_gradient_dark">#eeeeee</color>
+    <color name="button_default_gradient_medium">#ffffffff</color>
+    <color name="button_default_gradient_light">#ffffffff</color>
+    <color name="button_default_gradient_border">#eeeeee</color>
+    <color name="button_default_gradient_pressed_shadow">#c9c9c9</color>
 	
-	<color name="bbutton_warning">#fff0ad4e</color>
-	<color name="bbutton_warning_edge">#ffeea236</color>
-	<color name="bbutton_warning_pressed">#ffed9c28</color>
-	<color name="bbutton_warning_pressed_edge">#ffd58512</color>
-	<color name="bbutton_warning_disabled">#a5f0ad4e</color>
-	<color name="bbutton_warning_disabled_edge">#a5eea236</color>
+	<color name="button_inverse">#ff0a0a0a</color>
+	<color name="button_inverse_edge">#ff141414</color>
+	<color name="button_inverse_pressed">#333333</color>
+	<color name="button_inverse_pressed_edge">#ff292929</color>
+	<color name="button_inverse_disabled">#a50a0a0a</color>
+	<color name="button_inverse_disabled_edge">#a5141414</color>
+
+    <color name="button_inverse_gradient_dark">#ff0a0a0a</color>
+    <color name="button_inverse_gradient_medium">#333333</color>
+    <color name="button_inverse_gradient_light">#403f3f</color>
+    <color name="button_inverse_gradient_border">#000000</color>
+    <color name="button_inverse_gradient_pressed_shadow">#000000</color>
+
+
+    <color name="button_purple">#aa66cc</color>
+    <color name="button_purple_edge">#b36ad9</color>
+    <color name="button_purple_pressed">#9D43CC</color>
+    <color name="button_purple_pressed_edge">#9D43CC</color>
+    <color name="button_purple_disabled">#ddbcee</color>
+    <color name="button_purple_disabled_edge">#d6adeb</color>
 	
-	<color name="bbutton_info">#ff5bc0de</color>
-	<color name="bbutton_info_edge">#ff46b8da</color>
-	<color name="bbutton_info_pressed">#ff39b3d7</color>
-	<color name="bbutton_info_pressed_edge">#ff269abc</color>
-	<color name="bbutton_info_disabled">#a55bc0de</color>
-	<color name="bbutton_info_disabled_edge">#a546b8da</color>
-	
-	<color name="bbutton_default">#ffffffff</color>
-	<color name="bbutton_default_edge">#ffcccccc</color>
-	<color name="bbutton_default_pressed">#ffebebeb</color>
-	<color name="bbutton_default_pressed_edge">#ffadadad</color>
-	<color name="bbutton_default_disabled">#a5ffffff</color>
-	<color name="bbutton_default_disabled_edge">#a5cccccc</color>
-	
-	<color name="bbutton_inverse">#ff0a0a0a</color>
-	<color name="bbutton_inverse_edge">#ff141414</color>
-	<color name="bbutton_inverse_pressed">#ff1f1f1f</color>
-	<color name="bbutton_inverse_pressed_edge">#ff292929</color>
-	<color name="bbutton_inverse_disabled">#a50a0a0a</color>
-	<color name="bbutton_inverse_disabled_edge">#a5141414</color>
-	
-	<color name="bthumbnail_background">#ffffffff</color>
-	<color name="bthumbnail_placeholder">#e9e9e9</color>
-	<color name="bthumbnail_border">#dbdbdb</color>
-	<color name="bthumbnail_font">#7e7e7e</color>
+	<color name="thumbnail_background">#ffffffff</color>
+	<color name="thumbnail_placeholder">#e9e9e9</color>
+	<color name="thumbnail_border">#dbdbdb</color>
+	<color name="thumbnail_font">#7e7e7e</color>
 	
 	
 </resources>

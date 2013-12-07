@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Round Buttons" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                bootstrapbutton:bb_type="default"
+                bootstrapbutton:bb_icon_left="fa-heart"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Primary"
+                bootstrapbutton:bb_type="primary"
+                bootstrapbutton:bb_icon_left="fa-star"
+                bootstrapbutton:bb_icon_right="fa-gavel"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnPurpleRound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Andazzle"
+                bootstrapbutton:bb_type="purple"
+                bootstrapbutton:bb_icon_right="fa-google-plus-square"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Info"
+                bootstrapbutton:bb_type="info"
+                bootstrapbutton:bb_icon_right="fa-info-circle"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Success"
+                bootstrapbutton:bb_type="success"
+                bootstrapbutton:bb_icon_right="fa-thumbs-o-up"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Danger"
+                bootstrapbutton:bb_type="danger"
+                bootstrapbutton:bb_icon_left="fa-headphones"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnFive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Warning"
+                bootstrapbutton:bb_type="warning"
+                bootstrapbutton:bb_icon_left="fa-comment"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnSix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Inverse"
+                bootstrapbutton:bb_type="inverse"
+                bootstrapbutton:bb_icon_left="fa-user"
+                bootstrapbutton:bb_icon_right="fa-gamepad"
+                bootstrapbutton:bb_roundedCorners="true"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

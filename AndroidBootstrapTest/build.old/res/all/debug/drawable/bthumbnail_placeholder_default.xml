@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+         
+    <item><shape android:shape="rectangle">
+            <solid android:color="@color/bthumbnail_placeholder" />
+            
+        </shape></item>
+
+</selector><!-- From: file:/Users/devon/Desktop/Android-Bootstrap-master/AndroidBootstrap/res/drawable/bthumbnail_placeholder_default.xml --><!-- From: file:/Users/devon/Desktop/Android-Bootstrap-master/AndroidBootstrapTest/build/exploded-bundles/AndroidBootstrapMasterAndroidBootstrapUnspecified.aar/res/drawable/bthumbnail_placeholder_default.xml -->

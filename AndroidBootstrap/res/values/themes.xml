@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.BootstrapLight" parent="AppBaseTheme">
+        <item name="bootstrapButtonStyle">@style/BootstrapButton</item>
+        <item name="bootstrapEditTextStyle">@style/BootstrapEditText</item>
+        <item name="bootstrapHeadingStyle">@style/BootstrapTypographyHeading</item>
+    </style>
+</resources>

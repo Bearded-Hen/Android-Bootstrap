@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape
+            android:shape="rectangle">
+            <gradient
+                android:startColor="@color/button_info_gradient_pressed_shadow"
+                android:centerColor="@color/button_info_gradient_dark"
+                android:endColor="@color/button_info_gradient_dark"
+                android:centerY="0.4"
+                android:angle="270" />
+            <stroke android:width="1dp" android:color="@color/button_info_gradient_pressed_shadow" />
+            <corners android:radius="@dimen/button_rounded_corner_radius"/>
+        </shape>
+    </item>
+
+    <item android:state_enabled="false">
+        <shape
+            android:shape="rectangle">
+            <gradient
+                android:startColor="@color/button_info_gradient_pressed_shadow"
+                android:centerColor="@color/button_info_gradient_dark"
+                android:endColor="@color/button_info_gradient_dark"
+                android:angle="270" />
+            <stroke android:width="1dp" android:color="@color/button_info_gradient_pressed_shadow" />
+            <corners android:radius="@dimen/button_rounded_corner_radius"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape
+            android:shape="rectangle">
+            <gradient
+                android:startColor="@color/button_info_gradient_light"
+                android:centerColor="@color/button_info_gradient_medium"
+                android:endColor="@color/button_info_gradient_dark"
+                android:angle="270" />
+            <stroke android:width="1dp" android:color="@color/button_info_gradient_border" />
+            <corners android:radius="@dimen/button_rounded_corner_radius"/>
+        </shape>
+    </item>
+
+
+</selector>

@@ -13,4 +13,29 @@
     </style>
 
 
+
+    <!-- Bootstrap Graphics (buttons, editext, etc.) ******************************-->
+
+    <!-- Style for BootstrapButton -->
+    <style name="BootstrapButton" parent="android:style/Widget.Button">
+        <item name="android:padding">@dimen/padding_large</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <!-- BootstrapEditText Style-->
+    <style name="BootstrapEditText" parent="android:style/Widget.EditText">
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <!-- End Bootstrap Graphics ***************************************************-->
+
+
+    <!-- Bootstrap Typography -->
+
+    <style name="BootstrapTypographyHeading" parent="android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <!-- End Bootstrap Typography -->
+
 </resources>
