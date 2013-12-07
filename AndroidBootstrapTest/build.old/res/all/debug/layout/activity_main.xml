@@ -1,0 +1,27 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <include layout="@layout/bootstrap_fontawesome_example"/>
+    <include layout="@layout/bootstrap_button_example" />
+    <include layout="@layout/bootstrap_button_disabled_example" />
+    <include layout="@layout/bootstrap_button_rounded_example" />
+    <include layout="@layout/bootstrap_button_gradient_rounded_example" />
+    <include layout="@layout/bootstrap_thumbnail_example"/>
+ 	<include layout="@layout/bootstrap_edittext_example"/>
+
+    <include layout="@layout/bootstrap_typography_example"/>
+
+    </LinearLayout>
+
+</ScrollView><!-- From: file:/Users/devon/Desktop/Android-Bootstrap-master/AndroidBootstrapTest/res/layout/activity_main.xml -->
