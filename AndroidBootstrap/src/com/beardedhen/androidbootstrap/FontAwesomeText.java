@@ -261,5 +261,14 @@ public class FontAwesomeText extends FrameLayout {
 	public void setTextColor(int color) {
 		tv.setTextColor(color);
 	}
+
+	/**
+	 * Used to set the text size of the underlying text view.
+	 * @param unit - Integer value representing a unit size
+	 * @param size - Float value represeting text size
+	 */
+	public void setTextSize(int unit, float size) {
+		tv.setTextSize(unit, size);
+	}
 	
 }
