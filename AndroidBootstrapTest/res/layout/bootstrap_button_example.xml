@@ -21,35 +21,6 @@
             android:orientation="horizontal" >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/btnOne"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:text="Default"
-                bootstrapbutton:bb_type="default"
-                bootstrapbutton:bb_icon_left="fa-heart" />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/btnTwo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Primary"
-                bootstrapbutton:bb_type="primary"
-                bootstrapbutton:bb_icon_left="fa-star"
-                bootstrapbutton:bb_icon_right="fa-gavel"/>
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/btnPurple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Purple"
-                bootstrapbutton:bb_type="purple"
-                bootstrapbutton:bb_icon_left="fa-cutlery"/>
-            
-            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btnInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +37,7 @@
                 android:text="Success"
                 bootstrapbutton:bb_type="success"
                 bootstrapbutton:bb_icon_right="fa-thumbs-o-up" />
-            
+
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btnFour"
                 android:layout_width="wrap_content"
@@ -75,7 +46,17 @@
                 android:text="Danger"
                 bootstrapbutton:bb_type="danger"
                 bootstrapbutton:bb_icon_left="fa-headphones" />
-            
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnPurple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Purple"
+                bootstrapbutton:bb_type="purple"
+                bootstrapbutton:bb_icon_left="fa-cutlery"/>
+
+
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btnFive"
                 android:layout_width="wrap_content"
@@ -84,6 +65,27 @@
                 android:text="Warning"
                 bootstrapbutton:bb_type="warning"
                 bootstrapbutton:bb_icon_left="fa-comment" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Default"
+                bootstrapbutton:bb_type="default"
+                bootstrapbutton:bb_icon_left="fa-heart" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Primary"
+                bootstrapbutton:bb_type="primary"
+                bootstrapbutton:bb_icon_left="fa-star"
+                bootstrapbutton:bb_icon_right="fa-gavel"/>
+
+
             
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btnSix"

@@ -19,7 +19,7 @@
     <!-- Style for BootstrapButton -->
     <style name="BootstrapButton" parent="android:style/Widget.Button">
         <item name="android:padding">@dimen/padding_large</item>
-        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textSize">@dimen/font_small</item>
     </style>
 
     <!-- BootstrapEditText Style-->
