@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/container"
     android:duplicateParentState="true"
-    android:padding="@dimen/padding_small"
+    android:padding="@dimen/padding_medium"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:id="@+id/placeholder"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="@dimen/padding_small">
+        android:padding="16dp">
 
         <com.beardedhen.androidbootstrap.utils.AutoResizeTextView
             android:id="@+id/dimensionsLabel"

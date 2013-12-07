@@ -2,6 +2,7 @@ package com.beardedhen.androidbootstrap;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -22,7 +23,7 @@ public class BootstrapThumbnail extends FrameLayout
     private static final int DEFAULT_MIN_PADDING = 4; //4dp
     private static final String DEFAULT_TYPE = "rounded";
 
-    private static Map<String, ThumbnailTypes> ThumbnailTypeMap;
+    private static Map<String, ThumbnailTypes> bThumbnailTypeMap;
     private static Typeface font;
     private ViewGroup container;
     private LinearLayout placeholder;
@@ -30,10 +31,10 @@ public class BootstrapThumbnail extends FrameLayout
     private boolean roundedCorners = true;
 
     static{
-        ThumbnailTypeMap = new HashMap<String, ThumbnailTypes>();
+        bThumbnailTypeMap = new HashMap<String, ThumbnailTypes>();
 
-        ThumbnailTypeMap.put("rounded", ThumbnailTypes.ROUNDED);//default is rounded if user doesn't specify to use square
-        ThumbnailTypeMap.put("square", ThumbnailTypes.SQUARE);
+        bThumbnailTypeMap.put("rounded", ThumbnailTypes.ROUNDED);//default is rounded if user doesn't specify to use square
+        bThumbnailTypeMap.put("square", ThumbnailTypes.SQUARE);
     }
 
     public BootstrapThumbnail(Context context, AttributeSet attrs, int defStyle)
@@ -59,7 +60,7 @@ public class BootstrapThumbnail extends FrameLayout
         this.placeholder.setBackgroundResource(drawable);
     }
 
-    //set up the thumbnail types
+    //set up the bootstrap types
     private enum ThumbnailTypes
     {
         ROUNDED(R.drawable.thumbnail_container_rounded, R.drawable.thumbnail_placeholder_default),
@@ -140,14 +141,14 @@ public class BootstrapThumbnail extends FrameLayout
         Log.v("size", "width:" + width + " height:" + height);
 
 
-        type = ThumbnailTypeMap.get(thumbnailType);
+        type = bThumbnailTypeMap.get(thumbnailType);
 
         //get the correct background type
         if(roundedCorners == true)
         {
-            type = ThumbnailTypeMap.get("rounded");
+            type = bThumbnailTypeMap.get("rounded");
         } else {
-            type = ThumbnailTypeMap.get("square");
+            type = bThumbnailTypeMap.get("square");
         }
 
         //apply the background type
@@ -196,7 +197,7 @@ public class BootstrapThumbnail extends FrameLayout
     {
         if(font == null){
             try {
-                font = Typeface.createFromAsset(context.getAssets(), "fonts/fontawesome-webfont.ttf");
+                font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
             } catch (Exception e) {
                 Log.e("BootstrapButton", "Could not get typeface because " + e.getMessage());
                 font = Typeface.DEFAULT;
