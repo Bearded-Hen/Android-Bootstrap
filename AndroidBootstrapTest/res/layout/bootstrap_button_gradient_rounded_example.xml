@@ -66,15 +66,26 @@
                 bootstrapbutton:bb_gradient="true"/>
 
             <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/btnFour"
+                android:id="@+id/btnPurple"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Danger"
-                bootstrapbutton:bb_type="danger"
-                bootstrapbutton:bb_icon_left="fa-headphones"
+                android:text="Purple"
+                bootstrapbutton:bb_type="purple"
+                bootstrapbutton:bb_icon_left="fa-rocket"
                 bootstrapbutton:bb_roundedCorners="true"
                 bootstrapbutton:bb_gradient="true"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/btnFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Danger"
+            bootstrapbutton:bb_type="danger"
+            bootstrapbutton:bb_icon_left="fa-headphones"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_gradient="true"/>
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/btnFive"

@@ -5,12 +5,12 @@
         <shape
             android:shape="rectangle">
             <gradient
-                android:startColor="@color/button_danger_gradient_pressed_shadow"
-                android:centerColor="@color/button_danger_gradient_dark"
-                android:endColor="@color/button_danger_gradient_dark"
+                android:startColor="@color/button_purple_gradient_pressed_shadow"
+                android:centerColor="@color/button_purple_gradient_dark"
+                android:endColor="@color/button_purple_gradient_dark"
                 android:centerY="0.3"
                 android:angle="270" />
-            <stroke android:width="1dp" android:color="@color/button_danger_gradient_pressed_shadow" />
+            <stroke android:width="1dp" android:color="@color/button_purple_gradient_pressed_shadow" />
         </shape>
     </item>
 
@@ -18,11 +18,11 @@
         <shape
             android:shape="rectangle">
             <gradient
-                android:startColor="@color/button_danger_gradient_pressed_shadow"
-                android:centerColor="@color/button_danger_gradient_dark"
-                android:endColor="@color/button_danger_gradient_dark"
+                android:startColor="@color/button_purple_gradient_pressed_shadow"
+                android:centerColor="@color/button_purple_gradient_dark"
+                android:endColor="@color/button_purple_gradient_dark"
                 android:angle="270" />
-            <stroke android:width="1dp" android:color="@color/button_danger_gradient_pressed_shadow" />
+            <stroke android:width="1dp" android:color="@color/button_purple_gradient_pressed_shadow" />
         </shape>
     </item>
 
@@ -30,11 +30,11 @@
         <shape
             android:shape="rectangle">
             <gradient
-                android:startColor="@color/button_danger_gradient_light"
-                android:centerColor="@color/button_danger_gradient_medium"
-                android:endColor="@color/button_danger_gradient_dark"
+                android:startColor="@color/button_purple_gradient_light"
+                android:centerColor="@color/button_purple_gradient_medium"
+                android:endColor="@color/button_purple_gradient_dark"
                 android:angle="270" />
-            <stroke android:width="1dp" android:color="@color/button_danger_gradient_border" />
+            <stroke android:width="1dp" android:color="@color/button_purple_gradient_border" />
         </shape>
     </item>
 

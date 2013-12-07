@@ -104,6 +104,12 @@
     <color name="button_purple_pressed_edge">#9D43CC</color>
     <color name="button_purple_disabled">#ddbcee</color>
     <color name="button_purple_disabled_edge">#d6adeb</color>
+
+    <color name="button_purple_gradient_dark">#9933cc</color>
+    <color name="button_purple_gradient_medium">#aa66cc</color>
+    <color name="button_purple_gradient_light">#cb97e5</color>
+    <color name="button_purple_gradient_border">#a750d3</color>
+    <color name="button_purple_gradient_pressed_shadow">#5f088a</color>
 	
 	<color name="thumbnail_background">#ffffffff</color>
 	<color name="thumbnail_placeholder">#e9e9e9</color>
