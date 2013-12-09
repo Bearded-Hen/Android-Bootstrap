@@ -57,6 +57,8 @@ public class BootstrapThumbnail extends FrameLayout
 	public void setImage(int drawable)
 	{
 		this.placeholder.setBackgroundResource(drawable);
+        invalidate();
+        requestLayout();
 	}
 	
 	//set up the bootstrap types
