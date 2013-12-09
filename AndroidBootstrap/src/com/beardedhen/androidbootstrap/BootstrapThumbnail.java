@@ -2,7 +2,6 @@ package com.beardedhen.androidbootstrap;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;

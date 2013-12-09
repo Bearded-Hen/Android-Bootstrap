@@ -4,6 +4,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 	<dimen name="bbuton_rounded_corner_radius">5dp</dimen>
-	<dimen name="bthumbnail_padding">8dp</dimen>
+
 	<dimen name="bthumbnail_rounded_corner_radius">3dp</dimen>
+
+    <dimen name="padding_micro">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
 </resources>

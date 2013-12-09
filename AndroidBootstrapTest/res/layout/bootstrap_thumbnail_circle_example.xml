@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Circle Thumbnails" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailOneTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="xlarge"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="large"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="medium"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="small"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailFive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="small"
+                android:text="small"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailSix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="medium"
+                android:text="medium"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailSeven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="large"
+                android:text="large"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="xlarge"
+                android:text="xlarge"
+                android:layout_margin="10dp"/>
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Circle Minimal Thumbnails" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="xlarge"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="large"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="medium"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/headshot"
+                bootstrap:bct_size="small"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalFive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="small"
+                android:text="small"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalSix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="medium"
+                android:text="medium"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalSeven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="large"
+                android:text="large"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalEight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_size="xlarge"
+                android:text="xlarge"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>
