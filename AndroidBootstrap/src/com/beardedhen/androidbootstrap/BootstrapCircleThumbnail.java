@@ -33,10 +33,6 @@ public class BootstrapCircleThumbnail extends FrameLayout
     private static final String LARGE = "large";
     private static final String XLARGE = "xlarge";
 
-
-    private static final int DEFAULT_IMAGE_WIDTH = 400;//px, size when no image is given
-    private static final int DEFAULT_IMAGE_HEIGHT = 400;//px, size when no image is given
-
     private LinearLayout container;
     private LinearLayout placeholder;
     private ImageView image;
