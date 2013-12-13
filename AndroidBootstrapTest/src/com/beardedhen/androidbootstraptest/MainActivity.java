@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
-import com.beardedhen.androidbootstrap.BootstrapThumbnail;
 import com.beardedhen.androidbootstrap.FontAwesomeText;
 
 public class MainActivity extends Activity {
@@ -22,7 +21,6 @@ public class MainActivity extends Activity {
 		final FontAwesomeText tv1 = (FontAwesomeText) findViewById(R.id.lblOne);
 		FontAwesomeText tv2 = (FontAwesomeText) findViewById(R.id.lblTwo);
 		FontAwesomeText tv3 = (FontAwesomeText) findViewById(R.id.lblThree);
-		BootstrapThumbnail thumb1 = (BootstrapThumbnail) findViewById(R.id.thumbnailOne);
 		
 		//flashing forever FAST
 		tv1.startFlashing(this, true, FontAwesomeText.AnimationSpeed.FAST);

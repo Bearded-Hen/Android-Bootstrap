@@ -38,6 +38,8 @@
  	<include layout="@layout/bootstrap_edit_text_example" />
  	
  	<include layout="@layout/bootstrap_thumbnail_example" />
+
+    <include layout="@layout/bootstrap_thumbnail_circle_example" />
  	
  	
     </LinearLayout>
