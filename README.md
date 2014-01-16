@@ -71,7 +71,7 @@ Thumbnails Rounded
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/thumbnail_rounded.png "edit text backgrounds rounded")
 
 Circle Thumbnails
-![alt text](https://raw.github.com/theDazzler/Android-Bootstrap/docs/images/thumbnails_circle.png "circle thumbnails")
+![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/thumbnails_circle.png "circle thumbnails")
 
 Circle Thumbnails Minimal
-![alt text](https://raw.github.com/theDazzler/Android-Bootstrap/docs/images/thumbnails_circle_minimal.png "circle thumbnails minimal")
+![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/thumbnails_circle_minimal.png "circle thumbnails minimal")
