@@ -172,7 +172,11 @@ public class BootstrapButton extends FrameLayout {
 		
 		int layoutWidth = 0;
 		if(a.getString(R.styleable.BootstrapButton_android_layout_width) != null) {
-			layoutWidth = a.getInt(R.styleable.BootstrapButton_android_layout_width, 0);
+	            String buttonWidth = a.getString(R.styleable.BootstrapButton_android_layout_width);
+	
+	            if(isInteger(buttonWidth)) {
+	                layoutWidth = Integer.parseInt(buttonWidth);
+	            }
 		}
 		
 		//works even if it's fill_parent or match_parent 
