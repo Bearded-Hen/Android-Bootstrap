@@ -90,6 +90,7 @@ public class FontAwesomeText extends FrameLayout {
 		//text colour
 		if(a.getString(R.styleable.FontAwesomeText_android_textColor) != null){
 			tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
+			tv.setTextColor(a.getColorStateList(R.styleable.FontAwesomeText_android_textColor));
 		}
 		
 		setIcon(icon);
