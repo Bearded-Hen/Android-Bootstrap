@@ -6,7 +6,19 @@
         <attr name="bb_icon_right" format="string"/>
         <attr name="bb_roundedCorners" format="boolean"/>
         <attr name="bb_text_alignment" format="string"/>
-        <attr name="bb_size" format="string"/>
+        <attr name="bb_size" format="string" />
+
+		<!--attr name="bb_size" format="integer">
+			<enum name="btn_xs" value="0"/>
+			<enum name="xsmall" value="0"/>
+
+			<enum name="btn_sm" value="1"/>
+			<enum name="small" value="1"/>
+
+			<enum name="btn_lg" value="2"/>
+			<enum name="large" value="2"/>
+		</attr-->
+
         <attr name="bb_text_gravity" format="string"/>
         <attr name="android:textSize"/>
         <attr name="android:text"/>

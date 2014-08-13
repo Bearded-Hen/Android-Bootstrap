@@ -37,7 +37,7 @@
                 android:text="default"
                 bootstrapbutton:bb_icon_left="fa-smile-o"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_sm"
                 bootstrapbutton:bb_type="primary" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
