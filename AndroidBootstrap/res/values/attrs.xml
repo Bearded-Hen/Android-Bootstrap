@@ -8,24 +8,24 @@
         <attr name="bb_text_alignment" format="string"/>
         <!--attr name="bb_size" format="string" /-->
 
-		<attr name="bb_size">
-			<enum name="btn_xs" value="0"/>
-			<enum name="xsmall" value="0"/>
+        <attr name="bb_size">
+            <enum name="btn_xs" value="0"/>
+            <enum name="xsmall" value="0"/>
 
-			<enum name="btn_sm" value="1"/>
-			<enum name="small" value="1"/>
+            <enum name="btn_sm" value="1"/>
+            <enum name="small" value="1"/>
 
-			<enum name="btn_def" value="2"/>
+            <enum name="btn_def" value="2"/>
 
-			<enum name="btn_lg" value="3"/>
-			<enum name="large" value="3"/>
-		</attr>
+            <enum name="btn_lg" value="3"/>
+            <enum name="large" value="3"/>
+        </attr>
 
         <attr name="bb_text_gravity" format="string"/>
         <attr name="android:textSize"/>
         <attr name="android:text"/>
         <attr name="android:enabled"/>
-		<attr name="android:layout_width"/>
+        <attr name="android:layout_width"/>
     </declare-styleable>
     
      <declare-styleable name="FontAwesomeText">
