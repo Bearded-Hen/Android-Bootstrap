@@ -1,10 +1,5 @@
 package com.beardedhen.androidbootstrap;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -15,10 +10,18 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static com.beardedhen.androidbootstrap.FontAwesomeText.AnimationSpeed;
 
 public class BootstrapButton extends FrameLayout {
 
@@ -108,11 +111,12 @@ public class BootstrapButton extends FrameLayout {
 		}
 	}
 
-	String[] BootStrapTypes = {"xsmall", "small", "large"};
+	int BTN_DEFAUL_SIZE = 2;
+	String[] BootStrapTypes = {"xsmall", "small", "default", "large"};
 
 	private void initialise( AttributeSet attrs )
 	{
-		LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
+		LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE);
 
 		//get font
@@ -146,43 +150,42 @@ public class BootstrapButton extends FrameLayout {
 			roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false) ;
 		}
 		
-		if(a.getString(R.styleable.BootstrapButton_bb_size) != null) {
-			size = a.getString(R.styleable.BootstrapButton_bb_size);
-//			size = BootStrapTypes[a.getInt(R.styleable.BootstrapButton_bb_size, 1)];
+		if (a.getString(R.styleable.BootstrapButton_bb_size) != null) {
+			size = BootStrapTypes[a.getInt(R.styleable.BootstrapButton_bb_size, BTN_DEFAUL_SIZE)];
 		}
 
 		if ( a.getString(R.styleable.BootstrapButton_bb_icon_left) != null) {
 			iconLeft =  a.getString(R.styleable.BootstrapButton_bb_icon_left );
 		}
 
-		if(a.getString(R.styleable.BootstrapButton_bb_icon_right) != null) {
+		if (a.getString(R.styleable.BootstrapButton_bb_icon_right) != null) {
 			iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right );
 		}
 
-		if(a.getString(R.styleable.BootstrapButton_android_text) != null) {
+		if (a.getString(R.styleable.BootstrapButton_android_text) != null) {
 			text = a.getString(R.styleable.BootstrapButton_android_text);
 		}
 
-		if(a.getString(R.styleable.BootstrapButton_bb_text_gravity) != null) {
+		if (a.getString(R.styleable.BootstrapButton_bb_text_gravity) != null) {
 			gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
 		}
 
 		boolean enabled = true;
-		if(a.getString(R.styleable.BootstrapButton_android_enabled) != null) {
+		if (a.getString(R.styleable.BootstrapButton_android_enabled) != null) {
 			enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
 		}
 
 		int layoutWidth = 0;
-		if(a.getString(R.styleable.BootstrapButton_android_layout_width) != null) {
+		if (a.getString(R.styleable.BootstrapButton_android_layout_width) != null) {
 			layoutWidth = a.getInt(R.styleable.BootstrapButton_android_layout_width, 0);
 		}
 
 		//works even if it's fill_parent or match_parent
-		if( (layoutWidth == LayoutParams.MATCH_PARENT)) {
+		if ( (layoutWidth == LayoutParams.MATCH_PARENT)) {
 			fillParent = true;
 		}
 
-		if(a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
+		if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
 
 			//font sizes
 			String xmlProvidedSize = attrs.getAttributeValue(
@@ -204,27 +207,26 @@ public class BootstrapButton extends FrameLayout {
 
 		a.recycle();
 		View v;
-		if(fillParent){
-			v = inflator.inflate(R.layout.bootstrap_button_fill, null, false);
+		if (fillParent) {
+			v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
 		} else {
-			 v = inflator.inflate(R.layout.bootstrap_button, null, false);
+			 v = inflater.inflate(R.layout.bootstrap_button, null, false);
 		}
 
-
 		//set up font sizes and padding for different button sizes
-		if(size.equals("large")){
+		if (size.equals("large")) {
 			fontSize = 20.0f;
 			paddingA = (int) (15 *scale + 0.5f);
 			paddingB = (int) (20 *scale + 0.5f);
 		}
 
-		if(size.equals("small")){
+		if (size.equals("small")) {
 			fontSize = 12.0f;
 			paddingA = (int) (5 *scale + 0.5f);
 			paddingB = (int) (10 *scale + 0.5f);
 		}
 
-		if(size.equals("xsmall")){
+		if (size.equals("xsmall")) {
 			fontSize = 10.0f;
 			paddingA = (int) (2 *scale + 0.5f);
 			paddingB = (int) (5 *scale + 0.5f);
@@ -236,12 +238,8 @@ public class BootstrapButton extends FrameLayout {
 		lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
 		lblRight = (TextView) v.findViewById(R.id.lblRight);
 
-		//set the background
-		//setBootstrapType(bootstrapType);
-
 		//get the correct background type
-		if(roundedCorners)
-		{
+		if (roundedCorners) {
 			type = bbuttonTypeMapRounded.get(bootstrapType);
 		} else {
 			type = bbuttonTypeMap.get(bootstrapType);
@@ -270,7 +268,7 @@ public class BootstrapButton extends FrameLayout {
 
 		//deal with gravity
 
-		if(gravity.length() > 0) {
+		if (gravity.length() > 0) {
 			setTextGravity(gravity);
 		}
 
@@ -278,10 +276,10 @@ public class BootstrapButton extends FrameLayout {
 		boolean onlyIcon = true;
 
 		//set the text
-		if(text.length() > 0){
+		if (text.length() > 0) {
 			onlyIcon = false;
 		}
-		lblMiddle.setText(text );
+		lblMiddle.setText(text);
 		lblMiddle.setVisibility(View.VISIBLE);
 
 		//set up the padding
@@ -292,7 +290,7 @@ public class BootstrapButton extends FrameLayout {
 			lblLeft.setVisibility(View.VISIBLE);
 
 			layPL = paddingB;
-			if (onlyIcon){
+			if (onlyIcon) {
 				midPL = paddingB;
 			} else if ( iconRight.length() == 0) {//padding for symmetry
 				midPL += paddingA;
@@ -306,7 +304,7 @@ public class BootstrapButton extends FrameLayout {
 			lblRight.setVisibility(View.VISIBLE);
 
 			layPR = paddingB;
-			if (onlyIcon){
+			if (onlyIcon) {
 				midPR += paddingB;
 			} else if (iconLeft.length() == 0) {//padding for symmetry
 				midPL += paddingB;
@@ -341,7 +339,7 @@ public class BootstrapButton extends FrameLayout {
 	private static void readFont(Context context)
 	{
 
-		if(font == null){
+		if (font == null) {
 			try {
 			font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
 			} catch (Exception e) {
@@ -437,7 +435,7 @@ public class BootstrapButton extends FrameLayout {
 	 * @param gravity - string for either center, right, or left.
 	 */
 	public void setTextGravity(String gravity) {
-		if(gravity.equals("left")) {
+		if (gravity.equals("left")) {
 			lblMiddle.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
 		} else if (gravity.equals("center")) {
 			lblMiddle.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
@@ -446,4 +444,71 @@ public class BootstrapButton extends FrameLayout {
 		}
  
 	}
-}
+
+	/* Rotating button icons animations added (or copied :) ) by Fma
+	* */
+	static int BUTTON_LEFT_ICON = 0x1, BUTTON_RIGHT_ICON = 0x2;
+ 	public void startRotateRight(boolean clockwise, AnimationSpeed speed) {
+		startRotate(clockwise, speed, lblRight);
+	}
+	public void startRotateLeft(boolean clockwise, AnimationSpeed speed) {
+		startRotate(clockwise, speed, lblLeft);
+	}
+  	private void startRotate(boolean clockwise, AnimationSpeed speed, final TextView iconTextView) {
+		Animation rotate;
+
+		//set up the rotation animation
+		if (clockwise){
+			rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f);
+		} else {
+			rotate = new RotateAnimation(360, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f);
+		}
+
+		//set up some extra variables
+		rotate.setRepeatCount(Animation.INFINITE);
+		rotate.setInterpolator(new LinearInterpolator());
+		rotate.setStartOffset(0);
+		rotate.setRepeatMode(Animation.RESTART);
+
+		//defaults
+		rotate.setDuration(2000);
+
+		//fast
+		if (speed.equals(AnimationSpeed.FAST))
+		{
+			rotate.setDuration(500);
+		}
+
+		//medium
+		if (speed.equals(AnimationSpeed.MEDIUM))
+		{
+			rotate.setDuration(1000);
+		}
+
+		//send the new animation to a final animation
+		final Animation animation = rotate;
+
+		//run the animation - used to work correctly on older devices
+		iconTextView.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				iconTextView.startAnimation(animation);
+			}
+		}, 100);
+
+	}
+	public void stopAnimationLeft() {
+		stopAnimation(BUTTON_LEFT_ICON);
+	}
+	public void stopAnimationRight() {
+		stopAnimation(BUTTON_RIGHT_ICON);
+	}
+	private void stopAnimation(int whichIcon) {
+		if ((whichIcon & BUTTON_LEFT_ICON) > 0) {
+			lblLeft.clearAnimation();
+		}
+		if ((whichIcon & BUTTON_RIGHT_ICON) > 0) {
+			lblLeft.clearAnimation();
+		}
+	}
+ }

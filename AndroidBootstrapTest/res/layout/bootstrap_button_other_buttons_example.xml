@@ -26,7 +26,7 @@
                 android:layout_margin="10dp"
                 android:text="Just text"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="primary" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -37,7 +37,7 @@
                 bootstrapbutton:bb_icon_left="fa-chevron-circle-right"
                 bootstrapbutton:bb_icon_right="fa-chevron-circle-left"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="primary" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -46,7 +46,7 @@
                 android:layout_margin="10dp"
                 bootstrapbutton:bb_icon_left="fa-female"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="primary" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -55,7 +55,7 @@
                 android:layout_margin="10dp"
                 bootstrapbutton:bb_icon_left="fa-certificate"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="info" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -64,7 +64,7 @@
                 android:layout_margin="10dp"
                 bootstrapbutton:bb_icon_left="fa-tachometer"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="success" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -73,7 +73,7 @@
                 android:layout_margin="10dp"
                 bootstrapbutton:bb_icon_left="fa-umbrella"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="warning"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="info" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -82,7 +82,7 @@
                 android:layout_margin="10dp"
                 bootstrapbutton:bb_icon_left="fa-money"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="danger" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -91,7 +91,7 @@
                 android:layout_margin="10dp"
                 bootstrapbutton:bb_icon_left="fa-desktop"
                 bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_size="btn_def"
                 bootstrapbutton:bb_type="inverse" />
         </LinearLayout>
     </HorizontalScrollView>

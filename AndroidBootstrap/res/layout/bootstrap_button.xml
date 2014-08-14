@@ -12,7 +12,6 @@
      android:id="@+id/lblLeft"   
      android:layout_height="wrap_content"
      android:layout_width="wrap_content"
-     android:paddingLeft="15dp"
      android:visibility="gone"
      android:layout_gravity="center_vertical"
     />
@@ -32,7 +31,6 @@
      android:id="@+id/lblRight"   
      android:layout_height="wrap_content"
      android:layout_width="wrap_content"
-     android:paddingRight="15dp"
      android:visibility="gone"
      android:layout_gravity="center_vertical"
     />

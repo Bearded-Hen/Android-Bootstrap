@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="10dp"
+		android:text="Basic Buttons" />
+
+	<HorizontalScrollView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" >
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:text="Normal"
+				bootstrapbutton:bb_icon_left="fa-heart"
+				bootstrapbutton:bb_type="default" />
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:id="@+id/btnRotRight"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:text="Right rotating"
+				bootstrapbutton:bb_icon_right="fa-cog"
+				bootstrapbutton:bb_type="primary" />
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:id="@+id/btnRotLeft"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:text="Left rotating"
+				bootstrapbutton:bb_icon_left="fa-recycle"
+				bootstrapbutton:bb_type="info" />
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:id="@+id/btnRotBoth"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:text="Both rotating"
+				bootstrapbutton:bb_icon_right="fa-refresh"
+				bootstrapbutton:bb_icon_left="fa-circle-o-notch"
+				bootstrapbutton:bb_type="success" />
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:text="Two icons"
+				bootstrapbutton:bb_icon_left="fa-plane"
+				bootstrapbutton:bb_icon_right="fa-arrow-right"
+				bootstrapbutton:bb_type="warning" />
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:id="@+id/btnRotInvRight"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:text="Inverse both"
+				bootstrapbutton:bb_icon_right="fa-spinner"
+				bootstrapbutton:bb_icon_left="fa-floppy-o"
+				bootstrapbutton:bb_type="inverse" />
+		</LinearLayout>
+	</HorizontalScrollView>
+
+</LinearLayout>
