@@ -448,12 +448,15 @@ public class BootstrapButton extends FrameLayout {
 	/* Rotating button icons animations added (or copied :) ) by Fma
 	* */
 	static int BUTTON_LEFT_ICON = 0x1, BUTTON_RIGHT_ICON = 0x2;
+	// start rotation animation of right icon
  	public void startRotateRight(boolean clockwise, AnimationSpeed speed) {
 		startRotate(clockwise, speed, lblRight);
 	}
+	// start rotation animation of left icon
 	public void startRotateLeft(boolean clockwise, AnimationSpeed speed) {
 		startRotate(clockwise, speed, lblLeft);
 	}
+	// copied from FontawesomeText
   	private void startRotate(boolean clockwise, AnimationSpeed speed, final TextView iconTextView) {
 		Animation rotate;
 
@@ -497,12 +500,15 @@ public class BootstrapButton extends FrameLayout {
 		}, 100);
 
 	}
+	// stop rotation animation of right icon
 	public void stopAnimationLeft() {
 		stopAnimation(BUTTON_LEFT_ICON);
 	}
+	// stop rotation animation of left icon
 	public void stopAnimationRight() {
 		stopAnimation(BUTTON_RIGHT_ICON);
 	}
+	// stops animation of given icon
 	private void stopAnimation(int whichIcon) {
 		if ((whichIcon & BUTTON_LEFT_ICON) > 0) {
 			lblLeft.clearAnimation();
@@ -511,4 +517,4 @@ public class BootstrapButton extends FrameLayout {
 			lblLeft.clearAnimation();
 		}
 	}
- }
+}
