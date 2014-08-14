@@ -359,6 +359,7 @@ public class BootstrapButton extends FrameLayout {
 		lblMiddle.setText(text);
 	}
 
+	public CharSequence getText() {return lblMiddle.getText();}
 
 	/**
 	 * Changes the left icon on a BootstrapButton
