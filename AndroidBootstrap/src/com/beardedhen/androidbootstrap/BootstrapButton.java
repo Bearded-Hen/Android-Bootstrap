@@ -515,7 +515,7 @@ public class BootstrapButton extends FrameLayout {
 			lblLeft.clearAnimation();
 		}
 		if ((whichIcon & BUTTON_RIGHT_ICON) > 0) {
-			lblLeft.clearAnimation();
+			lblRight.clearAnimation();
 		}
 	}
 }
