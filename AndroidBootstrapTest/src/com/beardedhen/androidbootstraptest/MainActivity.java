@@ -25,13 +25,13 @@ public class MainActivity extends Activity {
 		FontAwesomeText tv3 = (FontAwesomeText) findViewById(R.id.lblThree);
 		
 		//flashing forever FAST
-		tv1.startFlashing(this, true, FontAwesomeText.AnimationSpeed.FAST);
+		tv1.startFlashing(true, FontAwesomeText.AnimationSpeed.FAST);
 		
 		//rotating clockwise slowly
-		tv2.startRotate(this, true, FontAwesomeText.AnimationSpeed.SLOW);
+		tv2.startRotate(true, FontAwesomeText.AnimationSpeed.SLOW);
 		
 		//rotating anti-clockwise at medium speed
-		tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
+		tv3.startRotate(false, FontAwesomeText.AnimationSpeed.MEDIUM);
 		
 		final BootstrapEditText txtOne = (BootstrapEditText)findViewById(R.id.txtOne);
 		
