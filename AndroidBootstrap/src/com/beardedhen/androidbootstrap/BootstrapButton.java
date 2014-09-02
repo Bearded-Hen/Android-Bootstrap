@@ -111,8 +111,9 @@ public class BootstrapButton extends FrameLayout {
 		}
 	}
 
-	int BTN_DEFAUL_SIZE = 2;
-	String[] BootStrapTypes = {"xsmall", "small", "default", "large"};
+	private static final String[] BOOTSTRAP_SIZES = {"xsmall", "small", "default", "large"};
+	private static final String[] BOOTSTRAP_TYPES = {"default", "primary", "success", "info",
+			"warning", "danger", "inverse"};
 
 	private void initialise( AttributeSet attrs )
 	{
@@ -124,10 +125,11 @@ public class BootstrapButton extends FrameLayout {
 
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 				R.styleable.BootstrapButton);
-		
+
 		//defaults
 		BootstrapTypes type;
 		String bootstrapType = "default";
+		String size = "default";
 		String iconLeft = "";
 		String iconRight = "";
 		String text = "";
@@ -135,7 +137,6 @@ public class BootstrapButton extends FrameLayout {
 
 		float fontSize = 14.0f;
 		float scale = getResources().getDisplayMetrics().density; //for padding
-		String size = "default";
 		int paddingA = (int) (10 *scale + 0.5f);
 		int paddingB = (int) (15 *scale + 0.5f);
 		
@@ -144,6 +145,11 @@ public class BootstrapButton extends FrameLayout {
 		
 		if (a.getString(R.styleable.BootstrapButton_bb_type) != null) {
 			bootstrapType = a.getString(R.styleable.BootstrapButton_bb_type);
+
+			// if its not default value then parse its enum value
+			if (!bootstrapType.equals("default")) {
+				bootstrapType = BOOTSTRAP_TYPES[ Integer.parseInt(bootstrapType) ];
+			}
 		}
 		
 		if (a.getString(R.styleable.BootstrapButton_bb_roundedCorners) != null) {
@@ -151,7 +157,12 @@ public class BootstrapButton extends FrameLayout {
 		}
 		
 		if (a.getString(R.styleable.BootstrapButton_bb_size) != null) {
-			size = BootStrapTypes[a.getInt(R.styleable.BootstrapButton_bb_size, BTN_DEFAUL_SIZE)];
+			size = a.getString(R.styleable.BootstrapButton_bb_size);
+
+			// if its not default value then parse its enum value
+			if (!size.equals("default")) {
+				size = BOOTSTRAP_SIZES[ Integer.parseInt(size) ];
+			}
 		}
 
 		if ( a.getString(R.styleable.BootstrapButton_bb_icon_left) != null) {
@@ -210,7 +221,7 @@ public class BootstrapButton extends FrameLayout {
 		if (fillParent) {
 			v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
 		} else {
-			 v = inflater.inflate(R.layout.bootstrap_button, null, false);
+			v = inflater.inflate(R.layout.bootstrap_button, null, false);
 		}
 
 		//set up font sizes and padding for different button sizes

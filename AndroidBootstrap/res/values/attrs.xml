@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="BootstrapButton">
-        <attr name="bb_type" format="string"/>
-        <attr name="bb_icon_left" format="string"/>
+        <!--attr name="bb_type" format="string"/-->
+		<attr name="bb_type" format="string">
+			<enum name="primary" value="1"/>
+			<enum name="success" value="2"/>
+			<enum name="info" value="3"/>
+			<enum name="warning" value="4"/>
+			<enum name="danger" value="5"/>
+			<enum name="inverse" value="6"/>
+		</attr>
+
+		<attr name="bb_icon_left" format="string"/>
         <attr name="bb_icon_right" format="string"/>
         <attr name="bb_roundedCorners" format="boolean"/>
         <attr name="bb_text_alignment" format="string"/>
