@@ -1,10 +1,5 @@
 package com.beardedhen.androidbootstrap;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -15,11 +10,18 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.R;
- 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static com.beardedhen.androidbootstrap.FontAwesomeText.AnimationSpeed;
 
 public class BootstrapButton extends FrameLayout {
 
@@ -34,7 +36,7 @@ public class BootstrapButton extends FrameLayout {
 	private TextView lblLeft;
 	private ViewGroup layout;
 	private boolean roundedCorners = false;
-	private boolean fillparent = false;
+	private boolean fillParent = false;
 	
 	private static final String FA_ICON_QUESTION = "fa-question";
 	
@@ -108,29 +110,33 @@ public class BootstrapButton extends FrameLayout {
 			this.textColour = textColour;
 		}
 	}
-	
-	
+
+	private static final String[] BOOTSTRAP_SIZES = {"xsmall", "small", "default", "large"};
+	private static final String[] BOOTSTRAP_TYPES = {"default", "primary", "success", "info",
+			"warning", "danger", "inverse"};
+
 	private void initialise( AttributeSet attrs )
 	{
-		LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
-			    Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
+				Context.LAYOUT_INFLATER_SERVICE);
 
 		//get font
 		readFont(getContext());
 
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
-			    R.styleable.BootstrapButton);
-		
+				R.styleable.BootstrapButton);
+
 		//defaults
-		BootstrapTypes type = null;
+		BootstrapTypes type;
 		String bootstrapType = "default";
+		String size = "default";
 		String iconLeft = "";
 		String iconRight = "";
 		String text = "";
-		//boolean roundedCorners = false;
+		String gravity = "";
+
 		float fontSize = 14.0f;
 		float scale = getResources().getDisplayMetrics().density; //for padding
-		String size = "default";
 		int paddingA = (int) (10 *scale + 0.5f);
 		int paddingB = (int) (15 *scale + 0.5f);
 		
@@ -139,49 +145,59 @@ public class BootstrapButton extends FrameLayout {
 		
 		if (a.getString(R.styleable.BootstrapButton_bb_type) != null) {
 			bootstrapType = a.getString(R.styleable.BootstrapButton_bb_type);
+
+			// if its not default value then parse its enum value
+			if (!bootstrapType.equals("default")) {
+				bootstrapType = BOOTSTRAP_TYPES[ Integer.parseInt(bootstrapType) ];
+			}
 		}
 		
 		if (a.getString(R.styleable.BootstrapButton_bb_roundedCorners) != null) {
 			roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false) ;
 		}
 		
-		if(a.getString(R.styleable.BootstrapButton_bb_size) != null) {
+		if (a.getString(R.styleable.BootstrapButton_bb_size) != null) {
 			size = a.getString(R.styleable.BootstrapButton_bb_size);
+
+			// if its not default value then parse its enum value
+			if (!size.equals("default")) {
+				size = BOOTSTRAP_SIZES[ Integer.parseInt(size) ];
+			}
 		}
-		
+
 		if ( a.getString(R.styleable.BootstrapButton_bb_icon_left) != null) {
 			iconLeft =  a.getString(R.styleable.BootstrapButton_bb_icon_left );
 		}
-		
-		if(a.getString(R.styleable.BootstrapButton_bb_icon_right) != null) {
+
+		if (a.getString(R.styleable.BootstrapButton_bb_icon_right) != null) {
 			iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right );
 		}
-		
-		if(a.getString(R.styleable.BootstrapButton_android_text) != null) {
+
+		if (a.getString(R.styleable.BootstrapButton_android_text) != null) {
 			text = a.getString(R.styleable.BootstrapButton_android_text);
 		}
-		String gravity = "";
-		if(a.getString(R.styleable.BootstrapButton_bb_text_gravity) != null) {
+
+		if (a.getString(R.styleable.BootstrapButton_bb_text_gravity) != null) {
 			gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
 		}
-		
+
 		boolean enabled = true;
-		if(a.getString(R.styleable.BootstrapButton_android_enabled) != null) {
+		if (a.getString(R.styleable.BootstrapButton_android_enabled) != null) {
 			enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
 		}
-		
+
 		int layoutWidth = 0;
-		if(a.getString(R.styleable.BootstrapButton_android_layout_width) != null) {
+		if (a.getString(R.styleable.BootstrapButton_android_layout_width) != null) {
 			layoutWidth = a.getInt(R.styleable.BootstrapButton_android_layout_width, 0);
 		}
-		
-		//works even if it's fill_parent or match_parent 
-		if( (layoutWidth == LayoutParams.MATCH_PARENT)) {
-			fillparent = true;
+
+		//works even if it's fill_parent or match_parent
+		if ( (layoutWidth == LayoutParams.MATCH_PARENT)) {
+			fillParent = true;
 		}
-		
-		if(a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
-			
+
+		if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
+
 			//font sizes
 			String xmlProvidedSize = attrs.getAttributeValue(
 					"http://schemas.android.com/apk/res/android", "textSize");
@@ -199,155 +215,153 @@ public class BootstrapButton extends FrameLayout {
 			}
 
 		}
-		
+
 		a.recycle();
-		View v = null;
-		if(fillparent){
-			v = inflator.inflate(R.layout.bootstrap_button_fill, null, false);
+		View v;
+		if (fillParent) {
+			v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
 		} else {
-			 v = inflator.inflate(R.layout.bootstrap_button, null, false);
+			v = inflater.inflate(R.layout.bootstrap_button, null, false);
 		}
-		
-		
+
 		//set up font sizes and padding for different button sizes
-		if(size.equals("large")){
+		if (size.equals("large")) {
 			fontSize = 20.0f;
-			paddingA = (int) (15 *scale + 0.5f);;
-			paddingB = (int) (20 *scale + 0.5f);;
+			paddingA = (int) (15 *scale + 0.5f);
+			paddingB = (int) (20 *scale + 0.5f);
 		}
-		
-		if(size.equals("small")){
+
+		if (size.equals("small")) {
 			fontSize = 12.0f;
-			paddingA = (int) (5 *scale + 0.5f);;
-			paddingB = (int) (10 *scale + 0.5f);;
+			paddingA = (int) (5 *scale + 0.5f);
+			paddingB = (int) (10 *scale + 0.5f);
 		}
-		
-		if(size.equals("xsmall")){
+
+		if (size.equals("xsmall")) {
 			fontSize = 10.0f;
-			paddingA = (int) (2 *scale + 0.5f);;
-			paddingB = (int) (5 *scale + 0.5f);;
+			paddingA = (int) (2 *scale + 0.5f);
+			paddingB = (int) (5 *scale + 0.5f);
 		}
-	
+
 		//get layout items
 		layout = (ViewGroup) v.findViewById(R.id.layout);
 		lblLeft = (TextView) v.findViewById(R.id.lblLeft);
 		lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
 		lblRight = (TextView) v.findViewById(R.id.lblRight);
 
-		//set the background
-		//setBootstrapType(bootstrapType);
-		
 		//get the correct background type
-		if(roundedCorners == true)
-		{
+		if (roundedCorners) {
 			type = bbuttonTypeMapRounded.get(bootstrapType);
 		} else {
 			type = bbuttonTypeMap.get(bootstrapType);
 		}
-		
+
 		//set up as default
 		if (type == null)
 		{
 			type = BootstrapTypes.DEFAULT;
 		}
-	
+
 		//apply the background type
 		layout.setBackgroundResource(type.backgroundDrawable);
 		lblLeft.setTextColor(getResources().getColor(type.textColour));
 		lblMiddle.setTextColor(getResources().getColor(type.textColour));
 		lblRight.setTextColor(getResources().getColor(type.textColour));
-		
+
 		//set the font awesome icon typeface
 		lblLeft.setTypeface(font);
 		lblRight.setTypeface(font);
-		
+
 		//set up the font size
 		lblLeft.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-        lblMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-        lblRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-		
-        //deal with gravity
-        
-        if(gravity.length() > 0) {
-        	setTextGravity(gravity);
-        }
-        
-        
-        boolean onlyIcon = true;
-        
-        //set the text 
-        if(text.length() > 0){
-        	lblMiddle.setText(text );
-        	lblMiddle.setVisibility(View.VISIBLE);
-        	onlyIcon = false;
-        }
+		lblMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+		lblRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
 
-        //set up the padding
-        
-        if (iconLeft.length() > 0) {
-        	//lblLeft.setText(iconLeft);
-        	setLeftIcon(iconLeft);
-        	lblLeft.setVisibility(View.VISIBLE);
-        	
-        	if (onlyIcon == false){
-        		lblLeft.setPadding(paddingB, 0, 0, 0);
-        	} else {
-        		lblLeft.setPadding(paddingB, 0, paddingB, 0);
-        	}
-        	
-        	//padding for symmetry
-        	if ( ( iconRight.length() == 0) && onlyIcon == false ) {
-        		lblMiddle.setPadding(paddingA, 0, (int) paddingB, 0);
-        	}
-        	
-        }
-         
-        if (iconRight.length() > 0) {
-        	//lblRight.setText(iconRight);
-        	setRightIcon(iconRight);
-        	lblRight.setVisibility(View.VISIBLE);
-        	
-        	if (onlyIcon == false){
-        		lblRight.setPadding(0, 0, paddingB, 0);
-        	}else {
-        		lblRight.setPadding(paddingB, 0, paddingB, 0);
-        	}
+		//deal with gravity
 
-        	//padding for symmetry
-        	if ( (iconLeft.length() == 0) && onlyIcon == false ) {
-        		lblMiddle.setPadding(paddingB, 0, (int) paddingA, 0);
-        	}
-        }
-        
-        if(iconLeft.length() > 0 && iconRight.length() > 0 )
-        {
-        	lblMiddle.setPadding(paddingA, 0, paddingA, 0);
-        }
-        this.setClickable(true);
-        
-        this.setEnabled(enabled);
+		if (gravity.length() > 0) {
+			setTextGravity(gravity);
+		}
 
-        layout.setPadding(0, paddingB, 0, paddingB);
-        
+
+		boolean onlyIcon = true;
+
+		//set the text
+		if (text.length() > 0) {
+			onlyIcon = false;
+		}
+		lblMiddle.setText(text);
+		lblMiddle.setVisibility(View.VISIBLE);
+
+		//set up the padding
+
+		int midPL = 0, midPR = 0, layPL = 0, layPR = 0;
+		if (iconLeft.length() > 0) {
+			setLeftIcon(iconLeft);
+			lblLeft.setVisibility(View.VISIBLE);
+
+			layPL = paddingB;
+			if (onlyIcon) {
+				midPL = paddingB;
+			} else if ( iconRight.length() == 0) {//padding for symmetry
+				midPL += paddingA;
+				midPR = paddingB;
+			}
+
+		}
+
+		if (iconRight.length() > 0) {
+			setRightIcon(iconRight);
+			lblRight.setVisibility(View.VISIBLE);
+
+			layPR = paddingB;
+			if (onlyIcon) {
+				midPR += paddingB;
+			} else if (iconLeft.length() == 0) {//padding for symmetry
+				midPL += paddingB;
+				midPR += paddingA;
+			}
+		}
+
+		if (iconLeft.length() > 0 && iconRight.length() > 0 )
+		{
+			midPL += paddingA;
+			midPR += paddingA;
+		}
+		// if no icon use default padding
+		if (iconLeft.length() == 0 && iconRight.length() == 0) {
+			midPL = lblMiddle.getPaddingLeft();//paddingA;
+			midPR = lblMiddle.getPaddingRight();//paddingA;
+		}
+
+		this.setClickable(true);
+
+		this.setEnabled(enabled);
+
+		layout.setPadding(layPL, paddingB, layPR, paddingB);
+		lblLeft.setPadding(0, 0, 0, 0);
+		lblRight.setPadding(0, 0, 0, 0);
+		lblMiddle.setPadding(midPL, 0, midPR, 0);
+
 		addView(v);
 	}
 
 	//static class to read in font
 	private static void readFont(Context context)
 	{
-		
-		if(font == null){	
+
+		if (font == null) {
 			try {
 			font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
 			} catch (Exception e) {
-                Log.e("BootstrapButton", "Could not get typeface because " + e.getMessage());
-                font = Typeface.DEFAULT;
-            }
+				Log.e("BootstrapButton", "Could not get typeface because " + e.getMessage());
+				font = Typeface.DEFAULT;
+			}
 		}
 
 	}
-	
-	
+
+
 	/**
 	 * Changes the button text
 	 * @param text - String value for what is displayed on the button
@@ -355,69 +369,69 @@ public class BootstrapButton extends FrameLayout {
 	public void setText(String text) {
 		lblMiddle.setText(text);
 	}
-	
+
+	public CharSequence getText() {return lblMiddle.getText();}
 
 	/**
 	 * Changes the left icon on a BootstrapButton
 	 * @param leftIcon- String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
 	 */
 	public void setLeftIcon(String leftIcon) {
-		
+
 		String icon = faMap.get(leftIcon);
-		
+
 		if (icon == null)
 		{
 			icon = faMap.get(FA_ICON_QUESTION);
 		}
-		
+
 		lblLeft.setText(icon);
 	}
-	
+
 	/**
 	 * Changes the right icon on a BootstrapButton
 	 * @param rightIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
 	 */
 	public void setRightIcon(String rightIcon) {
-		
+
 		String icon = faMap.get(rightIcon);
-		
+
 		if (icon == null)
 		{
 			icon = faMap.get(FA_ICON_QUESTION);
 		}
-		
+
 		lblRight.setText(icon);
-		
+
 	}
-	
+
 	/**
 	 * Changes the type of BootstrapButton
 	 * @param bootstrapType - String value for the type of button e.g. "primary"
 	 */
 	public void setBootstrapType(String bootstrapType) {
 
-		BootstrapTypes type = null;
-		
+		BootstrapTypes type;
+
 		//get the correct background type
-		if (roundedCorners == true) {
+		if (roundedCorners) {
 			type = bbuttonTypeMapRounded.get(bootstrapType);
 		} else {
 			type = bbuttonTypeMap.get(bootstrapType);
 		}
-		
+
 		//set up as default
 		if (type == null) {
 			type = BootstrapTypes.DEFAULT;
 		}
-		
-		
+
 		layout.setBackgroundResource(type.backgroundDrawable);
 		lblLeft.setTextColor(getResources().getColor(type.textColour));
 		lblMiddle.setTextColor(getResources().getColor(type.textColour));
 		lblRight.setTextColor(getResources().getColor(type.textColour));
 
 	}
-	
+
 	/**
 	 * Specifies whether the BootstrapButton is enabled or disabled
 	 * @param enabled - boolean state for either enabled or disabled
@@ -426,14 +440,14 @@ public class BootstrapButton extends FrameLayout {
 	{
 		this.setEnabled(enabled);
 	}
-	
-	
+
+
 	/**
 	 * Changes the gravity for the text on a bootstrap button that is not wrap_content
 	 * @param gravity - string for either center, right, or left.
 	 */
 	public void setTextGravity(String gravity) {
-		if(gravity.equals("left")) {
+		if (gravity.equals("left")) {
 			lblMiddle.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
 		} else if (gravity.equals("center")) {
 			lblMiddle.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
@@ -441,5 +455,78 @@ public class BootstrapButton extends FrameLayout {
 			lblMiddle.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
 		}
  
+	}
+
+	/* Rotating button icons animations added (or copied :) ) by Fma
+	* */
+	static int BUTTON_LEFT_ICON = 0x1, BUTTON_RIGHT_ICON = 0x2;
+	// start rotation animation of right icon
+ 	public void startRotateRight(boolean clockwise, AnimationSpeed speed) {
+		startRotate(clockwise, speed, lblRight);
+	}
+	// start rotation animation of left icon
+	public void startRotateLeft(boolean clockwise, AnimationSpeed speed) {
+		startRotate(clockwise, speed, lblLeft);
+	}
+	// copied from FontawesomeText
+  	private void startRotate(boolean clockwise, AnimationSpeed speed, final TextView iconTextView) {
+		Animation rotate;
+
+		//set up the rotation animation
+		if (clockwise){
+			rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f);
+		} else {
+			rotate = new RotateAnimation(360, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f);
+		}
+
+		//set up some extra variables
+		rotate.setRepeatCount(Animation.INFINITE);
+		rotate.setInterpolator(new LinearInterpolator());
+		rotate.setStartOffset(0);
+		rotate.setRepeatMode(Animation.RESTART);
+
+		//defaults
+		rotate.setDuration(2000);
+
+		//fast
+		if (speed.equals(AnimationSpeed.FAST))
+		{
+			rotate.setDuration(500);
+		}
+
+		//medium
+		if (speed.equals(AnimationSpeed.MEDIUM))
+		{
+			rotate.setDuration(1000);
+		}
+
+		//send the new animation to a final animation
+		final Animation animation = rotate;
+
+		//run the animation - used to work correctly on older devices
+		iconTextView.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				iconTextView.startAnimation(animation);
+			}
+		}, 100);
+
+	}
+	// stop rotation animation of right icon
+	public void stopAnimationLeft() {
+		stopAnimation(BUTTON_LEFT_ICON);
+	}
+	// stop rotation animation of left icon
+	public void stopAnimationRight() {
+		stopAnimation(BUTTON_RIGHT_ICON);
+	}
+	// stops animation of given icon
+	private void stopAnimation(int whichIcon) {
+		if ((whichIcon & BUTTON_LEFT_ICON) > 0) {
+			lblLeft.clearAnimation();
+		}
+		if ((whichIcon & BUTTON_RIGHT_ICON) > 0) {
+			lblRight.clearAnimation();
+		}
 	}
 }

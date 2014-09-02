@@ -12,6 +12,8 @@ import com.beardedhen.androidbootstrap.FontAwesomeText;
 
 public class MainActivity extends Activity {
 
+	int btnLRClickCount = 0;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,13 +25,13 @@ public class MainActivity extends Activity {
 		FontAwesomeText tv3 = (FontAwesomeText) findViewById(R.id.lblThree);
 		
 		//flashing forever FAST
-		tv1.startFlashing(this, true, FontAwesomeText.AnimationSpeed.FAST);
+		tv1.startFlashing(true, FontAwesomeText.AnimationSpeed.FAST);
 		
 		//rotating clockwise slowly
-		tv2.startRotate(this, true, FontAwesomeText.AnimationSpeed.SLOW);
+		tv2.startRotate(true, FontAwesomeText.AnimationSpeed.SLOW);
 		
 		//rotating anti-clockwise at medium speed
-		tv3.startRotate(this, false, FontAwesomeText.AnimationSpeed.MEDIUM);
+		tv3.startRotate(false, FontAwesomeText.AnimationSpeed.MEDIUM);
 		
 		final BootstrapEditText txtOne = (BootstrapEditText)findViewById(R.id.txtOne);
 		
@@ -94,8 +96,35 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		
-		
+		final BootstrapButton buttonRR = (BootstrapButton)findViewById(R.id.btnRotRight);
+		final BootstrapButton buttonLR = (BootstrapButton)findViewById(R.id.btnRotLeft);
+		final BootstrapButton buttonBR = (BootstrapButton)findViewById(R.id.btnRotBoth);
+		final BootstrapButton buttonRInvR = (BootstrapButton)findViewById(R.id.btnRotInvRight);
+
+		buttonRR.startRotateRight(true, FontAwesomeText.AnimationSpeed.MEDIUM);
+		buttonLR.startRotateLeft(true, FontAwesomeText.AnimationSpeed.SLOW);
+		buttonBR.startRotateLeft(true, FontAwesomeText.AnimationSpeed.MEDIUM);
+		buttonBR.startRotateRight(false, FontAwesomeText.AnimationSpeed.MEDIUM);
+		buttonRInvR.startRotateRight(false, FontAwesomeText.AnimationSpeed.FAST);
+
+		buttonLR.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if (btnLRClickCount == 0) {
+					buttonLR.stopAnimationLeft();
+				} else if (btnLRClickCount == 1) {
+					buttonLR.startRotateLeft(false, FontAwesomeText.AnimationSpeed.SLOW);
+				} else if (btnLRClickCount == 2) {
+					buttonLR.startRotateLeft(true, FontAwesomeText.AnimationSpeed.FAST);
+				} else {
+					return;
+				}
+				increaseClickCount();
+			}
+		});
+	}
+	private void increaseClickCount() {
+		++btnLRClickCount;
 	}
 
 }

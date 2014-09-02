@@ -1,9 +1,5 @@
 package com.beardedhen.androidbootstrap;
 
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -19,7 +15,9 @@ import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.R;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FontAwesomeText extends FrameLayout {
 
@@ -34,7 +32,7 @@ public class FontAwesomeText extends FrameLayout {
 	{
 		FAST,
 		MEDIUM, 
-		SLOW;
+		SLOW
 	}
 	
 	static{
@@ -128,12 +126,10 @@ public class FontAwesomeText extends FrameLayout {
 	
 	/**
 	 * Used to start flashing a FontAwesomeText item
-	 * @param context the current applications context
 	 * @param forever whether the item should flash repeatedly or just once
-	 * @param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW / 
-	 * FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST 
+	 * @param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW /
 	 */
-	public void startFlashing(Context context, boolean forever, AnimationSpeed speed)
+	public void startFlashing(boolean forever, AnimationSpeed speed)
 	{
 
 		Animation fadeIn = new AlphaAnimation(0, 1);
@@ -178,12 +174,10 @@ public class FontAwesomeText extends FrameLayout {
 	
 	/**
 	 * Used to start rotating a FontAwesomeText item
-	 * @param context the current applications context
 	 * @param clockwise true for clockwise, false for anti clockwise spinning
-	 * @param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW / 
-	 * FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST 
+	 * @param speed how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW /
 	 */
-	public void startRotate(Context context, boolean clockwise, AnimationSpeed speed)
+	public void startRotate(boolean clockwise, AnimationSpeed speed)
 	{
 		Animation rotate;
 		

@@ -22,6 +22,7 @@ If you have any questions, issues, or just want to let us know where you're usin
 
 Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki) for help on how to use :
 * [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button)
+* [boostrap button rotation animation](https://github.com/Fmakdemir/Android-Bootstrap/wiki/BootstrapButton-Rotation-Animations)
 * [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
 * [bootstrap edit texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Edit-Text)
 * [boostrap thumbnails](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Thumbnail)
