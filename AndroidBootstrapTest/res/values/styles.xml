@@ -18,4 +18,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="test_style">
+        <item name="android:textSize">32sp</item>
+    </style>
+
 </resources>

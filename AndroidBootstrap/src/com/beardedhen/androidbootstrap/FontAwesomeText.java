@@ -34,7 +34,7 @@ public class FontAwesomeText extends FrameLayout {
 	{
 		FAST,
 		MEDIUM, 
-		SLOW;
+		SLOW
 	}
 	
 	static{
@@ -55,11 +55,8 @@ public class FontAwesomeText extends FrameLayout {
 		super(context);
 		initialise(null);
 	}
-
-
 	
-	
-	private void initialise( AttributeSet attrs )
+	private void initialise(AttributeSet attrs)
 	{
 		LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
 			    Context.LAYOUT_INFLATER_SERVICE);
@@ -85,16 +82,16 @@ public class FontAwesomeText extends FrameLayout {
 		if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
 
 			String xmlProvidedSize = attrs.getAttributeValue(
-					"http://schemas.android.com/apk/res/android", "textSize"); 
+					"http://schemas.android.com/apk/res/android", "textSize");
 			final Pattern PATTERN_FONT_SIZE = Pattern
-					.compile("([0-9]+[.]?[0-9]*)sp"); 
+					.compile("([0-9]+[.]?[0-9]*)sp");
 			Matcher m = PATTERN_FONT_SIZE.matcher(xmlProvidedSize);
 
-			if (m.find()) { 
-				if (m.groupCount() == 1) { 
+			if (m.find()) {
+				if (m.groupCount() == 1) {
 					fontSize = Float.valueOf(m.group(1));
-				} 
-			} 
+				}
+			}
 		}
 		
 		//text colour
@@ -113,7 +110,6 @@ public class FontAwesomeText extends FrameLayout {
 
 	private static void readFont(Context context)
 	{
-		
 		if(font == null){	
 			try {
 			font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
@@ -122,7 +118,6 @@ public class FontAwesomeText extends FrameLayout {
                 font = Typeface.DEFAULT;
             }
 		}
-
 	}
 	
 	

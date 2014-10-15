@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="default"
-                bootstrapbutton:bb_icon_left="fa-smile-o"
+                bootstrapbutton:bb_icon_left="fa-twitch"
                 bootstrapbutton:bb_roundedCorners="true"
                 bootstrapbutton:bb_size="default"
                 bootstrapbutton:bb_type="primary" />
