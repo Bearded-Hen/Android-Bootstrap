@@ -28,21 +28,13 @@ public class ImageUtils
         final Paint paint = new Paint();
 
         final Rect rect = new Rect(0, 0, width, height);
-        final RectF rectF = new RectF(rect);
 
         paint.setAntiAlias(true);
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
 
-        int radius = 0;
-        if(width > height)
-        {
-            radius = height / 2;
-        }
-        else
-        {
-            radius = width / 2;
-        }
+        int radius =  (width > height) ? height : width;
+        radius /= 2;
 
         canvas.drawCircle(width / 2, height / 2, radius, paint);
         paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
