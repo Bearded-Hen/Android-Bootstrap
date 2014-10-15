@@ -83,23 +83,14 @@ public class FontAwesomeText extends FrameLayout {
 		
 		//font size
 		if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
-
-			String xmlProvidedSize = attrs.getAttributeValue(
-					"http://schemas.android.com/apk/res/android", "textSize"); 
-			final Pattern PATTERN_FONT_SIZE = Pattern
-					.compile("([0-9]+[.]?[0-9]*)sp"); 
-			Matcher m = PATTERN_FONT_SIZE.matcher(xmlProvidedSize);
-
-			if (m.find()) { 
-				if (m.groupCount() == 1) { 
-					fontSize = Float.valueOf(m.group(1));
-				} 
-			} 
+      float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+      fontSize = a.getDimension(R.styleable.FontAwesomeText_android_textSize, 14.0f*scaledDensity)/scaledDensity;
 		}
 		
 		//text colour
 		if(a.getString(R.styleable.FontAwesomeText_android_textColor) != null){
 			tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
+			tv.setTextColor(a.getColorStateList(R.styleable.FontAwesomeText_android_textColor));
 		}
 		
 		setIcon(icon);
