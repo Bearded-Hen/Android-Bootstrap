@@ -33,12 +33,12 @@
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_margin="10dp"
-            android:text="Primary"
+            android:text="Change Alignment"
             bootstrapbutton:bb_icon_right="fa-angellist"
             bootstrapbutton:bb_roundedCorners="true"
             bootstrapbutton:bb_type="primary"
-            bootstrapbutton:bb_text_gravity="right" />
-
+            bootstrapbutton:bb_text_gravity="right"
+            android:textSize="32sp" />
 
     </LinearLayout>
 

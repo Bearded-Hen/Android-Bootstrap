@@ -141,7 +141,6 @@ public class BootstrapCircleThumbnail extends FrameLayout
         }
 
         //convert padding to pixels
-        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
         int paddingPX = (int)((padding * scale) + 0.5);
 
         //convert image size to pixels
@@ -150,7 +149,7 @@ public class BootstrapCircleThumbnail extends FrameLayout
 
         //make inner image smaller to compensate for the padding so that entire circle including padding equals the size
         //ex. small image = 48dp, small padding = 4dp, inner image = 48 - (4 * 2) = 40
-        if(this.minimal == false)
+        if(!this.minimal)
         {
             imageSizeWidthPX = imageSizeWidthPX - (paddingPX * 2);
             imageSizeHeightPX = imageSizeHeightPX - (paddingPX * 2);
@@ -204,7 +203,7 @@ public class BootstrapCircleThumbnail extends FrameLayout
         
         int paddingPX = (int)((this.padding * scale) + 0.5);
         
-        if(this.minimal == false)
+        if(!this.minimal)
         {
             widthPX = widthPX - (paddingPX * 2);
             heightPX = heightPX - (paddingPX * 2);

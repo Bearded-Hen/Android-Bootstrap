@@ -74,6 +74,8 @@ public class MainActivity extends Activity {
 				Log.d("BButton", "pressed button 2");	
 				//disable the button
 				button2.setBootstrapButtonEnabled(false);
+
+                Log.i("Button text: ", button2.getText().toString());
 			}
 		});
 		
@@ -83,6 +85,8 @@ public class MainActivity extends Activity {
 				Log.d("BButton", "pressed button 3");	
 				//change the first FontAwesomeText to a star
 				tv1.setIcon("fa-star");
+
+                Log.i("Button text: ", button3.getText().toString());
 			}
 		});
 		
@@ -93,8 +97,6 @@ public class MainActivity extends Activity {
 				buttonBig.setTextGravity("center");
 			}
 		});
-		
-		
 		
 	}
 

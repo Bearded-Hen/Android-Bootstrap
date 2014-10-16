@@ -88,7 +88,7 @@ public class BootstrapThumbnail extends FrameLayout
 			    R.styleable.BootstrapThumbnail);
 		
 		//defaults
-		ThumbnailTypes type = null;
+		ThumbnailTypes type;
 		String thumbnailType = DEFAULT_TYPE;
 		String text = "";
 		int imageDrawable = 0;
@@ -140,17 +140,9 @@ public class BootstrapThumbnail extends FrameLayout
 		dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
 		
 		Log.v("size", "width:" + width + " height:" + height);
-		
-		
-		type = bThumbnailTypeMap.get(thumbnailType);
 
 		//get the correct background type
-		if(roundedCorners == true)
-		{
-			type = bThumbnailTypeMap.get("rounded");
-		} else {
-			type = bThumbnailTypeMap.get("square");
-		}
+		type = (roundedCorners)? bThumbnailTypeMap.get("rounded") : bThumbnailTypeMap.get("square");
 		
 		//apply the background type
 		container.setBackgroundResource(type.containerDrawable);

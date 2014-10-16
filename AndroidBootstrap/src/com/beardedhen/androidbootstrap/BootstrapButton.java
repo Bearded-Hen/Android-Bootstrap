@@ -1,10 +1,5 @@
 package com.beardedhen.androidbootstrap;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -18,7 +13,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.R;
+import java.util.HashMap;
+import java.util.Map;
  
 
 public class BootstrapButton extends FrameLayout {
@@ -60,9 +56,8 @@ public class BootstrapButton extends FrameLayout {
 		bbuttonTypeMapRounded.put("danger", BootstrapTypes.DANGER_ROUNDED);
 		bbuttonTypeMapRounded.put("inverse", BootstrapTypes.INVERSE_ROUNDED);
 		
-		
 		faMap = FontAwesome.getFaMap();
-		
+
 	}
 	
 	public BootstrapButton(Context context, AttributeSet attrs, int defStyle) {
@@ -108,21 +103,19 @@ public class BootstrapButton extends FrameLayout {
 			this.textColour = textColour;
 		}
 	}
-	
-	
-	private void initialise( AttributeSet attrs )
+
+	private void initialise(AttributeSet attrs)
 	{
-		LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
+		LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
 			    Context.LAYOUT_INFLATER_SERVICE);
 
 		//get font
 		readFont(getContext());
 
-		TypedArray a = getContext().obtainStyledAttributes(attrs,
-			    R.styleable.BootstrapButton);
+		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
 		
 		//defaults
-		BootstrapTypes type = null;
+		BootstrapTypes type;
 		String bootstrapType = "default";
 		String iconLeft = "";
 		String iconRight = "";
@@ -133,7 +126,6 @@ public class BootstrapButton extends FrameLayout {
 		String size = "default";
 		int paddingA = (int) (10 *scale + 0.5f);
 		int paddingB = (int) (15 *scale + 0.5f);
-		
 
 		//attribute values
 		
@@ -181,51 +173,36 @@ public class BootstrapButton extends FrameLayout {
 		}
 		
 		if(a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
-			
-			//font sizes
-			String xmlProvidedSize = attrs.getAttributeValue(
-					"http://schemas.android.com/apk/res/android", "textSize");
-			final Pattern PATTERN_FONT_SIZE = Pattern
-					.compile("([0-9]+[.]?[0-9]*)sp");
-			Matcher m = PATTERN_FONT_SIZE.matcher(xmlProvidedSize);
-
-			if (m.find()) {
-
-				if (m.groupCount() == 1) {
-
-					fontSize = Float.valueOf(m.group(1));
-				}
-
-			}
-
+            float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+            float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, 14.0f * scaledDensity);
+            fontSize = rawSize / scaledDensity;
 		}
 		
 		a.recycle();
-		View v = null;
+		View v;
 		if(fillparent){
-			v = inflator.inflate(R.layout.bootstrap_button_fill, null, false);
+			v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
 		} else {
-			 v = inflator.inflate(R.layout.bootstrap_button, null, false);
+			 v = inflater.inflate(R.layout.bootstrap_button, null, false);
 		}
-		
 		
 		//set up font sizes and padding for different button sizes
 		if(size.equals("large")){
 			fontSize = 20.0f;
-			paddingA = (int) (15 *scale + 0.5f);;
-			paddingB = (int) (20 *scale + 0.5f);;
+			paddingA = (int) (15 *scale + 0.5f);
+			paddingB = (int) (20 *scale + 0.5f);
 		}
 		
 		if(size.equals("small")){
 			fontSize = 12.0f;
-			paddingA = (int) (5 *scale + 0.5f);;
-			paddingB = (int) (10 *scale + 0.5f);;
+			paddingA = (int) (5 *scale + 0.5f);
+			paddingB = (int) (10 *scale + 0.5f);
 		}
 		
 		if(size.equals("xsmall")){
 			fontSize = 10.0f;
-			paddingA = (int) (2 *scale + 0.5f);;
-			paddingB = (int) (5 *scale + 0.5f);;
+			paddingA = (int) (2 *scale + 0.5f);
+			paddingB = (int) (5 *scale + 0.5f);
 		}
 	
 		//get layout items
@@ -238,7 +215,7 @@ public class BootstrapButton extends FrameLayout {
 		//setBootstrapType(bootstrapType);
 		
 		//get the correct background type
-		if(roundedCorners == true)
+		if(roundedCorners)
 		{
 			type = bbuttonTypeMapRounded.get(bootstrapType);
 		} else {
@@ -289,14 +266,14 @@ public class BootstrapButton extends FrameLayout {
         	setLeftIcon(iconLeft);
         	lblLeft.setVisibility(View.VISIBLE);
         	
-        	if (onlyIcon == false){
+        	if (!onlyIcon){
         		lblLeft.setPadding(paddingB, 0, 0, 0);
         	} else {
         		lblLeft.setPadding(paddingB, 0, paddingB, 0);
         	}
         	
         	//padding for symmetry
-        	if ( ( iconRight.length() == 0) && onlyIcon == false ) {
+        	if (( iconRight.length() == 0) && !onlyIcon) {
         		lblMiddle.setPadding(paddingA, 0, (int) paddingB, 0);
         	}
         	
@@ -307,14 +284,14 @@ public class BootstrapButton extends FrameLayout {
         	setRightIcon(iconRight);
         	lblRight.setVisibility(View.VISIBLE);
         	
-        	if (onlyIcon == false){
+        	if (!onlyIcon){
         		lblRight.setPadding(0, 0, paddingB, 0);
         	}else {
         		lblRight.setPadding(paddingB, 0, paddingB, 0);
         	}
 
         	//padding for symmetry
-        	if ( (iconLeft.length() == 0) && onlyIcon == false ) {
+        	if ( (iconLeft.length() == 0) && !onlyIcon) {
         		lblMiddle.setPadding(paddingB, 0, (int) paddingA, 0);
         	}
         }
@@ -335,7 +312,6 @@ public class BootstrapButton extends FrameLayout {
 	//static class to read in font
 	private static void readFont(Context context)
 	{
-		
 		if(font == null){	
 			try {
 			font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
@@ -344,7 +320,6 @@ public class BootstrapButton extends FrameLayout {
                 font = Typeface.DEFAULT;
             }
 		}
-
 	}
 	
 	
@@ -387,7 +362,6 @@ public class BootstrapButton extends FrameLayout {
 		}
 		
 		lblRight.setText(icon);
-		
 	}
 	
 	/**
@@ -396,10 +370,10 @@ public class BootstrapButton extends FrameLayout {
 	 */
 	public void setBootstrapType(String bootstrapType) {
 
-		BootstrapTypes type = null;
+		BootstrapTypes type;
 		
 		//get the correct background type
-		if (roundedCorners == true) {
+		if (roundedCorners) {
 			type = bbuttonTypeMapRounded.get(bootstrapType);
 		} else {
 			type = bbuttonTypeMap.get(bootstrapType);
@@ -409,7 +383,6 @@ public class BootstrapButton extends FrameLayout {
 		if (type == null) {
 			type = BootstrapTypes.DEFAULT;
 		}
-		
 		
 		layout.setBackgroundResource(type.backgroundDrawable);
 		lblLeft.setTextColor(getResources().getColor(type.textColour));
@@ -440,6 +413,14 @@ public class BootstrapButton extends FrameLayout {
 		} else if (gravity.equals("right")) {
 			lblMiddle.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
 		}
- 
 	}
+
+    /**
+     * Returns the text the BootstrapButton is displaying.
+     * @return CharSequence of text displayed
+     */
+    public CharSequence getText() {
+        return lblMiddle.getText();
+    }
+
 }
