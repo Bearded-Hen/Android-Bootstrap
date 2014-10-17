@@ -29,9 +29,8 @@ public class BootstrapThumbnail extends FrameLayout
 	private TextView dimensionsLabel;
 	private boolean roundedCorners = true;
 	
-	static{	
+	static {
 		bThumbnailTypeMap = new HashMap<String, ThumbnailTypes>();
-		
 		bThumbnailTypeMap.put("rounded", ThumbnailTypes.ROUNDED);//default is rounded if user doesn't specify to use square
 		bThumbnailTypeMap.put("square", ThumbnailTypes.SQUARE);
 	}
@@ -79,7 +78,7 @@ public class BootstrapThumbnail extends FrameLayout
 	
 	private void initialise( AttributeSet attrs )
 	{
-		LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
+		LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
 			    Context.LAYOUT_INFLATER_SERVICE);
 		
 		readFont(getContext());
@@ -132,7 +131,7 @@ public class BootstrapThumbnail extends FrameLayout
 		a.recycle();
 		
 		text = (int)(width/scale) + "x" + (int)(height/scale);
-		View v = inflator.inflate(R.layout.bootstrap_thumbnail, null, false);
+		View v = inflater.inflate(R.layout.bootstrap_thumbnail, this, false);
 	
 		//get layout items
 		container = (ViewGroup) v.findViewById(R.id.container);

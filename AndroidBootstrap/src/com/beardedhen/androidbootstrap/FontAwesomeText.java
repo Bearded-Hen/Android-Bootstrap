@@ -58,7 +58,7 @@ public class FontAwesomeText extends FrameLayout {
 	
 	private void initialise(AttributeSet attrs)
 	{
-		LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
+		LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
 			    Context.LAYOUT_INFLATER_SERVICE);
 
 		//get font
@@ -67,7 +67,7 @@ public class FontAwesomeText extends FrameLayout {
 		TypedArray a = getContext().obtainStyledAttributes(attrs,  R.styleable.FontAwesomeText);
 
 		//inflate the view
-		View fontAwesomeTextView = inflator.inflate(R.layout.font_awesome_text, null, false);
+		View fontAwesomeTextView = inflater.inflate(R.layout.font_awesome_text, this, false);
 		tv = (TextView)fontAwesomeTextView.findViewById(R.id.lblText);
 		
 		String icon = "";
@@ -80,18 +80,9 @@ public class FontAwesomeText extends FrameLayout {
 		
 		//font size
 		if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
-
-			String xmlProvidedSize = attrs.getAttributeValue(
-					"http://schemas.android.com/apk/res/android", "textSize");
-			final Pattern PATTERN_FONT_SIZE = Pattern
-					.compile("([0-9]+[.]?[0-9]*)sp");
-			Matcher m = PATTERN_FONT_SIZE.matcher(xmlProvidedSize);
-
-			if (m.find()) {
-				if (m.groupCount() == 1) {
-					fontSize = Float.valueOf(m.group(1));
-				}
-			}
+            float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+            float rawSize = a.getDimension(R.styleable.FontAwesomeText_android_textSize, 14.0f * scaledDensity);
+            fontSize = rawSize / scaledDensity;
 		}
 		
 		//text colour
@@ -220,7 +211,6 @@ public class FontAwesomeText extends FrameLayout {
 				tv.startAnimation(animation);
 			}
 		}, 100);
-
 	}
 	
 	

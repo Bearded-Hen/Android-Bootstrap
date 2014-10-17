@@ -1,8 +1,5 @@
 package com.beardedhen.androidbootstrap;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -48,17 +45,9 @@ public class BootstrapEditText extends EditText {
 		
 		//font size
 		if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
-
-			String xmlProvidedSize = attrs.getAttributeValue( "http://schemas.android.com/apk/res/android", "textSize");
-			final Pattern PATTERN_FONT_SIZE = Pattern
-					.compile("([0-9]+[.]?[0-9]*)sp");
-			Matcher m = PATTERN_FONT_SIZE.matcher(xmlProvidedSize);
-
-			if (m.find()) {
-				if (m.groupCount() == 1) {
-					fontSize = Float.valueOf(m.group(1));
-				}
-			}
+            float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+            float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, 14.0f * scaledDensity);
+            fontSize = rawSize / scaledDensity;
 		}
 		
 		//rounded corners
@@ -93,25 +82,15 @@ public class BootstrapEditText extends EditText {
 		this.setEnabled(enabled);
 		
 		if (enabled){
-			//work out the right background 
 			setBackgroundDrawable(state);
-			
 		}
 		
 		a.recycle();
-		
-		//addView(editTextView);
 	}
 	
 	
 	private void setBackgroundDrawable(String state)
 	{
-		if(roundedCorners){
-			this.setBackgroundResource(R.drawable.edittext_background_rounded);
-		} else {
-			this.setBackgroundResource(R.drawable.edittext_background);
-		}
-		
 		if(roundedCorners){
 			
 			if (state.equals(BOOTSTRAP_EDIT_TEXT_SUCCESS)){
@@ -120,7 +99,9 @@ public class BootstrapEditText extends EditText {
 				this.setBackgroundResource(R.drawable.edittext_background_rounded_warning);
 			} else if (state.equals(BOOTSTRAP_EDIT_TEXT_DANGER)){
 				this.setBackgroundResource(R.drawable.edittext_background_rounded_danger);
-			}
+			} else {
+                this.setBackgroundResource(R.drawable.edittext_background_rounded);
+            }
 			
 		} else {
 			
@@ -130,8 +111,9 @@ public class BootstrapEditText extends EditText {
 				this.setBackgroundResource(R.drawable.edittext_background_warning);
 			} else if (state.equals(BOOTSTRAP_EDIT_TEXT_DANGER)){
 				this.setBackgroundResource(R.drawable.edittext_background_danger);
-			}
-			
+			} else {
+			    this.setBackgroundResource(R.drawable.edittext_background);
+		    }
 		}
 	}
 	
@@ -140,7 +122,8 @@ public class BootstrapEditText extends EditText {
 	 * Change the BootstrapEditTextState
 	 * @param state 
 	 */
-	public void setState(String state){
+	public void setState(String state)
+    {
 		setBackgroundDrawable(state);
 	}
 	

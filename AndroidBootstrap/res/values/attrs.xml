@@ -27,7 +27,6 @@
         <attr name="android:text"/>
         <attr name="android:hint"/>
         <attr name="android:enabled"/>
-        
     </declare-styleable>
     
      <declare-styleable name="BootstrapThumbnail"> 

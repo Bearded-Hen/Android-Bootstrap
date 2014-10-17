@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
- 
 
 public class BootstrapButton extends FrameLayout {
 
@@ -183,7 +182,7 @@ public class BootstrapButton extends FrameLayout {
 		if(fillparent){
 			v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
 		} else {
-			 v = inflater.inflate(R.layout.bootstrap_button, null, false);
+			 v = inflater.inflate(R.layout.bootstrap_button, this, false);
 		}
 		
 		//set up font sizes and padding for different button sizes
@@ -373,16 +372,8 @@ public class BootstrapButton extends FrameLayout {
 		BootstrapTypes type;
 		
 		//get the correct background type
-		if (roundedCorners) {
-			type = bbuttonTypeMapRounded.get(bootstrapType);
-		} else {
-			type = bbuttonTypeMap.get(bootstrapType);
-		}
-		
-		//set up as default
-		if (type == null) {
-			type = BootstrapTypes.DEFAULT;
-		}
+		type = (roundedCorners) ? bbuttonTypeMapRounded.get(bootstrapType) : bbuttonTypeMap.get(bootstrapType);
+		type = (type == null) ? BootstrapTypes.DEFAULT : type;
 		
 		layout.setBackgroundResource(type.backgroundDrawable);
 		lblLeft.setTextColor(getResources().getColor(type.textColour));

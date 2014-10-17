@@ -64,7 +64,7 @@ public class BootstrapCircleThumbnail extends FrameLayout
 
     private void initialise( AttributeSet attrs )
     {
-        LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(
+        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
 
@@ -77,7 +77,6 @@ public class BootstrapCircleThumbnail extends FrameLayout
         if(a.getString(R.styleable.BootstrapCircleThumbnail_bct_image) != null)
         {
             imageDrawable = a.getResourceId(R.styleable.BootstrapCircleThumbnail_bct_image, 0);
-
         }
 
         if(a.getString(R.styleable.BootstrapCircleThumbnail_android_text) != null)
@@ -97,13 +96,12 @@ public class BootstrapCircleThumbnail extends FrameLayout
 
         a.recycle();
 
-        View v = inflator.inflate(R.layout.bootstrap_thumbnail_circle, null, false);
+        View v = inflater.inflate(R.layout.bootstrap_thumbnail_circle, this, false);
         dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
         container = (LinearLayout) v.findViewById(R.id.container);
         placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
         image = (ImageView) v.findViewById(R.id.image);
         float scale = getResources().getDisplayMetrics().density;
-
 
 
         //small image
