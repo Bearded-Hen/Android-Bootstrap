@@ -208,6 +208,7 @@ public class BootstrapCircleThumbnail extends FrameLayout
         }
         
         Bitmap roundBitmap = ImageUtils.getCircleBitmap(bitmap, widthPX, heightPX);
+        image.setVisibility(View.VISIBLE);
         image.setImageBitmap(roundBitmap);
         
         invalidate();
