@@ -8,6 +8,13 @@ android {
     compileSdkVersion 18
     buildToolsVersion "20.0.0"
 
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 19
+        versionCode = Integer.parseInt(VERSION_CODE)
+        versionName = VERSION_NAME
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -32,3 +39,5 @@ android {
         release.setRoot('build-types/release')
     }
 }
+
+apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
