@@ -38,7 +38,21 @@ If you have any questions, issues, or just want to let us know where you're usin
 
 #How to use
 
-Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki) for help on how to use :
+The following XML will create a BootstrapButton with an Android icon:
+
+```xml
+<!-- basic button -->
+<com.beardedhen.androidbootstrap.BootstrapButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="Success"
+    bootstrapbutton:bb_icon_right="fa-android"
+    bootstrapbutton:bb_type="success"
+/>
+```
+
+For further information and examples please look at the test project or the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
 * [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button)
 * [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
 * [bootstrap edit texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Edit-Text)
@@ -46,7 +60,7 @@ Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki)
 
 #Examples
 
-Check out the _AndroidBootstrapTest_ project. Inside _activity_main.xml_ you will find examples of how to achieve the following buttons:
+Check out the __AndroidBootstrapTest__ project. Inside __activity_main.xml__ you will find examples of how to achieve the following buttons:
 
 Bootstrap Buttons
 
