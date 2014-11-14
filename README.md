@@ -1,9 +1,27 @@
 Android-Bootstrap
 =================
 
+
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/device_image.png "Device Image")
 
-If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen) or email support@beardedhen.com 
+
+Getting Started
+=============
+Add the following line to build.gradle:
+```
+dependencies {
+   compile 'com.beardedhen:androidbootstrap:1.0.0'
+}
+```
+
+Alternatively you can use Android Bootstrap as a library project by downloading the source.
+
+
+Finally, remember to copy __fontawesome-webfont.ttf__ into the assets folder of your project, as otherwise FontAwesome icons won't show up.
+
+
+If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen), email support@beardedhen.com, or head over to our [website](http://beardedhen.com/) to see more of our creations.
+
 
 #Features
 * Uses min SDK 7 which is Android 2.1 (Tested on a device running Android 2.2)
@@ -28,7 +46,7 @@ Please look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki)
 
 #Examples
 
-Please find included an AndroidBootstrapTest project. Inside the activity_main.xml layout file is examples of how to achieve each of the following buttons:
+Check out the _AndroidBootstrapTest_ project. Inside _activity_main.xml_ you will find examples of how to achieve the following buttons:
 
 Bootstrap Buttons
 
