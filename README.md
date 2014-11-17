@@ -7,7 +7,7 @@ Android-Bootstrap
 
 Getting Started
 =============
-Add the following line to build.gradle:
+* Add the following line to build.gradle:
 ```
 dependencies {
    compile 'com.beardedhen:androidbootstrap:1.0.0'
@@ -17,28 +17,9 @@ dependencies {
 Alternatively you can use Android Bootstrap as a library project by downloading the source.
 
 
-Finally, remember to copy __fontawesome-webfont.ttf__ into the assets folder of your project, as otherwise FontAwesome icons won't show up.
+* Copy __fontawesome-webfont.ttf__ into the assets folder of your project, as otherwise FontAwesome icons won't show up.
 
-
-If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen), email support@beardedhen.com, or head over to our [website](http://beardedhen.com/) to see more of our creations.
-
-
-#Features
-* Uses min SDK 7 which is Android 2.1 (Tested on a device running Android 2.2)
-* Bootstrap buttons as per Bootstrap v3
-* Rounded buttons
-* Disabled buttons
-* Various sized buttons (large to extra small)
-* Just text buttons
-* Left, right, left and right, or just icon button
-* Font Awesome text as per Font Awesome v4
-* Animations to Font Awesome Text items
-* EditText backgrounds and states
-
-
-#How to use
-
-The following XML will create a BootstrapButton with an Android icon:
+* Paste the following XML into a layout file to create a BootstrapButton:
 
 ```xml
 <!-- basic button -->
@@ -52,10 +33,12 @@ The following XML will create a BootstrapButton with an Android icon:
 />
 ```
 
-Please ensure that you specify the namespace by adding the following to the root view of your layout:
+* Add the bootstrap namespace to the root view of your layout:
 ```
 xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
 ```
+
+* Build and run the app. 
 
 
 For further information and examples please look at the test project or the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
@@ -63,6 +46,22 @@ For further information and examples please look at the test project or the [wik
 * [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
 * [bootstrap edit texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Edit-Text)
 * [boostrap thumbnails](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Thumbnail)
+
+
+If you have any questions, issues, or just want to let us know where you're using Android Bootstrap tweet us at [@BeardedHen](https://twitter.com/beardedhen), email support@beardedhen.com, or head over to our [website](http://beardedhen.com/) to see more of our creations.
+
+#Features
+* Uses min SDK 7 which is Android 2.1 (Tested on a device running Android 2.2)
+* Bootstrap buttons as per Bootstrap v3
+* Rounded buttons
+* Disabled buttons
+* Various sized buttons (large to extra small)
+* Just text buttons
+* Left, right, left and right, or just icon button
+* Font Awesome text as per Font Awesome v4
+* Animations to Font Awesome Text items
+* EditText backgrounds and states
+
 
 #Examples
 
