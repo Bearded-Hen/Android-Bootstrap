@@ -47,10 +47,16 @@ The following XML will create a BootstrapButton with an Android icon:
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:text="Success"
-    bootstrapbutton:bb_icon_right="fa-android"
-    bootstrapbutton:bb_type="success"
+    bootstrap:bb_icon_right="fa-android"
+    bootstrap:bb_type="success"
 />
 ```
+
+Please ensure that you specify the namespace by adding the following to the root view of your layout:
+```
+xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+```
+
 
 For further information and examples please look at the test project or the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
 * [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button)
