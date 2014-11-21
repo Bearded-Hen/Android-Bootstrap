@@ -1,14 +1,8 @@
 package com.beardedhen.androidbootstrap;
 
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,26 +13,31 @@ import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.R;
-
 public class FontAwesomeText extends FrameLayout {
-
-	private static Typeface font;
-	private static Map<String, String> faMap;
 
 	private TextView tv;
 	
-	private static final String FA_ICON_QUESTION = "fa-question";
-	
 	public enum AnimationSpeed
 	{
-		FAST,
-		MEDIUM, 
-		SLOW
-	}
-	
-	static{
-		faMap = FontAwesome.getFaMap();
+		FAST    (500,   200),
+		MEDIUM  (1000,  500),
+		SLOW    (2000,  1000);
+
+        private long rotateDuration;
+        private long flashDuration;
+
+        private AnimationSpeed(long rotateDuration, long flashDuration) {
+            this.rotateDuration = rotateDuration;
+            this.flashDuration = flashDuration;
+        }
+
+        public long getRotateDuration() {
+            return rotateDuration;
+        }
+
+        public long getFlashDuration() {
+            return flashDuration;
+        }
 	}
 	
 	public FontAwesomeText(Context context, AttributeSet attrs, int defStyle) {
@@ -58,59 +57,46 @@ public class FontAwesomeText extends FrameLayout {
 	
 	private void initialise(AttributeSet attrs)
 	{
-		LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
-			    Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = LayoutInflater.from(getContext());
 
-		//get font
-		readFont(getContext());
+        //inflate the view
+        View fontAwesomeTextView = inflater.inflate(R.layout.font_awesome_text, this, false);
+        tv = (TextView)fontAwesomeTextView.findViewById(R.id.lblText);
 
 		TypedArray a = getContext().obtainStyledAttributes(attrs,  R.styleable.FontAwesomeText);
 
-		//inflate the view
-		View fontAwesomeTextView = inflater.inflate(R.layout.font_awesome_text, this, false);
-		tv = (TextView)fontAwesomeTextView.findViewById(R.id.lblText);
-		
-		String icon = "";
-		float fontSize = 14.0f;
-		
-		//icon
-		if (a.getString(R.styleable.FontAwesomeText_fa_icon) != null) {
-			icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
-		}
-		
-		//font size
-		if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
-            float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-            float rawSize = a.getDimension(R.styleable.FontAwesomeText_android_textSize, 14.0f * scaledDensity);
-            fontSize = rawSize / scaledDensity;
-		}
-		
-		//text colour
-		if(a.getString(R.styleable.FontAwesomeText_android_textColor) != null){
-			tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
-		}
-		
-		setIcon(icon);
-		
-		tv.setTypeface(font);
-		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-		
-		a.recycle();
-		addView(fontAwesomeTextView);
-	}
+        try {
+            String icon = "";
+            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
 
-	private static void readFont(Context context)
-	{
-		if(font == null){	
-			try {
-			font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
-			} catch (Exception e) {
-                Log.e("BButton", "Could not get typeface because " + e.getMessage());
-                font = Typeface.DEFAULT;
+            //icon
+            if (a.getString(R.styleable.FontAwesomeText_fa_icon) != null) {
+                icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
             }
-		}
+
+            //font size
+            if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
+                float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+                float rawSize = a.getDimension(R.styleable.FontAwesomeText_android_textSize, FontAwesome.DEFAULT_FONT_SIZE* scaledDensity);
+                fontSize = rawSize / scaledDensity;
+            }
+
+            //text colour
+            if(a.getString(R.styleable.FontAwesomeText_android_textColor) != null){
+                tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
+            }
+
+            setIcon(icon);
+
+            tv.setTypeface(FontAwesome.getFont(getContext()));
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+        }
+        finally {
+            a.recycle();
+        }
+
+        addView(fontAwesomeTextView);
 	}
-	
 	
 	/**
 	 * Used to start flashing a FontAwesomeText item
@@ -121,7 +107,6 @@ public class FontAwesomeText extends FrameLayout {
 	 */
 	public void startFlashing(Context context, boolean forever, AnimationSpeed speed)
 	{
-
 		Animation fadeIn = new AlphaAnimation(0, 1);
 	    
 		//set up extra variables
@@ -133,21 +118,8 @@ public class FontAwesomeText extends FrameLayout {
 	    if (forever){
 	    	fadeIn.setRepeatCount(Animation.INFINITE);
 	    }
-	    
-	    //default speed
-	    fadeIn.setStartOffset(1000);
-	    
-	    //fast
-	    if (speed.equals(AnimationSpeed.FAST))
-	    {
-	    	fadeIn.setStartOffset(200);
-	    }
-	    
-	    //medium
-	    if (speed.equals(AnimationSpeed.MEDIUM))
-	    {
-	    	fadeIn.setStartOffset(500);
-	    }
+
+        fadeIn.setStartOffset(speed.getFlashDuration());
 
 	    //set the new animation to a final animation
 	    final Animation animation = fadeIn;
@@ -160,7 +132,6 @@ public class FontAwesomeText extends FrameLayout {
 			}
 		}, 100);
 	}
-	
 	
 	/**
 	 * Used to start rotating a FontAwesomeText item
@@ -185,21 +156,7 @@ public class FontAwesomeText extends FrameLayout {
 		rotate.setInterpolator(new LinearInterpolator());
 		rotate.setStartOffset(0);
 		rotate.setRepeatMode(Animation.RESTART);
-		
-		//defaults
-		rotate.setDuration(2000);
-		
-		//fast
-	    if (speed.equals(AnimationSpeed.FAST))
-	    {
-	    	rotate.setDuration(500);
-	    }
-	    
-	    //medium
-	    if (speed.equals(AnimationSpeed.MEDIUM))
-	    {
-	    	rotate.setDuration(1000);
-	    }
+		rotate.setDuration(speed.getRotateDuration());
 		
 	    //send the new animation to a final animation
 		final Animation animation = rotate;
@@ -213,7 +170,6 @@ public class FontAwesomeText extends FrameLayout {
 		}, 100);
 	}
 	
-	
 	/**
 	 * Used to stop animating any FontAwesomeText item
 	 */
@@ -222,21 +178,12 @@ public class FontAwesomeText extends FrameLayout {
 		tv.clearAnimation();
 	}
 	
-	
 	/**
 	 * Used to set the icon for a FontAwesomeText item
 	 * @param faIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
 	 */
 	public void setIcon(String faIcon) {
-		
-		String icon = faMap.get(faIcon);
-		
-		if (icon == null)
-		{
-			icon = faMap.get(FA_ICON_QUESTION);
-		}
-		
-		tv.setText(icon);
+		tv.setText(FontAwesome.getUnicode(faIcon));
 	}
 	
 	/**

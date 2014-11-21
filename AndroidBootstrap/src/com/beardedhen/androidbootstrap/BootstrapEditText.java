@@ -8,123 +8,139 @@ import android.widget.EditText;
 
 public class BootstrapEditText extends EditText {
 
-	private boolean roundedCorners = false;
+    private enum TextState {
 
-	public BootstrapEditText(Context context, AttributeSet attrs, int defStyle) {
+        DEFAULT("default",  R.drawable.edittext_background_rounded,         R.drawable.edittext_background),
+        SUCCESS("success",  R.drawable.edittext_background_rounded_success, R.drawable.edittext_background_success),
+        WARNING("warning",  R.drawable.edittext_background_rounded_warning, R.drawable.edittext_background_warning),
+        DANGER("danger",    R.drawable.edittext_background_rounded_danger,  R.drawable.edittext_background_danger);
+
+        private String state;
+        private int roundedBg;
+        private int normalBg;
+
+        private TextState(String state, int roundedBg, int normalBg) {
+            this.state = state;
+            this.roundedBg = roundedBg;
+            this.normalBg = normalBg;
+        }
+
+        public static TextState getStateFromString(String state) {
+            for (TextState value : TextState.values()) {
+                if (value.state.equals(state)) {
+                    return value;
+                }
+            }
+            return DEFAULT;
+        }
+
+        public int getRoundedBg() {
+            return roundedBg;
+        }
+
+        public int getNormalBg() {
+            return normalBg;
+        }
+    }
+
+	private boolean roundedCorners = false;
+    private TextState textState;
+
+    public BootstrapEditText(Context context) {
+        super(context);
+        initialise(null);
+    }
+
+    public BootstrapEditText(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initialise(attrs);
+    }
+
+    public BootstrapEditText(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initialise(attrs);
 	}
 
-	public BootstrapEditText(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		initialise(attrs);
-	}
-
-	public BootstrapEditText(Context context) {
-		super(context);
-		initialise(null);
-	}
-	
-	public static final String BOOTSTRAP_EDIT_TEXT_DEFAULT = "default";
-	public static final String BOOTSTRAP_EDIT_TEXT_SUCCESS = "success";
-	public static final String BOOTSTRAP_EDIT_TEXT_WARNING = "warning";
-	public static final String BOOTSTRAP_EDIT_TEXT_DANGER = "danger";
-
-	
 	private void initialise( AttributeSet attrs )
 	{
-		
 		TypedArray a = getContext().obtainStyledAttributes(attrs,  R.styleable.BootstrapEditText);
-		
-		//get defaults
-		float fontSize = 14.0f;
-		String state = "default";
-		String text = "";
-		String hint = "";
-		boolean enabled = true;
-		
-		//font size
-		if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
-            float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-            float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, 14.0f * scaledDensity);
-            fontSize = rawSize / scaledDensity;
-		}
-		
-		//rounded corners
-		if(a.getString(R.styleable.BootstrapEditText_be_roundedCorners) != null) {
-			roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
-		}
-		
-		//state
-		if(a.getString(R.styleable.BootstrapEditText_be_state) != null) {
-			state = a.getString(R.styleable.BootstrapEditText_be_state);
-		}
-		
-		//text
-		if(a.getString(R.styleable.BootstrapEditText_android_text) != null) {
-			text = a.getString(R.styleable.BootstrapEditText_android_text);
-		}
-		
-		//hint
-		if(a.getString(R.styleable.BootstrapEditText_android_hint) != null) {
-			hint = a.getString(R.styleable.BootstrapEditText_android_hint);
-		}
-		
-		//enabled
-		if(a.getString(R.styleable.BootstrapEditText_android_enabled) != null) {
-			enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
-		}
-		
-		//set values
-		this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-		this.setText(text);
-		this.setHint(hint);		
-		this.setEnabled(enabled);
-		
-		if (enabled){
-			setBackgroundDrawable(state);
-		}
-		
-		a.recycle();
-	}
-	
-	
-	private void setBackgroundDrawable(String state)
-	{
-		if(roundedCorners){
-			
-			if (state.equals(BOOTSTRAP_EDIT_TEXT_SUCCESS)){
-				this.setBackgroundResource(R.drawable.edittext_background_rounded_success);
-			} else if (state.equals(BOOTSTRAP_EDIT_TEXT_WARNING)){
-				this.setBackgroundResource(R.drawable.edittext_background_rounded_warning);
-			} else if (state.equals(BOOTSTRAP_EDIT_TEXT_DANGER)){
-				this.setBackgroundResource(R.drawable.edittext_background_rounded_danger);
-			} else {
-                this.setBackgroundResource(R.drawable.edittext_background_rounded);
+
+        try {
+            //get defaults
+            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
+            String state = "default";
+            String text = "";
+            String hint = "";
+            boolean enabled = true;
+
+            //font size
+            if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
+                float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+                float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, FontAwesome.DEFAULT_FONT_SIZE * scaledDensity);
+                fontSize = rawSize / scaledDensity;
             }
-			
-		} else {
-			
-			if (state.equals(BOOTSTRAP_EDIT_TEXT_SUCCESS)){
-				this.setBackgroundResource(R.drawable.edittext_background_success);
-			} else if (state.equals(BOOTSTRAP_EDIT_TEXT_WARNING)){
-				this.setBackgroundResource(R.drawable.edittext_background_warning);
-			} else if (state.equals(BOOTSTRAP_EDIT_TEXT_DANGER)){
-				this.setBackgroundResource(R.drawable.edittext_background_danger);
-			} else {
-			    this.setBackgroundResource(R.drawable.edittext_background);
-		    }
-		}
+
+            //rounded corners
+            if(a.getString(R.styleable.BootstrapEditText_be_roundedCorners) != null) {
+                roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
+            }
+
+            //state
+            if(a.getString(R.styleable.BootstrapEditText_be_state) != null) {
+                state = a.getString(R.styleable.BootstrapEditText_be_state);
+            }
+
+            //text
+            if(a.getString(R.styleable.BootstrapEditText_android_text) != null) {
+                text = a.getString(R.styleable.BootstrapEditText_android_text);
+            }
+
+            //hint
+            if(a.getString(R.styleable.BootstrapEditText_android_hint) != null) {
+                hint = a.getString(R.styleable.BootstrapEditText_android_hint);
+            }
+
+            //enabled
+            if(a.getString(R.styleable.BootstrapEditText_android_enabled) != null) {
+                enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
+            }
+
+            //set values
+            this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+            this.setText(text);
+            this.setHint(hint);
+            this.setEnabled(enabled);
+
+            if (enabled){
+                textState = TextState.getStateFromString(state);
+                setState(state);
+            }
+        }
+        finally {
+            a.recycle();
+        }
 	}
-	
+
+    private void setBackgroundDrawable(TextState textState)
+    {
+        this.textState = textState;
+
+        if (roundedCorners) {
+            this.setBackgroundResource(textState.getRoundedBg());
+        } else {
+            this.setBackgroundResource(textState.getNormalBg());
+        }
+    }
 	
 	/**
 	 * Change the BootstrapEditTextState
-	 * @param state 
+	 * @param state a string of success, warning, danger, or default.
+     * If the string is not recognised, then the state will be automatically set to default.
 	 */
 	public void setState(String state)
     {
-		setBackgroundDrawable(state);
+        this.textState = TextState.getStateFromString(state);
+		setBackgroundDrawable(textState);
 	}
 	
 	/**
@@ -132,7 +148,7 @@ public class BootstrapEditText extends EditText {
 	 */
 	public void setSuccess()
 	{
-		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_SUCCESS);
+		setBackgroundDrawable(TextState.SUCCESS);
 	}
 	
 	/**
@@ -140,7 +156,7 @@ public class BootstrapEditText extends EditText {
 	 */
 	public void setWarning()
 	{
-		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_WARNING);
+		setBackgroundDrawable(TextState.WARNING);
 	}
 	
 	/**
@@ -148,7 +164,7 @@ public class BootstrapEditText extends EditText {
 	 */
 	public void setDanger()
 	{
-		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_DANGER);
+		setBackgroundDrawable(TextState.DANGER);
 	}
 	
 	/**
@@ -156,7 +172,7 @@ public class BootstrapEditText extends EditText {
 	 */
 	public void setDefault()
 	{
-		setBackgroundDrawable(BOOTSTRAP_EDIT_TEXT_DEFAULT);
+		setBackgroundDrawable(TextState.DEFAULT);
 	}
 	
 	/**

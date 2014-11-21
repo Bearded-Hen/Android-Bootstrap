@@ -1,11 +1,21 @@
 package com.beardedhen.androidbootstrap;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class FontAwesome {
 
 	private static Map<String, String> faMap = new HashMap<String, String>();
+
+    private static Typeface font;
+
+    public static final float DEFAULT_FONT_SIZE = 14.0f;
+
+    private static final String UNKNOWN_CODE = "fa-question";
 
 	//font awesome map as per 
 	//http://fortawesome.github.io/Font-Awesome/cheatsheet/
@@ -563,5 +573,23 @@ public class FontAwesome {
 	{
 		return faMap;
 	}
+
+    public static String getUnicode(String iconCode) {
+        String unicode = faMap.get(iconCode);
+        return (unicode == null) ? faMap.get(UNKNOWN_CODE) : unicode;
+    }
+
+    public static Typeface getFont(Context context)
+    {
+        if(font == null) {
+            try {
+                font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
+            } catch (Exception e) {
+                Log.e("BButton", "Could not get typeface because " + e.getMessage());
+                font = Typeface.DEFAULT;
+            }
+        }
+        return font;
+    }
 	
 }

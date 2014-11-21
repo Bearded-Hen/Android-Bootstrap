@@ -33,10 +33,7 @@ public class BootstrapCircleThumbnail extends FrameLayout
     private static final String LARGE = "large";
     private static final String XLARGE = "xlarge";
 
-    private LinearLayout container;
-    private LinearLayout placeholder;
     private ImageView image;
-    private TextView dimensionsLabel;
     private String size = MEDIUM;
     private boolean minimal = false;//minimal means display just the image, no padding
     private String text = "";
@@ -44,10 +41,10 @@ public class BootstrapCircleThumbnail extends FrameLayout
     private int imageHeight = SIZE_DEFAULT;
     private int padding = 0;
 
-    public BootstrapCircleThumbnail(Context context, AttributeSet attrs, int defStyle)
+    public BootstrapCircleThumbnail(Context context)
     {
-        super(context, attrs, defStyle);
-        initialise(attrs);
+        super(context);
+        initialise(null);
     }
 
     public BootstrapCircleThumbnail(Context context, AttributeSet attrs)
@@ -56,17 +53,16 @@ public class BootstrapCircleThumbnail extends FrameLayout
         initialise(attrs);
     }
 
-    public BootstrapCircleThumbnail(Context context)
+    public BootstrapCircleThumbnail(Context context, AttributeSet attrs, int defStyle)
     {
-        super(context);
-        initialise(null);
+        super(context, attrs, defStyle);
+        initialise(attrs);
     }
+
 
     private void initialise( AttributeSet attrs )
     {
-        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
-                Context.LAYOUT_INFLATER_SERVICE);
-
+        LayoutInflater inflater = LayoutInflater.from(getContext());
 
         TypedArray a = getContext().obtainStyledAttributes(attrs,
                 R.styleable.BootstrapCircleThumbnail);
@@ -97,12 +93,11 @@ public class BootstrapCircleThumbnail extends FrameLayout
         a.recycle();
 
         View v = inflater.inflate(R.layout.bootstrap_thumbnail_circle, this, false);
-        dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
-        container = (LinearLayout) v.findViewById(R.id.container);
-        placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
+        TextView dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
+        LinearLayout container = (LinearLayout) v.findViewById(R.id.container);
+        LinearLayout placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
         image = (ImageView) v.findViewById(R.id.image);
         float scale = getResources().getDisplayMetrics().density;
-
 
         //small image
         if(this.size.equals(SMALL))
@@ -152,7 +147,7 @@ public class BootstrapCircleThumbnail extends FrameLayout
             imageSizeWidthPX = imageSizeWidthPX - (paddingPX * 2);
             imageSizeHeightPX = imageSizeHeightPX - (paddingPX * 2);
 
-            this.container.setPadding(paddingPX, paddingPX, paddingPX, paddingPX);
+            container.setPadding(paddingPX, paddingPX, paddingPX, paddingPX);
             container.setBackgroundResource(R.drawable.thumbnail_circle_container);
         }
         else
@@ -170,12 +165,12 @@ public class BootstrapCircleThumbnail extends FrameLayout
             //set placeholder image
             placeholder.setBackgroundResource(R.drawable.thumbnail_circle);
 
-            this.dimensionsLabel.setText(text);
+            dimensionsLabel.setText(text);
         }
         else
         {
             placeholder.setPadding(0, 0, 0, 0);
-            this.dimensionsLabel.setVisibility(View.GONE);
+            dimensionsLabel.setVisibility(View.GONE);
             Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), imageDrawable);
 
             Bitmap roundBitmap = ImageUtils.getCircleBitmap(bitmap, imageSizeWidthPX, imageSizeHeightPX);

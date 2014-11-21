@@ -34,7 +34,7 @@
             android:layout_height="150dp"
             android:layout_margin="10dp"
             android:text="Change Alignment"
-            bootstrapbutton:bb_icon_right="fa-angellist"
+            bootstrapbutton:bb_icon_right="fa-bus"
             bootstrapbutton:bb_roundedCorners="true"
             bootstrapbutton:bb_type="primary"
             bootstrapbutton:bb_text_gravity="right"

@@ -1,10 +1,7 @@
 package com.beardedhen.androidbootstrap;
 
-import java.util.HashMap;
-import java.util.Map;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,80 +17,60 @@ public class BootstrapThumbnail extends FrameLayout
 	private static final int DEFAULT_HEIGHT = 150;//height of thumbnail when no height is given
 	private static final int DEFAULT_MAX_PADDING = 8; //8dp is max padding size when padding isn't specified by user
 	private static final int DEFAULT_MIN_PADDING = 4; //4dp
-	private static final String DEFAULT_TYPE = "rounded";
-	
-	private static Map<String, ThumbnailTypes> bThumbnailTypeMap;
-	private static Typeface font;
-	private ViewGroup container;
-	private LinearLayout placeholder;
-	private TextView dimensionsLabel;
-	private boolean roundedCorners = true;
-	
-	static {
-		bThumbnailTypeMap = new HashMap<String, ThumbnailTypes>();
-		bThumbnailTypeMap.put("rounded", ThumbnailTypes.ROUNDED);//default is rounded if user doesn't specify to use square
-		bThumbnailTypeMap.put("square", ThumbnailTypes.SQUARE);
-	}
-	
+
+    private LinearLayout placeholder;
+    private boolean roundedCorners = true;
+
+    private enum ThumbnailTypes
+    {
+        ROUNDED(R.drawable.bthumbnail_container_rounded, R.drawable.bthumbnail_placeholder_default),
+        SQUARE(R.drawable.bthumbnail_container_square, R.drawable.bthumbnail_placeholder_default);
+
+        private int containerDrawable;
+        private int placeholderDrawable;
+
+        ThumbnailTypes(int containerDrawable, int placeholderDrawable) {
+            this.containerDrawable = containerDrawable;
+            this.placeholderDrawable = placeholderDrawable;
+        }
+
+        public static ThumbnailTypes getTypeFromBoolean(boolean roundedCorners) {
+            return (roundedCorners) ? ROUNDED : SQUARE;
+        }
+    }
+
+    public BootstrapThumbnail(Context context)
+    {
+        super(context);
+        initialise(null);
+    }
+
+    public BootstrapThumbnail(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+        initialise(attrs);
+    }
+
 	public BootstrapThumbnail(Context context, AttributeSet attrs, int defStyle) 
 	{
 		super(context, attrs, defStyle);
 		initialise(attrs);
 	}
 	
-	public BootstrapThumbnail(Context context, AttributeSet attrs) 
-	{
-		super(context, attrs);
-		initialise(attrs);
-	}
-	
-	public BootstrapThumbnail(Context context) 
-	{
-		super(context);
-		initialise(null);
-	}
-	
-	public void setImage(int drawable)
-	{
-		this.placeholder.setBackgroundResource(drawable);
-        invalidate();
-        requestLayout();
-	}
-	
-	//set up the bootstrap types
-	private enum ThumbnailTypes
-	{		
-		ROUNDED(R.drawable.bthumbnail_container_rounded, R.drawable.bthumbnail_placeholder_default),
-		SQUARE(R.drawable.bthumbnail_container_square, R.drawable.bthumbnail_placeholder_default);
-		
-		private int containerDrawable;
-		private int placeholderDrawable;
-
-		ThumbnailTypes(int containerDrawable, int placeholderDrawable)
-		{
-			this.containerDrawable = containerDrawable;
-			this.placeholderDrawable = placeholderDrawable;
-		}
-	}
-	
 	private void initialise( AttributeSet attrs )
 	{
-		LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(
-			    Context.LAYOUT_INFLATER_SERVICE);
-		
-		readFont(getContext());
+		LayoutInflater inflater = LayoutInflater.from(getContext());
 
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 			    R.styleable.BootstrapThumbnail);
 		
 		//defaults
 		ThumbnailTypes type;
-		String thumbnailType = DEFAULT_TYPE;
 		String text = "";
 		int imageDrawable = 0;
 		float scale = getResources().getDisplayMetrics().density; //for padding
 		int width = DEFAULT_WIDTH;
-		int height = DEFAULT_HEIGHT;	
+		int height = DEFAULT_HEIGHT;
 		int padding = 0;
 		int paddingDP = 0;
 
@@ -112,10 +89,12 @@ public class BootstrapThumbnail extends FrameLayout
 		}
 		else{
 			padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
-			if(padding > DEFAULT_MAX_PADDING)
-				padding = DEFAULT_MAX_PADDING;
-			if(padding < DEFAULT_MIN_PADDING)
-				padding = DEFAULT_MIN_PADDING;
+			if (padding > DEFAULT_MAX_PADDING) {
+                padding = DEFAULT_MAX_PADDING;
+            }
+			if (padding < DEFAULT_MIN_PADDING) {
+                padding = DEFAULT_MIN_PADDING;
+            }
 			
 			paddingDP = (int) (padding * scale + 0.5f);//container padding in DP
 		}
@@ -134,15 +113,15 @@ public class BootstrapThumbnail extends FrameLayout
 		View v = inflater.inflate(R.layout.bootstrap_thumbnail, this, false);
 	
 		//get layout items
-		container = (ViewGroup) v.findViewById(R.id.container);
+        ViewGroup container = (ViewGroup) v.findViewById(R.id.container);
 		placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
-		dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
+        TextView dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
 		
 		Log.v("size", "width:" + width + " height:" + height);
 
 		//get the correct background type
-		type = (roundedCorners)? bThumbnailTypeMap.get("rounded") : bThumbnailTypeMap.get("square");
-		
+		type = ThumbnailTypes.getTypeFromBoolean(roundedCorners);
+
 		//apply the background type
 		container.setBackgroundResource(type.containerDrawable);
 		
@@ -173,28 +152,21 @@ public class BootstrapThumbnail extends FrameLayout
 
 		container.setPadding(paddingDP, paddingDP, paddingDP, paddingDP);
 		placeholder.setPadding(paddingDPP, paddingDPP, paddingDPP, paddingDPP);
-		
 		placeholder.setLayoutParams(new LinearLayout.LayoutParams(width,height));
 		
 		//set the font awesome icon typeface
-		dimensionsLabel.setTypeface(font);
+		dimensionsLabel.setTypeface(FontAwesome.getFont(getContext()));
 
         this.setClickable(true);
                 
 		addView(v);
 	}
-	
-	//static class to read in font
-	private static void readFont(Context context)
-	{		
-		if(font == null){	
-			try {
-			font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
-			} catch (Exception e) {
-                Log.e("BootstrapButton", "Could not get typeface because " + e.getMessage());
-                font = Typeface.DEFAULT;
-            }
-		}
 
-	}
+    public void setImage(int drawable)
+    {
+        this.placeholder.setBackgroundResource(drawable);
+        invalidate();
+        requestLayout();
+    }
+
 }
