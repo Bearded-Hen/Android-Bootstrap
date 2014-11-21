@@ -13,7 +13,7 @@ public class BootstrapEditText extends EditText {
         DEFAULT("default",  R.drawable.edittext_background_rounded,         R.drawable.edittext_background),
         SUCCESS("success",  R.drawable.edittext_background_rounded_success, R.drawable.edittext_background_success),
         WARNING("warning",  R.drawable.edittext_background_rounded_warning, R.drawable.edittext_background_warning),
-        DANGER("danger",    R.drawable.edittext_background_rounded_danger,  R.drawable.edittext_background_danger);
+        DANGER( "danger",   R.drawable.edittext_background_rounded_danger,  R.drawable.edittext_background_danger);
 
         private String state;
         private int roundedBg;
@@ -63,47 +63,36 @@ public class BootstrapEditText extends EditText {
 
 	private void initialise( AttributeSet attrs )
 	{
-		TypedArray a = getContext().obtainStyledAttributes(attrs,  R.styleable.BootstrapEditText);
+		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapEditText);
 
         try {
-            //get defaults
-            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
-            String state = "default";
-            String text = "";
-            String hint = "";
-            boolean enabled = true;
-
             //font size
+            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
+
             if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
                 float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, FontAwesome.DEFAULT_FONT_SIZE * scaledDensity);
+                float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
+
+                float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, defaultDimen);
                 fontSize = rawSize / scaledDensity;
             }
 
-            //rounded corners
-            if(a.getString(R.styleable.BootstrapEditText_be_roundedCorners) != null) {
-                roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
-            }
+            roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
 
             //state
-            if(a.getString(R.styleable.BootstrapEditText_be_state) != null) {
-                state = a.getString(R.styleable.BootstrapEditText_be_state);
-            }
+            String state = a.getString(R.styleable.BootstrapEditText_be_state);
+            state = (state == null) ? "default" : state;
 
             //text
-            if(a.getString(R.styleable.BootstrapEditText_android_text) != null) {
-                text = a.getString(R.styleable.BootstrapEditText_android_text);
-            }
+            String text = a.getString(R.styleable.BootstrapEditText_android_text);
+            text = (text == null) ? "" : text;
 
             //hint
-            if(a.getString(R.styleable.BootstrapEditText_android_hint) != null) {
-                hint = a.getString(R.styleable.BootstrapEditText_android_hint);
-            }
+            String hint = a.getString(R.styleable.BootstrapEditText_android_hint);
+            hint = (hint == null) ? "" : hint;
 
             //enabled
-            if(a.getString(R.styleable.BootstrapEditText_android_enabled) != null) {
-                enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
-            }
+            boolean enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
 
             //set values
             this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);

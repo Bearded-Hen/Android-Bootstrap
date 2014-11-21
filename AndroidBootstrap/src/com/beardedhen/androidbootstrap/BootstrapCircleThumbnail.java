@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -17,28 +16,45 @@ import com.beardedhen.androidbootstrap.utils.ImageUtils;
 
 public class BootstrapCircleThumbnail extends FrameLayout
 {
-    private static final int PADDING_SMALL = 4;
-    private static final int PADDING_MEDIUM = 4;
-    private static final int PADDING_LARGE = 6;
-    private static final int PADDING_XLARGE = 8;
 
-    private static final int SIZE_SMALL = 48; //dp total size (outer circle)
-    private static final int SIZE_MEDIUM = 80;//dp
-    private static final int SIZE_LARGE = 112;//dp
-    private static final int SIZE_XLARGE = 176;//dp
-    private static final int SIZE_DEFAULT = SIZE_MEDIUM;
+    private enum BootstrapCircleType {
+        SMALL(  "small",    4,  48),
+        MEDIUM( "medium",   4,  80),
+        LARGE(  "large",    6,  112),
+        XLARGE( "xlarge",   8,  176);
 
-    private static final String SMALL = "small";
-    private static final String MEDIUM = "medium";
-    private static final String LARGE = "large";
-    private static final String XLARGE = "xlarge";
+        private String type;
+        private int padding;
+        private int diameter;
+
+        private BootstrapCircleType(String type, int padding, int diameter) {
+            this.type = type;
+            this.padding = padding;
+            this.diameter = diameter;
+        }
+
+        public int getDiameter() { // dp
+            return diameter;
+        }
+
+        public int getPadding() {
+            return padding;
+        }
+
+        public static BootstrapCircleType getBootstrapCircleTypeFromString(String type) {
+            for (BootstrapCircleType value : BootstrapCircleType.values()) {
+                if (value.type.equals(type)) {
+                    return value;
+                }
+            }
+            return MEDIUM;
+        }
+    }
 
     private ImageView image;
-    private String size = MEDIUM;
     private boolean minimal = false;//minimal means display just the image, no padding
-    private String text = "";
-    private int imageWidth = SIZE_DEFAULT;
-    private int imageHeight = SIZE_DEFAULT;
+    private int imageWidth;
+    private int imageHeight;
     private int padding = 0;
 
     public BootstrapCircleThumbnail(Context context)
@@ -59,7 +75,6 @@ public class BootstrapCircleThumbnail extends FrameLayout
         initialise(attrs);
     }
 
-
     private void initialise( AttributeSet attrs )
     {
         LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -67,71 +82,41 @@ public class BootstrapCircleThumbnail extends FrameLayout
         TypedArray a = getContext().obtainStyledAttributes(attrs,
                 R.styleable.BootstrapCircleThumbnail);
 
+        String size;
+        String text = "";
+        int imageDrawable;
 
-        int imageDrawable = 0;
-
-        if(a.getString(R.styleable.BootstrapCircleThumbnail_bct_image) != null)
-        {
+        try {
             imageDrawable = a.getResourceId(R.styleable.BootstrapCircleThumbnail_bct_image, 0);
-        }
 
-        if(a.getString(R.styleable.BootstrapCircleThumbnail_android_text) != null)
-        {
             text = a.getString(R.styleable.BootstrapCircleThumbnail_android_text);
-        }
+            text = (text == null) ? "" : text;
 
-        if(a.getString(R.styleable.BootstrapCircleThumbnail_bct_size) != null)
-        {
-            this.size = a.getString(R.styleable.BootstrapCircleThumbnail_bct_size);
-        }
+            size = a.getString(R.styleable.BootstrapCircleThumbnail_bct_size);
+            size = (size == null) ? "" : size;
 
-        if(a.getString(R.styleable.BootstrapCircleThumbnail_bct_minimal) != null)
-        {
-            this.minimal = a.getBoolean(R.styleable.BootstrapCircleThumbnail_bct_minimal, false);
+            minimal = a.getBoolean(R.styleable.BootstrapCircleThumbnail_bct_minimal, false);
         }
-
-        a.recycle();
+        finally {
+            a.recycle();
+        }
 
         View v = inflater.inflate(R.layout.bootstrap_thumbnail_circle, this, false);
         TextView dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
+
         LinearLayout container = (LinearLayout) v.findViewById(R.id.container);
         LinearLayout placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
+
         image = (ImageView) v.findViewById(R.id.image);
         float scale = getResources().getDisplayMetrics().density;
 
         //small image
-        if(this.size.equals(SMALL))
-        {
-            padding = PADDING_SMALL;
-            imageWidth = SIZE_SMALL;
-            imageHeight = SIZE_SMALL;
 
-        }
-        else if(this.size.equals(MEDIUM))
-        {
-            padding = PADDING_MEDIUM;
-            imageWidth = SIZE_MEDIUM;
-            imageHeight = SIZE_MEDIUM;
-        }
-        else if(this.size.equals(LARGE))
-        {
-            padding = PADDING_LARGE;
-            imageWidth = SIZE_LARGE;
-            imageHeight = SIZE_LARGE;
-        }
-        else if(this.size.equals(XLARGE))
-        {
-            padding = PADDING_XLARGE;
-            imageWidth = SIZE_XLARGE;
-            imageHeight = SIZE_XLARGE;
-        }
-        //no valid size is given, set image to default size
-        else
-        {
-            padding = PADDING_MEDIUM;
-            imageWidth = SIZE_DEFAULT;
-            imageHeight = SIZE_DEFAULT;
-        }
+        BootstrapCircleType type = BootstrapCircleType.getBootstrapCircleTypeFromString(size);
+
+        padding = type.getPadding();
+        imageWidth = type.getDiameter();
+        imageHeight = type.getDiameter();
 
         //convert padding to pixels
         int paddingPX = (int)((padding * scale) + 0.5);
@@ -209,4 +194,5 @@ public class BootstrapCircleThumbnail extends FrameLayout
         invalidate();
         requestLayout();
     }
+
 }

@@ -28,7 +28,7 @@ public class BootstrapButton extends FrameLayout {
         INFO(   "info",     R.drawable.bbuton_info,     R.drawable.bbuton_info_rounded,     R.color.white),
         WARNING("warning",  R.drawable.bbuton_warning,  R.drawable.bbuton_warning_rounded,  R.color.white),
         DANGER( "danger",   R.drawable.bbuton_danger,   R.drawable.bbuton_danger_rounded,   R.color.white),
-        INVERSE("inverse",  R.drawable.bbuton_inverse,  R.drawable.bbuton_inverse_rounded,  R.color.white),;
+        INVERSE("inverse",  R.drawable.bbuton_inverse,  R.drawable.bbuton_inverse_rounded,  R.color.white);
 
         private String type;
         private int normalBg;
@@ -65,6 +65,39 @@ public class BootstrapButton extends FrameLayout {
         }
     }
 
+    private enum BootstrapSize {
+
+        LARGE(  "large",    20.0f,  15, 20),
+        DEFAULT("default",  14.0f,  10, 15),
+        SMALL(  "small",    12.0f,  5,  10),
+        XSMALL( "xsmall",   10.0f,  2,  5);
+
+        private float fontSize;
+        private String type;
+        private int paddingA;
+        private int paddingB;
+
+        private BootstrapSize(String type, float fontSize, int paddingA, int paddingB) {
+            this.type = type;
+            this.fontSize = fontSize;
+            this.paddingA = paddingA;
+            this.paddingB = paddingB;
+        }
+
+        public float getFontSize() {
+            return fontSize;
+        }
+
+        public static BootstrapSize getBootstrapSizeFromString(String size) {
+            for (BootstrapSize value : BootstrapSize.values()) {
+                if (value.type.equals(size)) {
+                    return value;
+                }
+            }
+            return DEFAULT;
+        }
+    }
+
     public BootstrapButton(Context context) {
         super(context);
         initialise(null);
@@ -84,177 +117,150 @@ public class BootstrapButton extends FrameLayout {
 	{
 		LayoutInflater inflater = LayoutInflater.from(getContext());
 
+        float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
+        float scale = getResources().getDisplayMetrics().density; //for padding
+        int paddingA;
+        int paddingB;
+
 		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
-		
-		//defaults
-		String bootstrapStringType = "default";
-		String iconLeft = "";
-		String iconRight = "";
-		String text = "";
-		float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
-		float scale = getResources().getDisplayMetrics().density; //for padding
-		String size = "default";
-		int paddingA = (int) (10 *scale + 0.5f);
-		int paddingB = (int) (15 *scale + 0.5f);
 
-		//attribute values
-//        try {
-            if (a.getString(R.styleable.BootstrapButton_bb_type) != null) {
-                bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
-            }
+        try {
+            String bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
+            bootstrapStringType = (bootstrapStringType == null) ? "default" : bootstrapStringType;
 
-            if (a.getString(R.styleable.BootstrapButton_bb_roundedCorners) != null) {
-                roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false) ;
-            }
+            // icons
+            String iconLeft = a.getString(R.styleable.BootstrapButton_bb_icon_left);
+            iconLeft = (iconLeft == null) ? "" : iconLeft;
 
-            if(a.getString(R.styleable.BootstrapButton_bb_size) != null) {
-                size = a.getString(R.styleable.BootstrapButton_bb_size);
-            }
+            String iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right);
+            iconRight = (iconRight == null) ? "" : iconRight;
 
-            if ( a.getString(R.styleable.BootstrapButton_bb_icon_left) != null) {
-                iconLeft =  a.getString(R.styleable.BootstrapButton_bb_icon_left );
-            }
+            // text
+            String text = a.getString(R.styleable.BootstrapButton_android_text);
+            text = (text == null) ? "" : text;
 
-            if(a.getString(R.styleable.BootstrapButton_bb_icon_right) != null) {
-                iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right );
-            }
+            String gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
+            gravity = (gravity == null) ? "" : gravity;
 
-            if(a.getString(R.styleable.BootstrapButton_android_text) != null) {
-                text = a.getString(R.styleable.BootstrapButton_android_text);
-            }
-            String gravity = "";
-            if(a.getString(R.styleable.BootstrapButton_bb_text_gravity) != null) {
-                gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
-            }
+            // size
+            String size = a.getString(R.styleable.BootstrapButton_bb_size);
+            size = (size == null) ? "default" : size;
 
-            boolean enabled = true;
-            if(a.getString(R.styleable.BootstrapButton_android_enabled) != null) {
-                enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
-            }
+            int layoutWidth = a.getLayoutDimension(R.styleable.BootstrapButton_android_layout_width, 0);
+            fillparent = (layoutWidth == LayoutParams.MATCH_PARENT);
 
-            int layoutWidth = 0;
-            if(a.getString(R.styleable.BootstrapButton_android_layout_width) != null) {
-                layoutWidth = a.getLayoutDimension(R.styleable.BootstrapButton_android_layout_width, 0);
-            }
+            roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false);
+            boolean enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
 
-            //works even if it's fill_parent or match_parent
-            if( (layoutWidth == LayoutParams.MATCH_PARENT)) {
-                fillparent = true;
-            }
-
-            if(a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
+            if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
                 float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, 14.0f * scaledDensity);
+                float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
+
+                float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, defaultDimen);
                 fontSize = rawSize / scaledDensity;
             }
-//        }
-//        finally {
+
+            View v;
+            if(fillparent){
+                v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
+            } else {
+                v = inflater.inflate(R.layout.bootstrap_button, this, false);
+            }
+
+            BootstrapSize bootstrapSize = BootstrapSize.getBootstrapSizeFromString(size);
+
+            if (a.getString(R.styleable.BootstrapButton_android_textSize) == null) {
+                fontSize = bootstrapSize.getFontSize();
+            }
+            paddingA = (int) (bootstrapSize.paddingA * scale + 0.5f);
+            paddingB = (int) (bootstrapSize.paddingB * scale + 0.5f);
+
+            //get layout items
+            layout = (ViewGroup) v.findViewById(R.id.layout);
+            lblLeft = (TextView) v.findViewById(R.id.lblLeft);
+            lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
+            lblRight = (TextView) v.findViewById(R.id.lblRight);
+
+            setBootstrapType(bootstrapStringType);
+            //set the font awesome icon typeface
+            lblLeft.setTypeface(FontAwesome.getFont(getContext()));
+            lblRight.setTypeface(FontAwesome.getFont(getContext()));
+
+            //set up the font size
+            lblLeft.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+            lblMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+            lblRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+
+            //deal with gravity
+            if (gravity.length() > 0) {
+                setTextGravity(gravity);
+            }
+
+            boolean onlyIcon = true;
+
+            //set the text
+            if(text.length() > 0){
+                lblMiddle.setText(text );
+                lblMiddle.setVisibility(View.VISIBLE);
+                onlyIcon = false;
+            }
+
+            setupIconLeft(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
+            setupIconRight(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
+
+            if(iconLeft.length() > 0 && iconRight.length() > 0 )
+            {
+                lblMiddle.setPadding(paddingA, 0, paddingA, 0);
+            }
+
+            this.setClickable(true);
+            this.setEnabled(enabled);
+
+            layout.setPadding(0, paddingB, 0, paddingB);
+
+            addView(v);
+        }
+        finally {
             a.recycle();
-//        }
-
-		View v;
-		if(fillparent){
-			v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
-		} else {
-			 v = inflater.inflate(R.layout.bootstrap_button, this, false);
-		}
-		
-		//set up font sizes and padding for different button sizes
-		if(size.equals("large")){
-			fontSize = 20.0f;
-			paddingA = (int) (15 *scale + 0.5f);
-			paddingB = (int) (20 *scale + 0.5f);
-		}
-		
-		if(size.equals("small")){
-			fontSize = 12.0f;
-			paddingA = (int) (5 *scale + 0.5f);
-			paddingB = (int) (10 *scale + 0.5f);
-		}
-		
-		if(size.equals("xsmall")){
-			fontSize = 10.0f;
-			paddingA = (int) (2 *scale + 0.5f);
-			paddingB = (int) (5 *scale + 0.5f);
-		}
-	
-		//get layout items
-		layout = (ViewGroup) v.findViewById(R.id.layout);
-		lblLeft = (TextView) v.findViewById(R.id.lblLeft);
-		lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
-		lblRight = (TextView) v.findViewById(R.id.lblRight);
-
-        setBootstrapType(bootstrapStringType);
-		
-		//set the font awesome icon typeface
-		lblLeft.setTypeface(FontAwesome.getFont(getContext()));
-		lblRight.setTypeface(FontAwesome.getFont(getContext()));
-		
-		//set up the font size
-		lblLeft.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-        lblMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-        lblRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-		
-        //deal with gravity
-        if(gravity.length() > 0) {
-        	setTextGravity(gravity);
         }
-        
-        boolean onlyIcon = true;
-        
-        //set the text 
-        if(text.length() > 0){
-        	lblMiddle.setText(text );
-        	lblMiddle.setVisibility(View.VISIBLE);
-        	onlyIcon = false;
-        }
+	}
 
+    private void setupIconLeft(int paddingA, int paddingB, String iconLeft, String iconRight, boolean onlyIcon) {
         //set up the padding
         if (iconLeft.length() > 0) {
-        	setLeftIcon(iconLeft);
-        	lblLeft.setVisibility(View.VISIBLE);
-        	
-        	if (!onlyIcon){
-        		lblLeft.setPadding(paddingB, 0, 0, 0);
-        	} else {
-        		lblLeft.setPadding(paddingB, 0, paddingB, 0);
-        	}
-        	
-        	//padding for symmetry
-        	if (( iconRight.length() == 0) && !onlyIcon) {
-        		lblMiddle.setPadding(paddingA, 0, paddingB, 0);
-        	}
+            setLeftIcon(iconLeft);
+            lblLeft.setVisibility(View.VISIBLE);
+
+            if (!onlyIcon){
+                lblLeft.setPadding(paddingB, 0, 0, 0);
+            } else {
+                lblLeft.setPadding(paddingB, 0, paddingB, 0);
+            }
+
+            //padding for symmetry
+            if (( iconRight.length() == 0) && !onlyIcon) {
+                lblMiddle.setPadding(paddingA, 0, paddingB, 0);
+            }
         }
-         
+    }
+
+    private void setupIconRight(int paddingA, int paddingB, String iconLeft, String iconRight, boolean onlyIcon) {
         if (iconRight.length() > 0) {
-        	//lblRight.setText(iconRight);
-        	setRightIcon(iconRight);
-        	lblRight.setVisibility(View.VISIBLE);
-        	
-        	if (!onlyIcon){
-        		lblRight.setPadding(0, 0, paddingB, 0);
-        	}else {
-        		lblRight.setPadding(paddingB, 0, paddingB, 0);
-        	}
+            setRightIcon(iconRight);
+            lblRight.setVisibility(View.VISIBLE);
 
-        	//padding for symmetry
-        	if ( (iconLeft.length() == 0) && !onlyIcon) {
-        		lblMiddle.setPadding(paddingB, 0, (int) paddingA, 0);
-        	}
+            if (!onlyIcon){
+                lblRight.setPadding(0, 0, paddingB, 0);
+            }else {
+                lblRight.setPadding(paddingB, 0, paddingB, 0);
+            }
+
+            //padding for symmetry
+            if ( (iconLeft.length() == 0) && !onlyIcon) {
+                lblMiddle.setPadding(paddingB, 0, paddingA, 0);
+            }
         }
-        
-        if(iconLeft.length() > 0 && iconRight.length() > 0 )
-        {
-        	lblMiddle.setPadding(paddingA, 0, paddingA, 0);
-        }
-
-        this.setClickable(true);
-        this.setEnabled(enabled);
-
-        layout.setPadding(0, paddingB, 0, paddingB);
-        
-		addView(v);
-	}
+    }
 
     public void setText(int stringId) {
         setText(getContext().getResources().getString(stringId));
@@ -315,13 +321,21 @@ public class BootstrapButton extends FrameLayout {
 	 * @param gravity - string for either center, right, or left.
 	 */
 	public void setTextGravity(String gravity) {
+        int gravityId = -1;
+
 		if(gravity.equals("left")) {
-			lblMiddle.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-		} else if (gravity.equals("center")) {
-			lblMiddle.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
-		} else if (gravity.equals("right")) {
-			lblMiddle.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            gravityId = Gravity.LEFT;
 		}
+        else if (gravity.equals("center")) {
+            gravityId = Gravity.CENTER_HORIZONTAL;
+		}
+        else if (gravity.equals("right")) {
+            gravityId = Gravity.RIGHT;
+		}
+
+        if (gravityId != -1) {
+            lblMiddle.setGravity(gravityId | Gravity.CENTER_VERTICAL);
+        }
 	}
 
     /**

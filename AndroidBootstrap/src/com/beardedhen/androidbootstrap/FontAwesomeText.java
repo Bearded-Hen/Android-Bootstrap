@@ -59,37 +59,35 @@ public class FontAwesomeText extends FrameLayout {
 	{
 		LayoutInflater inflater = LayoutInflater.from(getContext());
 
-        //inflate the view
         View fontAwesomeTextView = inflater.inflate(R.layout.font_awesome_text, this, false);
-        tv = (TextView)fontAwesomeTextView.findViewById(R.id.lblText);
+        tv = (TextView) fontAwesomeTextView.findViewById(R.id.lblText);
 
 		TypedArray a = getContext().obtainStyledAttributes(attrs,  R.styleable.FontAwesomeText);
 
         try {
-            String icon = "";
-            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
+            // icon
+            String icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
+            icon = (icon == null) ? "" : icon;
+            setIcon(icon);
 
-            //icon
-            if (a.getString(R.styleable.FontAwesomeText_fa_icon) != null) {
-                icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
-            }
+            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
 
             //font size
             if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
                 float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                float rawSize = a.getDimension(R.styleable.FontAwesomeText_android_textSize, FontAwesome.DEFAULT_FONT_SIZE* scaledDensity);
+                float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
+
+                float rawSize = a.getDimension(R.styleable.FontAwesomeText_android_textSize, defaultDimen);
                 fontSize = rawSize / scaledDensity;
             }
 
-            //text colour
-            if(a.getString(R.styleable.FontAwesomeText_android_textColor) != null){
-                tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
-            }
-
-            setIcon(icon);
-
             tv.setTypeface(FontAwesome.getFont(getContext()));
             tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+
+            //text colour
+            if (a.getString(R.styleable.FontAwesomeText_android_textColor) != null) {
+                tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
+            }
         }
         finally {
             a.recycle();

@@ -569,11 +569,6 @@ public class FontAwesome {
         faMap.put("fa-youtube-square", "\uf166");
 	}
 
-	public static Map<String, String> getFaMap()
-	{
-		return faMap;
-	}
-
     public static String getUnicode(String iconCode) {
         String unicode = faMap.get(iconCode);
         return (unicode == null) ? faMap.get(UNKNOWN_CODE) : unicode;
