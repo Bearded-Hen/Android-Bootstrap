@@ -116,12 +116,12 @@ public class BootstrapThumbnail extends FrameLayout
 		container.setBackgroundResource(type.containerDrawable);
 		
 		//if no image is provided by user
-		if(imageDrawable == 0){
+		if(imageDrawable == 0) {
 			//set default grey placeholder background
 			placeholder.setBackgroundResource(type.placeholderDrawable);
 			
 			//set the text 
-	        if(text.length() > 0){        	
+	        if(text.length() > 0) {
 	        	dimensionsLabel.setText(text);
 	        	dimensionsLabel.setVisibility(View.VISIBLE);        	
 	        }

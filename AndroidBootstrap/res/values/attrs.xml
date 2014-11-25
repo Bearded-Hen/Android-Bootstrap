@@ -12,6 +12,7 @@
         <attr name="android:text"/>
         <attr name="android:enabled"/>
 		<attr name="android:layout_width"/>
+        <attr name="android:layout_weight"/>
     </declare-styleable>
     
      <declare-styleable name="FontAwesomeText">

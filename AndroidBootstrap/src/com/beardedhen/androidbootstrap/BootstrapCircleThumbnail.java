@@ -56,6 +56,8 @@ public class BootstrapCircleThumbnail extends FrameLayout
     private int imageWidth;
     private int imageHeight;
     private int padding = 0;
+    private LinearLayout placeholder;
+    private TextView dimensionsLabel;
 
     public BootstrapCircleThumbnail(Context context)
     {
@@ -102,10 +104,10 @@ public class BootstrapCircleThumbnail extends FrameLayout
         }
 
         View v = inflater.inflate(R.layout.bootstrap_thumbnail_circle, this, false);
-        TextView dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
+        dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
 
         LinearLayout container = (LinearLayout) v.findViewById(R.id.container);
-        LinearLayout placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
+        placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
 
         image = (ImageView) v.findViewById(R.id.image);
         float scale = getResources().getDisplayMetrics().density;
@@ -173,6 +175,10 @@ public class BootstrapCircleThumbnail extends FrameLayout
     
     public void setImage(Bitmap bitmap)
     {
+        placeholder.setPadding(0, 0, 0, 0);
+        this.dimensionsLabel.setVisibility(View.GONE);
+        this.image.setVisibility(View.VISIBLE);
+
         float scale = getResources().getDisplayMetrics().density;
         
         //convert image size to pixels
@@ -190,9 +196,9 @@ public class BootstrapCircleThumbnail extends FrameLayout
         Bitmap roundBitmap = ImageUtils.getCircleBitmap(bitmap, widthPX, heightPX);
         image.setVisibility(View.VISIBLE);
         image.setImageBitmap(roundBitmap);
-        
-        invalidate();
+
         requestLayout();
+        invalidate();
     }
 
 }

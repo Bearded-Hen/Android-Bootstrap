@@ -65,10 +65,13 @@ public class BootstrapEditText extends EditText {
 	{
 		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapEditText);
 
-        try {
-            //font size
-            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
+        float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
+        String state = "default";
+        String text = "";
+        String hint = "";
+        boolean enabled = true;
 
+        try {
             if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
                 float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
                 float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
@@ -80,33 +83,33 @@ public class BootstrapEditText extends EditText {
             roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
 
             //state
-            String state = a.getString(R.styleable.BootstrapEditText_be_state);
+            state = a.getString(R.styleable.BootstrapEditText_be_state);
             state = (state == null) ? "default" : state;
 
             //text
-            String text = a.getString(R.styleable.BootstrapEditText_android_text);
+            text = a.getString(R.styleable.BootstrapEditText_android_text);
             text = (text == null) ? "" : text;
 
             //hint
-            String hint = a.getString(R.styleable.BootstrapEditText_android_hint);
+            hint = a.getString(R.styleable.BootstrapEditText_android_hint);
             hint = (hint == null) ? "" : hint;
 
             //enabled
-            boolean enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
-
-            //set values
-            this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-            this.setText(text);
-            this.setHint(hint);
-            this.setEnabled(enabled);
-
-            if (enabled){
-                textState = TextState.getStateFromString(state);
-                setState(state);
-            }
+            enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
         }
         finally {
             a.recycle();
+        }
+
+        //set values
+        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+        this.setText(text);
+        this.setHint(hint);
+        this.setEnabled(enabled);
+
+        if (enabled){
+            textState = TextState.getStateFromString(state);
+            setState(state);
         }
 	}
 

@@ -124,33 +124,44 @@ public class BootstrapButton extends FrameLayout {
 
 		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
 
+        String iconLeft = "";
+        String iconRight = "";
+        String text = "";
+        String gravity = "";
+        String size = "default";
+        String bootstrapStringType = "default";
+        boolean enabled = true;
+
         try {
-            String bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
+            bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
             bootstrapStringType = (bootstrapStringType == null) ? "default" : bootstrapStringType;
 
             // icons
-            String iconLeft = a.getString(R.styleable.BootstrapButton_bb_icon_left);
+            iconLeft = a.getString(R.styleable.BootstrapButton_bb_icon_left);
             iconLeft = (iconLeft == null) ? "" : iconLeft;
 
-            String iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right);
+            iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right);
             iconRight = (iconRight == null) ? "" : iconRight;
 
             // text
-            String text = a.getString(R.styleable.BootstrapButton_android_text);
+            text = a.getString(R.styleable.BootstrapButton_android_text);
             text = (text == null) ? "" : text;
 
-            String gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
+            gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
             gravity = (gravity == null) ? "" : gravity;
 
             // size
-            String size = a.getString(R.styleable.BootstrapButton_bb_size);
+            size = a.getString(R.styleable.BootstrapButton_bb_size);
             size = (size == null) ? "default" : size;
 
             int layoutWidth = a.getLayoutDimension(R.styleable.BootstrapButton_android_layout_width, 0);
             fillparent = (layoutWidth == LayoutParams.MATCH_PARENT);
 
+            Float layoutWeight = a.getFloat(R.styleable.BootstrapButton_android_layout_weight, -1);
+            fillparent = (layoutWeight != -1) || fillparent;
+
             roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false);
-            boolean enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
+            enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
 
             if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
                 float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
@@ -159,70 +170,70 @@ public class BootstrapButton extends FrameLayout {
                 float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, defaultDimen);
                 fontSize = rawSize / scaledDensity;
             }
-
-            View v;
-            if(fillparent){
-                v = inflater.inflate(R.layout.bootstrap_button_fill, null, false);
-            } else {
-                v = inflater.inflate(R.layout.bootstrap_button, this, false);
-            }
-
-            BootstrapSize bootstrapSize = BootstrapSize.getBootstrapSizeFromString(size);
-
-            if (a.getString(R.styleable.BootstrapButton_android_textSize) == null) {
-                fontSize = bootstrapSize.getFontSize();
-            }
-            paddingA = (int) (bootstrapSize.paddingA * scale + 0.5f);
-            paddingB = (int) (bootstrapSize.paddingB * scale + 0.5f);
-
-            //get layout items
-            layout = (ViewGroup) v.findViewById(R.id.layout);
-            lblLeft = (TextView) v.findViewById(R.id.lblLeft);
-            lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
-            lblRight = (TextView) v.findViewById(R.id.lblRight);
-
-            setBootstrapType(bootstrapStringType);
-            //set the font awesome icon typeface
-            lblLeft.setTypeface(FontAwesome.getFont(getContext()));
-            lblRight.setTypeface(FontAwesome.getFont(getContext()));
-
-            //set up the font size
-            lblLeft.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-            lblMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-            lblRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-
-            //deal with gravity
-            if (gravity.length() > 0) {
-                setTextGravity(gravity);
-            }
-
-            boolean onlyIcon = true;
-
-            //set the text
-            if(text.length() > 0){
-                lblMiddle.setText(text );
-                lblMiddle.setVisibility(View.VISIBLE);
-                onlyIcon = false;
-            }
-
-            setupIconLeft(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
-            setupIconRight(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
-
-            if(iconLeft.length() > 0 && iconRight.length() > 0 )
-            {
-                lblMiddle.setPadding(paddingA, 0, paddingA, 0);
-            }
-
-            this.setClickable(true);
-            this.setEnabled(enabled);
-
-            layout.setPadding(0, paddingB, 0, paddingB);
-
-            addView(v);
         }
         finally {
             a.recycle();
         }
+
+        View v;
+        if(fillparent){
+            v = inflater.inflate(R.layout.bootstrap_button_fill, this, false);
+        } else {
+            v = inflater.inflate(R.layout.bootstrap_button, this, false);
+        }
+
+        BootstrapSize bootstrapSize = BootstrapSize.getBootstrapSizeFromString(size);
+
+        if (a.getString(R.styleable.BootstrapButton_android_textSize) == null) {
+            fontSize = bootstrapSize.getFontSize();
+        }
+        paddingA = (int) (bootstrapSize.paddingA * scale + 0.5f);
+        paddingB = (int) (bootstrapSize.paddingB * scale + 0.5f);
+
+        //get layout items
+        layout = (ViewGroup) v.findViewById(R.id.layout);
+        lblLeft = (TextView) v.findViewById(R.id.lblLeft);
+        lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
+        lblRight = (TextView) v.findViewById(R.id.lblRight);
+
+        setBootstrapType(bootstrapStringType);
+        //set the font awesome icon typeface
+        lblLeft.setTypeface(FontAwesome.getFont(getContext()));
+        lblRight.setTypeface(FontAwesome.getFont(getContext()));
+
+        //set up the font size
+        lblLeft.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+        lblMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+        lblRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+
+        //deal with gravity
+        if (gravity.length() > 0) {
+            setTextGravity(gravity);
+        }
+
+        boolean onlyIcon = true;
+
+        //set the text
+        if(text.length() > 0){
+            lblMiddle.setText(text );
+            lblMiddle.setVisibility(View.VISIBLE);
+            onlyIcon = false;
+        }
+
+        setupIconLeft(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
+        setupIconRight(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
+
+        if(iconLeft.length() > 0 && iconRight.length() > 0 )
+        {
+            lblMiddle.setPadding(paddingA, 0, paddingA, 0);
+        }
+
+        this.setClickable(true);
+        this.setEnabled(enabled);
+
+        layout.setPadding(0, paddingB, 0, paddingB);
+
+        addView(v);
 	}
 
     private void setupIconLeft(int paddingA, int paddingB, String iconLeft, String iconRight, boolean onlyIcon) {

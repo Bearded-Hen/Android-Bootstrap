@@ -64,13 +64,13 @@ public class FontAwesomeText extends FrameLayout {
 
 		TypedArray a = getContext().obtainStyledAttributes(attrs,  R.styleable.FontAwesomeText);
 
+        float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
+        String icon = "";
+
         try {
             // icon
-            String icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
+            icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
             icon = (icon == null) ? "" : icon;
-            setIcon(icon);
-
-            float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
 
             //font size
             if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
@@ -81,9 +81,6 @@ public class FontAwesomeText extends FrameLayout {
                 fontSize = rawSize / scaledDensity;
             }
 
-            tv.setTypeface(FontAwesome.getFont(getContext()));
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-
             //text colour
             if (a.getString(R.styleable.FontAwesomeText_android_textColor) != null) {
                 tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
@@ -92,6 +89,10 @@ public class FontAwesomeText extends FrameLayout {
         finally {
             a.recycle();
         }
+
+        setIcon(icon);
+        tv.setTypeface(FontAwesome.getFont(getContext()));
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
 
         addView(fontAwesomeTextView);
 	}
