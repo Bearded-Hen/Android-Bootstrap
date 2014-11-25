@@ -10,7 +10,7 @@ Getting Started
 * Add the following line to build.gradle:
 ```
 dependencies {
-   compile 'com.beardedhen:androidbootstrap:1.0.0'
+   compile 'com.beardedhen:androidbootstrap:+'
 }
 ```
 
