@@ -175,12 +175,7 @@ public class BootstrapButton extends FrameLayout {
             a.recycle();
         }
 
-        View v;
-        if(fillparent){
-            v = inflater.inflate(R.layout.bootstrap_button_fill, this, false);
-        } else {
-            v = inflater.inflate(R.layout.bootstrap_button, this, false);
-        }
+        View v = inflater.inflate(R.layout.bootstrap_button, this, false);
 
         BootstrapSize bootstrapSize = BootstrapSize.getBootstrapSizeFromString(size);
 
