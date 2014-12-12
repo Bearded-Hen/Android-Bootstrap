@@ -179,9 +179,6 @@ public class BootstrapButton extends FrameLayout {
 
         BootstrapSize bootstrapSize = BootstrapSize.getBootstrapSizeFromString(size);
 
-        if (a.getString(R.styleable.BootstrapButton_android_textSize) == null) {
-            fontSize = bootstrapSize.getFontSize();
-        }
         paddingA = (int) (bootstrapSize.paddingA * scale + 0.5f);
         paddingB = (int) (bootstrapSize.paddingB * scale + 0.5f);
 
