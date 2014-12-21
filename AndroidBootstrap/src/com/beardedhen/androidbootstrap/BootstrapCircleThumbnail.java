@@ -18,7 +18,7 @@ public class BootstrapCircleThumbnail extends FrameLayout
 {
 
     private enum BootstrapCircleType {
-        SMALL(  "small",    4,  48),
+        SMALL(  "small",    2,  48), //padding adjustment for small thumbnails
         MEDIUM( "medium",   4,  80),
         LARGE(  "large",    6,  112),
         XLARGE( "xlarge",   8,  176);
