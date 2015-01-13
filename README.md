@@ -17,7 +17,7 @@ dependencies {
 Alternatively you can use Android Bootstrap as a library project by downloading the source.
 
 
-* Copy __fontawesome-webfont.ttf__ into the assets folder of your project, as otherwise FontAwesome icons won't show up.
+* Copy [__fontawesome-webfont.ttf__](https://github.com/Bearded-Hen/Android-Bootstrap/raw/master/fontawesome-webfont.ttf) into the __assets folder__ of your project, as otherwise  __FontAwesome won't work__.
 
 * Paste the following XML into a layout file to create a BootstrapButton:
 
