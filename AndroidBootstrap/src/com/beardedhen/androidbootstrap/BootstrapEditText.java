@@ -72,33 +72,37 @@ public class BootstrapEditText extends EditText {
         boolean enabled = true;
 
         try {
-            if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
-                float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
+            if (a != null) {
+                if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
+                    float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+                    float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
 
-                float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, defaultDimen);
-                fontSize = rawSize / scaledDensity;
+                    float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, defaultDimen);
+                    fontSize = rawSize / scaledDensity;
+                }
+
+                roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
+
+                //state
+                state = a.getString(R.styleable.BootstrapEditText_be_state);
+                state = (state == null) ? "default" : state;
+
+                //text
+                text = a.getString(R.styleable.BootstrapEditText_android_text);
+                text = (text == null) ? "" : text;
+
+                //hint
+                hint = a.getString(R.styleable.BootstrapEditText_android_hint);
+                hint = (hint == null) ? "" : hint;
+
+                //enabled
+                enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
             }
-
-            roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
-
-            //state
-            state = a.getString(R.styleable.BootstrapEditText_be_state);
-            state = (state == null) ? "default" : state;
-
-            //text
-            text = a.getString(R.styleable.BootstrapEditText_android_text);
-            text = (text == null) ? "" : text;
-
-            //hint
-            hint = a.getString(R.styleable.BootstrapEditText_android_hint);
-            hint = (hint == null) ? "" : hint;
-
-            //enabled
-            enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
         }
         finally {
-            a.recycle();
+            if (a != null) {
+                a.recycle();
+            }
         }
 
         //set values

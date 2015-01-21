@@ -75,30 +75,34 @@ public class BootstrapThumbnail extends FrameLayout
 		int paddingDP = 0;
 
         try {
-            //attribute values
-            width = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_width, 0);
-            height = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_height, 0);
+            if (a != null) {
+                //attribute values
+                width = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_width, 0);
+                height = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_height, 0);
 
-            if(a.getString(R.styleable.BootstrapThumbnail_bt_inside_padding) != null) {
-                paddingDP = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_inside_padding, 0);
-            }
-            else{
-                padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
-                if (padding > DEFAULT_MAX_PADDING) {
-                    padding = DEFAULT_MAX_PADDING;
+                if(a.getString(R.styleable.BootstrapThumbnail_bt_inside_padding) != null) {
+                    paddingDP = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_inside_padding, 0);
                 }
-                if (padding < DEFAULT_MIN_PADDING) {
-                    padding = DEFAULT_MIN_PADDING;
+                else{
+                    padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
+                    if (padding > DEFAULT_MAX_PADDING) {
+                        padding = DEFAULT_MAX_PADDING;
+                    }
+                    if (padding < DEFAULT_MIN_PADDING) {
+                        padding = DEFAULT_MIN_PADDING;
+                    }
+
+                    paddingDP = (int) (padding * scale + 0.5f); //container padding in DP
                 }
 
-                paddingDP = (int) (padding * scale + 0.5f); //container padding in DP
+                roundedCorners = a.getBoolean(R.styleable.BootstrapThumbnail_bt_roundedCorners, false) ;
+                imageDrawable = a.getResourceId(R.styleable.BootstrapThumbnail_bt_image, 0);
             }
-
-            roundedCorners = a.getBoolean(R.styleable.BootstrapThumbnail_bt_roundedCorners, false) ;
-            imageDrawable = a.getResourceId(R.styleable.BootstrapThumbnail_bt_image, 0);
         }
         finally {
-            a.recycle();
+            if (a != null) {
+                a.recycle();
+            }
         }
 		
 		text = (int)(width/scale) + "x" + (int)(height/scale);

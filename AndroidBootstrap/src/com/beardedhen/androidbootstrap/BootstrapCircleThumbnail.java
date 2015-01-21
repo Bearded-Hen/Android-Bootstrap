@@ -84,23 +84,27 @@ public class BootstrapCircleThumbnail extends FrameLayout
         TypedArray a = getContext().obtainStyledAttributes(attrs,
                 R.styleable.BootstrapCircleThumbnail);
 
-        String size;
+        String size = "";
         String text = "";
-        int imageDrawable;
+        int imageDrawable = 0;
 
         try {
-            imageDrawable = a.getResourceId(R.styleable.BootstrapCircleThumbnail_bct_image, 0);
+            if (a != null) {
+                imageDrawable = a.getResourceId(R.styleable.BootstrapCircleThumbnail_bct_image, 0);
 
-            text = a.getString(R.styleable.BootstrapCircleThumbnail_android_text);
-            text = (text == null) ? "" : text;
+                text = a.getString(R.styleable.BootstrapCircleThumbnail_android_text);
+                text = (text == null) ? "" : text;
 
-            size = a.getString(R.styleable.BootstrapCircleThumbnail_bct_size);
-            size = (size == null) ? "" : size;
+                size = a.getString(R.styleable.BootstrapCircleThumbnail_bct_size);
+                size = (size == null) ? "" : size;
 
-            minimal = a.getBoolean(R.styleable.BootstrapCircleThumbnail_bct_minimal, false);
+                minimal = a.getBoolean(R.styleable.BootstrapCircleThumbnail_bct_minimal, false);
+            }
         }
         finally {
-            a.recycle();
+            if (a != null) {
+                a.recycle();
+            }
         }
 
         View v = inflater.inflate(R.layout.bootstrap_thumbnail_circle, this, false);

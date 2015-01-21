@@ -133,46 +133,50 @@ public class BootstrapButton extends FrameLayout {
         boolean enabled = true;
 
         try {
-            bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
-            bootstrapStringType = (bootstrapStringType == null) ? "default" : bootstrapStringType;
+            if (a != null) {
+                bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
+                bootstrapStringType = (bootstrapStringType == null) ? "default" : bootstrapStringType;
 
-            // icons
-            iconLeft = a.getString(R.styleable.BootstrapButton_bb_icon_left);
-            iconLeft = (iconLeft == null) ? "" : iconLeft;
+                // icons
+                iconLeft = a.getString(R.styleable.BootstrapButton_bb_icon_left);
+                iconLeft = (iconLeft == null) ? "" : iconLeft;
 
-            iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right);
-            iconRight = (iconRight == null) ? "" : iconRight;
+                iconRight = a.getString(R.styleable.BootstrapButton_bb_icon_right);
+                iconRight = (iconRight == null) ? "" : iconRight;
 
-            // text
-            text = a.getString(R.styleable.BootstrapButton_android_text);
-            text = (text == null) ? "" : text;
+                // text
+                text = a.getString(R.styleable.BootstrapButton_android_text);
+                text = (text == null) ? "" : text;
 
-            gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
-            gravity = (gravity == null) ? "" : gravity;
+                gravity = a.getString(R.styleable.BootstrapButton_bb_text_gravity);
+                gravity = (gravity == null) ? "" : gravity;
 
-            // size
-            size = a.getString(R.styleable.BootstrapButton_bb_size);
-            size = (size == null) ? "default" : size;
+                // size
+                size = a.getString(R.styleable.BootstrapButton_bb_size);
+                size = (size == null) ? "default" : size;
 
-            int layoutWidth = a.getLayoutDimension(R.styleable.BootstrapButton_android_layout_width, 0);
-            fillparent = (layoutWidth == LayoutParams.MATCH_PARENT);
+                int layoutWidth = a.getLayoutDimension(R.styleable.BootstrapButton_android_layout_width, 0);
+                fillparent = (layoutWidth == LayoutParams.MATCH_PARENT);
 
-            Float layoutWeight = a.getFloat(R.styleable.BootstrapButton_android_layout_weight, -1);
-            fillparent = (layoutWeight != -1) || fillparent;
+                Float layoutWeight = a.getFloat(R.styleable.BootstrapButton_android_layout_weight, -1);
+                fillparent = (layoutWeight != -1) || fillparent;
 
-            roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false);
-            enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
+                roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false);
+                enabled = a.getBoolean(R.styleable.BootstrapButton_android_enabled, true);
 
-            if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
-                float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
+                if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
+                    float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+                    float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
 
-                float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, defaultDimen);
-                fontSize = rawSize / scaledDensity;
+                    float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, defaultDimen);
+                    fontSize = rawSize / scaledDensity;
+                }
             }
         }
         finally {
-            a.recycle();
+            if (a != null) {
+                a.recycle();
+            }
         }
 
         View v = inflater.inflate(R.layout.bootstrap_button, this, false);
