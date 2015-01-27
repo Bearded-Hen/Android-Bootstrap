@@ -18,13 +18,14 @@
 
     <TextView
         android:id="@+id/lblMiddle"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/lblRight"
