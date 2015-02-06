@@ -22,7 +22,10 @@ dependencies {
 
 ### Library Project
 
-Alternatively you can use Android Bootstrap as a library project by downloading the source.
+Alternatively you can use Android Bootstrap as a library project by downloading the source and linking to it in Eclipse.
+
+
+### Four more steps
 
 1. Copy [__fontawesome-webfont.ttf__](https://github.com/Bearded-Hen/Android-Bootstrap/raw/master/fontawesome-webfont.ttf) into the __assets folder__ of your project, as otherwise  __FontAwesome won't work__.
 
