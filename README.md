@@ -7,21 +7,28 @@ Android-Bootstrap
 
 Getting Started
 =============
-* Add the following line to build.gradle:
-```
+
+## Installation
+
+### Gradle
+
+If you're using Gradle you can simply add the following line to `build.gradle`:
+
+```java
 dependencies {
    compile 'com.beardedhen:androidbootstrap:+'
 }
 ```
 
+### Library Project
+
 Alternatively you can use Android Bootstrap as a library project by downloading the source.
 
+1. Copy [__fontawesome-webfont.ttf__](https://github.com/Bearded-Hen/Android-Bootstrap/raw/master/fontawesome-webfont.ttf) into the __assets folder__ of your project, as otherwise  __FontAwesome won't work__.
 
-* Copy [__fontawesome-webfont.ttf__](https://github.com/Bearded-Hen/Android-Bootstrap/raw/master/fontawesome-webfont.ttf) into the __assets folder__ of your project, as otherwise  __FontAwesome won't work__.
-
-* Paste the following XML into a layout file to create a BootstrapButton:
-
-```xml
+2. Paste the following XML into a layout file to create a BootstrapButton:
+   
+   ```xml
 <!-- basic button -->
 <com.beardedhen.androidbootstrap.BootstrapButton
     android:layout_width="wrap_content"
@@ -33,13 +40,15 @@ Alternatively you can use Android Bootstrap as a library project by downloading 
 />
 ```
 
-* Add the bootstrap namespace to the root view of your layout:
-```
+3. Add the bootstrap namespace to the root view of your layout:
+   
+   ```xml
 xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
 ```
 
-* Build and run the app. 
+4. Build and run the app. 
 
+## More Information
 
 For further information and examples please look at the test project or the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
 * [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button)
