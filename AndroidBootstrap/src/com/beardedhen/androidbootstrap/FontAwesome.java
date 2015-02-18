@@ -19,8 +19,9 @@ public class FontAwesome {
 
 	//font awesome map as per 
 	//http://fortawesome.github.io/Font-Awesome/cheatsheet/
-	
-	static {
+
+    static { // Auto-generated FA-Map from 2015-02-07
+
         faMap.put("fa-adjust", "\uf042");
         faMap.put("fa-adn", "\uf170");
         faMap.put("fa-align-center", "\uf037");
@@ -64,9 +65,11 @@ public class FontAwesome {
         faMap.put("fa-backward", "\uf04a");
         faMap.put("fa-ban", "\uf05e");
         faMap.put("fa-bank", "\uf19c");
+        faMap.put("fa-bar-chart", "\uf080");
         faMap.put("fa-bar-chart-o", "\uf080");
         faMap.put("fa-barcode", "\uf02a");
         faMap.put("fa-bars", "\uf0c9");
+        faMap.put("fa-bed", "\uf236");
         faMap.put("fa-beer", "\uf0fc");
         faMap.put("fa-behance", "\uf1b4");
         faMap.put("fa-behance-square", "\uf1b5");
@@ -94,6 +97,7 @@ public class FontAwesome {
         faMap.put("fa-bullhorn", "\uf0a1");
         faMap.put("fa-bullseye", "\uf140");
         faMap.put("fa-bus", "\uf207");
+        faMap.put("fa-buysellads", "\uf20d");
         faMap.put("fa-cab", "\uf1ba");
         faMap.put("fa-calculator", "\uf1ec");
         faMap.put("fa-calendar", "\uf073");
@@ -109,6 +113,8 @@ public class FontAwesome {
         faMap.put("fa-caret-square-o-right", "\uf152");
         faMap.put("fa-caret-square-o-up", "\uf151");
         faMap.put("fa-caret-up", "\uf0d8");
+        faMap.put("fa-cart-arrow-down", "\uf218");
+        faMap.put("fa-cart-plus", "\uf217");
         faMap.put("fa-cc", "\uf20a");
         faMap.put("fa-cc-amex", "\uf1f3");
         faMap.put("fa-cc-discover", "\uf1f2");
@@ -139,6 +145,7 @@ public class FontAwesome {
         faMap.put("fa-circle-thin", "\uf1db");
         faMap.put("fa-clipboard", "\uf0ea");
         faMap.put("fa-clock-o", "\uf017");
+        faMap.put("fa-close", "\uf00d");
         faMap.put("fa-cloud", "\uf0c2");
         faMap.put("fa-cloud-download", "\uf0ed");
         faMap.put("fa-cloud-upload", "\uf0ee");
@@ -156,6 +163,7 @@ public class FontAwesome {
         faMap.put("fa-comments-o", "\uf0e6");
         faMap.put("fa-compass", "\uf14e");
         faMap.put("fa-compress", "\uf066");
+        faMap.put("fa-connectdevelop", "\uf20e");
         faMap.put("fa-copy", "\uf0c5");
         faMap.put("fa-copyright", "\uf1f9");
         faMap.put("fa-credit-card", "\uf09d");
@@ -167,11 +175,13 @@ public class FontAwesome {
         faMap.put("fa-cut", "\uf0c4");
         faMap.put("fa-cutlery", "\uf0f5");
         faMap.put("fa-dashboard", "\uf0e4");
+        faMap.put("fa-dashcube", "\uf210");
         faMap.put("fa-database", "\uf1c0");
         faMap.put("fa-dedent", "\uf03b");
         faMap.put("fa-delicious", "\uf1a5");
         faMap.put("fa-desktop", "\uf108");
         faMap.put("fa-deviantart", "\uf1bd");
+        faMap.put("fa-diamond", "\uf219");
         faMap.put("fa-digg", "\uf1a6");
         faMap.put("fa-dollar", "\uf155");
         faMap.put("fa-dot-circle-o", "\uf192");
@@ -198,9 +208,11 @@ public class FontAwesome {
         faMap.put("fa-external-link", "\uf08e");
         faMap.put("fa-external-link-square", "\uf14c");
         faMap.put("fa-eye", "\uf06e");
-        faMap.put("fa-eyedropper", "\uf1fb");
         faMap.put("fa-eye-slash", "\uf070");
+        faMap.put("fa-eyedropper", "\uf1fb");
         faMap.put("fa-facebook", "\uf09a");
+        faMap.put("fa-facebook-f", "\uf09a");
+        faMap.put("fa-facebook-official", "\uf230");
         faMap.put("fa-facebook-square", "\uf082");
         faMap.put("fa-fast-backward", "\uf049");
         faMap.put("fa-fast-forward", "\uf050");
@@ -242,6 +254,7 @@ public class FontAwesome {
         faMap.put("fa-folder-open", "\uf07c");
         faMap.put("fa-folder-open-o", "\uf115");
         faMap.put("fa-font", "\uf031");
+        faMap.put("fa-forumbee", "\uf211");
         faMap.put("fa-forward", "\uf04e");
         faMap.put("fa-foursquare", "\uf180");
         faMap.put("fa-frown-o", "\uf119");
@@ -252,6 +265,7 @@ public class FontAwesome {
         faMap.put("fa-ge", "\uf1d1");
         faMap.put("fa-gear", "\uf013");
         faMap.put("fa-gears", "\uf085");
+        faMap.put("fa-genderless", "\uf1db");
         faMap.put("fa-gift", "\uf06b");
         faMap.put("fa-git", "\uf1d3");
         faMap.put("fa-git-square", "\uf1d2");
@@ -266,6 +280,7 @@ public class FontAwesome {
         faMap.put("fa-google-plus-square", "\uf0d4");
         faMap.put("fa-google-wallet", "\uf1ee");
         faMap.put("fa-graduation-cap", "\uf19d");
+        faMap.put("fa-gratipay", "\uf184");
         faMap.put("fa-group", "\uf0c0");
         faMap.put("fa-h-square", "\uf0fd");
         faMap.put("fa-hacker-news", "\uf1d4");
@@ -278,9 +293,11 @@ public class FontAwesome {
         faMap.put("fa-headphones", "\uf025");
         faMap.put("fa-heart", "\uf004");
         faMap.put("fa-heart-o", "\uf08a");
+        faMap.put("fa-heartbeat", "\uf21e");
         faMap.put("fa-history", "\uf1da");
         faMap.put("fa-home", "\uf015");
         faMap.put("fa-hospital-o", "\uf0f8");
+        faMap.put("fa-hotel", "\uf236");
         faMap.put("fa-html5", "\uf13b");
         faMap.put("fa-ils", "\uf20b");
         faMap.put("fa-image", "\uf03e");
@@ -304,18 +321,20 @@ public class FontAwesome {
         faMap.put("fa-lastfm", "\uf202");
         faMap.put("fa-lastfm-square", "\uf203");
         faMap.put("fa-leaf", "\uf06c");
+        faMap.put("fa-leanpub", "\uf212");
         faMap.put("fa-legal", "\uf0e3");
         faMap.put("fa-lemon-o", "\uf094");
         faMap.put("fa-level-down", "\uf149");
         faMap.put("fa-level-up", "\uf148");
         faMap.put("fa-life-bouy", "\uf1cd");
+        faMap.put("fa-life-buoy", "\uf1cd");
         faMap.put("fa-life-ring", "\uf1cd");
         faMap.put("fa-life-saver", "\uf1cd");
         faMap.put("fa-lightbulb-o", "\uf0eb");
+        faMap.put("fa-line-chart", "\uf201");
         faMap.put("fa-link", "\uf0c1");
         faMap.put("fa-linkedin", "\uf0e1");
         faMap.put("fa-linkedin-square", "\uf08c");
-        faMap.put("fa-line-chart", "\uf201");
         faMap.put("fa-linux", "\uf17c");
         faMap.put("fa-list", "\uf03a");
         faMap.put("fa-list-alt", "\uf022");
@@ -334,10 +353,17 @@ public class FontAwesome {
         faMap.put("fa-mail-reply-all", "\uf122");
         faMap.put("fa-male", "\uf183");
         faMap.put("fa-map-marker", "\uf041");
+        faMap.put("fa-mars", "\uf222");
+        faMap.put("fa-mars-double", "\uf227");
+        faMap.put("fa-mars-stroke", "\uf229");
+        faMap.put("fa-mars-stroke-h", "\uf22b");
+        faMap.put("fa-mars-stroke-v", "\uf22a");
         faMap.put("fa-maxcdn", "\uf136");
         faMap.put("fa-meanpath", "\uf20c");
+        faMap.put("fa-medium", "\uf23a");
         faMap.put("fa-medkit", "\uf0fa");
         faMap.put("fa-meh-o", "\uf11a");
+        faMap.put("fa-mercury", "\uf223");
         faMap.put("fa-microphone", "\uf130");
         faMap.put("fa-microphone-slash", "\uf131");
         faMap.put("fa-minus", "\uf068");
@@ -349,8 +375,10 @@ public class FontAwesome {
         faMap.put("fa-money", "\uf0d6");
         faMap.put("fa-moon-o", "\uf186");
         faMap.put("fa-mortar-board", "\uf19d");
+        faMap.put("fa-motorcycle", "\uf21c");
         faMap.put("fa-music", "\uf001");
         faMap.put("fa-navicon", "\uf0c9");
+        faMap.put("fa-neuter", "\uf22c");
         faMap.put("fa-newspaper-o", "\uf1ea");
         faMap.put("fa-openid", "\uf19b");
         faMap.put("fa-outdent", "\uf03b");
@@ -374,8 +402,8 @@ public class FontAwesome {
         faMap.put("fa-pie-chart", "\uf200");
         faMap.put("fa-pied-piper", "\uf1a7");
         faMap.put("fa-pied-piper-alt", "\uf1a8");
-        faMap.put("fa-pied-piper-square", "\uf1a7");
         faMap.put("fa-pinterest", "\uf0d2");
+        faMap.put("fa-pinterest-p", "\uf231");
         faMap.put("fa-pinterest-square", "\uf0d3");
         faMap.put("fa-plane", "\uf072");
         faMap.put("fa-play", "\uf04b");
@@ -402,6 +430,7 @@ public class FontAwesome {
         faMap.put("fa-reddit", "\uf1a1");
         faMap.put("fa-reddit-square", "\uf1a2");
         faMap.put("fa-refresh", "\uf021");
+        faMap.put("fa-remove", "\uf00d");
         faMap.put("fa-renren", "\uf18b");
         faMap.put("fa-reorder", "\uf0c9");
         faMap.put("fa-repeat", "\uf01e");
@@ -424,8 +453,10 @@ public class FontAwesome {
         faMap.put("fa-search", "\uf002");
         faMap.put("fa-search-minus", "\uf010");
         faMap.put("fa-search-plus", "\uf00e");
+        faMap.put("fa-sellsy", "\uf213");
         faMap.put("fa-send", "\uf1d8");
         faMap.put("fa-send-o", "\uf1d9");
+        faMap.put("fa-server", "\uf233");
         faMap.put("fa-share", "\uf064");
         faMap.put("fa-share-alt", "\uf1e0");
         faMap.put("fa-share-alt-square", "\uf1e1");
@@ -434,17 +465,21 @@ public class FontAwesome {
         faMap.put("fa-shekel", "\uf20b");
         faMap.put("fa-sheqel", "\uf20b");
         faMap.put("fa-shield", "\uf132");
+        faMap.put("fa-ship", "\uf21a");
+        faMap.put("fa-shirtsinbulk", "\uf214");
         faMap.put("fa-shopping-cart", "\uf07a");
         faMap.put("fa-sign-in", "\uf090");
         faMap.put("fa-sign-out", "\uf08b");
         faMap.put("fa-signal", "\uf012");
+        faMap.put("fa-simplybuilt", "\uf215");
         faMap.put("fa-sitemap", "\uf0e8");
+        faMap.put("fa-skyatlas", "\uf216");
         faMap.put("fa-skype", "\uf17e");
         faMap.put("fa-slack", "\uf198");
         faMap.put("fa-sliders", "\uf1de");
         faMap.put("fa-slideshare", "\uf1e7");
         faMap.put("fa-smile-o", "\uf118");
-        faMap.put("fa-soccer-ball", "\uf1e3");
+        faMap.put("fa-soccer-ball-o", "\uf1e3");
         faMap.put("fa-sort", "\uf0dc");
         faMap.put("fa-sort-alpha-asc", "\uf15d");
         faMap.put("fa-sort-alpha-desc", "\uf15e");
@@ -477,10 +512,12 @@ public class FontAwesome {
         faMap.put("fa-step-forward", "\uf051");
         faMap.put("fa-stethoscope", "\uf0f1");
         faMap.put("fa-stop", "\uf04d");
+        faMap.put("fa-street-view", "\uf21d");
         faMap.put("fa-strikethrough", "\uf0cc");
         faMap.put("fa-stumbleupon", "\uf1a4");
         faMap.put("fa-stumbleupon-circle", "\uf1a3");
         faMap.put("fa-subscript", "\uf12c");
+        faMap.put("fa-subway", "\uf239");
         faMap.put("fa-suitcase", "\uf0f2");
         faMap.put("fa-sun-o", "\uf185");
         faMap.put("fa-superscript", "\uf12b");
@@ -515,6 +552,9 @@ public class FontAwesome {
         faMap.put("fa-toggle-on", "\uf205");
         faMap.put("fa-toggle-right", "\uf152");
         faMap.put("fa-toggle-up", "\uf151");
+        faMap.put("fa-train", "\uf238");
+        faMap.put("fa-transgender", "\uf224");
+        faMap.put("fa-transgender-alt", "\uf225");
         faMap.put("fa-trash", "\uf1f8");
         faMap.put("fa-trash-o", "\uf014");
         faMap.put("fa-tree", "\uf1bb");
@@ -541,7 +581,14 @@ public class FontAwesome {
         faMap.put("fa-usd", "\uf155");
         faMap.put("fa-user", "\uf007");
         faMap.put("fa-user-md", "\uf0f0");
+        faMap.put("fa-user-plus", "\uf234");
+        faMap.put("fa-user-secret", "\uf21b");
+        faMap.put("fa-user-times", "\uf235");
         faMap.put("fa-users", "\uf0c0");
+        faMap.put("fa-venus", "\uf221");
+        faMap.put("fa-venus-double", "\uf226");
+        faMap.put("fa-venus-mars", "\uf228");
+        faMap.put("fa-viacoin", "\uf237");
         faMap.put("fa-video-camera", "\uf03d");
         faMap.put("fa-vimeo-square", "\uf194");
         faMap.put("fa-vine", "\uf1ca");
@@ -553,6 +600,7 @@ public class FontAwesome {
         faMap.put("fa-wechat", "\uf1d7");
         faMap.put("fa-weibo", "\uf18a");
         faMap.put("fa-weixin", "\uf1d7");
+        faMap.put("fa-whatsapp", "\uf232");
         faMap.put("fa-wheelchair", "\uf193");
         faMap.put("fa-wifi", "\uf1eb");
         faMap.put("fa-windows", "\uf17a");
@@ -562,12 +610,12 @@ public class FontAwesome {
         faMap.put("fa-xing", "\uf168");
         faMap.put("fa-xing-square", "\uf169");
         faMap.put("fa-yahoo", "\uf19e");
-        faMap.put("fa-yelp", "\uf189");
+        faMap.put("fa-yelp", "\uf1e9");
         faMap.put("fa-yen", "\uf157");
         faMap.put("fa-youtube", "\uf167");
         faMap.put("fa-youtube-play", "\uf16a");
         faMap.put("fa-youtube-square", "\uf166");
-	}
+    }
 
     public static String getUnicode(String iconCode) {
         String unicode = faMap.get(iconCode);
