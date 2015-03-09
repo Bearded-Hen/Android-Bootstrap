@@ -2,24 +2,21 @@ package com.beardedhen.androidbootstrap.utils;
 
 
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Bitmap.Config;
-import android.graphics.PorterDuff.Mode;
 
-public class ImageUtils
-{
+public class ImageUtils {
 
-    public static Bitmap getCircleBitmap(Bitmap bitmap)
-    {
+    public static Bitmap getCircleBitmap(Bitmap bitmap) {
         return getCircleBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight());
     }
 
-    public static Bitmap getCircleBitmap(Bitmap bitmap, int width, int height)
-    {
+    public static Bitmap getCircleBitmap(Bitmap bitmap, int width, int height) {
         Bitmap croppedBitmap = scaleCenterCrop(bitmap, width, height);
         Bitmap output = Bitmap.createBitmap(width, height, Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
@@ -33,7 +30,7 @@ public class ImageUtils
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
 
-        int radius =  (width > height) ? height : width;
+        int radius = (width > height) ? height : width;
         radius /= 2;
 
         canvas.drawCircle(width / 2, height / 2, radius, paint);
@@ -43,8 +40,7 @@ public class ImageUtils
         return output;
     }
 
-    public static Bitmap scaleCenterCrop(Bitmap source, int newHeight, int newWidth)
-    {
+    public static Bitmap scaleCenterCrop(Bitmap source, int newHeight, int newWidth) {
         int sourceWidth = source.getWidth();
         int sourceHeight = source.getHeight();
 

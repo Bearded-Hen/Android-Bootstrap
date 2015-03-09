@@ -117,7 +117,8 @@ public class AutoResizeTextView extends TextView {
         super.setSingleLine(singleLine);
         if (singleLine) {
             mMaxLines = 1;
-        } else {
+        }
+        else {
             mMaxLines = NO_LINE_LIMIT;
         }
         reAdjust();
@@ -135,10 +136,12 @@ public class AutoResizeTextView extends TextView {
         Context c = getContext();
         Resources r;
 
-        if (c == null)
+        if (c == null) {
             r = Resources.getSystem();
-        else
+        }
+        else {
             r = c.getResources();
+        }
         mMaxTextSize = TypedValue.applyDimension(unit, size,
                 r.getDisplayMetrics());
         mTextCachedSizes.clear();
@@ -193,7 +196,8 @@ public class AutoResizeTextView extends TextView {
             if (singleline) {
                 mTextRect.bottom = mPaint.getFontSpacing();
                 mTextRect.right = mPaint.measureText(text);
-            } else {
+            }
+            else {
                 StaticLayout layout = new StaticLayout(text, mPaint,
                         mWidthLimit, Alignment.ALIGN_NORMAL, mSpacingMult,
                         mSpacingAdd, true);
@@ -216,7 +220,8 @@ public class AutoResizeTextView extends TextView {
             if (availableSPace.contains(mTextRect)) {
                 // may be too small, don't worry we will find the best match
                 return -1;
-            } else {
+            }
+            else {
                 // too big
                 return 1;
             }
@@ -265,10 +270,12 @@ public class AutoResizeTextView extends TextView {
             if (midValCmp < 0) {
                 lastBest = lo;
                 lo = mid + 1;
-            } else if (midValCmp > 0) {
+            }
+            else if (midValCmp > 0) {
                 hi = mid - 1;
                 lastBest = hi;
-            } else {
+            }
+            else {
                 return mid;
             }
         }

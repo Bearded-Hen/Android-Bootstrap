@@ -5,29 +5,31 @@
     android:id="@+id/container"
     android:duplicateParentState="true"
     android:padding="@dimen/padding_small"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/placeholder"
         android:orientation="vertical"
-        android:gravity="center" 
-        android:padding="16dp">
-        
-        <com.beardedhen.androidbootstrap.utils.AutoResizeTextView
-            android:id="@+id/dimensionsLabel"   
-	        android:layout_width="match_parent"
-	        android:layout_height="100dp"
-	        android:ellipsize="none"
-	        android:gravity="center"
-	        android:maxLines="1"
-	        android:textSize="100sp" 
-	        android:textColor="@color/bthumbnail_font"/>
+        android:gravity="center"
+        android:padding="16dp"
+        >
 
-        
+        <com.beardedhen.androidbootstrap.utils.AutoResizeTextView
+            android:id="@+id/dimensionsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="100sp"
+            android:textColor="@color/bthumbnail_font"
+            />
+
+
     </LinearLayout>
-    
-    
+
 
 </LinearLayout>

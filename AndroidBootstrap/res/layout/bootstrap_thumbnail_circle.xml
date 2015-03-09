@@ -4,19 +4,22 @@
     android:layout_height="wrap_content"
     android:id="@+id/container"
     android:duplicateParentState="true"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/placeholder"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/image"/>
+            android:id="@+id/image"
+            />
 
         <com.beardedhen.androidbootstrap.utils.AutoResizeTextView
             android:id="@+id/dimensionsLabel"
@@ -26,7 +29,8 @@
             android:gravity="center"
             android:maxLines="1"
             android:textSize="100sp"
-            android:textColor="@color/bthumbnail_font"/>
+            android:textColor="@color/bthumbnail_font"
+            />
 
     </LinearLayout>
 </LinearLayout>

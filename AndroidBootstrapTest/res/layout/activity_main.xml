@@ -1,12 +1,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <include layout="@layout/font_awesome_text_example" />
 
@@ -36,7 +38,8 @@
             bootstrapbutton:bb_roundedCorners="true"
             bootstrapbutton:bb_type="primary"
             bootstrapbutton:bb_text_gravity="right"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            />
 
     </LinearLayout>
 

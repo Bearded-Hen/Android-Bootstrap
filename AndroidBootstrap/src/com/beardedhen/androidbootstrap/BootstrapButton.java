@@ -12,31 +12,29 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 public class BootstrapButton extends FrameLayout {
-	
-	private TextView lblMiddle;
-	private TextView lblRight;
-	private TextView lblLeft;
-	private ViewGroup layout;
-	private boolean roundedCorners = false;
-	private boolean fillparent = false;
 
-    private enum BootstrapType
-    {
-        DEFAULT("default",  R.drawable.bbuton_default,  R.drawable.bbuton_default_rounded,  R.color.black),
-        PRIMARY("primary",  R.drawable.bbuton_primary,  R.drawable.bbuton_primary_rounded,  R.color.white),
-        SUCCESS("success",  R.drawable.bbuton_success,  R.drawable.bbuton_success_rounded,  R.color.white),
-        INFO(   "info",     R.drawable.bbuton_info,     R.drawable.bbuton_info_rounded,     R.color.white),
-        WARNING("warning",  R.drawable.bbuton_warning,  R.drawable.bbuton_warning_rounded,  R.color.white),
-        DANGER( "danger",   R.drawable.bbuton_danger,   R.drawable.bbuton_danger_rounded,   R.color.white),
-        INVERSE("inverse",  R.drawable.bbuton_inverse,  R.drawable.bbuton_inverse_rounded,  R.color.white);
+    private TextView lblMiddle;
+    private TextView lblRight;
+    private TextView lblLeft;
+    private ViewGroup layout;
+    private boolean roundedCorners = false;
+    private boolean fillparent = false;
+
+    private enum BootstrapType {
+        DEFAULT("default", R.drawable.bbuton_default, R.drawable.bbuton_default_rounded, R.color.black),
+        PRIMARY("primary", R.drawable.bbuton_primary, R.drawable.bbuton_primary_rounded, R.color.white),
+        SUCCESS("success", R.drawable.bbuton_success, R.drawable.bbuton_success_rounded, R.color.white),
+        INFO("info", R.drawable.bbuton_info, R.drawable.bbuton_info_rounded, R.color.white),
+        WARNING("warning", R.drawable.bbuton_warning, R.drawable.bbuton_warning_rounded, R.color.white),
+        DANGER("danger", R.drawable.bbuton_danger, R.drawable.bbuton_danger_rounded, R.color.white),
+        INVERSE("inverse", R.drawable.bbuton_inverse, R.drawable.bbuton_inverse_rounded, R.color.white);
 
         private String type;
         private int normalBg;
         private int roundedBg;
         private int textColour;
 
-        BootstrapType(String type, int normalBg, int roundedBg, int textColour)
-        {
+        BootstrapType(String type, int normalBg, int roundedBg, int textColour) {
             this.type = type;
             this.normalBg = normalBg;
             this.roundedBg = roundedBg;
@@ -67,10 +65,10 @@ public class BootstrapButton extends FrameLayout {
 
     private enum BootstrapSize {
 
-        LARGE(  "large",    20.0f,  15, 20),
-        DEFAULT("default",  14.0f,  10, 15),
-        SMALL(  "small",    12.0f,  5,  10),
-        XSMALL( "xsmall",   10.0f,  2,  5);
+        LARGE("large", 20.0f, 15, 20),
+        DEFAULT("default", 14.0f, 10, 15),
+        SMALL("small", 12.0f, 5, 10),
+        XSMALL("xsmall", 10.0f, 2, 5);
 
         private float fontSize;
         private String type;
@@ -107,22 +105,21 @@ public class BootstrapButton extends FrameLayout {
         super(context, attrs);
         initialise(attrs);
     }
-	
-	public BootstrapButton(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		initialise(attrs);
-	}
 
-	private void initialise(AttributeSet attrs)
-	{
-		LayoutInflater inflater = LayoutInflater.from(getContext());
+    public BootstrapButton(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        initialise(attrs);
+    }
+
+    private void initialise(AttributeSet attrs) {
+        LayoutInflater inflater = LayoutInflater.from(getContext());
 
         float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
         float scale = getResources().getDisplayMetrics().density; //for padding
         int paddingA;
         int paddingB;
 
-		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
 
         String iconLeft = "";
         String iconRight = "";
@@ -172,8 +169,7 @@ public class BootstrapButton extends FrameLayout {
                     fontSize = rawSize / scaledDensity;
                 }
             }
-        }
-        finally {
+        } finally {
             if (a != null) {
                 a.recycle();
             }
@@ -210,8 +206,8 @@ public class BootstrapButton extends FrameLayout {
         boolean onlyIcon = true;
 
         //set the text
-        if(text.length() > 0){
-            lblMiddle.setText(text );
+        if (text.length() > 0) {
+            lblMiddle.setText(text);
             lblMiddle.setVisibility(View.VISIBLE);
             onlyIcon = false;
         }
@@ -219,8 +215,7 @@ public class BootstrapButton extends FrameLayout {
         setupIconLeft(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
         setupIconRight(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
 
-        if(iconLeft.length() > 0 && iconRight.length() > 0 )
-        {
+        if (iconLeft.length() > 0 && iconRight.length() > 0) {
             lblMiddle.setPadding(paddingA, 0, paddingA, 0);
         }
 
@@ -230,7 +225,7 @@ public class BootstrapButton extends FrameLayout {
         layout.setPadding(0, paddingB, 0, paddingB);
 
         addView(v);
-	}
+    }
 
     private void setupIconLeft(int paddingA, int paddingB, String iconLeft, String iconRight, boolean onlyIcon) {
         //set up the padding
@@ -238,14 +233,15 @@ public class BootstrapButton extends FrameLayout {
             setLeftIcon(iconLeft);
             lblLeft.setVisibility(View.VISIBLE);
 
-            if (!onlyIcon){
+            if (!onlyIcon) {
                 lblLeft.setPadding(paddingB, 0, 0, 0);
-            } else {
+            }
+            else {
                 lblLeft.setPadding(paddingB, 0, paddingB, 0);
             }
 
             //padding for symmetry
-            if (( iconRight.length() == 0) && !onlyIcon) {
+            if ((iconRight.length() == 0) && !onlyIcon) {
                 lblMiddle.setPadding(paddingA, 0, paddingB, 0);
             }
         }
@@ -256,14 +252,15 @@ public class BootstrapButton extends FrameLayout {
             setRightIcon(iconRight);
             lblRight.setVisibility(View.VISIBLE);
 
-            if (!onlyIcon){
+            if (!onlyIcon) {
                 lblRight.setPadding(0, 0, paddingB, 0);
-            }else {
+            }
+            else {
                 lblRight.setPadding(paddingB, 0, paddingB, 0);
             }
 
             //padding for symmetry
-            if ( (iconLeft.length() == 0) && !onlyIcon) {
+            if ((iconLeft.length() == 0) && !onlyIcon) {
                 lblMiddle.setPadding(paddingB, 0, paddingA, 0);
             }
         }
@@ -272,81 +269,87 @@ public class BootstrapButton extends FrameLayout {
     public void setText(int stringId) {
         setText(getContext().getResources().getString(stringId));
     }
-	
-	/**
-	 * Changes the button text
-	 * @param text - String value for what is displayed on the button
-	 */
-	public void setText(String text) {
-		lblMiddle.setText(text);
-	}
 
-	/**
-	 * Changes the left icon on a BootstrapButton
-	 * @param leftIcon- String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
-	 */
-	public void setLeftIcon(String leftIcon) {
-		lblLeft.setText(FontAwesome.getUnicode(leftIcon));
-	}
-	
-	/**
-	 * Changes the right icon on a BootstrapButton
-	 * @param rightIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
-	 */
-	public void setRightIcon(String rightIcon) {
+    /**
+     * Changes the button text
+     *
+     * @param text - String value for what is displayed on the button
+     */
+    public void setText(String text) {
+        lblMiddle.setText(text);
+    }
+
+    /**
+     * Changes the left icon on a BootstrapButton
+     *
+     * @param leftIcon- String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
+     */
+    public void setLeftIcon(String leftIcon) {
+        lblLeft.setText(FontAwesome.getUnicode(leftIcon));
+    }
+
+    /**
+     * Changes the right icon on a BootstrapButton
+     *
+     * @param rightIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
+     */
+    public void setRightIcon(String rightIcon) {
         lblRight.setText(FontAwesome.getUnicode(rightIcon));
-	}
-	
-	/**
-	 * Changes the type of BootstrapButton
-	 * @param bootstrapType - String value for the type of button e.g. "primary"
-	 */
-	public void setBootstrapType(String bootstrapType) {
+    }
+
+    /**
+     * Changes the type of BootstrapButton
+     *
+     * @param bootstrapType - String value for the type of button e.g. "primary"
+     */
+    public void setBootstrapType(String bootstrapType) {
         BootstrapType type = BootstrapType.getBootstrapTypeFromString(bootstrapType);
 
         int buttonBg = (roundedCorners) ? type.getRoundedBg() : type.getNormalBg();
-		layout.setBackgroundResource(buttonBg);
+        layout.setBackgroundResource(buttonBg);
 
         int textColor = getResources().getColor(type.getTextColour());
 
-		lblLeft.setTextColor(textColor);
-		lblMiddle.setTextColor(textColor);
-		lblRight.setTextColor(textColor);
-	}
-	
-	/**
-	 * Specifies whether the BootstrapButton is enabled or disabled
-	 * @param enabled - boolean state for either enabled or disabled
-	 */
-	public void setBootstrapButtonEnabled(boolean enabled)
-	{
-		this.setEnabled(enabled);
-	}
-	
-	/**
-	 * Changes the gravity for the text on a bootstrap button that is not wrap_content
-	 * @param gravity - string for either center, right, or left.
-	 */
-	public void setTextGravity(String gravity) {
+        lblLeft.setTextColor(textColor);
+        lblMiddle.setTextColor(textColor);
+        lblRight.setTextColor(textColor);
+    }
+
+    /**
+     * Specifies whether the BootstrapButton is enabled or disabled
+     *
+     * @param enabled - boolean state for either enabled or disabled
+     */
+    public void setBootstrapButtonEnabled(boolean enabled) {
+        this.setEnabled(enabled);
+    }
+
+    /**
+     * Changes the gravity for the text on a bootstrap button that is not wrap_content
+     *
+     * @param gravity - string for either center, right, or left.
+     */
+    public void setTextGravity(String gravity) {
         int gravityId = -1;
 
-		if(gravity.equals("left")) {
+        if (gravity.equals("left")) {
             gravityId = Gravity.LEFT;
-		}
+        }
         else if (gravity.equals("center")) {
             gravityId = Gravity.CENTER_HORIZONTAL;
-		}
+        }
         else if (gravity.equals("right")) {
             gravityId = Gravity.RIGHT;
-		}
+        }
 
         if (gravityId != -1) {
             lblMiddle.setGravity(gravityId | Gravity.CENTER_VERTICAL);
         }
-	}
+    }
 
     /**
      * Returns the text the BootstrapButton is displaying.
+     *
      * @return CharSequence of text displayed
      */
     public CharSequence getText() {

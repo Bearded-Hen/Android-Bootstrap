@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class FontAwesome {
 
-	private static Map<String, String> faMap = new HashMap<String, String>();
+    private static Map<String, String> faMap = new HashMap<String, String>();
 
     private static Typeface font;
 
@@ -17,8 +17,8 @@ public class FontAwesome {
 
     private static final String UNKNOWN_CODE = "fa-question";
 
-	//font awesome map as per 
-	//http://fortawesome.github.io/Font-Awesome/cheatsheet/
+    //font awesome map as per
+    //http://fortawesome.github.io/Font-Awesome/cheatsheet/
 
     static { // Auto-generated FA-Map from 2015-02-07
 
@@ -622,9 +622,8 @@ public class FontAwesome {
         return (unicode == null) ? faMap.get(UNKNOWN_CODE) : unicode;
     }
 
-    public static Typeface getFont(Context context)
-    {
-        if(font == null) {
+    public static Typeface getFont(Context context) {
+        if (font == null) {
             try {
                 font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
             } catch (Exception e) {
@@ -634,5 +633,5 @@ public class FontAwesome {
         }
         return font;
     }
-	
+
 }
