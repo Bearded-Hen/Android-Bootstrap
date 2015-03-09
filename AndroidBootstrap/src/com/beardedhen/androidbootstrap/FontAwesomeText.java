@@ -95,9 +95,6 @@ public class FontAwesomeText extends FrameLayout {
             setIcon(icon);
             tv.setTypeface(FontAwesome.getFont(getContext()));
         }
-        else {
-            fontAwesomeTextView = inflater.inflate(R.layout.placeholder, this, false);
-        }
 
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
         addView(fontAwesomeTextView);

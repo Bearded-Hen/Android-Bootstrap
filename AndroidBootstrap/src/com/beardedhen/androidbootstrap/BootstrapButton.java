@@ -191,10 +191,7 @@ public class BootstrapButton extends FrameLayout {
         setBootstrapType(bootstrapStringType);
         //set the font awesome icon typeface
 
-
-
         if (!isInEditMode()) {
-
             lblLeft.setTypeface(FontAwesome.getFont(getContext()));
             lblRight.setTypeface(FontAwesome.getFont(getContext()));
         }
