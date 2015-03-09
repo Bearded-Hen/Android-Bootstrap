@@ -34,6 +34,14 @@ public class BootstrapThumbnail extends FrameLayout {
         public static ThumbnailTypes getTypeFromBoolean(boolean roundedCorners) {
             return (roundedCorners) ? ROUNDED : SQUARE;
         }
+
+        public int getContainerDrawable() {
+            return containerDrawable;
+        }
+
+        public int getPlaceholderDrawable() {
+            return placeholderDrawable;
+        }
     }
 
     public BootstrapThumbnail(Context context) {
@@ -109,12 +117,12 @@ public class BootstrapThumbnail extends FrameLayout {
         type = ThumbnailTypes.getTypeFromBoolean(roundedCorners);
 
         //apply the background type
-        container.setBackgroundResource(type.containerDrawable);
+        container.setBackgroundResource(type.getContainerDrawable());
 
         //if no image is provided by user
         if (imageDrawable == 0) {
             //set default grey placeholder background
-            placeholder.setBackgroundResource(type.placeholderDrawable);
+            placeholder.setBackgroundResource(type.getPlaceholderDrawable());
 
             //set the text
             if (text.length() > 0) {
