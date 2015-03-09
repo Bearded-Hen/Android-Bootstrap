@@ -25,9 +25,9 @@ dependencies {
 Alternatively you can use Android Bootstrap as a library project by downloading the source and linking to it in Eclipse.
 
 
-### Four more steps
+### Usage
 
-1. Copy [__fontawesome-webfont.ttf__](https://github.com/Bearded-Hen/Android-Bootstrap/raw/master/fontawesome-webfont.ttf) into the __assets folder__ of your project, as otherwise  __FontAwesome won't work__.
+1. Copy [__fontawesome-webfont.ttf__](https://github.com/Bearded-Hen/Android-Bootstrap/raw/master/fontawesome-webfont.ttf) into the __assets folder__ of your project, as otherwise  __FontAwesome won't work__. In a default Android Studio project this should be located at __app/src/main/assets__
 
 2. Paste the following XML into a layout file to create a BootstrapButton:
    
@@ -53,7 +53,9 @@ xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
 
 ## More Information
 
-For further information and examples please look at the test project or the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
+For examples please checkout the [test project](https://github.com/Bearded-Hen/AndroidBootstrapSample) which contains sample code.
+
+Alternatively feel free to inspect the library source or look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
 * [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button)
 * [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
 * [bootstrap edit texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Edit-Text)
@@ -76,7 +78,7 @@ If you have any questions, issues, or just want to let us know where you're usin
 * Various sized buttons (large to extra small)
 * Just text buttons
 * Left, right, left and right, or just icon button
-* Font Awesome text as per Font Awesome v4
+* Font Awesome text as per Font Awesome v4.3
 * Animations to Font Awesome Text items
 * EditText backgrounds and states
 
