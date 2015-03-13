@@ -17,8 +17,6 @@
 
     <declare-styleable name="FontAwesomeText">
         <attr name="fa_icon" format="string" />
-        <attr name="android:textSize" />
-        <attr name="android:textColor" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapEditText">

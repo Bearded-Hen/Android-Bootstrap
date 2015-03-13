@@ -3,7 +3,6 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -61,20 +60,6 @@ public class FontAwesomeText extends TextView {
                 // icon
                 icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
                 icon = (icon == null) ? "" : icon;
-
-                //font size
-                if (a.getString(R.styleable.FontAwesomeText_android_textSize) != null) {
-                    float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                    float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
-
-                    float rawSize = a.getDimension(R.styleable.FontAwesomeText_android_textSize, defaultDimen);
-                    fontSize = rawSize / scaledDensity;
-                }
-
-                //text colour
-                if (a.getString(R.styleable.FontAwesomeText_android_textColor) != null) {
-                    this.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
-                }
             }
         } finally {
             if (a != null) {
@@ -86,8 +71,6 @@ public class FontAwesomeText extends TextView {
             setIcon(icon);
             this.setTypeface(FontAwesome.getFont(getContext()));
         }
-
-        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
     }
 
     /**

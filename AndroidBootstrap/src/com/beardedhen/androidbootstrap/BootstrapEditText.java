@@ -3,12 +3,12 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.TypedValue;
+import android.view.Gravity;
 import android.widget.EditText;
 
 public class BootstrapEditText extends EditText {
 
-    private enum TextState {
+    public enum TextState {
 
         DEFAULT("default", R.drawable.edittext_background_rounded, R.drawable.edittext_background),
         SUCCESS("success", R.drawable.edittext_background_rounded_success, R.drawable.edittext_background_success),
@@ -64,38 +64,15 @@ public class BootstrapEditText extends EditText {
     private void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapEditText);
 
-        float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
         String state = "default";
-        String text = "";
-        String hint = "";
-        boolean enabled = true;
 
         try {
             if (a != null) {
-                if (a.getString(R.styleable.BootstrapEditText_android_textSize) != null) {
-                    float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                    float defaultDimen = FontAwesome.DEFAULT_FONT_SIZE * scaledDensity;
-
-                    float rawSize = a.getDimension(R.styleable.BootstrapEditText_android_textSize, defaultDimen);
-                    fontSize = rawSize / scaledDensity;
-                }
-
                 roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
 
                 //state
                 state = a.getString(R.styleable.BootstrapEditText_be_state);
                 state = (state == null) ? "default" : state;
-
-                //text
-                text = a.getString(R.styleable.BootstrapEditText_android_text);
-                text = (text == null) ? "" : text;
-
-                //hint
-                hint = a.getString(R.styleable.BootstrapEditText_android_hint);
-                hint = (hint == null) ? "" : hint;
-
-                //enabled
-                enabled = a.getBoolean(R.styleable.BootstrapEditText_android_enabled, true);
             }
         } finally {
             if (a != null) {
@@ -103,13 +80,9 @@ public class BootstrapEditText extends EditText {
             }
         }
 
-        //set values
-        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-        this.setText(text);
-        this.setHint(hint);
-        this.setEnabled(enabled);
+        setGravity(Gravity.CENTER_VERTICAL);
 
-        if (enabled) {
+        if (this.isEnabled()) {
             textState = TextState.getStateFromString(state);
             setState(state);
         }
@@ -129,8 +102,15 @@ public class BootstrapEditText extends EditText {
     /**
      * Change the BootstrapEditTextState
      *
-     * @param state a string of success, warning, danger, or default.
-     *              If the string is not recognised, then the state will be automatically set to default.
+     * @param state an enum of success, warning, danger, or default.
+     */
+    public void setState(TextState state) {
+        this.textState = state;
+        setBackgroundDrawable(textState);
+    }
+
+    /**
+     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
      */
     public void setState(String state) {
         this.textState = TextState.getStateFromString(state);
@@ -138,30 +118,30 @@ public class BootstrapEditText extends EditText {
     }
 
     /**
-     * Set the BootstrapEditText to a successful state
+     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
      */
-    public void setSuccess() {
+    @Deprecated public void setSuccess() {
         setBackgroundDrawable(TextState.SUCCESS);
     }
 
     /**
-     * Set the BootstrapEditText to a warning state
+     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
      */
-    public void setWarning() {
+    @Deprecated public void setWarning() {
         setBackgroundDrawable(TextState.WARNING);
     }
 
     /**
-     * Set the BootstrapEditText to a danger state
+     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
      */
-    public void setDanger() {
+    @Deprecated public void setDanger() {
         setBackgroundDrawable(TextState.DANGER);
     }
 
     /**
-     * Set the BootstrapEditText to a default state
+     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
      */
-    public void setDefault() {
+    @Deprecated public void setDefault() {
         setBackgroundDrawable(TextState.DEFAULT);
     }
 
