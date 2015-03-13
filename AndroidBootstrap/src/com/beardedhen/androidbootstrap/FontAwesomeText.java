@@ -4,18 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
-public class FontAwesomeText extends FrameLayout {
-
-    private TextView tv;
+public class FontAwesomeText extends TextView {
 
     public enum AnimationSpeed {
         FAST(500, 200),
@@ -55,10 +50,6 @@ public class FontAwesomeText extends FrameLayout {
     }
 
     private void initialise(AttributeSet attrs) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-
-        View fontAwesomeTextView = inflater.inflate(R.layout.font_awesome_text, this, false);
-        tv = (TextView) fontAwesomeTextView.findViewById(R.id.lblText);
 
         float fontSize = FontAwesome.DEFAULT_FONT_SIZE;
         String icon = "";
@@ -82,7 +73,7 @@ public class FontAwesomeText extends FrameLayout {
 
                 //text colour
                 if (a.getString(R.styleable.FontAwesomeText_android_textColor) != null) {
-                    tv.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
+                    this.setTextColor(a.getColor(R.styleable.FontAwesomeText_android_textColor, R.color.bbutton_inverse));
                 }
             }
         } finally {
@@ -93,11 +84,10 @@ public class FontAwesomeText extends FrameLayout {
 
         if (!isInEditMode()) {
             setIcon(icon);
-            tv.setTypeface(FontAwesome.getFont(getContext()));
+            this.setTypeface(FontAwesome.getFont(getContext()));
         }
 
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-        addView(fontAwesomeTextView);
+        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
     }
 
     /**
@@ -127,10 +117,10 @@ public class FontAwesomeText extends FrameLayout {
         final Animation animation = fadeIn;
 
         //run the animation - used to work correctly on older devices
-        tv.postDelayed(new Runnable() {
+        this.postDelayed(new Runnable() {
             @Override
             public void run() {
-                tv.startAnimation(animation);
+                startAnimation(animation);
             }
         }, 100);
     }
@@ -165,10 +155,10 @@ public class FontAwesomeText extends FrameLayout {
         final Animation animation = rotate;
 
         //run the animation - used to work correctly on older devices
-        tv.postDelayed(new Runnable() {
+        this.postDelayed(new Runnable() {
             @Override
             public void run() {
-                tv.startAnimation(animation);
+                startAnimation(animation);
             }
         }, 100);
     }
@@ -178,7 +168,7 @@ public class FontAwesomeText extends FrameLayout {
      */
     public void stopAnimation() {
         //stop the animation
-        tv.clearAnimation();
+        this.clearAnimation();
     }
 
     /**
@@ -187,26 +177,7 @@ public class FontAwesomeText extends FrameLayout {
      * @param faIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
      */
     public void setIcon(String faIcon) {
-        tv.setText(FontAwesome.getUnicode(faIcon));
-    }
-
-    /**
-     * Used to set the text color of the underlying text view.
-     *
-     * @param color - Integer value representing a color resource.
-     */
-    public void setTextColor(int color) {
-        tv.setTextColor(color);
-    }
-
-    /**
-     * Used to set the text size of the underlying text view.
-     *
-     * @param unit - Integer value representing a unit size
-     * @param size - Float value representing text size
-     */
-    public void setTextSize(int unit, float size) {
-        tv.setTextSize(unit, size);
+        this.setText(FontAwesome.getUnicode(faIcon));
     }
 
 }
