@@ -22,9 +22,9 @@ public class BootstrapCircleThumbnail extends FrameLayout {
         LARGE("large", 6, 112),
         XLARGE("xlarge", 8, 176);
 
-        private String type;
-        private int padding;
-        private int diameter;
+        private final String type;
+        private final int padding;
+        private final int diameter;
 
         private BootstrapCircleType(String type, int padding, int diameter) {
             this.type = type;
@@ -128,8 +128,8 @@ public class BootstrapCircleThumbnail extends FrameLayout {
         //make inner image smaller to compensate for the padding so that entire circle including padding equals the size
         //ex. small image = 48dp, small padding = 4dp, inner image = 48 - (4 * 2) = 40
         if (!this.minimal) {
-            imageSizeWidthPX = imageSizeWidthPX - (paddingPX * 2);
-            imageSizeHeightPX = imageSizeHeightPX - (paddingPX * 2);
+            imageSizeWidthPX -= (paddingPX * 2);
+            imageSizeHeightPX -= (paddingPX * 2);
 
             container.setPadding(paddingPX, paddingPX, paddingPX, paddingPX);
             container.setBackgroundResource(R.drawable.thumbnail_circle_container);
@@ -180,8 +180,8 @@ public class BootstrapCircleThumbnail extends FrameLayout {
         int paddingPX = (int) ((this.padding * scale) + 0.5);
 
         if (!this.minimal) {
-            widthPX = widthPX - (paddingPX * 2);
-            heightPX = heightPX - (paddingPX * 2);
+            widthPX -= (paddingPX * 2);
+            heightPX -= (paddingPX * 2);
         }
 
         Bitmap roundBitmap = ImageUtils.getCircleBitmap(bitmap, widthPX, heightPX);

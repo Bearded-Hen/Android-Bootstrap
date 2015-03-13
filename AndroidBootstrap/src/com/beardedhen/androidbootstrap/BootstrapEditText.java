@@ -15,9 +15,9 @@ public class BootstrapEditText extends EditText {
         WARNING("warning", R.drawable.edittext_background_rounded_warning, R.drawable.edittext_background_warning),
         DANGER("danger", R.drawable.edittext_background_rounded_danger, R.drawable.edittext_background_danger);
 
-        private String state;
-        private int roundedBg;
-        private int normalBg;
+        private final String state;
+        private final int roundedBg;
+        private final int normalBg;
 
         private TextState(String state, int roundedBg, int normalBg) {
             this.state = state;
@@ -166,11 +166,14 @@ public class BootstrapEditText extends EditText {
     }
 
     /**
+     * THIS METHOD IS DEPRECATED AND WILL BE REMOVED IN A FUTURE RELEASE.
+     * Use setEnabled() instead.
+     *
      * Specifies whether the BootstrapEditText is enabled or disabled
      *
      * @param enabled - boolean state for either enabled or disabled
      */
-    public void setBootstrapEditTextEnabled(boolean enabled) {
+    @Deprecated public void setBootstrapEditTextEnabled(boolean enabled) {
         this.setEnabled(enabled);
     }
 

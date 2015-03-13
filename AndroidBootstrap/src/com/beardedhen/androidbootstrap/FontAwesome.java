@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class FontAwesome {
 
-    private static Map<String, String> faMap = new HashMap<String, String>();
+    private static final Map<String, String> faMap = new HashMap<>();
 
     private static Typeface font;
 

@@ -30,7 +30,7 @@ public class AutoResizeTextView extends TextView {
         public int onTestSize(int suggestedSize, RectF availableSpace);
     }
 
-    private RectF mTextRect = new RectF();
+    private final RectF mTextRect = new RectF();
 
     private RectF mAvailableSpaceRect;
 

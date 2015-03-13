@@ -22,8 +22,8 @@ public class FontAwesomeText extends FrameLayout {
         MEDIUM(1000, 500),
         SLOW(2000, 1000);
 
-        private long rotateDuration;
-        private long flashDuration;
+        private final long rotateDuration;
+        private final long flashDuration;
 
         private AnimationSpeed(long rotateDuration, long flashDuration) {
             this.rotateDuration = rotateDuration;

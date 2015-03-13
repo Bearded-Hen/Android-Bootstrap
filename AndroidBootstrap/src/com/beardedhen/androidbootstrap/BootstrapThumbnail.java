@@ -23,8 +23,8 @@ public class BootstrapThumbnail extends FrameLayout {
         ROUNDED(R.drawable.bthumbnail_container_rounded, R.drawable.bthumbnail_placeholder_default),
         SQUARE(R.drawable.bthumbnail_container_square, R.drawable.bthumbnail_placeholder_default);
 
-        private int containerDrawable;
-        private int placeholderDrawable;
+        private final int containerDrawable;
+        private final int placeholderDrawable;
 
         ThumbnailTypes(int containerDrawable, int placeholderDrawable) {
             this.containerDrawable = containerDrawable;

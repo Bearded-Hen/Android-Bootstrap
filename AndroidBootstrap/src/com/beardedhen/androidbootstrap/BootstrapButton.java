@@ -18,7 +18,6 @@ public class BootstrapButton extends FrameLayout {
     private TextView lblLeft;
     private ViewGroup layout;
     private boolean roundedCorners = false;
-    private boolean fillparent = false;
 
     private enum BootstrapType {
         DEFAULT("default", R.drawable.bbuton_default, R.drawable.bbuton_default_rounded, R.color.black),
@@ -29,10 +28,10 @@ public class BootstrapButton extends FrameLayout {
         DANGER("danger", R.drawable.bbuton_danger, R.drawable.bbuton_danger_rounded, R.color.white),
         INVERSE("inverse", R.drawable.bbuton_inverse, R.drawable.bbuton_inverse_rounded, R.color.white);
 
-        private String type;
-        private int normalBg;
-        private int roundedBg;
-        private int textColour;
+        private final String type;
+        private final int normalBg;
+        private final int roundedBg;
+        private final int textColour;
 
         BootstrapType(String type, int normalBg, int roundedBg, int textColour) {
             this.type = type;
@@ -70,10 +69,10 @@ public class BootstrapButton extends FrameLayout {
         SMALL("small", 12.0f, 5, 10),
         XSMALL("xsmall", 10.0f, 2, 5);
 
-        private float fontSize;
-        private String type;
-        private int paddingA;
-        private int paddingB;
+        private final float fontSize;
+        private final String type;
+        private final int paddingA;
+        private final int paddingB;
 
         private BootstrapSize(String type, float fontSize, int paddingA, int paddingB) {
             this.type = type;
@@ -153,7 +152,7 @@ public class BootstrapButton extends FrameLayout {
                 size = (size == null) ? "default" : size;
 
                 int layoutWidth = a.getLayoutDimension(R.styleable.BootstrapButton_android_layout_width, 0);
-                fillparent = (layoutWidth == LayoutParams.MATCH_PARENT);
+                boolean fillparent = (layoutWidth == LayoutParams.MATCH_PARENT);
 
                 Float layoutWeight = a.getFloat(R.styleable.BootstrapButton_android_layout_weight, -1);
                 fillparent = (layoutWeight != -1) || fillparent;
@@ -335,14 +334,16 @@ public class BootstrapButton extends FrameLayout {
     public void setTextGravity(String gravity) {
         int gravityId = -1;
 
-        if (gravity.equals("left")) {
-            gravityId = Gravity.LEFT;
-        }
-        else if (gravity.equals("center")) {
-            gravityId = Gravity.CENTER_HORIZONTAL;
-        }
-        else if (gravity.equals("right")) {
-            gravityId = Gravity.RIGHT;
+        switch (gravity) {
+            case "left":
+                gravityId = Gravity.LEFT;
+                break;
+            case "center":
+                gravityId = Gravity.CENTER_HORIZONTAL;
+                break;
+            case "right":
+                gravityId = Gravity.RIGHT;
+                break;
         }
 
         if (gravityId != -1) {

@@ -27,9 +27,7 @@ Alternatively you can use Android Bootstrap as a library project by downloading 
 
 ### Usage
 
-1. Copy [__fontawesome-webfont.ttf__](https://github.com/Bearded-Hen/Android-Bootstrap/raw/master/fontawesome-webfont.ttf) into the __assets folder__ of your project, as otherwise  __FontAwesome won't work__. In a default Android Studio project this should be located at __app/src/main/assets__
-
-2. Paste the following XML into a layout file to create a BootstrapButton:
+1. Paste the following XML into a layout file to create a BootstrapButton:
    
    ```xml
 <!-- basic button -->
@@ -43,13 +41,13 @@ Alternatively you can use Android Bootstrap as a library project by downloading 
 />
 ```
 
-3. Add the bootstrap namespace to the root view of your layout:
+2. Add the bootstrap namespace to the root view of your layout:
    
    ```xml
 xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
 ```
 
-4. Build and run the app. 
+3. Build and run the app.
 
 ## More Information
 
