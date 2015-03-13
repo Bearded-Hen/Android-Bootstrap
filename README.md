@@ -51,7 +51,7 @@ xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
 
 ## More Information
 
-For examples please checkout the [test project](https://github.com/Bearded-Hen/AndroidBootstrapSample) which contains sample code.
+For examples please checkout the [sample project](https://github.com/Bearded-Hen/AndroidBootstrapSample) which contains sample code.
 
 Alternatively feel free to inspect the library source or look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
 * [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button)
@@ -83,7 +83,7 @@ If you have any questions, issues, or just want to let us know where you're usin
 
 #Examples
 
-Check out the __AndroidBootstrapTest__ project. Inside __activity_main.xml__ you will find examples of how to achieve the following buttons:
+Check out the [sample project](https://github.com/Bearded-Hen/AndroidBootstrapSample). Inside __activity_main.xml__ you will find examples of how to achieve the following buttons:
 
 Bootstrap Buttons
 
