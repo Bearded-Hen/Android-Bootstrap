@@ -11,6 +11,7 @@ Getting Started
 ## Installation
 
 ### Gradle
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap) 
 
 If you're using Gradle you can simply add the following line to `build.gradle`:
 
