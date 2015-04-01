@@ -8,8 +8,8 @@ Android-Bootstrap
 Getting Started
 =============
 
-### Gradle
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap)
+### Gradle
 Add the following to your build.gradle:
 
 ```java
