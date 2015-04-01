@@ -8,12 +8,9 @@ Android-Bootstrap
 Getting Started
 =============
 
-## Installation
-
 ### Gradle
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap) 
-
-If you're using Gradle you can simply add the following line to `build.gradle`:
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap)
+Add the following to your build.gradle:
 
 ```java
 dependencies {
@@ -22,9 +19,10 @@ dependencies {
 ```
 
 ### Library Project
+Alternatively you can download the source and link to it as a library project in Eclipse, or import as a module in Android Studio.
 
-Alternatively you can use Android Bootstrap as a library project by downloading the source and linking to it in Eclipse.
-
+### Sample Code
+Please checkout the [sample project](https://github.com/Bearded-Hen/AndroidBootstrapSample), as it contains example code for most usecases.
 
 ### Usage
 
@@ -52,9 +50,7 @@ xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
 
 ## More Information
 
-For examples please checkout the [sample project](https://github.com/Bearded-Hen/AndroidBootstrapSample) which contains sample code.
-
-Alternatively feel free to inspect the library source or look at the [wiki](https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
+Feel free to inspect the library source or look at the [wiki] for further information(https://github.com/Bearded-Hen/Android-Bootstrap/wiki):
 * [bootstrap buttons](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Button)
 * [font awesome texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Font-Awesome-Text)
 * [bootstrap edit texts](https://github.com/Bearded-Hen/Android-Bootstrap/wiki/Bootstrap-Edit-Text)
@@ -80,11 +76,6 @@ If you have any questions, issues, or just want to let us know where you're usin
 * Font Awesome text as per Font Awesome v4.3
 * Animations to Font Awesome Text items
 * EditText backgrounds and states
-
-
-#Examples
-
-Check out the [sample project](https://github.com/Bearded-Hen/AndroidBootstrapSample). Inside __activity_main.xml__ you will find examples of how to achieve the following buttons:
 
 Bootstrap Buttons
 
