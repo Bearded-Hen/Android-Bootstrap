@@ -26,6 +26,7 @@
         <attr name="android:text" />
         <attr name="android:hint" />
         <attr name="android:enabled" />
+        <attr name="android:gravity" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapThumbnail">

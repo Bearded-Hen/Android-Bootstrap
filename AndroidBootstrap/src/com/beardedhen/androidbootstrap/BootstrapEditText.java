@@ -44,6 +44,7 @@ public class BootstrapEditText extends EditText {
     }
 
     private boolean roundedCorners = false;
+    private int gravity = Gravity.CENTER_VERTICAL;
     private TextState textState;
 
     public BootstrapEditText(Context context) {
@@ -73,6 +74,10 @@ public class BootstrapEditText extends EditText {
                 //state
                 state = a.getString(R.styleable.BootstrapEditText_be_state);
                 state = (state == null) ? "default" : state;
+
+                //gravity
+                gravity = a.getInt(R.styleable.BootstrapEditText_android_gravity, Gravity.CENTER_VERTICAL);
+                gravity = (gravity == Gravity.NO_GRAVITY) ? Gravity.CENTER_VERTICAL : gravity;
             }
         } finally {
             if (a != null) {
@@ -80,7 +85,7 @@ public class BootstrapEditText extends EditText {
             }
         }
 
-        setGravity(Gravity.CENTER_VERTICAL);
+        setGravity(gravity);
 
         if (this.isEnabled()) {
             textState = TextState.getStateFromString(state);
