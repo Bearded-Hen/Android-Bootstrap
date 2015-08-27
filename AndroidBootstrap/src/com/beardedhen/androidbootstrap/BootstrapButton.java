@@ -205,17 +205,14 @@ public class BootstrapButton extends FrameLayout {
             setTextGravity(gravity);
         }
 
-        boolean onlyIcon = true;
-
         //set the text
         if (text.length() > 0) {
             lblMiddle.setText(text);
             lblMiddle.setVisibility(View.VISIBLE);
-            onlyIcon = false;
         }
 
-        setupIconLeft(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
-        setupIconRight(paddingA, paddingB, iconLeft, iconRight, onlyIcon);
+        setupIconLeft(paddingA, paddingB, iconLeft, iconRight, false);
+        setupIconRight(paddingA, paddingB, iconLeft, iconRight, false);
 
         if (iconLeft.length() > 0 && iconRight.length() > 0) {
             lblMiddle.setPadding(paddingA, 0, paddingA, 0);
@@ -278,7 +275,10 @@ public class BootstrapButton extends FrameLayout {
      * @param text - String value for what is displayed on the button
      */
     public void setText(String text) {
-        lblMiddle.setText(text);
+	    if (text.length() > 0) {
+		    lblMiddle.setText(text);
+		    lblMiddle.setVisibility(View.VISIBLE);
+	    }
     }
 
     /**
