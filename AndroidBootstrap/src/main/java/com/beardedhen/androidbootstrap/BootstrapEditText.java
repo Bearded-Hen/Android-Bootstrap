@@ -122,44 +122,5 @@ public class BootstrapEditText extends EditText {
         setBackgroundDrawable(textState);
     }
 
-    /**
-     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
-     */
-    @Deprecated public void setSuccess() {
-        setBackgroundDrawable(TextState.SUCCESS);
-    }
-
-    /**
-     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
-     */
-    @Deprecated public void setWarning() {
-        setBackgroundDrawable(TextState.WARNING);
-    }
-
-    /**
-     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
-     */
-    @Deprecated public void setDanger() {
-        setBackgroundDrawable(TextState.DANGER);
-    }
-
-    /**
-     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
-     */
-    @Deprecated public void setDefault() {
-        setBackgroundDrawable(TextState.DEFAULT);
-    }
-
-    /**
-     * THIS METHOD IS DEPRECATED AND WILL BE REMOVED IN A FUTURE RELEASE.
-     * Use setEnabled() instead.
-     *
-     * Specifies whether the BootstrapEditText is enabled or disabled
-     *
-     * @param enabled - boolean state for either enabled or disabled
-     */
-    @Deprecated public void setBootstrapEditTextEnabled(boolean enabled) {
-        this.setEnabled(enabled);
-    }
 
 }
