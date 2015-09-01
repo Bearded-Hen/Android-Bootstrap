@@ -165,10 +165,8 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
         this.setText(FontAwesomeIconMap.getUnicode(faIcon));
     }
 
-
     @Override public void setBootstrapText(BootstrapText bootstrapText) {
         setText(bootstrapText);
     }
-
 
 }

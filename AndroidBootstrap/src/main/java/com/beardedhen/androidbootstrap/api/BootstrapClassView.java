@@ -1,9 +1,9 @@
 package com.beardedhen.androidbootstrap.api;
 
-import com.beardedhen.androidbootstrap.rules.BootstrapClass;
+import com.beardedhen.androidbootstrap.enums.BootstrapContext;
 
 public interface BootstrapClassView {
 
-    void setBootstrapClass(BootstrapClass bootstrapClassView);
+    void setBootstrapClass(BootstrapContext bootstrapContextView);
 
 }

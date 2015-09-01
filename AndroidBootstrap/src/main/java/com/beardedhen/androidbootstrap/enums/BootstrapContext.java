@@ -1,6 +1,6 @@
-package com.beardedhen.androidbootstrap.rules;
+package com.beardedhen.androidbootstrap.enums;
 
-public enum BootstrapClass {
+public enum BootstrapContext {
 
     PRIMARY,
     SECONDARY,

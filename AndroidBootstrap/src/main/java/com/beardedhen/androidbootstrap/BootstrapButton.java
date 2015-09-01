@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
 import com.beardedhen.androidbootstrap.api.BootstrapClassView;
-import com.beardedhen.androidbootstrap.rules.BootstrapClass;
+import com.beardedhen.androidbootstrap.enums.BootstrapContext;
 
 public class BootstrapButton extends FontAwesomeText implements BootstrapClassView {
 
@@ -141,7 +141,7 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapClassVi
         this.setEnabled(enabled);
     }
 
-    @Override public void setBootstrapClass(BootstrapClass bootstrapClass) {
+    @Override public void setBootstrapClass(BootstrapContext bootstrapContext) {
 
 //        DEFAULT("default", , R.color.black),
 //                PRIMARY("primary", R.drawable.bbuton_primary, R.drawable.bbuton_primary_rounded, R.color.white),
@@ -154,7 +154,7 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapClassVi
         int resId = 0;
         int textColor = 0;
 
-        switch (bootstrapClass) {
+        switch (bootstrapContext) {
             case PRIMARY:
                 resId = roundedCorners ? R.drawable.bbuton_primary : R.drawable.bbuton_primary_rounded;
                 break;

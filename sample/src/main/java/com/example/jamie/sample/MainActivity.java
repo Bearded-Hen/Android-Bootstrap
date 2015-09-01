@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapText;
 import com.beardedhen.androidbootstrap.FontAwesomeText;
-import com.beardedhen.androidbootstrap.rules.BootstrapClass;
+import com.beardedhen.androidbootstrap.enums.BootstrapContext;
 
 public class MainActivity extends Activity {
 
@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
                                     .addFaIcon("fa-stop")
                                     .build());
 
-        bb.setBootstrapClass(BootstrapClass.PRIMARY);
+        bb.setBootstrapClass(BootstrapContext.PRIMARY);
 
 
 
