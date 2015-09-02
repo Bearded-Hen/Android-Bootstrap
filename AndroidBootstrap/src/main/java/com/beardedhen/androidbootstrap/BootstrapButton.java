@@ -5,10 +5,13 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
-import com.beardedhen.androidbootstrap.api.BootstrapClassView;
-import com.beardedhen.androidbootstrap.enums.BootstrapContext;
+import com.beardedhen.androidbootstrap.api.BootstrapTypeView;
+import com.beardedhen.androidbootstrap.api.RoundableView;
+import com.beardedhen.androidbootstrap.enums.BootstrapType;
+import com.beardedhen.androidbootstrap.utils.BootstrapDrawableFactory;
+import com.beardedhen.androidbootstrap.utils.BootstrapDrawableParams;
 
-public class BootstrapButton extends FontAwesomeText implements BootstrapClassView {
+public class BootstrapButton extends FontAwesomeText implements BootstrapTypeView, RoundableView {
 
     private boolean roundedCorners = false;
 
@@ -99,8 +102,6 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapClassVi
     private void initialise(AttributeSet attrs) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
 
-        float fontSize = FontAwesomeIconMap.DEFAULT_FONT_SIZE;
-
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
 
         String size = "default";
@@ -108,28 +109,20 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapClassVi
         boolean enabled = true;
 
         try {
-            if (a != null) {
-                bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
-                bootstrapStringType = (bootstrapStringType == null) ? "default" : bootstrapStringType;
+            bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
+            bootstrapStringType = (bootstrapStringType == null) ? "default" : bootstrapStringType;
 
-                // size
-                size = a.getString(R.styleable.BootstrapButton_bb_size);
-                size = (size == null) ? "default" : size;
+            // size
+            size = a.getString(R.styleable.BootstrapButton_bb_size);
+            size = (size == null) ? "default" : size;
 
-                roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false);
-
-                if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
-                    float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                    float defaultDimen = FontAwesomeIconMap.DEFAULT_FONT_SIZE * scaledDensity;
-
-                    float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, defaultDimen);
-                }
-            }
-        } finally {
-            if (a != null) {
-                a.recycle();
-            }
+            roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false);
         }
+        finally {
+            a.recycle();
+        }
+
+        setBackground(BootstrapDrawableFactory.buildBootstrapButton(getContext(), new BootstrapDrawableParams()));
     }
 
     /**
@@ -141,7 +134,7 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapClassVi
         this.setEnabled(enabled);
     }
 
-    @Override public void setBootstrapClass(BootstrapContext bootstrapContext) {
+    @Override public void setBootstrapType(BootstrapType bootstrapType) {
 
 //        DEFAULT("default", , R.color.black),
 //                PRIMARY("primary", R.drawable.bbuton_primary, R.drawable.bbuton_primary_rounded, R.color.white),
@@ -154,7 +147,7 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapClassVi
         int resId = 0;
         int textColor = 0;
 
-        switch (bootstrapContext) {
+        switch (bootstrapType) {
             case PRIMARY:
                 resId = roundedCorners ? R.drawable.bbuton_primary : R.drawable.bbuton_primary_rounded;
                 break;
@@ -163,8 +156,12 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapClassVi
                 break;
         }
 
-        setBackground(getResources().getDrawable(resId));
+//        setBackground(getResources().getDrawable(resId));
         setTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    @Override public void setRoundable(boolean roundable) {
+
     }
 
 }

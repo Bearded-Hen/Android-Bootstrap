@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/example_container"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <TextView
+        android:text="BootstrapButton"
+        style="@style/example_title"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Inflated from XML"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        android:textSize="50dp"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Inflated from XML"
+        />
+
+</LinearLayout>

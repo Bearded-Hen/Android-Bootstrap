@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <declare-styleable name="FontAwesomeText">
+        <attr name="fa_icon" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="BootstrapButton">
         <attr name="bb_type" format="string" />
         <attr name="bb_icon_left" format="string" />
@@ -8,15 +13,6 @@
         <attr name="bb_text_alignment" format="string" />
         <attr name="bb_size" format="string" />
         <attr name="bb_text_gravity" format="string" />
-        <attr name="android:textSize" />
-        <attr name="android:text" />
-        <attr name="android:enabled" />
-        <attr name="android:layout_width" />
-        <attr name="android:layout_weight" />
-    </declare-styleable>
-
-    <declare-styleable name="FontAwesomeText">
-        <attr name="fa_icon" format="string" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapEditText">

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.example.jamie.sample"
+        applicationId "com.example.sample"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
@@ -13,12 +13,19 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 }
 
 dependencies {
     compile project (':AndroidBootstrap')
+    compile 'com.jakewharton:butterknife:7.0.1'
 }

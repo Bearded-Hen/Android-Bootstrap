@@ -51,28 +51,18 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
     }
 
     private void initialise(AttributeSet attrs) {
-
-        float fontSize = FontAwesomeIconMap.DEFAULT_FONT_SIZE;
-        String icon = "";
-
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FontAwesomeText);
 
         try {
-            if (a != null) {
-                // icon
-                icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
-                icon = (icon == null) ? "" : icon;
-            }
-        } finally {
-            if (a != null) {
-                a.recycle();
+            String icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
+            if (icon != null && !isInEditMode()) {
+                setIcon(icon);
             }
         }
-
-        if (!isInEditMode()) {
-            setIcon(icon);
-            this.setTypeface(FontAwesomeIconMap.getFont(getContext()));
+        finally {
+            a.recycle();
         }
+        setClickable(true); // allows view to reach android:state_pressed
     }
 
     /**
@@ -162,7 +152,7 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
      * @param faIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
      */
     public void setIcon(String faIcon) {
-        this.setText(FontAwesomeIconMap.getUnicode(faIcon));
+        setBootstrapText(new BootstrapText.Builder(getContext()).addFaIcon(faIcon).build());
     }
 
     @Override public void setBootstrapText(BootstrapText bootstrapText) {

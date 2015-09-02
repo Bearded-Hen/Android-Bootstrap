@@ -5,10 +5,10 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
-import com.beardedhen.androidbootstrap.api.BootstrapClassView;
-import com.beardedhen.androidbootstrap.enums.BootstrapContext;
+import com.beardedhen.androidbootstrap.api.BootstrapTypeView;
+import com.beardedhen.androidbootstrap.enums.BootstrapType;
 
-public class BootstrapLabel extends FontAwesomeText implements BootstrapClassView {
+public class BootstrapLabel extends FontAwesomeText implements BootstrapTypeView {
 
     public BootstrapLabel(Context context) {
         super(context);
@@ -45,13 +45,6 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapClassVie
                 size = a.getString(R.styleable.BootstrapButton_bb_size);
                 size = (size == null) ? "default" : size;
 
-
-                if (a.getString(R.styleable.BootstrapButton_android_textSize) != null) {
-                    float scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
-                    float defaultDimen = FontAwesomeIconMap.DEFAULT_FONT_SIZE * scaledDensity;
-
-                    float rawSize = a.getDimension(R.styleable.BootstrapButton_android_textSize, defaultDimen);
-                }
             }
         } finally {
             if (a != null) {
@@ -60,7 +53,7 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapClassVie
         }
     }
 
-    @Override public void setBootstrapClass(BootstrapContext bootstrapContextView) {
+    @Override public void setBootstrapType(BootstrapType bootstrapTypeView) {
 
     }
 }
