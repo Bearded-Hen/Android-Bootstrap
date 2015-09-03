@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="bootstrapType" format="enum">
+        <enum name="primary" value="0"/>
+        <enum name="secondary" value="1"/>
+        <enum name="success" value="2"/>
+        <enum name="warning" value="3"/>
+        <enum name="danger" value="4"/>
+        <enum name="link" value="5"/>
+    </attr>
+
+    <attr name="showOutline" format="boolean" />
+    <attr name="roundedCorners" format="boolean" />
+
     <declare-styleable name="FontAwesomeText">
         <attr name="fa_icon" format="string" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapButton">
-        <attr name="bb_type" format="string" />
-        <attr name="bb_icon_left" format="string" />
-        <attr name="bb_icon_right" format="string" />
-        <attr name="bb_roundedCorners" format="boolean" />
-        <attr name="bb_text_alignment" format="string" />
-        <attr name="bb_size" format="string" />
-        <attr name="bb_text_gravity" format="string" />
+        <attr name="showOutline"/>
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapType"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapEditText">

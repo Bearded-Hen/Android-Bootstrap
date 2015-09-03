@@ -2,87 +2,23 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
-import com.beardedhen.androidbootstrap.api.BootstrapTypeView;
+import com.beardedhen.androidbootstrap.api.BootstrapTheme;
+import com.beardedhen.androidbootstrap.api.BootstrapThemeView;
 import com.beardedhen.androidbootstrap.api.RoundableView;
-import com.beardedhen.androidbootstrap.enums.BootstrapType;
+import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
 import com.beardedhen.androidbootstrap.utils.BootstrapDrawableFactory;
 import com.beardedhen.androidbootstrap.utils.BootstrapDrawableParams;
 
-public class BootstrapButton extends FontAwesomeText implements BootstrapTypeView, RoundableView {
+public class BootstrapButton extends FontAwesomeText implements BootstrapThemeView, RoundableView {
 
-    private boolean roundedCorners = false;
-
-//    private enum BootstrapType {
-//
-//        private final String type;
-//        private final int normalBg;
-//        private final int roundedBg;
-//        private final int textColour;
-//
-//        BootstrapType(String type, int normalBg, int roundedBg, int textColour) {
-//            this.type = type;
-//            this.normalBg = normalBg;
-//            this.roundedBg = roundedBg;
-//            this.textColour = textColour;
-//        }
-//
-//        public static BootstrapType getBootstrapTypeFromString(String type) {
-//            for (BootstrapType value : BootstrapType.values()) {
-//                if (value.type.equals(type)) {
-//                    return value;
-//                }
-//            }
-//            return DEFAULT;
-//        }
-//
-//        public int getTextColour() {
-//            return textColour;
-//        }
-//
-//        public int getRoundedBg() {
-//            return roundedBg;
-//        }
-//
-//        public int getNormalBg() {
-//            return normalBg;
-//        }
-//    }
-
-    private enum BootstrapSize {
-
-        LARGE("large", 20.0f, 15, 20),
-        DEFAULT("default", 14.0f, 10, 15),
-        SMALL("small", 12.0f, 5, 10),
-        XSMALL("xsmall", 10.0f, 2, 5);
-
-        private final float fontSize;
-        private final String type;
-        private final int paddingA;
-        private final int paddingB;
-
-        BootstrapSize(String type, float fontSize, int paddingA, int paddingB) {
-            this.type = type;
-            this.fontSize = fontSize;
-            this.paddingA = paddingA;
-            this.paddingB = paddingB;
-        }
-
-        public float getFontSize() {
-            return fontSize;
-        }
-
-        public static BootstrapSize getBootstrapSizeFromString(String size) {
-            for (BootstrapSize value : BootstrapSize.values()) {
-                if (value.type.equals(size)) {
-                    return value;
-                }
-            }
-            return DEFAULT;
-        }
-    }
+    private BootstrapTheme bootstrapTheme = DefaultBootstrapTheme.PRIMARY;
+    private boolean roundedCorners;
+    private boolean showOutline;
 
     public BootstrapButton(Context context) {
         super(context);
@@ -101,67 +37,52 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapTypeVie
 
     private void initialise(AttributeSet attrs) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
 
-        String size = "default";
-        String bootstrapStringType = "default";
-        boolean enabled = true;
-
         try {
-            bootstrapStringType = a.getString(R.styleable.BootstrapButton_bb_type);
-            bootstrapStringType = (bootstrapStringType == null) ? "default" : bootstrapStringType;
+            this.roundedCorners = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
+            this.showOutline = a.getBoolean(R.styleable.BootstrapButton_showOutline, false);
 
-            // size
-            size = a.getString(R.styleable.BootstrapButton_bb_size);
-            size = (size == null) ? "default" : size;
-
-            roundedCorners = a.getBoolean(R.styleable.BootstrapButton_bb_roundedCorners, false);
+            int attrValue = a.getInt(R.styleable.BootstrapButton_bootstrapType, 0);
+            bootstrapTheme = DefaultBootstrapTheme.fromAttributeValue(attrValue);
         }
         finally {
             a.recycle();
         }
-
-        setBackground(BootstrapDrawableFactory.buildBootstrapButton(getContext(), new BootstrapDrawableParams()));
+        requestStateRefresh();
     }
 
-    /**
-     * Specifies whether the BootstrapButton is enabled or disabled
-     *
-     * @param enabled - boolean state for either enabled or disabled
-     */
-    public void setBootstrapButtonEnabled(boolean enabled) {
-        this.setEnabled(enabled);
+    @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
+        this.bootstrapTheme = bootstrapTheme;
+        requestStateRefresh();
     }
 
-    @Override public void setBootstrapType(BootstrapType bootstrapType) {
+    @Override public void setShowOutline(boolean showOutline) {
+        this.showOutline = showOutline;
+        requestStateRefresh();
+    }
 
-//        DEFAULT("default", , R.color.black),
-//                PRIMARY("primary", R.drawable.bbuton_primary, R.drawable.bbuton_primary_rounded, R.color.white),
-//                SUCCESS("success", R.drawable.bbuton_success, R.drawable.bbuton_success_rounded, R.color.white),
-//                INFO("info", R.drawable.bbuton_info, R.drawable.bbuton_info_rounded, R.color.white),
-//                WARNING("warning", R.drawable.bbuton_warning, R.drawable.bbuton_warning_rounded, R.color.white),
-//                DANGER("danger", R.drawable.bbuton_danger, R.drawable.bbuton_danger_rounded, R.color.white),
-//                INVERSE("inverse", R.drawable.bbuton_inverse, R.drawable.bbuton_inverse_rounded, R.color.white);
+    @Override public void setRoundedCorners(boolean roundedCorners) {
+        this.roundedCorners = roundedCorners;
+        requestStateRefresh();
+    }
 
-        int resId = 0;
-        int textColor = 0;
+    private void requestStateRefresh() {
+        BootstrapDrawableParams params = new BootstrapDrawableParams()
+                .showRoundedCorners(roundedCorners)
+                .showOutline(showOutline)
+                .bootstrapType(bootstrapTheme)
+                .enabled(isEnabled());
 
-        switch (bootstrapType) {
-            case PRIMARY:
-                resId = roundedCorners ? R.drawable.bbuton_primary : R.drawable.bbuton_primary_rounded;
-                break;
-            default:
-                resId = roundedCorners ? R.drawable.bbuton_default : R.drawable.bbuton_default_rounded;
-                break;
+        StateListDrawable bg = BootstrapDrawableFactory.bootstrapButton(getContext(), params);
+
+        if (Build.VERSION.SDK_INT > 16) {
+            setBackground(bg);
         }
-
-//        setBackground(getResources().getDrawable(resId));
-        setTextColor(getResources().getColor(android.R.color.white));
-    }
-
-    @Override public void setRoundable(boolean roundable) {
-
+        else {
+            setBackgroundDrawable(bg);
+        }
+        setTextColor(bootstrapTheme.buttonTextColor(getContext()));
     }
 
 }

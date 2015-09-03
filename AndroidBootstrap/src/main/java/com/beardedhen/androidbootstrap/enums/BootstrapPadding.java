@@ -2,9 +2,8 @@ package com.beardedhen.androidbootstrap.enums;
 
 public enum BootstrapPadding {
 
-    SMALL,
+    SMALL, // TODO add correct padding
     DEFAULT,
     LARGE
-
 
 }
