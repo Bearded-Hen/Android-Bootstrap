@@ -4,6 +4,4 @@ public interface BootstrapThemeView {
 
     void setBootstrapTheme(BootstrapTheme bootstrapTheme);
 
-    void setShowOutline(boolean showOutline);
-
 }

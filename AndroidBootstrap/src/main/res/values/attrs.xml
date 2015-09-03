@@ -10,6 +10,12 @@
         <enum name="link" value="5"/>
     </attr>
 
+    <attr name="bootstrapSize" format="enum">
+        <enum name="medium" value="0"/>
+        <enum name="small" value="1"/>
+        <enum name="large" value="2"/>
+    </attr>
+
     <attr name="showOutline" format="boolean" />
     <attr name="roundedCorners" format="boolean" />
 
@@ -21,6 +27,7 @@
         <attr name="showOutline"/>
         <attr name="roundedCorners"/>
         <attr name="bootstrapType"/>
+        <attr name="bootstrapSize"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapEditText">

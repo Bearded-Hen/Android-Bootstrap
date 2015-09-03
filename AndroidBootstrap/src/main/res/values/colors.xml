@@ -27,7 +27,6 @@
     <color name="bbutton_success_disabled">#a55cb85c</color>
     <color name="bbutton_success_disabled_edge">#a54cae4c</color>
 
-
     <color name="bbutton_warning">#fff0ad4e</color>
     <color name="bbutton_warning_edge">#ffeea236</color>
     <color name="bbutton_warning_pressed">#ffed9c28</color>
@@ -101,9 +100,9 @@
 
     <!-- Link -->
     <color name="bootstrap_btn_link_text">#014c8c</color>
-    <color name="bootstrap_btn_link_fill_default">@android:color/transparent</color>
-    <color name="bootstrap_btn_link_edge_default">@android:color/transparent</color>
-    <color name="bootstrap_btn_link_fill_active">@android:color/transparent</color>
-    <color name="bootstrap_btn_link_edge_active">@android:color/transparent</color>
+    <color name="bootstrap_btn_link_fill_default">#00000000</color>
+    <color name="bootstrap_btn_link_edge_default">#00000000</color>
+    <color name="bootstrap_btn_link_fill_active">#00000000</color>
+    <color name="bootstrap_btn_link_edge_active">#00000000</color>
 
 </resources>

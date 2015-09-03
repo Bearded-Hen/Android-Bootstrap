@@ -6,8 +6,9 @@ import android.view.LayoutInflater;
 
 import com.beardedhen.androidbootstrap.api.BootstrapTheme;
 import com.beardedhen.androidbootstrap.api.BootstrapThemeView;
+import com.beardedhen.androidbootstrap.api.OutlineableView;
 
-public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeView {
+public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeView, OutlineableView {
 
     public BootstrapLabel(Context context) {
         super(context);

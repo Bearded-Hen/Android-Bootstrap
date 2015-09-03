@@ -1,11 +1,14 @@
 package com.beardedhen.androidbootstrap.utils;
 
+import com.beardedhen.androidbootstrap.api.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.BootstrapTheme;
 import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
 
 public class BootstrapDrawableParams {
 
     private BootstrapTheme bootstrapTheme;
+    private BootstrapSize bootstrapSize;
+
     private boolean roundedCorners;
     private boolean showOutline;
     private boolean enabled;
@@ -18,6 +21,11 @@ public class BootstrapDrawableParams {
 
     public BootstrapDrawableParams bootstrapType(BootstrapTheme bootstrapTheme) {
         this.bootstrapTheme = bootstrapTheme;
+        return this;
+    }
+
+    public BootstrapDrawableParams bootstrapSize(BootstrapSize bootstrapSize) {
+        this.bootstrapSize = bootstrapSize;
         return this;
     }
 
@@ -38,6 +46,10 @@ public class BootstrapDrawableParams {
 
     public BootstrapTheme getBootstrapTheme() {
         return bootstrapTheme;
+    }
+
+    public BootstrapSize getBootstrapSize() {
+        return bootstrapSize;
     }
 
     public boolean isRoundedCorners() {

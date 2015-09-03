@@ -1,28 +1,429 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/example_container"
-              xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    style="@style/example_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="32dp"
     >
 
     <TextView
-        android:text="BootstrapButton"
         style="@style/example_title"
+        android:text="Bootstrap Buttons"
         />
 
+    <!-- Default Buttons Square -->
     <TextView
         style="@style/description_label"
-        android:text="Inflated from XML"
+        android:text="Default Square"
         />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapType="secondary"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Success"
+                app:bootstrapType="success"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Warning"
+                app:bootstrapType="warning"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Danger"
+                app:bootstrapType="danger"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Link"
+                app:bootstrapType="link"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                app:bootstrapType="primary"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Default Buttons Rounded -->
+    <TextView
+        style="@style/description_label"
+        android:text="Default Rounded"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapType="secondary"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Success"
+                app:bootstrapType="success"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Warning"
+                app:bootstrapType="warning"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Danger"
+                app:bootstrapType="danger"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Link"
+                app:bootstrapType="link"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                app:bootstrapType="primary"
+                app:roundedCorners="true"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Outline -->
+    <TextView
+        style="@style/description_label"
+        android:text="Outline Square"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapType="secondary"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Success"
+                app:bootstrapType="success"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Warning"
+                app:bootstrapType="warning"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Danger"
+                app:bootstrapType="danger"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Link"
+                app:bootstrapType="link"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                app:bootstrapType="primary"
+                app:showOutline="true"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <!-- Outline -->
+    <TextView
+        style="@style/description_label"
+        android:text="Outline Rounded"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapType="secondary"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Success"
+                app:bootstrapType="success"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Warning"
+                app:bootstrapType="warning"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Danger"
+                app:bootstrapType="danger"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Link"
+                app:bootstrapType="link"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Primary"
+                app:bootstrapType="primary"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Disabled -->
+    <TextView
+        style="@style/description_label"
+        android:text="Disabled"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Primary"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Secondary"
+                app:bootstrapType="secondary"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Success"
+                app:bootstrapType="success"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Warning"
+                app:bootstrapType="warning"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Danger"
+                app:bootstrapType="danger"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Link"
+                app:bootstrapType="link"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Primary"
+                app:bootstrapType="primary"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Different sizes -->
+    <TextView
+        style="@style/description_label"
+        android:text="Different Sizes"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Large"
+                app:bootstrapSize="large"
+                app:bootstrapType="success"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Medium"
+                app:bootstrapSize="medium"
+                app:bootstrapType="warning"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Small"
+                app:bootstrapSize="small"
+                app:bootstrapType="danger"
+                />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test"
-        android:textSize="50dp"
+        android:layout_marginTop="@dimen/micro_padding"
+        android:gravity="center"
+        android:text="Matching"
         />
 
-    <TextView
-        style="@style/description_label"
-        android:text="Inflated from XML"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/micro_padding"
+        android:orientation="horizontal"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Weight 1"
+            app:bootstrapType="danger"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Weight 2"
+            app:bootstrapType="success"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

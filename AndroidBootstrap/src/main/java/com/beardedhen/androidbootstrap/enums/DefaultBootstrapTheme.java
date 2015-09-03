@@ -2,6 +2,7 @@ package com.beardedhen.androidbootstrap.enums;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.ColorInt;
 
 import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.BootstrapTheme;
@@ -50,7 +51,11 @@ public enum DefaultBootstrapTheme implements BootstrapTheme {
     private final int activeEdge;
     private final int textColor;
 
-    DefaultBootstrapTheme(int defaultFill, int defaultEdge, int activeFill, int activeEdge, int textColor) {
+    DefaultBootstrapTheme(@ColorInt int defaultFill,
+                          @ColorInt int defaultEdge,
+                          @ColorInt int activeFill,
+                          @ColorInt int activeEdge,
+                          @ColorInt int textColor) {
         this.defaultFill = defaultFill;
         this.defaultEdge = defaultEdge;
         this.activeFill = activeFill;
@@ -77,32 +82,32 @@ public enum DefaultBootstrapTheme implements BootstrapTheme {
         }
     }
 
-    public int buttonDefaultFill(Context context) {
+    @ColorInt public int buttonDefaultFill(Context context) {
         return context.getResources().getColor(defaultFill);
     }
 
-    public int buttonDefaultEdge(Context context) {
+    @ColorInt public int buttonDefaultEdge(Context context) {
         return context.getResources().getColor(defaultEdge);
     }
 
-    public int buttonActiveFill(Context context) {
+    @ColorInt public int buttonActiveFill(Context context) {
         return context.getResources().getColor(activeFill);
     }
 
-    public int buttonActiveEdge(Context context) {
+    @ColorInt public int buttonActiveEdge(Context context) {
         return context.getResources().getColor(activeEdge);
     }
 
-    public int buttonTextColor(Context context) {
+    @ColorInt public int buttonTextColor(Context context) {
         return context.getResources().getColor(textColor);
     }
 
     // disabled colors have 65% opacity
-    public int buttonDisabledFill(Context context) {
+    @ColorInt public int buttonDisabledFill(Context context) {
         return generateDisabledColor(context, defaultFill);
     }
 
-    public int buttonDisabledEdge(Context context) {
+    @ColorInt public int buttonDisabledEdge(Context context) {
         return generateDisabledColor(context, defaultEdge);
     }
 

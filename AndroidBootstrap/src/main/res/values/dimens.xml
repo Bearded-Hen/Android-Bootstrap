@@ -11,4 +11,28 @@
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">12dp</dimen>
     <dimen name="padding_large">16dp</dimen>
+
+    <!-- REM units converted to dp using 14sp font as baseline -->
+
+    <!-- Default button size -->
+    <dimen name="bootstrap_button_default_font_size">14sp</dimen>
+    <dimen name="bootstrap_button_default_vert_padding">5.25dp</dimen>
+    <dimen name="bootstrap_button_default_hori_padding">14dp</dimen>
+    <dimen name="bootstrap_button_default_corner_radius">3.5dp</dimen>
+    <dimen name="bootstrap_button_default_edge_width">0.875dp</dimen>
+
+    <!-- Small button size -->
+    <dimen name="bootstrap_button_small_font_size">11.9sp</dimen>
+    <dimen name="bootstrap_button_small_vert_padding">3.5dp</dimen>
+    <dimen name="bootstrap_button_small_hori_padding">10.4dp</dimen>
+    <dimen name="bootstrap_button_small_corner_radius">2.8dp</dimen>
+    <dimen name="bootstrap_button_small_edge_width">0.875dp</dimen>
+
+    <!-- Large button size -->
+    <dimen name="bootstrap_button_large_font_size">17.5sp</dimen>
+    <dimen name="bootstrap_button_large_vert_padding">10.5dp</dimen>
+    <dimen name="bootstrap_button_large_hori_padding">17.5dp</dimen>
+    <dimen name="bootstrap_button_large_corner_radius">4.2dp</dimen>
+    <dimen name="bootstrap_button_large_edge_width">0.875dp</dimen>
+
 </resources>

@@ -7,7 +7,7 @@
 
     <style name="example_container">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_margin">@dimen/default_padding</item>
     </style>
@@ -24,6 +24,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">28sp</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/micro_padding</item>
+    </style>
+
+    <style name="wrapping_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/micro_padding</item>
     </style>
 
 </resources>

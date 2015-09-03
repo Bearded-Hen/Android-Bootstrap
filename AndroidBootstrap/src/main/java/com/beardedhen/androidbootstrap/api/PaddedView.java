@@ -1,9 +1,9 @@
 package com.beardedhen.androidbootstrap.api;
 
-import com.beardedhen.androidbootstrap.enums.BootstrapPadding;
+import com.beardedhen.androidbootstrap.enums.DefaultBootstrapSize;
 
 public interface PaddedView {
 
-    void setBootstrapPadding(BootstrapPadding bootstrapPadding);
+    void setBootstrapPadding(DefaultBootstrapSize defaultBootstrapSize);
 
 }
