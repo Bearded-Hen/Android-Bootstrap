@@ -1,13 +1,16 @@
-package com.beardedhen.androidbootstrap;
+package com.beardedhen.androidbootstrap.utils;
 
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BootstrapText extends SpannableString {
+public class BootstrapText extends SpannableString implements Serializable {
+
+    static final String KEY = "BootstrapText";
 
     enum TextType {
         REGULAR,

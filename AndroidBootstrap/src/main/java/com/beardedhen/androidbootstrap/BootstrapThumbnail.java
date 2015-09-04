@@ -10,7 +10,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class BootstrapThumbnail extends FrameLayout { // FIXME should extend imageview
+import com.beardedhen.androidbootstrap.utils.FontAwesomeIconMap;
+
+
+/**
+ * Should use Bootstrap Cards instead
+ */
+@Deprecated public class BootstrapThumbnail extends FrameLayout { // FIXME should extend imageview
 
     private static final int DEFAULT_WIDTH = 150; //width of thumbnail when no width is given
     private static final int DEFAULT_HEIGHT = 150;//height of thumbnail when no height is given
@@ -64,7 +70,7 @@ public class BootstrapThumbnail extends FrameLayout { // FIXME should extend ima
         LayoutInflater inflater = LayoutInflater.from(getContext());
 
         TypedArray a = getContext().obtainStyledAttributes(attrs,
-                R.styleable.BootstrapThumbnail);
+                                                           R.styleable.BootstrapThumbnail);
 
         //defaults
         ThumbnailTypes type;
@@ -100,7 +106,8 @@ public class BootstrapThumbnail extends FrameLayout { // FIXME should extend ima
                 roundedCorners = a.getBoolean(R.styleable.BootstrapThumbnail_bt_roundedCorners, false);
                 imageDrawable = a.getResourceId(R.styleable.BootstrapThumbnail_bt_image, 0);
             }
-        } finally {
+        }
+        finally {
             if (a != null) {
                 a.recycle();
             }

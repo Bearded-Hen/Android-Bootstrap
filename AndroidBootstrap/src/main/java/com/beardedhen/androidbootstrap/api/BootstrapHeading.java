@@ -2,7 +2,11 @@ package com.beardedhen.androidbootstrap.api;
 
 import android.content.Context;
 
-public interface BootstrapHeading {
+import java.io.Serializable;
+
+public interface BootstrapHeading extends Serializable {
+
+    String KEY = "BootstrapHeading";
 
     float getTextSize(Context context);
 

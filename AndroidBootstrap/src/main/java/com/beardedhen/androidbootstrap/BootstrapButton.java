@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
@@ -19,7 +20,7 @@ import com.beardedhen.androidbootstrap.utils.BootstrapDrawableFactory;
 import com.beardedhen.androidbootstrap.utils.BootstrapDrawableParams;
 
 public class BootstrapButton extends FontAwesomeText implements BootstrapThemeView,
-        BootstrapSizeView, OutlineableView, RoundableView {
+        BootstrapSizeView, OutlineableView, RoundableView { // FIXME save state on orientation change
 
     private BootstrapTheme bootstrapTheme;
     private BootstrapSize bootstrapSize;
@@ -61,6 +62,15 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
         requestStateRefresh();
     }
 
+    @Override public Parcelable onSaveInstanceState() {
+
+        return super.onSaveInstanceState();
+    }
+
+    @Override public void onRestoreInstanceState(Parcelable state) {
+        super.onRestoreInstanceState(state);
+    }
+
     @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
         this.bootstrapTheme = bootstrapTheme;
         requestStateRefresh();
@@ -82,30 +92,33 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
     }
 
     protected void requestStateRefresh() {
-        int vert = bootstrapSize.buttonVerticalPadding(getContext());
-        int hori = bootstrapSize.buttonHorizontalPadding(getContext());
+        if (bootstrapSize != null && bootstrapTheme != null) {
 
-        setPadding(hori, vert, hori, vert);
-        int textColor = showOutline ? bootstrapTheme.defaultEdge(getContext()) : bootstrapTheme.textColor(getContext());
-        setTextColor(textColor);
+            int vert = bootstrapSize.buttonVerticalPadding(getContext());
+            int hori = bootstrapSize.buttonHorizontalPadding(getContext());
 
-        // TODO need to handle link special case
+            setPadding(hori, vert, hori, vert);
+            int textColor = showOutline ? bootstrapTheme.defaultEdge(getContext()) : bootstrapTheme.textColor(getContext());
+            setTextColor(textColor);
 
-        BootstrapDrawableParams params = new BootstrapDrawableParams()
-                .showRoundedCorners(roundedCorners)
-                .showOutline(showOutline)
-                .bootstrapType(bootstrapTheme)
-                .bootstrapSize(bootstrapSize)
-                .enabled(isEnabled());
+            // TODO need to handle link special case
 
-        StateListDrawable bg = BootstrapDrawableFactory.bootstrapButton(getContext(), params);
-        setTextColor(BootstrapDrawableFactory.bootstrapButtonText(getContext(), params));
+            BootstrapDrawableParams params = new BootstrapDrawableParams()
+                    .showRoundedCorners(roundedCorners)
+                    .showOutline(showOutline)
+                    .bootstrapType(bootstrapTheme)
+                    .bootstrapSize(bootstrapSize)
+                    .enabled(isEnabled());
 
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
+            StateListDrawable bg = BootstrapDrawableFactory.bootstrapButton(getContext(), params);
+            setTextColor(BootstrapDrawableFactory.bootstrapButtonText(getContext(), params));
+
+            if (Build.VERSION.SDK_INT >= 16) {
+                setBackground(bg);
+            }
+            else {
+                setBackgroundDrawable(bg);
+            }
         }
     }
 

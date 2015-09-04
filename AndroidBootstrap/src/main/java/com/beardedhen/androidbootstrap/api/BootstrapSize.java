@@ -2,7 +2,11 @@ package com.beardedhen.androidbootstrap.api;
 
 import android.content.Context;
 
-public interface BootstrapSize {
+import java.io.Serializable;
+
+public interface BootstrapSize extends Serializable {
+
+    String KEY = "BootstrapSize";
 
     int buttonFontSize(Context context);
 

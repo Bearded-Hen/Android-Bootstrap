@@ -10,8 +10,11 @@ import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.api.BootstrapTextView;
+import com.beardedhen.androidbootstrap.utils.BootstrapText;
 
-public class FontAwesomeText extends TextView implements BootstrapTextView {
+public class FontAwesomeText extends TextView implements BootstrapTextView { // FIXME save state on orientation change
+
+    private BootstrapText bootstrapText;
 
     public enum AnimationSpeed {
         FAST(500, 200),
@@ -50,7 +53,7 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
         initialise(attrs);
     }
 
-    private void initialise(AttributeSet attrs) { // TODO make protected
+    private void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FontAwesomeText);
 
         try {
@@ -60,10 +63,10 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
                 setIcon(icon);
             }
 
-            String bootstrapText = a.getString(R.styleable.FontAwesomeText_bootstrapText);
+            String text = a.getString(R.styleable.FontAwesomeText_bootstrapText);
 
-            if (bootstrapText != null) {
-                setMarkdownText(bootstrapText);
+            if (text != null) {
+                setMarkdownText(text);
             }
         }
         finally {
@@ -147,7 +150,6 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
      * Used to stop animating any FontAwesomeText item
      */
     public void stopAnimation() {
-        //stop the animation
         this.clearAnimation();
     }
 
@@ -158,10 +160,6 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
      */
     public void setIcon(String faIcon) {
         setBootstrapText(new BootstrapText.Builder(getContext()).addFaIcon(faIcon).build());
-    }
-
-    @Override public void setBootstrapText(BootstrapText bootstrapText) {
-        setText(bootstrapText);
     }
 
     public void setMarkdownText(String text) {
@@ -217,12 +215,18 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
                 endIndex = -1;
             }
         }
-        builder.addText(text.substring(lastAddedIndex, text.length()));
-        setText(builder.build());
+        setBootstrapText(builder.addText(text.substring(lastAddedIndex, text.length())).build());
+    }
+
+    @Override public void setBootstrapText(BootstrapText bootstrapText) {
+        this.bootstrapText = bootstrapText;
+        requestStateRefresh();
     }
 
     protected void requestStateRefresh() {
-
+        if (bootstrapText != null) {
+            setText(bootstrapText);
+        }
     }
 
 }

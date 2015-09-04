@@ -14,7 +14,10 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.utils.ImageUtils;
 
-public class BootstrapCircleThumbnail extends FrameLayout { // FIXME should extend imageview
+/**
+ * Should use Bootstrap Cards instead
+  */
+@Deprecated public class BootstrapCircleThumbnail extends FrameLayout { // FIXME should extend imageview
 
     private enum BootstrapCircleType {
         SMALL("small", 2, 48), //padding adjustment for small thumbnails

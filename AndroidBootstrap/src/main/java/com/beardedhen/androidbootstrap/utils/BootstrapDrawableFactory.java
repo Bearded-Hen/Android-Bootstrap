@@ -13,6 +13,7 @@ import com.beardedhen.androidbootstrap.api.BootstrapTheme;
 
 public class BootstrapDrawableFactory {
 
+    // TODO refactor params to parameters for button
     public static StateListDrawable bootstrapButton(Context context, BootstrapDrawableParams params) {
         StateListDrawable stateListDrawable = new StateListDrawable();
 

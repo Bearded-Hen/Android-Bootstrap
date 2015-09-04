@@ -18,7 +18,7 @@ import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
 import com.beardedhen.androidbootstrap.utils.BootstrapDrawableFactory;
 
 public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeView, RoundableView,
-        BootstrapHeadingView {
+        BootstrapHeadingView {  // FIXME save state on orientation change
 
     private BootstrapHeading bootstrapHeading;
     private BootstrapTheme bootstrapTheme;
@@ -74,7 +74,7 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
         return roundable;
     }
 
-    @Override public void setBootstrapHeading(BootstrapHeading bootstrapHeading) {
+    @Override public void setBootstrapHeading(BootstrapHeading bootstrapHeading) { // FIXME should alter padding
         this.bootstrapHeading = bootstrapHeading;
         requestStateRefresh();
     }

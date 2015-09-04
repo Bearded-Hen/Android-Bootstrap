@@ -1,6 +1,6 @@
 package com.beardedhen.androidbootstrap.api;
 
-import com.beardedhen.androidbootstrap.BootstrapText;
+import com.beardedhen.androidbootstrap.utils.BootstrapText;
 
 public interface BootstrapTextView {
 

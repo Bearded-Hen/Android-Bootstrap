@@ -5,12 +5,12 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.beardedhen.androidbootstrap.BootstrapText;
 import com.beardedhen.androidbootstrap.FontAwesomeText;
 import com.beardedhen.androidbootstrap.api.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.BootstrapTheme;
 import com.beardedhen.androidbootstrap.enums.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
+import com.beardedhen.androidbootstrap.utils.BootstrapText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

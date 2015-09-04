@@ -3,7 +3,11 @@ package com.beardedhen.androidbootstrap.api;
 import android.content.Context;
 import android.support.annotation.ColorInt;
 
-public interface BootstrapTheme {
+import java.io.Serializable;
+
+public interface BootstrapTheme extends Serializable {
+
+    String KEY = "BootstrapTheme";
 
     @ColorInt int defaultFill(Context context);
 

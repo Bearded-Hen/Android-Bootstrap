@@ -1,4 +1,4 @@
-package com.beardedhen.androidbootstrap;
+package com.beardedhen.androidbootstrap.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
