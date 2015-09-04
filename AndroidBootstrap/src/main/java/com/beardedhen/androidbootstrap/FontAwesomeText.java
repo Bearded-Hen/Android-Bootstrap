@@ -35,9 +35,9 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
         }
     }
 
-    public FontAwesomeText(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        initialise(attrs);
+    public FontAwesomeText(Context context) {
+        super(context);
+        initialise(null);
     }
 
     public FontAwesomeText(Context context, AttributeSet attrs) {
@@ -45,18 +45,25 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
         initialise(attrs);
     }
 
-    public FontAwesomeText(Context context) {
-        super(context);
-        initialise(null);
+    public FontAwesomeText(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        initialise(attrs);
     }
 
-    private void initialise(AttributeSet attrs) {
+    private void initialise(AttributeSet attrs) { // TODO make protected
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FontAwesomeText);
 
         try {
             String icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
+
             if (icon != null && !isInEditMode()) {
                 setIcon(icon);
+            }
+
+            String bootstrapText = a.getString(R.styleable.FontAwesomeText_bootstrapText);
+
+            if (bootstrapText != null) {
+                setMarkdownText(bootstrapText);
             }
         }
         finally {
@@ -68,12 +75,11 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
     /**
      * Used to start flashing a FontAwesomeText item
      *
-     * @param context the current applications context
      * @param forever whether the item should flash repeatedly or just once
      * @param speed   how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW /
      *                FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST
      */
-    public void startFlashing(Context context, boolean forever, AnimationSpeed speed) {
+    public void startFlashing(boolean forever, AnimationSpeed speed) {
         Animation fadeIn = new AlphaAnimation(0, 1);
 
         //set up extra variables
@@ -103,12 +109,11 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
     /**
      * Used to start rotating a FontAwesomeText item
      *
-     * @param context   the current applications context
      * @param clockwise true for clockwise, false for anti clockwise spinning
      * @param speed     how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW /
      *                  FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST
      */
-    public void startRotate(Context context, boolean clockwise, AnimationSpeed speed) {
+    public void startRotate(boolean clockwise, AnimationSpeed speed) {
         Animation rotate;
 
         //set up the rotation animation
@@ -157,6 +162,63 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
 
     @Override public void setBootstrapText(BootstrapText bootstrapText) {
         setText(bootstrapText);
+    }
+
+    public void setMarkdownText(String text) {
+        // detect {fa-*} and split into spannable
+        // ignore \{fa-*\}
+
+        BootstrapText.Builder builder = new BootstrapText.Builder(getContext());
+
+        boolean skip = false;
+
+        int lastAddedIndex = 0;
+        int startIndex = -1;
+        int endIndex = -1;
+
+        for (int i = 0; i < text.length(); i++) {
+            if (skip) {
+                skip = false;
+                continue;
+            }
+
+            char c = text.charAt(i);
+
+            if (c == '\\') { // escape sequence, ignore next char
+                skip = true;
+                continue;
+            }
+
+            if (c == '{') {
+                startIndex = i;
+            }
+            else if (c == '}') {
+                endIndex = i;
+            }
+
+            if (startIndex != -1 && endIndex != -1) { // encountered full facode string
+
+                if (endIndex < startIndex) { // reset end index
+                    endIndex = -1;
+                }
+                else if (startIndex >= 0 && endIndex < text.length()) {
+                    String faCode = text.substring(startIndex + 1, endIndex);
+
+                    if (faCode.matches("fa-[a-z-0-9]+")) {
+
+                        // add any inbetween text
+                        builder.addText(text.substring(lastAddedIndex, startIndex));
+                        builder.addFaIcon(faCode);
+
+                        lastAddedIndex = endIndex + 1;
+                    }
+                }
+                startIndex = -1;
+                endIndex = -1;
+            }
+        }
+        builder.addText(text.substring(lastAddedIndex, text.length()));
+        setText(builder.build());
     }
 
 }

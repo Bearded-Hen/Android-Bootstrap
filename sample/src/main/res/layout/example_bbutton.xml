@@ -4,13 +4,62 @@
     style="@style/example_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingBottom="32dp"
     >
 
     <TextView
         style="@style/example_title"
         android:text="Bootstrap Buttons"
         />
+
+    <!-- Default Buttons Square -->
+    <TextView
+        style="@style/description_label"
+        android:text="Interactive"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/bbutton_example_corners"
+                style="@style/wrapping_button"
+                android:text="Corners"
+                app:bootstrapSize="large"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/bbutton_example_outline"
+                style="@style/wrapping_button"
+                android:text="Outline"
+                app:bootstrapSize="large"
+                app:bootstrapType="danger"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/bbutton_example_size"
+                style="@style/wrapping_button"
+                android:text="Size"
+                app:bootstrapSize="large"
+                app:bootstrapType="success"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/bbutton_example_theme"
+                style="@style/wrapping_button"
+                android:text="Theme"
+                app:bootstrapSize="large"
+                />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <!-- Default Buttons Square -->
     <TextView

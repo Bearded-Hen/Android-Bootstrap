@@ -4,4 +4,6 @@ public interface BootstrapThemeView {
 
     void setBootstrapTheme(BootstrapTheme bootstrapTheme);
 
+    BootstrapTheme getBootstrapTheme();
+
 }

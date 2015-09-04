@@ -1,32 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/example_container"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    style="@style/example_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
 
     <TextView
-        android:text="FontAwesomeText"
         style="@style/example_title"
+        android:text="FontAwesomeText"
         />
 
     <TextView
         style="@style/description_label"
-        android:text="Inflated from XML"
+        android:text="Single icons"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Click me --->"
+                />
+
+            <com.beardedhen.androidbootstrap.FontAwesomeText
+                android:id="@+id/example_fa_text_change"
+                style="@style/wrapping_fa_text"
+                android:textColor="@color/bootstrap_btn_success_fill_default"
+                app:fa_icon="fa-android"
+                />
+
+            <com.beardedhen.androidbootstrap.FontAwesomeText
+                android:id="@+id/example_fa_text_flash"
+                style="@style/wrapping_fa_text"
+                android:textColor="@color/bootstrap_btn_primary_fill_default"
+                app:fa_icon="fa-github-alt"
+                />
+
+            <com.beardedhen.androidbootstrap.FontAwesomeText
+                android:id="@+id/example_fa_text_rotate"
+                style="@style/wrapping_fa_text"
+                android:textColor="@color/bootstrap_btn_danger_fill_default"
+                app:fa_icon="fa-wrench"
+                />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="Setting Multi Text --->"
         />
 
     <com.beardedhen.androidbootstrap.FontAwesomeText
-        android:layout_width="wrap_content"
+        android:id="@+id/example_fa_text_multi_change"
+        style="@style/wrapping_fa_text"
+        android:textColor="@color/bootstrap_btn_primary_fill_default"
+        app:bootstrapText="{fa-wikipedia-w} is in the {fa-cloud}"
+        />
+
+    <com.beardedhen.androidbootstrap.FontAwesomeText
+        android:id="@+id/example_fa_text_builder"
+        style="@style/wrapping_fa_text"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Multiple icons"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#0f0"
-        android:textSize="50dp"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <com.beardedhen.androidbootstrap.FontAwesomeText
+                style="@style/wrapping_fa_text"
+                android:textColor="@color/bootstrap_btn_success_fill_default"
+                app:bootstrapText="{fa-android}{fa-android}{fa-android}"
+                app:fa_icon="fa-android"
+                />
+
+            <com.beardedhen.androidbootstrap.FontAwesomeText
+                style="@style/wrapping_fa_text"
+                android:textColor="@color/bootstrap_btn_primary_fill_default"
+                app:bootstrapText="{fa-user} {fa-user-md} {fa-users} {fa-user-plus}"
+                />
+
+            <com.beardedhen.androidbootstrap.FontAwesomeText
+                style="@style/wrapping_fa_text"
+                android:textColor="@color/bootstrap_btn_danger_fill_default"
+                app:bootstrapText="{fa-heart} {fa-yc} {fa-slack} {fa-stack-overflow} {fa-wikipedia-w} {fa-heart} "
+                />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Text with icons"
+        />
+
+    <com.beardedhen.androidbootstrap.FontAwesomeText
+        style="@style/wrapping_fa_text"
+        android:textColor="@color/bootstrap_btn_success_fill_default"
+        android:textSize="30dp"
+        app:bootstrapText="I {fa-heart} you {fa-github}"
         app:fa_icon="fa-android"
         tools:ignore="SpUsage"
         />
 
-    <TextView
-        style="@style/description_label"
-        android:text="Inflated from XML"
+    <com.beardedhen.androidbootstrap.FontAwesomeText
+        style="@style/wrapping_fa_text"
+        android:textColor="@color/bootstrap_btn_primary_fill_default"
+        android:textSize="30dp"
+        app:bootstrapText="Share on {fa-facebook} with a {fa-thumbs-o-up}"
+        tools:ignore="SpUsage"
+        />
+
+    <com.beardedhen.androidbootstrap.FontAwesomeText
+        style="@style/wrapping_fa_text"
+        android:textColor="@color/bootstrap_btn_danger_fill_default"
+        android:textSize="30dp"
+        app:bootstrapText="I love to ride my {fa-bicycle}, I love to read my {insert-noun-here}"
+        tools:ignore="SpUsage"
+        />
+
+    <com.beardedhen.androidbootstrap.FontAwesomeText
+        style="@style/wrapping_fa_text"
+        android:textColor="@color/bootstrap_btn_primary_fill_default"
+        android:textSize="30dp"
+        app:bootstrapText="Escaped \{fa-facebook\} icon"
+        tools:ignore="SpUsage"
         />
 
 </LinearLayout>

@@ -33,13 +33,15 @@ public class MainActivity extends FragmentActivity {
                     return new FontAwesomeTextExample();
                 case 1:
                     return new BootstrapButtonExample();
+                case 2:
+                    return new BootstrapLabelExample();
                 default:
                     return null;
             }
         }
 
         @Override public int getCount() {
-            return 2;
+            return 3;
         }
     }
 

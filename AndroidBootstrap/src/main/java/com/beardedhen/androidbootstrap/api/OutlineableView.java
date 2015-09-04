@@ -4,4 +4,6 @@ public interface OutlineableView {
 
     void setShowOutline(boolean showOutline);
 
+    boolean isShowOutline();
+
 }

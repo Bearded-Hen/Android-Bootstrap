@@ -16,11 +16,25 @@
         <enum name="large" value="2"/>
     </attr>
 
+    <attr name="bootstrapHeading" format="enum">
+        <enum name="h1" value="0"/>
+        <enum name="h2" value="1"/>
+        <enum name="h3" value="2"/>
+        <enum name="h4" value="3"/>
+        <enum name="h5" value="4"/>
+        <enum name="h6" value="5"/>
+    </attr>
+
     <attr name="showOutline" format="boolean" />
     <attr name="roundedCorners" format="boolean" />
 
     <declare-styleable name="FontAwesomeText">
         <attr name="fa_icon" format="string" />
+        <attr name="bootstrapText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapLabel">
+        <attr name="bootstrapHeading"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapButton">

@@ -109,4 +109,19 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
         }
     }
 
+    @Override public BootstrapSize getBootstrapSize() {
+        return bootstrapSize;
+    }
+
+    @Override public BootstrapTheme getBootstrapTheme() {
+        return bootstrapTheme;
+    }
+
+    @Override public boolean isShowOutline() {
+        return showOutline;
+    }
+
+    @Override public boolean isRoundedCorners() {
+        return roundedCorners;
+    }
 }

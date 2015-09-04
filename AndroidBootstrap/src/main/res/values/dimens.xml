@@ -35,4 +35,12 @@
     <dimen name="bootstrap_button_large_corner_radius">4.2dp</dimen>
     <dimen name="bootstrap_button_large_edge_width">0.875dp</dimen>
 
+    <!-- Headings -->
+    <dimen name="bootstrap_h1">31.5sp</dimen>
+    <dimen name="bootstrap_h2">28sp</dimen>
+    <dimen name="bootstrap_h3">24.5sp</dimen>
+    <dimen name="bootstrap_h4">21sp</dimen>
+    <dimen name="bootstrap_h5">17.5sp</dimen>
+    <dimen name="bootstrap_h6">14sp</dimen>
+
 </resources>
