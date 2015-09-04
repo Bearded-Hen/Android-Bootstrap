@@ -3,10 +3,12 @@ package com.beardedhen.androidbootstrap.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 
+import com.beardedhen.androidbootstrap.api.BootstrapHeading;
 import com.beardedhen.androidbootstrap.api.BootstrapTheme;
 
 public class BootstrapDrawableFactory {
@@ -23,17 +25,17 @@ public class BootstrapDrawableFactory {
         GradientDrawable disabledDrawable = new GradientDrawable();
 
         if (params.isShowOutline()) {
-            activeDrawable.setColor(theme.buttonDefaultFill(context));
+            activeDrawable.setColor(theme.defaultFill(context));
         }
         else {
-            defaultDrawable.setColor(theme.buttonDefaultFill(context));
-            activeDrawable.setColor(theme.buttonActiveFill(context));
-            disabledDrawable.setColor(theme.buttonDisabledFill(context));
+            defaultDrawable.setColor(theme.defaultFill(context));
+            activeDrawable.setColor(theme.activeFill(context));
+            disabledDrawable.setColor(theme.disabledFill(context));
         }
 
-        defaultDrawable.setStroke(strokeWidth, theme.buttonDefaultEdge(context));
-        activeDrawable.setStroke(strokeWidth, theme.buttonActiveEdge(context));
-        disabledDrawable.setStroke(strokeWidth, theme.buttonDisabledEdge(context));
+        defaultDrawable.setStroke(strokeWidth, theme.defaultEdge(context));
+        activeDrawable.setStroke(strokeWidth, theme.activeEdge(context));
+        disabledDrawable.setStroke(strokeWidth, theme.disabledEdge(context));
 
         if (Build.VERSION.SDK_INT >= 14) {
             stateListDrawable.addState(new int[]{android.R.attr.state_hovered}, activeDrawable);
@@ -55,7 +57,7 @@ public class BootstrapDrawableFactory {
 
     @SuppressLint("InlinedApi") public static ColorStateList bootstrapButtonText(Context context, BootstrapDrawableParams params) {
         BootstrapTheme theme = params.getBootstrapTheme();
-        int defaultColor = params.isShowOutline() ? theme.buttonDefaultEdge(context)  : theme.buttonTextColor(context);
+        int defaultColor = params.isShowOutline() ? theme.defaultEdge(context)  : theme.textColor(context);
         int white = context.getResources().getColor(android.R.color.white);
 
         if (params.isShowOutline()) {
@@ -94,6 +96,26 @@ public class BootstrapDrawableFactory {
             int[][] states = {new int[]{}};
             return new ColorStateList(states, colors);
         }
+    }
+
+    public static Drawable bootstrapLabel(Context context,
+                                           BootstrapHeading bootstrapHeading,
+                                           BootstrapTheme theme,
+                                           boolean rounded) {
+
+//        int cornerRadius = params.getBootstrapSize().buttonCornerRadius(context);
+
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setColor(theme.defaultFill(context));
+
+//        if (rounded) { // corner radius should be half height
+//            drawable.setCornerRadius(cornerRadius);
+//        }
+//        else {
+//            drawable.setCornerRadius(cornerRadius);
+//        }
+
+        return drawable;
     }
 
 }

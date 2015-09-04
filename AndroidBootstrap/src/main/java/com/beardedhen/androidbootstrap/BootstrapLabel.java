@@ -2,14 +2,20 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
+import com.beardedhen.androidbootstrap.api.BootstrapHeading;
 import com.beardedhen.androidbootstrap.api.BootstrapHeadingView;
 import com.beardedhen.androidbootstrap.api.BootstrapTheme;
 import com.beardedhen.androidbootstrap.api.BootstrapThemeView;
 import com.beardedhen.androidbootstrap.api.RoundableView;
-import com.beardedhen.androidbootstrap.enums.BootstrapHeading;
+import com.beardedhen.androidbootstrap.enums.DefaultBootstrapHeading;
+import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
+import com.beardedhen.androidbootstrap.utils.BootstrapDrawableFactory;
 
 public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeView, RoundableView,
         BootstrapHeadingView {
@@ -39,15 +45,20 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
 
         try {
             int attrValue = a.getInt(R.styleable.BootstrapLabel_bootstrapHeading, 5);
-            setBootstrapHeading(BootstrapHeading.fromAttributeValue(attrValue));
+            int typeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapType, 0);
+
+            this.bootstrapHeading = DefaultBootstrapHeading.fromAttributeValue(attrValue);
+            this.bootstrapTheme = DefaultBootstrapTheme.fromAttributeValue(typeOrdinal);
         }
         finally {
             a.recycle();
         }
+        requestStateRefresh();
     }
 
     @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
         this.bootstrapTheme = bootstrapTheme;
+        requestStateRefresh();
     }
 
     @Override public BootstrapTheme getBootstrapTheme() {
@@ -56,6 +67,7 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
 
     @Override public void setRoundedCorners(boolean roundable) {
         this.roundable = roundable;
+        requestStateRefresh();
     }
 
     @Override public boolean isRoundedCorners() {
@@ -64,11 +76,28 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
 
     @Override public void setBootstrapHeading(BootstrapHeading bootstrapHeading) {
         this.bootstrapHeading = bootstrapHeading;
-        setTextSize(bootstrapHeading.getTextSize(getContext()));
+        requestStateRefresh();
     }
 
     @Override public BootstrapHeading getBootstrapHeading() {
         return bootstrapHeading;
+    }
+
+    @Override protected void requestStateRefresh() {
+        // set bg color etc
+
+        setTextColor(getContext().getResources().getColor(android.R.color.white));
+        setTypeface(Typeface.DEFAULT_BOLD);
+        setTextSize(bootstrapHeading.getTextSize(getContext()));
+
+        Drawable bg = BootstrapDrawableFactory.bootstrapLabel(getContext(), bootstrapHeading, bootstrapTheme, false);
+
+        if (Build.VERSION.SDK_INT >= 16) {
+            setBackground(bg);
+        }
+        else {
+            setBackgroundDrawable(bg);
+        }
     }
 
 }

@@ -81,12 +81,12 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
         requestStateRefresh();
     }
 
-    private void requestStateRefresh() {
+    protected void requestStateRefresh() {
         int vert = bootstrapSize.buttonVerticalPadding(getContext());
         int hori = bootstrapSize.buttonHorizontalPadding(getContext());
 
         setPadding(hori, vert, hori, vert);
-        int textColor = showOutline ? bootstrapTheme.buttonDefaultEdge(getContext()) : bootstrapTheme.buttonTextColor(getContext());
+        int textColor = showOutline ? bootstrapTheme.defaultEdge(getContext()) : bootstrapTheme.textColor(getContext());
         setTextColor(textColor);
 
         // TODO need to handle link special case

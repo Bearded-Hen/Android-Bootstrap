@@ -36,11 +36,16 @@
     <dimen name="bootstrap_button_large_edge_width">0.875dp</dimen>
 
     <!-- Headings -->
-    <dimen name="bootstrap_h1">31.5sp</dimen>
-    <dimen name="bootstrap_h2">28sp</dimen>
-    <dimen name="bootstrap_h3">24.5sp</dimen>
-    <dimen name="bootstrap_h4">21sp</dimen>
-    <dimen name="bootstrap_h5">17.5sp</dimen>
-    <dimen name="bootstrap_h6">14sp</dimen>
+    <dimen name="bootstrap_h1_text_size">31.5sp</dimen>
+
+    <dimen name="bootstrap_h2_text_size">28sp</dimen>
+
+    <dimen name="bootstrap_h3_text_size">24.5sp</dimen>
+
+    <dimen name="bootstrap_h4_text_size">21sp</dimen>
+
+    <dimen name="bootstrap_h5_text_size">17.5sp</dimen>
+
+    <dimen name="bootstrap_h6_text_size">14sp</dimen>
 
 </resources>

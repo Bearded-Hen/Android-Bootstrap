@@ -111,31 +111,31 @@ public class MainActivity extends Activity {
 
         // create a Bootstrap Theme with holo colors
         exampleCustomStyle.setBootstrapTheme(new BootstrapTheme() {
-            @Override public int buttonDefaultFill(Context context) {
+            @Override public int defaultFill(Context context) {
                 return context.getResources().getColor(R.color.custom_default_fill);
             }
 
-            @Override public int buttonDefaultEdge(Context context) {
+            @Override public int defaultEdge(Context context) {
                 return context.getResources().getColor(R.color.custom_default_edge);
             }
 
-            @Override public int buttonActiveFill(Context context) {
+            @Override public int activeFill(Context context) {
                 return context.getResources().getColor(R.color.custom_active_fill);
             }
 
-            @Override public int buttonActiveEdge(Context context) {
+            @Override public int activeEdge(Context context) {
                 return context.getResources().getColor(R.color.custom_active_edge);
             }
 
-            @Override public int buttonTextColor(Context context) {
+            @Override public int textColor(Context context) {
                 return context.getResources().getColor(R.color.white);
             }
 
-            @Override public int buttonDisabledFill(Context context) {
+            @Override public int disabledFill(Context context) {
                 return context.getResources().getColor(R.color.custom_disabled_fill);
             }
 
-            @Override public int buttonDisabledEdge(Context context) {
+            @Override public int disabledEdge(Context context) {
                 return context.getResources().getColor(R.color.custom_disabled_edge);
             }
         });

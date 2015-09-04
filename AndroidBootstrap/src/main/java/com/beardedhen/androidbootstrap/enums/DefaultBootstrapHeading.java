@@ -4,23 +4,24 @@ import android.content.Context;
 import android.support.annotation.DimenRes;
 
 import com.beardedhen.androidbootstrap.R;
+import com.beardedhen.androidbootstrap.api.BootstrapHeading;
 
-public enum BootstrapHeading {
+public enum DefaultBootstrapHeading implements BootstrapHeading {
 
-    H1(R.dimen.bootstrap_h1),
-    H2(R.dimen.bootstrap_h2),
-    H3(R.dimen.bootstrap_h3),
-    H4(R.dimen.bootstrap_h4),
-    H5(R.dimen.bootstrap_h5),
-    H6(R.dimen.bootstrap_h6);
+    H1(R.dimen.bootstrap_h1_text_size),
+    H2(R.dimen.bootstrap_h2_text_size),
+    H3(R.dimen.bootstrap_h3_text_size),
+    H4(R.dimen.bootstrap_h4_text_size),
+    H5(R.dimen.bootstrap_h5_text_size),
+    H6(R.dimen.bootstrap_h6_text_size);
 
     private final @DimenRes int textSize;
 
-    BootstrapHeading(int textSize) {
+    DefaultBootstrapHeading(int textSize) {
         this.textSize = textSize;
     }
 
-    public static BootstrapHeading fromAttributeValue(int attrValue) {
+    public static DefaultBootstrapHeading fromAttributeValue(int attrValue) {
         switch (attrValue) {
             case 0:
                 return H1;
@@ -42,5 +43,14 @@ public enum BootstrapHeading {
     public float getTextSize(Context context) {
         return context.getResources().getDimension(textSize);
     }
+
+    @Override public int verticalPadding(Context context) {
+        return 0; // FIXME
+    }
+
+    @Override public int horizontalPadding(Context context) {
+        return 0; // FIXME
+    }
+
 
 }

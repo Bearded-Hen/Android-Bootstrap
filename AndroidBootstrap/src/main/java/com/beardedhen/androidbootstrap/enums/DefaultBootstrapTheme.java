@@ -82,38 +82,38 @@ public enum DefaultBootstrapTheme implements BootstrapTheme {
         }
     }
 
-    @ColorInt public int buttonDefaultFill(Context context) {
+    @ColorInt public int defaultFill(Context context) {
         return context.getResources().getColor(defaultFill);
     }
 
-    @ColorInt public int buttonDefaultEdge(Context context) {
+    @ColorInt public int defaultEdge(Context context) {
         return context.getResources().getColor(defaultEdge);
     }
 
-    @ColorInt public int buttonActiveFill(Context context) {
+    @ColorInt public int activeFill(Context context) {
         return context.getResources().getColor(activeFill);
     }
 
-    @ColorInt public int buttonActiveEdge(Context context) {
+    @ColorInt public int activeEdge(Context context) {
         return context.getResources().getColor(activeEdge);
     }
 
-    @ColorInt public int buttonTextColor(Context context) {
+    @ColorInt public int textColor(Context context) {
         return context.getResources().getColor(textColor);
     }
 
     // disabled colors have 65% opacity
-    @ColorInt public int buttonDisabledFill(Context context) {
+    @ColorInt public int disabledFill(Context context) {
         return generateDisabledColor(context, defaultFill);
     }
 
-    @ColorInt public int buttonDisabledEdge(Context context) {
+    @ColorInt public int disabledEdge(Context context) {
         return generateDisabledColor(context, defaultEdge);
     }
 
     private int generateDisabledColor(Context context, int defaultColor) {
         int c = context.getResources().getColor(defaultColor);
-        return Color.argb(166, Color.red(c), Color.green(c), Color.blue(c)); // 65% alpha
+        return Color.argb((int) (0.65 * 255), Color.red(c), Color.green(c), Color.blue(c)); // 65% alpha
     }
 
 }

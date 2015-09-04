@@ -221,4 +221,8 @@ public class FontAwesomeText extends TextView implements BootstrapTextView {
         setText(builder.build());
     }
 
+    protected void requestStateRefresh() {
+
+    }
+
 }
