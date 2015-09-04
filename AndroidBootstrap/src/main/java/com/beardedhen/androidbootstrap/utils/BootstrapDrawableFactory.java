@@ -1,6 +1,8 @@
 package com.beardedhen.androidbootstrap.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
@@ -20,7 +22,10 @@ public class BootstrapDrawableFactory {
         GradientDrawable activeDrawable = new GradientDrawable();
         GradientDrawable disabledDrawable = new GradientDrawable();
 
-        if (!params.isShowOutline()) {
+        if (params.isShowOutline()) {
+            activeDrawable.setColor(theme.buttonDefaultFill(context));
+        }
+        else {
             defaultDrawable.setColor(theme.buttonDefaultFill(context));
             activeDrawable.setColor(theme.buttonActiveFill(context));
             disabledDrawable.setColor(theme.buttonDisabledFill(context));
@@ -46,6 +51,49 @@ public class BootstrapDrawableFactory {
             disabledDrawable.setCornerRadius(cornerRadius);
         }
         return stateListDrawable;
+    }
+
+    @SuppressLint("InlinedApi") public static ColorStateList bootstrapButtonText(Context context, BootstrapDrawableParams params) {
+        BootstrapTheme theme = params.getBootstrapTheme();
+        int defaultColor = params.isShowOutline() ? theme.buttonDefaultEdge(context)  : theme.buttonTextColor(context);
+        int white = context.getResources().getColor(android.R.color.white);
+
+        if (params.isShowOutline()) {
+            boolean hover = Build.VERSION.SDK_INT >= 14;
+            int stateSize = hover ? 5 : 4;
+
+            int[][] states = new int[stateSize][];
+            int[] colors = new int[stateSize];
+            int index = 0;
+
+            if (hover) {
+                states[index] = new int[] {android.R.attr.state_hovered};
+                colors[index] = white;
+                index++;
+            }
+
+            states[index] = new int[] {android.R.attr.state_activated};
+            colors[index] = white;
+            index++;
+
+            states[index] = new int[] {android.R.attr.state_focused};
+            colors[index] = white;
+            index++;
+
+            states[index] = new int[] {android.R.attr.state_pressed};
+            colors[index] = white;
+            index++;
+
+            states[index] = new int[] {};
+            colors[index] = defaultColor;
+
+            return new ColorStateList(states, colors);
+        }
+        else {
+            int[] colors = new int[]{defaultColor};
+            int[][] states = {new int[]{}};
+            return new ColorStateList(states, colors);
+        }
     }
 
 }

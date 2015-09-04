@@ -89,8 +89,6 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
         int textColor = showOutline ? bootstrapTheme.buttonDefaultEdge(getContext()) : bootstrapTheme.buttonTextColor(getContext());
         setTextColor(textColor);
 
-        // FIXME should use a text selector for outlines
-
         // TODO need to handle link special case
 
         BootstrapDrawableParams params = new BootstrapDrawableParams()
@@ -101,6 +99,7 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
                 .enabled(isEnabled());
 
         StateListDrawable bg = BootstrapDrawableFactory.bootstrapButton(getContext(), params);
+        setTextColor(BootstrapDrawableFactory.bootstrapButtonText(getContext(), params));
 
         if (Build.VERSION.SDK_INT > 16) {
             setBackground(bg);

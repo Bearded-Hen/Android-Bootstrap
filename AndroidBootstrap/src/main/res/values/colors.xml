@@ -61,8 +61,6 @@
     <color name="bthumbnail_font">#7e7e7e</color>
 
 
-
-
     <!-- Primary -->
     <color name="bootstrap_btn_primary_text">#fff</color>
     <color name="bootstrap_btn_primary_fill_default">#0275d8</color>
