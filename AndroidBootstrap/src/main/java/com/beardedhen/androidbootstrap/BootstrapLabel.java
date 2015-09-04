@@ -35,7 +35,7 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
 
     private void initialise(AttributeSet attrs) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FontAwesomeText);
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapLabel);
 
         try {
             int attrValue = a.getInt(R.styleable.BootstrapLabel_bootstrapHeading, 5);

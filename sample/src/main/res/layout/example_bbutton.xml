@@ -459,7 +459,7 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Weight 1"
+            app:bootstrapText="Weight 1 {fa-gift}"
             app:bootstrapType="danger"
             />
 
@@ -469,10 +469,19 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="Weight 2"
+            app:bootstrapText="{fa-play} Weight 2 {fa-group}"
             app:bootstrapType="success"
             />
 
     </LinearLayout>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/example_bbutton_custom_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/micro_padding"
+        android:gravity="center"
+        android:text="Custom Style"
+        />
 
 </LinearLayout>

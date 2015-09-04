@@ -28,11 +28,11 @@ public enum BootstrapHeading {
                 return H2;
             case 2:
                 return H3;
-            case 4:
+            case 3:
                 return H4;
-            case 5:
+            case 4:
                 return H5;
-            case 6:
+            case 5:
                 return H6;
             default:
                 return H6;

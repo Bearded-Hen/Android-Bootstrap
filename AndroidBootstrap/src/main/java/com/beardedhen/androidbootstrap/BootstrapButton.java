@@ -101,7 +101,7 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
         StateListDrawable bg = BootstrapDrawableFactory.bootstrapButton(getContext(), params);
         setTextColor(BootstrapDrawableFactory.bootstrapButtonText(getContext(), params));
 
-        if (Build.VERSION.SDK_INT > 16) {
+        if (Build.VERSION.SDK_INT >= 16) {
             setBackground(bg);
         }
         else {

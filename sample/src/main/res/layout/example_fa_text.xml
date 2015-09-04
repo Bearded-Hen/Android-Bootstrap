@@ -59,13 +59,6 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="Setting Multi Text --->"
-        />
-
     <com.beardedhen.androidbootstrap.FontAwesomeText
         android:id="@+id/example_fa_text_multi_change"
         style="@style/wrapping_fa_text"
