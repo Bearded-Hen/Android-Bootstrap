@@ -8,20 +8,20 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
-import com.beardedhen.androidbootstrap.api.BootstrapHeading;
-import com.beardedhen.androidbootstrap.api.BootstrapHeadingView;
-import com.beardedhen.androidbootstrap.api.BootstrapTheme;
-import com.beardedhen.androidbootstrap.api.BootstrapThemeView;
-import com.beardedhen.androidbootstrap.api.RoundableView;
-import com.beardedhen.androidbootstrap.enums.DefaultBootstrapHeading;
-import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
-import com.beardedhen.androidbootstrap.utils.BootstrapDrawableFactory;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
+import com.beardedhen.androidbootstrap.api.attributes.LabelTheme;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme;
+import com.beardedhen.androidbootstrap.api.view.BootstrapHeadingView;
+import com.beardedhen.androidbootstrap.api.view.LabelThemeView;
+import com.beardedhen.androidbootstrap.api.view.RoundableView;
+import com.beardedhen.androidbootstrap.support.BootstrapDrawableFactory;
 
-public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeView, RoundableView,
+public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, RoundableView,
         BootstrapHeadingView {  // FIXME save state on orientation change
 
     private BootstrapHeading bootstrapHeading;
-    private BootstrapTheme bootstrapTheme;
+    private LabelTheme labelTheme;
     private boolean roundable;
 
     public BootstrapLabel(Context context) {
@@ -48,21 +48,12 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
             int typeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapType, 0);
 
             this.bootstrapHeading = DefaultBootstrapHeading.fromAttributeValue(attrValue);
-            this.bootstrapTheme = DefaultBootstrapTheme.fromAttributeValue(typeOrdinal);
+            this.labelTheme = DefaultLabelTheme.fromAttributeValue(typeOrdinal);
         }
         finally {
             a.recycle();
         }
         requestStateRefresh();
-    }
-
-    @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
-        this.bootstrapTheme = bootstrapTheme;
-        requestStateRefresh();
-    }
-
-    @Override public BootstrapTheme getBootstrapTheme() {
-        return bootstrapTheme;
     }
 
     @Override public void setRoundedCorners(boolean roundable) {
@@ -90,7 +81,7 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
         setTypeface(Typeface.DEFAULT_BOLD);
         setTextSize(bootstrapHeading.getTextSize(getContext()));
 
-        Drawable bg = BootstrapDrawableFactory.bootstrapLabel(getContext(), bootstrapHeading, bootstrapTheme, false);
+        Drawable bg = BootstrapDrawableFactory.bootstrapLabel(getContext(), bootstrapHeading, labelTheme, false, getHeight());
 
         if (Build.VERSION.SDK_INT >= 16) {
             setBackground(bg);
@@ -100,4 +91,20 @@ public class BootstrapLabel extends FontAwesomeText implements BootstrapThemeVie
         }
     }
 
+    @Override public void setLabelTheme(LabelTheme labelTheme) {
+        this.labelTheme = labelTheme;
+        requestStateRefresh();
+    }
+
+    @Override public LabelTheme getLabelTheme() {
+        return labelTheme;
+    }
+
+    @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+
+        if (roundable && h != oldh) {
+            requestStateRefresh();
+        }
+    }
 }

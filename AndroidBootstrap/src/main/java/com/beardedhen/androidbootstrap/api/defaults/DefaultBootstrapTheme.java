@@ -1,11 +1,11 @@
-package com.beardedhen.androidbootstrap.enums;
+package com.beardedhen.androidbootstrap.api.defaults;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 
 import com.beardedhen.androidbootstrap.R;
-import com.beardedhen.androidbootstrap.api.BootstrapTheme;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
 
 public enum DefaultBootstrapTheme implements BootstrapTheme {
 

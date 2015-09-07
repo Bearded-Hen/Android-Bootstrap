@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.utils.ImageUtils;
+import com.beardedhen.androidbootstrap.support.ImageUtils;
 
 /**
  * Should use Bootstrap Cards instead

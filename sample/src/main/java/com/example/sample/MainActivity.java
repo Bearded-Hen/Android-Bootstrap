@@ -4,17 +4,33 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.beardedhen.androidbootstrap.AwesomeTextView;
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.beardedhen.androidbootstrap.FontAwesomeText;
-import com.beardedhen.androidbootstrap.api.BootstrapSize;
-import com.beardedhen.androidbootstrap.api.BootstrapTheme;
-import com.beardedhen.androidbootstrap.enums.DefaultBootstrapSize;
-import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
-import com.beardedhen.androidbootstrap.utils.BootstrapText;
+import com.beardedhen.androidbootstrap.BootstrapLabel;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme;
+import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H1;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H2;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H3;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H4;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H5;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H6;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.DANGER;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.DEFAULT;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.INFO;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.PRIMARY;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.SUCCESS;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.WARNING;
 
 public class MainActivity extends Activity {
 
@@ -147,18 +163,18 @@ public class MainActivity extends Activity {
      */
 
 
-    @Bind(R.id.example_fa_text_change) FontAwesomeText exampleChange;
-    @Bind(R.id.example_fa_text_flash) FontAwesomeText exampleFlash;
-    @Bind(R.id.example_fa_text_rotate) FontAwesomeText exampleRotate;
-    @Bind(R.id.example_fa_text_multi_change) FontAwesomeText exampleMultiChange;
-    @Bind(R.id.example_fa_text_builder) FontAwesomeText exampleBuilder;
+    @Bind(R.id.example_fa_text_change) AwesomeTextView exampleChange;
+    @Bind(R.id.example_fa_text_flash) AwesomeTextView exampleFlash;
+    @Bind(R.id.example_fa_text_rotate) AwesomeTextView exampleRotate;
+    @Bind(R.id.example_fa_text_multi_change) AwesomeTextView exampleMultiChange;
+    @Bind(R.id.example_fa_text_builder) AwesomeTextView exampleBuilder;
 
     private boolean android = true;
     private boolean wikipedia = true;
 
     private void setupFontAwesomeText() {
-        exampleFlash.startFlashing(true, FontAwesomeText.AnimationSpeed.FAST);
-        exampleRotate.startRotate(true, FontAwesomeText.AnimationSpeed.SLOW);
+        exampleFlash.startFlashing(true, AwesomeTextView.AnimationSpeed.FAST);
+        exampleRotate.startRotate(true, AwesomeTextView.AnimationSpeed.SLOW);
 
         BootstrapText text = new BootstrapText.Builder(this)
                 .addText("I ")
@@ -179,6 +195,67 @@ public class MainActivity extends Activity {
         wikipedia = !wikipedia;
         String text = wikipedia ? "{fa-image} is in the {fa-cloud}" : "{fa-bank} are on {fa-globe}";
         exampleMultiChange.setMarkdownText(text);
+    }
+
+
+    /**
+     * BootstrapLabel example code
+     */
+
+
+    @Bind(R.id.example_blabel_change_color) BootstrapLabel lblChangeColor;
+    @Bind(R.id.example_blabel_change_heading) BootstrapLabel lblChangeHeading;
+
+    @OnClick(R.id.example_blabel_change_heading) void onHeadingChangeClicked() {
+        switch ((DefaultBootstrapHeading) lblChangeHeading.getBootstrapHeading()) {
+            case H1:
+                lblChangeHeading.setBootstrapHeading(H2);
+                break;
+            case H2:
+                lblChangeHeading.setBootstrapHeading(H3);
+                break;
+            case H3:
+                lblChangeHeading.setBootstrapHeading(H4);
+                break;
+            case H4:
+                lblChangeHeading.setBootstrapHeading(H5);
+                break;
+            case H5:
+                lblChangeHeading.setBootstrapHeading(H6);
+                break;
+            case H6:
+                lblChangeHeading.setBootstrapHeading(H1);
+                break;
+            default:
+                lblChangeHeading.setBootstrapHeading(H1);
+                break;
+        }
+    }
+
+    @OnClick(R.id.example_blabel_change_color) void onColorChangeClicked() {
+        switch ((DefaultLabelTheme) lblChangeColor.getLabelTheme()) {
+            case DEFAULT:
+                lblChangeColor.setLabelTheme(PRIMARY);
+                break;
+            case PRIMARY:
+                lblChangeColor.setLabelTheme(SUCCESS);
+                break;
+            case SUCCESS:
+                lblChangeColor.setLabelTheme(INFO);
+                break;
+            case INFO:
+                lblChangeColor.setLabelTheme(WARNING);
+                break;
+            case WARNING:
+                lblChangeColor.setLabelTheme(DANGER);
+                break;
+            case DANGER:
+                lblChangeColor.setLabelTheme(DEFAULT);
+                break;
+            default:
+                lblChangeColor.setLabelTheme(PRIMARY);
+                break;
+        }
     }
 
 }

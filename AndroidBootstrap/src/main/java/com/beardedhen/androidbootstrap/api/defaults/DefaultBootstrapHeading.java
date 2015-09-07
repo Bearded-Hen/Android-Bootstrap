@@ -1,10 +1,10 @@
-package com.beardedhen.androidbootstrap.enums;
+package com.beardedhen.androidbootstrap.api.defaults;
 
 import android.content.Context;
 import android.support.annotation.DimenRes;
 
 import com.beardedhen.androidbootstrap.R;
-import com.beardedhen.androidbootstrap.api.BootstrapHeading;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 
 public enum DefaultBootstrapHeading implements BootstrapHeading {
 

@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.utils.FontAwesomeIconMap;
+import com.beardedhen.androidbootstrap.support.FontAwesomeIconMap;
 
 
 /**

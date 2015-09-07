@@ -4,22 +4,21 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
-import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
-import com.beardedhen.androidbootstrap.api.BootstrapSize;
-import com.beardedhen.androidbootstrap.api.BootstrapSizeView;
-import com.beardedhen.androidbootstrap.api.BootstrapTheme;
-import com.beardedhen.androidbootstrap.api.BootstrapThemeView;
-import com.beardedhen.androidbootstrap.api.OutlineableView;
-import com.beardedhen.androidbootstrap.api.RoundableView;
-import com.beardedhen.androidbootstrap.enums.DefaultBootstrapSize;
-import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
-import com.beardedhen.androidbootstrap.utils.BootstrapDrawableFactory;
-import com.beardedhen.androidbootstrap.utils.BootstrapDrawableParams;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
+import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
+import com.beardedhen.androidbootstrap.api.view.BootstrapThemeView;
+import com.beardedhen.androidbootstrap.api.view.OutlineableView;
+import com.beardedhen.androidbootstrap.api.view.RoundableView;
+import com.beardedhen.androidbootstrap.support.BootstrapDrawableFactory;
+import com.beardedhen.androidbootstrap.support.BootstrapDrawableParams;
 
-public class BootstrapButton extends FontAwesomeText implements BootstrapThemeView,
+public class BootstrapButton extends AwesomeTextView implements BootstrapThemeView,
         BootstrapSizeView, OutlineableView, RoundableView { // FIXME save state on orientation change
 
     private BootstrapTheme bootstrapTheme;
@@ -60,15 +59,6 @@ public class BootstrapButton extends FontAwesomeText implements BootstrapThemeVi
             a.recycle();
         }
         requestStateRefresh();
-    }
-
-    @Override public Parcelable onSaveInstanceState() {
-
-        return super.onSaveInstanceState();
-    }
-
-    @Override public void onRestoreInstanceState(Parcelable state) {
-        super.onRestoreInstanceState(state);
     }
 
     @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {

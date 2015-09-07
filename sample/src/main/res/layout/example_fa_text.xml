@@ -35,21 +35,21 @@
                 android:text="Click me --->"
                 />
 
-            <com.beardedhen.androidbootstrap.FontAwesomeText
+            <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_change"
                 style="@style/wrapping_fa_text"
                 android:textColor="@color/bootstrap_btn_success_fill_default"
                 app:fa_icon="fa-android"
                 />
 
-            <com.beardedhen.androidbootstrap.FontAwesomeText
+            <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_flash"
                 style="@style/wrapping_fa_text"
                 android:textColor="@color/bootstrap_btn_primary_fill_default"
                 app:fa_icon="fa-github-alt"
                 />
 
-            <com.beardedhen.androidbootstrap.FontAwesomeText
+            <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_rotate"
                 style="@style/wrapping_fa_text"
                 android:textColor="@color/bootstrap_btn_danger_fill_default"
@@ -59,14 +59,14 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <com.beardedhen.androidbootstrap.FontAwesomeText
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/example_fa_text_multi_change"
         style="@style/wrapping_fa_text"
         android:textColor="@color/bootstrap_btn_primary_fill_default"
         app:bootstrapText="{fa-wikipedia-w} is in the {fa-cloud}"
         />
 
-    <com.beardedhen.androidbootstrap.FontAwesomeText
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/example_fa_text_builder"
         style="@style/wrapping_fa_text"
         />
@@ -88,20 +88,20 @@
             android:orientation="horizontal"
             >
 
-            <com.beardedhen.androidbootstrap.FontAwesomeText
+            <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
                 android:textColor="@color/bootstrap_btn_success_fill_default"
                 app:bootstrapText="{fa-android}{fa-android}{fa-android}"
                 app:fa_icon="fa-android"
                 />
 
-            <com.beardedhen.androidbootstrap.FontAwesomeText
+            <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
                 android:textColor="@color/bootstrap_btn_primary_fill_default"
                 app:bootstrapText="{fa-user} {fa-user-md} {fa-users} {fa-user-plus}"
                 />
 
-            <com.beardedhen.androidbootstrap.FontAwesomeText
+            <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
                 android:textColor="@color/bootstrap_btn_danger_fill_default"
                 app:bootstrapText="{fa-heart} {fa-yc} {fa-slack} {fa-stack-overflow} {fa-wikipedia-w} {fa-heart} "
@@ -115,7 +115,7 @@
         android:text="Text with icons"
         />
 
-    <com.beardedhen.androidbootstrap.FontAwesomeText
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
         android:textColor="@color/bootstrap_btn_success_fill_default"
         android:textSize="30dp"
@@ -124,7 +124,7 @@
         tools:ignore="SpUsage"
         />
 
-    <com.beardedhen.androidbootstrap.FontAwesomeText
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
         android:textColor="@color/bootstrap_btn_primary_fill_default"
         android:textSize="30dp"
@@ -132,7 +132,7 @@
         tools:ignore="SpUsage"
         />
 
-    <com.beardedhen.androidbootstrap.FontAwesomeText
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
         android:textColor="@color/bootstrap_btn_danger_fill_default"
         android:textSize="30dp"
@@ -140,7 +140,7 @@
         tools:ignore="SpUsage"
         />
 
-    <com.beardedhen.androidbootstrap.FontAwesomeText
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
         android:textColor="@color/bootstrap_btn_primary_fill_default"
         android:textSize="30dp"

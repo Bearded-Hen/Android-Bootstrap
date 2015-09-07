@@ -17,7 +17,7 @@
         android:padding="16dp"
         >
 
-        <com.beardedhen.androidbootstrap.utils.AutoResizeTextView
+        <com.beardedhen.androidbootstrap.support.AutoResizeTextView
             android:id="@+id/dimensionsLabel"
             android:layout_width="match_parent"
             android:layout_height="100dp"

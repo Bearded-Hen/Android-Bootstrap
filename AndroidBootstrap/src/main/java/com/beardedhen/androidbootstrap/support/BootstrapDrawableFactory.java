@@ -1,4 +1,4 @@
-package com.beardedhen.androidbootstrap.utils;
+package com.beardedhen.androidbootstrap.support;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,8 +8,10 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 
-import com.beardedhen.androidbootstrap.api.BootstrapHeading;
-import com.beardedhen.androidbootstrap.api.BootstrapTheme;
+import com.beardedhen.androidbootstrap.R;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
+import com.beardedhen.androidbootstrap.api.attributes.LabelTheme;
 
 public class BootstrapDrawableFactory {
 
@@ -56,9 +58,10 @@ public class BootstrapDrawableFactory {
         return stateListDrawable;
     }
 
-    @SuppressLint("InlinedApi") public static ColorStateList bootstrapButtonText(Context context, BootstrapDrawableParams params) {
+    @SuppressLint("InlinedApi")
+    public static ColorStateList bootstrapButtonText(Context context, BootstrapDrawableParams params) {
         BootstrapTheme theme = params.getBootstrapTheme();
-        int defaultColor = params.isShowOutline() ? theme.defaultEdge(context)  : theme.textColor(context);
+        int defaultColor = params.isShowOutline() ? theme.defaultEdge(context) : theme.textColor(context);
         int white = context.getResources().getColor(android.R.color.white);
 
         if (params.isShowOutline()) {
@@ -70,24 +73,24 @@ public class BootstrapDrawableFactory {
             int index = 0;
 
             if (hover) {
-                states[index] = new int[] {android.R.attr.state_hovered};
+                states[index] = new int[]{android.R.attr.state_hovered};
                 colors[index] = white;
                 index++;
             }
 
-            states[index] = new int[] {android.R.attr.state_activated};
+            states[index] = new int[]{android.R.attr.state_activated};
             colors[index] = white;
             index++;
 
-            states[index] = new int[] {android.R.attr.state_focused};
+            states[index] = new int[]{android.R.attr.state_focused};
             colors[index] = white;
             index++;
 
-            states[index] = new int[] {android.R.attr.state_pressed};
+            states[index] = new int[]{android.R.attr.state_pressed};
             colors[index] = white;
             index++;
 
-            states[index] = new int[] {};
+            states[index] = new int[]{};
             colors[index] = defaultColor;
 
             return new ColorStateList(states, colors);
@@ -100,21 +103,18 @@ public class BootstrapDrawableFactory {
     }
 
     public static Drawable bootstrapLabel(Context context,
-                                           BootstrapHeading bootstrapHeading,
-                                           BootstrapTheme theme,
-                                           boolean rounded) {
+                                          BootstrapHeading bootstrapHeading,
+                                          LabelTheme theme,
+                                          boolean rounded,
+                                          float height) {
 
-//        int cornerRadius = params.getBootstrapSize().buttonCornerRadius(context);
+        int cornerRadius = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_label_corner_radius);
 
         GradientDrawable drawable = new GradientDrawable();
         drawable.setColor(theme.defaultFill(context));
 
-//        if (rounded) { // corner radius should be half height
-//            drawable.setCornerRadius(cornerRadius);
-//        }
-//        else {
-//            drawable.setCornerRadius(cornerRadius);
-//        }
+        // corner radius should be half height
+        drawable.setCornerRadius(rounded ? height / 2 : cornerRadius);
 
         return drawable;
     }

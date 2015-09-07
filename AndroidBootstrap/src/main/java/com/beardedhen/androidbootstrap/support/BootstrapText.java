@@ -1,4 +1,4 @@
-package com.beardedhen.androidbootstrap.utils;
+package com.beardedhen.androidbootstrap.support;
 
 import android.content.Context;
 import android.text.SpannableString;

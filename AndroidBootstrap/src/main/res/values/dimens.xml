@@ -44,4 +44,7 @@
 
     <dimen name="bootstrap_h6_text_size">14sp</dimen>
 
+
+    <dimen name="bootstrap_label_corner_radius">3dp</dimen>
+
 </resources>

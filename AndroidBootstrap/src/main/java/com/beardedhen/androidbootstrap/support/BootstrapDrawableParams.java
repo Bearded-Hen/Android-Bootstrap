@@ -1,8 +1,8 @@
-package com.beardedhen.androidbootstrap.utils;
+package com.beardedhen.androidbootstrap.support;
 
-import com.beardedhen.androidbootstrap.api.BootstrapSize;
-import com.beardedhen.androidbootstrap.api.BootstrapTheme;
-import com.beardedhen.androidbootstrap.enums.DefaultBootstrapTheme;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
 
 public class BootstrapDrawableParams {
 

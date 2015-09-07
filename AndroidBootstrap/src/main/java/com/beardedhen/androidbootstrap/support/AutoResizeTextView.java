@@ -1,4 +1,4 @@
-package com.beardedhen.androidbootstrap.utils;
+package com.beardedhen.androidbootstrap.support;
 
 import android.annotation.TargetApi;
 import android.content.Context;

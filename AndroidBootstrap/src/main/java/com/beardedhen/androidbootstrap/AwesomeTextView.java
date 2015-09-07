@@ -9,10 +9,10 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.api.BootstrapTextView;
-import com.beardedhen.androidbootstrap.utils.BootstrapText;
+import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
+import com.beardedhen.androidbootstrap.support.BootstrapText;
 
-public class FontAwesomeText extends TextView implements BootstrapTextView { // FIXME save state on orientation change
+public class AwesomeTextView extends TextView implements BootstrapTextView { // FIXME save state on orientation change
 
     private BootstrapText bootstrapText;
 
@@ -38,32 +38,32 @@ public class FontAwesomeText extends TextView implements BootstrapTextView { // 
         }
     }
 
-    public FontAwesomeText(Context context) {
+    public AwesomeTextView(Context context) {
         super(context);
         initialise(null);
     }
 
-    public FontAwesomeText(Context context, AttributeSet attrs) {
+    public AwesomeTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initialise(attrs);
     }
 
-    public FontAwesomeText(Context context, AttributeSet attrs, int defStyle) {
+    public AwesomeTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initialise(attrs);
     }
 
     private void initialise(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FontAwesomeText);
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.AwesomeTextView);
 
         try {
-            String icon = a.getString(R.styleable.FontAwesomeText_fa_icon);
+            String icon = a.getString(R.styleable.AwesomeTextView_fa_icon);
 
             if (icon != null && !isInEditMode()) {
                 setIcon(icon);
             }
 
-            String text = a.getString(R.styleable.FontAwesomeText_bootstrapText);
+            String text = a.getString(R.styleable.AwesomeTextView_bootstrapText);
 
             if (text != null) {
                 setMarkdownText(text);

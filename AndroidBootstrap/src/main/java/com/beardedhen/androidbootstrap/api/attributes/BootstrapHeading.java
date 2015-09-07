@@ -1,4 +1,4 @@
-package com.beardedhen.androidbootstrap.api;
+package com.beardedhen.androidbootstrap.api.attributes;
 
 import android.content.Context;
 
