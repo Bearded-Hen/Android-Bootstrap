@@ -75,7 +75,7 @@ public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, R
         return bootstrapHeading;
     }
 
-    @Override protected void requestStateRefresh() {
+    private void requestStateRefresh() {
         // set bg color etc
 
         setTextColor(getContext().getResources().getColor(android.R.color.white));

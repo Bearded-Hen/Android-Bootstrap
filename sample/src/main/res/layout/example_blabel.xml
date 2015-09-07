@@ -204,7 +204,7 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Weight 1"
+            app:bootstrapText="Weight 1 {fa-gift}"
             app:bootstrapType="danger"
             app:labelType="success"
             />
@@ -215,11 +215,10 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="Weight 2"
+            app:bootstrapText="{fa-play} Weight 2 {fa-group}"
             app:bootstrapType="danger"
             app:labelType="primary"
             />
-
     </LinearLayout>
 
 </LinearLayout>

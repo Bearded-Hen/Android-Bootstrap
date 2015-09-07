@@ -112,8 +112,13 @@ public enum DefaultBootstrapTheme implements BootstrapTheme {
     }
 
     private int generateDisabledColor(Context context, int defaultColor) {
-        int c = context.getResources().getColor(defaultColor);
-        return Color.argb((int) (0.65 * 255), Color.red(c), Color.green(c), Color.blue(c)); // 65% alpha
+        if (this == LINK) {
+            return Color.argb(0, 0, 0, 0);
+        }
+        else {
+            int c = context.getResources().getColor(defaultColor);
+            return Color.argb((int) (0.65 * 255), Color.red(c), Color.green(c), Color.blue(c)); // 65% alpha
+        }
     }
 
 }

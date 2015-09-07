@@ -81,7 +81,8 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         requestStateRefresh();
     }
 
-    protected void requestStateRefresh() {
+    private void requestStateRefresh() {
+
         if (bootstrapSize != null && bootstrapTheme != null) {
 
             int vert = bootstrapSize.buttonVerticalPadding(getContext());

@@ -223,7 +223,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView { // 
         requestStateRefresh();
     }
 
-    protected void requestStateRefresh() {
+    private void requestStateRefresh() {
         if (bootstrapText != null) {
             setText(bootstrapText);
         }
