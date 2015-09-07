@@ -32,7 +32,7 @@
                 style="@style/wrapping_button"
                 android:text="Color"
                 app:bootstrapHeading="h3"
-                app:labelType="labelDefault"
+                app:labelType="warning"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
@@ -40,7 +40,16 @@
                 style="@style/wrapping_button"
                 android:text="Heading"
                 app:bootstrapHeading="h1"
-                app:labelType="labelDefault"
+                app:labelType="success"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/example_blabel_change_rounded"
+                style="@style/wrapping_button"
+                android:text="Round"
+                app:bootstrapHeading="h3"
+                app:labelType="primary"
+                app:roundedCorners="true"
                 />
         </LinearLayout>
     </HorizontalScrollView>
@@ -48,7 +57,7 @@
     <!-- Different sizes -->
     <TextView
         style="@style/description_label"
-        android:text="Different Sizes"
+        android:text="Default Labels"
         />
 
     <HorizontalScrollView
@@ -106,12 +115,80 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <!-- Different sizes -->
+    <TextView
+        style="@style/description_label"
+        android:text="Rounded 'Pill' Labels"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head1"
+                app:bootstrapHeading="h1"
+                app:labelType="danger"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head2"
+                app:bootstrapHeading="h2"
+                app:labelType="warning"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head3"
+                app:bootstrapHeading="h3"
+                app:labelType="info"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head4"
+                app:bootstrapHeading="h4"
+                app:labelType="success"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head5"
+                app:bootstrapHeading="h5"
+                app:labelType="primary"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head6"
+                app:bootstrapHeading="h6"
+                app:labelType="labelDefault"
+                app:roundedCorners="true"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <com.beardedhen.androidbootstrap.BootstrapLabel
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/micro_padding"
         android:gravity="center"
         android:text="Match Parent"
+        app:labelType="primary"
         />
 
     <LinearLayout
@@ -129,6 +206,7 @@
             android:gravity="center"
             android:text="Weight 1"
             app:bootstrapType="danger"
+            app:labelType="success"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
@@ -138,7 +216,8 @@
             android:layout_weight="2"
             android:gravity="center"
             android:text="Weight 2"
-            app:bootstrapType="success"
+            app:bootstrapType="danger"
+            app:labelType="primary"
             />
 
     </LinearLayout>

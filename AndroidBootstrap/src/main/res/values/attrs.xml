@@ -48,6 +48,7 @@
     <declare-styleable name="BootstrapLabel">
         <attr name="bootstrapHeading" />
         <attr name="labelType" />
+        <attr name="roundedCorners" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapButton">

@@ -205,6 +205,7 @@ public class MainActivity extends Activity {
 
     @Bind(R.id.example_blabel_change_color) BootstrapLabel lblChangeColor;
     @Bind(R.id.example_blabel_change_heading) BootstrapLabel lblChangeHeading;
+    @Bind(R.id.example_blabel_change_rounded) BootstrapLabel lblChangeRounded;
 
     @OnClick(R.id.example_blabel_change_heading) void onHeadingChangeClicked() {
         switch ((DefaultBootstrapHeading) lblChangeHeading.getBootstrapHeading()) {
@@ -256,6 +257,10 @@ public class MainActivity extends Activity {
                 lblChangeColor.setLabelTheme(PRIMARY);
                 break;
         }
+    }
+
+    @OnClick(R.id.example_blabel_change_rounded) void onRoundedChangeClicked() {
+        lblChangeRounded.setRoundedCorners(!lblChangeRounded.isRoundedCorners());
     }
 
 }

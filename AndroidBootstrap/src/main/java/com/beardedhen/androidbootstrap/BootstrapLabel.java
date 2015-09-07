@@ -46,6 +46,7 @@ public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, R
         try {
             int attrValue = a.getInt(R.styleable.BootstrapLabel_bootstrapHeading, 5);
             int typeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapType, 0);
+            this.roundable = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
 
             this.bootstrapHeading = DefaultBootstrapHeading.fromAttributeValue(attrValue);
             this.labelTheme = DefaultLabelTheme.fromAttributeValue(typeOrdinal);
@@ -81,7 +82,11 @@ public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, R
         setTypeface(Typeface.DEFAULT_BOLD);
         setTextSize(bootstrapHeading.getTextSize(getContext()));
 
-        Drawable bg = BootstrapDrawableFactory.bootstrapLabel(getContext(), bootstrapHeading, labelTheme, false, getHeight());
+        Drawable bg = BootstrapDrawableFactory.bootstrapLabel(getContext(),
+                                                              bootstrapHeading,
+                                                              labelTheme,
+                                                              roundable,
+                                                              getHeight());
 
         if (Build.VERSION.SDK_INT >= 16) {
             setBackground(bg);
