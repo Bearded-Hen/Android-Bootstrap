@@ -66,8 +66,9 @@ public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, R
         return roundable;
     }
 
-    @Override public void setBootstrapHeading(BootstrapHeading bootstrapHeading) { // FIXME should alter padding
+    @Override public void setBootstrapHeading(BootstrapHeading bootstrapHeading) {
         this.bootstrapHeading = bootstrapHeading;
+
         requestStateRefresh();
     }
 
@@ -77,6 +78,10 @@ public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, R
 
     private void requestStateRefresh() {
         // set bg color etc
+
+        int vert = bootstrapHeading.verticalPadding(getContext());
+        int hori = bootstrapHeading.horizontalPadding(getContext());
+        setPadding(hori, vert, hori, vert);
 
         setTextColor(getContext().getResources().getColor(android.R.color.white));
         setTypeface(Typeface.DEFAULT_BOLD);

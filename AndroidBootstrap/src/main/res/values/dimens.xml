@@ -32,18 +32,29 @@
     <dimen name="bootstrap_button_large_edge_width">0.875dp</dimen>
 
     <!-- Headings -->
-    <dimen name="bootstrap_h1_text_size">31.5sp</dimen>
+    <dimen name="bootstrap_h1_text_size">31.5sp</dimen> <!-- Multiply by .25 for vert, .40 for hori -->
+    <dimen name="bootstrap_h1_vert_padding">7.875dp</dimen>
+    <dimen name="bootstrap_h1_hori_padding">12.6dp</dimen>
 
     <dimen name="bootstrap_h2_text_size">28sp</dimen>
+    <dimen name="bootstrap_h2_vert_padding">7dp</dimen>
+    <dimen name="bootstrap_h2_hori_padding">11.2dp</dimen>
 
     <dimen name="bootstrap_h3_text_size">24.5sp</dimen>
+    <dimen name="bootstrap_h3_vert_padding">6.125dp</dimen>
+    <dimen name="bootstrap_h3_hori_padding">9.8dp</dimen>
 
     <dimen name="bootstrap_h4_text_size">21sp</dimen>
+    <dimen name="bootstrap_h4_vert_padding">5.25dp</dimen>
+    <dimen name="bootstrap_h4_hori_padding">8.4dp</dimen>
 
     <dimen name="bootstrap_h5_text_size">17.5sp</dimen>
+    <dimen name="bootstrap_h5_vert_padding">4.375dp</dimen>
+    <dimen name="bootstrap_h5_hori_padding">7dp</dimen>
 
-    <dimen name="bootstrap_h6_text_size">14sp</dimen>
-
+    <dimen name="bootstrap_h6_text_size">14dp</dimen>
+    <dimen name="bootstrap_h6_vert_padding">3.5dp</dimen>
+    <dimen name="bootstrap_h6_hori_padding">5.6dp</dimen>
 
     <dimen name="bootstrap_label_corner_radius">3dp</dimen>
 

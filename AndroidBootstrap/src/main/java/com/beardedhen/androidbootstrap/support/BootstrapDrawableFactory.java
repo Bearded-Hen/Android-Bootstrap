@@ -12,6 +12,7 @@ import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
 import com.beardedhen.androidbootstrap.api.attributes.LabelTheme;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
 
 public class BootstrapDrawableFactory {
 
@@ -28,7 +29,7 @@ public class BootstrapDrawableFactory {
         GradientDrawable disabledDrawable = new GradientDrawable();
 
         if (params.isShowOutline()) {
-            activeDrawable.setColor(theme.defaultFill(context));
+            activeDrawable.setColor(theme.activeFill(context));
         }
         else {
             defaultDrawable.setColor(theme.defaultFill(context));
@@ -61,8 +62,15 @@ public class BootstrapDrawableFactory {
     @SuppressLint("InlinedApi")
     public static ColorStateList bootstrapButtonText(Context context, BootstrapDrawableParams params) {
         BootstrapTheme theme = params.getBootstrapTheme();
-        int defaultColor = params.isShowOutline() ? theme.defaultEdge(context) : theme.textColor(context);
+        int defaultColor;
         int white = context.getResources().getColor(android.R.color.white);
+
+        if (theme == DefaultBootstrapTheme.LINK) { // special case
+            defaultColor = theme.textColor(context);
+        }
+        else {
+            defaultColor = params.isShowOutline() ? theme.defaultEdge(context) : theme.textColor(context);
+        }
 
         if (params.isShowOutline()) {
             boolean hover = Build.VERSION.SDK_INT >= 14;
