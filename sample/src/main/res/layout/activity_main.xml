@@ -12,11 +12,33 @@
         android:orientation="vertical"
         >
 
-        <include layout="@layout/example_bbutton" />
+        <Button
+            android:id="@+id/example_bootstrap_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bootstrap Button"
+            />
 
-        <include layout="@layout/example_fa_text" />
+        <Button
+            android:id="@+id/example_fontawesometext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FontAwesomeText"
+            />
 
-        <include layout="@layout/example_blabel" />
+        <Button
+            android:id="@+id/example_bootstrap_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bootstrap Label"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bootstrap Progress"
+            />
 
     </LinearLayout>
 
