@@ -1,24 +1,33 @@
 package com.beardedhen.androidbootstrap;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
 import com.beardedhen.androidbootstrap.api.view.ProgressView;
 
-public class BootstrapProgressBar extends View implements ProgressView {
+public class BootstrapProgressBar extends View implements ProgressView, ValueAnimator.AnimatorUpdateListener {
 
     // see http://stackoverflow.com/questions/13964520
+
+    private static final long ANIMATOR_PROGRESS_MS = 500;
 
     private Paint progressPaint;
     private Paint bgPaint;
 
-    private int progress;
+    private int userProgress;
+    private int drawnProgress;
+
     private boolean striped;
     private boolean animated;
+
+    private ValueAnimator progressAnimator;
 
     public BootstrapProgressBar(Context context) {
         super(context);
@@ -36,6 +45,10 @@ public class BootstrapProgressBar extends View implements ProgressView {
     }
 
     private void initialise(AttributeSet attrs) {
+        this.userProgress = 0;
+        this.drawnProgress = 0;
+
+
         progressPaint = new Paint();
         progressPaint.setStyle(Paint.Style.FILL);
         progressPaint.setColor(Color.BLUE);
@@ -44,7 +57,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
         bgPaint.setStyle(Paint.Style.FILL);
         bgPaint.setColor(Color.GRAY);
 
-        setProgress(40);
+        invalidate();
     }
 
     @Override public void setProgress(int progress) {
@@ -53,12 +66,30 @@ public class BootstrapProgressBar extends View implements ProgressView {
             throw new RuntimeException(s);
         }
 
-        this.progress = progress;
-        invalidate();
+        this.drawnProgress = userProgress; // previously set value
+        this.userProgress = progress;
+
+        this.animated = true;
+
+        if (animated) {
+            clearAnimation();
+            ValueAnimator.setFrameDelay(15); // attempt 60fps
+
+            progressAnimator = ValueAnimator.ofFloat(drawnProgress, userProgress);
+            progressAnimator.setDuration(ANIMATOR_PROGRESS_MS);
+            progressAnimator.setInterpolator(new DecelerateInterpolator());
+            progressAnimator.addUpdateListener(this);
+            progressAnimator.start();
+
+        }
+        else {
+            this.drawnProgress = progress;
+            invalidate();
+        }
     }
 
     @Override public int getProgress() {
-        return progress;
+        return userProgress;
     }
 
     @Override public void setStriped(boolean striped) {
@@ -78,6 +109,13 @@ public class BootstrapProgressBar extends View implements ProgressView {
     }
 
     // TODO theme colors
+
+    @Override public void onAnimationUpdate(ValueAnimator animation) {
+        this.drawnProgress = (int) ((float) animation.getAnimatedValue());
+
+        Log.d("Bootstrap", String.format("Draw update %d", drawnProgress));
+        invalidate();
+    }
 
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // restrict view to default progressbar height
@@ -106,7 +144,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
         float w = getWidth();
         float h = getHeight();
 
-        float ratio = (float) (progress / 100.0);
+        float ratio = (float) (drawnProgress / 100.0);
         int lineEnd = (int) (w * ratio);
 
         canvas.drawRect(0, 0, lineEnd, h, progressPaint);
