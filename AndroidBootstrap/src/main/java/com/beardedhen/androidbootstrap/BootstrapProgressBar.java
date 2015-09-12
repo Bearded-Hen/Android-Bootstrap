@@ -3,6 +3,7 @@ package com.beardedhen.androidbootstrap;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -15,10 +16,9 @@ import android.view.animation.LinearInterpolator;
 
 import com.beardedhen.androidbootstrap.api.view.ProgressView;
 
-public class BootstrapProgressBar extends View implements ProgressView, Animator.AnimatorListener {
+public class BootstrapProgressBar extends View implements ProgressView {
 
-    private static final long UPDATE_ANIM_MS = 500;
-    private static final float STRIPE_ANIM_MS = 1500;
+    private static final long UPDATE_ANIM_MS = 300;
 
     private Paint progressPaint;
     private Paint stripePaint;
@@ -51,11 +51,9 @@ public class BootstrapProgressBar extends View implements ProgressView, Animator
 
     private void initialise(AttributeSet attrs) {
         ValueAnimator.setFrameDelay(15); // attempt 60fps
+        tilePaint = new Paint();
 
-        this.userProgress = 0;
-        this.drawnProgress = 0;
-
-        int b = Color.BLUE;
+        int b = Color.BLUE; // FIXME set via theme
 
         progressPaint = new Paint();
         progressPaint.setStyle(Paint.Style.FILL);
@@ -71,9 +69,17 @@ public class BootstrapProgressBar extends View implements ProgressView, Animator
         bgPaint.setStyle(Paint.Style.FILL);
         bgPaint.setColor(Color.GRAY);
 
-        tilePaint = new Paint();
+        // get attributes
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapProgressBar);
 
-        invalidate();
+        try {
+            this.animated = a.getBoolean(R.styleable.BootstrapProgressBar_animated, false);
+            this.striped = a.getBoolean(R.styleable.BootstrapProgressBar_striped, false);
+            setProgress(a.getInt(R.styleable.BootstrapProgressBar_progress, 0));
+        }
+        finally {
+            a.recycle();
+        }
     }
 
     @Override public void setProgress(int progress) {
@@ -85,9 +91,6 @@ public class BootstrapProgressBar extends View implements ProgressView, Animator
         this.drawnProgress = userProgress; // previously set value
         this.userProgress = progress;
 
-        this.animated = true; // FIXME
-        this.striped = true;
-
         if (animated) {
             startProgressUpdateAnimation();
         }
@@ -96,6 +99,32 @@ public class BootstrapProgressBar extends View implements ProgressView, Animator
             invalidate();
         }
     }
+
+    @Override public int getProgress() {
+        return userProgress;
+    }
+
+    @Override public void setStriped(boolean striped) {
+        this.striped = striped;
+        invalidate();
+    }
+
+    @Override public boolean isStriped() {
+        return striped;
+    }
+
+    @Override public void setAnimated(boolean animated) {
+        this.animated = animated;
+        invalidate();
+    }
+
+    @Override public boolean isAnimated() {
+        return animated;
+    }
+
+
+    // TODO theme colors
+
 
     /**
      * Starts an animation which moves the progress bar from one value to another, in response to
@@ -112,13 +141,32 @@ public class BootstrapProgressBar extends View implements ProgressView, Animator
         progressAnimator.setRepeatMode(ValueAnimator.RESTART);
 
         progressAnimator.setInterpolator(new DecelerateInterpolator());
+
         progressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
             @Override public void onAnimationUpdate(ValueAnimator animation) {
                 drawnProgress = (int) ((float) animation.getAnimatedValue());
                 invalidate();
             }
         });
-        progressAnimator.addListener(this);
+
+        // start striped animation after progress update if needed
+        progressAnimator.addListener(new Animator.AnimatorListener() {
+            @Override public void onAnimationStart(Animator animation) {
+            }
+
+            @Override public void onAnimationEnd(Animator animation) {
+                if (striped && animated) { // start striped animation after progress update
+                    startStripedAnimation();
+                }
+            }
+
+            @Override public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override public void onAnimationRepeat(Animator animation) {
+            }
+        });
         progressAnimator.start();
     }
 
@@ -142,53 +190,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Animator
                 invalidate();
             }
         });
-        progressAnimator.addListener(this);
         progressAnimator.start();
-    }
-
-    @Override public int getProgress() {
-        return userProgress;
-    }
-
-    @Override public void setStriped(boolean striped) {
-        this.striped = striped;
-    }
-
-    @Override public boolean isStriped() {
-        return striped;
-    }
-
-    @Override public void setAnimated(boolean animated) {
-        this.animated = animated;
-    }
-
-    @Override public boolean isAnimated() {
-        return animated;
-    }
-
-    // TODO theme colors
-
-
-    /*
-     * Animation Listener Callbacks
-     */
-
-    @Override public void onAnimationStart(Animator animation) {
-
-    }
-
-    @Override public void onAnimationEnd(Animator animation) {
-        if (striped && animated) { // start striped animation after progress update
-            startStripedAnimation();
-        }
-    }
-
-    @Override public void onAnimationCancel(Animator animation) {
-
-    }
-
-    @Override public void onAnimationRepeat(Animator animation) {
-
     }
 
     /*

@@ -58,6 +58,14 @@
         <attr name="bootstrapSize" />
     </declare-styleable>
 
+    <declare-styleable name="BootstrapProgressBar">
+        <attr name="striped" format="boolean" />
+        <attr name="animated" format="boolean" />
+        <attr name="progress" format="integer" />
+    </declare-styleable>
+
+    <!-- Legacy -->
+
     <declare-styleable name="BootstrapEditText">
         <attr name="be_roundedCorners" format="boolean" />
         <attr name="be_state" format="string" />

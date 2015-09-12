@@ -3,6 +3,7 @@
 <LinearLayout
     style="@style/example_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <TextView
@@ -10,16 +11,80 @@
         android:text="Bootstrap Progress"
         />
 
-    <TextView
-        style="@style/description_label"
-        android:text="Default"
-        />
+    <LinearLayout
+        style="@style/progress_weight_container">
 
-    <com.beardedhen.androidbootstrap.BootstrapProgressBar
-        android:id="@+id/example_progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/micro_padding"
-        />
+        <Button
+            android:id="@+id/example_progress_default_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Default"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_default"
+            style="@style/progress_example"
+            app:progress="25"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_striped_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Striped"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_striped"
+            style="@style/progress_example"
+            app:progress="60"
+            app:striped="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_animated_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Animated"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_animated"
+            style="@style/progress_example"
+            app:animated="true"
+            app:progress="40"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_striped_animated_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Striped Animated"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_striped_animated"
+            style="@style/progress_example"
+            app:animated="true"
+            app:progress="78"
+            app:striped="true"
+            />
+    </LinearLayout>
 
 </LinearLayout>

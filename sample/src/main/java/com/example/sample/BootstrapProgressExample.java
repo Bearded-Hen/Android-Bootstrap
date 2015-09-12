@@ -15,10 +15,25 @@ public class BootstrapProgressExample extends BaseActivity {
         return R.layout.example_bprogress;
     }
 
-    @Bind(R.id.example_progress_bar) BootstrapProgressBar progressBar;
+    @Bind(R.id.example_progress_default) BootstrapProgressBar defaultExample;
+    @Bind(R.id.example_progress_animated) BootstrapProgressBar animatedExample;
+    @Bind(R.id.example_progress_striped) BootstrapProgressBar stripedExample;
+    @Bind(R.id.example_progress_striped_animated) BootstrapProgressBar stripedAnimExample;
 
-    @OnClick(R.id.example_progress_bar) void onProgressBarClicked() {
-        progressBar.setProgress(randomProgress(progressBar.getProgress()));
+    @OnClick(R.id.example_progress_default_btn) void onDefaultClicked() {
+        defaultExample.setProgress(randomProgress(defaultExample.getProgress()));
+    }
+
+    @OnClick(R.id.example_progress_animated_btn) void onAnimatedClicked() {
+        animatedExample.setProgress(randomProgress(animatedExample.getProgress()));
+    }
+
+    @OnClick(R.id.example_progress_striped_btn) void onStripedClicked() {
+        stripedExample.setProgress(randomProgress(stripedExample.getProgress()));
+    }
+
+    @OnClick(R.id.example_progress_striped_animated_btn) void onStripedAnimClicked() {
+        stripedAnimExample.setProgress(randomProgress(stripedAnimExample.getProgress()));
     }
 
     private int randomProgress(int currentProgress) {
