@@ -11,15 +11,14 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 
 import com.beardedhen.androidbootstrap.api.view.ProgressView;
 
-public class BootstrapProgressBar extends View implements ProgressView,
-        ValueAnimator.AnimatorUpdateListener, Animator.AnimatorListener {
+public class BootstrapProgressBar extends View implements ProgressView, Animator.AnimatorListener {
 
-    // see http://stackoverflow.com/questions/13964520
-
-    private static final long ANIMATOR_PROGRESS_MS = 500;
+    private static final long UPDATE_ANIM_MS = 500;
+    private static final float STRIPE_ANIM_MS = 1500;
 
     private Paint progressPaint;
     private Paint stripePaint;
@@ -51,6 +50,8 @@ public class BootstrapProgressBar extends View implements ProgressView,
     }
 
     private void initialise(AttributeSet attrs) {
+        ValueAnimator.setFrameDelay(15); // attempt 60fps
+
         this.userProgress = 0;
         this.drawnProgress = 0;
 
@@ -88,7 +89,7 @@ public class BootstrapProgressBar extends View implements ProgressView,
         this.striped = true;
 
         if (animated) {
-            startProgressAnimation(false);
+            startProgressUpdateAnimation();
         }
         else {
             this.drawnProgress = progress;
@@ -97,23 +98,50 @@ public class BootstrapProgressBar extends View implements ProgressView,
     }
 
     /**
-     *
-     * @param infinite whether the animation should repeat endlessly
+     * Starts an animation which moves the progress bar from one value to another, in response to
+     * a call to setProgress(). Animation update callbacks allow the interpolator value to be used
+     * to calculate the current progress value, which is stored in a temporary variable. The view is
+     * then invalidated.
      */
-    private void startProgressAnimation(boolean infinite) {
+    private void startProgressUpdateAnimation() {
         clearAnimation();
-        ValueAnimator.setFrameDelay(15); // attempt 60fps
 
-        // start == userProgress if repeating the animation infinitely (striped animation effect)
-        float start = infinite ? userProgress : drawnProgress;
-        progressAnimator = ValueAnimator.ofFloat(start, userProgress);
-
-        progressAnimator.setDuration(ANIMATOR_PROGRESS_MS);
-        progressAnimator.setRepeatCount(infinite ? ValueAnimator.INFINITE : 0);
+        progressAnimator = ValueAnimator.ofFloat(drawnProgress, userProgress);
+        progressAnimator.setDuration(UPDATE_ANIM_MS);
+        progressAnimator.setRepeatCount(0);
         progressAnimator.setRepeatMode(ValueAnimator.RESTART);
 
         progressAnimator.setInterpolator(new DecelerateInterpolator());
-        progressAnimator.addUpdateListener(this);
+        progressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override public void onAnimationUpdate(ValueAnimator animation) {
+                drawnProgress = (int) ((float) animation.getAnimatedValue());
+                invalidate();
+            }
+        });
+        progressAnimator.addListener(this);
+        progressAnimator.start();
+    }
+
+    /**
+     * Starts an infinite animation cycle which provides the visual effect of stripes moving
+     * backwards. The current system time is used to offset tiled bitmaps of the progress background,
+     * producing the effect that the stripes are moving backwards.
+     */
+    private void startStripedAnimation() {
+        clearAnimation();
+
+        // progress not usedshould never change between animation frames
+        progressAnimator = ValueAnimator.ofFloat(0, 0);
+        progressAnimator.setDuration(UPDATE_ANIM_MS);
+        progressAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        progressAnimator.setRepeatMode(ValueAnimator.RESTART);
+
+        progressAnimator.setInterpolator(new LinearInterpolator());
+        progressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override public void onAnimationUpdate(ValueAnimator animation) {
+                invalidate();
+            }
+        });
         progressAnimator.addListener(this);
         progressAnimator.start();
     }
@@ -145,18 +173,13 @@ public class BootstrapProgressBar extends View implements ProgressView,
      * Animation Listener Callbacks
      */
 
-    @Override public void onAnimationUpdate(ValueAnimator animation) {
-        this.drawnProgress = (int) ((float) animation.getAnimatedValue());
-        invalidate();
-    }
-
     @Override public void onAnimationStart(Animator animation) {
 
     }
 
     @Override public void onAnimationEnd(Animator animation) {
-        if (striped && animated) {
-            startProgressAnimation(true);
+        if (striped && animated) { // start striped animation after progress update
+            startStripedAnimation();
         }
     }
 
@@ -209,12 +232,11 @@ public class BootstrapProgressBar extends View implements ProgressView,
 
         float ratio = (float) (drawnProgress / 100.0);
         int lineEnd = (int) (w * ratio);
-        float offset = 0;
 
-        // TODO animated stripes should have an infinite ValueAnimator, offset the bitmap position here
+        float offset = 0;
+        float offsetFactor = (float) ((System.currentTimeMillis() % 1500) / 1500.0);
 
         if (striped && animated) { // determine offset for current animation frame of progress bar
-            float offsetFactor = (float) ((System.currentTimeMillis() % 1500) / 1500.0);
             offset = (h * 2) * offsetFactor;
         }
 
@@ -226,6 +248,8 @@ public class BootstrapProgressBar extends View implements ProgressView,
             float start = 0 - offset;
 
             while (start < lineEnd) {
+                // TODO should probably cache everything apart from the edges as a bitmap rather than tiling
+
                 canvas.drawBitmap(stripeTile, start, 0, tilePaint);
                 start += stripeTile.getHeight() * 2;
             }
@@ -236,6 +260,12 @@ public class BootstrapProgressBar extends View implements ProgressView,
         canvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
     }
 
+    /**
+     * Creates a Bitmap which is a tile of the progress bar background
+     *
+     * @param h the view height
+     * @return a bitmap of the progress bar background
+     */
     private Bitmap createTile(float h) {
         Bitmap bm = Bitmap.createBitmap((int) h * 2, (int) h, Bitmap.Config.ARGB_8888);
         Canvas tile = new Canvas(bm);
@@ -264,6 +294,5 @@ public class BootstrapProgressBar extends View implements ProgressView,
 
         return bm;
     }
-
 
 }
