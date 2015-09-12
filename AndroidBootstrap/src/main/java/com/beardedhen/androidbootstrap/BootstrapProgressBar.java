@@ -19,6 +19,7 @@ import com.beardedhen.androidbootstrap.api.view.ProgressView;
 public class BootstrapProgressBar extends View implements ProgressView {
 
     private static final long UPDATE_ANIM_MS = 300;
+    private static final int STRIPE_ALPHA = 150;
 
     private Paint progressPaint;
     private Paint stripePaint;
@@ -62,7 +63,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
 
         stripePaint = new Paint();
         stripePaint.setStyle(Paint.Style.FILL);
-        stripePaint.setColor(Color.argb(150, Color.red(b), Color.green(b), Color.blue(b)));
+        stripePaint.setColor(Color.argb(STRIPE_ALPHA, Color.red(b), Color.green(b), Color.blue(b)));
         stripePaint.setAntiAlias(true);
 
         bgPaint = new Paint();
@@ -75,7 +76,9 @@ public class BootstrapProgressBar extends View implements ProgressView {
         try {
             this.animated = a.getBoolean(R.styleable.BootstrapProgressBar_animated, false);
             this.striped = a.getBoolean(R.styleable.BootstrapProgressBar_striped, false);
-            setProgress(a.getInt(R.styleable.BootstrapProgressBar_progress, 0));
+            this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_progress, 0);
+            this.drawnProgress = userProgress;
+            setProgress(this.userProgress);
         }
         finally {
             a.recycle();
@@ -85,7 +88,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
     @Override public void setProgress(int progress) {
         if (progress < 0 || progress > 100) {
             String s = String.format("Invalid value '%d' - progress must be an integer in the range 0-100", progress);
-            throw new RuntimeException(s);
+            throw new IllegalArgumentException(s);
         }
 
         this.drawnProgress = userProgress; // previously set value
@@ -107,6 +110,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
     @Override public void setStriped(boolean striped) {
         this.striped = striped;
         invalidate();
+        startStripedAnimationIfNeeded();
     }
 
     @Override public boolean isStriped() {
@@ -116,6 +120,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
     @Override public void setAnimated(boolean animated) {
         this.animated = animated;
         invalidate();
+        startStripedAnimationIfNeeded();
     }
 
     @Override public boolean isAnimated() {
@@ -156,9 +161,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
             }
 
             @Override public void onAnimationEnd(Animator animation) {
-                if (striped && animated) { // start striped animation after progress update
-                    startStripedAnimation();
-                }
+                startStripedAnimationIfNeeded(); // start striped animation after progress update
             }
 
             @Override public void onAnimationCancel(Animator animation) {
@@ -175,10 +178,13 @@ public class BootstrapProgressBar extends View implements ProgressView {
      * backwards. The current system time is used to offset tiled bitmaps of the progress background,
      * producing the effect that the stripes are moving backwards.
      */
-    private void startStripedAnimation() {
+    private void startStripedAnimationIfNeeded() {
+        if (!striped  || !animated) {
+            return;
+        }
+
         clearAnimation();
 
-        // progress not usedshould never change between animation frames
         progressAnimator = ValueAnimator.ofFloat(0, 0);
         progressAnimator.setDuration(UPDATE_ANIM_MS);
         progressAnimator.setRepeatCount(ValueAnimator.INFINITE);

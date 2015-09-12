@@ -33,25 +33,6 @@
         style="@style/progress_weight_container">
 
         <Button
-            android:id="@+id/example_progress_striped_btn"
-            style="@style/description_label"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="Striped"
-            />
-
-        <com.beardedhen.androidbootstrap.BootstrapProgressBar
-            android:id="@+id/example_progress_striped"
-            style="@style/progress_example"
-            app:progress="60"
-            app:striped="true"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/progress_weight_container">
-
-        <Button
             android:id="@+id/example_progress_animated_btn"
             style="@style/description_label"
             android:layout_width="0dp"
@@ -64,6 +45,25 @@
             style="@style/progress_example"
             app:animated="true"
             app:progress="40"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_striped_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Striped"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_striped"
+            style="@style/progress_example"
+            app:progress="60"
+            app:striped="true"
             />
     </LinearLayout>
 
@@ -84,6 +84,24 @@
             app:animated="true"
             app:progress="78"
             app:striped="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_change_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Change (click bar)"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_change"
+            style="@style/progress_example"
+            app:progress="44"
             />
     </LinearLayout>
 

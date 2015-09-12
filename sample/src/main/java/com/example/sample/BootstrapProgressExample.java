@@ -9,7 +9,39 @@ import butterknife.OnClick;
 
 public class BootstrapProgressExample extends BaseActivity {
 
+    enum ChangeState {
+
+        FIRST(false, false),
+        SECOND(false, true),
+        THIRD(true, false),
+        FOURTH(true, true);
+
+        private final boolean animated;
+        private final boolean striped;
+
+        ChangeState(boolean animated, boolean striped) {
+            this.animated = animated;
+            this.striped = striped;
+        }
+
+        public ChangeState next() {
+            switch (this) {
+                case FIRST:
+                    return SECOND;
+                case SECOND:
+                    return THIRD;
+                case THIRD:
+                    return FOURTH;
+                case FOURTH:
+                    return FIRST;
+                default:
+                    return FIRST;
+            }
+        }
+    }
+
     private Random random;
+    private ChangeState changeState = ChangeState.FIRST;
 
     @Override protected int getContentLayoutId() {
         return R.layout.example_bprogress;
@@ -19,6 +51,7 @@ public class BootstrapProgressExample extends BaseActivity {
     @Bind(R.id.example_progress_animated) BootstrapProgressBar animatedExample;
     @Bind(R.id.example_progress_striped) BootstrapProgressBar stripedExample;
     @Bind(R.id.example_progress_striped_animated) BootstrapProgressBar stripedAnimExample;
+    @Bind(R.id.example_progress_change) BootstrapProgressBar changeExample;
 
     @OnClick(R.id.example_progress_default_btn) void onDefaultClicked() {
         defaultExample.setProgress(randomProgress(defaultExample.getProgress()));
@@ -34,6 +67,16 @@ public class BootstrapProgressExample extends BaseActivity {
 
     @OnClick(R.id.example_progress_striped_animated_btn) void onStripedAnimClicked() {
         stripedAnimExample.setProgress(randomProgress(stripedAnimExample.getProgress()));
+    }
+
+    @OnClick(R.id.example_progress_change_btn) void onChangeClicked() {
+        changeExample.setProgress(randomProgress(changeExample.getProgress()));
+    }
+
+    @OnClick(R.id.example_progress_change) void onAlterProgressBarParameters() {
+        changeState = changeState.next();
+        changeExample.setStriped(changeState.striped);
+        changeExample.setAnimated(changeState.animated);
     }
 
     private int randomProgress(int currentProgress) {
