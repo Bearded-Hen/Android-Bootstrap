@@ -3,6 +3,7 @@ package com.beardedhen.androidbootstrap;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -18,8 +19,12 @@ import com.beardedhen.androidbootstrap.api.view.ProgressView;
 
 public class BootstrapProgressBar extends View implements ProgressView {
 
+    // TODO theme colors, rounded corners
+
     private static final long UPDATE_ANIM_MS = 300;
     private static final int STRIPE_ALPHA = 150;
+
+    private static final long STRIPE_CYCLE_MS = 1500;
 
     private Paint progressPaint;
     private Paint stripePaint;
@@ -34,6 +39,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
     private ValueAnimator progressAnimator;
     private Bitmap stripeTile;
     private Paint tilePaint;
+    private int defaultHeight;
 
     public BootstrapProgressBar(Context context) {
         super(context);
@@ -53,6 +59,8 @@ public class BootstrapProgressBar extends View implements ProgressView {
     private void initialise(AttributeSet attrs) {
         ValueAnimator.setFrameDelay(15); // attempt 60fps
         tilePaint = new Paint();
+        Resources res = getContext().getResources();
+        defaultHeight = res.getDimensionPixelSize(R.dimen.bootstrap_progress_bar_height);
 
         int b = Color.BLUE; // FIXME set via theme
 
@@ -126,10 +134,6 @@ public class BootstrapProgressBar extends View implements ProgressView {
     @Override public boolean isAnimated() {
         return animated;
     }
-
-
-    // TODO theme colors
-
 
     /**
      * Starts an animation which moves the progress bar from one value to another, in response to
@@ -209,8 +213,6 @@ public class BootstrapProgressBar extends View implements ProgressView {
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
 
-        int defaultHeight = 30; // FIXME populate from dimens
-
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
         switch (heightMode) {
@@ -242,7 +244,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
         int lineEnd = (int) (w * ratio);
 
         float offset = 0;
-        float offsetFactor = (float) ((System.currentTimeMillis() % 1500) / 1500.0);
+        float offsetFactor = (float) ((System.currentTimeMillis() % STRIPE_CYCLE_MS) / (float) STRIPE_CYCLE_MS);
 
         if (striped && animated) { // determine offset for current animation frame of progress bar
             offset = (h * 2) * offsetFactor;
@@ -256,7 +258,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
             float start = 0 - offset;
 
             while (start < lineEnd) {
-                // TODO should probably cache everything apart from the edges as a bitmap rather than tiling
+                // TODO investigate caching everything apart from the edges as a bitmap rather than tiling
 
                 canvas.drawBitmap(stripeTile, start, 0, tilePaint);
                 start += stripeTile.getHeight() * 2;
