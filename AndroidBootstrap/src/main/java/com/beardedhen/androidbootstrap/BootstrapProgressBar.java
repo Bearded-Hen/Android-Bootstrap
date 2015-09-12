@@ -1,5 +1,6 @@
 package com.beardedhen.androidbootstrap;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,7 +14,8 @@ import android.view.animation.DecelerateInterpolator;
 
 import com.beardedhen.androidbootstrap.api.view.ProgressView;
 
-public class BootstrapProgressBar extends View implements ProgressView, ValueAnimator.AnimatorUpdateListener {
+public class BootstrapProgressBar extends View implements ProgressView,
+        ValueAnimator.AnimatorUpdateListener, Animator.AnimatorListener {
 
     // see http://stackoverflow.com/questions/13964520
 
@@ -31,6 +33,7 @@ public class BootstrapProgressBar extends View implements ProgressView, ValueAni
 
     private ValueAnimator progressAnimator;
     private Bitmap stripeTile;
+    private Paint tilePaint;
 
     public BootstrapProgressBar(Context context) {
         super(context);
@@ -67,6 +70,8 @@ public class BootstrapProgressBar extends View implements ProgressView, ValueAni
         bgPaint.setStyle(Paint.Style.FILL);
         bgPaint.setColor(Color.GRAY);
 
+        tilePaint = new Paint();
+
         invalidate();
     }
 
@@ -80,21 +85,37 @@ public class BootstrapProgressBar extends View implements ProgressView, ValueAni
         this.userProgress = progress;
 
         this.animated = true; // FIXME
+        this.striped = true;
 
         if (animated) {
-            clearAnimation();
-            ValueAnimator.setFrameDelay(15); // attempt 60fps
-
-            progressAnimator = ValueAnimator.ofFloat(drawnProgress, userProgress);
-            progressAnimator.setDuration(ANIMATOR_PROGRESS_MS);
-            progressAnimator.setInterpolator(new DecelerateInterpolator());
-            progressAnimator.addUpdateListener(this);
-            progressAnimator.start();
+            startProgressAnimation(false);
         }
         else {
             this.drawnProgress = progress;
             invalidate();
         }
+    }
+
+    /**
+     *
+     * @param infinite whether the animation should repeat endlessly
+     */
+    private void startProgressAnimation(boolean infinite) {
+        clearAnimation();
+        ValueAnimator.setFrameDelay(15); // attempt 60fps
+
+        // start == userProgress if repeating the animation infinitely (striped animation effect)
+        float start = infinite ? userProgress : drawnProgress;
+        progressAnimator = ValueAnimator.ofFloat(start, userProgress);
+
+        progressAnimator.setDuration(ANIMATOR_PROGRESS_MS);
+        progressAnimator.setRepeatCount(infinite ? ValueAnimator.INFINITE : 0);
+        progressAnimator.setRepeatMode(ValueAnimator.RESTART);
+
+        progressAnimator.setInterpolator(new DecelerateInterpolator());
+        progressAnimator.addUpdateListener(this);
+        progressAnimator.addListener(this);
+        progressAnimator.start();
     }
 
     @Override public int getProgress() {
@@ -119,10 +140,37 @@ public class BootstrapProgressBar extends View implements ProgressView, ValueAni
 
     // TODO theme colors
 
+
+    /*
+     * Animation Listener Callbacks
+     */
+
     @Override public void onAnimationUpdate(ValueAnimator animation) {
         this.drawnProgress = (int) ((float) animation.getAnimatedValue());
         invalidate();
     }
+
+    @Override public void onAnimationStart(Animator animation) {
+
+    }
+
+    @Override public void onAnimationEnd(Animator animation) {
+        if (striped && animated) {
+            startProgressAnimation(true);
+        }
+    }
+
+    @Override public void onAnimationCancel(Animator animation) {
+
+    }
+
+    @Override public void onAnimationRepeat(Animator animation) {
+
+    }
+
+    /*
+     * Custom Measuring/Drawing
+     */
 
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // restrict view to default progressbar height
@@ -161,29 +209,31 @@ public class BootstrapProgressBar extends View implements ProgressView, ValueAni
 
         float ratio = (float) (drawnProgress / 100.0);
         int lineEnd = (int) (w * ratio);
-
-        this.striped = true;// FIXME
+        float offset = 0;
 
         // TODO animated stripes should have an infinite ValueAnimator, offset the bitmap position here
 
-        if (striped) {
+        if (striped && animated) { // determine offset for current animation frame of progress bar
+            float offsetFactor = (float) ((System.currentTimeMillis() % 1500) / 1500.0);
+            offset = (h * 2) * offsetFactor;
+        }
 
+        if (striped) { // draw a regular striped bar
             if (stripeTile == null) {
                 stripeTile = createTile(h);
             }
 
-            Paint paint = new Paint();
-            float start = 0;
+            float start = 0 - offset;
 
             while (start < lineEnd) {
-                canvas.drawBitmap(stripeTile, start, 0, paint);
+                canvas.drawBitmap(stripeTile, start, 0, tilePaint);
                 start += stripeTile.getHeight() * 2;
             }
         }
-        else {
+        else { // draw a filled bar
             canvas.drawRect(0, 0, lineEnd, h, progressPaint);
         }
-        canvas.drawRect(lineEnd, 0, w, h, bgPaint);
+        canvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
     }
 
     private Bitmap createTile(float h) {

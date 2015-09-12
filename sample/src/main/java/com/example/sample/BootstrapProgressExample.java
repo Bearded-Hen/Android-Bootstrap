@@ -9,6 +9,8 @@ import butterknife.OnClick;
 
 public class BootstrapProgressExample extends BaseActivity {
 
+    private Random random;
+
     @Override protected int getContentLayoutId() {
         return R.layout.example_bprogress;
     }
@@ -16,10 +18,20 @@ public class BootstrapProgressExample extends BaseActivity {
     @Bind(R.id.example_progress_bar) BootstrapProgressBar progressBar;
 
     @OnClick(R.id.example_progress_bar) void onProgressBarClicked() {
-        progressBar.setProgress(randomProgress());
+        progressBar.setProgress(randomProgress(progressBar.getProgress()));
     }
 
-    private int randomProgress() {
-        return new Random().nextInt(100);
+    private int randomProgress(int currentProgress) {
+        if (random == null) {
+            random = new Random();
+        }
+
+        int prog = currentProgress + random.nextInt(20);
+
+        if (prog > 100) {
+            prog -= 100;
+        }
+
+        return prog;
     }
 }
