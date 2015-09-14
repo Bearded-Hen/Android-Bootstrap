@@ -37,6 +37,7 @@
 
     <attr name="showOutline" format="boolean" />
     <attr name="roundedCorners" format="boolean" />
+    <attr name="toggleable" format="boolean" />
 
     <!-- View attributes -->
 
@@ -54,6 +55,7 @@
     <declare-styleable name="BootstrapButton">
         <attr name="showOutline" />
         <attr name="roundedCorners" />
+        <attr name="toggleable" />
         <attr name="bootstrapType" />
         <attr name="bootstrapSize" />
     </declare-styleable>

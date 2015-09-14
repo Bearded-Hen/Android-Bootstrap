@@ -48,6 +48,7 @@ public class BootstrapDrawableFactory {
         stateListDrawable.addState(new int[]{android.R.attr.state_activated}, activeDrawable);
         stateListDrawable.addState(new int[]{android.R.attr.state_focused}, activeDrawable);
         stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, activeDrawable);
+        stateListDrawable.addState(new int[]{android.R.attr.state_selected}, activeDrawable);
         stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, disabledDrawable);
         stateListDrawable.addState(new int[]{}, defaultDrawable);
 
@@ -74,7 +75,7 @@ public class BootstrapDrawableFactory {
 
         if (params.isShowOutline()) {
             boolean hover = Build.VERSION.SDK_INT >= 14;
-            int stateSize = hover ? 5 : 4;
+            int stateSize = hover ? 6 : 5;
 
             int[][] states = new int[stateSize][];
             int[] colors = new int[stateSize];
@@ -91,6 +92,10 @@ public class BootstrapDrawableFactory {
             index++;
 
             states[index] = new int[]{android.R.attr.state_focused};
+            colors[index] = white;
+            index++;
+
+            states[index] = new int[]{android.R.attr.state_selected};
             colors[index] = white;
             index++;
 
