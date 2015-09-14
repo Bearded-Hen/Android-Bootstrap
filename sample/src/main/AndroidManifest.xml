@@ -13,7 +13,6 @@
         <activity
             android:name=".LandingPageActivity"
             android:label="@string/app_name"
-            android:screenOrientation="landscape"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,22 +23,18 @@
         <activity
             android:name=".BootstrapButtonExample"
             android:label="@string/app_name"
-            android:screenOrientation="landscape"
             />
         <activity
             android:name=".BootstrapLabelExample"
             android:label="@string/app_name"
-            android:screenOrientation="landscape"
             />
         <activity
             android:name=".FontAwesomeTextExample"
             android:label="@string/app_name"
-            android:screenOrientation="landscape"
             />
         <activity
             android:name=".BootstrapProgressExample"
             android:label="@string/app_name"
-            android:screenOrientation="landscape"
             />
     </application>
 

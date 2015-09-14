@@ -2,6 +2,8 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -12,7 +14,11 @@ import android.widget.TextView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
-public class AwesomeTextView extends TextView implements BootstrapTextView { // FIXME save state on orientation change
+import java.io.Serializable;
+
+public class AwesomeTextView extends TextView implements BootstrapTextView {
+
+    private static final String TAG = "com.beardedhen.androidbootstrap.AwesomeTextView";
 
     private BootstrapText bootstrapText;
 
@@ -73,6 +79,28 @@ public class AwesomeTextView extends TextView implements BootstrapTextView { // 
             a.recycle();
         }
         setClickable(true); // allows view to reach android:state_pressed
+    }
+
+    @Override public Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TAG, super.onSaveInstanceState());
+        bundle.putSerializable(BootstrapTextView.KEY, bootstrapText);
+        return bundle;
+    }
+
+    @Override public void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+
+            Serializable s = bundle.getSerializable(BootstrapTextView.KEY);
+
+            if (s instanceof BootstrapText) {
+                bootstrapText = (BootstrapText) s;
+            }
+            state = bundle.getParcelable(TAG);
+        }
+        super.onRestoreInstanceState(state);
+        requestStateRefresh();
     }
 
     /**

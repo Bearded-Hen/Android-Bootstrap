@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public interface BootstrapHeading extends Serializable {
 
-    String KEY = "BootstrapHeading";
+    String KEY = "com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading";
 
     float getTextSize(Context context);
 

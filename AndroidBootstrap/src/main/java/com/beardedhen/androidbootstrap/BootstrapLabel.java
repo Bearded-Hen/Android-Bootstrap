@@ -5,6 +5,8 @@ import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
@@ -17,8 +19,12 @@ import com.beardedhen.androidbootstrap.api.view.LabelThemeView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 import com.beardedhen.androidbootstrap.support.BootstrapDrawableFactory;
 
+import java.io.Serializable;
+
 public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, RoundableView,
-        BootstrapHeadingView {  // FIXME save state on orientation change
+        BootstrapHeadingView {
+
+    private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapLabel";
 
     private BootstrapHeading bootstrapHeading;
     private LabelTheme labelTheme;
@@ -54,6 +60,36 @@ public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, R
         finally {
             a.recycle();
         }
+        requestStateRefresh();
+    }
+
+    @Override public Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TAG, super.onSaveInstanceState());
+        bundle.putBoolean(RoundableView.KEY, roundable);
+        bundle.putSerializable(LabelTheme.KEY, labelTheme);
+        bundle.putSerializable(BootstrapHeading.KEY, bootstrapHeading);
+        return bundle;
+    }
+
+    @Override public void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+
+            this.roundable = bundle.getBoolean(RoundableView.KEY);
+
+            Serializable label = bundle.getSerializable(LabelTheme.KEY);
+            Serializable heading = bundle.getSerializable(BootstrapHeading.KEY);
+
+            if (label instanceof LabelTheme) {
+                labelTheme = (LabelTheme) label;
+            }
+            if (heading instanceof BootstrapHeading) {
+                bootstrapHeading = (BootstrapHeading) heading;
+            }
+            state = bundle.getParcelable(TAG);
+        }
+        super.onRestoreInstanceState(state);
         requestStateRefresh();
     }
 

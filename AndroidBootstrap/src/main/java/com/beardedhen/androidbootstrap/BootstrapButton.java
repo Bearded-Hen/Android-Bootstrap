@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
@@ -18,8 +20,12 @@ import com.beardedhen.androidbootstrap.api.view.RoundableView;
 import com.beardedhen.androidbootstrap.support.BootstrapDrawableFactory;
 import com.beardedhen.androidbootstrap.support.BootstrapDrawableParams;
 
+import java.io.Serializable;
+
 public class BootstrapButton extends AwesomeTextView implements BootstrapThemeView,
-        BootstrapSizeView, OutlineableView, RoundableView { // FIXME save state on orientation change
+        BootstrapSizeView, OutlineableView, RoundableView {
+
+    private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
 
     private BootstrapTheme bootstrapTheme;
     private BootstrapSize bootstrapSize;
@@ -58,6 +64,39 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         finally {
             a.recycle();
         }
+        requestStateRefresh();
+    }
+
+    @Override public Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TAG, super.onSaveInstanceState());
+
+        bundle.putBoolean(RoundableView.KEY, roundedCorners);
+        bundle.putBoolean(OutlineableView.KEY, showOutline);
+        bundle.putSerializable(BootstrapSize.KEY, bootstrapSize);
+        bundle.putSerializable(BootstrapTheme.KEY, bootstrapTheme);
+        return bundle;
+    }
+
+    @Override public void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+
+            this.roundedCorners = bundle.getBoolean(RoundableView.KEY);
+            this.showOutline = bundle.getBoolean(OutlineableView.KEY);
+
+            Serializable size = bundle.getSerializable(BootstrapSize.KEY);
+            Serializable theme = bundle.getSerializable(BootstrapTheme.KEY);
+
+            if (size instanceof BootstrapSize) {
+                bootstrapSize = (BootstrapSize) size;
+            }
+            if (theme instanceof BootstrapTheme) {
+                bootstrapTheme = (BootstrapTheme) theme;
+            }
+            state = bundle.getParcelable(TAG);
+        }
+        super.onRestoreInstanceState(state);
         requestStateRefresh();
     }
 
