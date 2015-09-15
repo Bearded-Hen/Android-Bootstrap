@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
@@ -20,7 +19,6 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapThemeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 import com.beardedhen.androidbootstrap.api.view.ToggleableView;
-import com.beardedhen.androidbootstrap.support.BootstrapDrawableFactory;
 import com.beardedhen.androidbootstrap.support.BootstrapDrawableParams;
 
 import java.io.Serializable;
@@ -30,6 +28,17 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
 
+    enum Position {
+        SOLO,
+        MIDDLE_HORI,
+        MIDDLE_VERT,
+        TOP,
+        BOTTOM,
+        START,
+        END
+    }
+
+    private Position position = Position.SOLO;
     private BootstrapTheme bootstrapTheme;
     private BootstrapSize bootstrapSize;
 
@@ -53,15 +62,15 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
     }
 
     private void initialise(AttributeSet attrs) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
+        position = Position.SOLO;
 
         try {
             this.roundedCorners = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
             this.showOutline = a.getBoolean(R.styleable.BootstrapButton_showOutline, false);
             this.toggleable = a.getBoolean(R.styleable.BootstrapButton_toggleable, false);
 
-            int typeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapType, 0);
+            int typeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapType, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, 0);
 
             bootstrapTheme = DefaultBootstrapTheme.fromAttributeValue(typeOrdinal);
@@ -106,26 +115,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         requestStateRefresh();
     }
 
-    @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
-        this.bootstrapTheme = bootstrapTheme;
-        requestStateRefresh();
-    }
-
-    @Override public void setShowOutline(boolean showOutline) {
-        this.showOutline = showOutline;
-        requestStateRefresh();
-    }
-
-    @Override public void setRoundedCorners(boolean roundedCorners) {
-        this.roundedCorners = roundedCorners;
-        requestStateRefresh();
-    }
-
-    @Override public void setBootstrapSize(BootstrapSize bootstrapSize) {
-        this.bootstrapSize = bootstrapSize;
-        requestStateRefresh();
-    }
-
     private void requestStateRefresh() {
 
         if (bootstrapSize != null && bootstrapTheme != null) {
@@ -146,8 +135,18 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
                     .bootstrapSize(bootstrapSize)
                     .enabled(isEnabled());
 
-            StateListDrawable bg = BootstrapDrawableFactory.bootstrapButton(getContext(), params);
-            setTextColor(BootstrapDrawableFactory.bootstrapButtonText(getContext(), params));
+            setTextColor(BootstrapDrawableFactory.bootstrapButtonText(
+                    getContext(),
+                    showOutline,
+                    bootstrapTheme));
+
+            StateListDrawable bg = BootstrapDrawableFactory.bootstrapButton(
+                    getContext(),
+                    bootstrapTheme,
+                    bootstrapSize,
+                    position,
+                    showOutline,
+                    roundedCorners);
 
             if (Build.VERSION.SDK_INT >= 16) {
                 setBackground(bg);
@@ -157,6 +156,20 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
             }
         }
     }
+
+    @Override public boolean onTouchEvent(@NonNull MotionEvent event) {
+        if (toggleable && event.getAction() == MotionEvent.ACTION_DOWN) {
+            setSelected(!isSelected());
+            return true;
+        }
+        else {
+            return super.onTouchEvent(event);
+        }
+    }
+
+    /*
+     * Getters/Setters
+     */
 
     @Override public BootstrapSize getBootstrapSize() {
         return bootstrapSize;
@@ -183,14 +196,29 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         return toggleable;
     }
 
-    @Override public boolean onTouchEvent(@NonNull MotionEvent event) {
-        if (toggleable && event.getAction() == MotionEvent.ACTION_DOWN) {
-            setSelected(!isSelected());
-            return true;
-        }
-        else {
-            return super.onTouchEvent(event);
-        }
+    @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
+        this.bootstrapTheme = bootstrapTheme;
+        requestStateRefresh();
+    }
+
+    @Override public void setShowOutline(boolean showOutline) {
+        this.showOutline = showOutline;
+        requestStateRefresh();
+    }
+
+    @Override public void setRoundedCorners(boolean roundedCorners) {
+        this.roundedCorners = roundedCorners;
+        requestStateRefresh();
+    }
+
+    @Override public void setBootstrapSize(BootstrapSize bootstrapSize) {
+        this.bootstrapSize = bootstrapSize;
+        requestStateRefresh();
+    }
+
+    void setPosition(Position position) {
+        this.position = position;
+        requestStateRefresh();
     }
 
 }

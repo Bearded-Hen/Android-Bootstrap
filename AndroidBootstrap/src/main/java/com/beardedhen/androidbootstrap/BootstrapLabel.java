@@ -17,7 +17,6 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme;
 import com.beardedhen.androidbootstrap.api.view.BootstrapHeadingView;
 import com.beardedhen.androidbootstrap.api.view.LabelThemeView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
-import com.beardedhen.androidbootstrap.support.BootstrapDrawableFactory;
 
 import java.io.Serializable;
 
@@ -124,8 +123,7 @@ public class BootstrapLabel extends AwesomeTextView implements LabelThemeView, R
         setTextSize(bootstrapHeading.getTextSize(getContext()));
 
         Drawable bg = BootstrapDrawableFactory.bootstrapLabel(getContext(),
-                                                              bootstrapHeading,
-                                                              labelTheme,
+                labelTheme,
                                                               roundable,
                                                               getHeight());
 

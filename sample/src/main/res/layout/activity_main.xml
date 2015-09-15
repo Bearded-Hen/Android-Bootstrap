@@ -40,6 +40,13 @@
             android:text="Bootstrap Progress"
             />
 
+        <Button
+            android:id="@+id/example_bootstrap_btn_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bootstrap Group"
+            />
+
     </LinearLayout>
 
 </ScrollView>

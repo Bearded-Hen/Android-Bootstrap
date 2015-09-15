@@ -36,6 +36,10 @@
             android:name=".BootstrapProgressExample"
             android:label="@string/app_name"
             />
+        <activity
+            android:name=".BootstrapButtonGroupExample"
+            android:label="@string/app_name"
+            />
     </application>
 
 </manifest>

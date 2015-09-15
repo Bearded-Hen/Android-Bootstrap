@@ -1,4 +1,4 @@
-package com.beardedhen.androidbootstrap.support;
+package com.beardedhen.androidbootstrap;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,8 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 
-import com.beardedhen.androidbootstrap.R;
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
 import com.beardedhen.androidbootstrap.api.attributes.LabelTheme;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
@@ -17,18 +16,22 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
 public class BootstrapDrawableFactory {
 
     // TODO refactor params to parameters for button
-    public static StateListDrawable bootstrapButton(Context context, BootstrapDrawableParams params) {
+    public static StateListDrawable bootstrapButton(Context context,
+                                                    BootstrapTheme theme,
+                                                    BootstrapSize bootstrapSize,
+                                                    BootstrapButton.Position position,
+                                                    boolean showOutline,
+                                                    boolean rounded) {
         StateListDrawable stateListDrawable = new StateListDrawable();
 
-        BootstrapTheme theme = params.getBootstrapTheme();
-        int strokeWidth = params.getBootstrapSize().buttonLineHeight(context);
-        int cornerRadius = params.getBootstrapSize().buttonCornerRadius(context);
+        int strokeWidth = bootstrapSize.buttonLineHeight(context);
+        int cornerRadius = bootstrapSize.buttonCornerRadius(context);
 
         GradientDrawable defaultDrawable = new GradientDrawable();
         GradientDrawable activeDrawable = new GradientDrawable();
         GradientDrawable disabledDrawable = new GradientDrawable();
 
-        if (params.isShowOutline()) {
+        if (showOutline) {
             activeDrawable.setColor(theme.activeFill(context));
         }
         else {
@@ -52,17 +55,47 @@ public class BootstrapDrawableFactory {
         stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, disabledDrawable);
         stateListDrawable.addState(new int[]{}, defaultDrawable);
 
-        if (params.isRoundedCorners()) {
-            defaultDrawable.setCornerRadius(cornerRadius);
-            activeDrawable.setCornerRadius(cornerRadius);
-            disabledDrawable.setCornerRadius(cornerRadius);
+        if (rounded) {
+            if (position == BootstrapButton.Position.SOLO) {
+                defaultDrawable.setCornerRadius(cornerRadius);
+                activeDrawable.setCornerRadius(cornerRadius);
+                disabledDrawable.setCornerRadius(cornerRadius);
+            }
+            else {
+                float[] radii = calculateCorners(position, cornerRadius);
+                defaultDrawable.setCornerRadii(radii);
+                activeDrawable.setCornerRadii(radii);
+                disabledDrawable.setCornerRadii(radii);
+            }
         }
         return stateListDrawable;
     }
 
+    private static float[] calculateCorners(BootstrapButton.Position position, float r) {
+        // X/Y pairs for top-left, top-right, bottom-right, bottom-left.
+
+        switch (position) {
+            case MIDDLE_HORI:
+                return new float[]{0, 0, 0, 0, 0, 0, 0, 0};
+            case MIDDLE_VERT:
+                return new float[]{0, 0, 0, 0, 0, 0, 0, 0};
+            case TOP:
+                return new float[]{r, r, r, r, 0, 0, 0, 0};
+            case BOTTOM:
+                return new float[]{0, 0, 0, 0, r, r, r, r};
+            case START:
+                return new float[]{r, r, 0, 0, 0, 0, r, r,};
+            case END:
+                return new float[]{0, 0, r, r, r, r, 0, 0};
+            default:
+                return new float[]{0, 0, 0, 0, 0, 0, 0, 0};
+        }
+    }
+
     @SuppressLint("InlinedApi")
-    public static ColorStateList bootstrapButtonText(Context context, BootstrapDrawableParams params) {
-        BootstrapTheme theme = params.getBootstrapTheme();
+    public static ColorStateList bootstrapButtonText(Context context,
+                                                     boolean outline,
+                                                     BootstrapTheme theme) {
         int defaultColor;
         int white = context.getResources().getColor(android.R.color.white);
 
@@ -70,10 +103,10 @@ public class BootstrapDrawableFactory {
             defaultColor = theme.textColor(context);
         }
         else {
-            defaultColor = params.isShowOutline() ? theme.defaultEdge(context) : theme.textColor(context);
+            defaultColor = outline ? theme.defaultEdge(context) : theme.textColor(context);
         }
 
-        if (params.isShowOutline()) {
+        if (outline) {
             boolean hover = Build.VERSION.SDK_INT >= 14;
             int stateSize = hover ? 6 : 5;
 
@@ -116,7 +149,6 @@ public class BootstrapDrawableFactory {
     }
 
     public static Drawable bootstrapLabel(Context context,
-                                          BootstrapHeading bootstrapHeading,
                                           LabelTheme theme,
                                           boolean rounded,
                                           float height) {

@@ -31,4 +31,8 @@ public class LandingPageActivity extends Activity {
         startActivity(new Intent(this, BootstrapProgressExample.class));
     }
 
+    @OnClick(R.id.example_bootstrap_btn_group) void onBootstrapButtonGroupExampleClicked() {
+        startActivity(new Intent(this, BootstrapButtonGroupExample.class));
+    }
+
 }
