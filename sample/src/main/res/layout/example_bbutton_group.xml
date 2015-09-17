@@ -19,6 +19,7 @@
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
         android:orientation="horizontal"
         >
 
@@ -26,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
+            app:bootstrapSize="large"
             app:roundedCorners="true"
             />
 
@@ -33,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
+            app:bootstrapSize="large"
             app:roundedCorners="true"
             />
 
@@ -40,9 +43,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"
+            app:bootstrapSize="large"
             app:roundedCorners="true"
             />
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
+        android:orientation="horizontal"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            app:bootstrapSize="large"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            app:bootstrapSize="large"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            app:bootstrapSize="large"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/test"
+        android:text="3"
+        />
 
     <TextView
         style="@style/description_label"
@@ -52,6 +92,7 @@
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
         android:orientation="vertical"
         >
 
@@ -59,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
+            app:bootstrapSize="large"
             app:roundedCorners="true"
             />
 
@@ -66,6 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
+            app:bootstrapSize="large"
             app:roundedCorners="true"
             />
 
@@ -73,8 +116,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"
+            app:bootstrapSize="large"
             app:roundedCorners="true"
             />
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
+        android:orientation="vertical"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            app:bootstrapSize="large"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            app:bootstrapSize="large"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            app:bootstrapSize="large"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 </LinearLayout>

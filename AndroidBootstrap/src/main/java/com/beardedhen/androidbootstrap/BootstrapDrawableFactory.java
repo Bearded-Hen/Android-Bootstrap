@@ -3,8 +3,10 @@ package com.beardedhen.androidbootstrap;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 
@@ -25,50 +27,96 @@ public class BootstrapDrawableFactory {
         StateListDrawable stateListDrawable = new StateListDrawable();
 
         int strokeWidth = bootstrapSize.buttonLineHeight(context);
-        int cornerRadius = bootstrapSize.buttonCornerRadius(context);
+        int cornerRadius = 20;// bootstrapSize.buttonCornerRadius(context);
 
-        GradientDrawable defaultDrawable = new GradientDrawable();
-        GradientDrawable activeDrawable = new GradientDrawable();
-        GradientDrawable disabledDrawable = new GradientDrawable();
+        int div = 15;
+
+        GradientDrawable l2 = new GradientDrawable();
+        l2.setColor(Color.RED);
+        l2.setStroke(div, theme.defaultEdge(context));
+
+        LayerDrawable ld = new LayerDrawable(new Drawable[]{l2});
+        ld.setLayerInset(0, 0, 0, 0, -div);
+
+//        Drawable defaultDrawable = ld;
+//        CustomDrawable defaultDrawable = new CustomDrawable(position, rounded, cornerRadius, strokeWidth);
+//
+//        CustomDrawable activeDrawable = new CustomDrawable(position, rounded, cornerRadius, strokeWidth);
+//        CustomDrawable disabledDrawable = new CustomDrawable(position, rounded, cornerRadius, strokeWidth);
+
+        GradientDrawable defaultGd = new GradientDrawable();
+        GradientDrawable activeGd = new GradientDrawable();
+        GradientDrawable disabledGd = new GradientDrawable();
 
         if (showOutline) {
-            activeDrawable.setColor(theme.activeFill(context));
+            activeGd.setColor(theme.activeFill(context));
         }
         else {
-            defaultDrawable.setColor(theme.defaultFill(context));
-            activeDrawable.setColor(theme.activeFill(context));
-            disabledDrawable.setColor(theme.disabledFill(context));
+            defaultGd.setColor(theme.defaultFill(context));
+            activeGd.setColor(theme.activeFill(context));
+            disabledGd.setColor(theme.disabledFill(context));
         }
 
-        defaultDrawable.setStroke(strokeWidth, theme.defaultEdge(context));
-        activeDrawable.setStroke(strokeWidth, theme.activeEdge(context));
-        disabledDrawable.setStroke(strokeWidth, theme.disabledEdge(context));
-
-        if (Build.VERSION.SDK_INT >= 14) {
-            stateListDrawable.addState(new int[]{android.R.attr.state_hovered}, activeDrawable);
-        }
-
-        stateListDrawable.addState(new int[]{android.R.attr.state_activated}, activeDrawable);
-        stateListDrawable.addState(new int[]{android.R.attr.state_focused}, activeDrawable);
-        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, activeDrawable);
-        stateListDrawable.addState(new int[]{android.R.attr.state_selected}, activeDrawable);
-        stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, disabledDrawable);
-        stateListDrawable.addState(new int[]{}, defaultDrawable);
+        defaultGd.setStroke(strokeWidth, theme.defaultEdge(context));
+        activeGd.setStroke(strokeWidth, theme.activeEdge(context));
+        disabledGd.setStroke(strokeWidth, theme.disabledEdge(context));
 
         if (rounded) {
             if (position == BootstrapButton.Position.SOLO) {
-                defaultDrawable.setCornerRadius(cornerRadius);
-                activeDrawable.setCornerRadius(cornerRadius);
-                disabledDrawable.setCornerRadius(cornerRadius);
+                defaultGd.setCornerRadius(cornerRadius);
+                activeGd.setCornerRadius(cornerRadius);
+                disabledGd.setCornerRadius(cornerRadius);
             }
             else {
                 float[] radii = calculateCorners(position, cornerRadius);
-                defaultDrawable.setCornerRadii(radii);
-                activeDrawable.setCornerRadii(radii);
-                disabledDrawable.setCornerRadii(radii);
+                defaultGd.setCornerRadii(radii);
+                activeGd.setCornerRadii(radii);
+                disabledGd.setCornerRadii(radii);
             }
         }
+
+        LayerDrawable defaultLayer = new LayerDrawable(new Drawable[]{defaultGd});
+        LayerDrawable activeLayer = new LayerDrawable(new Drawable[]{activeGd});
+        LayerDrawable disabledLayer = new LayerDrawable(new Drawable[]{disabledGd});
+
+        LayerDrawable[] ldAry = new LayerDrawable[]{defaultLayer, activeLayer, disabledLayer};
+
+        int n = strokeWidth * -1;
+
+        // use LayerDrawable to hide strokes on one side of the drawable (if Button is in a group)
+        switch (position) {
+            case MIDDLE_HORI:
+                setInsetOnLayers(ldAry, n, 0, 0, 0);
+                break;
+            case MIDDLE_VERT:
+                setInsetOnLayers(ldAry, 0, n, 0, 0);
+                break;
+            case BOTTOM:
+                setInsetOnLayers(ldAry, 0, n, 0, 0);
+            case END:
+                setInsetOnLayers(ldAry, n, 0, 0, 0);
+                break;
+        }
+
+
+        if (Build.VERSION.SDK_INT >= 14) {
+            stateListDrawable.addState(new int[]{android.R.attr.state_hovered}, activeLayer);
+        }
+
+        stateListDrawable.addState(new int[]{android.R.attr.state_activated}, activeLayer);
+        stateListDrawable.addState(new int[]{android.R.attr.state_focused}, activeLayer);
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, activeLayer);
+        stateListDrawable.addState(new int[]{android.R.attr.state_selected}, activeLayer);
+        stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, disabledLayer);
+        stateListDrawable.addState(new int[]{}, defaultLayer);
+
         return stateListDrawable;
+    }
+
+    private static void setInsetOnLayers(LayerDrawable[] ary, int l, int t, int r, int b) {
+        for (LayerDrawable ld : ary) {
+            ld.setLayerInset(0, l, t, r, b);
+        }
     }
 
     private static float[] calculateCorners(BootstrapButton.Position position, float r) {
