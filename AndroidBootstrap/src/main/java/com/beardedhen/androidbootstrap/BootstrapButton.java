@@ -18,15 +18,15 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapThemeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
-import com.beardedhen.androidbootstrap.api.view.ToggleableView;
 import com.beardedhen.androidbootstrap.support.BootstrapDrawableParams;
 
 import java.io.Serializable;
 
 public class BootstrapButton extends AwesomeTextView implements BootstrapThemeView,
-        BootstrapSizeView, OutlineableView, RoundableView, ToggleableView {
+        BootstrapSizeView, OutlineableView, RoundableView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
+    private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButton.MODE";
 
     enum Position {
         SOLO,
@@ -38,13 +38,36 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         END
     }
 
+    enum Mode {
+        REGULAR,
+        TOGGLE,
+        CHECKBOX,
+        RADIO;
+
+        public static Mode fromAttributeValue(int attrValue) {
+            switch (attrValue) {
+                case 0:
+                    return REGULAR;
+                case 1:
+                    return TOGGLE;
+                case 2:
+                    return CHECKBOX;
+                case 3:
+                    return RADIO;
+                default:
+                    return REGULAR;
+            }
+        }
+    }
+
     private Position position = Position.SOLO;
+    private Mode mode = Mode.REGULAR;
+
     private BootstrapTheme bootstrapTheme;
     private BootstrapSize bootstrapSize;
 
     private boolean roundedCorners;
     private boolean showOutline;
-    private boolean toggleable;
 
     public BootstrapButton(Context context) {
         super(context);
@@ -68,7 +91,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         try {
             this.roundedCorners = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
             this.showOutline = a.getBoolean(R.styleable.BootstrapButton_showOutline, false);
-            this.toggleable = a.getBoolean(R.styleable.BootstrapButton_toggleable, false);
 
             int typeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapType, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, 0);
@@ -90,6 +112,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         bundle.putBoolean(OutlineableView.KEY, showOutline);
         bundle.putSerializable(BootstrapSize.KEY, bootstrapSize);
         bundle.putSerializable(BootstrapTheme.KEY, bootstrapTheme);
+        bundle.putSerializable(KEY_MODE, mode);
         return bundle;
     }
 
@@ -102,12 +125,16 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
 
             Serializable size = bundle.getSerializable(BootstrapSize.KEY);
             Serializable theme = bundle.getSerializable(BootstrapTheme.KEY);
+            Serializable m = bundle.getSerializable(KEY_MODE);
 
             if (size instanceof BootstrapSize) {
                 bootstrapSize = (BootstrapSize) size;
             }
             if (theme instanceof BootstrapTheme) {
                 bootstrapTheme = (BootstrapTheme) theme;
+            }
+            if (m instanceof Mode) {
+                mode = (Mode) m;
             }
             state = bundle.getParcelable(TAG);
         }
@@ -158,12 +185,28 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
     }
 
     @Override public boolean onTouchEvent(@NonNull MotionEvent event) {
-        if (toggleable && event.getAction() == MotionEvent.ACTION_DOWN) {
+
+        switch (mode) {
+            case REGULAR:
+                return super.onTouchEvent(event);
+            case TOGGLE:
+                return handleToggle(event);
+            case CHECKBOX:
+                return handleToggle(event);
+            case RADIO:
+                return super.onTouchEvent(event); // FIXME implement
+            default:
+                return super.onTouchEvent(event);
+        }
+    }
+
+    private boolean handleToggle(@NonNull MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             setSelected(!isSelected());
             return true;
         }
         else {
-            return super.onTouchEvent(event);
+            return false;
         }
     }
 
@@ -185,15 +228,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
 
     @Override public boolean isRoundedCorners() {
         return roundedCorners;
-    }
-
-    @Override public void setToggleable(boolean toggleable) {
-        this.toggleable = toggleable;
-        requestStateRefresh();
-    }
-
-    @Override public boolean isToggleable() {
-        return toggleable;
     }
 
     @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
@@ -219,6 +253,14 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
     void setPosition(Position position) {
         this.position = position;
         requestStateRefresh();
+    }
+
+    public Mode getMode() {
+        return mode;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
     }
 
 }

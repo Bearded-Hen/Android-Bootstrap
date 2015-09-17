@@ -11,6 +11,13 @@
         <enum name="link" value="5" />
     </attr>
 
+    <attr name="buttonMode" format="enum">
+        <enum name="regular" value="0" />
+        <enum name="toggle" value="1" />
+        <enum name="checkbox" value="2" />
+        <enum name="radio" value="3" />
+    </attr>
+
     <attr name="labelType" format="enum">
         <enum name="labelDefault" value="0" />
         <enum name="primary" value="1" />
@@ -64,6 +71,10 @@
         <attr name="striped" format="boolean" />
         <attr name="animated" format="boolean" />
         <attr name="progress" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapButtonGroup">
+        <attr name="buttonMode" />
     </declare-styleable>
 
     <!-- Legacy -->

@@ -80,7 +80,6 @@ public class BootstrapDrawableFactory {
         LayerDrawable disabledLayer = new LayerDrawable(new Drawable[]{disabledGd});
 
         LayerDrawable[] ldAry = new LayerDrawable[]{defaultLayer, activeLayer, disabledLayer};
-
         int n = strokeWidth * -1;
 
         // use LayerDrawable to hide strokes on one side of the drawable (if Button is in a group)
@@ -88,16 +87,15 @@ public class BootstrapDrawableFactory {
             case MIDDLE_HORI:
                 setInsetOnLayers(ldAry, n, 0, 0, 0);
                 break;
+            case END:
+                setInsetOnLayers(ldAry, n, 0, 0, 0);
+                break;
             case MIDDLE_VERT:
                 setInsetOnLayers(ldAry, 0, n, 0, 0);
                 break;
             case BOTTOM:
                 setInsetOnLayers(ldAry, 0, n, 0, 0);
-            case END:
-                setInsetOnLayers(ldAry, n, 0, 0, 0);
-                break;
         }
-
 
         if (Build.VERSION.SDK_INT >= 14) {
             stateListDrawable.addState(new int[]{android.R.attr.state_hovered}, activeLayer);
