@@ -242,5 +242,9 @@
             />
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
+    <TextView
+        style="@style/description_label"
+        android:text="Dropdown"
+        />
 
 </LinearLayout>

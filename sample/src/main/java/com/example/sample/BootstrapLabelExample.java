@@ -1,8 +1,8 @@
 package com.example.sample;
 
 import com.beardedhen.androidbootstrap.BootstrapLabel;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading;
-import com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -13,12 +13,6 @@ import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeadi
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H4;
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H5;
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H6;
-import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.DANGER;
-import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.DEFAULT;
-import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.INFO;
-import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.PRIMARY;
-import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.SUCCESS;
-import static com.beardedhen.androidbootstrap.api.defaults.DefaultLabelTheme.WARNING;
 
 public class BootstrapLabelExample extends BaseActivity {
 
@@ -62,27 +56,24 @@ public class BootstrapLabelExample extends BaseActivity {
     }
 
     @OnClick(R.id.example_blabel_change_color) void onColorChangeClicked() {
-        switch ((DefaultLabelTheme) lblChangeColor.getLabelTheme()) {
-            case DEFAULT:
-                lblChangeColor.setLabelTheme(PRIMARY);
-                break;
+        switch ((DefaultBootstrapBrand) lblChangeColor.getBootstrapBrand()) {
             case PRIMARY:
-                lblChangeColor.setLabelTheme(SUCCESS);
+                lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.SUCCESS);
                 break;
             case SUCCESS:
-                lblChangeColor.setLabelTheme(INFO);
+                lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.INFO);
                 break;
             case INFO:
-                lblChangeColor.setLabelTheme(WARNING);
+                lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.WARNING);
                 break;
             case WARNING:
-                lblChangeColor.setLabelTheme(DANGER);
+                lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
                 break;
             case DANGER:
-                lblChangeColor.setLabelTheme(DEFAULT);
+                lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
                 break;
             default:
-                lblChangeColor.setLabelTheme(PRIMARY);
+                lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
                 break;
         }
     }

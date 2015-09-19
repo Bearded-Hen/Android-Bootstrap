@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -11,16 +13,21 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 import java.io.Serializable;
 
-public class AwesomeTextView extends TextView implements BootstrapTextView {
+// TODO document/finalise
+public class AwesomeTextView extends TextView implements BootstrapTextView, BootstrapBrandView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.AwesomeTextView";
 
     private BootstrapText bootstrapText;
+    private BootstrapBrand bootstrapBrand;
 
     public enum AnimationSpeed {
         FAST(500, 200),
@@ -63,6 +70,9 @@ public class AwesomeTextView extends TextView implements BootstrapTextView {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.AwesomeTextView);
 
         try {
+            int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
+            this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
+
             String icon = a.getString(R.styleable.AwesomeTextView_fa_icon);
 
             if (icon != null && !isInEditMode()) {
@@ -79,12 +89,14 @@ public class AwesomeTextView extends TextView implements BootstrapTextView {
             a.recycle();
         }
         setClickable(true); // allows view to reach android:state_pressed
+        requestStateRefresh();
     }
 
     @Override public Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable(TAG, super.onSaveInstanceState());
         bundle.putSerializable(BootstrapTextView.KEY, bootstrapText);
+        bundle.putSerializable(BootstrapBrand.KEY, bootstrapBrand);
         return bundle;
     }
 
@@ -92,10 +104,14 @@ public class AwesomeTextView extends TextView implements BootstrapTextView {
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
 
-            Serializable s = bundle.getSerializable(BootstrapTextView.KEY);
+            Serializable text = bundle.getSerializable(BootstrapTextView.KEY);
+            Serializable brand = bundle.getSerializable(BootstrapBrand.KEY);
 
-            if (s instanceof BootstrapText) {
-                bootstrapText = (BootstrapText) s;
+            if (brand instanceof BootstrapBrand) {
+                bootstrapBrand = (BootstrapBrand) brand;
+            }
+            if (text instanceof BootstrapText) {
+                bootstrapText = (BootstrapText) text;
             }
             state = bundle.getParcelable(TAG);
         }
@@ -175,13 +191,6 @@ public class AwesomeTextView extends TextView implements BootstrapTextView {
     }
 
     /**
-     * Used to stop animating any FontAwesomeText item
-     */
-    public void stopAnimation() {
-        this.clearAnimation();
-    }
-
-    /**
      * Used to set the icon for a FontAwesomeText item
      *
      * @param faIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
@@ -191,6 +200,10 @@ public class AwesomeTextView extends TextView implements BootstrapTextView {
     }
 
     public void setMarkdownText(String text) {
+        if (text == null) {
+            return;
+        }
+
         // detect {fa-*} and split into spannable
         // ignore \{fa-*\}
 
@@ -246,15 +259,38 @@ public class AwesomeTextView extends TextView implements BootstrapTextView {
         setBootstrapText(builder.addText(text.substring(lastAddedIndex, text.length())).build());
     }
 
+    private void requestStateRefresh() {
+        if (bootstrapText != null) {
+            setText(bootstrapText);
+        }
+        setTextColor(bootstrapBrand.color(getContext()));
+    }
+
+    /*
+     * Getters/Setters
+     */
+
     @Override public void setBootstrapText(BootstrapText bootstrapText) {
         this.bootstrapText = bootstrapText;
         requestStateRefresh();
     }
 
-    private void requestStateRefresh() {
-        if (bootstrapText != null) {
-            setText(bootstrapText);
-        }
+    @Nullable @Override public BootstrapText getBootstrapText() {
+        return bootstrapText;
+    }
+
+    @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
+        this.bootstrapBrand = bootstrapBrand;
+        requestStateRefresh();
+    }
+
+    @NonNull @Override public BootstrapBrand getBootstrapBrand() {
+        return bootstrapBrand;
+    }
+
+    @Override public void setText(CharSequence text, BufferType type) {
+        super.setText(text, type);
+        bootstrapText = null;
     }
 
 }

@@ -7,6 +7,10 @@ import android.support.annotation.ColorInt;
 import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
 
+// TODO document/finalise
+
+// FIXME combine into BootstrapBrand
+
 public enum DefaultBootstrapTheme implements BootstrapTheme {
 
     PRIMARY(R.color.bootstrap_btn_primary_fill_default,

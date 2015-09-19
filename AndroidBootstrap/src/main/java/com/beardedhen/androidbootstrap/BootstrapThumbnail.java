@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.beardedhen.androidbootstrap.support.FontAwesomeIconMap;
 
 
+// TODO document/finalise
+
 /**
  * Should use Bootstrap Cards instead
  */

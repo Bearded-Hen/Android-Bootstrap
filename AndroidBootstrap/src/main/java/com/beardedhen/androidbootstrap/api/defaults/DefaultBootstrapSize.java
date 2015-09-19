@@ -6,7 +6,9 @@ import android.support.annotation.DimenRes;
 import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 
-public enum DefaultBootstrapSize implements BootstrapSize {
+// TODO document/finalise
+
+public enum DefaultBootstrapSize implements BootstrapSize { // FIXME change values
 
     MEDIUM(R.dimen.bootstrap_button_default_font_size,
             R.dimen.bootstrap_button_default_vert_padding,

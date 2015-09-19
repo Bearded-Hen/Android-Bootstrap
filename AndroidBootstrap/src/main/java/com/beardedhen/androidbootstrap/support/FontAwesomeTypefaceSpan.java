@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.style.TypefaceSpan;
 
+// TODO document/finalise
 public class FontAwesomeTypefaceSpan extends TypefaceSpan {
 
     private final Context context;

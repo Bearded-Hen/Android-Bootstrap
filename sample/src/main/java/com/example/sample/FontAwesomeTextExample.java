@@ -59,5 +59,4 @@ public class FontAwesomeTextExample extends BaseActivity {
         exampleMultiChange.setMarkdownText(text);
     }
 
-
 }

@@ -10,11 +10,16 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
-import com.beardedhen.androidbootstrap.api.attributes.LabelTheme;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
 
+// TODO document/finalise
+
+/**
+ * Provides a factory for generating Drawables which are used as the backgrounds for Bootstrap Views.
+ */
 public class BootstrapDrawableFactory {
 
     // TODO refactor params to parameters for button
@@ -27,22 +32,14 @@ public class BootstrapDrawableFactory {
         StateListDrawable stateListDrawable = new StateListDrawable();
 
         int strokeWidth = bootstrapSize.buttonLineHeight(context);
-        int cornerRadius = 20;// bootstrapSize.buttonCornerRadius(context);
-
-        int div = 15;
+        int cornerRadius = bootstrapSize.buttonCornerRadius(context);
 
         GradientDrawable l2 = new GradientDrawable();
         l2.setColor(Color.RED);
-        l2.setStroke(div, theme.defaultEdge(context));
+        l2.setStroke(strokeWidth, theme.defaultEdge(context));
 
         LayerDrawable ld = new LayerDrawable(new Drawable[]{l2});
-        ld.setLayerInset(0, 0, 0, 0, -div);
-
-//        Drawable defaultDrawable = ld;
-//        CustomDrawable defaultDrawable = new CustomDrawable(position, rounded, cornerRadius, strokeWidth);
-//
-//        CustomDrawable activeDrawable = new CustomDrawable(position, rounded, cornerRadius, strokeWidth);
-//        CustomDrawable disabledDrawable = new CustomDrawable(position, rounded, cornerRadius, strokeWidth);
+        ld.setLayerInset(0, 0, 0, 0, -strokeWidth);
 
         GradientDrawable defaultGd = new GradientDrawable();
         GradientDrawable activeGd = new GradientDrawable();
@@ -195,14 +192,14 @@ public class BootstrapDrawableFactory {
     }
 
     public static Drawable bootstrapLabel(Context context,
-                                          LabelTheme theme,
+                                          BootstrapBrand bootstrapBrand,
                                           boolean rounded,
                                           float height) {
 
         int cornerRadius = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_label_corner_radius);
 
         GradientDrawable drawable = new GradientDrawable();
-        drawable.setColor(theme.defaultFill(context));
+        drawable.setColor(bootstrapBrand.color(context));
 
         // corner radius should be half height
         drawable.setCornerRadius(rounded ? height / 2 : cornerRadius);

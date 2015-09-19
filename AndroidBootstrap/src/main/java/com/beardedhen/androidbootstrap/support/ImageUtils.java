@@ -10,6 +10,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 
+@Deprecated
 public class ImageUtils {
 
     public static Bitmap getCircleBitmap(Bitmap bitmap) {

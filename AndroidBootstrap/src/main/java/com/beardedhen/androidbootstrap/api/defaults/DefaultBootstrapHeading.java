@@ -6,7 +6,11 @@ import android.support.annotation.DimenRes;
 import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 
-public enum DefaultBootstrapHeading implements BootstrapHeading {
+/**
+ * Bootstrap provides styling for elements H1-H6, and sets their text size & padding using the
+ * values supplied here.
+ */
+public enum DefaultBootstrapHeading implements BootstrapHeading { // FIXME change values
 
     H1(R.dimen.bootstrap_h1_text_size,
        R.dimen.bootstrap_h1_vert_padding,
@@ -61,16 +65,16 @@ public enum DefaultBootstrapHeading implements BootstrapHeading {
         }
     }
 
-    public float getTextSize(Context context) {
+    @Override public float getTextSize(Context context) {
         return context.getResources().getDimension(textSize);
     }
 
-    @Override public int verticalPadding(Context context) {
-        return context.getResources().getDimensionPixelSize(vertPadding);
+    @Override public float verticalPadding(Context context) {
+        return context.getResources().getDimension(vertPadding);
     }
 
-    @Override public int horizontalPadding(Context context) {
-        return context.getResources().getDimensionPixelSize(horiPadding);
+    @Override public float horizontalPadding(Context context) {
+        return context.getResources().getDimension(horiPadding);
     }
 
 }

@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.support.ImageUtils;
 
+// TODO document/finalise
+
 /**
  * Should use Bootstrap Cards instead
   */

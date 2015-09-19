@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.io.Serializable;
 
+// TODO document/finalise
+
 public interface BootstrapSize extends Serializable {
 
     String KEY = "BootstrapSize";

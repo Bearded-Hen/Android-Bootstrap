@@ -1,13 +1,27 @@
 package com.beardedhen.androidbootstrap.api.view;
 
+import android.support.annotation.NonNull;
+
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 
+/**
+ * Views which implement this interface change their text size & padding according to the
+ * given Bootstrap Heading
+ */
 public interface BootstrapHeadingView {
 
     String KEY = "com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading";
 
-    void setBootstrapHeading(BootstrapHeading bootstrapHeading);
+    /**
+     * Sets this view to use the given Bootstrap Heading, changing its text size & padding
+     *
+     * @param bootstrapHeading the Bootstrap Heading
+     */
+    void setBootstrapHeading(@NonNull BootstrapHeading bootstrapHeading);
 
-    BootstrapHeading getBootstrapHeading();
+    /**
+     * @return the Bootstrap Heading for the view
+     */
+    @NonNull BootstrapHeading getBootstrapHeading();
 
 }

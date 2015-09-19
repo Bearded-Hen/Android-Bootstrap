@@ -2,102 +2,113 @@
 <resources>
 
     <!-- Common attributes -->
+
+    <attr name="bootstrapBrand" format="enum">
+        <enum name="primary" value="0"/>
+        <enum name="success" value="1"/>
+        <enum name="info" value="2"/>
+        <enum name="warning" value="3"/>
+        <enum name="danger" value="4"/>
+    </attr>
+
     <attr name="bootstrapType" format="enum">
-        <enum name="primary" value="0" />
-        <enum name="secondary" value="1" />
-        <enum name="success" value="2" />
-        <enum name="warning" value="3" />
-        <enum name="danger" value="4" />
-        <enum name="link" value="5" />
+        <enum name="primary" value="0"/>
+        <enum name="secondary" value="1"/>
+        <enum name="success" value="2"/>
+        <enum name="warning" value="3"/>
+        <enum name="danger" value="4"/>
+        <enum name="link" value="5"/>
     </attr>
 
     <attr name="buttonMode" format="enum">
-        <enum name="regular" value="0" />
-        <enum name="toggle" value="1" />
-        <enum name="checkbox" value="2" />
-        <enum name="radio" value="3" />
+        <enum name="regular" value="0"/>
+        <enum name="toggle" value="1"/>
+        <enum name="checkbox" value="2"/>
+        <enum name="radio" value="3"/>
     </attr>
 
     <attr name="labelType" format="enum">
-        <enum name="labelDefault" value="0" />
-        <enum name="primary" value="1" />
-        <enum name="success" value="2" />
-        <enum name="info" value="3" />
-        <enum name="warning" value="4" />
-        <enum name="danger" value="5" />
+        <enum name="labelDefault" value="0"/>
+        <enum name="primary" value="1"/>
+        <enum name="success" value="2"/>
+        <enum name="info" value="3"/>
+        <enum name="warning" value="4"/>
+        <enum name="danger" value="5"/>
     </attr>
 
     <attr name="bootstrapSize" format="enum">
-        <enum name="medium" value="0" />
-        <enum name="small" value="1" />
-        <enum name="large" value="2" />
+        <enum name="medium" value="0"/>
+        <enum name="small" value="1"/>
+        <enum name="large" value="2"/>
     </attr>
 
     <attr name="bootstrapHeading" format="enum">
-        <enum name="h1" value="0" />
-        <enum name="h2" value="1" />
-        <enum name="h3" value="2" />
-        <enum name="h4" value="3" />
-        <enum name="h5" value="4" />
-        <enum name="h6" value="5" />
+        <enum name="h1" value="0"/>
+        <enum name="h2" value="1"/>
+        <enum name="h3" value="2"/>
+        <enum name="h4" value="3"/>
+        <enum name="h5" value="4"/>
+        <enum name="h6" value="5"/>
     </attr>
 
-    <attr name="showOutline" format="boolean" />
-    <attr name="roundedCorners" format="boolean" />
-    <attr name="toggleable" format="boolean" />
+    <attr name="showOutline" format="boolean"/>
+    <attr name="roundedCorners" format="boolean"/>
+    <attr name="toggleable" format="boolean"/>
 
     <!-- View attributes -->
 
     <declare-styleable name="AwesomeTextView">
-        <attr name="fa_icon" format="string" />
-        <attr name="bootstrapText" format="string" />
+        <attr name="fa_icon" format="string"/>
+        <attr name="bootstrapText" format="string"/>
+        <attr name="bootstrapBrand"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapLabel">
-        <attr name="bootstrapHeading" />
-        <attr name="labelType" />
-        <attr name="roundedCorners" />
+        <attr name="bootstrapHeading"/>
+        <attr name="labelType"/>
+        <attr name="roundedCorners"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapButton">
-        <attr name="showOutline" />
-        <attr name="roundedCorners" />
-        <attr name="toggleable" />
-        <attr name="bootstrapType" />
-        <attr name="bootstrapSize" />
+        <attr name="showOutline"/>
+        <attr name="roundedCorners"/>
+        <attr name="toggleable"/>
+        <attr name="bootstrapType"/>
+        <attr name="bootstrapSize"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapProgressBar">
-        <attr name="striped" format="boolean" />
-        <attr name="animated" format="boolean" />
-        <attr name="progress" format="integer" />
+        <attr name="striped" format="boolean"/>
+        <attr name="animated" format="boolean"/>
+        <attr name="progress" format="integer"/>
+        <attr name="bootstrapBrand"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapButtonGroup">
-        <attr name="buttonMode" />
+        <attr name="buttonMode"/>
     </declare-styleable>
 
     <!-- Legacy -->
 
     <declare-styleable name="BootstrapEditText">
-        <attr name="be_roundedCorners" format="boolean" />
-        <attr name="be_state" format="string" />
+        <attr name="be_roundedCorners" format="boolean"/>
+        <attr name="be_state" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapThumbnail">
-        <attr name="bt_roundedCorners" format="boolean" />
-        <attr name="bt_image" format="integer" />
-        <attr name="bt_width" format="dimension" />
-        <attr name="bt_height" format="dimension" />
-        <attr name="bt_inside_padding" format="dimension" />
-        <attr name="android:text" />
+        <attr name="bt_roundedCorners" format="boolean"/>
+        <attr name="bt_image" format="integer"/>
+        <attr name="bt_width" format="dimension"/>
+        <attr name="bt_height" format="dimension"/>
+        <attr name="bt_inside_padding" format="dimension"/>
+        <attr name="android:text"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapCircleThumbnail">
-        <attr name="bct_image" format="integer" />
-        <attr name="bct_size" format="string" />
-        <attr name="bct_minimal" format="boolean" />
-        <attr name="android:text" />
+        <attr name="bct_image" format="integer"/>
+        <attr name="bct_size" format="string"/>
+        <attr name="bct_minimal" format="boolean"/>
+        <attr name="android:text"/>
     </declare-styleable>
 
 </resources>

@@ -10,16 +10,28 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.ProgressView;
 
-public class BootstrapProgressBar extends View implements ProgressView {
+import java.io.Serializable;
 
-    // TODO theme colors, rounded corners
+// TODO document/finalise
+// TODO rounded corners
+
+public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView {
+
+    private static final String TAG = "com.beardedhen.androidbootstrap.AwesomeTextView";
 
     private static final long UPDATE_ANIM_MS = 300;
     private static final int STRIPE_ALPHA = 150;
@@ -40,6 +52,8 @@ public class BootstrapProgressBar extends View implements ProgressView {
     private Bitmap stripeTile;
     private Paint tilePaint;
     private int defaultHeight;
+
+    private BootstrapBrand bootstrapBrand;
 
     public BootstrapProgressBar(Context context) {
         super(context);
@@ -62,21 +76,17 @@ public class BootstrapProgressBar extends View implements ProgressView {
         Resources res = getContext().getResources();
         defaultHeight = res.getDimensionPixelSize(R.dimen.bootstrap_progress_bar_height);
 
-        int b = Color.BLUE; // FIXME set via theme
-
         progressPaint = new Paint();
         progressPaint.setStyle(Paint.Style.FILL);
-        progressPaint.setColor(Color.argb(255, Color.red(b), Color.green(b), Color.blue(b)));
         progressPaint.setAntiAlias(true);
 
         stripePaint = new Paint();
         stripePaint.setStyle(Paint.Style.FILL);
-        stripePaint.setColor(Color.argb(STRIPE_ALPHA, Color.red(b), Color.green(b), Color.blue(b)));
         stripePaint.setAntiAlias(true);
 
         bgPaint = new Paint();
         bgPaint.setStyle(Paint.Style.FILL);
-        bgPaint.setColor(Color.GRAY);
+        bgPaint.setColor(getContext().getResources().getColor(R.color.bootstrap_gray));
 
         // get attributes
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapProgressBar);
@@ -85,6 +95,10 @@ public class BootstrapProgressBar extends View implements ProgressView {
             this.animated = a.getBoolean(R.styleable.BootstrapProgressBar_animated, false);
             this.striped = a.getBoolean(R.styleable.BootstrapProgressBar_striped, false);
             this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_progress, 0);
+
+            int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
+            this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
+
             this.drawnProgress = userProgress;
             setProgress(this.userProgress);
         }
@@ -93,46 +107,32 @@ public class BootstrapProgressBar extends View implements ProgressView {
         }
     }
 
-    @Override public void setProgress(int progress) {
-        if (progress < 0 || progress > 100) {
-            String s = String.format("Invalid value '%d' - progress must be an integer in the range 0-100", progress);
-            throw new IllegalArgumentException(s);
+
+    @Override public Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TAG, super.onSaveInstanceState());
+        return bundle;
+    }
+
+    @Override public void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+
+            Serializable brand = bundle.getSerializable(BootstrapBrand.KEY);
+
+            if (brand instanceof BootstrapBrand) {
+                bootstrapBrand = (BootstrapBrand) brand;
+            }
+            state = bundle.getParcelable(TAG);
         }
-
-        this.drawnProgress = userProgress; // previously set value
-        this.userProgress = progress;
-
-        if (animated) {
-            startProgressUpdateAnimation();
-        }
-        else {
-            this.drawnProgress = progress;
-            invalidate();
-        }
+        super.onRestoreInstanceState(state);
+        requestStateRefresh();
+        // TODO restore animation if needed
     }
 
-    @Override public int getProgress() {
-        return userProgress;
-    }
 
-    @Override public void setStriped(boolean striped) {
-        this.striped = striped;
-        invalidate();
-        startStripedAnimationIfNeeded();
-    }
-
-    @Override public boolean isStriped() {
-        return striped;
-    }
-
-    @Override public void setAnimated(boolean animated) {
-        this.animated = animated;
-        invalidate();
-        startStripedAnimationIfNeeded();
-    }
-
-    @Override public boolean isAnimated() {
-        return animated;
+    private int getStripeColor(@ColorInt int color) {
+        return Color.argb(STRIPE_ALPHA, Color.red(color), Color.green(color),Color.blue(color));
     }
 
     /**
@@ -244,7 +244,7 @@ public class BootstrapProgressBar extends View implements ProgressView {
         int lineEnd = (int) (w * ratio);
 
         float offset = 0;
-        float offsetFactor = (float) ((System.currentTimeMillis() % STRIPE_CYCLE_MS) / (float) STRIPE_CYCLE_MS);
+        float offsetFactor = (System.currentTimeMillis() % STRIPE_CYCLE_MS) / (float) STRIPE_CYCLE_MS;
 
         if (striped && animated) { // determine offset for current animation frame of progress bar
             offset = (h * 2) * offsetFactor;
@@ -303,6 +303,69 @@ public class BootstrapProgressBar extends View implements ProgressView {
         tile.drawPath(path, stripePaint); // draw striped triangle (completing tile)
 
         return bm;
+    }
+
+    private void requestStateRefresh() {
+        int color = bootstrapBrand.color(getContext());
+        progressPaint.setColor(color);
+        stripePaint.setColor(getStripeColor(color));
+    }
+
+
+    /*
+     * Getters/Setters
+     */
+
+
+    @Override public void setProgress(int progress) {
+        if (progress < 0 || progress > 100) {
+            String s = String.format("Invalid value '%d' - progress must be an integer in the range 0-100", progress);
+            throw new IllegalArgumentException(s);
+        }
+
+        this.drawnProgress = userProgress; // previously set value
+        this.userProgress = progress;
+
+        if (animated) {
+            startProgressUpdateAnimation();
+        }
+        else {
+            this.drawnProgress = progress;
+            invalidate();
+        }
+    }
+
+    @Override public int getProgress() {
+        return userProgress;
+    }
+
+    @Override public void setStriped(boolean striped) {
+        this.striped = striped;
+        invalidate();
+        startStripedAnimationIfNeeded();
+    }
+
+    @Override public boolean isStriped() {
+        return striped;
+    }
+
+    @Override public void setAnimated(boolean animated) {
+        this.animated = animated;
+        invalidate();
+        startStripedAnimationIfNeeded();
+    }
+
+    @Override public boolean isAnimated() {
+        return animated;
+    }
+
+    @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
+        this.bootstrapBrand = bootstrapBrand;
+        requestStateRefresh();
+    }
+
+    @NonNull @Override public BootstrapBrand getBootstrapBrand() {
+        return bootstrapBrand;
     }
 
 }

@@ -23,6 +23,7 @@ import static com.beardedhen.androidbootstrap.BootstrapButton.Position.SOLO;
 import static com.beardedhen.androidbootstrap.BootstrapButton.Position.START;
 import static com.beardedhen.androidbootstrap.BootstrapButton.Position.TOP;
 
+// TODO document/finalise
 public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeView {
 
     // TODO should be able to apply all child properties via this view

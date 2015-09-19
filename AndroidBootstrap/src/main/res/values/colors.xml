@@ -60,6 +60,25 @@
     <color name="bthumbnail_font">#7e7e7e</color>
 
 
+    <!-- Bootstrap Brand Colors (Universal) -->
+
+    <!-- Grayscale -->
+    <color name="bootstrap_gray_dark">#373a3c</color>
+    <color name="bootstrap_gray">#55595c</color>
+    <color name="bootstrap_gray_light">#818a91</color>
+    <color name="bootstrap_gray_lighter">#eceeef</color>
+    <color name="bootstrap_gray_lightest">#f7f7f9</color>
+
+    <!-- Brand -->
+    <color name="bootstrap_brand_primary">#0275d8</color>
+    <color name="bootstrap_brand_success">#5cb85c</color>
+    <color name="bootstrap_brand_info">#5bc0de</color>
+    <color name="bootstrap_brand_warning">#f0ad4e</color>
+    <color name="bootstrap_brand_danger">#d9534f</color>
+
+
+
+    <!-- Buttons -->
 
     <!-- Primary -->
     <color name="bootstrap_btn_primary_text">#fff</color>

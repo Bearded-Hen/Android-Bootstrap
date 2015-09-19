@@ -18,10 +18,10 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapThemeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
-import com.beardedhen.androidbootstrap.support.BootstrapDrawableParams;
 
 import java.io.Serializable;
 
+// TODO document/finalise
 public class BootstrapButton extends AwesomeTextView implements BootstrapThemeView,
         BootstrapSizeView, OutlineableView, RoundableView {
 
@@ -154,13 +154,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
             setTextColor(textColor);
 
             // TODO need to handle link special case
-
-            BootstrapDrawableParams params = new BootstrapDrawableParams()
-                    .showRoundedCorners(roundedCorners)
-                    .showOutline(showOutline)
-                    .bootstrapType(bootstrapTheme)
-                    .bootstrapSize(bootstrapSize)
-                    .enabled(isEnabled());
 
             setTextColor(BootstrapDrawableFactory.bootstrapButtonText(
                     getContext(),
