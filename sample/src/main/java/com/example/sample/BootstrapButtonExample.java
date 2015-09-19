@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapTheme;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
-import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapTheme;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -36,7 +36,7 @@ public class BootstrapButtonExample extends BaseActivity {
     @Bind(R.id.example_bbutton_custom_style) BootstrapButton exampleCustomStyle;
 
     @OnClick(R.id.bbutton_example_corners) void onCornersExampleClicked() {
-        exampleCorners.setRoundedCorners(!exampleCorners.isRoundedCorners());
+        exampleCorners.setRounded(!exampleCorners.isRounded());
     }
 
     @OnClick(R.id.bbutton_example_outline) void onOutlineExampleClicked() {
@@ -58,24 +58,24 @@ public class BootstrapButtonExample extends BaseActivity {
     }
 
     @OnClick(R.id.bbutton_example_theme) void onThemeExampleClicked() {
-        switch ((DefaultBootstrapTheme) exampleTheme.getBootstrapTheme()) {
+        switch ((DefaultBootstrapBrand) exampleTheme.getBootstrapBrand()) {
             case PRIMARY:
-                exampleTheme.setBootstrapTheme(DefaultBootstrapTheme.SECONDARY);
-                break;
-            case SECONDARY:
-                exampleTheme.setBootstrapTheme(DefaultBootstrapTheme.SUCCESS);
+                exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.SUCCESS);
                 break;
             case SUCCESS:
-                exampleTheme.setBootstrapTheme(DefaultBootstrapTheme.WARNING);
+                exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.WARNING);
                 break;
             case WARNING:
-                exampleTheme.setBootstrapTheme(DefaultBootstrapTheme.DANGER);
+                exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
                 break;
             case DANGER:
-                exampleTheme.setBootstrapTheme(DefaultBootstrapTheme.LINK);
+                exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.INFO);
                 break;
-            case LINK:
-                exampleTheme.setBootstrapTheme(DefaultBootstrapTheme.PRIMARY);
+            case INFO:
+                exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.REGULAR);
+                break;
+            case REGULAR:
+                exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
                 break;
         }
     }
@@ -106,13 +106,17 @@ public class BootstrapButtonExample extends BaseActivity {
 
 
         // create a Bootstrap Theme with holo colors
-        exampleCustomStyle.setBootstrapTheme(new BootstrapTheme() {
+        exampleCustomStyle.setBootstrapBrand(new BootstrapBrand() {
             @Override public int defaultFill(Context context) {
                 return context.getResources().getColor(R.color.custom_default_fill);
             }
 
             @Override public int defaultEdge(Context context) {
                 return context.getResources().getColor(R.color.custom_default_edge);
+            }
+
+            @Override public int defaultTextColor(Context context) {
+                return context.getResources().getColor(R.color.white);
             }
 
             @Override public int activeFill(Context context) {
@@ -123,8 +127,8 @@ public class BootstrapButtonExample extends BaseActivity {
                 return context.getResources().getColor(R.color.custom_active_edge);
             }
 
-            @Override public int textColor(Context context) {
-                return context.getResources().getColor(R.color.white);
+            @Override public int activeTextColor(Context context) {
+                return context.getResources().getColor(R.color.black);
             }
 
             @Override public int disabledFill(Context context) {
@@ -133,6 +137,10 @@ public class BootstrapButtonExample extends BaseActivity {
 
             @Override public int disabledEdge(Context context) {
                 return context.getResources().getColor(R.color.custom_disabled_edge);
+            }
+
+            @Override public int disabledTextColor(Context context) {
+                return context.getResources().getColor(R.color.bootstrap_gray);
             }
         });
     }

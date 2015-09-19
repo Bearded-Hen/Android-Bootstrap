@@ -206,7 +206,6 @@
             android:gravity="center"
             app:bootstrapBrand="success"
             app:bootstrapText="Weight 1 {fa-gift}"
-            app:bootstrapType="danger"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
@@ -217,7 +216,6 @@
             android:gravity="center"
             app:bootstrapBrand="primary"
             app:bootstrapText="{fa-play} Weight 2 {fa-group}"
-            app:bootstrapType="danger"
             />
     </LinearLayout>
 

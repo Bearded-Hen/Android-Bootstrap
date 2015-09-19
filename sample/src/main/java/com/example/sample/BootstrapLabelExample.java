@@ -82,7 +82,7 @@ public class BootstrapLabelExample extends BaseActivity {
     }
 
     @OnClick(R.id.example_blabel_change_rounded) void onRoundedChangeClicked() {
-        lblChangeRounded.setRoundedCorners(!lblChangeRounded.isRoundedCorners());
+        lblChangeRounded.setRounded(!lblChangeRounded.isRounded());
     }
 
 }

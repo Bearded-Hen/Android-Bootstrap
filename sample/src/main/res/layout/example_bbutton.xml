@@ -32,6 +32,7 @@
                 android:id="@+id/bbutton_example_corners"
                 style="@style/wrapping_button"
                 android:text="Corners"
+                app:bootstrapBrand="success"
                 app:bootstrapSize="large"
                 />
 
@@ -39,22 +40,23 @@
                 android:id="@+id/bbutton_example_outline"
                 style="@style/wrapping_button"
                 android:text="Outline"
+                app:bootstrapBrand="danger"
                 app:bootstrapSize="large"
-                app:bootstrapType="danger"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/bbutton_example_size"
                 style="@style/wrapping_button"
                 android:text="Size"
+                app:bootstrapBrand="success"
                 app:bootstrapSize="large"
-                app:bootstrapType="success"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/bbutton_example_theme"
                 style="@style/wrapping_button"
                 android:text="Theme"
+                app:bootstrapBrand="info"
                 app:bootstrapSize="large"
                 />
 
@@ -81,42 +83,30 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Primary"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Secondary"
-                app:bootstrapType="secondary"
+                app:bootstrapBrand="primary"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Success"
-                app:bootstrapType="success"
+                app:bootstrapBrand="success"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Warning"
-                app:bootstrapType="warning"
+                app:bootstrapBrand="warning"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Danger"
-                app:bootstrapType="danger"
+                app:bootstrapBrand="danger"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
-                android:text="Link"
-                app:bootstrapType="link"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Primary"
-                app:bootstrapType="primary"
+                android:text="Default"
                 />
         </LinearLayout>
     </HorizontalScrollView>
@@ -141,48 +131,34 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Primary"
-                app:roundedCorners="true"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Secondary"
-                app:bootstrapType="secondary"
+                app:bootstrapBrand="primary"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Success"
-                app:bootstrapType="success"
+                app:bootstrapBrand="success"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Warning"
-                app:bootstrapType="warning"
+                app:bootstrapBrand="warning"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Danger"
-                app:bootstrapType="danger"
+                app:bootstrapBrand="danger"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
-                android:text="Link"
-                app:bootstrapType="link"
-                app:roundedCorners="true"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Primary"
-                app:bootstrapType="primary"
+                android:text="Default"
                 app:roundedCorners="true"
                 />
         </LinearLayout>
@@ -208,48 +184,34 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Primary"
-                app:showOutline="true"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Secondary"
-                app:bootstrapType="secondary"
+                app:bootstrapBrand="primary"
                 app:showOutline="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Success"
-                app:bootstrapType="success"
+                app:bootstrapBrand="success"
                 app:showOutline="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Warning"
-                app:bootstrapType="warning"
+                app:bootstrapBrand="warning"
                 app:showOutline="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Danger"
-                app:bootstrapType="danger"
+                app:bootstrapBrand="danger"
                 app:showOutline="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
-                android:text="Link"
-                app:bootstrapType="link"
-                app:showOutline="true"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Primary"
-                app:bootstrapType="primary"
+                android:text="Default"
                 app:showOutline="true"
                 />
         </LinearLayout>
@@ -275,15 +237,9 @@
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
-                android:text="Primary"
-                app:roundedCorners="true"
-                app:showOutline="true"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Secondary"
-                app:bootstrapType="secondary"
+                android:enabled="false"
+                android:text="Primary (Disabled)"
+                app:bootstrapBrand="primary"
                 app:roundedCorners="true"
                 app:showOutline="true"
                 />
@@ -291,7 +247,7 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Success"
-                app:bootstrapType="success"
+                app:bootstrapBrand="success"
                 app:roundedCorners="true"
                 app:showOutline="true"
                 />
@@ -299,7 +255,7 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Warning"
-                app:bootstrapType="warning"
+                app:bootstrapBrand="warning"
                 app:roundedCorners="true"
                 app:showOutline="true"
                 />
@@ -307,23 +263,14 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Danger"
-                app:bootstrapType="danger"
+                app:bootstrapBrand="danger"
                 app:roundedCorners="true"
                 app:showOutline="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
-                android:text="Link"
-                app:bootstrapType="link"
-                app:roundedCorners="true"
-                app:showOutline="true"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:text="Primary"
-                app:bootstrapType="primary"
+                android:text="Default"
                 app:roundedCorners="true"
                 app:showOutline="true"
                 />
@@ -351,48 +298,34 @@
                 style="@style/wrapping_button"
                 android:enabled="false"
                 android:text="Primary"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:enabled="false"
-                android:text="Secondary"
-                app:bootstrapType="secondary"
+                app:bootstrapBrand="primary"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:enabled="false"
                 android:text="Success"
-                app:bootstrapType="success"
+                app:bootstrapBrand="success"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:enabled="false"
                 android:text="Warning"
-                app:bootstrapType="warning"
+                app:bootstrapBrand="warning"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:enabled="false"
                 android:text="Danger"
-                app:bootstrapType="danger"
+                app:bootstrapBrand="danger"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:enabled="false"
-                android:text="Link"
-                app:bootstrapType="link"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                style="@style/wrapping_button"
-                android:enabled="false"
-                android:text="Primary"
-                app:bootstrapType="primary"
+                android:text="Default"
                 />
         </LinearLayout>
     </HorizontalScrollView>
@@ -417,22 +350,22 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Large"
+                app:bootstrapBrand="success"
                 app:bootstrapSize="large"
-                app:bootstrapType="success"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Medium"
+                app:bootstrapBrand="warning"
                 app:bootstrapSize="medium"
-                app:bootstrapType="warning"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Small"
+                app:bootstrapBrand="danger"
                 app:bootstrapSize="small"
-                app:bootstrapType="danger"
                 />
 
         </LinearLayout>
@@ -444,6 +377,7 @@
         android:layout_marginTop="@dimen/micro_padding"
         android:gravity="center"
         android:text="Matching"
+        app:bootstrapBrand="info"
         />
 
     <LinearLayout
@@ -459,8 +393,8 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="1"
             android:gravity="center"
+            app:bootstrapBrand="danger"
             app:bootstrapText="Weight 1 {fa-gift}"
-            app:bootstrapType="danger"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -469,8 +403,8 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="2"
             android:gravity="center"
+            app:bootstrapBrand="success"
             app:bootstrapText="{fa-play} Weight 2 {fa-group}"
-            app:bootstrapType="success"
             />
 
     </LinearLayout>

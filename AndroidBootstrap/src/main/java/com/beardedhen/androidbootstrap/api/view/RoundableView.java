@@ -11,13 +11,13 @@ public interface RoundableView {
     /**
      * Sets whether the view should display rounded corners or not
      *
-     * @param roundable whether the view should be rounded
+     * @param rounded whether the view should be rounded
      */
-    void setRoundedCorners(boolean roundable);
+    void setRounded(boolean rounded);
 
     /**
      * @return true if the view is displaying rounded corners, otherwise false
      */
-    boolean isRoundedCorners();
+    boolean isRounded();
 
 }

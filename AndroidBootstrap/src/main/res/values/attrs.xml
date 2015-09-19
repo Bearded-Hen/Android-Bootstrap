@@ -12,15 +12,6 @@
         <enum name="regular" value="5"/>
     </attr>
 
-    <attr name="bootstrapType" format="enum">
-        <enum name="primary" value="0"/>
-        <enum name="secondary" value="1"/>
-        <enum name="success" value="2"/>
-        <enum name="warning" value="3"/>
-        <enum name="danger" value="4"/>
-        <enum name="link" value="5"/>
-    </attr>
-
     <attr name="buttonMode" format="enum">
         <enum name="regular" value="0"/>
         <enum name="toggle" value="1"/>
@@ -74,7 +65,7 @@
         <attr name="showOutline"/>
         <attr name="roundedCorners"/>
         <attr name="toggleable"/>
-        <attr name="bootstrapType"/>
+        <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
     </declare-styleable>
 

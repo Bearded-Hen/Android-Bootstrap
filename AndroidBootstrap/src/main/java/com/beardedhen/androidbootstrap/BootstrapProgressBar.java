@@ -27,7 +27,7 @@ import com.beardedhen.androidbootstrap.api.view.ProgressView;
 import java.io.Serializable;
 
 // TODO document/finalise
-// TODO rounded corners
+// TODO rounded corners See http://stackoverflow.com/questions/11012556
 
 public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView {
 
@@ -86,7 +86,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         bgPaint = new Paint();
         bgPaint.setStyle(Paint.Style.FILL);
-        bgPaint.setColor(getContext().getResources().getColor(R.color.bootstrap_gray_lighter));
+        bgPaint.setColor(getContext().getResources().getColor(R.color.bootstrap_gray_light));
 
         // get attributes
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapProgressBar);
@@ -273,8 +273,6 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             float start = 0 - offset;
 
             while (start < lineEnd) {
-                // TODO investigate caching everything apart from the edges as a bitmap rather than tiling
-
                 canvas.drawBitmap(stripeTile, start, 0, tilePaint);
                 start += stripeTile.getHeight() * 2;
             }
@@ -282,6 +280,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         else { // draw a filled bar
             canvas.drawRect(0, 0, lineEnd, h, progressPaint);
         }
+
         canvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
     }
 
@@ -321,7 +320,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     }
 
     private void updateBootstrapState() {
-        int color = bootstrapBrand.color(getContext());
+        int color = bootstrapBrand.defaultFill(getContext());
         progressPaint.setColor(color);
         stripePaint.setColor(getStripeColor(color));
         stripeTile = null;

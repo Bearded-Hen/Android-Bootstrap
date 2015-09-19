@@ -21,7 +21,11 @@ import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 import java.io.Serializable;
 
-// TODO document/finalise
+/**
+ * This class extends the default Android TextView to supply Bootstrap behaviour. The text color
+ * can be set by changing the BootstrapBrand, and scalable Typeface icons can be interspersed with
+ * regular text, using the BootstrapText spannable.
+ */
 public class AwesomeTextView extends TextView implements BootstrapTextView, BootstrapBrandView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.AwesomeTextView";
@@ -121,11 +125,10 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
     }
 
     /**
-     * Used to start flashing a FontAwesomeText item
+     * Starts a Flashing Animation on the AwesomeTextView
      *
-     * @param forever whether the item should flash repeatedly or just once
-     * @param speed   how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW /
-     *                FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST
+     * @param forever whether the animation should be infinite or play once
+     * @param speed   how fast the item should flash
      */
     public void startFlashing(boolean forever, AnimationSpeed speed) {
         Animation fadeIn = new AlphaAnimation(0, 1);
@@ -155,11 +158,10 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
     }
 
     /**
-     * Used to start rotating a FontAwesomeText item
+     * Starts a rotating animation on the AwesomeTetView
      *
      * @param clockwise true for clockwise, false for anti clockwise spinning
-     * @param speed     how fast the item should flash, chose between FontAwesomeText.AnimationSpeed.SLOW /
-     *                  FontAwesomeText.AnimationSpeed.MEDIUM / FontAwesomeText.AnimationSpeed.FAST
+     * @param speed     how fast the item should rotate
      */
     public void startRotate(boolean clockwise, AnimationSpeed speed) {
         Animation rotate;
@@ -192,15 +194,18 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
     }
 
     /**
-     * Used to set the icon for a FontAwesomeText item
+     * DEPRECATED: use setMarkdownText() or setBootstrapText() instead
+     * <p/>
+     * Used to set the text to display a FontAwesome Icon.
      *
-     * @param faIcon - String value for the icon as per http://fortawesome.github.io/Font-Awesome/cheatsheet/
+     * @param faIcon - FontAwesome code for the icon as per the
+     *               <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">Font Awesome Cheatsheet</a>
      */
-    public void setIcon(String faIcon) {
+    @Deprecated public void setIcon(String faIcon) {
         setBootstrapText(new BootstrapText.Builder(getContext()).addFaIcon(faIcon).build());
     }
 
-    public void setMarkdownText(String text) {
+    @Override public void setMarkdownText(String text) {
         if (text == null) {
             return;
         }
@@ -259,13 +264,13 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
         }
         setBootstrapText(builder.addText(text.substring(lastAddedIndex, text.length())).build());
     }
-    
+
     protected void updateBootstrapState() {
         if (bootstrapText != null) {
             setText(bootstrapText);
         }
         if (bootstrapBrand != null) {
-            setTextColor(bootstrapBrand.color(getContext()));
+            setTextColor(bootstrapBrand.defaultFill(getContext()));
         }
     }
 

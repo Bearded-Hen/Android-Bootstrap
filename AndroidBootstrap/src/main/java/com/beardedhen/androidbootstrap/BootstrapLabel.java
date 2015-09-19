@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading;
@@ -17,7 +18,11 @@ import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 import java.io.Serializable;
 
-// TODO document/finalise
+/**
+ * BootstrapLabels are designed for showing text styled with BootstrapBrands - they should be
+ * considered similar to a BootstrapButton, but without the press functionality. It is possible to
+ * set the size of BootstrapLabels using H1-H6 elements.
+ */
 public class BootstrapLabel extends AwesomeTextView implements RoundableView, BootstrapHeadingView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapLabel";
@@ -89,10 +94,10 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
             int hori = (int) bootstrapHeading.horizontalPadding(getContext());
 
             setPadding(hori, vert, hori, vert);
-            setTextSize(bootstrapHeading.getTextSize(getContext()));
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, bootstrapHeading.getTextSize(getContext()));
         }
 
-        setTextColor(getContext().getResources().getColor(android.R.color.white));
+        setTextColor(getBootstrapBrand().defaultTextColor(getContext()));
         setTypeface(Typeface.DEFAULT_BOLD);
 
         Drawable bg = BootstrapDrawableFactory.bootstrapLabel(
@@ -117,17 +122,16 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
         }
     }
 
-
     /*
      * Getters/Setters
      */
 
-    @Override public void setRoundedCorners(boolean roundable) {
-        this.roundable = roundable;
+    @Override public void setRounded(boolean rounded) {
+        this.roundable = rounded;
         updateBootstrapState();
     }
 
-    @Override public boolean isRoundedCorners() {
+    @Override public boolean isRounded() {
         return roundable;
     }
 
