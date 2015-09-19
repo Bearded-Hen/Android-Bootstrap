@@ -28,7 +28,6 @@ import java.io.Serializable;
 
 // TODO document/finalise
 // TODO rounded corners
-// TODO state retention
 
 public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView {
 
@@ -87,7 +86,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         bgPaint = new Paint();
         bgPaint.setStyle(Paint.Style.FILL);
-        bgPaint.setColor(getContext().getResources().getColor(R.color.bootstrap_gray));
+        bgPaint.setColor(getContext().getResources().getColor(R.color.bootstrap_gray_lighter));
 
         // get attributes
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapProgressBar);
@@ -105,14 +104,19 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             a.recycle();
         }
 
-        requestStateRefresh();
+        updateBootstrapState();
         setProgress(this.userProgress);
     }
-
 
     @Override public Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable(TAG, super.onSaveInstanceState());
+
+        bundle.putInt(KEY_USER_PROGRESS, userProgress);
+        bundle.putInt(KEY_DRAWN_PROGRESS, drawnProgress);
+        bundle.putBoolean(KEY_STRIPED, striped);
+        bundle.putBoolean(KEY_ANIMATED, animated);
+        bundle.putSerializable(BootstrapBrand.KEY, bootstrapBrand);
         return bundle;
     }
 
@@ -125,16 +129,21 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             if (brand instanceof BootstrapBrand) {
                 bootstrapBrand = (BootstrapBrand) brand;
             }
+
+            userProgress = bundle.getInt(KEY_USER_PROGRESS);
+            drawnProgress = bundle.getInt(KEY_DRAWN_PROGRESS);
+            striped = bundle.getBoolean(KEY_STRIPED);
+            animated = bundle.getBoolean(KEY_ANIMATED);
+
             state = bundle.getParcelable(TAG);
         }
         super.onRestoreInstanceState(state);
-        requestStateRefresh();
-        // TODO restore animation if needed
+        updateBootstrapState();
+        setProgress(userProgress);
     }
 
-
     private int getStripeColor(@ColorInt int color) {
-        return Color.argb(STRIPE_ALPHA, Color.red(color), Color.green(color),Color.blue(color));
+        return Color.argb(STRIPE_ALPHA, Color.red(color), Color.green(color), Color.blue(color));
     }
 
     /**
@@ -142,6 +151,10 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
      * a call to setProgress(). Animation update callbacks allow the interpolator value to be used
      * to calculate the current progress value, which is stored in a temporary variable. The view is
      * then invalidated.
+     * <p/>
+     * If this method is called when a progress update animation is already running, the previous
+     * animation will be cancelled, and the currently drawn progress recorded. A new animation will
+     * then be started from the last drawn point.
      */
     private void startProgressUpdateAnimation() {
         clearAnimation();
@@ -185,7 +198,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
      * producing the effect that the stripes are moving backwards.
      */
     private void startStripedAnimationIfNeeded() {
-        if (!striped  || !animated) {
+        if (!striped || !animated) {
             return;
         }
 
@@ -307,7 +320,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         return bm;
     }
 
-    private void requestStateRefresh() {
+    private void updateBootstrapState() {
         int color = bootstrapBrand.color(getContext());
         progressPaint.setColor(color);
         stripePaint.setColor(getStripeColor(color));
@@ -327,7 +340,6 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             throw new IllegalArgumentException(s);
         }
 
-        this.drawnProgress = userProgress; // previously set value
         this.userProgress = progress;
 
         if (animated) {
@@ -365,7 +377,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
     @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
         this.bootstrapBrand = bootstrapBrand;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @NonNull @Override public BootstrapBrand getBootstrapBrand() {

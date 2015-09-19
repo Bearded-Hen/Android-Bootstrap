@@ -5,6 +5,11 @@ package com.beardedhen.androidbootstrap.api.view;
  */
 public interface ProgressView {
 
+    String KEY_USER_PROGRESS = "com.beardedhen.androidbootstrap.api.view.KEY_USER_PROGRESS";
+    String KEY_DRAWN_PROGRESS = "com.beardedhen.androidbootstrap.api.view.KEY_DRAWN_PROGRESS";
+    String KEY_STRIPED = "com.beardedhen.androidbootstrap.api.view.KEY_STRIPED";
+    String KEY_ANIMATED = "com.beardedhen.androidbootstrap.api.view.KEY_ANIMATED";
+
     /**
      * Updates the amount of progress displayed to the user.
      *

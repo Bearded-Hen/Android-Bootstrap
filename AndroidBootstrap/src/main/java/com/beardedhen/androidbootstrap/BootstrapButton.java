@@ -101,7 +101,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
         finally {
             a.recycle();
         }
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -139,10 +139,11 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
             state = bundle.getParcelable(TAG);
         }
         super.onRestoreInstanceState(state);
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
-    private void requestStateRefresh() {
+    @Override public void updateBootstrapState() {
+        super.updateBootstrapState();
 
         if (bootstrapSize != null && bootstrapTheme != null) {
 
@@ -225,27 +226,27 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapThemeVi
 
     @Override public void setBootstrapTheme(BootstrapTheme bootstrapTheme) {
         this.bootstrapTheme = bootstrapTheme;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @Override public void setShowOutline(boolean showOutline) {
         this.showOutline = showOutline;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @Override public void setRoundedCorners(boolean roundedCorners) {
         this.roundedCorners = roundedCorners;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @Override public void setBootstrapSize(BootstrapSize bootstrapSize) {
         this.bootstrapSize = bootstrapSize;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     void setPosition(Position position) {
         this.position = position;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     public Mode getMode() {

@@ -52,7 +52,7 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
         finally {
             a.recycle();
         }
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -77,19 +77,23 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
             state = bundle.getParcelable(TAG);
         }
         super.onRestoreInstanceState(state);
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
-    private void requestStateRefresh() {
+    @Override public void updateBootstrapState() {
+        super.updateBootstrapState();
         // set bg color etc
 
-        int vert = (int) bootstrapHeading.verticalPadding(getContext());
-        int hori = (int) bootstrapHeading.horizontalPadding(getContext());
-        setPadding(hori, vert, hori, vert);
+        if (bootstrapHeading != null) {
+            int vert = (int) bootstrapHeading.verticalPadding(getContext());
+            int hori = (int) bootstrapHeading.horizontalPadding(getContext());
+
+            setPadding(hori, vert, hori, vert);
+            setTextSize(bootstrapHeading.getTextSize(getContext()));
+        }
 
         setTextColor(getContext().getResources().getColor(android.R.color.white));
         setTypeface(Typeface.DEFAULT_BOLD);
-        setTextSize(bootstrapHeading.getTextSize(getContext()));
 
         Drawable bg = BootstrapDrawableFactory.bootstrapLabel(
                 getContext(),
@@ -108,8 +112,8 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
     @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        if (roundable && h != oldh) {
-            requestStateRefresh();
+        if (roundable && h != oldh) { // corner radius should always be h/2
+            updateBootstrapState();
         }
     }
 
@@ -118,10 +122,9 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
      * Getters/Setters
      */
 
-
     @Override public void setRoundedCorners(boolean roundable) {
         this.roundable = roundable;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @Override public boolean isRoundedCorners() {
@@ -130,7 +133,7 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
 
     @Override public void setBootstrapHeading(@NonNull BootstrapHeading bootstrapHeading) {
         this.bootstrapHeading = bootstrapHeading;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @NonNull @Override public BootstrapHeading getBootstrapHeading() {

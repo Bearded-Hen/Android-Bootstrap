@@ -68,6 +68,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
 
     private void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.AwesomeTextView);
+        String markdownText;
 
         try {
             int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
@@ -79,17 +80,17 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
                 setIcon(icon);
             }
 
-            String text = a.getString(R.styleable.AwesomeTextView_bootstrapText);
-
-            if (text != null) {
-                setMarkdownText(text);
-            }
+            markdownText = a.getString(R.styleable.AwesomeTextView_bootstrapText);
         }
         finally {
             a.recycle();
         }
         setClickable(true); // allows view to reach android:state_pressed
-        requestStateRefresh();
+
+        if (markdownText != null) {
+            setMarkdownText(markdownText);
+        }
+        updateBootstrapState();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -116,7 +117,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
             state = bundle.getParcelable(TAG);
         }
         super.onRestoreInstanceState(state);
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     /**
@@ -258,12 +259,14 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
         }
         setBootstrapText(builder.addText(text.substring(lastAddedIndex, text.length())).build());
     }
-
-    private void requestStateRefresh() {
+    
+    protected void updateBootstrapState() {
         if (bootstrapText != null) {
             setText(bootstrapText);
         }
-        setTextColor(bootstrapBrand.color(getContext()));
+        if (bootstrapBrand != null) {
+            setTextColor(bootstrapBrand.color(getContext()));
+        }
     }
 
     /*
@@ -272,7 +275,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
 
     @Override public void setBootstrapText(BootstrapText bootstrapText) {
         this.bootstrapText = bootstrapText;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @Nullable @Override public BootstrapText getBootstrapText() {
@@ -281,7 +284,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
 
     @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
         this.bootstrapBrand = bootstrapBrand;
-        requestStateRefresh();
+        updateBootstrapState();
     }
 
     @NonNull @Override public BootstrapBrand getBootstrapBrand() {
