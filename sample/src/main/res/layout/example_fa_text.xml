@@ -38,21 +38,21 @@
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_change"
                 style="@style/wrapping_fa_text"
-                android:textColor="@color/bootstrap_btn_success_fill_default"
+                app:bootstrapBrand="success"
                 app:fa_icon="fa-android"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_flash"
                 style="@style/wrapping_fa_text"
-                android:textColor="@color/bootstrap_btn_primary_fill_default"
+                app:bootstrapBrand="primary"
                 app:fa_icon="fa-github-alt"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_rotate"
                 style="@style/wrapping_fa_text"
-                android:textColor="@color/bootstrap_btn_danger_fill_default"
+                app:bootstrapBrand="danger"
                 app:fa_icon="fa-wrench"
                 />
 
@@ -62,13 +62,14 @@
     <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/example_fa_text_multi_change"
         style="@style/wrapping_fa_text"
-        android:textColor="@color/bootstrap_btn_primary_fill_default"
+        app:bootstrapBrand="primary"
         app:bootstrapText="{fa-wikipedia-w} is in the {fa-cloud}"
         />
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/example_fa_text_builder"
         style="@style/wrapping_fa_text"
+        app:bootstrapBrand="info"
         />
 
     <TextView
@@ -90,20 +91,20 @@
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
-                android:textColor="@color/bootstrap_btn_success_fill_default"
+                app:bootstrapBrand="success"
                 app:bootstrapText="{fa-android}{fa-android}{fa-android}"
                 app:fa_icon="fa-android"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
-                android:textColor="@color/bootstrap_btn_primary_fill_default"
+                app:bootstrapBrand="warning"
                 app:bootstrapText="{fa-user} {fa-user-md} {fa-users} {fa-user-plus}"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
-                android:textColor="@color/bootstrap_btn_danger_fill_default"
+                app:bootstrapBrand="danger"
                 app:bootstrapText="{fa-heart} {fa-yc} {fa-slack} {fa-stack-overflow} {fa-wikipedia-w} {fa-heart} "
                 />
 
@@ -117,8 +118,8 @@
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
-        android:textColor="@color/bootstrap_btn_success_fill_default"
         android:textSize="30dp"
+        app:bootstrapBrand="success"
         app:bootstrapText="I {fa-heart} you {fa-github}"
         app:fa_icon="fa-android"
         tools:ignore="SpUsage"
@@ -126,24 +127,24 @@
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
-        android:textColor="@color/bootstrap_btn_primary_fill_default"
         android:textSize="30dp"
+        app:bootstrapBrand="primary"
         app:bootstrapText="Share on {fa-facebook} with a {fa-thumbs-o-up}"
         tools:ignore="SpUsage"
         />
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
-        android:textColor="@color/bootstrap_btn_danger_fill_default"
         android:textSize="30dp"
+        app:bootstrapBrand="danger"
         app:bootstrapText="I love to ride my {fa-bicycle}, I love to read my {insert-noun-here}"
         tools:ignore="SpUsage"
         />
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
-        android:textColor="@color/bootstrap_btn_primary_fill_default"
         android:textSize="30dp"
+        app:bootstrapBrand="primary"
         app:bootstrapText="Escaped \{fa-facebook\} icon"
         tools:ignore="SpUsage"
         />

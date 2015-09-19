@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading;
@@ -42,7 +41,6 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
     }
 
     private void initialise(AttributeSet attrs) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapLabel);
 
         try {

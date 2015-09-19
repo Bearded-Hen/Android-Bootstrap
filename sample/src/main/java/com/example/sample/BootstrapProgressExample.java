@@ -1,6 +1,7 @@
 package com.example.sample;
 
 import com.beardedhen.androidbootstrap.BootstrapProgressBar;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 
 import java.util.Random;
 
@@ -69,14 +70,33 @@ public class BootstrapProgressExample extends BaseActivity {
         stripedAnimExample.setProgress(randomProgress(stripedAnimExample.getProgress()));
     }
 
-    @OnClick(R.id.example_progress_change_btn) void onChangeClicked() {
-        changeExample.setProgress(randomProgress(changeExample.getProgress()));
-    }
-
-    @OnClick(R.id.example_progress_change) void onAlterProgressBarParameters() {
+    @OnClick(R.id.example_progress_change_type_btn) void onAlterProgressBarParameters() {
         changeState = changeState.next();
         changeExample.setStriped(changeState.striped);
         changeExample.setAnimated(changeState.animated);
+    }
+
+    @OnClick(R.id.example_progress_change_color_btn) void onAlterProgressBarColor() {
+        switch ((DefaultBootstrapBrand) changeExample.getBootstrapBrand()) {
+            case PRIMARY:
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.SUCCESS);
+                break;
+            case SUCCESS:
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.INFO);
+                break;
+            case INFO:
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.WARNING);
+                break;
+            case WARNING:
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
+                break;
+            case DANGER:
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.REGULAR);
+                break;
+            case REGULAR:
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
+                break;
+        }
     }
 
     private int randomProgress(int currentProgress) {

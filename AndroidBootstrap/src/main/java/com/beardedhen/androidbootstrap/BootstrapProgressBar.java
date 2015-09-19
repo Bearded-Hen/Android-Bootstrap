@@ -28,6 +28,7 @@ import java.io.Serializable;
 
 // TODO document/finalise
 // TODO rounded corners
+// TODO state retention
 
 public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView {
 
@@ -98,13 +99,14 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
             int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
-
             this.drawnProgress = userProgress;
-            setProgress(this.userProgress);
         }
         finally {
             a.recycle();
         }
+
+        requestStateRefresh();
+        setProgress(this.userProgress);
     }
 
 
@@ -309,6 +311,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         int color = bootstrapBrand.color(getContext());
         progressPaint.setColor(color);
         stripePaint.setColor(getStripeColor(color));
+        stripeTile = null;
+        invalidate();
     }
 
 

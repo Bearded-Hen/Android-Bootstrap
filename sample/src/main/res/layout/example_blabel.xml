@@ -31,24 +31,24 @@
                 android:id="@+id/example_blabel_change_color"
                 style="@style/wrapping_button"
                 android:text="Color"
+                app:bootstrapBrand="warning"
                 app:bootstrapHeading="h3"
-                app:labelType="warning"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 android:id="@+id/example_blabel_change_heading"
                 style="@style/wrapping_button"
                 android:text="Heading"
+                app:bootstrapBrand="success"
                 app:bootstrapHeading="h1"
-                app:labelType="success"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 android:id="@+id/example_blabel_change_rounded"
                 style="@style/wrapping_button"
                 android:text="Round"
+                app:bootstrapBrand="primary"
                 app:bootstrapHeading="h3"
-                app:labelType="primary"
                 app:roundedCorners="true"
                 />
         </LinearLayout>
@@ -74,43 +74,43 @@
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="H1"
+                app:bootstrapBrand="regular"
                 app:bootstrapHeading="h1"
-                app:labelType="labelDefault"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="H2"
+                app:bootstrapBrand="primary"
                 app:bootstrapHeading="h2"
-                app:labelType="primary"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="H3"
+                app:bootstrapBrand="success"
                 app:bootstrapHeading="h3"
-                app:labelType="success"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="H4"
+                app:bootstrapBrand="info"
                 app:bootstrapHeading="h4"
-                app:labelType="info"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="H5"
+                app:bootstrapBrand="warning"
                 app:bootstrapHeading="h5"
-                app:labelType="warning"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="H6"
+                app:bootstrapBrand="danger"
                 app:bootstrapHeading="h6"
-                app:labelType="danger"
                 />
         </LinearLayout>
     </HorizontalScrollView>
@@ -135,48 +135,48 @@
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="Head1"
+                app:bootstrapBrand="danger"
                 app:bootstrapHeading="h1"
-                app:labelType="danger"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="Head2"
+                app:bootstrapBrand="warning"
                 app:bootstrapHeading="h2"
-                app:labelType="warning"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="Head3"
+                app:bootstrapBrand="info"
                 app:bootstrapHeading="h3"
-                app:labelType="info"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="Head4"
+                app:bootstrapBrand="success"
                 app:bootstrapHeading="h4"
-                app:labelType="success"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="Head5"
+                app:bootstrapBrand="primary"
                 app:bootstrapHeading="h5"
-                app:labelType="primary"
                 app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
                 android:text="Head6"
+                app:bootstrapBrand="regular"
                 app:bootstrapHeading="h6"
-                app:labelType="labelDefault"
                 app:roundedCorners="true"
                 />
         </LinearLayout>
@@ -204,9 +204,9 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="1"
             android:gravity="center"
+            app:bootstrapBrand="success"
             app:bootstrapText="Weight 1 {fa-gift}"
             app:bootstrapType="danger"
-            app:labelType="success"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
@@ -215,9 +215,9 @@
             android:layout_marginTop="@dimen/micro_padding"
             android:layout_weight="2"
             android:gravity="center"
+            app:bootstrapBrand="primary"
             app:bootstrapText="{fa-play} Weight 2 {fa-group}"
             app:bootstrapType="danger"
-            app:labelType="primary"
             />
     </LinearLayout>
 

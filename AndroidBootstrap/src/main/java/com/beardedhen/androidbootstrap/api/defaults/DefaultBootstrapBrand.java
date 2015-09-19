@@ -15,7 +15,8 @@ public enum DefaultBootstrapBrand implements BootstrapBrand {
     SUCCESS(R.color.bootstrap_brand_success),
     INFO(R.color.bootstrap_brand_info),
     WARNING(R.color.bootstrap_brand_warning),
-    DANGER(R.color.bootstrap_brand_danger);
+    DANGER(R.color.bootstrap_brand_danger),
+    REGULAR(R.color.bootstrap_gray_light);
 
     private final int color;
 
@@ -27,16 +28,18 @@ public enum DefaultBootstrapBrand implements BootstrapBrand {
         switch (attrValue) {
             case 0:
                 return PRIMARY;
-            case 2:
+            case 1:
                 return SUCCESS;
-            case 3:
+            case 2:
                 return INFO;
-            case 4:
+            case 3:
                 return WARNING;
-            case 5:
+            case 4:
                 return DANGER;
+            case 5:
+                return REGULAR;
             default:
-                return PRIMARY;
+                return REGULAR;
         }
     }
 
