@@ -36,13 +36,13 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         END
     }
 
-    enum Mode {
+    enum ButtonMode {
         REGULAR,
         TOGGLE,
         CHECKBOX,
         RADIO;
 
-        public static Mode fromAttributeValue(int attrValue) {
+        public static ButtonMode fromAttributeValue(int attrValue) {
             switch (attrValue) {
                 case 0:
                     return REGULAR;
@@ -59,7 +59,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     private Position position = Position.SOLO;
-    private Mode mode = Mode.REGULAR;
+    private ButtonMode buttonMode = ButtonMode.REGULAR;
 
     private BootstrapSize bootstrapSize;
 
@@ -89,8 +89,11 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             this.roundedCorners = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
             this.showOutline = a.getBoolean(R.styleable.BootstrapButton_showOutline, false);
 
-            int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, 0);
+            int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, -1);
+            int modeOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_buttonMode, -1);
+
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal);
+            buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
         }
         finally {
             a.recycle();
@@ -105,7 +108,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         bundle.putBoolean(RoundableView.KEY, roundedCorners);
         bundle.putBoolean(OutlineableView.KEY, showOutline);
         bundle.putSerializable(BootstrapSize.KEY, bootstrapSize);
-        bundle.putSerializable(KEY_MODE, mode);
+        bundle.putSerializable(KEY_MODE, buttonMode);
         return bundle;
     }
 
@@ -122,8 +125,8 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             if (size instanceof BootstrapSize) {
                 bootstrapSize = (BootstrapSize) size;
             }
-            if (m instanceof Mode) {
-                mode = (Mode) m;
+            if (m instanceof ButtonMode) {
+                buttonMode = (ButtonMode) m;
             }
             state = bundle.getParcelable(TAG);
         }
@@ -167,7 +170,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     @Override public boolean onTouchEvent(@NonNull MotionEvent event) {
 
-        switch (mode) {
+        switch (buttonMode) {
             case REGULAR:
                 return super.onTouchEvent(event);
             case TOGGLE:
@@ -199,8 +202,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         return bootstrapSize;
     }
 
-
-
     @Override public boolean isShowOutline() {
         return showOutline;
     }
@@ -208,7 +209,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     @Override public boolean isRounded() {
         return roundedCorners;
     }
-
 
     @Override public void setShowOutline(boolean showOutline) {
         this.showOutline = showOutline;
@@ -225,17 +225,41 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         updateBootstrapState();
     }
 
+    /**
+     * Sets the position of this view in its ViewGroup parent, and updates the background drawable
+     * to match this position
+     *
+     * @param position the position in the ViewGroup
+     */
     void setPosition(Position position) {
         this.position = position;
         updateBootstrapState();
     }
 
-    public Mode getMode() {
-        return mode;
+    void updateFromParent(BootstrapBrand bootstrapBrand,
+                          BootstrapSize bootstrapSize,
+                          ButtonMode buttonMode,
+                          boolean outline,
+                          boolean rounded) {
+
+        // called by BootstrapButtonGroup when updating state all at once
+
+        this.bootstrapSize = bootstrapSize;
+        this.buttonMode = buttonMode;
+        this.showOutline = outline;
+        this.roundedCorners = rounded;
+        setBootstrapBrand(bootstrapBrand);
+        updateBootstrapState();
     }
 
-    public void setMode(Mode mode) {
-        this.mode = mode;
+    // TODO abstract out to interface etc
+
+    public ButtonMode getButtonMode() {
+        return buttonMode;
+    }
+
+    public void setButtonMode(ButtonMode buttonMode) {
+        this.buttonMode = buttonMode;
     }
 
 }

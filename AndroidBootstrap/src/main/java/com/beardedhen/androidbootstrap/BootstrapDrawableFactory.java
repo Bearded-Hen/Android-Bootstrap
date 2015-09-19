@@ -16,9 +16,9 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 /**
  * Provides a factory for generating Drawables which are used as the backgrounds for Bootstrap Views.
  */
-public class BootstrapDrawableFactory { // TODO tidy up
+class BootstrapDrawableFactory { // TODO tidy up
 
-    public static Drawable bootstrapButton(Context context,
+    static Drawable bootstrapButton(Context context,
                                            BootstrapBrand brand,
                                            BootstrapSize bootstrapSize,
                                            BootstrapButton.Position position,
@@ -132,7 +132,7 @@ public class BootstrapDrawableFactory { // TODO tidy up
     }
 
     @SuppressLint("InlinedApi")
-    public static ColorStateList bootstrapButtonText(Context context,
+    static ColorStateList bootstrapButtonText(Context context,
                                                      boolean outline,
                                                      BootstrapBrand brand) {
 
@@ -188,7 +188,7 @@ public class BootstrapDrawableFactory { // TODO tidy up
      * @param height         the view height in px
      * @return the Bootstrap Label background
      */
-    public static Drawable bootstrapLabel(Context context,
+    static Drawable bootstrapLabel(Context context,
                                           BootstrapBrand bootstrapBrand,
                                           boolean rounded,
                                           float height) {

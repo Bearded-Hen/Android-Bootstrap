@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.EditText;
 
-// TODO document/finalise
+// TODO document/finalise/update to v4 spec
 public class BootstrapEditText extends EditText {
 
     public enum TextState {

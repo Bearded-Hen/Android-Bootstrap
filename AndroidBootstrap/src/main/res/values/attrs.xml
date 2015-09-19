@@ -62,6 +62,16 @@
     </declare-styleable>
 
     <declare-styleable name="BootstrapButton">
+        <attr name="buttonMode"/>
+        <attr name="showOutline"/>
+        <attr name="roundedCorners"/>
+        <attr name="toggleable"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapButtonGroup">
+        <attr name="buttonMode"/>
         <attr name="showOutline"/>
         <attr name="roundedCorners"/>
         <attr name="toggleable"/>
@@ -74,10 +84,6 @@
         <attr name="animated" format="boolean"/>
         <attr name="progress" format="integer"/>
         <attr name="bootstrapBrand"/>
-    </declare-styleable>
-
-    <declare-styleable name="BootstrapButtonGroup">
-        <attr name="buttonMode"/>
     </declare-styleable>
 
     <!-- Legacy -->

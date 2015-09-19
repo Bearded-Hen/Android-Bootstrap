@@ -30,6 +30,7 @@
             android:layout_marginBottom="@dimen/micro_padding"
             android:orientation="horizontal"
             app:bootstrapSize="large"
+            app:bootstrapBrand="info"
             >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -59,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/micro_padding"
             android:orientation="horizontal"
+            app:bootstrapBrand="success"
             >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -92,6 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/micro_padding"
             android:orientation="vertical"
+            app:bootstrapBrand="primary"
             >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -115,6 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/micro_padding"
             android:orientation="vertical"
+            app:bootstrapBrand="danger"
             >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -148,6 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/micro_padding"
         android:orientation="horizontal"
+        app:bootstrapBrand="warning"
         >
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -188,6 +193,7 @@
         android:layout_marginBottom="@dimen/micro_padding"
         android:orientation="horizontal"
         app:buttonMode="checkbox"
+        app:bootstrapBrand="success"
         >
 
         <com.beardedhen.androidbootstrap.BootstrapButton
