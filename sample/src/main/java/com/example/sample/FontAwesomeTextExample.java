@@ -8,6 +8,11 @@ import com.beardedhen.androidbootstrap.support.BootstrapText;
 import butterknife.Bind;
 import butterknife.OnClick;
 
+import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_ANDROID;
+import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_APPLE;
+import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_HEART;
+import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_TWITTER;
+
 public class FontAwesomeTextExample extends BaseActivity {
 
     @Override protected int getContentLayoutId() {
@@ -40,22 +45,23 @@ public class FontAwesomeTextExample extends BaseActivity {
 
         BootstrapText text = new BootstrapText.Builder(this)
                 .addText("I ")
-                .addFaIcon("fa-heart")
+                .addIcon(FA_HEART)
                 .addText(" going on ")
-                .addFaIcon("fa-twitter")
+                .addIcon(FA_TWITTER)
                 .build();
+
 
         exampleBuilder.setBootstrapText(text);
     }
 
     @OnClick(R.id.example_fa_text_change) void onChangeClicked() {
         android = !android;
-        exampleChange.setIcon(android ? "fa-android" : "fa-apple");
+        exampleChange.setIcon(android ? FA_ANDROID : FA_APPLE);
     }
 
     @OnClick(R.id.example_fa_text_multi_change) void onMultiChangeClicked() {
         wikipedia = !wikipedia;
-        String text = wikipedia ? "{fa-image} is in the {fa-cloud}" : "{fa-bank} are on {fa-globe}";
+        String text = wikipedia ? "{fa_image} is in the {fa_cloud}" : "{fa_bank} are on {fa_globe}";
         exampleMultiChange.setMarkdownText(text);
     }
 

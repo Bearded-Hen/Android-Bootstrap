@@ -394,7 +394,7 @@
             android:layout_weight="1"
             android:gravity="center"
             app:bootstrapBrand="danger"
-            app:bootstrapText="Weight 1 {fa-gift}"
+            app:bootstrapText="Weight 1 {fa_gift}"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -404,7 +404,7 @@
             android:layout_weight="2"
             android:gravity="center"
             app:bootstrapBrand="success"
-            app:bootstrapText="{fa-play} Weight 2 {fa-group}"
+            app:bootstrapText="{fa_play} Weight 2 {fa_group}"
             />
 
     </LinearLayout>

@@ -39,21 +39,21 @@
                 android:id="@+id/example_fa_text_change"
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="success"
-                app:fa_icon="fa-android"
+                app:faIcon="fa_android"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_flash"
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="primary"
-                app:fa_icon="fa-github-alt"
+                app:faIcon="fa_github_alt"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_rotate"
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="danger"
-                app:fa_icon="fa-wrench"
+                app:faIcon="fa_wrench"
                 />
 
         </LinearLayout>
@@ -63,7 +63,7 @@
         android:id="@+id/example_fa_text_multi_change"
         style="@style/wrapping_fa_text"
         app:bootstrapBrand="primary"
-        app:bootstrapText="{fa-wikipedia-w} is in the {fa-cloud}"
+        app:bootstrapText="{fa_wikipedia_w} is in the {fa_cloud}"
         />
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
@@ -92,20 +92,20 @@
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="success"
-                app:bootstrapText="{fa-android}{fa-android}{fa-android}"
-                app:fa_icon="fa-android"
+                app:bootstrapText="{fa_android}{fa_play}{fa_apple}"
+                app:faIcon="fa_android"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="warning"
-                app:bootstrapText="{fa-user} {fa-user-md} {fa-users} {fa-user-plus}"
+                app:bootstrapText="{fa_user} {fa_user_md} {fa_users} {fa_user_plus}"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="danger"
-                app:bootstrapText="{fa-heart} {fa-yc} {fa-slack} {fa-stack-overflow} {fa-wikipedia-w} {fa-heart} "
+                app:bootstrapText="{fa_heart} {fa_yc} {fa_slack} {fa_stack_overflow} {fa_wikipedia_w} {fa_heart} "
                 />
 
         </LinearLayout>
@@ -120,8 +120,8 @@
         style="@style/wrapping_fa_text"
         android:textSize="30dp"
         app:bootstrapBrand="success"
-        app:bootstrapText="I {fa-heart} you {fa-github}"
-        app:fa_icon="fa-android"
+        app:bootstrapText="I {fa_heart} {fa_github}"
+        app:faIcon="fa_android"
         tools:ignore="SpUsage"
         />
 
@@ -129,7 +129,7 @@
         style="@style/wrapping_fa_text"
         android:textSize="30dp"
         app:bootstrapBrand="primary"
-        app:bootstrapText="Share on {fa-facebook} with a {fa-thumbs-o-up}"
+        app:bootstrapText="Share on {fa_facebook} with a {fa_thumbs_o_up}"
         tools:ignore="SpUsage"
         />
 
@@ -137,7 +137,7 @@
         style="@style/wrapping_fa_text"
         android:textSize="30dp"
         app:bootstrapBrand="danger"
-        app:bootstrapText="I love to ride my {fa-bicycle}, I love to read my {insert-noun-here}"
+        app:bootstrapText="I love to ride my {fa_bicycle}, I love to read my {insert_noun_here}"
         tools:ignore="SpUsage"
         />
 
@@ -145,7 +145,7 @@
         style="@style/wrapping_fa_text"
         android:textSize="30dp"
         app:bootstrapBrand="primary"
-        app:bootstrapText="Escaped \{fa-facebook\} icon"
+        app:bootstrapText="Escaped \{fa_facebook\} icon"
         tools:ignore="SpUsage"
         />
 

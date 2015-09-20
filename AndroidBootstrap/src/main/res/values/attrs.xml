@@ -50,9 +50,9 @@
     <!-- View attributes -->
 
     <declare-styleable name="AwesomeTextView">
-        <attr name="fa_icon" format="string"/>
         <attr name="bootstrapText" format="string"/>
         <attr name="bootstrapBrand"/>
+        <attr name="faIcon"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapLabel">
@@ -108,6 +108,8 @@
         <attr name="bct_minimal" format="boolean"/>
         <attr name="android:text"/>
     </declare-styleable>
+
+
 
 </resources>
 

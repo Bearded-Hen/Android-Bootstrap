@@ -4,9 +4,12 @@ import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
 
+import com.beardedhen.androidbootstrap.font.AwesomeTypefaceSpan;
+import com.beardedhen.androidbootstrap.font.FontIcon;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Bootstrap Text provides a Builder class, which allows convenient construction of SpannableStrings.
@@ -27,10 +30,10 @@ public class BootstrapText extends SpannableString implements Serializable {
         private final StringBuilder sb;
         private final Context context;
 
-        private final List<Integer> fontAwesomeIndices;
+        private final Map<Integer, FontIcon> fontIndicesMap;
 
         public Builder(Context context) {
-            fontAwesomeIndices = new ArrayList<>();
+            fontIndicesMap = new HashMap<>();
             sb = new StringBuilder();
             this.context = context.getApplicationContext();
         }
@@ -47,16 +50,13 @@ public class BootstrapText extends SpannableString implements Serializable {
         }
 
         /**
-         * Appends a FontAwesome Icon to the BootstrapText under construction. The FA code e.g.
-         * fa-play, should be supplied rather than the unicode.
-         *
-         * @param icon the FA code for the icon
+         * Appends a FontIcon to the BootstrapText under construction
+         * @param fontIcon a font icon
          * @return the updated builder instance
          */
-        public Builder addFaIcon(CharSequence icon) {
-            CharSequence unicode = FontAwesomeIconMap.getUnicode(icon);
-            sb.append(unicode);
-            fontAwesomeIndices.add(sb.length());
+        public Builder addIcon(FontIcon fontIcon) {
+            sb.append(fontIcon.character());
+            fontIndicesMap.put(sb.length(), fontIcon);
             return this;
         }
 
@@ -66,8 +66,10 @@ public class BootstrapText extends SpannableString implements Serializable {
         public BootstrapText build() {
             BootstrapText bootstrapText = new BootstrapText(sb.toString());
 
-            for (Integer index : fontAwesomeIndices) {
-                FontAwesomeTypefaceSpan span = new FontAwesomeTypefaceSpan(context);
+            for (Map.Entry<Integer, FontIcon> entry : fontIndicesMap.entrySet()) {
+                int index = entry.getKey();
+
+                AwesomeTypefaceSpan span = new AwesomeTypefaceSpan(context, entry.getValue());
                 bootstrapText.setSpan(span, index - 1, index, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
             }
             return bootstrapText;

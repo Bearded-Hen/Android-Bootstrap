@@ -1,5 +1,7 @@
 package com.beardedhen.androidbootstrap.api.view;
 
+import android.support.annotation.IntRange;
+
 /**
  * Views which implement this interface visually display ongoing progress to users
  */
@@ -15,12 +17,12 @@ public interface ProgressView {
      *
      * @param progress an integer between 0-100
      */
-    void setProgress(int progress);
+    void setProgress(@IntRange(from=0,to=100) int progress);
 
     /**
      * @return the amount of progress displayed to the user (0-100)
      */
-    int getProgress();
+    @IntRange(from=0,to=100)int getProgress();
 
     /**
      * Sets whether the view should display a striped pattern.

@@ -17,6 +17,8 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
+import com.beardedhen.androidbootstrap.font.FontAwesomeIcon;
+import com.beardedhen.androidbootstrap.font.FontIcon;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 import java.io.Serializable;
@@ -76,12 +78,12 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
 
         try {
             int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
+            int iconOrdinal = a.getInt(R.styleable.AwesomeTextView_faIcon, -1);
+
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
 
-            String icon = a.getString(R.styleable.AwesomeTextView_fa_icon);
-
-            if (icon != null && !isInEditMode()) {
-                setIcon(icon);
+            if (iconOrdinal != -1) {
+                setIcon(FontAwesomeIcon.fromAttrValue(iconOrdinal));
             }
 
             markdownText = a.getString(R.styleable.AwesomeTextView_bootstrapText);
@@ -181,88 +183,21 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
         rotate.setRepeatMode(Animation.RESTART);
         rotate.setDuration(speed.getRotateDuration());
 
-        //send the new animation to a final animation
-        final Animation animation = rotate;
-
-        //run the animation - used to work correctly on older devices
-        this.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startAnimation(animation);
-            }
-        }, 100);
+        startAnimation(rotate);
     }
 
     /**
-     * DEPRECATED: use setMarkdownText() or setBootstrapText() instead
-     * <p/>
+     * Sets the text to display a FontIcon, replacing whatever text is already present.
      * Used to set the text to display a FontAwesome Icon.
      *
-     * @param faIcon - FontAwesome code for the icon as per the
-     *               <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">Font Awesome Cheatsheet</a>
+     * @param fontIcon - An implementation of FontIcon
      */
-    @Deprecated public void setIcon(String faIcon) {
-        setBootstrapText(new BootstrapText.Builder(getContext()).addFaIcon(faIcon).build());
+    public void setIcon(FontIcon fontIcon) {
+        setBootstrapText(new BootstrapText.Builder(getContext()).addIcon(fontIcon).build());
     }
 
     @Override public void setMarkdownText(String text) {
-        if (text == null) {
-            return;
-        }
-
-        // detect {fa-*} and split into spannable
-        // ignore \{fa-*\}
-
-        BootstrapText.Builder builder = new BootstrapText.Builder(getContext());
-
-        boolean skip = false;
-
-        int lastAddedIndex = 0;
-        int startIndex = -1;
-        int endIndex = -1;
-
-        for (int i = 0; i < text.length(); i++) {
-            if (skip) {
-                skip = false;
-                continue;
-            }
-
-            char c = text.charAt(i);
-
-            if (c == '\\') { // escape sequence, ignore next char
-                skip = true;
-                continue;
-            }
-
-            if (c == '{') {
-                startIndex = i;
-            }
-            else if (c == '}') {
-                endIndex = i;
-            }
-
-            if (startIndex != -1 && endIndex != -1) { // encountered full facode string
-
-                if (endIndex < startIndex) { // reset end index
-                    endIndex = -1;
-                }
-                else if (startIndex >= 0 && endIndex < text.length()) {
-                    String faCode = text.substring(startIndex + 1, endIndex);
-
-                    if (faCode.matches("fa-[a-z-0-9]+")) {
-
-                        // add any inbetween text
-                        builder.addText(text.substring(lastAddedIndex, startIndex));
-                        builder.addFaIcon(faCode);
-
-                        lastAddedIndex = endIndex + 1;
-                    }
-                }
-                startIndex = -1;
-                endIndex = -1;
-            }
-        }
-        setBootstrapText(builder.addText(text.substring(lastAddedIndex, text.length())).build());
+        setBootstrapText(MarkdownResolver.resolveMarkdown(getContext(), text));
     }
 
     protected void updateBootstrapState() {

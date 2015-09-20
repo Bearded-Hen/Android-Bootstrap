@@ -35,7 +35,7 @@ Please checkout the [sample project](https://github.com/Bearded-Hen/AndroidBoots
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:text="Success"
-    bootstrap:bb_icon_right="fa-android"
+    bootstrap:bb_icon_right="fa_android"
     bootstrap:bb_type="success"
 />
 ```
