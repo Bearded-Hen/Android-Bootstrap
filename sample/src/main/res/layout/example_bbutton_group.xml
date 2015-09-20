@@ -6,8 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <!-- TODO should really be setting attributes via the GROUP once hooked up -->
-
     <TextView
         style="@style/example_title"
         android:text="Bootstrap Button Groups"
@@ -15,7 +13,7 @@
 
     <TextView
         style="@style/description_label"
-        android:text="Horizontal"
+        android:text="Orientation"
         />
 
     <LinearLayout
@@ -24,63 +22,47 @@
         android:orientation="horizontal"
         >
 
+        <Button
+            android:id="@+id/bbutton_group_orientation_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
         <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_orientation_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/micro_padding"
             android:orientation="horizontal"
+            app:bootstrapBrand="success"
             app:bootstrapSize="large"
-            app:bootstrapBrand="info"
+            app:roundedCorners="true"
             >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
-                app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"
-                app:roundedCorners="true"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3"
-                app:roundedCorners="true"
-                />
-        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
-
-        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/micro_padding"
-            android:orientation="horizontal"
-            app:bootstrapBrand="success"
-            >
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"
                 />
         </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
     </LinearLayout>
 
-
     <TextView
         style="@style/description_label"
-        android:text="Vertical"
+        android:text="Size"
         />
 
     <LinearLayout
@@ -89,36 +71,21 @@
         android:orientation="horizontal"
         >
 
+        <Button
+            android:id="@+id/bbutton_group_size_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
         <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_size_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/micro_padding"
-            android:orientation="vertical"
-            app:bootstrapBrand="primary"
-            >
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                app:roundedCorners="true"
-                />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"
-                app:roundedCorners="true"
-                />
-
-        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
-
-        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/micro_padding"
-            android:orientation="vertical"
-            app:bootstrapBrand="danger"
+            android:orientation="horizontal"
+            app:bootstrapBrand="regular"
+            app:bootstrapSize="large"
             >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -138,7 +105,6 @@
                 android:layout_height="wrap_content"
                 android:text="3"
                 />
-
         </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
     </LinearLayout>
 
@@ -147,40 +113,198 @@
         android:text="Outline"
         />
 
-    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/micro_padding"
         android:orientation="horizontal"
-        app:bootstrapBrand="warning"
         >
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
+            android:id="@+id/bbutton_group_outline_change_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
-            app:roundedCorners="true"
-            app:showOutline="true"
+            android:text="Modify"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_outline_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
-            app:roundedCorners="true"
-            app:showOutline="true"
-            />
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="large"
+            >
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Rounded"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_rounded_change_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3"
-            app:roundedCorners="true"
-            app:showOutline="true"
+            android:text="Modify"
             />
-    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_rounded_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="large"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Brand"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_brand_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_brand_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="danger"
+            app:bootstrapSize="large"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
 
 
+    <TextView
+        style="@style/description_label"
+        android:text="Child Change"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_child_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            />
+
+        <Button
+            android:id="@+id/bbutton_group_child_remove_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_child_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="vertical"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
 
     <TextView
         style="@style/description_label"
@@ -192,8 +316,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/micro_padding"
         android:orientation="horizontal"
-        app:buttonMode="checkbox"
         app:bootstrapBrand="success"
+        app:buttonMode="checkbox"
         >
 
         <com.beardedhen.androidbootstrap.BootstrapButton
