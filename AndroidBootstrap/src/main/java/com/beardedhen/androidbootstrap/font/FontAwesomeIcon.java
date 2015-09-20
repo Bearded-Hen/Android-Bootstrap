@@ -683,8 +683,6 @@ public enum FontAwesomeIcon implements FontIcon {
     FA_YOUTUBE_PLAY('\uf16a'),
     FA_YOUTUBE_SQUARE('\uf166');
 
-    // Map for resolving Markdown
-
     private final char character;
     public static final String FONT_AWESOME_FONT = "fontawesome-webfont-v440.ttf";
 

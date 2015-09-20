@@ -16,10 +16,7 @@ import com.beardedhen.androidbootstrap.support.ImageUtils;
 
 // TODO document/finalise
 
-/**
- * Should use Bootstrap Cards instead
-  */
-@Deprecated public class BootstrapCircleThumbnail extends FrameLayout { // FIXME should extend imageview
+public class BootstrapCircleThumbnail extends FrameLayout { // FIXME should extend imageview
 
     private enum BootstrapCircleType {
         SMALL("small", 2, 48), //padding adjustment for small thumbnails

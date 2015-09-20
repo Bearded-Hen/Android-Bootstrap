@@ -10,10 +10,21 @@ import java.util.Map;
 
 import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.*;
 
+/**
+ * Resolves markdown strings using FA codes and produces BootstrapText instances.
+ */
 public class MarkdownResolver {
 
-    public static BootstrapText resolveMarkdown(Context context, String text) {
-        if (text == null) {
+    /**
+     * Resolves markdown to produce a BootstrapText instance. e.g. "{fa_android}" would be replaced
+     * with the appropriate FontAwesome character and a SpannableString producec.
+     *
+     * @param context the current context
+     * @param markdown the markdown string
+     * @return a constructed BootstrapText
+     */
+    public static BootstrapText resolveMarkdown(Context context, String markdown) {
+        if (markdown == null) {
             return null;
         }
         else { // detect {fa_*} and split into spannable, ignore escaped chars
@@ -23,8 +34,8 @@ public class MarkdownResolver {
             int startIndex = -1;
             int endIndex = -1;
 
-            for (int i = 0; i < text.length(); i++) {
-                char c = text.charAt(i);
+            for (int i = 0; i < markdown.length(); i++) {
+                char c = markdown.charAt(i);
 
                 if (c == '\\') { // escape sequence, ignore next char
                     i+= 2;
@@ -40,12 +51,12 @@ public class MarkdownResolver {
 
                 if (startIndex != -1 && endIndex != -1) { // recognised markdown string
 
-                    if (startIndex >= 0 && endIndex < text.length()) {
-                        String markdown = text.substring(startIndex + 1, endIndex);
+                    if (startIndex >= 0 && endIndex < markdown.length()) {
+                        String text = markdown.substring(startIndex + 1, endIndex);
 
-                        if (markdown.matches("fa_[a-z_0-9]+")) { // markdown is FontAwesome code
+                        if (text.matches("fa_[a-z_0-9]+")) { // markdown is FontAwesome code
                             builder.addText(text.substring(lastAddedIndex, startIndex));
-                            builder.addIcon(resolveFontAwesomeIcon(markdown));
+                            builder.addIcon(resolveFontAwesomeIcon(text));
                             lastAddedIndex = endIndex + 1;
                         }
                     }
@@ -53,7 +64,7 @@ public class MarkdownResolver {
                     endIndex = -1;
                 }
             }
-            return builder.addText(text.substring(lastAddedIndex, text.length())).build();
+            return builder.addText(markdown.substring(lastAddedIndex, markdown.length())).build();
         }
     }
 

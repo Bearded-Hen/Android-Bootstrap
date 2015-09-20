@@ -12,10 +12,12 @@ import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
+import com.beardedhen.androidbootstrap.api.view.ButtonModeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
@@ -29,15 +31,20 @@ import static com.beardedhen.androidbootstrap.BootstrapButton.Position.SOLO;
 import static com.beardedhen.androidbootstrap.BootstrapButton.Position.START;
 import static com.beardedhen.androidbootstrap.BootstrapButton.Position.TOP;
 
-// TODO document/finalise
+/**
+ * BootstrapButtonGroups are a LinearLayout which exclusively holds BootstrapButtons. It is possible
+ * to set the properties of all children with one method call to this view. Options include
+ * BootstrapBrand colors, roundable corners, 'outlineable' mode and different selection modes
+ * e.g. Checkbox/Radio group.
+ */
 public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeView,
-        OutlineableView, RoundableView, BootstrapBrandView {
+        OutlineableView, RoundableView, BootstrapBrandView, ButtonModeView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButtonGroup";
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButtonGroup.MODE";
 
     private BootstrapSize bootstrapSize;
-    private BootstrapButton.ButtonMode buttonMode;
+    private ButtonMode buttonMode;
     private BootstrapBrand bootstrapBrand;
 
     private boolean rounded;
@@ -69,7 +76,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
             int brandOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_bootstrapBrand, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_bootstrapSize, -1);
 
-            this.buttonMode = BootstrapButton.ButtonMode.fromAttributeValue(typeOrdinal);
+            this.buttonMode = ButtonMode.fromAttributeValue(typeOrdinal);
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(brandOrdinal);
             this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal);
         }
@@ -103,8 +110,8 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
             Serializable brand = bundle.getSerializable(BootstrapBrand.KEY);
             Serializable m = bundle.getSerializable(KEY_MODE);
 
-            if (m instanceof BootstrapButton.ButtonMode) {
-                buttonMode = (BootstrapButton.ButtonMode) m;
+            if (m instanceof ButtonMode) {
+                buttonMode = (ButtonMode) m;
             }
             if (brand instanceof BootstrapBrand) {
                 bootstrapBrand = (BootstrapBrand) brand;
@@ -201,11 +208,11 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         return bootstrapSize;
     }
 
-    public BootstrapButton.ButtonMode getButtonMode() {
+    @NonNull public ButtonMode getButtonMode() {
         return buttonMode;
     }
 
-    public void setButtonMode(BootstrapButton.ButtonMode buttonMode) {
+    public void setButtonMode(@NonNull ButtonMode buttonMode) {
         this.buttonMode = buttonMode;
 
         for (int i = 0; i < getChildCount(); i++) {

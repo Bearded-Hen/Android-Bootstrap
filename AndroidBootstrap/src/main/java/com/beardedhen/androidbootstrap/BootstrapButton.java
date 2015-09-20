@@ -13,16 +13,22 @@ import android.view.ViewParent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
+import com.beardedhen.androidbootstrap.api.view.ButtonModeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 import java.io.Serializable;
 
-// TODO document/finalise
+/**
+ * BootstrapButtons are regular buttons styled with BootstrapBrand colors, roundable corners, and an
+ * 'outlineable' mode. It is possible to group together multiple buttons using BootstrapButtonGroup,
+ * allowing the use of different selection modes e.g. Checkbox/Radio group.
+ */
 public class BootstrapButton extends AwesomeTextView implements BootstrapSizeView,
-        OutlineableView, RoundableView {
+        OutlineableView, RoundableView, ButtonModeView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButton.MODE";
@@ -36,28 +42,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         BOTTOM,
         START,
         END
-    }
-
-    enum ButtonMode {
-        REGULAR,
-        TOGGLE,
-        CHECKBOX,
-        RADIO;
-
-        public static ButtonMode fromAttributeValue(int attrValue) {
-            switch (attrValue) {
-                case 0:
-                    return REGULAR;
-                case 1:
-                    return TOGGLE;
-                case 2:
-                    return CHECKBOX;
-                case 3:
-                    return RADIO;
-                default:
-                    return REGULAR;
-            }
-        }
     }
 
     private int parentIndex;
@@ -197,7 +181,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             else { // notify parent to deselect any peers
                 setSelected(true);
 
-                ViewParent parent =  getParent();
+                ViewParent parent = getParent();
 
                 if (parent instanceof BootstrapButtonGroup) {
                     ((BootstrapButtonGroup) parent).onRadioToggle(parentIndex);
@@ -218,6 +202,33 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         else {
             return false;
         }
+    }
+    /**
+     * Sets the position of this view in its ViewGroup parent, and updates the background drawable
+     * to match this position
+     *
+     * @param position the position in the ViewGroup
+     */
+    void setPosition(Position position, int parentIndex) {
+        this.position = position;
+        this.parentIndex = parentIndex;
+        updateBootstrapState();
+    }
+
+    void updateFromParent(BootstrapBrand bootstrapBrand,
+                          BootstrapSize bootstrapSize,
+                          ButtonMode buttonMode,
+                          boolean outline,
+                          boolean rounded) {
+
+        // called by BootstrapButtonGroup when updating state all at once
+
+        this.bootstrapSize = bootstrapSize;
+        this.buttonMode = buttonMode;
+        this.showOutline = outline;
+        this.roundedCorners = rounded;
+        setBootstrapBrand(bootstrapBrand);
+        updateBootstrapState();
     }
 
     /*
@@ -251,41 +262,11 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         updateBootstrapState();
     }
 
-    /**
-     * Sets the position of this view in its ViewGroup parent, and updates the background drawable
-     * to match this position
-     *
-     * @param position the position in the ViewGroup
-     */
-    void setPosition(Position position, int parentIndex) {
-        this.position = position;
-        this.parentIndex = parentIndex;
-        updateBootstrapState();
-    }
-
-    void updateFromParent(BootstrapBrand bootstrapBrand,
-                          BootstrapSize bootstrapSize,
-                          ButtonMode buttonMode,
-                          boolean outline,
-                          boolean rounded) {
-
-        // called by BootstrapButtonGroup when updating state all at once
-
-        this.bootstrapSize = bootstrapSize;
-        this.buttonMode = buttonMode;
-        this.showOutline = outline;
-        this.roundedCorners = rounded;
-        setBootstrapBrand(bootstrapBrand);
-        updateBootstrapState();
-    }
-
-    // TODO abstract out to interface etc
-
-    public ButtonMode getButtonMode() {
+    @NonNull @Override public ButtonMode getButtonMode() {
         return buttonMode;
     }
 
-    public void setButtonMode(ButtonMode buttonMode) {
+    @Override public void setButtonMode(@NonNull ButtonMode buttonMode) {
         this.buttonMode = buttonMode;
     }
 
