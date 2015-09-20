@@ -248,9 +248,37 @@
             />
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
+
     <TextView
         style="@style/description_label"
-        android:text="Dropdown"
+        android:text="Radio"
         />
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
+        android:orientation="horizontal"
+        app:buttonMode="radio"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
 </LinearLayout>

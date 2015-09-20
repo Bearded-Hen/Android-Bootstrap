@@ -128,22 +128,24 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         }
         else if (childCount == 1) {
             BootstrapButton button = retrieveButtonChild(0);
-            button.setPosition(SOLO);
+            button.setPosition(SOLO, 0);
             button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
         }
 
         for (int i = 0; i < childCount; i++) {
             BootstrapButton button = retrieveButtonChild(i);
+            BootstrapButton.Position position;
 
             if (i == 0) { // first view
-                button.setPosition(orientation == HORIZONTAL ? START : TOP);
+                position = orientation == HORIZONTAL ? START : TOP;
             }
             else if (i == childCount - 1) { // last view
-                button.setPosition(orientation == HORIZONTAL ? END : BOTTOM);
+                position = orientation == HORIZONTAL ? END : BOTTOM;
             }
             else {
-                button.setPosition(orientation == HORIZONTAL ? MIDDLE_HORI : MIDDLE_VERT);
+                position = orientation == HORIZONTAL ? MIDDLE_HORI : MIDDLE_VERT;
             }
+            button.setPosition(position, i);
             button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
         }
     }
@@ -163,6 +165,22 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         }
         else {
             throw new IllegalStateException("All child view of BootstrapButtonGroup must be BootstrapButtons");
+        }
+    }
+
+    /**
+     * Used for Radio Group Mode - resets all children to an unselected state,
+     * apart from the calling Button.
+     *
+     * @param index the index of the button becoming selected
+     */
+    void onRadioToggle(int index) {
+        for (int i = 0; i < getChildCount(); i++) {
+
+            if (i != index) {
+                BootstrapButton b = retrieveButtonChild(i);
+                b.setSelected(false);
+            }
         }
     }
 
@@ -286,7 +304,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         return b;
     }
 
-    @Override public void removeView(View view) {
+    @Override public void removeView(@NonNull View view) {
         super.removeView(view);
         updateBootstrapPositions();
     }

@@ -9,6 +9,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ViewParent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
@@ -25,6 +26,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButton.MODE";
+    private static final String KEY_INDEX = "com.beardedhen.androidbootstrap.BootstrapButton.KEY_INDEX";
 
     enum Position {
         SOLO,
@@ -58,6 +60,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         }
     }
 
+    private int parentIndex;
     private Position position = Position.SOLO;
     private ButtonMode buttonMode = ButtonMode.REGULAR;
 
@@ -107,6 +110,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
         bundle.putBoolean(RoundableView.KEY, roundedCorners);
         bundle.putBoolean(OutlineableView.KEY, showOutline);
+        bundle.putInt(KEY_INDEX, parentIndex);
         bundle.putSerializable(BootstrapSize.KEY, bootstrapSize);
         bundle.putSerializable(KEY_MODE, buttonMode);
         return bundle;
@@ -118,6 +122,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
             this.roundedCorners = bundle.getBoolean(RoundableView.KEY);
             this.showOutline = bundle.getBoolean(OutlineableView.KEY);
+            this.parentIndex = bundle.getInt(KEY_INDEX);
 
             Serializable size = bundle.getSerializable(BootstrapSize.KEY);
             Serializable m = bundle.getSerializable(KEY_MODE);
@@ -178,9 +183,30 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             case CHECKBOX:
                 return handleToggle(event);
             case RADIO:
-                return super.onTouchEvent(event); // FIXME implement
+                return handleRadioEvent(event);
             default:
                 return super.onTouchEvent(event);
+        }
+    }
+
+    private boolean handleRadioEvent(@NonNull MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (isSelected()) {
+                setSelected(false);
+            }
+            else { // notify parent to deselect any peers
+                setSelected(true);
+
+                ViewParent parent =  getParent();
+
+                if (parent instanceof BootstrapButtonGroup) {
+                    ((BootstrapButtonGroup) parent).onRadioToggle(parentIndex);
+                }
+            }
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -231,8 +257,9 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
      *
      * @param position the position in the ViewGroup
      */
-    void setPosition(Position position) {
+    void setPosition(Position position, int parentIndex) {
         this.position = position;
+        this.parentIndex = parentIndex;
         updateBootstrapState();
     }
 
