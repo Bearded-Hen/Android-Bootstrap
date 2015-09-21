@@ -76,6 +76,10 @@ public class BootstrapProgressExample extends BaseActivity {
         changeExample.setAnimated(changeState.animated);
     }
 
+    @OnClick(R.id.example_progress_change_rounded_btn) void onChangeRoundedProgressBar() {
+        changeExample.setRounded(!changeExample.isRounded());
+    }
+
     @OnClick(R.id.example_progress_change_color_btn) void onAlterProgressBarColor() {
         switch ((DefaultBootstrapBrand) changeExample.getBootstrapBrand()) {
             case PRIMARY:

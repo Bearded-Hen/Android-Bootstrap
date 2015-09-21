@@ -10,6 +10,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.ColorInt;
@@ -23,13 +27,18 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.ProgressView;
+import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 import java.io.Serializable;
 
-// TODO document/finalise
-// TODO rounded corners See http://stackoverflow.com/questions/11012556
+import static android.graphics.Bitmap.Config.ARGB_8888;
 
-public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView {
+/**
+ * BootstrapProgressBar displays determinate progress to the user, and is colored with BootstrapBrands.
+ * Striped effects and progress update animations are supported out of the box.
+ */
+public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView,
+        RoundableView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.AwesomeTextView";
 
@@ -47,6 +56,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
     private boolean striped;
     private boolean animated;
+    private boolean rounded;
 
     private ValueAnimator progressAnimator;
     private Bitmap stripeTile;
@@ -54,6 +64,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private int defaultHeight;
 
     private BootstrapBrand bootstrapBrand;
+    private Canvas progressCanvas;
+    private Bitmap progressBitmap;
 
     public BootstrapProgressBar(Context context) {
         super(context);
@@ -93,6 +105,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         try {
             this.animated = a.getBoolean(R.styleable.BootstrapProgressBar_animated, false);
+            this.rounded = a.getBoolean(R.styleable.BootstrapProgressBar_roundedCorners, false);
             this.striped = a.getBoolean(R.styleable.BootstrapProgressBar_striped, false);
             this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_progress, 0);
 
@@ -116,6 +129,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         bundle.putInt(KEY_DRAWN_PROGRESS, drawnProgress);
         bundle.putBoolean(KEY_STRIPED, striped);
         bundle.putBoolean(KEY_ANIMATED, animated);
+        bundle.putBoolean(RoundableView.KEY, rounded);
         bundle.putSerializable(BootstrapBrand.KEY, bootstrapBrand);
         return bundle;
     }
@@ -130,10 +144,11 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
                 bootstrapBrand = (BootstrapBrand) brand;
             }
 
-            userProgress = bundle.getInt(KEY_USER_PROGRESS);
-            drawnProgress = bundle.getInt(KEY_DRAWN_PROGRESS);
-            striped = bundle.getBoolean(KEY_STRIPED);
-            animated = bundle.getBoolean(KEY_ANIMATED);
+            this.userProgress = bundle.getInt(KEY_USER_PROGRESS);
+            this.drawnProgress = bundle.getInt(KEY_DRAWN_PROGRESS);
+            this.striped = bundle.getBoolean(KEY_STRIPED);
+            this.animated = bundle.getBoolean(KEY_ANIMATED);
+            this.rounded = bundle.getBoolean(RoundableView.KEY);
 
             state = bundle.getParcelable(TAG);
         }
@@ -255,6 +270,14 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         float w = getWidth();
         float h = getHeight();
 
+        if (progressBitmap == null) {
+            progressBitmap = Bitmap.createBitmap((int) w, (int) h, ARGB_8888);
+        }
+        if (progressCanvas == null) {
+            progressCanvas = new Canvas(progressBitmap);
+        }
+        progressCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+
         float ratio = (float) (drawnProgress / 100.0);
         int lineEnd = (int) (w * ratio);
 
@@ -267,21 +290,25 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         if (striped) { // draw a regular striped bar
             if (stripeTile == null) {
-                stripeTile = createTile(h);
+                stripeTile = createTile(h, stripePaint, progressPaint);
             }
 
             float start = 0 - offset;
 
             while (start < lineEnd) {
-                canvas.drawBitmap(stripeTile, start, 0, tilePaint);
-                start += stripeTile.getHeight() * 2;
+                progressCanvas.drawBitmap(stripeTile, start, 0, tilePaint);
+                start += stripeTile.getWidth();
             }
         }
         else { // draw a filled bar
-            canvas.drawRect(0, 0, lineEnd, h, progressPaint);
+            progressCanvas.drawRect(0, 0, lineEnd, h, progressPaint);
         }
 
-        canvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
+        progressCanvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
+
+        float corners = rounded ? h / 2 : 0;
+        Bitmap round = createRoundedBitmap(progressBitmap, corners);
+        canvas.drawBitmap(round, 0, 0, tilePaint);
     }
 
     /**
@@ -290,8 +317,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
      * @param h the view height
      * @return a bitmap of the progress bar background
      */
-    private Bitmap createTile(float h) {
-        Bitmap bm = Bitmap.createBitmap((int) h * 2, (int) h, Bitmap.Config.ARGB_8888);
+    private static Bitmap createTile(float h, Paint stripePaint, Paint progressPaint) {
+        Bitmap bm = Bitmap.createBitmap((int) h * 2, (int) h, ARGB_8888);
         Canvas tile = new Canvas(bm);
 
         float x = 0;
@@ -317,6 +344,35 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         tile.drawPath(path, stripePaint); // draw striped triangle (completing tile)
 
         return bm;
+    }
+
+    /**
+     * Creates a rounded bitmap with transparent corners, from a square bitmap.
+     * See <a href="http://stackoverflow.com/questions/4028270">StackOverflow</a>
+     *
+     * @param bitmap       the original bitmap
+     * @param cornerRadius the radius of the corners
+     * @return a rounded bitmap
+     */
+    private static Bitmap createRoundedBitmap(Bitmap bitmap, float cornerRadius) {
+        Bitmap roundedBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), ARGB_8888);
+        Canvas canvas = new Canvas(roundedBitmap);
+
+        final Paint paint = new Paint();
+        final Rect frame = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        // prepare canvas for transfer
+        paint.setAntiAlias(true);
+        paint.setColor(0xFFFFFFFF);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(new RectF(frame), cornerRadius, cornerRadius, paint);
+
+        // draw bitmap
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, frame, frame, paint);
+
+        return roundedBitmap;
     }
 
     private void updateBootstrapState() {
@@ -381,6 +437,15 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
     @NonNull @Override public BootstrapBrand getBootstrapBrand() {
         return bootstrapBrand;
+    }
+
+    @Override public void setRounded(boolean rounded) {
+        this.rounded = rounded;
+        updateBootstrapState();
+    }
+
+    @Override public boolean isRounded() {
+        return rounded;
     }
 
 }
