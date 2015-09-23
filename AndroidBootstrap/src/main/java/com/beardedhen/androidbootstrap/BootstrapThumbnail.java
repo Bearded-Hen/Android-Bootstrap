@@ -160,7 +160,7 @@ import com.beardedhen.androidbootstrap.font.TypefaceProvider;
         placeholder.setLayoutParams(new LinearLayout.LayoutParams(width, height));
 
         //set the font awesome icon typeface
-        dimensionsLabel.setTypeface(TypefaceProvider.getTypeface(getContext(), FontAwesomeIcon.FONT_AWESOME_FONT));
+        dimensionsLabel.setTypeface(TypefaceProvider.getTypeface(getContext(), FontAwesomeIcon.FONT_PATH));
 
         this.setClickable(true);
 

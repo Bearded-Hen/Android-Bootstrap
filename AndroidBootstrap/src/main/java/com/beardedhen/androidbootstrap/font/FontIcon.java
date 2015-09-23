@@ -7,11 +7,19 @@ package com.beardedhen.androidbootstrap.font;
 public interface FontIcon {
 
     /**
-     * Looks up the unicode character for a FontAwesome Icon Code
+     * Returns the unicode character for the current Font Icon.
      *
-     * @return the unicode character or a question mark if the FA code wasn't found
+     * @return the unicode character
      */
-    char character();
+    char unicode();
+
+    /**
+     * Retrieves the icon code for the current Font Icon. e.g. "fa-play" specifies the play icon
+     * unicode character in the FontAwesome Typeface.
+     *
+     * @return the icon code
+     */
+    CharSequence iconCode();
 
     /**
      * Specifies the location that the font file resides in, starting from the assets directory
@@ -20,5 +28,12 @@ public interface FontIcon {
      * @return the font path
      */
     CharSequence fontPath();
+
+    /**
+     * Retrieves all possible FontIcon values for this implementation
+     *
+     * @return all possible FontIcon values
+     */
+    FontIcon[] allValues();
 
 }

@@ -3,7 +3,9 @@ package com.beardedhen.androidbootstrap.font;
 import android.content.Context;
 import android.graphics.Typeface;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,6 +14,7 @@ import java.util.Map;
 public class TypefaceProvider {
 
     private final static Map<CharSequence, Typeface> TYPEFACE_MAP = new HashMap<>();
+    private final static List<FontIcon> FONT_ICON_LIST = new ArrayList<>();
 
     /**
      * Returns a reference to the requested typeface, creating a new instance if none already exists
@@ -22,6 +25,7 @@ public class TypefaceProvider {
      */
     public static Typeface getTypeface(Context context, FontIcon fontIcon) {
         String path = fontIcon.fontPath().toString();
+        FONT_ICON_LIST.add(fontIcon);
         return getTypeface(context, path);
     }
 
@@ -38,6 +42,10 @@ public class TypefaceProvider {
             TYPEFACE_MAP.put(path, font);
         }
         return TYPEFACE_MAP.get(path);
+    }
+
+    public static List<FontIcon> getFontIconList() {
+        return FONT_ICON_LIST;
     }
 
 }

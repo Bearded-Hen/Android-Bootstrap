@@ -78,12 +78,12 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
 
         try {
             int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
-            int iconOrdinal = a.getInt(R.styleable.AwesomeTextView_faIcon, -1);
+            int iconOrdinal = a.getInt(R.styleable.AwesomeTextView_fontAwesomeIcon, -1);
 
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
 
             if (iconOrdinal != -1) {
-                setIcon(FontAwesomeIcon.fromAttrValue(iconOrdinal));
+                setIcon(IconResolver.fromAttributeValue(iconOrdinal, FontAwesomeIcon.values()));
             }
 
             markdownText = a.getString(R.styleable.AwesomeTextView_bootstrapText);
@@ -197,7 +197,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
     }
 
     @Override public void setMarkdownText(String text) {
-        setBootstrapText(MarkdownResolver.resolveMarkdown(getContext(), text));
+        setBootstrapText(IconResolver.resolveMarkdown(getContext(), text));
     }
 
     protected void updateBootstrapState() {

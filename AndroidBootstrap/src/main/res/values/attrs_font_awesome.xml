@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="faIcon" format="enum">
+    <attr name="fontAwesomeIcon" format="enum">
         <enum name="fa_adjust" value="0"/>
         <enum name="fa_adn" value="1"/>
         <enum name="fa_align_center" value="2"/>
@@ -675,6 +675,7 @@
         <enum name="fa_youtube" value="670"/>
         <enum name="fa_youtube_play" value="671"/>
         <enum name="fa_youtube_square" value="672"/>
+        <enum name="none" value="673"/>
     </attr>
 
 </resources>

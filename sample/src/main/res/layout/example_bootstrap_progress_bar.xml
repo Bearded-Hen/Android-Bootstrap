@@ -98,22 +98,22 @@
 
             <Button
                 android:id="@+id/example_progress_change_type_btn"
-                style="@style/description_label"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Type"
                 />
 
             <Button
                 android:id="@+id/example_progress_change_color_btn"
-                style="@style/description_label"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Color"
                 />
 
             <Button
                 android:id="@+id/example_progress_change_rounded_btn"
-                style="@style/description_label"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Round"
                 />
         </LinearLayout>

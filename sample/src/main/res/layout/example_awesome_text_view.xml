@@ -34,21 +34,21 @@
                 android:id="@+id/example_fa_text_change"
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="success"
-                app:faIcon="fa_android"
+                app:fontAwesomeIcon="fa_android"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_flash"
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="primary"
-                app:faIcon="fa_github_alt"
+                app:fontAwesomeIcon="fa_github_alt"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 android:id="@+id/example_fa_text_rotate"
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="danger"
-                app:faIcon="fa_wrench"
+                app:fontAwesomeIcon="fa_wrench"
                 />
 
         </LinearLayout>
@@ -88,7 +88,7 @@
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="success"
                 app:bootstrapText="{fa_android}{fa_play}{fa_apple}"
-                app:faIcon="fa_android"
+                app:fontAwesomeIcon="fa_android"
                 />
 
             <com.beardedhen.androidbootstrap.AwesomeTextView
@@ -116,7 +116,7 @@
         android:textSize="30dp"
         app:bootstrapBrand="success"
         app:bootstrapText="I {fa_heart} {fa_github}"
-        app:faIcon="fa_android"
+        app:fontAwesomeIcon="fa_android"
         tools:ignore="SpUsage"
         />
 
@@ -132,7 +132,7 @@
         style="@style/wrapping_fa_text"
         android:textSize="30dp"
         app:bootstrapBrand="danger"
-        app:bootstrapText="I love to ride my {fa_bicycle}, I love to read my {insert_noun_here}"
+        app:bootstrapText="I love to ride my {fa_bicycle}, I love to read my {fa_bicycle}"
         tools:ignore="SpUsage"
         />
 

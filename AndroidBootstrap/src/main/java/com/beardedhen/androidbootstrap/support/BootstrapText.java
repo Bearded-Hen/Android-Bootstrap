@@ -55,7 +55,7 @@ public class BootstrapText extends SpannableString implements Serializable {
          * @return the updated builder instance
          */
         public Builder addIcon(FontIcon fontIcon) {
-            sb.append(fontIcon.character());
+            sb.append(fontIcon.unicode());
             fontIndicesMap.put(sb.length(), fontIcon);
             return this;
         }

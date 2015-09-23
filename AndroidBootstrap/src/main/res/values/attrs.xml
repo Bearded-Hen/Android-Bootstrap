@@ -52,7 +52,7 @@
     <declare-styleable name="AwesomeTextView">
         <attr name="bootstrapText" format="string"/>
         <attr name="bootstrapBrand"/>
-        <attr name="faIcon"/>
+        <attr name="fontAwesomeIcon"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapLabel">
