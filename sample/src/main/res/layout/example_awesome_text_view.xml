@@ -7,11 +7,6 @@
     >
 
     <TextView
-        style="@style/example_title"
-        android:text="FontAwesomeText"
-        />
-
-    <TextView
         style="@style/description_label"
         android:text="Single icons"
         />

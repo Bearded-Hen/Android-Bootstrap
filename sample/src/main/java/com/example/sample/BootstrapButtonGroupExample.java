@@ -14,7 +14,7 @@ import butterknife.OnClick;
 public class BootstrapButtonGroupExample extends BaseActivity {
 
     @Override protected int getContentLayoutId() {
-        return R.layout.example_bbutton_group;
+        return R.layout.example_bootstrap_button_group;
     }
 
     @Override protected void onCreate(Bundle savedInstanceState) {

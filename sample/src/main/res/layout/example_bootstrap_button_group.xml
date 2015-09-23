@@ -7,11 +7,6 @@
     >
 
     <TextView
-        style="@style/example_title"
-        android:text="Bootstrap Button Groups"
-        />
-
-    <TextView
         style="@style/description_label"
         android:text="Orientation"
         />

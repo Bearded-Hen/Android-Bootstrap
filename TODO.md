@@ -3,6 +3,8 @@ Fix List
 
 * Bootstrap Sizing values as ratios (H1-H6, button)
 * Custom Button styles for Secondary/Link themes (create specific methods for each)
+* Update circle thumbnail
+* Update fa code to match cheatsheet
 
 Feature (Wish)List
 =============

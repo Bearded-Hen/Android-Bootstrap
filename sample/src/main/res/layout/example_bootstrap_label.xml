@@ -7,11 +7,6 @@
     >
 
     <TextView
-        style="@style/example_title"
-        android:text="Bootstrap Labels"
-        />
-
-    <TextView
         style="@style/description_label"
         android:text="Interactive (click me)"
         />

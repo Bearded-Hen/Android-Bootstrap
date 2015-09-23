@@ -53,7 +53,7 @@ public class BootstrapCircleThumbnail extends FrameLayout { // FIXME should exte
     }
 
     private ImageView image;
-    private boolean minimal = false;//minimal means display just the image, no padding
+    private boolean minimal = false; //minimal means display just the image, no padding
     private int imageWidth;
     private int imageHeight;
     private int padding = 0;

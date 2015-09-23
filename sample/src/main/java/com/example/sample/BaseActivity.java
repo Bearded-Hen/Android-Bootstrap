@@ -1,22 +1,19 @@
 package com.example.sample;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.widget.ScrollView;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
  * Performs ButterKnife binding after adding example views to a scrollview root
  */
-abstract class BaseActivity extends Activity {
+abstract class BaseActivity extends AppCompatActivity {
 
     @LayoutRes protected abstract int getContentLayoutId();
-
-    @Bind(R.id.scrollView) ScrollView scrollView;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

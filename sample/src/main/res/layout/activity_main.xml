@@ -16,35 +16,42 @@
             android:id="@+id/example_bootstrap_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bootstrap Button"
+            android:text="BootstrapButton"
             />
 
         <Button
             android:id="@+id/example_fontawesometext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FontAwesomeText"
+            android:text="AwesomeTextView"
             />
 
         <Button
             android:id="@+id/example_bootstrap_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bootstrap Label"
+            android:text="BootstrapLabel"
             />
 
         <Button
             android:id="@+id/example_bootstrap_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bootstrap Progress"
+            android:text="BootstrapProgress"
             />
 
         <Button
             android:id="@+id/example_bootstrap_btn_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bootstrap Group"
+            android:text="BootstrapGroup"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_cricle_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BootstrapCircleThumbnail"
             />
 
     </LinearLayout>

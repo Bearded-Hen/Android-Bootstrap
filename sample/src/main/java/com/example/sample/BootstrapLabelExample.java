@@ -17,7 +17,7 @@ import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeadi
 public class BootstrapLabelExample extends BaseActivity {
 
     @Override protected int getContentLayoutId() {
-        return R.layout.example_blabel;
+        return R.layout.example_bootstrap_label;
     }
 
     /**

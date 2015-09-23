@@ -6,11 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <TextView
-        style="@style/example_title"
-        android:text="Bootstrap Progress"
-        />
-
     <LinearLayout
         style="@style/progress_weight_container">
 

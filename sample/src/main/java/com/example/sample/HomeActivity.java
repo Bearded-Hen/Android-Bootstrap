@@ -1,13 +1,13 @@
 package com.example.sample;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LandingPageActivity extends Activity {
+public class HomeActivity extends AppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class LandingPageActivity extends Activity {
     }
 
     @OnClick(R.id.example_fontawesometext) void onFontAwesomeTextExampleClicked() {
-        startActivity(new Intent(this, FontAwesomeTextExample.class));
+        startActivity(new Intent(this, AwesomeTextViewExample.class));
     }
 
     @OnClick(R.id.example_bootstrap_label) void onBootstrapLabelExampleClicked() {
@@ -28,11 +28,15 @@ public class LandingPageActivity extends Activity {
     }
 
     @OnClick(R.id.example_bootstrap_progress) void onBootstrapProgressExampleClicked() {
-        startActivity(new Intent(this, BootstrapProgressExample.class));
+        startActivity(new Intent(this, BootstrapProgressBarExample.class));
     }
 
     @OnClick(R.id.example_bootstrap_btn_group) void onBootstrapButtonGroupExampleClicked() {
         startActivity(new Intent(this, BootstrapButtonGroupExample.class));
+    }
+
+    @OnClick(R.id.example_bootstrap_btn_group) void onBootstrapCircleThumbnailExampleClicked() {
+        startActivity(new Intent(this, BootstrapCircleThumbnailExample.class));
     }
 
 }

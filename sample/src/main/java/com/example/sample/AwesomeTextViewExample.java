@@ -13,10 +13,10 @@ import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_APPLE;
 import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_HEART;
 import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_TWITTER;
 
-public class FontAwesomeTextExample extends BaseActivity {
+public class AwesomeTextViewExample extends BaseActivity {
 
     @Override protected int getContentLayoutId() {
-        return R.layout.example_fa_text;
+        return R.layout.example_awesome_text_view;
     }
 
     @Override protected void onCreate(Bundle savedInstanceState) {

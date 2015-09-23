@@ -11,34 +11,33 @@
         android:theme="@style/AppTheme"
         >
         <activity
-            android:name=".LandingPageActivity"
-            android:label="@string/app_name"
+            android:name=".HomeActivity"
+            android:label="Android Bootstrap Examples"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".BootstrapButtonExample"
-            android:label="@string/app_name"
+            android:label="BootstrapButton"
             />
         <activity
             android:name=".BootstrapLabelExample"
-            android:label="@string/app_name"
+            android:label="BootstrapLabel"
             />
         <activity
-            android:name=".FontAwesomeTextExample"
-            android:label="@string/app_name"
+            android:name=".AwesomeTextViewExample"
+            android:label="AwesomeTextView"
             />
         <activity
-            android:name=".BootstrapProgressExample"
-            android:label="@string/app_name"
+            android:name=".BootstrapProgressBarExample"
+            android:label="BootstrapProgressBar"
             />
         <activity
             android:name=".BootstrapButtonGroupExample"
-            android:label="@string/app_name"
+            android:label="BootstrapButtonGroup"
             />
     </application>
 

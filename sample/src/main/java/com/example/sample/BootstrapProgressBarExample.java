@@ -8,7 +8,7 @@ import java.util.Random;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class BootstrapProgressExample extends BaseActivity {
+public class BootstrapProgressBarExample extends BaseActivity {
 
     enum ChangeState {
 
@@ -45,7 +45,7 @@ public class BootstrapProgressExample extends BaseActivity {
     private ChangeState changeState = ChangeState.FIRST;
 
     @Override protected int getContentLayoutId() {
-        return R.layout.example_bprogress;
+        return R.layout.example_bootstrap_progress_bar;
     }
 
     @Bind(R.id.example_progress_default) BootstrapProgressBar defaultExample;

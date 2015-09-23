@@ -54,8 +54,8 @@ public class MarkdownResolver {
                     if (startIndex >= 0 && endIndex < markdown.length()) {
                         String text = markdown.substring(startIndex + 1, endIndex);
 
-                        if (text.matches("fa_[a-z_0-9]+")) { // markdown is FontAwesome code
-                            builder.addText(text.substring(lastAddedIndex, startIndex));
+                        if (text.matches("fa_[a-z_0-9]+")) { // text is FontAwesome code
+                            builder.addText(markdown.substring(lastAddedIndex, startIndex));
                             builder.addIcon(resolveFontAwesomeIcon(text));
                             lastAddedIndex = endIndex + 1;
                         }
