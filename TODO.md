@@ -6,6 +6,7 @@ Fix List
 * Update circle thumbnail
 * Update fa code to match cheatsheet
 * Add more FA icons to examples (singular/markdown)
+* Support text color, size, and animation markdown
 
 
 MarkdownResolver should automatically detect whether a code belongs to a font family which has

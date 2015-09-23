@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, BootstrapButtonGroupExample.class));
     }
 
-    @OnClick(R.id.example_bootstrap_btn_group) void onBootstrapCircleThumbnailExampleClicked() {
+    @OnClick(R.id.example_bootstrap_cricle_thumbnail) void onBootstrapCircleThumbnailExampleClicked() {
         startActivity(new Intent(this, BootstrapCircleThumbnailExample.class));
     }
 

@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.style.TypefaceSpan;
 
+// TODO see Iconify Span https://goo.gl/sdUwwm
+
 /**
  * A custom span which changes the text to the supplied typeface
  */

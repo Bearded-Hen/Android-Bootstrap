@@ -18,6 +18,11 @@ import com.beardedhen.androidbootstrap.support.ImageUtils;
 
 public class BootstrapCircleThumbnail extends FrameLayout { // FIXME should extend imageview
 
+    // TODO minimal should be changed for a borderRadius attribute
+    // TODO implement BootstrapBrand
+    // TODO implement sizing
+    // TODO remove autoresizetextview
+
     private enum BootstrapCircleType {
         SMALL("small", 2, 48), //padding adjustment for small thumbnails
         MEDIUM("medium", 4, 80),
