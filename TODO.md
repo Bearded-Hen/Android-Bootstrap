@@ -7,15 +7,8 @@ Fix List
 * Update fa code to match cheatsheet
 * Add more FA icons to examples (singular/markdown)
 * Support text color, size, and animation markdown
-
-
-MarkdownResolver should automatically detect whether a code belongs to a font family which has
-codes that match a Regex. If true, it should use that family to search for the unicode.
-
- attempt to  If not, which font family a code belongs to via regex
-(if possible for the code format),
-
-
+* Add unit test for IconResolver
+* Document that typefaces should be *manually* initialised prior to use
 
 Feature (Wish)List
 =============
