@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
@@ -16,34 +17,40 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
-import com.beardedhen.androidbootstrap.api.view.PlaceholderTextView;
 
 import java.io.Serializable;
 
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static android.util.TypedValue.applyDimension;
+
 // TODO document/finalise
 
-public class BootstrapCircleThumbnail extends ImageView implements BootstrapBrandView, PlaceholderTextView {
+public class BootstrapCircleThumbnail extends ImageView implements BootstrapBrandView {
 
-    // TODO minimal should be changed for a borderRadius attribute
-    // TODO implement BootstrapBrand
     // TODO implement sizing
-    // TODO remove autoresizetextview
+    private static final float DEFAULT_BORDER_SIZE = 3.0f;
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail";
-    private static final String KEY_BORDER_RADIUS = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail.KEY_BORDER_RADIUS";
-
+    private static final String KEY_BORDER_WIDTH = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail.KEY_BORDER_WIDTH";
+    private static final String KEY_BORDER_COLOR = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail.KEY_BORDER_COLOR";
 
     private BootstrapBrand bootstrapBrand;
-    private CharSequence placeholderText;
-    private float borderRadius;
+    private float borderWidth;
+    private int borderColor;
 
     private final RectF imageRectF = new RectF();
-    private Paint imagePaint;
+    private final Matrix matrix = new Matrix();
+
+    private final Paint imagePaint = new Paint();
+    private final Paint placeholderPaint = new Paint();
+    private final Paint borderPaint = new Paint();
+
     private Bitmap sourceBitmap;
     private BitmapShader imageShader;
 
@@ -67,8 +74,8 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         bundle.putParcelable(TAG, super.onSaveInstanceState());
 
         bundle.putSerializable(BootstrapBrandView.KEY, bootstrapBrand);
-        bundle.putCharSequence(PlaceholderTextView.KEY, placeholderText);
-        bundle.putFloat(KEY_BORDER_RADIUS, borderRadius);
+        bundle.putFloat(KEY_BORDER_WIDTH, borderWidth);
+        bundle.putInt(KEY_BORDER_COLOR, borderColor);
 
         return bundle;
     }
@@ -77,8 +84,8 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
 
-            this.placeholderText = bundle.getCharSequence(PlaceholderTextView.KEY);
-            this.borderRadius = bundle.getFloat(KEY_BORDER_RADIUS);
+            this.borderWidth = bundle.getFloat(KEY_BORDER_WIDTH);
+            this.borderColor = bundle.getInt(KEY_BORDER_COLOR);
 
             Serializable brand = bundle.getSerializable(BootstrapBrandView.KEY);
 
@@ -88,7 +95,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             state = bundle.getParcelable(TAG);
         }
         super.onRestoreInstanceState(state);
-        updateBootstrapState();
+        updateImageState();
     }
 
     private void initialise(AttributeSet attrs) {
@@ -96,71 +103,116 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
 
         try {
             int typeOrdinal = a.getInt(R.styleable.BootstrapCircleThumbnail_bootstrapBrand, -1);
-            this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
+            this.borderColor = a.getColor(R.styleable.BootstrapCircleThumbnail_borderColor, -1);
+            this.borderWidth = a.getDimension(R.styleable.BootstrapCircleThumbnail_borderWidth, -1);
 
-            this.placeholderText = a.getString(R.styleable.BootstrapCircleThumbnail_placeholderText);
-            this.borderRadius = a.getDimension(R.styleable.BootstrapCircleThumbnail_borderRadius, 0);
+            if (borderWidth == -1) {
+                DisplayMetrics metrics = getResources().getDisplayMetrics();
+                borderWidth = applyDimension(COMPLEX_UNIT_DIP, DEFAULT_BORDER_SIZE, metrics);
+            }
+
+            if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
+                this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
+            }
+            else {
+                this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
+            }
         }
         finally {
             a.recycle();
         }
-
-        updateBootstrapState();
-
-//        float scale = getResources().getDisplayMetrics().density;
-
-        //small image
-
-//        BootstrapCircleType type = BootstrapCircleType.getBootstrapCircleTypeFromString(size);
-
-//        padding = type.getPadding();
-//        imageWidth = type.getDiameter();
-//        imageHeight = type.getDiameter();
-
-        //convert padding to pixels
-//        int paddingPX = (int) ((padding * scale) + 0.5);
-//
-//        //convert image size to pixels
-//        int imageSizeWidthPX = (int) ((imageWidth * scale) + 0.5);
-//        int imageSizeHeightPX = (int) ((imageHeight * scale) + 0.5);
-
-//        //make inner image smaller to compensate for the padding so that entire circle including padding equals the size
-//        //ex. small image = 48dp, small padding = 4dp, inner image = 48 - (4 * 2) = 40
-//        if (!this.minimal) {
-//            imageSizeWidthPX -= (paddingPX * 2);
-//            imageSizeHeightPX -= (paddingPX * 2);
-//
-//            container.setPadding(paddingPX, paddingPX, paddingPX, paddingPX);
-//            container.setBackgroundResource(R.drawable.thumbnail_circle_container);
-//        }
-//        else {
-//            container.setBackgroundResource(R.drawable.thumbnail_circle_minimal);
-//        }
-//
-//        //if no image is given
-//        if (imageDrawable == 0) {
-//            this.image.setVisibility(View.GONE);
-//            placeholder.setLayoutParams(new LinearLayout.LayoutParams(imageSizeWidthPX, imageSizeHeightPX));
-//            placeholder.setPadding(paddingPX, paddingPX, paddingPX, paddingPX);
-//
-//            //set placeholder image
-//            placeholder.setBackgroundResource(R.drawable.thumbnail_circle);
-//
-//            dimensionsLabel.setText(text);
-//        }
-//        else {
-//            placeholder.setPadding(0, 0, 0, 0);
-//            dimensionsLabel.setVisibility(View.GONE);
-//            Bitmap image = BitmapFactory.decodeResource(getContext().getResources(), imageDrawable);
-//
-//            Bitmap roundBitmap = ImageUtils.getCircleBitmap(image, imageSizeWidthPX, imageSizeHeightPX);
-//            image.setImageBitmap(roundBitmap);
-//        }
+        updateImageState();
     }
 
-    private void updateBootstrapState() {
-        // TODO update state
+    /**
+     * This method is called when the Circle Image needs to be recreated due to changes in size etc.
+     * <p/>
+     * A Paint object uses a BitmapShader to draw a center-cropped, circular image onto the View
+     * Canvas. A Matrix on the BitmapShader scales the original Bitmap to match the current view
+     * bounds, avoiding any inefficiencies in duplicating Bitmaps.
+     * <p/>
+     * <a href="http://www.curious-creature.com/2012/12/11/android-recipe-1-image-with-rounded-corners">
+     * Further reading</a>
+     */
+    private void updateImageState() {
+        float viewWidth = getWidth();
+        float viewHeight = getHeight();
 
+        if ((int) viewWidth <= 0 || (int) viewHeight <= 0) {
+            return;
+        }
+
+        if (sourceBitmap != null) {
+            imageShader = new BitmapShader(sourceBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            imagePaint.setShader(imageShader);
+
+            // Scale the bitmap using a matrix, ensuring that it matches the view bounds.
+
+            float bitmapWidth = sourceBitmap.getWidth();
+            float bitmapHeight = sourceBitmap.getHeight();
+            float xScale = viewWidth / bitmapWidth;
+            float yScale = viewHeight / bitmapHeight;
+
+            matrix.set(null);
+            matrix.setScale(xScale, yScale);
+            imageShader.setLocalMatrix(matrix);
+
+            // draw circle image
+            imageRectF.set(0, 0, viewWidth, viewHeight);
+        }
+        invalidate();
+    }
+
+    @Override protected void onDraw(@NonNull Canvas canvas) {
+        float viewWidth = getWidth();
+        float viewHeight = getHeight();
+
+        if ((int) viewWidth <= 0 || (int) viewHeight <= 0) {
+            return;
+        }
+
+        float imageRadius = (viewWidth / 2) - borderWidth;
+        float center = viewWidth / 2;
+
+        setupPaints();
+        canvas.drawCircle(center, center, center - borderWidth, borderPaint); // draw border
+
+        Paint paint = (sourceBitmap == null) ? placeholderPaint : imagePaint;
+        canvas.drawCircle(center, center, imageRadius, paint);
+    }
+
+    private void setupPaints() {
+        int strokeColor = (borderColor != -1) ? borderColor : bootstrapBrand.defaultEdge(getContext());
+        int placeholderColor = getContext().getResources().getColor(R.color.bootstrap_gray_light);
+
+        borderPaint.setColor(strokeColor);
+        borderPaint.setAntiAlias(true);
+        borderPaint.setStrokeWidth(borderWidth);
+        borderPaint.setStyle(Paint.Style.STROKE);
+        imagePaint.setAntiAlias(true);
+
+        placeholderPaint.setColor(placeholderColor);
+        placeholderPaint.setAntiAlias(true);
+        placeholderPaint.setStyle(Paint.Style.FILL);
+    }
+
+    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int w = MeasureSpec.getSize(widthMeasureSpec);
+        int h = MeasureSpec.getSize(heightMeasureSpec);
+
+        if (w > h) { // no ovals allowed
+            w = h;
+        }
+        if (h > w) {
+            h = w;
+        }
+        setMeasuredDimension(w, h);
+    }
+
+    @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        updateImageState();
     }
 
     @Override public void setScaleType(ScaleType scaleType) {
@@ -177,7 +229,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
     }
 
     /**
-     * @return the image source that should be transformed into a circle bitmap
+     * @return the original Bitmap source that will be drawn as a circular image
      */
     @Nullable private Bitmap getBitmapForView() {
         Drawable drawable = getDrawable();
@@ -187,7 +239,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         }
 
         if (drawable instanceof BitmapDrawable) {
-            return ((BitmapDrawable)drawable).getBitmap();
+            return ((BitmapDrawable) drawable).getBitmap();
         }
         else {
             int w = drawable.getIntrinsicWidth();
@@ -199,49 +251,9 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         }
     }
 
-    @Override protected void onDraw(@NonNull Canvas canvas) {
-        // Draw the circle image using a Paint with a BitmapShader, avoiding duplicate Bitmaps
-        // See http://www.curious-creature.com/2012/12/11/android-recipe-1-image-with-rounded-corners/
-
-        if (imagePaint == null) {
-            imagePaint = new Paint();
-            imagePaint.setAntiAlias(true);
-        }
-
-        if (sourceBitmap != null) {
-            imageShader = new BitmapShader(sourceBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-            imagePaint.setShader(imageShader);
-
-            float w = getWidth();
-            float h = getHeight();
-
-            imageRectF.set(0, 0, w, h);
-            canvas.drawCircle(w / 2, h / 2, w / 2, imagePaint);
-        }
-        else {
-            // TODO draw placeholder
-        }
-    }
-
-    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int w = MeasureSpec.getSize(widthMeasureSpec);
-        int h = MeasureSpec.getSize(heightMeasureSpec);
-
-        if (w > h) {
-            w = h;
-        }
-        if (h > w) {
-            h = w;
-        }
-        setMeasuredDimension(w, h);
-    }
-
-
     /*
      * Image setter overrides
      */
-
 
     @Override public void setImageBitmap(Bitmap bm) {
         super.setImageBitmap(bm);
@@ -265,32 +277,41 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
 
     private void onSourceBitmapUpdate(Bitmap bitmap) {
         sourceBitmap = bitmap;
-        requestLayout();
-        updateBootstrapState();
+        updateImageState();
     }
-
 
     /*
      * Getters/Setters
      */
 
-
     @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
         this.bootstrapBrand = bootstrapBrand;
-        updateBootstrapState();
+        this.borderColor = -1;
+        invalidate();
     }
 
     @NonNull @Override public BootstrapBrand getBootstrapBrand() {
         return bootstrapBrand;
     }
 
-    @Override public void setPlaceholderText(CharSequence text) {
-        this.placeholderText = text;
-        updateBootstrapState();
+    // FIXME abstract to interface
+
+    public int getBorderColor() {
+        return borderColor;
     }
 
-    @NonNull @Override public CharSequence getPlaceholderText() {
-        return placeholderText;
+    public void setBorderColor(int borderColor) {
+        this.borderColor = borderColor;
+        invalidate();
+    }
+
+    public float getBorderWidth() {
+        return borderWidth;
+    }
+
+    public void setBorderWidth(float borderWidth) {
+        this.borderWidth = borderWidth;
+        updateImageState();
     }
 
 }

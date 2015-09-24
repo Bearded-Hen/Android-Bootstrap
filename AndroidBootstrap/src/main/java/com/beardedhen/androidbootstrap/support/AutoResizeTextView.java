@@ -18,7 +18,7 @@ import android.widget.TextView;
  * http://stackoverflow.com/questions/5033012/auto-scale-textview-text-to-fit-within-bounds/17782522#17782522
  */
 
-public class AutoResizeTextView extends TextView {
+@Deprecated public class AutoResizeTextView extends TextView {
     private interface SizeTester {
         /**
          * @param suggestedSize  Size of text to be tested

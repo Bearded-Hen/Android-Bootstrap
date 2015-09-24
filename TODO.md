@@ -9,6 +9,7 @@ Fix/Priority List
 * Add unit test for IconResolver
 * Document that typefaces should be *manually* initialised prior to use
 * Support another font by default
+* Generate test data images (with grids/expected sizes)
 
 Feature (Wish)List
 =============

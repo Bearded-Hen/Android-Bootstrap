@@ -89,8 +89,8 @@
     </declare-styleable>
 
     <declare-styleable name="BootstrapCircleThumbnail">
-        <attr name="borderRadius" format="dimension" />
-        <attr name="placeholderText"/>
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="color" />
         <attr name="bootstrapBrand"/>
     </declare-styleable>
 
