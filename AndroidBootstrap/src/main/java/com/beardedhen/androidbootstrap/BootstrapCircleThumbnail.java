@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -22,20 +23,18 @@ import android.widget.ImageView;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
+import com.beardedhen.androidbootstrap.api.view.BorderView;
 
 import java.io.Serializable;
 
-// TODO document/finalise
-
-public class BootstrapCircleThumbnail extends ImageView implements BootstrapBrandView {
-
-    // TODO implement sizing
-
-    // FIXME better border drawing
+/**
+ * BootstrapCircleThumbnails display a circular image with an optional border, that can be themed
+ * using BootstrapBrand colors. The view extends ImageView, and will automatically center crop &
+ * scale images.
+ */
+public class BootstrapCircleThumbnail extends ImageView implements BootstrapBrandView, BorderView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail";
-    private static final String KEY_BORDER_WIDTH = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail.KEY_BORDER_WIDTH";
-    private static final String KEY_BORDER_COLOR = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail.KEY_BORDER_COLOR";
 
     private BootstrapBrand bootstrapBrand;
     private float borderWidth;
@@ -49,7 +48,6 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
     private final Paint borderPaint = new Paint();
 
     private Bitmap sourceBitmap;
-    private BitmapShader imageShader;
 
     public BootstrapCircleThumbnail(Context context) {
         super(context);
@@ -71,8 +69,8 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         bundle.putParcelable(TAG, super.onSaveInstanceState());
 
         bundle.putSerializable(BootstrapBrandView.KEY, bootstrapBrand);
-        bundle.putFloat(KEY_BORDER_WIDTH, borderWidth);
-        bundle.putInt(KEY_BORDER_COLOR, borderColor);
+        bundle.putFloat(BorderView.KEY_WIDTH, borderWidth);
+        bundle.putInt(BorderView.KEY_COLOR, borderColor);
 
         return bundle;
     }
@@ -81,8 +79,8 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
 
-            this.borderWidth = bundle.getFloat(KEY_BORDER_WIDTH);
-            this.borderColor = bundle.getInt(KEY_BORDER_COLOR);
+            this.borderWidth = bundle.getFloat(BorderView.KEY_WIDTH);
+            this.borderColor = bundle.getInt(BorderView.KEY_COLOR);
 
             Serializable brand = bundle.getSerializable(BootstrapBrandView.KEY);
 
@@ -135,11 +133,10 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         }
 
         if (sourceBitmap != null) {
-            imageShader = new BitmapShader(sourceBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            BitmapShader imageShader = new BitmapShader(sourceBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
             imagePaint.setShader(imageShader);
 
-            // Scale the bitmap using a matrix, ensuring that it matches the view bounds.
-
+            // Scale the bitmap using a matrix, ensuring that it always matches the view bounds.
             float bitmapWidth = sourceBitmap.getWidth();
             float bitmapHeight = sourceBitmap.getHeight();
 
@@ -151,7 +148,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             float dy = 0;
 
             if (bitmapWidth > bitmapHeight) {
-                dx = (bitmapWidth - bitmapHeight) / 4; // FIXME magic numbers
+                dx = (bitmapWidth - bitmapHeight) / 4;
             }
             else if (bitmapHeight > bitmapWidth) {
                 dy = (bitmapHeight - bitmapWidth) / 4;
@@ -177,18 +174,23 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             return;
         }
 
+        // draw the image paint first, then draw a border as a Stroke paint (if needed)
+        boolean hasBorder = borderWidth > 0;
         float center = viewWidth / 2;
         float imageRadius = center;
 
-        setupPaints();
-
-        if (borderWidth > 0) {
-            canvas.drawCircle(center, center, center - borderWidth, borderPaint); // draw border
-            imageRadius = center - borderWidth;
+        if (hasBorder) {
+            imageRadius -= borderWidth;
         }
+
+        setupPaints();
 
         Paint paint = (sourceBitmap == null) ? placeholderPaint : imagePaint;
         canvas.drawCircle(center, center, imageRadius, paint);
+
+        if (hasBorder) {
+            canvas.drawCircle(center, center, center - borderWidth, borderPaint); // draw border
+        }
     }
 
     private void setupPaints() {
@@ -304,22 +306,20 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         return bootstrapBrand;
     }
 
-    // FIXME abstract to interface
-
-    public int getBorderColor() {
+    @Override @ColorInt public int getBorderColor() {
         return borderColor;
     }
 
-    public void setBorderColor(int borderColor) {
+    @Override public void setBorderColor(@ColorInt int borderColor) {
         this.borderColor = borderColor;
         invalidate();
     }
 
-    public float getBorderWidth() {
+    @Override public float getBorderWidth() {
         return borderWidth;
     }
 
-    public void setBorderWidth(float borderWidth) {
+    @Override public void setBorderWidth(float borderWidth) {
         this.borderWidth = borderWidth;
         updateImageState();
     }

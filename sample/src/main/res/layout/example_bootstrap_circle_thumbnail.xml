@@ -35,7 +35,7 @@
                 android:src="@drawable/author"
                 app:bootstrapBrand="success"
                 app:borderColor="#ff00ff"
-                app:borderWidth="8dp"
+                app:borderWidth="4dp"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
@@ -43,7 +43,7 @@
                 android:layout_height="150dp"
                 android:src="@drawable/flower"
                 app:bootstrapBrand="success"
-                app:borderWidth="8dp"
+                app:borderWidth="4dp"
                 />
         </LinearLayout>
 
@@ -114,7 +114,7 @@
         android:layout_height="250dp"
         android:src="@drawable/alpha"
         app:bootstrapBrand="success"
-        app:borderWidth="4dp"
+        app:borderWidth="3dp"
         />
     <!-- Invisible -->
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
