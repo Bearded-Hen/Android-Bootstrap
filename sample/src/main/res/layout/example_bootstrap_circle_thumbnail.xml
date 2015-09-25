@@ -6,48 +6,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <!-- Default Buttons Square -->
-    <TextView
-        style="@style/description_label"
-        android:text="Interactive"
+
+    <!-- TODO remove this view -->
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/author_small"
         />
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-
-            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                />
 
 
-            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:src="@drawable/author"
-                app:bootstrapBrand="success"
-                app:borderColor="#ff00ff"
-                app:borderWidth="4dp"
-                />
 
-            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:src="@drawable/flower"
-                app:bootstrapBrand="success"
-                app:borderWidth="4dp"
-                />
-        </LinearLayout>
+    <TextView
+        style="@style/description_label"
+        android:text="Tap to Change Image"
+        />
 
-    </HorizontalScrollView>
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_image_change_example"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
+        android:src="@drawable/ladybird"
+        />
+
+    <!-- TODO remove -->
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ladybird"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Tap to Change Color"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_color_change_example"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
+        android:src="@drawable/flower"
+        app:borderWidth="4dp"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Tap to Change Theme"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_theme_change_example"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
+        android:src="@drawable/small_daffodils"
+        app:bootstrapBrand="success"
+        app:borderWidth="4dp"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Tap to Change Border Width"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_border_change_example"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
+        android:src="@drawable/stars"
+        app:bootstrapBrand="primary"
+        app:borderWidth="0dp"
+        />
+
+
+    <!-- TODO test cases. Need to include Wrap_content (broken) and match_parent -->
+
 
     <TextView
         style="@style/description_label"
@@ -55,8 +87,8 @@
         />
 
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
         android:src="@drawable/perfect_square"
         />
 
@@ -66,8 +98,8 @@
         />
 
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
         android:src="@drawable/portrait_image"
         />
 
@@ -77,8 +109,8 @@
         />
 
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
         android:src="@drawable/landscape_image"
         />
 
@@ -116,6 +148,29 @@
         app:bootstrapBrand="success"
         app:borderWidth="3dp"
         />
+
+
+    <TextView
+        style="@style/description_label"
+        android:text="Wrap Content"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/author_small"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Empty View"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        />
+
     <!-- Invisible -->
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
         android:layout_width="wrap_content"

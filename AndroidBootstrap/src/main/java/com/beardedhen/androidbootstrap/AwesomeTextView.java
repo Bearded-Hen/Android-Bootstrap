@@ -146,17 +146,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
         }
 
         fadeIn.setStartOffset(speed.getFlashDuration());
-
-        //set the new animation to a final animation
-        final Animation animation = fadeIn;
-
-        //run the animation - used to work correctly on older devices
-        this.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startAnimation(animation);
-            }
-        }, 100);
+        startAnimation(fadeIn);
     }
 
     /**

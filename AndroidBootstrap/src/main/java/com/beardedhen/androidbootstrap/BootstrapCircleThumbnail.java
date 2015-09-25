@@ -148,7 +148,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             float dy = 0;
 
             if (bitmapWidth > bitmapHeight) {
-                dx = (bitmapWidth - bitmapHeight) / 4;
+                dx = (bitmapWidth - bitmapHeight) / 4; // FIXME scale logic broken
             }
             else if (bitmapHeight > bitmapWidth) {
                 dy = (bitmapHeight - bitmapWidth) / 4;
@@ -210,6 +210,15 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
 
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        switch (MeasureSpec.getMode(widthMeasureSpec)) { // FIXME need to measure properly here!
+            case MeasureSpec.AT_MOST:
+                break;
+            case MeasureSpec.EXACTLY:
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                break;
+        }
         int w = MeasureSpec.getSize(widthMeasureSpec);
         int h = MeasureSpec.getSize(heightMeasureSpec);
 
