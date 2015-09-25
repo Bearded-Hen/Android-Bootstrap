@@ -17,7 +17,6 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
@@ -26,15 +25,13 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 
 import java.io.Serializable;
 
-import static android.util.TypedValue.COMPLEX_UNIT_DIP;
-import static android.util.TypedValue.applyDimension;
-
 // TODO document/finalise
 
 public class BootstrapCircleThumbnail extends ImageView implements BootstrapBrandView {
 
     // TODO implement sizing
-    private static final float DEFAULT_BORDER_SIZE = 3.0f;
+
+    // FIXME better border drawing
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail";
     private static final String KEY_BORDER_WIDTH = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail.KEY_BORDER_WIDTH";
@@ -106,11 +103,6 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             this.borderColor = a.getColor(R.styleable.BootstrapCircleThumbnail_borderColor, -1);
             this.borderWidth = a.getDimension(R.styleable.BootstrapCircleThumbnail_borderWidth, -1);
 
-            if (borderWidth == -1) {
-                DisplayMetrics metrics = getResources().getDisplayMetrics();
-                borderWidth = applyDimension(COMPLEX_UNIT_DIP, DEFAULT_BORDER_SIZE, metrics);
-            }
-
             if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
                 this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
             }
@@ -150,14 +142,28 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
 
             float bitmapWidth = sourceBitmap.getWidth();
             float bitmapHeight = sourceBitmap.getHeight();
-            float xScale = viewWidth / bitmapWidth;
-            float yScale = viewHeight / bitmapHeight;
+
+            float scaleFactor = (bitmapWidth < bitmapHeight) ? bitmapWidth : bitmapHeight;
+            float xScale = viewWidth / scaleFactor;
+            float yScale = viewHeight / scaleFactor;
+
+            float dx = 0;
+            float dy = 0;
+
+            if (bitmapWidth > bitmapHeight) {
+                dx = (bitmapWidth - bitmapHeight) / 4; // FIXME magic numbers
+            }
+            else if (bitmapHeight > bitmapWidth) {
+                dy = (bitmapHeight - bitmapWidth) / 4;
+            }
 
             matrix.set(null);
             matrix.setScale(xScale, yScale);
-            imageShader.setLocalMatrix(matrix);
 
-            // draw circle image
+            // translate image to center crop (if it is not a perfect square bitmap)
+            matrix.postTranslate(-dx, -dy);
+
+            imageShader.setLocalMatrix(matrix);
             imageRectF.set(0, 0, viewWidth, viewHeight);
         }
         invalidate();
@@ -171,11 +177,15 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             return;
         }
 
-        float imageRadius = (viewWidth / 2) - borderWidth;
         float center = viewWidth / 2;
+        float imageRadius = center;
 
         setupPaints();
-        canvas.drawCircle(center, center, center - borderWidth, borderPaint); // draw border
+
+        if (borderWidth > 0) {
+            canvas.drawCircle(center, center, center - borderWidth, borderPaint); // draw border
+            imageRadius = center - borderWidth;
+        }
 
         Paint paint = (sourceBitmap == null) ? placeholderPaint : imagePaint;
         canvas.drawCircle(center, center, imageRadius, paint);

@@ -32,14 +32,94 @@
             <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
                 android:layout_width="300dp"
                 android:layout_height="150dp"
-                app:borderWidth="8dp"
-                app:borderColor="#ff00ff"
-                app:bootstrapBrand="success"
                 android:src="@drawable/author"
+                app:bootstrapBrand="success"
+                app:borderColor="#ff00ff"
+                app:borderWidth="8dp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:src="@drawable/flower"
+                app:bootstrapBrand="success"
+                app:borderWidth="8dp"
                 />
         </LinearLayout>
 
     </HorizontalScrollView>
 
+    <TextView
+        style="@style/description_label"
+        android:text="Square Image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/perfect_square"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Portrait Image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/portrait_image"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Landscape Image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/landscape_image"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Fitting image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/author"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Stretched image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/author_small"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Alpha image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/alpha"
+        app:bootstrapBrand="success"
+        app:borderWidth="4dp"
+        />
+    <!-- Invisible -->
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>
