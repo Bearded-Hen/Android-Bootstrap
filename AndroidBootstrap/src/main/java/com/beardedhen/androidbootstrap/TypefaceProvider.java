@@ -1,8 +1,9 @@
-package com.beardedhen.androidbootstrap.font;
+package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.graphics.Typeface;
 
+import com.beardedhen.androidbootstrap.font.FontIconSet;
 import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
 import com.beardedhen.androidbootstrap.font.defaults.TypiconsIconSet;
 
@@ -38,7 +39,7 @@ public class TypefaceProvider {
      * @param path    the typeface path
      * @return a reference to the typeface instance
      */
-    public static Typeface getTypeface(Context context, CharSequence path) {
+    static Typeface getTypeface(Context context, CharSequence path) {
         if (TYPEFACE_MAP.get(path) == null) {
             final Typeface font = Typeface.createFromAsset(context.getAssets(), path.toString());
             TYPEFACE_MAP.put(path, font);

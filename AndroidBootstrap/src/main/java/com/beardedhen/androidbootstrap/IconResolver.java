@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.beardedhen.androidbootstrap.font.FontIcon;
 import com.beardedhen.androidbootstrap.font.FontIconSet;
-import com.beardedhen.androidbootstrap.font.TypefaceProvider;
 import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon;
 import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
 import com.beardedhen.androidbootstrap.font.defaults.TypiconsIcon;
@@ -13,7 +12,7 @@ import com.beardedhen.androidbootstrap.support.BootstrapText;
 /**
  * Resolves markdown strings using FA codes and produces BootstrapText instances.
  */
-public class IconResolver {
+class IconResolver {
 
     private static final String REGEX_FONT_AWESOME = "fa_[a-z_0-9]+";
     private static final String REGEX_TYPICONS = "ty_[a-z_0-9]+";
@@ -26,7 +25,7 @@ public class IconResolver {
      * @param markdown the markdown string
      * @return a constructed BootstrapText
      */
-    public static BootstrapText resolveMarkdown(Context context, String markdown) {
+    static BootstrapText resolveMarkdown(Context context, String markdown) {
         if (markdown == null) {
             return null;
         }

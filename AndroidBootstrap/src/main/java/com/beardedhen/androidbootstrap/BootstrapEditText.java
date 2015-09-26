@@ -2,10 +2,13 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.EditText;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
@@ -23,43 +26,6 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
 
     private BootstrapBrand bootstrapBrand;
     private boolean rounded;
-
-    public enum TextState {
-
-        DEFAULT("default", R.drawable.edittext_background_rounded, R.drawable.edittext_background),
-        SUCCESS("success", R.drawable.edittext_background_rounded_success, R.drawable.edittext_background_success),
-        WARNING("warning", R.drawable.edittext_background_rounded_warning, R.drawable.edittext_background_warning),
-        DANGER("danger", R.drawable.edittext_background_rounded_danger, R.drawable.edittext_background_danger);
-
-        private final String state;
-        private final int roundedBg;
-        private final int normalBg;
-
-        TextState(String state, int roundedBg, int normalBg) {
-            this.state = state;
-            this.roundedBg = roundedBg;
-            this.normalBg = normalBg;
-        }
-
-        public static TextState getStateFromString(String state) {
-            for (TextState value : TextState.values()) {
-                if (value.state.equals(state)) {
-                    return value;
-                }
-            }
-            return DEFAULT;
-        }
-
-        public int getRoundedBg() {
-            return roundedBg;
-        }
-
-        public int getNormalBg() {
-            return normalBg;
-        }
-    }
-
-    private TextState textState;
 
     public BootstrapEditText(Context context) {
         super(context);
@@ -79,8 +45,6 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
     private void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapEditText);
 
-        String state = "default";
-
         try {
             this.rounded = a.getBoolean(R.styleable.BootstrapEditText_roundedCorners, false);
 
@@ -90,8 +54,8 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
         finally {
             a.recycle();
         }
-        textState = TextState.getStateFromString(state);
-        setState(state);
+        setGravity(Gravity.CENTER);
+        updateBootstrapState();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -119,41 +83,18 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
     }
 
     private void updateBootstrapState() {
+        Drawable bg = BootstrapDrawableFactory.bootstrapEditText(
+                getContext(),
+                bootstrapBrand,
+                rounded);
 
-    }
-
-
-
-
-    private void setBackgroundDrawable(TextState textState) {
-        this.textState = textState;
-
-        if (rounded) {
-            this.setBackgroundResource(textState.getRoundedBg());
+        if (Build.VERSION.SDK_INT >= 16) {
+            setBackground(bg);
         }
         else {
-            this.setBackgroundResource(textState.getNormalBg());
+            setBackgroundDrawable(bg);
         }
     }
-
-    /**
-     * Change the BootstrapEditTextState
-     *
-     * @param state an enum of success, warning, danger, or default.
-     */
-    public void setState(TextState state) {
-        this.textState = state;
-        setBackgroundDrawable(textState);
-    }
-
-    /**
-     * Deprecated, use {@link #setState(com.beardedhen.androidbootstrap.BootstrapEditText.TextState)} instead
-     */
-    public void setState(String state) {
-        this.textState = TextState.getStateFromString(state);
-        setBackgroundDrawable(textState);
-    }
-
 
     /*
      * Getters/Setters

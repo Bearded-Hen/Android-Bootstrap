@@ -56,8 +56,12 @@
     <dimen name="bootstrap_h6_vert_padding">3.5dp</dimen>
     <dimen name="bootstrap_h6_hori_padding">5.6dp</dimen>
 
-    <dimen name="bootstrap_label_corner_radius">3dp</dimen>
+    <dimen name="bootstrap_default_corner_radius">3dp</dimen>
     <dimen name="bootstrap_progress_bar_height">14dp</dimen>
+
+    <dimen name="bootstrap_edit_text_corner_radius">6dp</dimen>
+    <dimen name="bootstrap_edit_text_stroke_default">0.75dp</dimen>
+    <dimen name="bootstrap_edit_text_stroke_focused">1.5dp</dimen>
 
 
 </resources>

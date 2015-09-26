@@ -2,16 +2,26 @@
 <LinearLayout
     style="@style/example_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <TextView
         style="@style/description_label"
-        android:text="Single icons"
+        android:text="Default Edit Text"
         />
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:bootstrapBrand="primary"
+        app:roundedCorners="true"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="success"
         />
 
 </LinearLayout>

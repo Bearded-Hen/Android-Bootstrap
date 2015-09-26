@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.style.TypefaceSpan;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
 // TODO see Iconify Span https://goo.gl/sdUwwm
 
 /**

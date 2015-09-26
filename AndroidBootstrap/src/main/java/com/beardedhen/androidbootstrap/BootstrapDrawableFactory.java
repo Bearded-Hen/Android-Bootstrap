@@ -91,13 +91,57 @@ class BootstrapDrawableFactory {
                                    boolean rounded,
                                    float height) {
 
-        int cornerRadius = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_label_corner_radius);
+        int cornerRadius = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_default_corner_radius);
 
         GradientDrawable drawable = new GradientDrawable();
         drawable.setColor(bootstrapBrand.defaultFill(context));
 
         // corner radius should be half height if rounded as a "Pill" label
         drawable.setCornerRadius(rounded ? height / 2 : cornerRadius);
+        return drawable;
+    }
+
+    /**
+     * Generates a Drawable for a Bootstrap Edit Text background
+     *
+     * @param context        the current context
+     * @param bootstrapBrand the BootstrapBrand theming whose colors should be used
+     * @param rounded        whether the corners should be rounded or not
+     * @return the Bootstrap Edit Text background
+     */
+    static Drawable bootstrapEditText(Context context,
+                                      BootstrapBrand bootstrapBrand,
+                                      boolean rounded) {
+
+        StateListDrawable drawable = new StateListDrawable();
+
+        GradientDrawable activeDrawable = new GradientDrawable();
+        GradientDrawable disabledDrawable = new GradientDrawable();
+        GradientDrawable defaultDrawable = new GradientDrawable();
+
+        activeDrawable.setColor(context.getResources().getColor(android.R.color.white));
+        disabledDrawable.setColor(context.getResources().getColor(android.R.color.white));
+        defaultDrawable.setColor(context.getResources().getColor(android.R.color.white));
+
+        if (rounded) {
+            float radius = context.getResources().getDimension(R.dimen.bootstrap_edit_text_corner_radius);
+            activeDrawable.setCornerRadius(radius);
+            disabledDrawable.setCornerRadius(radius);
+            defaultDrawable.setCornerRadius(radius);
+        }
+
+        // stroke is larger when focused
+        int strokeNormal = context.getResources().getDimensionPixelOffset(R.dimen.bootstrap_edit_text_stroke_default);
+        int strokeActive = context.getResources().getDimensionPixelOffset(R.dimen.bootstrap_edit_text_stroke_focused);
+
+        activeDrawable.setStroke(strokeActive, bootstrapBrand.defaultEdge(context));
+        disabledDrawable.setStroke(strokeNormal, bootstrapBrand.defaultEdge(context)); // fixme disabled color
+        defaultDrawable.setStroke(strokeNormal, bootstrapBrand.defaultEdge(context));
+
+        drawable.addState(new int[]{android.R.attr.state_focused}, activeDrawable);
+        drawable.addState(new int[]{-android.R.attr.state_enabled}, disabledDrawable);
+        drawable.addState(new int[]{}, defaultDrawable);
+
         return drawable;
     }
 
