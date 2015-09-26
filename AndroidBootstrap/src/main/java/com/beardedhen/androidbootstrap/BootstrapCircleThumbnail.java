@@ -27,6 +27,8 @@ import com.beardedhen.androidbootstrap.api.view.BorderView;
 
 import java.io.Serializable;
 
+import static android.widget.ImageView.ScaleType.CENTER_CROP;
+
 /**
  * BootstrapCircleThumbnails display a circular image with an optional border, that can be themed
  * using BootstrapBrand colors. The view extends ImageView, and will automatically center crop &
@@ -144,21 +146,20 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             float xScale = viewWidth / scaleFactor;
             float yScale = viewHeight / scaleFactor;
 
+            // Translate image to center crop (if it is not a perfect square bitmap)
             float dx = 0;
             float dy = 0;
 
             if (bitmapWidth > bitmapHeight) {
-                dx = (bitmapWidth - bitmapHeight) / 4; // FIXME scale logic broken
+                dx = (viewWidth - bitmapWidth * xScale) * 0.5f;
             }
             else if (bitmapHeight > bitmapWidth) {
-                dy = (bitmapHeight - bitmapWidth) / 4;
+                dy = (viewHeight - bitmapHeight * yScale) * 0.5f;
             }
 
             matrix.set(null);
             matrix.setScale(xScale, yScale);
-
-            // translate image to center crop (if it is not a perfect square bitmap)
-            matrix.postTranslate(-dx, -dy);
+            matrix.postTranslate((dx + 0.5f), (dy + 0.5f));
 
             imageShader.setLocalMatrix(matrix);
             imageRectF.set(0, 0, viewWidth, viewHeight);
@@ -189,7 +190,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         canvas.drawCircle(center, center, imageRadius, paint);
 
         if (hasBorder) {
-            canvas.drawCircle(center, center, center - borderWidth, borderPaint); // draw border
+            canvas.drawCircle(center, center, center - (borderWidth / 2), borderPaint); // draw border
         }
     }
 
@@ -211,16 +212,18 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        switch (MeasureSpec.getMode(widthMeasureSpec)) { // FIXME need to measure properly here!
-            case MeasureSpec.AT_MOST:
-                break;
-            case MeasureSpec.EXACTLY:
-                break;
-            case MeasureSpec.UNSPECIFIED:
-                break;
-        }
-        int w = MeasureSpec.getSize(widthMeasureSpec);
+        int w = MeasureSpec.getSize(widthMeasureSpec); // AT_MOST/EXACTLY are used by default
         int h = MeasureSpec.getSize(heightMeasureSpec);
+
+        if (sourceBitmap != null) {
+            if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.UNSPECIFIED) {
+                w = sourceBitmap.getWidth();
+            }
+            if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED) {
+
+                h = sourceBitmap.getHeight();
+            }
+        }
 
         if (w > h) { // no ovals allowed
             w = h;
@@ -237,7 +240,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
     }
 
     @Override public void setScaleType(ScaleType scaleType) {
-        if (scaleType != ScaleType.CENTER_CROP) {
+        if (scaleType != CENTER_CROP) {
             throw new IllegalArgumentException("Only CenterCrop is currently supported by this view");
         }
         else {
@@ -246,7 +249,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
     }
 
     @Override public ScaleType getScaleType() {
-        return ScaleType.CENTER_CROP;
+        return CENTER_CROP;
     }
 
     /**

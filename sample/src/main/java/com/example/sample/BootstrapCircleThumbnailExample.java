@@ -1,5 +1,9 @@
 package com.example.sample;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+
 import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 
@@ -27,9 +31,22 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
     @Bind(R.id.bcircle_color_change_example) BootstrapCircleThumbnail colorChange;
     @Bind(R.id.bcircle_image_change_example) BootstrapCircleThumbnail imageChange;
     @Bind(R.id.bcircle_theme_change_example) BootstrapCircleThumbnail themeChange;
+    @Bind(R.id.bcircle_set_image_bitmap_example) BootstrapCircleThumbnail setBitmapExample;
+    @Bind(R.id.bcircle_set_image_drawable_example) BootstrapCircleThumbnail setDrawableExample;
+    @Bind(R.id.bcircle_set_image_resource_example) BootstrapCircleThumbnail setResourceExample;
+
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.small_daffodils);
+        setBitmapExample.setImageBitmap(bm);
+
+        setDrawableExample.setImageDrawable(getResources().getDrawable(R.drawable.ladybird));
+        setResourceExample.setImageResource(R.drawable.caterpillar);
+    }
 
     @OnClick(R.id.bcircle_border_change_example) void onBorderChangeExampleClicked() {
-        float px = 20;
+        float px = 16;
         showingBorder = !showingBorder;
         borderChange.setBorderWidth(showingBorder ? px : 0);
     }
@@ -68,6 +85,5 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
         int resId = originalImage ? R.drawable.ladybird : R.drawable.caterpillar;
         imageChange.setImageResource(resId);
     }
-
 
 }

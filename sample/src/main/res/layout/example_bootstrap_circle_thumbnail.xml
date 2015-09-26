@@ -6,17 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-
-    <!-- TODO remove this view -->
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/author_small"
-        />
-
-
-
-
     <TextView
         style="@style/description_label"
         android:text="Tap to Change Image"
@@ -26,13 +15,6 @@
         android:id="@+id/bcircle_image_change_example"
         android:layout_width="@dimen/default_circle_size"
         android:layout_height="@dimen/default_circle_size"
-        android:src="@drawable/ladybird"
-        />
-
-    <!-- TODO remove -->
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="150dp"
-        android:layout_height="150dp"
         android:src="@drawable/ladybird"
         />
 
@@ -78,8 +60,65 @@
         />
 
 
-    <!-- TODO test cases. Need to include Wrap_content (broken) and match_parent -->
+    <TextView
+        style="@style/description_label"
+        android:text="Set using setImageBitmap()"
+        />
 
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_set_image_bitmap_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Set using setImageDrawable()"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_set_image_drawable_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Set using setImageResource()"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_set_image_resource_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Scaled Down image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/author"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Scaled Up image"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/author_small"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Test Data"
+        />
 
     <TextView
         style="@style/description_label"
@@ -114,27 +153,6 @@
         android:src="@drawable/landscape_image"
         />
 
-    <TextView
-        style="@style/description_label"
-        android:text="Fitting image"
-        />
-
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:src="@drawable/author"
-        />
-
-    <TextView
-        style="@style/description_label"
-        android:text="Stretched image"
-        />
-
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/author_small"
-        />
 
     <TextView
         style="@style/description_label"
@@ -147,18 +165,6 @@
         android:src="@drawable/alpha"
         app:bootstrapBrand="success"
         app:borderWidth="3dp"
-        />
-
-
-    <TextView
-        style="@style/description_label"
-        android:text="Wrap Content"
-        />
-
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/author_small"
         />
 
     <TextView
@@ -175,6 +181,32 @@
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        />
+
+    <!-- View Measuring test cases -->
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/author_small"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/author_small"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:src="@drawable/author_small"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/author_small"
         />
 
 </LinearLayout>
