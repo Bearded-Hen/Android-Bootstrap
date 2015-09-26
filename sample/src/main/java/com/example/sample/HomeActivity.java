@@ -39,4 +39,12 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, BootstrapCircleThumbnailExample.class));
     }
 
+    @OnClick(R.id.example_bootstrap_edit_text) void onBootstrapEditTextExampleClicked() {
+        startActivity(new Intent(this, BootstrapEditTextExample.class));
+    }
+
+    @OnClick(R.id.example_bootstrap_input_group) void onBootstrapInputGroupExampleClicked() {
+        startActivity(new Intent(this, BootstrapInputGroupExample.class));
+    }
+
 }

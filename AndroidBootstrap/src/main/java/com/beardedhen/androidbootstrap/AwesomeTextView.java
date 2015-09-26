@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -97,6 +98,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
             a.recycle();
         }
         setClickable(true); // allows view to reach android:state_pressed
+        setGravity(Gravity.CENTER);
 
         if (markdownText != null) {
             setMarkdownText(markdownText);

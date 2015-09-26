@@ -2,58 +2,68 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:orientation="vertical"
+        app:roundedCorners="true"
+        app:bootstrapSize="large"
+        app:bootstrapBrand="info"
         >
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_fontawesometext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/home_button"
             android:text="AwesomeTextView"
             />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/home_button"
             android:text="BootstrapButton"
             />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/home_button"
             android:text="BootstrapLabel"
             />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_btn_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/home_button"
             android:text="BootstrapGroup"
             />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/home_button"
             android:text="BootstrapProgress"
             />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_cricle_thumbnail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/home_button"
             android:text="BootstrapCircleThumbnail"
             />
 
-    </LinearLayout>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/example_bootstrap_edit_text"
+            style="@style/home_button"
+            android:text="BootstrapEditText"
+            />
 
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/example_bootstrap_input_group"
+            style="@style/home_button"
+            android:text="BootstrapInputGroup"
+            />
+
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 </ScrollView>

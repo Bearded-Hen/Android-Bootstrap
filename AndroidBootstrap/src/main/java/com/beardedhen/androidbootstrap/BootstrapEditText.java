@@ -2,12 +2,27 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.widget.EditText;
 
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
+import com.beardedhen.androidbootstrap.api.view.RoundableView;
+
+import java.io.Serializable;
+
 // TODO document/finalise/update to v4 spec
-public class BootstrapEditText extends EditText {
+
+public class BootstrapEditText extends EditText implements BootstrapBrandView, RoundableView {
+
+    private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapEditText";
+
+    private BootstrapBrand bootstrapBrand;
+    private boolean rounded;
 
     public enum TextState {
 
@@ -44,8 +59,6 @@ public class BootstrapEditText extends EditText {
         }
     }
 
-    private boolean roundedCorners = false;
-    private int gravity = Gravity.CENTER_VERTICAL;
     private TextState textState;
 
     public BootstrapEditText(Context context) {
@@ -69,31 +82,53 @@ public class BootstrapEditText extends EditText {
         String state = "default";
 
         try {
-            if (a != null) {
-                roundedCorners = a.getBoolean(R.styleable.BootstrapEditText_be_roundedCorners, false);
+            this.rounded = a.getBoolean(R.styleable.BootstrapEditText_roundedCorners, false);
 
-                //state
-                state = a.getString(R.styleable.BootstrapEditText_be_state);
-                state = (state == null) ? "default" : state;
-            }
-        } finally {
-            if (a != null) {
-                a.recycle();
-            }
+            int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
+            this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
         }
-
-        setGravity(gravity);
-
-        if (this.isEnabled()) {
-            textState = TextState.getStateFromString(state);
-            setState(state);
+        finally {
+            a.recycle();
         }
+        textState = TextState.getStateFromString(state);
+        setState(state);
     }
+
+    @Override public Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TAG, super.onSaveInstanceState());
+        bundle.putBoolean(RoundableView.KEY, rounded);
+        bundle.putSerializable(BootstrapBrand.KEY, bootstrapBrand);
+        return bundle;
+    }
+
+    @Override public void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+            this.rounded = bundle.getBoolean(RoundableView.KEY);
+
+            Serializable brand = bundle.getSerializable(BootstrapBrand.KEY);
+
+            if (brand instanceof BootstrapBrand) {
+                bootstrapBrand = (BootstrapBrand) brand;
+            }
+            state = bundle.getParcelable(TAG);
+        }
+        super.onRestoreInstanceState(state);
+        updateBootstrapState();
+    }
+
+    private void updateBootstrapState() {
+
+    }
+
+
+
 
     private void setBackgroundDrawable(TextState textState) {
         this.textState = textState;
 
-        if (roundedCorners) {
+        if (rounded) {
             this.setBackgroundResource(textState.getRoundedBg());
         }
         else {
@@ -120,4 +155,25 @@ public class BootstrapEditText extends EditText {
     }
 
 
+    /*
+     * Getters/Setters
+     */
+
+    @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
+        this.bootstrapBrand = bootstrapBrand;
+        updateBootstrapState();
+    }
+
+    @NonNull @Override public BootstrapBrand getBootstrapBrand() {
+        return bootstrapBrand;
+    }
+
+    @Override public void setRounded(boolean rounded) {
+        this.rounded = rounded;
+        updateBootstrapState();
+    }
+
+    @Override public boolean isRounded() {
+        return rounded;
+    }
 }

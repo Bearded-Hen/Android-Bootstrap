@@ -55,4 +55,9 @@
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
+    <style name="home_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

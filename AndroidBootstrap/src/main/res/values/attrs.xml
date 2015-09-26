@@ -86,12 +86,12 @@
         <attr name="bootstrapBrand"/>
     </declare-styleable>
 
-    <!-- TODO Legacy -->
-
     <declare-styleable name="BootstrapEditText">
-        <attr name="be_roundedCorners" format="boolean"/>
-        <attr name="be_state" format="string"/>
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapBrand"/>
     </declare-styleable>
+
+    <!-- TODO Legacy -->
 
     <declare-styleable name="BootstrapThumbnail">
         <attr name="bt_roundedCorners" format="boolean"/>

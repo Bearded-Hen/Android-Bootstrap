@@ -44,6 +44,14 @@
             android:name=".BootstrapCircleThumbnailExample"
             android:label="BootstrapCircleThumbnail"
             />
+        <activity
+            android:name=".BootstrapEditTextExample"
+            android:label="BootstrapEditTextExample"
+            />
+        <activity
+            android:name=".BootstrapInputGroupExample"
+            android:label="BootstrapInputGroupExample"
+            />
     </application>
 
 </manifest>
