@@ -13,17 +13,17 @@
         >
 
         <Button
-            android:id="@+id/example_bootstrap_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BootstrapButton"
-            />
-
-        <Button
             android:id="@+id/example_fontawesometext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="AwesomeTextView"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BootstrapButton"
             />
 
         <Button
@@ -34,17 +34,17 @@
             />
 
         <Button
-            android:id="@+id/example_bootstrap_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BootstrapProgress"
-            />
-
-        <Button
             android:id="@+id/example_bootstrap_btn_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="BootstrapGroup"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BootstrapProgress"
             />
 
         <Button

@@ -165,7 +165,7 @@
 
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 style="@style/wrapping_button"
-                app:bootstrapBrand="regular"
+                app:bootstrapBrand="secondary"
                 app:bootstrapHeading="h1"
                 app:bootstrapText="{fa_play} {fa_stop}"
                 />
@@ -246,7 +246,7 @@
         android:layout_marginTop="@dimen/micro_padding"
         android:gravity="center"
         android:text="Match Parent"
-        app:labelType="primary"
+        app:bootstrapBrand="primary"
         />
 
     <LinearLayout

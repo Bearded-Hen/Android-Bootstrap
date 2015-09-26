@@ -14,6 +14,7 @@ import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.INFO;
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.PRIMARY;
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.REGULAR;
+import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.SECONDARY;
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.SUCCESS;
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.WARNING;
 
@@ -72,6 +73,9 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
                 themeChange.setBootstrapBrand(DANGER);
                 break;
             case DANGER:
+                themeChange.setBootstrapBrand(SECONDARY);
+                break;
+            case SECONDARY:
                 themeChange.setBootstrapBrand(REGULAR);
                 break;
             case REGULAR:

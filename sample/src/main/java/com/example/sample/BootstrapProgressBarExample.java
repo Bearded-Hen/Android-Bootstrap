@@ -95,8 +95,10 @@ public class BootstrapProgressBarExample extends BaseActivity {
                 changeExample.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
                 break;
             case DANGER:
-                changeExample.setBootstrapBrand(DefaultBootstrapBrand.REGULAR);
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.SECONDARY);
                 break;
+            case SECONDARY:
+                changeExample.setBootstrapBrand(DefaultBootstrapBrand.REGULAR);
             case REGULAR:
                 changeExample.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
                 break;

@@ -98,6 +98,11 @@
                 android:text="Danger"
                 app:bootstrapBrand="danger"
                 />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapBrand="secondary"
+                />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
@@ -148,6 +153,13 @@
                 style="@style/wrapping_button"
                 android:text="Danger"
                 app:bootstrapBrand="danger"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapBrand="secondary"
                 app:roundedCorners="true"
                 />
 
@@ -206,6 +218,13 @@
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
+                app:bootstrapText="{fa_bank} {fa_user}"
+                app:bootstrapBrand="secondary"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
                 app:bootstrapText="{ty_weather_stormy} {ty_weather_sunny}"
                 app:roundedCorners="true"
                 />
@@ -253,6 +272,13 @@
                 style="@style/wrapping_button"
                 android:text="Danger"
                 app:bootstrapBrand="danger"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapBrand="secondary"
                 app:showOutline="true"
                 />
 
@@ -317,6 +343,14 @@
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
+                android:text="Secondary"
+                app:bootstrapBrand="secondary"
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
                 android:text="Default"
                 app:roundedCorners="true"
                 app:showOutline="true"
@@ -367,6 +401,13 @@
                 android:enabled="false"
                 android:text="Danger"
                 app:bootstrapBrand="danger"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                android:enabled="false"
+                android:text="Secondary"
+                app:bootstrapBrand="secondary"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton

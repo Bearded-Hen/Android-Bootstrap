@@ -1,12 +1,18 @@
 package com.beardedhen.androidbootstrap.api.defaults;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
 
 import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
+
+import static com.beardedhen.androidbootstrap.support.ColorUtils.ACTIVE_OPACITY_FACTOR_EDGE;
+import static com.beardedhen.androidbootstrap.support.ColorUtils.ACTIVE_OPACITY_FACTOR_FILL;
+import static com.beardedhen.androidbootstrap.support.ColorUtils.DISABLED_ALPHA_EDGE;
+import static com.beardedhen.androidbootstrap.support.ColorUtils.DISABLED_ALPHA_FILL;
+import static com.beardedhen.androidbootstrap.support.ColorUtils.decreaseRgbChannels;
+import static com.beardedhen.androidbootstrap.support.ColorUtils.increaseOpacity;
+import static com.beardedhen.androidbootstrap.support.ColorUtils.resolveColor;
 
 /**
  * Bootstrap provides 6 brands by default - Primary, Success, Info, Warning, Danger, and Default.
@@ -19,17 +25,20 @@ public enum DefaultBootstrapBrand implements BootstrapBrand {
     INFO(R.color.bootstrap_brand_info),
     WARNING(R.color.bootstrap_brand_warning),
     DANGER(R.color.bootstrap_brand_danger),
+    SECONDARY(R.color.bootstrap_brand_secondary_fill, R.color.bootstrap_brand_secondary_text),
     REGULAR(R.color.bootstrap_gray_light);
 
-    private static final int DISABLED_ALPHA_FILL = 165;
-    private static final int DISABLED_ALPHA_EDGE = 190;
-    private static final float ACTIVE_OPACITY_FACTOR_FILL = 0.125f;
-    private static final float ACTIVE_OPACITY_FACTOR_EDGE = 0.025f;
-
+    private final int textColor;
     private final int color;
 
     DefaultBootstrapBrand(int color) {
         this.color = color;
+        this.textColor =  android.R.color.white;
+    }
+
+    DefaultBootstrapBrand(int color, int textColor) {
+        this.color = color;
+        this.textColor =  textColor;
     }
 
     public static DefaultBootstrapBrand fromAttributeValue(int attrValue) {
@@ -46,13 +55,15 @@ public enum DefaultBootstrapBrand implements BootstrapBrand {
                 return DANGER;
             case 5:
                 return REGULAR;
+            case 6:
+                return SECONDARY;
             default:
                 return REGULAR;
         }
     }
 
     @ColorInt public int defaultFill(Context context) {
-        return context.getResources().getColor(color);
+        return resolveColor(color, context);
     }
 
     @ColorInt public int defaultEdge(Context context) {
@@ -76,39 +87,15 @@ public enum DefaultBootstrapBrand implements BootstrapBrand {
     }
 
     @ColorInt public int defaultTextColor(Context context) {
-        return context.getResources().getColor(android.R.color.white);
+        return resolveColor(textColor, context);
     }
 
     @ColorInt public int activeTextColor(Context context) {
-        return context.getResources().getColor(android.R.color.white);
+        return resolveColor(textColor, context);
     }
 
     @ColorInt public int disabledTextColor(Context context) {
-        return context.getResources().getColor(android.R.color.white);
-    }
-
-    @ColorInt private int decreaseRgbChannels(Context context, @ColorRes int res, float percent) {
-        int c = context.getResources().getColor(res);
-
-        // reduce rgb channel values to produce box shadow effect
-        int red = (Color.red(c));
-        red -= (red * percent);
-        red = red > 0 ? red : 0;
-
-        int green = (Color.green(c));
-        green -= (green * percent);
-        green = green > 0 ? green : 0;
-
-        int blue = (Color.blue(c));
-        blue -= (blue * percent);
-        blue = blue > 0 ? blue : 0;
-
-        return Color.argb(Color.alpha(c), red, green, blue);
-    }
-
-    @ColorInt private int increaseOpacity(Context context, @ColorRes int res, int alpha) {
-        int c = context.getResources().getColor(res);
-        return Color.argb(alpha, Color.red(c), Color.green(c), Color.blue(c));
+        return resolveColor(textColor, context);
     }
 
 }

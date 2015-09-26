@@ -12,6 +12,7 @@ import android.os.Build;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 
 /**
  * Provides a factory for generating Drawables which are used as the backgrounds for Bootstrap Views.
@@ -19,11 +20,11 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 class BootstrapDrawableFactory { // TODO tidy up
 
     static Drawable bootstrapButton(Context context,
-                                           BootstrapBrand brand,
-                                           BootstrapSize bootstrapSize,
-                                           BootstrapButton.Position position,
-                                           boolean showOutline,
-                                           boolean rounded) {
+                                    BootstrapBrand brand,
+                                    BootstrapSize bootstrapSize,
+                                    BootstrapButton.Position position,
+                                    boolean showOutline,
+                                    boolean rounded) {
 
         StateListDrawable stateListDrawable = new StateListDrawable();
 
@@ -53,6 +54,18 @@ class BootstrapDrawableFactory { // TODO tidy up
         defaultGd.setStroke(strokeWidth, brand.defaultEdge(context));
         activeGd.setStroke(strokeWidth, brand.activeEdge(context));
         disabledGd.setStroke(strokeWidth, brand.disabledEdge(context));
+
+        if (showOutline && brand instanceof DefaultBootstrapBrand) {
+            DefaultBootstrapBrand db = (DefaultBootstrapBrand) brand;
+
+            if (db == DefaultBootstrapBrand.SECONDARY) {
+                int color = context.getResources().getColor(R.color.bootstrap_brand_secondary_border);
+
+                defaultGd.setStroke(strokeWidth, color);
+                activeGd.setStroke(strokeWidth, color);
+                disabledGd.setStroke(strokeWidth, color);
+            }
+        }
 
         if (rounded) {
             if (position == BootstrapButton.Position.SOLO) {
@@ -133,12 +146,21 @@ class BootstrapDrawableFactory { // TODO tidy up
 
     @SuppressLint("InlinedApi")
     static ColorStateList bootstrapButtonText(Context context,
-                                                     boolean outline,
-                                                     BootstrapBrand brand) {
+                                              boolean outline,
+                                              BootstrapBrand brand) {
 
         int defaultColor = outline ? brand.defaultFill(context) : brand.defaultTextColor(context);
         int activeColor = outline ? context.getResources().getColor(R.color.white) : brand.activeTextColor(context);
         int disabledColor = outline ? brand.disabledFill(context) : brand.disabledTextColor(context);
+
+        if (outline && brand instanceof DefaultBootstrapBrand) {
+            DefaultBootstrapBrand db = (DefaultBootstrapBrand) brand;
+
+            if (db == DefaultBootstrapBrand.SECONDARY) {
+                defaultColor = context.getResources().getColor(R.color.bootstrap_brand_secondary_border);
+                disabledColor = defaultColor;
+            }
+        }
 
         boolean hover = Build.VERSION.SDK_INT >= 14;
         int stateSize = hover ? 7 : 6; // number of states
@@ -189,9 +211,9 @@ class BootstrapDrawableFactory { // TODO tidy up
      * @return the Bootstrap Label background
      */
     static Drawable bootstrapLabel(Context context,
-                                          BootstrapBrand bootstrapBrand,
-                                          boolean rounded,
-                                          float height) {
+                                   BootstrapBrand bootstrapBrand,
+                                   boolean rounded,
+                                   float height) {
 
         int cornerRadius = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_label_corner_radius);
 

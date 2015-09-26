@@ -70,6 +70,9 @@ public class BootstrapLabelExample extends BaseActivity {
                 lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
                 break;
             case DANGER:
+                lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.SECONDARY);
+                break;
+            case SECONDARY:
                 lblChangeColor.setBootstrapBrand(DefaultBootstrapBrand.REGULAR);
                 break;
             case REGULAR:

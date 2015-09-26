@@ -75,6 +75,9 @@ public class BootstrapButtonGroupExample extends BaseActivity {
                 brandChange.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
                 break;
             case DANGER:
+                brandChange.setBootstrapBrand(DefaultBootstrapBrand.SECONDARY);
+                break;
+            case SECONDARY:
                 brandChange.setBootstrapBrand(DefaultBootstrapBrand.REGULAR);
                 break;
             case REGULAR:

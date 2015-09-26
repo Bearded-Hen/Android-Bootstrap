@@ -125,7 +125,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     @Override public void updateBootstrapState() {
         super.updateBootstrapState();
-
         BootstrapBrand bootstrapBrand = getBootstrapBrand();
 
         if (bootstrapSize != null && bootstrapBrand != null) {
@@ -269,5 +268,10 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     @Override public void setButtonMode(@NonNull ButtonMode buttonMode) {
         this.buttonMode = buttonMode;
     }
+
+    /*
+     * Custom Bootstrap Brands which are specific to BootstrapButton
+     */
+
 
 }

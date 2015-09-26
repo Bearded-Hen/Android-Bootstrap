@@ -10,6 +10,7 @@
         <enum name="warning" value="3"/>
         <enum name="danger" value="4"/>
         <enum name="regular" value="5"/>
+        <enum name="secondary" value="6"/>
     </attr>
 
     <attr name="buttonMode" format="enum">
@@ -17,15 +18,6 @@
         <enum name="toggle" value="1"/>
         <enum name="checkbox" value="2"/>
         <enum name="radio" value="3"/>
-    </attr>
-
-    <attr name="labelType" format="enum">
-        <enum name="labelDefault" value="0"/>
-        <enum name="primary" value="1"/>
-        <enum name="success" value="2"/>
-        <enum name="info" value="3"/>
-        <enum name="warning" value="4"/>
-        <enum name="danger" value="5"/>
     </attr>
 
     <attr name="bootstrapSize" format="enum">
@@ -59,7 +51,6 @@
 
     <declare-styleable name="BootstrapLabel">
         <attr name="bootstrapHeading"/>
-        <attr name="labelType"/>
         <attr name="roundedCorners"/>
     </declare-styleable>
 

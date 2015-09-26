@@ -72,6 +72,9 @@ public class BootstrapButtonExample extends BaseActivity {
                 exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.INFO);
                 break;
             case INFO:
+                exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.SECONDARY);
+                break;
+            case SECONDARY:
                 exampleTheme.setBootstrapBrand(DefaultBootstrapBrand.REGULAR);
                 break;
             case REGULAR:
