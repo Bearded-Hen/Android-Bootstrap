@@ -3,10 +3,10 @@ Fix/Priority List
 
 * Bootstrap Sizing values as ratios (H1-H6, button)
 * Custom Button styles for Secondary/Link themes (create specific methods for each)
-* Add more FA icons to examples (singular/markdown)
-* Support text color, size, and animation markdown
+
 * Add unit test for IconResolver
 * Support another font by default
+* Add more FA icons to examples (singular/markdown)
 
 Feature (Wish)List
 =============

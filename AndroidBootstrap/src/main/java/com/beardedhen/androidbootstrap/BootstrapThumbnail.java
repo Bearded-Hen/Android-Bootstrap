@@ -10,8 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.font.FontAwesomeIconSet;
 import com.beardedhen.androidbootstrap.font.TypefaceProvider;
+import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
 
 
 // TODO document/finalise

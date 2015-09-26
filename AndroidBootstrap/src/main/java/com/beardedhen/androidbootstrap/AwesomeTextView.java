@@ -17,8 +17,8 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
-import com.beardedhen.androidbootstrap.font.FontAwesomeIcon;
 import com.beardedhen.androidbootstrap.font.FontIcon;
+import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 import java.io.Serializable;

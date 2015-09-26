@@ -6,6 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="success"
+        app:bootstrapText="{weather_cloudy}"
+        />
+
     <TextView
         style="@style/description_label"
         android:text="Single icons"

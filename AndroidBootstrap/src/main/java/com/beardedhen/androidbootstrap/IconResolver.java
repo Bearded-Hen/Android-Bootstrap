@@ -2,11 +2,11 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 
-import com.beardedhen.androidbootstrap.font.FontAwesomeIcon;
-import com.beardedhen.androidbootstrap.font.FontAwesomeIconSet;
 import com.beardedhen.androidbootstrap.font.FontIcon;
 import com.beardedhen.androidbootstrap.font.FontIconSet;
 import com.beardedhen.androidbootstrap.font.TypefaceProvider;
+import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon;
+import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 /**
@@ -55,14 +55,15 @@ public class IconResolver {
                     if (startIndex >= 0 && endIndex < markdown.length()) {
                         String iconCode = markdown.substring(startIndex + 1, endIndex);
 
+                        builder.addText(markdown.substring(lastAddedIndex, startIndex));
+
                         if (iconCode.matches(REGEX_FONT_AWESOME)) { // text is FontAwesome code
-                            builder.addText(markdown.substring(lastAddedIndex, startIndex));
                             builder.addIcon(resolveIconCode(iconCode, FontAwesomeIcon.values()));
-                            lastAddedIndex = endIndex + 1;
                         }
                         else {
-                            resolveUnknownIconCode(iconCode);
+                            builder.addIcon(resolveUnknownIconCode(iconCode));
                         }
+                        lastAddedIndex = endIndex + 1;
                     }
                     startIndex = -1;
                     endIndex = -1;

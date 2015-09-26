@@ -3,6 +3,9 @@ package com.beardedhen.androidbootstrap.font;
 import android.content.Context;
 import android.graphics.Typeface;
 
+import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
+import com.beardedhen.androidbootstrap.font.defaults.TypiconsIconSet;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +52,7 @@ public class TypefaceProvider {
      */
     public static void registerDefaultIconSets() {
         FONT_ICON_SET_LIST.add(new FontAwesomeIconSet());
+        FONT_ICON_SET_LIST.add(new TypiconsIconSet());
     }
 
     /**

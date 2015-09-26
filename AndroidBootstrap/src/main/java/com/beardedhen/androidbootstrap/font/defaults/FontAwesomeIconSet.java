@@ -1,4 +1,7 @@
-package com.beardedhen.androidbootstrap.font;
+package com.beardedhen.androidbootstrap.font.defaults;
+
+import com.beardedhen.androidbootstrap.font.FontIcon;
+import com.beardedhen.androidbootstrap.font.FontIconSet;
 
 /**
  * Describes all the icons within the FontAwesome set, and provides the location of its font

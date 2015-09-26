@@ -8,10 +8,10 @@ import com.beardedhen.androidbootstrap.support.BootstrapText;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_ANDROID;
-import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_APPLE;
-import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_HEART;
-import static com.beardedhen.androidbootstrap.font.FontAwesomeIcon.FA_TWITTER;
+import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_ANDROID;
+import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_APPLE;
+import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_HEART;
+import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_TWITTER;
 
 public class AwesomeTextViewExample extends BaseActivity {
 

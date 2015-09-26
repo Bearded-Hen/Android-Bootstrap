@@ -1,4 +1,7 @@
-package com.beardedhen.androidbootstrap.font;
+package com.beardedhen.androidbootstrap.font.defaults;
+
+import com.beardedhen.androidbootstrap.font.FontIcon;
+import com.beardedhen.androidbootstrap.font.FontIconSet;
 
 /**
  * Maps FontAwesome Icon Codes to unicode characters, allowing its use in AwesomeTextView.
