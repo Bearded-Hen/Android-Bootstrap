@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.font.FontAwesomeIcon;
+import com.beardedhen.androidbootstrap.font.FontAwesomeIconSet;
 import com.beardedhen.androidbootstrap.font.TypefaceProvider;
 
 
@@ -160,7 +160,7 @@ import com.beardedhen.androidbootstrap.font.TypefaceProvider;
         placeholder.setLayoutParams(new LinearLayout.LayoutParams(width, height));
 
         //set the font awesome icon typeface
-        dimensionsLabel.setTypeface(TypefaceProvider.getTypeface(getContext(), FontAwesomeIcon.FONT_PATH));
+        dimensionsLabel.setTypeface(TypefaceProvider.getTypeface(getContext(), FontAwesomeIconSet.FONT_PATH));
 
         this.setClickable(true);
 

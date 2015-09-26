@@ -3,14 +3,16 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 
 import com.beardedhen.androidbootstrap.font.FontAwesomeIcon;
+import com.beardedhen.androidbootstrap.font.FontAwesomeIconSet;
 import com.beardedhen.androidbootstrap.font.FontIcon;
+import com.beardedhen.androidbootstrap.font.FontIconSet;
 import com.beardedhen.androidbootstrap.font.TypefaceProvider;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 /**
  * Resolves markdown strings using FA codes and produces BootstrapText instances.
  */
-class IconResolver {
+public class IconResolver {
 
     private static final String REGEX_FONT_AWESOME = "fa_[a-z_0-9]+";
 
@@ -80,13 +82,13 @@ class IconResolver {
     private static FontIcon resolveUnknownIconCode(CharSequence iconCode) {
         FontIcon fontIcon;
 
-        for (FontIcon f : TypefaceProvider.getFontIconList()) {
+        for (FontIconSet set : TypefaceProvider.getRegisteredIconSets()) {
 
-            if (f.fontPath().equals(FontAwesomeIcon.FONT_PATH)) {
+            if (set.fontPath().equals(FontAwesomeIconSet.FONT_PATH)) {
                 continue; // already checked previously
             }
 
-            fontIcon = resolveIconCode(iconCode, f.allValues());
+            fontIcon = resolveIconCode(iconCode, set.allValues());
 
             if (fontIcon != null) {
                 return fontIcon;

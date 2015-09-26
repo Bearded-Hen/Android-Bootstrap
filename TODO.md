@@ -6,10 +6,7 @@ Fix/Priority List
 * Add more FA icons to examples (singular/markdown)
 * Support text color, size, and animation markdown
 * Add unit test for IconResolver
-* Document that typefaces should be *manually* initialised prior to use
 * Support another font by default
-* Generate test data images (with grids/expected sizes)
-* translate icon!
 
 Feature (Wish)List
 =============

@@ -14,7 +14,7 @@ import java.util.Map;
 public class TypefaceProvider {
 
     private final static Map<CharSequence, Typeface> TYPEFACE_MAP = new HashMap<>();
-    private final static List<FontIcon> FONT_ICON_LIST = new ArrayList<>();
+    private final static List<FontIconSet> FONT_ICON_SET_LIST = new ArrayList<>();
 
     /**
      * Returns a reference to the requested typeface, creating a new instance if none already exists
@@ -23,9 +23,8 @@ public class TypefaceProvider {
      * @param fontIcon the icon typeface
      * @return a reference to the typeface instance
      */
-    public static Typeface getTypeface(Context context, FontIcon fontIcon) {
+    public static Typeface getTypeface(Context context, FontIconSet fontIcon) {
         String path = fontIcon.fontPath().toString();
-        FONT_ICON_LIST.add(fontIcon);
         return getTypeface(context, path);
     }
 
@@ -44,8 +43,28 @@ public class TypefaceProvider {
         return TYPEFACE_MAP.get(path);
     }
 
-    public static List<FontIcon> getFontIconList() {
-        return FONT_ICON_LIST;
+    /**
+     * Performs setup of the Default FontIconSets so that they are available throughout the whole
+     * application. Currently the default icon set includes FontAwesome.
+     */
+    public static void registerDefaultIconSets() {
+        FONT_ICON_SET_LIST.add(new FontAwesomeIconSet());
+    }
+
+    /**
+     * Performs setup of a custom FontIconSet, so that it is available throughout the whole application.
+     *
+     * @param fontIconSet a custom FontIconSet
+     */
+    public static void registerCustomIconSet(FontIconSet fontIconSet) {
+        FONT_ICON_SET_LIST.add(fontIconSet);
+    }
+
+    /**
+     * @return a list of registered FontIconSets.
+     */
+    public static List<FontIconSet> getRegisteredIconSets() {
+        return FONT_ICON_SET_LIST;
     }
 
 }

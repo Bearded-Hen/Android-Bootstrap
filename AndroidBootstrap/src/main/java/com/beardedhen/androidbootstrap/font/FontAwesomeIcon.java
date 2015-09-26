@@ -687,7 +687,7 @@ public enum FontAwesomeIcon implements FontIcon {
 
     private final char unicode;
     private final CharSequence iconCode;
-    public static final String FONT_PATH = "fontawesome-webfont-v440.ttf";
+    private static final FontIconSet ICON_SET = new FontAwesomeIconSet();
 
     FontAwesomeIcon(char unicode, CharSequence iconCode) {
         this.unicode = unicode;
@@ -702,12 +702,8 @@ public enum FontAwesomeIcon implements FontIcon {
         return iconCode;
     }
 
-    @Override public CharSequence fontPath() {
-        return FONT_PATH;
-    }
-
-    @Override public FontIcon[] allValues() {
-        return values();
+    @Override public FontIconSet iconSet() {
+        return ICON_SET;
     }
 
 }
