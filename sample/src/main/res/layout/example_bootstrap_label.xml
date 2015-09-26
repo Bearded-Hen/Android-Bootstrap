@@ -110,6 +110,68 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+
+    <!-- Different sizes -->
+    <TextView
+        style="@style/description_label"
+        android:text="Only Icons"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="danger"
+                app:bootstrapHeading="h6"
+                app:fontAwesomeIcon="fa_apple"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="warning"
+                app:bootstrapHeading="h5"
+                app:fontAwesomeIcon="fa_certificate"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="info"
+                app:bootstrapHeading="h4"
+                app:typicon="ty_thermometer"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h3"
+                app:typicon="ty_flag"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="primary"
+                app:bootstrapHeading="h2"
+                app:bootstrapText="{ty_shopping_bag} {ty_shopping_cart}"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="regular"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="{fa_play} {fa_stop}"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <!-- Different sizes -->
     <TextView
         style="@style/description_label"
@@ -176,6 +238,7 @@
                 />
         </LinearLayout>
     </HorizontalScrollView>
+
 
     <com.beardedhen.androidbootstrap.BootstrapLabel
         android:layout_width="match_parent"

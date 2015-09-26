@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Holds static instances of Typefaces
+ * Holds static instances of Typefaces, and FontIcon sets.
  */
 public class TypefaceProvider {
 

@@ -3,7 +3,6 @@ Fix/Priority List
 
 * Bootstrap Sizing values as ratios (H1-H6, button)
 * Custom Button styles for Secondary/Link themes (create specific methods for each)
-* Add more Icon to examples (singular/markdown)
 
 Feature (Wish)List
 =============

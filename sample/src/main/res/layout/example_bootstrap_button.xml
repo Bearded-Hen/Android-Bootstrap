@@ -159,6 +159,58 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <!-- Default Buttons Icons -->
+    <TextView
+        style="@style/description_label"
+        android:text="Only Icons"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                app:fontAwesomeIcon="fa_ambulance"
+                app:bootstrapBrand="primary"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                app:bootstrapBrand="success"
+                app:typicon="ty_code"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                app:typicon="ty_coffee"
+                app:bootstrapBrand="warning"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                app:bootstrapText="{fa_heart} {fa_github}"
+                app:bootstrapBrand="danger"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                style="@style/wrapping_button"
+                app:bootstrapText="{ty_weather_stormy} {ty_weather_sunny}"
+                app:roundedCorners="true"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
     <!-- Outline -->
     <TextView
         style="@style/description_label"

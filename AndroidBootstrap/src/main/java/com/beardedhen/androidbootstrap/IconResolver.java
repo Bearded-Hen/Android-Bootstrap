@@ -7,6 +7,7 @@ import com.beardedhen.androidbootstrap.font.FontIconSet;
 import com.beardedhen.androidbootstrap.font.TypefaceProvider;
 import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon;
 import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
+import com.beardedhen.androidbootstrap.font.defaults.TypiconsIcon;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 /**
@@ -15,6 +16,7 @@ import com.beardedhen.androidbootstrap.support.BootstrapText;
 public class IconResolver {
 
     private static final String REGEX_FONT_AWESOME = "fa_[a-z_0-9]+";
+    private static final String REGEX_TYPICONS = "ty_[a-z_0-9]+";
 
     /**
      * Resolves markdown to produce a BootstrapText instance. e.g. "{fa_android}" would be replaced
@@ -59,6 +61,9 @@ public class IconResolver {
 
                         if (iconCode.matches(REGEX_FONT_AWESOME)) { // text is FontAwesome code
                             builder.addIcon(resolveIconCode(iconCode, FontAwesomeIcon.values()));
+                        }
+                        else if (iconCode.matches(REGEX_TYPICONS)) {
+                            builder.addIcon(resolveIconCode(iconCode, TypiconsIcon.values()));
                         }
                         else {
                             builder.addIcon(resolveUnknownIconCode(iconCode));
