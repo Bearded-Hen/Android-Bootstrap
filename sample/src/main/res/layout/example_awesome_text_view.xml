@@ -9,7 +9,13 @@
     <com.beardedhen.androidbootstrap.AwesomeTextView
         style="@style/wrapping_fa_text"
         app:bootstrapBrand="success"
-        app:bootstrapText="{weather_cloudy}"
+        app:bootstrapText="{ty_weather_cloudy}"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="danger"
+        app:typicon="ty_anchor"
         />
 
     <TextView

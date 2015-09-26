@@ -54,6 +54,7 @@
         <attr name="bootstrapText" format="string"/>
         <attr name="bootstrapBrand"/>
         <attr name="fontAwesomeIcon"/>
+        <attr name="typicon"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapLabel">

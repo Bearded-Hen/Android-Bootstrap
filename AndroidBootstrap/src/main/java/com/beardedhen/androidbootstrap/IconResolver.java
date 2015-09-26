@@ -119,7 +119,9 @@ public class IconResolver {
     }
 
 
-    static FontIcon fromAttributeValue(int index, FontIcon[] values) {
+    static FontIcon fromAttributeValue(int index, FontIconSet fontIconSet) {
+        FontIcon[] values = fontIconSet.allValues();
+
         if (index < 0 || index > values.length) {
             throw new IllegalArgumentException();
         }

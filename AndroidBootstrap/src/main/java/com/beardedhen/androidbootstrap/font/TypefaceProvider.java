@@ -51,8 +51,8 @@ public class TypefaceProvider {
      * application. Currently the default icon set includes FontAwesome.
      */
     public static void registerDefaultIconSets() {
-        FONT_ICON_SET_LIST.add(new FontAwesomeIconSet());
-        FONT_ICON_SET_LIST.add(new TypiconsIconSet());
+        addIconSetIfNeeded(new FontAwesomeIconSet());
+        addIconSetIfNeeded(new TypiconsIconSet());
     }
 
     /**
@@ -61,6 +61,15 @@ public class TypefaceProvider {
      * @param fontIconSet a custom FontIconSet
      */
     public static void registerCustomIconSet(FontIconSet fontIconSet) {
+        addIconSetIfNeeded(fontIconSet);
+    }
+
+    private static void addIconSetIfNeeded(FontIconSet fontIconSet) {
+        for (FontIconSet set : FONT_ICON_SET_LIST) {
+            if (set.equals(fontIconSet)) {
+                return;
+            }
+        }
         FONT_ICON_SET_LIST.add(fontIconSet);
     }
 
