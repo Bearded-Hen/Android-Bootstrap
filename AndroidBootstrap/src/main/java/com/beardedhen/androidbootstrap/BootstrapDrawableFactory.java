@@ -10,7 +10,9 @@ import android.os.Build;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.support.ColorUtils;
 
 /**
  * Provides a factory for generating Drawables which are used as the backgrounds for Bootstrap Views.
@@ -20,7 +22,7 @@ class BootstrapDrawableFactory {
     static Drawable bootstrapButton(Context context,
                                     BootstrapBrand brand,
                                     BootstrapSize bootstrapSize,
-                                    BootstrapButton.Position position,
+                                    ViewGroupPosition position,
                                     boolean showOutline,
                                     boolean rounded) {
 
@@ -119,9 +121,9 @@ class BootstrapDrawableFactory {
         GradientDrawable disabledDrawable = new GradientDrawable();
         GradientDrawable defaultDrawable = new GradientDrawable();
 
-        activeDrawable.setColor(context.getResources().getColor(android.R.color.white));
-        disabledDrawable.setColor(context.getResources().getColor(android.R.color.white));
-        defaultDrawable.setColor(context.getResources().getColor(android.R.color.white));
+        activeDrawable.setColor(ColorUtils.resolveColor(android.R.color.white, context));
+        disabledDrawable.setColor(ColorUtils.resolveColor(android.R.color.white, context));
+        defaultDrawable.setColor(ColorUtils.resolveColor(android.R.color.white, context));
 
         if (rounded) {
             float radius = context.getResources().getDimension(R.dimen.bootstrap_edit_text_corner_radius);
@@ -132,11 +134,12 @@ class BootstrapDrawableFactory {
 
         // stroke is larger when focused
         int strokeNormal = context.getResources().getDimensionPixelOffset(R.dimen.bootstrap_edit_text_stroke_default);
-        int strokeActive = context.getResources().getDimensionPixelOffset(R.dimen.bootstrap_edit_text_stroke_focused);
+        int defaultBorder = ColorUtils.resolveColor(R.color.bootstrap_brand_secondary_border, context);
+        int disabledBorder = ColorUtils.resolveColor(R.color.bbutton_edittext_disabled, context);
 
-        activeDrawable.setStroke(strokeActive, bootstrapBrand.defaultEdge(context));
-        disabledDrawable.setStroke(strokeNormal, bootstrapBrand.defaultEdge(context)); // fixme disabled color
-        defaultDrawable.setStroke(strokeNormal, bootstrapBrand.defaultEdge(context));
+        activeDrawable.setStroke(strokeNormal, bootstrapBrand.defaultEdge(context));
+        disabledDrawable.setStroke(strokeNormal, disabledBorder);
+        defaultDrawable.setStroke(strokeNormal, defaultBorder);
 
         drawable.addState(new int[]{android.R.attr.state_focused}, activeDrawable);
         drawable.addState(new int[]{-android.R.attr.state_enabled}, disabledDrawable);
@@ -179,7 +182,7 @@ class BootstrapDrawableFactory {
         }
     }
 
-    private static float[] calculateCornersForPosition(BootstrapButton.Position position, float r) {
+    private static float[] calculateCornersForPosition(ViewGroupPosition position, float r) {
         // X/Y pairs for top-left, top-right, bottom-right, bottom-left.
         switch (position) {
             case MIDDLE_HORI:
@@ -199,7 +202,7 @@ class BootstrapDrawableFactory {
         }
     }
 
-    private static StateListDrawable setupStateDrawable(BootstrapButton.Position position, int strokeWidth, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
+    private static StateListDrawable setupStateDrawable(ViewGroupPosition position, int strokeWidth, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
         StateListDrawable stateListDrawable = new StateListDrawable();
         LayerDrawable defaultLayer = new LayerDrawable(new Drawable[]{defaultGd});
         LayerDrawable activeLayer = new LayerDrawable(new Drawable[]{activeGd});
@@ -237,9 +240,9 @@ class BootstrapDrawableFactory {
         return stateListDrawable;
     }
 
-    private static void setupDrawableCorners(BootstrapButton.Position position, boolean rounded, int cornerRadius, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
+    private static void setupDrawableCorners(ViewGroupPosition position, boolean rounded, int cornerRadius, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
         if (rounded) {
-            if (position == BootstrapButton.Position.SOLO) {
+            if (position == ViewGroupPosition.SOLO) {
                 defaultGd.setCornerRadius(cornerRadius);
                 activeGd.setCornerRadius(cornerRadius);
                 disabledGd.setCornerRadius(cornerRadius);

@@ -3,10 +3,11 @@ Fix/Priority List
 
 * Bootstrap Sizing values as ratios (H1-H6, button)
 * Add BootstrapCardView and BootstrapCardGroupView to replace BootstrapThumbnail
-* Add Bootstrap input groups to replace BootstrapEditText
+* Add Bootstrap input groups
+* Update BootstrapEditText samples
 * Generate gh-pages
+* Write short tutorial
 
 Feature (Wish)List
 =============
-
-* Write short tutorial
+* More Views in Bootstrap Spec

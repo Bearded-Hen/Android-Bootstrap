@@ -13,6 +13,7 @@ import android.view.ViewParent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
@@ -34,18 +35,8 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButton.MODE";
     private static final String KEY_INDEX = "com.beardedhen.androidbootstrap.BootstrapButton.KEY_INDEX";
 
-    enum Position {
-        SOLO,
-        MIDDLE_HORI,
-        MIDDLE_VERT,
-        TOP,
-        BOTTOM,
-        START,
-        END
-    }
-
     private int parentIndex;
-    private Position position = Position.SOLO;
+    private ViewGroupPosition viewGroupPosition = ViewGroupPosition.SOLO;
     private ButtonMode buttonMode = ButtonMode.REGULAR;
 
     private BootstrapSize bootstrapSize;
@@ -70,7 +61,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     private void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButton);
-        position = Position.SOLO;
+        viewGroupPosition = ViewGroupPosition.SOLO;
 
         try {
             this.roundedCorners = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
@@ -127,7 +118,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         super.updateBootstrapState();
         BootstrapBrand bootstrapBrand = getBootstrapBrand();
 
-        if (bootstrapSize != null && bootstrapBrand != null) {
+        if (bootstrapSize != null) {
 
             int vert = bootstrapSize.buttonVerticalPadding(getContext());
             int hori = bootstrapSize.buttonHorizontalPadding(getContext());
@@ -143,7 +134,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                     getContext(),
                     bootstrapBrand,
                     bootstrapSize,
-                    position,
+                    viewGroupPosition,
                     showOutline,
                     roundedCorners);
 
@@ -202,14 +193,15 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             return false;
         }
     }
+
     /**
-     * Sets the position of this view in its ViewGroup parent, and updates the background drawable
-     * to match this position
+     * Called by the ViewParent, notifies the child of its position so that it can update its
+     * drawable to match the position
      *
-     * @param position the position in the ViewGroup
+     * @param viewGroupPosition the position in the ViewGroup
      */
-    void setPosition(Position position, int parentIndex) {
-        this.position = position;
+    void setViewGroupPosition(ViewGroupPosition viewGroupPosition, int parentIndex) {
+        this.viewGroupPosition = viewGroupPosition;
         this.parentIndex = parentIndex;
         updateBootstrapState();
     }
@@ -218,7 +210,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                           BootstrapSize bootstrapSize,
                           ButtonMode buttonMode,
                           boolean outline,
-                          boolean rounded) {
+                          boolean rounded) { // called when viewparent attrs are updated
 
         // called by BootstrapButtonGroup when updating state all at once
 

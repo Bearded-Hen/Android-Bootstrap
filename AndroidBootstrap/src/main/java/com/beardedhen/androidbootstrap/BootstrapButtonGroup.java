@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
+import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
@@ -23,13 +24,13 @@ import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 import java.io.Serializable;
 
-import static com.beardedhen.androidbootstrap.BootstrapButton.Position.BOTTOM;
-import static com.beardedhen.androidbootstrap.BootstrapButton.Position.END;
-import static com.beardedhen.androidbootstrap.BootstrapButton.Position.MIDDLE_HORI;
-import static com.beardedhen.androidbootstrap.BootstrapButton.Position.MIDDLE_VERT;
-import static com.beardedhen.androidbootstrap.BootstrapButton.Position.SOLO;
-import static com.beardedhen.androidbootstrap.BootstrapButton.Position.START;
-import static com.beardedhen.androidbootstrap.BootstrapButton.Position.TOP;
+import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.BOTTOM;
+import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.END;
+import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.MIDDLE_HORI;
+import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.MIDDLE_VERT;
+import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.SOLO;
+import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.START;
+import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.TOP;
 
 /**
  * BootstrapButtonGroups are a LinearLayout which exclusively holds BootstrapButtons. It is possible
@@ -135,13 +136,13 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         }
         else if (childCount == 1) {
             BootstrapButton button = retrieveButtonChild(0);
-            button.setPosition(SOLO, 0);
+            button.setViewGroupPosition(SOLO, 0);
             button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
         }
 
         for (int i = 0; i < childCount; i++) {
             BootstrapButton button = retrieveButtonChild(i);
-            BootstrapButton.Position position;
+            ViewGroupPosition position;
 
             if (i == 0) { // first view
                 position = orientation == HORIZONTAL ? START : TOP;
@@ -152,7 +153,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
             else {
                 position = orientation == HORIZONTAL ? MIDDLE_HORI : MIDDLE_VERT;
             }
-            button.setPosition(position, i);
+            button.setViewGroupPosition(position, i);
             button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
         }
     }

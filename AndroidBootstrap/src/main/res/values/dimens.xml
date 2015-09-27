@@ -60,8 +60,7 @@
     <dimen name="bootstrap_progress_bar_height">14dp</dimen>
 
     <dimen name="bootstrap_edit_text_corner_radius">6dp</dimen>
-    <dimen name="bootstrap_edit_text_stroke_default">0.75dp</dimen>
-    <dimen name="bootstrap_edit_text_stroke_focused">1.5dp</dimen>
+    <dimen name="bootstrap_edit_text_stroke_default">1.5dp</dimen>
 
 
 </resources>

@@ -54,8 +54,12 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
         finally {
             a.recycle();
         }
-        setGravity(Gravity.CENTER);
+
+        setGravity(Gravity.CENTER_VERTICAL); // center text vertically by default
+        setPadding(0,0,0,0);
+
         updateBootstrapState();
+        invalidate();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -117,4 +121,5 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
     @Override public boolean isRounded() {
         return rounded;
     }
+
 }
