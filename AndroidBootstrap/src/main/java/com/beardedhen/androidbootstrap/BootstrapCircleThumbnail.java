@@ -103,6 +103,11 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             this.borderColor = a.getColor(R.styleable.BootstrapCircleThumbnail_borderColor, -1);
             this.borderWidth = a.getDimension(R.styleable.BootstrapCircleThumbnail_borderWidth, -1);
 
+            if (this.borderWidth <= 0) {
+                this.borderWidth = getContext()
+                        .getResources().getDimensionPixelSize(R.dimen.bootstrap_circle_default_border);
+            }
+
             if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
                 this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
             }
@@ -175,8 +180,10 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             return;
         }
 
+        boolean isPlaceholder = sourceBitmap == null;
+
         // draw the image paint first, then draw a border as a Stroke paint (if needed)
-        boolean hasBorder = borderWidth > 0;
+        boolean hasBorder = borderWidth > 0 || isPlaceholder;
         float center = viewWidth / 2;
         float imageRadius = center;
 
@@ -186,7 +193,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
 
         setupPaints();
 
-        Paint paint = (sourceBitmap == null) ? placeholderPaint : imagePaint;
+        Paint paint = (isPlaceholder) ? placeholderPaint : imagePaint;
         canvas.drawCircle(center, center, imageRadius, paint);
 
         if (hasBorder) {
@@ -196,7 +203,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
 
     private void setupPaints() {
         int strokeColor = (borderColor != -1) ? borderColor : bootstrapBrand.defaultEdge(getContext());
-        int placeholderColor = getContext().getResources().getColor(R.color.bootstrap_gray_light);
+        int placeholderColor = getContext().getResources().getColor(R.color.white);
 
         borderPaint.setColor(strokeColor);
         borderPaint.setAntiAlias(true);

@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapAddon;
 
-public class BootstrapInputGroup extends LinearLayout {
+class BootstrapInputGroup extends LinearLayout { // TODO implement!
 
  // TODO should allow the addition of "AddOn" implementations to left/right
     // otherwise should just be modified linearlayout

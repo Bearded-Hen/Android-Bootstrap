@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.EditText;
 
@@ -18,11 +19,15 @@ import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 import java.io.Serializable;
 
-// TODO document/finalise/update to v4 spec
-
+/**
+ * BootstrapEditText allows users to enter values like a regular Android EditText, and allows coloring
+ * via BootstrapBrand, and rounding of its background.
+ */
 public class BootstrapEditText extends EditText implements BootstrapBrandView, RoundableView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapEditText";
+
+    private static final float DEFAULT_PADDING = 8;
 
     private BootstrapBrand bootstrapBrand;
     private boolean rounded;
@@ -56,7 +61,10 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
         }
 
         setGravity(Gravity.CENTER_VERTICAL); // center text vertically by default
-        setPadding(0,0,0,0);
+
+        int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                DEFAULT_PADDING, getResources().getDisplayMetrics());
+        setPadding(padding, padding, padding, padding);
 
         updateBootstrapState();
         invalidate();

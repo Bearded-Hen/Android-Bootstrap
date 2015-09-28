@@ -22,7 +22,7 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
 
     private boolean showingBorder;
     private boolean showRed;
-    private boolean originalImage = true;
+    private int resId = R.drawable.ladybird;
 
     @Override protected int getContentLayoutId() {
         return R.layout.example_bootstrap_circle_thumbnail;
@@ -85,8 +85,17 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
     }
 
     @OnClick(R.id.bcircle_image_change_example) void onImageChangeExampleClicked() {
-        originalImage = !originalImage;
-        int resId = originalImage ? R.drawable.ladybird : R.drawable.caterpillar;
+        switch (resId) {
+            case R.drawable.ladybird:
+                resId = R.drawable.caterpillar;
+                break;
+            case R.drawable.caterpillar:
+                resId = 0;
+                break;
+            case 0:
+                resId = R.drawable.ladybird;
+                break;
+        }
         imageChange.setImageResource(resId);
     }
 
