@@ -65,5 +65,11 @@
             android:text="BootstrapInputGroup"
             />
 
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/example_bootstrap_thumbnail"
+            style="@style/home_button"
+            android:text="BootstrapThumbnail"
+            />
+
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 </ScrollView>

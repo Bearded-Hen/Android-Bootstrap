@@ -2,45 +2,25 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
-import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
-import com.beardedhen.androidbootstrap.api.view.BorderView;
-
-import java.io.Serializable;
-
-import static android.widget.ImageView.ScaleType.CENTER_CROP;
 
 /**
  * BootstrapCircleThumbnails display a circular image with an optional border, that can be themed
  * using BootstrapBrand colors. The view extends ImageView, and will automatically center crop &
  * scale images.
  */
-public class BootstrapCircleThumbnail extends ImageView implements BootstrapBrandView, BorderView {
+public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapCircleThumbnail";
-
-    private BootstrapBrand bootstrapBrand;
-    private float borderWidth;
-    private int borderColor;
 
     private final RectF imageRectF = new RectF();
     private final Matrix matrix = new Matrix();
@@ -48,8 +28,6 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
     private final Paint imagePaint = new Paint();
     private final Paint placeholderPaint = new Paint();
     private final Paint borderPaint = new Paint();
-
-    private Bitmap sourceBitmap;
 
     public BootstrapCircleThumbnail(Context context) {
         super(context);
@@ -64,35 +42,6 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
     public BootstrapCircleThumbnail(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initialise(attrs);
-    }
-
-    @Override public Parcelable onSaveInstanceState() {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(TAG, super.onSaveInstanceState());
-
-        bundle.putSerializable(BootstrapBrandView.KEY, bootstrapBrand);
-        bundle.putFloat(BorderView.KEY_WIDTH, borderWidth);
-        bundle.putInt(BorderView.KEY_COLOR, borderColor);
-
-        return bundle;
-    }
-
-    @Override public void onRestoreInstanceState(Parcelable state) {
-        if (state instanceof Bundle) {
-            Bundle bundle = (Bundle) state;
-
-            this.borderWidth = bundle.getFloat(BorderView.KEY_WIDTH);
-            this.borderColor = bundle.getInt(BorderView.KEY_COLOR);
-
-            Serializable brand = bundle.getSerializable(BootstrapBrandView.KEY);
-
-            if (brand instanceof BootstrapBrand) {
-                this.bootstrapBrand = (BootstrapBrand) brand;
-            }
-            state = bundle.getParcelable(TAG);
-        }
-        super.onRestoreInstanceState(state);
-        updateImageState();
     }
 
     private void initialise(AttributeSet attrs) {
@@ -121,6 +70,21 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         updateImageState();
     }
 
+    private void setupPaints() {
+        int strokeColor = (borderColor != -1) ? borderColor : bootstrapBrand.defaultEdge(getContext());
+        int placeholderColor = getContext().getResources().getColor(R.color.white);
+
+        borderPaint.setColor(strokeColor);
+        borderPaint.setAntiAlias(true);
+        borderPaint.setStrokeWidth(borderWidth);
+        borderPaint.setStyle(Paint.Style.STROKE);
+        imagePaint.setAntiAlias(true);
+
+        placeholderPaint.setColor(placeholderColor);
+        placeholderPaint.setAntiAlias(true);
+        placeholderPaint.setStyle(Paint.Style.FILL);
+    }
+
     /**
      * This method is called when the Circle Image needs to be recreated due to changes in size etc.
      * <p/>
@@ -131,7 +95,7 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
      * <a href="http://www.curious-creature.com/2012/12/11/android-recipe-1-image-with-rounded-corners">
      * Further reading</a>
      */
-    private void updateImageState() {
+    protected void updateImageState() {
         float viewWidth = getWidth();
         float viewHeight = getHeight();
 
@@ -201,21 +165,6 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
         }
     }
 
-    private void setupPaints() {
-        int strokeColor = (borderColor != -1) ? borderColor : bootstrapBrand.defaultEdge(getContext());
-        int placeholderColor = getContext().getResources().getColor(R.color.white);
-
-        borderPaint.setColor(strokeColor);
-        borderPaint.setAntiAlias(true);
-        borderPaint.setStrokeWidth(borderWidth);
-        borderPaint.setStyle(Paint.Style.STROKE);
-        imagePaint.setAntiAlias(true);
-
-        placeholderPaint.setColor(placeholderColor);
-        placeholderPaint.setAntiAlias(true);
-        placeholderPaint.setStyle(Paint.Style.FILL);
-    }
-
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
@@ -239,108 +188,6 @@ public class BootstrapCircleThumbnail extends ImageView implements BootstrapBran
             h = w;
         }
         setMeasuredDimension(w, h);
-    }
-
-    @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        updateImageState();
-    }
-
-    @Override public void setScaleType(ScaleType scaleType) {
-        if (scaleType != CENTER_CROP) {
-            throw new IllegalArgumentException("Only CenterCrop is currently supported by this view");
-        }
-        else {
-            super.setScaleType(scaleType);
-        }
-    }
-
-    @Override public ScaleType getScaleType() {
-        return CENTER_CROP;
-    }
-
-    /**
-     * @return the original Bitmap source that will be drawn as a circular image
-     */
-    @Nullable private Bitmap getBitmapForView() {
-        Drawable drawable = getDrawable();
-
-        if (drawable == null) {
-            return null;
-        }
-
-        if (drawable instanceof BitmapDrawable) {
-            return ((BitmapDrawable) drawable).getBitmap();
-        }
-        else {
-            int w = drawable.getIntrinsicWidth();
-            int h = drawable.getIntrinsicHeight();
-
-            Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            drawable.draw(new Canvas(bm));
-            return bm;
-        }
-    }
-
-    /*
-     * Image setter overrides
-     */
-
-    @Override public void setImageBitmap(Bitmap bm) {
-        super.setImageBitmap(bm);
-        onSourceBitmapUpdate(bm);
-    }
-
-    @Override public void setImageDrawable(Drawable drawable) {
-        super.setImageDrawable(drawable);
-        onSourceBitmapUpdate(getBitmapForView());
-    }
-
-    @Override public void setImageResource(int resId) {
-        super.setImageResource(resId);
-        onSourceBitmapUpdate(getBitmapForView());
-    }
-
-    @Override public void setImageURI(Uri uri) {
-        super.setImageURI(uri);
-        onSourceBitmapUpdate(getBitmapForView());
-    }
-
-    private void onSourceBitmapUpdate(Bitmap bitmap) {
-        sourceBitmap = bitmap;
-        updateImageState();
-    }
-
-    /*
-     * Getters/Setters
-     */
-
-    @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
-        this.bootstrapBrand = bootstrapBrand;
-        this.borderColor = -1;
-        invalidate();
-    }
-
-    @NonNull @Override public BootstrapBrand getBootstrapBrand() {
-        return bootstrapBrand;
-    }
-
-    @Override @ColorInt public int getBorderColor() {
-        return borderColor;
-    }
-
-    @Override public void setBorderColor(@ColorInt int borderColor) {
-        this.borderColor = borderColor;
-        invalidate();
-    }
-
-    @Override public float getBorderWidth() {
-        return borderWidth;
-    }
-
-    @Override public void setBorderWidth(float borderWidth) {
-        this.borderWidth = borderWidth;
-        updateImageState();
     }
 
 }

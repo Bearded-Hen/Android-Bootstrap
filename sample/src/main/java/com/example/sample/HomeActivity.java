@@ -47,4 +47,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, BootstrapInputGroupExample.class));
     }
 
+    @OnClick(R.id.example_bootstrap_thumbnail) void onBootstrapThumbnailExampleClicked() {
+        startActivity(new Intent(this, BootstrapThumbnailExample.class));
+    }
+
 }

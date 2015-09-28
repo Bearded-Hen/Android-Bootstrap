@@ -45,6 +45,10 @@
             android:label="BootstrapCircleThumbnail"
             />
         <activity
+            android:name=".BootstrapThumbnailExample"
+            android:label="BootstrapThumbnail"
+            />
+        <activity
             android:name=".BootstrapEditTextExample"
             android:label="BootstrapEditTextExample"
             />

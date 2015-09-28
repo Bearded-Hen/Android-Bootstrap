@@ -2,56 +2,20 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
-
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 // TODO document/finalise
 
-/**
- * Should use Bootstrap Cards instead
- */
-@Deprecated public class BootstrapThumbnail extends FrameLayout { // FIXME should extend imageview
+public class BootstrapThumbnail extends BootstrapBaseThumbnail implements RoundableView {
 
-    private static final int DEFAULT_WIDTH = 150; //width of thumbnail when no width is given
-    private static final int DEFAULT_HEIGHT = 150;//height of thumbnail when no height is given
-    private static final int DEFAULT_MAX_PADDING = 8; //8dp is max padding size when padding isn't specified by user
-    private static final int DEFAULT_MIN_PADDING = 4; //4dp
+    private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapThumbnail";
 
-    private LinearLayout placeholder;
-    private boolean roundedCorners = true;
-
-    private enum ThumbnailTypes {
-        ROUNDED(R.drawable.bthumbnail_container_rounded, R.drawable.bthumbnail_placeholder_default),
-        SQUARE(R.drawable.bthumbnail_container_square, R.drawable.bthumbnail_placeholder_default);
-
-        private final int containerDrawable;
-        private final int placeholderDrawable;
-
-        ThumbnailTypes(int containerDrawable, int placeholderDrawable) {
-            this.containerDrawable = containerDrawable;
-            this.placeholderDrawable = placeholderDrawable;
-        }
-
-        public static ThumbnailTypes getTypeFromBoolean(boolean roundedCorners) {
-            return (roundedCorners) ? ROUNDED : SQUARE;
-        }
-
-        public int getContainerDrawable() {
-            return containerDrawable;
-        }
-
-        public int getPlaceholderDrawable() {
-            return placeholderDrawable;
-        }
-    }
+    private boolean roundedCorners;
 
     public BootstrapThumbnail(Context context) {
         super(context);
@@ -68,108 +32,68 @@ import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
         initialise(attrs);
     }
 
+    @Override public Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TAG, super.onSaveInstanceState());
+        bundle.putBoolean(RoundableView.KEY, roundedCorners);
+        return bundle;
+    }
+
+    @Override public void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+            this.roundedCorners = bundle.getBoolean(RoundableView.KEY);
+            state = bundle.getParcelable(TAG);
+        }
+        super.onRestoreInstanceState(state);
+    }
+
     private void initialise(AttributeSet attrs) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-
-        TypedArray a = getContext().obtainStyledAttributes(attrs,
-                                                           R.styleable.BootstrapThumbnail);
-
-        //defaults
-        ThumbnailTypes type;
-        String text = "";
-        int imageDrawable = 0;
-        float scale = getResources().getDisplayMetrics().density; //for padding
-        int width = DEFAULT_WIDTH;
-        int height = DEFAULT_HEIGHT;
-        int padding = 0;
-        int paddingDP = 0;
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapThumbnail);
 
         try {
-            if (a != null) {
-                //attribute values
-                width = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_width, 0);
-                height = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_height, 0);
+            int typeOrdinal = a.getInt(R.styleable.BootstrapThumbnail_bootstrapBrand, -1);
+            this.borderColor = a.getColor(R.styleable.BootstrapThumbnail_borderColor, -1);
+            this.borderWidth = a.getDimension(R.styleable.BootstrapThumbnail_borderWidth, -1);
 
-                if (a.getString(R.styleable.BootstrapThumbnail_bt_inside_padding) != null) {
-                    paddingDP = (int) a.getDimension(R.styleable.BootstrapThumbnail_bt_inside_padding, 0);
-                }
-                else {
-                    padding = (int) (((Math.sqrt(width * height)) / 100) * 2);
-                    if (padding > DEFAULT_MAX_PADDING) {
-                        padding = DEFAULT_MAX_PADDING;
-                    }
-                    if (padding < DEFAULT_MIN_PADDING) {
-                        padding = DEFAULT_MIN_PADDING;
-                    }
+            if (this.borderWidth <= 0) {
+                this.borderWidth = getContext()
+                        .getResources().getDimensionPixelSize(R.dimen.bootstrap_circle_default_border);
+            }
 
-                    paddingDP = (int) (padding * scale + 0.5f); //container padding in DP
-                }
-
-                roundedCorners = a.getBoolean(R.styleable.BootstrapThumbnail_bt_roundedCorners, false);
-                imageDrawable = a.getResourceId(R.styleable.BootstrapThumbnail_bt_image, 0);
+            if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
+                this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
+            }
+            else {
+                this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
             }
         }
         finally {
-            if (a != null) {
-                a.recycle();
-            }
+            a.recycle();
         }
-
-        text = (int) (width / scale) + "x" + (int) (height / scale);
-        View v = inflater.inflate(R.layout.bootstrap_thumbnail, this, false);
-
-        //get layout items
-        ViewGroup container = (ViewGroup) v.findViewById(R.id.container);
-        placeholder = (LinearLayout) v.findViewById(R.id.placeholder);
-        TextView dimensionsLabel = (TextView) v.findViewById(R.id.dimensionsLabel);
-
-        //get the correct background type
-        type = ThumbnailTypes.getTypeFromBoolean(roundedCorners);
-
-        //apply the background type
-        container.setBackgroundResource(type.getContainerDrawable());
-
-        //if no image is provided by user
-        if (imageDrawable == 0) {
-            //set default grey placeholder background
-            placeholder.setBackgroundResource(type.getPlaceholderDrawable());
-
-            //set the text
-            if (text.length() > 0) {
-                dimensionsLabel.setText(text);
-                dimensionsLabel.setVisibility(View.VISIBLE);
-            }
-        }
-        else {
-            //set background to user's provided image
-            placeholder.setBackgroundResource(imageDrawable);
-
-            //remove textview dimensions
-            dimensionsLabel.setVisibility(View.GONE);
-        }
-
-        //placeholder padding
-        int paddingP = (int) (((Math.sqrt(width * height)) / 100) * 4);
-
-        //convert to DP
-        int paddingDPP = (int) (paddingP * scale + 0.5f);//placeholder padding in DP
-
-        container.setPadding(paddingDP, paddingDP, paddingDP, paddingDP);
-        placeholder.setPadding(paddingDPP, paddingDPP, paddingDPP, paddingDPP);
-        placeholder.setLayoutParams(new LinearLayout.LayoutParams(width, height));
-
-        //set the font awesome icon typeface
-        dimensionsLabel.setTypeface(TypefaceProvider.getTypeface(getContext(), FontAwesomeIconSet.FONT_PATH));
-
-        this.setClickable(true);
-
-        addView(v);
+        updateImageState();
     }
 
-    public void setImage(int drawable) {
-        this.placeholder.setBackgroundResource(drawable);
-        invalidate();
-        requestLayout();
+    protected void updateImageState() {
+        // TODO update image
+    }
+
+
+    /*
+     * Getters/setters
+     */
+
+    @Override public void setBorderWidth(float borderWidth) {
+        this.borderWidth = borderWidth;
+        updateImageState();
+    }
+
+    @Override public void setRounded(boolean rounded) {
+        this.roundedCorners = rounded;
+    }
+
+    @Override public boolean isRounded() {
+        return roundedCorners;
     }
 
 }

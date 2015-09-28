@@ -39,6 +39,8 @@
     <attr name="roundedCorners" format="boolean"/>
     <attr name="toggleable" format="boolean"/>
     <attr name="placeholderText" format="string"/>
+    <attr name="borderWidth" format="dimension"/>
+    <attr name="borderColor" format="color"/>
 
     <!-- View attributes -->
 
@@ -81,25 +83,21 @@
     </declare-styleable>
 
     <declare-styleable name="BootstrapCircleThumbnail">
-        <attr name="borderWidth" format="dimension" />
-        <attr name="borderColor" format="color" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
         <attr name="bootstrapBrand"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapThumbnail">
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="roundedCorners"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapEditText">
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
-    </declare-styleable>
-
-    <!-- TODO Legacy -->
-
-    <declare-styleable name="BootstrapThumbnail">
-        <attr name="bt_roundedCorners" format="boolean"/>
-        <attr name="bt_image" format="integer"/>
-        <attr name="bt_width" format="dimension"/>
-        <attr name="bt_height" format="dimension"/>
-        <attr name="bt_inside_padding" format="dimension"/>
-        <attr name="android:text"/>
     </declare-styleable>
 
 </resources>
