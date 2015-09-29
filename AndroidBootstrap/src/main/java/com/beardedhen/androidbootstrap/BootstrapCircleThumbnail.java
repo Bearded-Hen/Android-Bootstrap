@@ -8,6 +8,8 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 
@@ -49,13 +51,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
 
         try {
             int typeOrdinal = a.getInt(R.styleable.BootstrapCircleThumbnail_bootstrapBrand, -1);
-            this.borderColor = a.getColor(R.styleable.BootstrapCircleThumbnail_borderColor, -1);
-            this.borderWidth = a.getDimension(R.styleable.BootstrapCircleThumbnail_borderWidth, -1);
-
-            if (this.borderWidth <= 0) {
-                this.borderWidth = getContext()
-                        .getResources().getDimensionPixelSize(R.dimen.bootstrap_circle_default_border);
-            }
+            this.hasBorder = a.getBoolean(R.styleable.BootstrapCircleThumbnail_hasBorder, true);
 
             if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
                 this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
@@ -67,12 +63,14 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
         finally {
             a.recycle();
         }
+
+        outerBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
         updateImageState();
     }
 
     private void setupPaints() {
-        int strokeColor = (borderColor != -1) ? borderColor : bootstrapBrand.defaultEdge(getContext());
-        int placeholderColor = getContext().getResources().getColor(R.color.white);
+        int strokeColor = bootstrapBrand.defaultEdge(getContext());
+        int placeholderColor = getContext().getResources().getColor(R.color.bootstrap_gray_light);
 
         borderPaint.setColor(strokeColor);
         borderPaint.setAntiAlias(true);
@@ -133,7 +131,27 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
             imageShader.setLocalMatrix(matrix);
             imageRectF.set(0, 0, viewWidth, viewHeight);
         }
+        updateBackground();
         invalidate();
+    }
+
+
+    private void updateBackground() {
+        Drawable bg = null;
+
+        if (hasBorder) {
+            bg = BootstrapDrawableFactory.bootstrapCircleThumbnail(
+                    getContext(),
+                    bootstrapBrand,
+                    (int) outerBorderWidth,
+                    getResources().getColor(R.color.bthumbnail_background));
+        }
+        if (Build.VERSION.SDK_INT >= 16) {
+            setBackground(bg);
+        }
+        else {
+            setBackgroundDrawable(bg);
+        }
     }
 
     @Override protected void onDraw(@NonNull Canvas canvas) {
@@ -147,7 +165,6 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
         boolean isPlaceholder = sourceBitmap == null;
 
         // draw the image paint first, then draw a border as a Stroke paint (if needed)
-        boolean hasBorder = borderWidth > 0 || isPlaceholder;
         float center = viewWidth / 2;
         float imageRadius = center;
 
@@ -159,10 +176,6 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
 
         Paint paint = (isPlaceholder) ? placeholderPaint : imagePaint;
         canvas.drawCircle(center, center, imageRadius, paint);
-
-        if (hasBorder) {
-            canvas.drawCircle(center, center, center - (borderWidth / 2), borderPaint); // draw border
-        }
     }
 
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

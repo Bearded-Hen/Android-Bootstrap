@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -32,21 +31,32 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapBaseThumbnail";
 
     protected BootstrapBrand bootstrapBrand;
+    protected boolean hasBorder;
+
     protected float borderWidth;
-    protected int borderColor;
+    protected float outerBorderWidth;
 
     protected Bitmap sourceBitmap;
 
     public BootstrapBaseThumbnail(Context context) {
         super(context);
+        initialise();
+
     }
 
     public BootstrapBaseThumbnail(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initialise();
     }
 
     public BootstrapBaseThumbnail(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        initialise();
+    }
+
+    private void initialise() {
+        this.outerBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
+        this.borderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -54,8 +64,7 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
         bundle.putParcelable(TAG, super.onSaveInstanceState());
 
         bundle.putSerializable(BootstrapBrandView.KEY, bootstrapBrand);
-        bundle.putFloat(BorderView.KEY_WIDTH, borderWidth);
-        bundle.putInt(BorderView.KEY_COLOR, borderColor);
+        bundle.putBoolean(BorderView.KEY_DISPLAYED, hasBorder);
         return bundle;
     }
 
@@ -63,8 +72,7 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
 
-            this.borderWidth = bundle.getFloat(BorderView.KEY_WIDTH);
-            this.borderColor = bundle.getInt(BorderView.KEY_COLOR);
+            this.hasBorder = bundle.getBoolean(BorderView.KEY_DISPLAYED);
 
             Serializable brand = bundle.getSerializable(BootstrapBrandView.KEY);
 
@@ -154,30 +162,20 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
 
     @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
         this.bootstrapBrand = bootstrapBrand;
-        this.borderColor = -1;
-        invalidate();
+        updateImageState();
     }
 
     @NonNull @Override public BootstrapBrand getBootstrapBrand() {
         return bootstrapBrand;
     }
 
-    @Override @ColorInt public int getBorderColor() {
-        return borderColor;
-    }
-
-    @Override public void setBorderColor(@ColorInt int borderColor) {
-        this.borderColor = borderColor;
-        invalidate();
-    }
-
-    @Override public float getBorderWidth() {
-        return borderWidth;
-    }
-
-    @Override public void setBorderWidth(float borderWidth) {
-        this.borderWidth = borderWidth;
+    @Override public void setBorderDisplayed(boolean displayed) {
+        this.hasBorder = displayed;
         updateImageState();
+    }
+
+    @Override public boolean isBorderDisplayed() {
+        return hasBorder;
     }
 
 }

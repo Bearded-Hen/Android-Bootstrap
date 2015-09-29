@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
@@ -145,6 +146,18 @@ class BootstrapDrawableFactory {
         drawable.addState(new int[]{-android.R.attr.state_enabled}, disabledDrawable);
         drawable.addState(new int[]{}, defaultDrawable);
 
+        return drawable;
+    }
+
+    static Drawable bootstrapCircleThumbnail(Context context,
+                                             BootstrapBrand bootstrapBrand,
+                                             @ColorInt int outerBorderWidth,
+                                             @ColorInt int bg) {
+
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setShape(GradientDrawable.OVAL);
+        drawable.setColor(bg);
+        drawable.setStroke(outerBorderWidth, bootstrapBrand.defaultEdge(context));
         return drawable;
     }
 

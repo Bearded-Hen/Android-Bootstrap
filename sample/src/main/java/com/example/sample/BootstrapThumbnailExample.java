@@ -20,16 +20,12 @@ import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand
 
 public class BootstrapThumbnailExample extends BaseActivity {
 
-    private boolean showingBorder;
-    private boolean showRed;
     private int resId = R.drawable.ladybird;
 
     @Override protected int getContentLayoutId() {
         return R.layout.example_bootstrap_thumbnail;
     }
 
-    @Bind(R.id.bthumb_border_change_example) BootstrapThumbnail borderChange;
-    @Bind(R.id.bthumb_color_change_example) BootstrapThumbnail colorChange;
     @Bind(R.id.bthumb_image_change_example) BootstrapThumbnail imageChange;
     @Bind(R.id.bthumb_theme_change_example) BootstrapThumbnail themeChange;
     @Bind(R.id.bthumb_set_image_bitmap_example) BootstrapThumbnail setBitmapExample;
@@ -44,18 +40,6 @@ public class BootstrapThumbnailExample extends BaseActivity {
 
         setDrawableExample.setImageDrawable(getResources().getDrawable(R.drawable.ladybird));
         setResourceExample.setImageResource(R.drawable.caterpillar);
-    }
-
-    @OnClick(R.id.bthumb_border_change_example) void onBorderChangeExampleClicked() {
-        float px = 16;
-        showingBorder = !showingBorder;
-        borderChange.setBorderWidth(showingBorder ? px : 0);
-    }
-
-    @OnClick(R.id.bthumb_color_change_example) void onColorChangeExampleClicked() {
-        showRed = !showRed;
-        int resId = (showRed) ? R.color.bootstrap_brand_danger : R.color.bootstrap_brand_primary;
-        colorChange.setBorderColor(getResources().getColor(resId));
     }
 
     @OnClick(R.id.bthumb_theme_change_example) void onThemeChangeExampleClicked() {

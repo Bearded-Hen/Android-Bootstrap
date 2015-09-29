@@ -28,7 +28,7 @@
         android:layout_width="@dimen/default_circle_size"
         android:layout_height="@dimen/default_circle_size"
         android:src="@drawable/flower"
-        app:borderWidth="4dp"
+        app:hasBorder="true"
         />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_height="@dimen/default_circle_size"
         android:src="@drawable/small_daffodils"
         app:bootstrapBrand="success"
-        app:borderWidth="4dp"
+        app:hasBorder="true"
         />
 
     <TextView
@@ -56,7 +56,7 @@
         android:layout_height="@dimen/default_circle_size"
         android:src="@drawable/stars"
         app:bootstrapBrand="primary"
-        app:borderWidth="0dp"
+        app:hasBorder="false"
         />
 
     <TextView
@@ -79,6 +79,7 @@
         android:id="@+id/bthumb_set_image_drawable_example"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:hasBorder="false"
         />
 
     <TextView
@@ -163,7 +164,7 @@
         android:layout_height="250dp"
         android:src="@drawable/alpha"
         app:bootstrapBrand="success"
-        app:borderWidth="3dp"
+        app:hasBorder="true"
         />
 
     <TextView

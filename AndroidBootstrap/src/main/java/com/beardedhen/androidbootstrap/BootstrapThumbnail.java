@@ -53,13 +53,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
 
         try {
             int typeOrdinal = a.getInt(R.styleable.BootstrapThumbnail_bootstrapBrand, -1);
-            this.borderColor = a.getColor(R.styleable.BootstrapThumbnail_borderColor, -1);
-            this.borderWidth = a.getDimension(R.styleable.BootstrapThumbnail_borderWidth, -1);
-
-            if (this.borderWidth <= 0) {
-                this.borderWidth = getContext()
-                        .getResources().getDimensionPixelSize(R.dimen.bootstrap_circle_default_border);
-            }
+            this.hasBorder = a.getBoolean(R.styleable.BootstrapCircleThumbnail_hasBorder, true);
 
             if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
                 this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
@@ -78,15 +72,9 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
         // TODO update image
     }
 
-
     /*
      * Getters/setters
      */
-
-    @Override public void setBorderWidth(float borderWidth) {
-        this.borderWidth = borderWidth;
-        updateImageState();
-    }
 
     @Override public void setRounded(boolean rounded) {
         this.roundedCorners = rounded;

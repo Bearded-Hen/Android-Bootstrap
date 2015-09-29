@@ -61,7 +61,8 @@
 
     <dimen name="bootstrap_edit_text_corner_radius">6dp</dimen>
     <dimen name="bootstrap_edit_text_stroke_default">1.5dp</dimen>
-    <dimen name="bootstrap_circle_default_border">3dp</dimen>
 
+    <dimen name="bthumbnail_default_border">8dp</dimen>
+    <dimen name="bthumbnail_outer_stroke">2dp</dimen>
 
 </resources>

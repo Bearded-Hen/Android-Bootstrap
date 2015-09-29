@@ -1,37 +1,22 @@
 package com.beardedhen.androidbootstrap.api.view;
 
-import android.support.annotation.ColorInt;
-
 /**
- * Views which implement this interface allow the width and color of their drawn border to be set.
+ * Views which implement this interface allow the border to be dynamically displayed
  */
 public interface BorderView {
 
-    String KEY_COLOR = "com.beardedhen.androidbootstrap.api.view.KEY_COLOR";
-    String KEY_WIDTH = "com.beardedhen.androidbootstrap.api.view.KEY_WIDTH";
+    String KEY_DISPLAYED = "com.beardedhen.androidbootstrap.api.view.KEY_DISPLAYED";
 
     /**
-     * @return the current border color, or -1 if none exists
-     */
-    @ColorInt int getBorderColor();
-
-    /**
-     * Sets the border color for this view
+     * Sets whether a border should be displayed or not
      *
-     * @param borderColor the border color
+     * @param displayed whether a border should be displayed or not
      */
-    void setBorderColor(@ColorInt int borderColor);
+    void setBorderDisplayed(boolean displayed);
 
     /**
-     * @return the current border width
+     * @return whether the border is displayed or not
      */
-    float getBorderWidth();
-
-    /**
-     * Sets the current border width for the view, in px
-     *
-     * @param borderWidth the desired border width in px
-     */
-    void setBorderWidth(float borderWidth);
+    boolean isBorderDisplayed();
 
 }

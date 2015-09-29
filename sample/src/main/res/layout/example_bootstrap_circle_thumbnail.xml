@@ -18,18 +18,6 @@
         android:src="@drawable/ladybird"
         />
 
-    <TextView
-        style="@style/description_label"
-        android:text="Tap to Change Color"
-        />
-
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:id="@+id/bcircle_color_change_example"
-        android:layout_width="@dimen/default_circle_size"
-        android:layout_height="@dimen/default_circle_size"
-        android:src="@drawable/flower"
-        app:borderWidth="4dp"
-        />
 
     <TextView
         style="@style/description_label"
@@ -42,21 +30,19 @@
         android:layout_height="@dimen/default_circle_size"
         android:src="@drawable/small_daffodils"
         app:bootstrapBrand="success"
-        app:borderWidth="4dp"
+        app:hasBorder="true"
         />
 
     <TextView
         style="@style/description_label"
-        android:text="Tap to Change Border Width"
+        android:text="Tap to Change Border"
         />
 
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
         android:id="@+id/bcircle_border_change_example"
         android:layout_width="@dimen/default_circle_size"
         android:layout_height="@dimen/default_circle_size"
-        android:src="@drawable/stars"
-        app:bootstrapBrand="primary"
-        app:borderWidth="0dp"
+        android:src="@drawable/flower"
         />
 
     <TextView
@@ -79,6 +65,7 @@
         android:id="@+id/bcircle_set_image_drawable_example"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:hasBorder="false"
         />
 
     <TextView
@@ -163,7 +150,7 @@
         android:layout_height="250dp"
         android:src="@drawable/alpha"
         app:bootstrapBrand="success"
-        app:borderWidth="3dp"
+        app:hasBorder="true"
         />
 
     <TextView

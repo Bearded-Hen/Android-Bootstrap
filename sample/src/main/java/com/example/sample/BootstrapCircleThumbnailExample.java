@@ -20,18 +20,15 @@ import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand
 
 public class BootstrapCircleThumbnailExample extends BaseActivity {
 
-    private boolean showingBorder;
-    private boolean showRed;
     private int resId = R.drawable.ladybird;
 
     @Override protected int getContentLayoutId() {
         return R.layout.example_bootstrap_circle_thumbnail;
     }
 
-    @Bind(R.id.bcircle_border_change_example) BootstrapCircleThumbnail borderChange;
-    @Bind(R.id.bcircle_color_change_example) BootstrapCircleThumbnail colorChange;
     @Bind(R.id.bcircle_image_change_example) BootstrapCircleThumbnail imageChange;
     @Bind(R.id.bcircle_theme_change_example) BootstrapCircleThumbnail themeChange;
+    @Bind(R.id.bcircle_border_change_example) BootstrapCircleThumbnail borderChange;
     @Bind(R.id.bcircle_set_image_bitmap_example) BootstrapCircleThumbnail setBitmapExample;
     @Bind(R.id.bcircle_set_image_drawable_example) BootstrapCircleThumbnail setDrawableExample;
     @Bind(R.id.bcircle_set_image_resource_example) BootstrapCircleThumbnail setResourceExample;
@@ -44,18 +41,6 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
 
         setDrawableExample.setImageDrawable(getResources().getDrawable(R.drawable.ladybird));
         setResourceExample.setImageResource(R.drawable.caterpillar);
-    }
-
-    @OnClick(R.id.bcircle_border_change_example) void onBorderChangeExampleClicked() {
-        float px = 16;
-        showingBorder = !showingBorder;
-        borderChange.setBorderWidth(showingBorder ? px : 0);
-    }
-
-    @OnClick(R.id.bcircle_color_change_example) void onColorChangeExampleClicked() {
-        showRed = !showRed;
-        int resId = (showRed) ? R.color.bootstrap_brand_danger : R.color.bootstrap_brand_primary;
-        colorChange.setBorderColor(getResources().getColor(resId));
     }
 
     @OnClick(R.id.bcircle_theme_change_example) void onThemeChangeExampleClicked() {
@@ -97,6 +82,10 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
                 break;
         }
         imageChange.setImageResource(resId);
+    }
+
+    @OnClick(R.id.bcircle_border_change_example) void onBorderChangeExampleClicked() {
+        borderChange.setBorderDisplayed(!borderChange.isBorderDisplayed());
     }
 
 }

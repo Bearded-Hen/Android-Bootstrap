@@ -5,6 +5,8 @@ Fix/Priority List
 * Generate gh-pages
 * Write short tutorial
 * Update BootstrapThumbnail
+* Tidy up of messy drawable factory! DRY
+* Measure performance via systrace etc on old device and make optimisations where necessary/review code
 
 Feature (Wish)List
 =============
