@@ -161,6 +161,26 @@ class BootstrapDrawableFactory {
         return drawable;
     }
 
+    static Drawable bootstrapThumbnail(Context context,
+                                       BootstrapBrand bootstrapBrand,
+                                       @ColorInt int outerBorderWidth,
+                                       @ColorInt int bg,
+                                       boolean rounded) {
+
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setShape(GradientDrawable.RECTANGLE);
+        drawable.setColor(bg);
+        drawable.setStroke(outerBorderWidth, bootstrapBrand.defaultEdge(context));
+
+        float r = context.getResources().getDimension(R.dimen.bthumbnail_rounded_corner);
+
+        if (rounded) {
+            drawable.setCornerRadii(new float[]{r, r, r, r, r, r, r, r});
+        }
+
+        return drawable;
+    }
+
     private static int[][] getStateList() {
         if (Build.VERSION.SDK_INT >= 14) {
             return new int[][]

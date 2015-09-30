@@ -1,7 +1,6 @@
 <resources>
 
     <dimen name="bbuton_rounded_corner_radius">5dp</dimen>
-    <dimen name="bthumbnail_rounded_corner_radius">3dp</dimen>
 
     <dimen name="padding_micro">4dp</dimen>
     <dimen name="padding_small">8dp</dimen>
@@ -63,6 +62,7 @@
     <dimen name="bootstrap_edit_text_stroke_default">1.5dp</dimen>
 
     <dimen name="bthumbnail_default_border">8dp</dimen>
+    <dimen name="bthumbnail_rounded_corner">8dp</dimen>
     <dimen name="bthumbnail_outer_stroke">2dp</dimen>
 
 </resources>

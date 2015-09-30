@@ -3,6 +3,7 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -37,26 +38,30 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
     protected float outerBorderWidth;
 
     protected Bitmap sourceBitmap;
+    protected final Paint placeholderPaint = new Paint();
+    protected final Paint borderPaint = new Paint();
+    protected final Paint imagePaint = new Paint();
 
     public BootstrapBaseThumbnail(Context context) {
         super(context);
-        initialise();
-
+        initialise(null);
     }
 
     public BootstrapBaseThumbnail(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialise();
+        initialise(attrs);
     }
 
     public BootstrapBaseThumbnail(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initialise();
+        initialise(attrs);
     }
 
-    private void initialise() {
+    protected void initialise(AttributeSet attrs) {
         this.outerBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
         this.borderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
+        setupPaints();
+        updateImageState();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -83,6 +88,21 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
         }
         super.onRestoreInstanceState(state);
         updateImageState();
+    }
+
+    private void setupPaints() {
+        int strokeColor = bootstrapBrand.defaultEdge(getContext());
+        int placeholderColor = getContext().getResources().getColor(R.color.bootstrap_gray_light);
+
+        borderPaint.setColor(strokeColor);
+        borderPaint.setAntiAlias(true);
+        borderPaint.setStrokeWidth(borderWidth);
+        borderPaint.setStyle(Paint.Style.STROKE);
+        imagePaint.setAntiAlias(true);
+
+        placeholderPaint.setColor(placeholderColor);
+        placeholderPaint.setAntiAlias(true);
+        placeholderPaint.setStyle(Paint.Style.FILL);
     }
 
     @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -154,6 +174,9 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
         updateImageState();
     }
 
+    /**
+     * Called when the ImageView should alter its source bitmap, then invalidate itself.
+     */
     protected abstract void updateImageState();
 
     /*

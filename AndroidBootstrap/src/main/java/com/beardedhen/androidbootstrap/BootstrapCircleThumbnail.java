@@ -27,10 +27,6 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
     private final RectF imageRectF = new RectF();
     private final Matrix matrix = new Matrix();
 
-    private final Paint imagePaint = new Paint();
-    private final Paint placeholderPaint = new Paint();
-    private final Paint borderPaint = new Paint();
-
     public BootstrapCircleThumbnail(Context context) {
         super(context);
         initialise(null);
@@ -46,7 +42,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
         initialise(attrs);
     }
 
-    private void initialise(AttributeSet attrs) {
+    protected void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapCircleThumbnail);
 
         try {
@@ -65,22 +61,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
         }
 
         outerBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
-        updateImageState();
-    }
-
-    private void setupPaints() {
-        int strokeColor = bootstrapBrand.defaultEdge(getContext());
-        int placeholderColor = getContext().getResources().getColor(R.color.bootstrap_gray_light);
-
-        borderPaint.setColor(strokeColor);
-        borderPaint.setAntiAlias(true);
-        borderPaint.setStrokeWidth(borderWidth);
-        borderPaint.setStyle(Paint.Style.STROKE);
-        imagePaint.setAntiAlias(true);
-
-        placeholderPaint.setColor(placeholderColor);
-        placeholderPaint.setAntiAlias(true);
-        placeholderPaint.setStyle(Paint.Style.FILL);
+        super.initialise(attrs);
     }
 
     /**
@@ -135,25 +116,6 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
         invalidate();
     }
 
-
-    private void updateBackground() {
-        Drawable bg = null;
-
-        if (hasBorder) {
-            bg = BootstrapDrawableFactory.bootstrapCircleThumbnail(
-                    getContext(),
-                    bootstrapBrand,
-                    (int) outerBorderWidth,
-                    getResources().getColor(R.color.bthumbnail_background));
-        }
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
-        }
-    }
-
     @Override protected void onDraw(@NonNull Canvas canvas) {
         float viewWidth = getWidth();
         float viewHeight = getHeight();
@@ -171,8 +133,6 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
         if (hasBorder) {
             imageRadius -= borderWidth;
         }
-
-        setupPaints();
 
         Paint paint = (isPlaceholder) ? placeholderPaint : imagePaint;
         canvas.drawCircle(center, center, imageRadius, paint);
@@ -201,6 +161,24 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
             h = w;
         }
         setMeasuredDimension(w, h);
+    }
+
+    private void updateBackground() {
+        Drawable bg = null;
+
+        if (hasBorder) {
+            bg = BootstrapDrawableFactory.bootstrapCircleThumbnail(
+                    getContext(),
+                    bootstrapBrand,
+                    (int) outerBorderWidth,
+                    getResources().getColor(R.color.bthumbnail_background));
+        }
+        if (Build.VERSION.SDK_INT >= 16) {
+            setBackground(bg);
+        }
+        else {
+            setBackgroundDrawable(bg);
+        }
     }
 
 }

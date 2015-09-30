@@ -28,6 +28,7 @@ public class BootstrapThumbnailExample extends BaseActivity {
 
     @Bind(R.id.bthumb_image_change_example) BootstrapThumbnail imageChange;
     @Bind(R.id.bthumb_theme_change_example) BootstrapThumbnail themeChange;
+    @Bind(R.id.bthumb_rounded_change_example) BootstrapThumbnail roundedChange;
     @Bind(R.id.bthumb_set_image_bitmap_example) BootstrapThumbnail setBitmapExample;
     @Bind(R.id.bthumb_set_image_drawable_example) BootstrapThumbnail setDrawableExample;
     @Bind(R.id.bthumb_set_image_resource_example) BootstrapThumbnail setResourceExample;
@@ -81,6 +82,10 @@ public class BootstrapThumbnailExample extends BaseActivity {
                 break;
         }
         imageChange.setImageResource(resId);
+    }
+
+    @OnClick(R.id.bthumb_rounded_change_example) void onRoundedChangeExampleClicked() {
+        roundedChange.setRounded(!roundedChange.isRounded());
     }
 
 }

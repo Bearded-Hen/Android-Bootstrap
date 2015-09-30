@@ -20,19 +20,6 @@
 
     <TextView
         style="@style/description_label"
-        android:text="Tap to Change Color"
-        />
-
-    <com.beardedhen.androidbootstrap.BootstrapThumbnail
-        android:id="@+id/bthumb_color_change_example"
-        android:layout_width="@dimen/default_circle_size"
-        android:layout_height="@dimen/default_circle_size"
-        android:src="@drawable/flower"
-        app:hasBorder="true"
-        />
-
-    <TextView
-        style="@style/description_label"
         android:text="Tap to Change Theme"
         />
 
@@ -47,16 +34,27 @@
 
     <TextView
         style="@style/description_label"
-        android:text="Tap to Change Border Width"
+        android:text="Tap to Change Border"
         />
 
     <com.beardedhen.androidbootstrap.BootstrapThumbnail
         android:id="@+id/bthumb_border_change_example"
         android:layout_width="@dimen/default_circle_size"
         android:layout_height="@dimen/default_circle_size"
+        android:src="@drawable/flower"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Tap to Change Rounded"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapThumbnail
+        android:id="@+id/bthumb_rounded_change_example"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
+        app:roundedCorners="true"
         android:src="@drawable/stars"
-        app:bootstrapBrand="primary"
-        app:hasBorder="false"
         />
 
     <TextView

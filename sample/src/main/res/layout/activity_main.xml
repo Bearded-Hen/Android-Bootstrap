@@ -54,6 +54,12 @@
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/example_bootstrap_thumbnail"
+            style="@style/home_button"
+            android:text="BootstrapThumbnail"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_edit_text"
             style="@style/home_button"
             android:text="BootstrapEditText"
@@ -63,13 +69,8 @@
             android:id="@+id/example_bootstrap_input_group"
             style="@style/home_button"
             android:text="BootstrapInputGroup"
-            />
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/example_bootstrap_thumbnail"
-            style="@style/home_button"
-            android:text="BootstrapThumbnail"
-            />
+            android:visibility="gone"
+            /> <!-- TODO implement -->
 
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 </ScrollView>
