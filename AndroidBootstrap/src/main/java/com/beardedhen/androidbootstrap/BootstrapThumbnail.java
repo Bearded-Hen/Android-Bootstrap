@@ -2,17 +2,10 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
@@ -26,9 +19,6 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
 
     private boolean roundedCorners;
     private float cornerRadius;
-
-    private final RectF imageRectF = new RectF();
-    private final Matrix matrix = new Matrix();
 
     public BootstrapThumbnail(Context context) {
         super(context);
@@ -79,87 +69,15 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
             a.recycle();
         }
         this.cornerRadius = getResources().getDimension(R.dimen.bthumbnail_rounded_corner);
+        setScaleType(ScaleType.CENTER_CROP);
+        setPadding(20, 20, 20, 20);
+        setCropToPadding(true);
         super.initialise(attrs);
     }
 
-    /**
-     * This method is called when the Rectangle Image needs to be recreated due to changes in size
-     * etc.
-     * <p/>
-     * A Paint object uses a BitmapShader to draw a scaled image onto the View
-     * Canvas, thus avoiding any inefficiencies in duplicating Bitmaps.
-     * <p/>
-     * <a href="http://www.curious-creature.com/2012/12/11/android-recipe-1-image-with-rounded-corners">
-     * Further reading</a>
-     */
     protected void updateImageState() {
-        float xOri = 0;
-        float yOri = 0;
-        float viewWidth = getWidth();
-        float viewHeight = getHeight();
-
-        if ((int) viewWidth <= 0 || (int) viewHeight <= 0) {
-            return;
-        }
-
-        if (sourceBitmap != null) {
-            BitmapShader imageShader = new BitmapShader(sourceBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-            imagePaint.setShader(imageShader);
-
-            if (hasBorder) {
-                xOri += borderWidth;
-                yOri += borderWidth;
-                viewWidth -= borderWidth;
-                viewHeight -= borderWidth;
-            }
-
-            // Scale the bitmap using a matrix, ensuring that it always matches the view bounds.
-            float bitmapWidth = sourceBitmap.getWidth();
-            float bitmapHeight = sourceBitmap.getHeight();
-
-            float scaleFactor = (bitmapWidth < bitmapHeight) ? bitmapWidth : bitmapHeight;
-            float xScale = viewWidth / scaleFactor;
-            float yScale = viewHeight / scaleFactor;
-
-            // Translate image to center crop (if it is not a perfect square bitmap)
-            float dx = 0;
-            float dy = 0;
-
-            if (bitmapWidth > bitmapHeight) {
-                dx = (viewWidth - bitmapWidth * xScale) * 0.5f;
-            }
-            else if (bitmapHeight > bitmapWidth) {
-                dy = (viewHeight - bitmapHeight * yScale) * 0.5f;
-            }
-
-            matrix.set(null);
-            matrix.setScale(xScale, yScale);
-            matrix.postTranslate((dx + 0.5f), (dy + 0.5f));
-
-            imageShader.setLocalMatrix(matrix);
-            imageRectF.set(xOri, yOri, viewWidth, viewHeight);
-        }
         updateBackground();
         invalidate();
-    }
-
-    @Override protected void onDraw(@NonNull Canvas canvas) {
-        float viewWidth = getWidth();
-        float viewHeight = getHeight();
-
-        if ((int) viewWidth <= 0 || (int) viewHeight <= 0) {
-            return;
-        }
-
-        boolean isPlaceholder = sourceBitmap == null;
-        Paint paint = (isPlaceholder) ? placeholderPaint : imagePaint;
-
-        if (roundedCorners) {
-            canvas.drawRoundRect(imageRectF, cornerRadius, cornerRadius, paint);
-        }
-        else {
-            canvas.drawRect(imageRectF, paint);
-        }
     }
 
     private void updateBackground() {

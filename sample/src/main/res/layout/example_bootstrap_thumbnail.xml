@@ -89,7 +89,7 @@
         android:id="@+id/bthumb_set_image_resource_example"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        /> <!-- FIXME -->
 
     <TextView
         style="@style/description_label"
@@ -187,19 +187,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/stars"
-        />
+        /> <!-- FIXME -->
 
     <com.beardedhen.androidbootstrap.BootstrapThumbnail
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/daffodil_large"
-        />
+        /> <!-- FIXME -->
 
     <com.beardedhen.androidbootstrap.BootstrapThumbnail
         android:layout_width="150dp"
         android:layout_height="75dp"
         android:src="@drawable/small_daffodils"
-        />
+        /> <!-- FIXME -->
 
     <com.beardedhen.androidbootstrap.BootstrapThumbnail
         android:layout_width="75dp"
