@@ -1,7 +1,11 @@
 package com.beardedhen.androidbootstrap;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,8 +21,12 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapThumbnail";
 
+    private Paint placeholderPaint;
+    private final RectF imageRect = new RectF();
+
     private boolean roundedCorners;
     private float cornerRadius;
+    private float borderWidth;
 
     public BootstrapThumbnail(Context context) {
         super(context);
@@ -68,15 +76,22 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
         finally {
             a.recycle();
         }
+
+        placeholderPaint = new Paint();
+        placeholderPaint.setColor(getResources().getColor(R.color.bootstrap_gray_light));
+        placeholderPaint.setStyle(Paint.Style.FILL);
+        placeholderPaint.setAntiAlias(true);
+
         this.cornerRadius = getResources().getDimension(R.dimen.bthumbnail_rounded_corner);
+        this.borderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
         setScaleType(ScaleType.CENTER_CROP);
-        setPadding(20, 20, 20, 20);
-        setCropToPadding(true);
+
         super.initialise(attrs);
     }
 
     protected void updateImageState() {
         updateBackground();
+        updatePadding();
         invalidate();
     }
 
@@ -99,9 +114,42 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
         }
     }
 
+    private void updatePadding() {
+        if (Build.VERSION.SDK_INT >= 16) {
+            int p = hasBorder  ? (int) borderWidth : 0;
+            setPadding(p, p, p, p);
+            setCropToPadding(hasBorder);
+        }
+    }
+
+    @Override protected void onDraw(Canvas canvas) {
+        if (sourceBitmap == null) { // draw a placeholder
+
+            float padding = hasBorder  ? borderWidth : 0;
+            imageRect.top = padding;
+            imageRect.bottom = getHeight() - padding;
+            imageRect.left = padding;
+            imageRect.right = getWidth() - padding;
+
+            if (roundedCorners) {
+                canvas.drawRoundRect(imageRect, cornerRadius, cornerRadius, placeholderPaint);
+            }
+            else {
+                canvas.drawRect(imageRect, placeholderPaint);
+            }
+        }
+        else {
+            super.onDraw(canvas);
+        }
+    }
+
     /*
      * Getters/setters
      */
+
+    @TargetApi(16) @Override public void setBorderDisplayed(boolean displayed) {
+        super.setBorderDisplayed(displayed);
+    }
 
     @Override public void setRounded(boolean rounded) {
         this.roundedCorners = rounded;
