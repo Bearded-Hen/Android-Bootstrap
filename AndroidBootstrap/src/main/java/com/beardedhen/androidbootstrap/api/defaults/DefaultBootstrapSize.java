@@ -1,82 +1,53 @@
 package com.beardedhen.androidbootstrap.api.defaults;
 
 import android.content.Context;
-import android.support.annotation.DimenRes;
 
-import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 
-// TODO document/finalise
+/**
+ * Bootstrap provides 5 sizes - XS, SM, MD, LG, and XL. In the Android implementation the scale
+ * factors used are 0.75, 0.83, 1.00, 1.50, and 2.00 respectively.
+ */
+public enum DefaultBootstrapSize implements BootstrapSize {
 
-public enum DefaultBootstrapSize implements BootstrapSize { // FIXME change values
-
-    MEDIUM(R.dimen.bootstrap_button_default_font_size,
-            R.dimen.bootstrap_button_default_vert_padding,
-            R.dimen.bootstrap_button_default_hori_padding,
-            R.dimen.bootstrap_button_default_corner_radius,
-            R.dimen.bootstrap_button_default_edge_width),
-
-    SMALL(R.dimen.bootstrap_button_small_font_size,
-          R.dimen.bootstrap_button_small_vert_padding,
-          R.dimen.bootstrap_button_small_hori_padding,
-          R.dimen.bootstrap_button_small_corner_radius,
-          R.dimen.bootstrap_button_small_edge_width),
-
-    LARGE(R.dimen.bootstrap_button_large_font_size,
-          R.dimen.bootstrap_button_large_vert_padding,
-          R.dimen.bootstrap_button_large_hori_padding,
-          R.dimen.bootstrap_button_large_corner_radius,
-          R.dimen.bootstrap_button_large_edge_width);
-
-    @DimenRes private final int buttonFontSize;
-    @DimenRes private final int buttonVerticalPadding;
-    @DimenRes private final int buttonHorizontalPadding;
-    @DimenRes private final int buttonCornerRadius;
-    @DimenRes private final int buttonLineHeight;
-
-    DefaultBootstrapSize(@DimenRes int buttonFontSize,
-                         @DimenRes int buttonVerticalPadding,
-                         @DimenRes int buttonHorizontalPadding,
-                         @DimenRes int buttonCornerRadius,
-                         @DimenRes int buttonLineHeight) {
-        this.buttonFontSize = buttonFontSize;
-        this.buttonVerticalPadding = buttonVerticalPadding;
-        this.buttonHorizontalPadding = buttonHorizontalPadding;
-        this.buttonCornerRadius = buttonCornerRadius;
-        this.buttonLineHeight = buttonLineHeight;
-    }
+    XS(),
+    SM(),
+    MD(),
+    LG(),
+    XL();
 
     public static DefaultBootstrapSize fromAttributeValue(int attrValue) {
         switch (attrValue) {
             case 0:
-                return MEDIUM;
+                return XS;
             case 1:
-                return SMALL;
+                return SM;
             case 2:
-                return LARGE;
+                return MD;
+            case 3:
+                return LG;
+            case 4:
+                return XL;
             default:
-                return MEDIUM;
+                return MD;
         }
     }
 
-    @Override public int buttonFontSize(Context context) {
-        return context.getResources().getDimensionPixelSize(buttonFontSize);
-    }
-
-    @Override public int buttonVerticalPadding(Context context) {
-        return context.getResources().getDimensionPixelSize(buttonVerticalPadding);
-    }
-
-    @Override public int buttonHorizontalPadding(Context context) {
-        return context.getResources().getDimensionPixelSize(buttonHorizontalPadding);
-    }
-
-    @Override public int buttonCornerRadius(Context context) {
-        return context.getResources().getDimensionPixelSize(buttonCornerRadius);
-    }
-
-    @Override public int buttonLineHeight(Context context) {
-        return context.getResources().getDimensionPixelSize(buttonLineHeight);
+    @Override public float scaleFactor(Context context) {
+        switch (this) {
+            case XS:
+                return 0.70f;
+            case SM:
+                return 0.85f;
+            case MD:
+                return 1.00f;
+            case LG:
+                return 1.30f;
+            case XL:
+                return 1.60f;
+            default:
+                return 1.00f;
+        }
     }
 
 }

@@ -11,10 +11,10 @@
 
     <!-- Default button size -->
     <dimen name="bootstrap_button_default_font_size">14sp</dimen>
-    <dimen name="bootstrap_button_default_vert_padding">5.25dp</dimen>
+    <dimen name="bootstrap_button_default_vert_padding">5.75dp</dimen>
     <dimen name="bootstrap_button_default_hori_padding">14dp</dimen>
-    <dimen name="bootstrap_button_default_corner_radius">3.5dp</dimen>
-    <dimen name="bootstrap_button_default_edge_width">0.875dp</dimen>
+    <dimen name="bootstrap_button_default_corner_radius">4dp</dimen>
+    <dimen name="bootstrap_button_default_edge_width">1dp</dimen>
 
     <!-- Small button size -->
     <dimen name="bootstrap_button_small_font_size">11.9sp</dimen>

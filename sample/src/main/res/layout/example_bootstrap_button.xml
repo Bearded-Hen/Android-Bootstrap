@@ -28,7 +28,7 @@
                 style="@style/wrapping_button"
                 android:text="Corners"
                 app:bootstrapBrand="success"
-                app:bootstrapSize="large"
+                app:bootstrapSize="lg"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -36,7 +36,7 @@
                 style="@style/wrapping_button"
                 android:text="Outline"
                 app:bootstrapBrand="danger"
-                app:bootstrapSize="large"
+                app:bootstrapSize="lg"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -44,7 +44,7 @@
                 style="@style/wrapping_button"
                 android:text="Size"
                 app:bootstrapBrand="success"
-                app:bootstrapSize="large"
+                app:bootstrapSize="lg"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -52,7 +52,7 @@
                 style="@style/wrapping_button"
                 android:text="Theme"
                 app:bootstrapBrand="info"
-                app:bootstrapSize="large"
+                app:bootstrapSize="lg"
                 />
 
         </LinearLayout>
@@ -437,23 +437,23 @@
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
-                android:text="Large"
+                android:text="lg"
                 app:bootstrapBrand="success"
-                app:bootstrapSize="large"
+                app:bootstrapSize="lg"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Medium"
                 app:bootstrapBrand="warning"
-                app:bootstrapSize="medium"
+                app:bootstrapSize="md"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 style="@style/wrapping_button"
                 android:text="Small"
                 app:bootstrapBrand="danger"
-                app:bootstrapSize="small"
+                app:bootstrapSize="sm"
                 />
 
         </LinearLayout>

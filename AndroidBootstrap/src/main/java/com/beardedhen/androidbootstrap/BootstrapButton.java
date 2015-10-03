@@ -1,6 +1,7 @@
 package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -20,6 +21,7 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.ButtonModeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
+import com.beardedhen.androidbootstrap.support.DimenUtils;
 
 import java.io.Serializable;
 
@@ -43,6 +45,12 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     private boolean roundedCorners;
     private boolean showOutline;
+
+    private float baselineFontSize;
+    private float baselineVertPadding;
+    private float baselineHoriPadding;
+    private float baselineStrokeWidth;
+    private float baselineCornerRadius;
 
     public BootstrapButton(Context context) {
         super(context);
@@ -72,6 +80,13 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal);
             buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
+
+            final Resources res = getResources();
+            baselineFontSize = DimenUtils.textSizeFromDimenResource(getContext(), R.dimen.bootstrap_button_default_font_size);
+            baselineVertPadding = res.getDimension(R.dimen.bootstrap_button_default_vert_padding);
+            baselineHoriPadding = res.getDimension(R.dimen.bootstrap_button_default_hori_padding);
+            baselineStrokeWidth = res.getDimension(R.dimen.bootstrap_button_default_edge_width);
+            baselineCornerRadius = res.getDimension(R.dimen.bootstrap_button_default_corner_radius);
         }
         finally {
             a.recycle();
@@ -92,6 +107,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     @Override public void onRestoreInstanceState(Parcelable state) {
+        super.onRestoreInstanceState(state);
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
 
@@ -110,40 +126,47 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             }
             state = bundle.getParcelable(TAG);
         }
-        super.onRestoreInstanceState(state);
-        updateBootstrapState();
     }
 
-    @Override public void updateBootstrapState() {
+    @Override protected void updateBootstrapState() {
         super.updateBootstrapState();
         BootstrapBrand bootstrapBrand = getBootstrapBrand();
 
-        if (bootstrapSize != null) {
+        float cornerRadius = baselineCornerRadius;
+        float strokeWidth = baselineStrokeWidth;
 
-            int vert = bootstrapSize.buttonVerticalPadding(getContext());
-            int hori = bootstrapSize.buttonHorizontalPadding(getContext());
+        if (bootstrapSize != null) { // set padding & font size
+            final float factor = bootstrapSize.scaleFactor(getContext());
+            final float fontSize = baselineFontSize * factor;
 
+            int vert = (int) (baselineVertPadding * factor);
+            int hori = (int) (baselineHoriPadding * factor);
             setPadding(hori, vert, hori, vert);
+            setTextSize(fontSize);
 
-            setTextColor(BootstrapDrawableFactory.bootstrapButtonText(
-                    getContext(),
-                    showOutline,
-                    bootstrapBrand));
+            cornerRadius *= factor;
+            strokeWidth *= factor;
+        }
 
-            Drawable bg = BootstrapDrawableFactory.bootstrapButton(
-                    getContext(),
-                    bootstrapBrand,
-                    bootstrapSize,
-                    viewGroupPosition,
-                    showOutline,
-                    roundedCorners);
+        setTextColor(BootstrapDrawableFactory.bootstrapButtonText(
+                getContext(),
+                showOutline,
+                bootstrapBrand));
 
-            if (Build.VERSION.SDK_INT >= 16) {
-                setBackground(bg);
-            }
-            else {
-                setBackgroundDrawable(bg);
-            }
+        Drawable bg = BootstrapDrawableFactory.bootstrapButton(
+                getContext(),
+                bootstrapBrand,
+                (int) strokeWidth,
+                (int) cornerRadius,
+                viewGroupPosition,
+                showOutline,
+                roundedCorners);
+
+        if (Build.VERSION.SDK_INT >= 16) {
+            setBackground(bg);
+        }
+        else {
+            setBackgroundDrawable(bg);
         }
     }
 

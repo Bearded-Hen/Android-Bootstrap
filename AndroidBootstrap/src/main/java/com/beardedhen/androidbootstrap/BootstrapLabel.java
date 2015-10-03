@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading;
@@ -94,7 +93,7 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
             int hori = (int) bootstrapHeading.horizontalPadding(getContext());
 
             setPadding(hori, vert, hori, vert);
-            setTextSize(TypedValue.COMPLEX_UNIT_PX, bootstrapHeading.getTextSize(getContext()));
+            setTextSize(bootstrapHeading.getTextSize(getContext()));
         }
 
         setTextColor(getBootstrapBrand().defaultTextColor(getContext()));

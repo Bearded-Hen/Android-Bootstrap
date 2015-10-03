@@ -13,7 +13,7 @@
         android:layout_margin="16dp"
         android:orientation="vertical"
         app:roundedCorners="true"
-        app:bootstrapSize="large"
+        app:bootstrapSize="lg"
         app:bootstrapBrand="info"
         >
 
@@ -30,21 +30,21 @@
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/example_bootstrap_label"
-            style="@style/home_button"
-            android:text="BootstrapLabel"
-            />
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_btn_group"
             style="@style/home_button"
-            android:text="BootstrapGroup"
+            android:text="BootstrapButtonGroup"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_progress"
             style="@style/home_button"
             android:text="BootstrapProgress"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/example_bootstrap_label"
+            style="@style/home_button"
+            android:text="BootstrapLabel"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton

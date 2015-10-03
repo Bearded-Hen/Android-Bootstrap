@@ -44,16 +44,25 @@ public class BootstrapButtonExample extends BaseActivity {
     }
 
     @OnClick(R.id.bbutton_example_size) void onSizeExampleClicked() {
-        switch ((DefaultBootstrapSize) exampleSize.getBootstrapSize()) {
-            case MEDIUM:
-                exampleSize.setBootstrapSize(DefaultBootstrapSize.SMALL);
-                break;
-            case SMALL:
-                exampleSize.setBootstrapSize(DefaultBootstrapSize.LARGE);
-                break;
-            case LARGE:
-                exampleSize.setBootstrapSize(DefaultBootstrapSize.MEDIUM);
-                break;
+        if (exampleSize.getBootstrapSize() != null) {
+
+            switch ((DefaultBootstrapSize) exampleSize.getBootstrapSize()) {
+                case XS:
+                    exampleSize.setBootstrapSize(DefaultBootstrapSize.SM);
+                    break;
+                case SM:
+                    exampleSize.setBootstrapSize(DefaultBootstrapSize.MD);
+                    break;
+                case MD:
+                    exampleSize.setBootstrapSize(DefaultBootstrapSize.LG);
+                    break;
+                case LG:
+                    exampleSize.setBootstrapSize(DefaultBootstrapSize.XL);
+                    break;
+                case XL:
+                    exampleSize.setBootstrapSize(DefaultBootstrapSize.XS);
+                    break;
+            }
         }
     }
 
@@ -86,24 +95,9 @@ public class BootstrapButtonExample extends BaseActivity {
     private void setupCustomStyle() {
         // create a custom bootstrap size
         exampleCustomStyle.setBootstrapSize(new BootstrapSize() {
-            @Override public int buttonFontSize(Context context) {
-                return 24;
-            }
-
-            @Override public int buttonVerticalPadding(Context context) {
-                return 20; // (in production use R.dimen values rather than raw pixel values)
-            }
-
-            @Override public int buttonHorizontalPadding(Context context) {
-                return 40;
-            }
-
-            @Override public int buttonCornerRadius(Context context) {
-                return 20;
-            }
-
-            @Override public int buttonLineHeight(Context context) {
-                return 8;
+            @Override
+            public float scaleFactor(Context context) {
+                return 3.0f;
             }
         });
 

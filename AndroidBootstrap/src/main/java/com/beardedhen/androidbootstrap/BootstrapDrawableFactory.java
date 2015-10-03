@@ -10,7 +10,6 @@ import android.os.Build;
 import android.support.annotation.ColorInt;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.support.ColorUtils;
@@ -22,13 +21,11 @@ class BootstrapDrawableFactory {
 
     static Drawable bootstrapButton(Context context,
                                     BootstrapBrand brand,
-                                    BootstrapSize bootstrapSize,
+                                    int strokeWidth,
+                                    int cornerRadius,
                                     ViewGroupPosition position,
                                     boolean showOutline,
                                     boolean rounded) {
-
-        int strokeWidth = bootstrapSize.buttonLineHeight(context);
-        int cornerRadius = bootstrapSize.buttonCornerRadius(context);
 
         GradientDrawable defaultGd = new GradientDrawable();
         GradientDrawable activeGd = new GradientDrawable();
@@ -245,19 +242,23 @@ class BootstrapDrawableFactory {
         int n = strokeWidth * -1;
 
         // use LayerDrawable to hide strokes on one side of the drawable (if Button is in a group)
-        switch (position) {
-            case MIDDLE_HORI:
-                setInsetOnLayers(ldAry, n, 0, 0, 0);
-                break;
-            case END:
-                setInsetOnLayers(ldAry, n, 0, 0, 0);
-                break;
-            case MIDDLE_VERT:
-                setInsetOnLayers(ldAry, 0, n, 0, 0);
-                break;
-            case BOTTOM:
-                setInsetOnLayers(ldAry, 0, n, 0, 0);
+
+        if (position != null) {
+            switch (position) {
+                case MIDDLE_HORI:
+                    setInsetOnLayers(ldAry, n, 0, 0, 0);
+                    break;
+                case END:
+                    setInsetOnLayers(ldAry, n, 0, 0, 0);
+                    break;
+                case MIDDLE_VERT:
+                    setInsetOnLayers(ldAry, 0, n, 0, 0);
+                    break;
+                case BOTTOM:
+                    setInsetOnLayers(ldAry, 0, n, 0, 0);
+            }
         }
+
 
         if (Build.VERSION.SDK_INT >= 14) {
             stateListDrawable.addState(new int[]{android.R.attr.state_hovered}, activeLayer);

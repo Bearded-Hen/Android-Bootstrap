@@ -21,9 +21,11 @@
     </attr>
 
     <attr name="bootstrapSize" format="enum">
-        <enum name="medium" value="0"/>
-        <enum name="small" value="1"/>
-        <enum name="large" value="2"/>
+        <enum name="xs" value="0"/>
+        <enum name="sm" value="1"/>
+        <enum name="md" value="2"/>
+        <enum name="lg" value="3"/>
+        <enum name="xl" value="4"/>
     </attr>
 
     <attr name="bootstrapHeading" format="enum">

@@ -87,16 +87,25 @@ public class BootstrapButtonGroupExample extends BaseActivity {
     }
 
     @OnClick(R.id.bbutton_group_size_change_btn) void onSizeChangeExampleClicked() {
-        switch ((DefaultBootstrapSize) sizeChange.getBootstrapSize()) {
-            case MEDIUM:
-                sizeChange.setBootstrapSize(DefaultBootstrapSize.SMALL);
-                break;
-            case SMALL:
-                sizeChange.setBootstrapSize(DefaultBootstrapSize.LARGE);
-                break;
-            case LARGE:
-                sizeChange.setBootstrapSize(DefaultBootstrapSize.MEDIUM);
-                break;
+        if (sizeChange.getBootstrapSize() != null) {
+
+            switch ((DefaultBootstrapSize) sizeChange.getBootstrapSize()) {
+                case XS:
+                    sizeChange.setBootstrapSize(DefaultBootstrapSize.SM);
+                    break;
+                case SM:
+                    sizeChange.setBootstrapSize(DefaultBootstrapSize.MD);
+                    break;
+                case MD:
+                    sizeChange.setBootstrapSize(DefaultBootstrapSize.LG);
+                    break;
+                case LG:
+                    sizeChange.setBootstrapSize(DefaultBootstrapSize.XL);
+                    break;
+                case XL:
+                    sizeChange.setBootstrapSize(DefaultBootstrapSize.XS);
+                    break;
+            }
         }
     }
 

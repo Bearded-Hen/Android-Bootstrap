@@ -1,12 +1,14 @@
 package com.beardedhen.androidbootstrap.api.view;
 
+import android.support.annotation.Nullable;
+
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 
 // TODO document/finalise
 public interface BootstrapSizeView {
 
-    void setBootstrapSize(BootstrapSize bootstrapSize);
+    void setBootstrapSize(@Nullable BootstrapSize bootstrapSize);
 
-    BootstrapSize getBootstrapSize();
+    @Nullable BootstrapSize getBootstrapSize();
 
 }

@@ -23,6 +23,8 @@ import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.BOTTOM;
 import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.END;
@@ -85,7 +87,6 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
             a.recycle();
         }
         updateBootstrapPositions();
-        updateChildrenState();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -122,7 +123,6 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         }
         super.onRestoreInstanceState(state);
         updateBootstrapPositions();
-        updateChildrenState();
     }
 
     private void updateBootstrapPositions() {
@@ -137,30 +137,33 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         else if (childCount == 1) {
             BootstrapButton button = retrieveButtonChild(0);
             button.setViewGroupPosition(SOLO, 0);
-            button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
         }
+
+        List<BootstrapButton> buttonList = new ArrayList<>();
 
         for (int i = 0; i < childCount; i++) {
             BootstrapButton button = retrieveButtonChild(i);
+
+            if (button.getVisibility() == VISIBLE) {
+                buttonList.add(button);
+            }
+        }
+
+        final int size = buttonList.size();
+        for (int i = 0; i < size; i++) {
+            BootstrapButton button = buttonList.get(i);
             ViewGroupPosition position;
 
             if (i == 0) { // first view
                 position = orientation == HORIZONTAL ? START : TOP;
             }
-            else if (i == childCount - 1) { // last view
+            else if (i == size - 1) { // last view
                 position = orientation == HORIZONTAL ? END : BOTTOM;
             }
             else {
                 position = orientation == HORIZONTAL ? MIDDLE_HORI : MIDDLE_VERT;
             }
             button.setViewGroupPosition(position, i);
-            button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
-        }
-    }
-
-    private void updateChildrenState() {
-        for (int i = 0; i < getChildCount(); i++) {
-            BootstrapButton button = retrieveButtonChild(i);
             button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
         }
     }
