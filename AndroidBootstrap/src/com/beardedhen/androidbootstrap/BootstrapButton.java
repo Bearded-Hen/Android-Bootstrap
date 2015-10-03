@@ -182,7 +182,7 @@ public class BootstrapButton extends FrameLayout {
         paddingB = (int) (bootstrapSize.paddingB * scale + 0.5f);
 
         //get layout items
-        layout = (ViewGroup) v.findViewById(R.id.layout);
+        layout = (ViewGroup) v.findViewById(R.id.layout_button);
         lblLeft = (TextView) v.findViewById(R.id.lblLeft);
         lblMiddle = (TextView) v.findViewById(R.id.lblMiddle);
         lblRight = (TextView) v.findViewById(R.id.lblRight);
