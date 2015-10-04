@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
 /**
  * BootstrapCircleThumbnails display a circular image with an optional border, that can be themed
@@ -47,7 +48,10 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
 
         try {
             int typeOrdinal = a.getInt(R.styleable.BootstrapCircleThumbnail_bootstrapBrand, -1);
+            int sizeOrdinal = a.getInt(R.styleable.BootstrapCircleThumbnail_bootstrapSize, -1);
+
             this.hasBorder = a.getBoolean(R.styleable.BootstrapCircleThumbnail_hasBorder, true);
+            this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
 
             if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
                 this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
@@ -60,7 +64,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
             a.recycle();
         }
 
-        outerBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
+        baselineOuterBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
         super.initialise(attrs);
     }
 
@@ -131,7 +135,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
         float imageRadius = center;
 
         if (hasBorder) {
-            imageRadius -= borderWidth;
+            imageRadius -= (baselineBorderWidth * bootstrapSize);
         }
 
         Paint paint = (isPlaceholder) ? placeholderPaint : imagePaint;
@@ -149,7 +153,6 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
                 w = sourceBitmap.getWidth();
             }
             if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED) {
-
                 h = sourceBitmap.getHeight();
             }
         }
@@ -170,7 +173,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
             bg = BootstrapDrawableFactory.bootstrapCircleThumbnail(
                     getContext(),
                     bootstrapBrand,
-                    (int) outerBorderWidth,
+                    (int) (baselineOuterBorderWidth * bootstrapSize),
                     getResources().getColor(R.color.bthumbnail_background));
         }
         if (Build.VERSION.SDK_INT >= 16) {

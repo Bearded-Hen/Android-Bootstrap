@@ -15,7 +15,9 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
+import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.BorderView;
 
 import java.io.Serializable;
@@ -28,15 +30,17 @@ import static android.widget.ImageView.ScaleType.CENTER_CROP;
  * CENTER_CROP is allowed, and a callback is fired whenever the image source changes.
  */
 abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBrandView,
-        BorderView {//}, BootstrapSizeView {
+        BorderView, BootstrapSizeView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapBaseThumbnail";
 
     protected BootstrapBrand bootstrapBrand;
     protected boolean hasBorder;
 
-    protected float borderWidth;
-    protected float outerBorderWidth;
+    protected float baselineBorderWidth;
+    protected float baselineOuterBorderWidth;
+
+    protected float bootstrapSize;
 
     protected Bitmap sourceBitmap;
     protected final Paint placeholderPaint = new Paint();
@@ -59,8 +63,8 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
     }
 
     protected void initialise(AttributeSet attrs) {
-        this.outerBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
-        this.borderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
+        this.baselineOuterBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
+        this.baselineBorderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
         setupPaints();
         updateImageState();
     }
@@ -71,6 +75,7 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
 
         bundle.putSerializable(BootstrapBrandView.KEY, bootstrapBrand);
         bundle.putBoolean(BorderView.KEY_DISPLAYED, hasBorder);
+        bundle.putFloat(BootstrapSizeView.KEY, bootstrapSize);
         return bundle;
     }
 
@@ -79,6 +84,7 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
             Bundle bundle = (Bundle) state;
 
             this.hasBorder = bundle.getBoolean(BorderView.KEY_DISPLAYED);
+            this.bootstrapSize = bundle.getFloat(BootstrapSizeView.KEY);
 
             Serializable brand = bundle.getSerializable(BootstrapBrandView.KEY);
 
@@ -97,7 +103,7 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
 
         borderPaint.setColor(strokeColor);
         borderPaint.setAntiAlias(true);
-        borderPaint.setStrokeWidth(borderWidth);
+        borderPaint.setStrokeWidth(baselineBorderWidth);
         borderPaint.setStyle(Paint.Style.STROKE);
         imagePaint.setAntiAlias(true);
 
@@ -200,6 +206,19 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
 
     @Override public boolean isBorderDisplayed() {
         return hasBorder;
+    }
+
+    @Override public float getBootstrapSize() {
+        return bootstrapSize;
+    }
+
+    @Override public void setBootstrapSize(float bootstrapSize) {
+        this.bootstrapSize = bootstrapSize;
+        updateImageState();
+    }
+
+    @Override public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
+        setBootstrapSize(bootstrapSize.scaleFactor());
     }
 
 }

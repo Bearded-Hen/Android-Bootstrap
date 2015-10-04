@@ -57,6 +57,21 @@
         android:src="@drawable/stars"
         />
 
+
+    <TextView
+        style="@style/description_label"
+        android:text="Tap to Change Size"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapThumbnail
+        android:id="@+id/bthumb_size_change_example"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
+        app:roundedCorners="true"
+        android:src="@drawable/daffodil_large"
+        app:bootstrapSize="md"
+        />
+
     <TextView
         style="@style/description_label"
         android:text="Set using setImageBitmap()"

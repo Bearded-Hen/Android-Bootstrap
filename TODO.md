@@ -1,7 +1,6 @@
 Fix/Priority List
 =============
 
-* Bootstrap Sizing API enum values as ratios (button, edittext, progress, thumbnails)
 * Generate gh-pages
 * Write short tutorial
 * Tidy up of messy drawable factory! DRY

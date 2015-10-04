@@ -47,6 +47,18 @@
 
     <TextView
         style="@style/description_label"
+        android:text="Tap to Change Size"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bcircle_size_change_example"
+        android:layout_width="@dimen/default_circle_size"
+        android:layout_height="@dimen/default_circle_size"
+        android:src="@drawable/daffodil_large"
+        />
+
+    <TextView
+        style="@style/description_label"
         android:text="Set using setImageBitmap()"
         />
 

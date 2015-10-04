@@ -13,6 +13,7 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 
 // TODO document/finalise
@@ -25,8 +26,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
     private final RectF imageRect = new RectF();
 
     private boolean roundedCorners;
-    private float cornerRadius;
-    private float borderWidth;
+    private float baselineCornerRadius;
 
     public BootstrapThumbnail(Context context) {
         super(context);
@@ -64,7 +64,10 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
 
         try {
             int typeOrdinal = a.getInt(R.styleable.BootstrapThumbnail_bootstrapBrand, -1);
+            int sizeOrdinal = a.getInt(R.styleable.BootstrapThumbnail_bootstrapSize, -1);
+
             this.hasBorder = a.getBoolean(R.styleable.BootstrapCircleThumbnail_hasBorder, true);
+            this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
 
             if (typeOrdinal == -1) { // override to use Primary for default border (looks nicer)
                 this.bootstrapBrand = DefaultBootstrapBrand.PRIMARY;
@@ -82,8 +85,8 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
         placeholderPaint.setStyle(Paint.Style.FILL);
         placeholderPaint.setAntiAlias(true);
 
-        this.cornerRadius = getResources().getDimension(R.dimen.bthumbnail_rounded_corner);
-        this.borderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
+        this.baselineCornerRadius = getResources().getDimension(R.dimen.bthumbnail_rounded_corner);
+        this.baselineBorderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
         setScaleType(ScaleType.CENTER_CROP);
 
         super.initialise(attrs);
@@ -102,7 +105,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
             bg = BootstrapDrawableFactory.bootstrapThumbnail(
                     getContext(),
                     bootstrapBrand,
-                    (int) outerBorderWidth,
+                    (int) (baselineOuterBorderWidth * bootstrapSize),
                     getResources().getColor(R.color.bthumbnail_background),
                     roundedCorners);
         }
@@ -116,7 +119,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
 
     private void updatePadding() {
         if (Build.VERSION.SDK_INT >= 16) {
-            int p = hasBorder  ? (int) borderWidth : 0;
+            int p = hasBorder ? (int) (baselineBorderWidth * bootstrapSize) : 0;
             setPadding(p, p, p, p);
             setCropToPadding(hasBorder);
         }
@@ -125,14 +128,18 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
     @Override protected void onDraw(Canvas canvas) {
         if (sourceBitmap == null) { // draw a placeholder
 
-            float padding = hasBorder  ? borderWidth : 0;
+            float padding = hasBorder ? (baselineBorderWidth * bootstrapSize) : 0;
             imageRect.top = padding;
             imageRect.bottom = getHeight() - padding;
             imageRect.left = padding;
             imageRect.right = getWidth() - padding;
 
             if (roundedCorners) {
-                canvas.drawRoundRect(imageRect, cornerRadius, cornerRadius, placeholderPaint);
+                canvas.drawRoundRect(
+                        imageRect,
+                        (baselineCornerRadius * bootstrapSize),
+                        (baselineCornerRadius * bootstrapSize),
+                        placeholderPaint);
             }
             else {
                 canvas.drawRect(imageRect, placeholderPaint);
