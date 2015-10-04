@@ -45,13 +45,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginTop">@dimen/micro_padding</item>
     </style>
 
     <style name="progress_example">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">2.5</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/micro_padding</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 

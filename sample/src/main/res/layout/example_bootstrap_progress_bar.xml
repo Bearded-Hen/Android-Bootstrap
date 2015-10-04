@@ -89,6 +89,26 @@
     <LinearLayout
         style="@style/progress_weight_container">
 
+        <Button
+            android:id="@+id/example_size_change_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Size"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_size_change"
+            style="@style/progress_example"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="md"
+            app:progress="85"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"

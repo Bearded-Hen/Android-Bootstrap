@@ -81,22 +81,26 @@
         <attr name="roundedCorners"/>
         <attr name="progress" format="integer"/>
         <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapCircleThumbnail">
         <attr name="bootstrapBrand"/>
         <attr name="hasBorder"/>
+        <attr name="bootstrapSize"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapThumbnail">
         <attr name="bootstrapBrand"/>
         <attr name="roundedCorners"/>
         <attr name="hasBorder"/>
+        <attr name="bootstrapSize"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapEditText">
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
     </declare-styleable>
 
 </resources>

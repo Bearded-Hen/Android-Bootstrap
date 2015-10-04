@@ -2,6 +2,7 @@ package com.example.sample;
 
 import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
 import java.util.Random;
 
@@ -43,6 +44,7 @@ public class BootstrapProgressBarExample extends BaseActivity {
 
     private Random random;
     private ChangeState changeState = ChangeState.FIRST;
+    private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
 
     @Override protected int getContentLayoutId() {
         return R.layout.example_bootstrap_progress_bar;
@@ -53,6 +55,7 @@ public class BootstrapProgressBarExample extends BaseActivity {
     @Bind(R.id.example_progress_striped) BootstrapProgressBar stripedExample;
     @Bind(R.id.example_progress_striped_animated) BootstrapProgressBar stripedAnimExample;
     @Bind(R.id.example_progress_change) BootstrapProgressBar changeExample;
+    @Bind(R.id.example_size_change) BootstrapProgressBar sizeExample;
 
     @OnClick(R.id.example_progress_default_btn) void onDefaultClicked() {
         defaultExample.setProgress(randomProgress(defaultExample.getProgress()));
@@ -103,6 +106,27 @@ public class BootstrapProgressBarExample extends BaseActivity {
                 changeExample.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
                 break;
         }
+    }
+
+    @OnClick(R.id.example_size_change_btn) void onSizeExampleChangeClicked() {
+        switch (size) {
+            case XS:
+                size = DefaultBootstrapSize.SM;
+                break;
+            case SM:
+                size = DefaultBootstrapSize.MD;
+                break;
+            case MD:
+                size = DefaultBootstrapSize.LG;
+                break;
+            case LG:
+                size = DefaultBootstrapSize.XL;
+                break;
+            case XL:
+                size = DefaultBootstrapSize.XS;
+                break;
+        }
+        sizeExample.setBootstrapSize(size);
     }
 
     private int randomProgress(int currentProgress) {
