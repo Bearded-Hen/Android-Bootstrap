@@ -106,7 +106,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     @Override public void onRestoreInstanceState(Parcelable state) {
-        super.onRestoreInstanceState(state);
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
 
@@ -121,6 +120,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                 buttonMode = (ButtonMode) m;
             }
         }
+        super.onRestoreInstanceState(state);
     }
 
     @Override protected void updateBootstrapState() {

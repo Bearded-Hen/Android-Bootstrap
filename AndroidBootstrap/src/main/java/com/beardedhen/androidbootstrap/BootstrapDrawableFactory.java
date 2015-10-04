@@ -111,6 +111,8 @@ class BootstrapDrawableFactory {
      */
     static Drawable bootstrapEditText(Context context,
                                       BootstrapBrand bootstrapBrand,
+                                      float strokeWidth,
+                                      float cornerRadius,
                                       boolean rounded) {
 
         StateListDrawable drawable = new StateListDrawable();
@@ -124,20 +126,18 @@ class BootstrapDrawableFactory {
         defaultDrawable.setColor(ColorUtils.resolveColor(android.R.color.white, context));
 
         if (rounded) {
-            float radius = context.getResources().getDimension(R.dimen.bootstrap_edit_text_corner_radius);
-            activeDrawable.setCornerRadius(radius);
-            disabledDrawable.setCornerRadius(radius);
-            defaultDrawable.setCornerRadius(radius);
+            activeDrawable.setCornerRadius(cornerRadius);
+            disabledDrawable.setCornerRadius(cornerRadius);
+            defaultDrawable.setCornerRadius(cornerRadius);
         }
 
         // stroke is larger when focused
-        int strokeNormal = context.getResources().getDimensionPixelOffset(R.dimen.bootstrap_edit_text_stroke_default);
         int defaultBorder = ColorUtils.resolveColor(R.color.bootstrap_brand_secondary_border, context);
         int disabledBorder = ColorUtils.resolveColor(R.color.bbutton_edittext_disabled, context);
 
-        activeDrawable.setStroke(strokeNormal, bootstrapBrand.defaultEdge(context));
-        disabledDrawable.setStroke(strokeNormal, disabledBorder);
-        defaultDrawable.setStroke(strokeNormal, defaultBorder);
+        activeDrawable.setStroke((int) strokeWidth, bootstrapBrand.defaultEdge(context));
+        disabledDrawable.setStroke((int) strokeWidth, disabledBorder);
+        defaultDrawable.setStroke((int) strokeWidth, defaultBorder);
 
         drawable.addState(new int[]{android.R.attr.state_focused}, activeDrawable);
         drawable.addState(new int[]{-android.R.attr.state_enabled}, disabledDrawable);

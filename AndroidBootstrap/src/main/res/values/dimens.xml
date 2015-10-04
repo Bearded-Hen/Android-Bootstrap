@@ -16,6 +16,14 @@
     <dimen name="bootstrap_button_default_corner_radius">4dp</dimen>
     <dimen name="bootstrap_button_default_edge_width">1dp</dimen>
 
+
+    <!-- Default edit text size -->
+    <dimen name="bootstrap_edit_text_default_font_size">14sp</dimen>
+    <dimen name="bootstrap_edit_text_vert_padding">8dp</dimen>
+    <dimen name="bootstrap_edit_text_hori_padding">5.75dp</dimen>
+    <dimen name="bootstrap_edit_text_corner_radius">6dp</dimen>
+    <dimen name="bootstrap_edit_text_edge_width">1.5dp</dimen>
+
     <!-- Small button size -->
     <dimen name="bootstrap_button_small_font_size">11.9sp</dimen>
     <dimen name="bootstrap_button_small_vert_padding">3.5dp</dimen>
@@ -57,9 +65,6 @@
 
     <dimen name="bootstrap_default_corner_radius">3dp</dimen>
     <dimen name="bootstrap_progress_bar_height">14dp</dimen>
-
-    <dimen name="bootstrap_edit_text_corner_radius">6dp</dimen>
-    <dimen name="bootstrap_edit_text_stroke_default">1.5dp</dimen>
 
     <dimen name="bthumbnail_default_border">8dp</dimen>
     <dimen name="bthumbnail_rounded_corner">8dp</dimen>
