@@ -17,6 +17,8 @@ public class BootstrapButtonGroupExample extends BaseActivity {
         return R.layout.example_bootstrap_button_group;
     }
 
+    private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
+
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -87,26 +89,24 @@ public class BootstrapButtonGroupExample extends BaseActivity {
     }
 
     @OnClick(R.id.bbutton_group_size_change_btn) void onSizeChangeExampleClicked() {
-        if (sizeChange.getBootstrapSize() != null) {
-
-            switch ((DefaultBootstrapSize) sizeChange.getBootstrapSize()) {
-                case XS:
-                    sizeChange.setBootstrapSize(DefaultBootstrapSize.SM);
-                    break;
-                case SM:
-                    sizeChange.setBootstrapSize(DefaultBootstrapSize.MD);
-                    break;
-                case MD:
-                    sizeChange.setBootstrapSize(DefaultBootstrapSize.LG);
-                    break;
-                case LG:
-                    sizeChange.setBootstrapSize(DefaultBootstrapSize.XL);
-                    break;
-                case XL:
-                    sizeChange.setBootstrapSize(DefaultBootstrapSize.XS);
-                    break;
-            }
+        switch (size) {
+            case XS:
+                size = DefaultBootstrapSize.SM;
+                break;
+            case SM:
+                size = DefaultBootstrapSize.MD;
+                break;
+            case MD:
+                size = DefaultBootstrapSize.LG;
+                break;
+            case LG:
+                size = DefaultBootstrapSize.XL;
+                break;
+            case XL:
+                size = DefaultBootstrapSize.XS;
+                break;
         }
+        sizeChange.setBootstrapSize(size);
     }
 
 }

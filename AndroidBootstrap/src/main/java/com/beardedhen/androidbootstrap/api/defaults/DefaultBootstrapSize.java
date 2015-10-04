@@ -1,14 +1,10 @@
 package com.beardedhen.androidbootstrap.api.defaults;
 
-import android.content.Context;
-
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
-
 /**
  * Bootstrap provides 5 sizes - XS, SM, MD, LG, and XL. In the Android implementation the scale
  * factors used are 0.75, 0.83, 1.00, 1.50, and 2.00 respectively.
  */
-public enum DefaultBootstrapSize implements BootstrapSize {
+public enum DefaultBootstrapSize {
 
     XS(),
     SM(),
@@ -33,7 +29,7 @@ public enum DefaultBootstrapSize implements BootstrapSize {
         }
     }
 
-    @Override public float scaleFactor(Context context) {
+    public float scaleFactor() {
         switch (this) {
             case XS:
                 return 0.70f;

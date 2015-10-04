@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
@@ -17,6 +16,8 @@ public class BootstrapButtonExample extends BaseActivity {
     @Override protected int getContentLayoutId() {
         return R.layout.example_bootstrap_button;
     }
+
+    private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,26 +45,24 @@ public class BootstrapButtonExample extends BaseActivity {
     }
 
     @OnClick(R.id.bbutton_example_size) void onSizeExampleClicked() {
-        if (exampleSize.getBootstrapSize() != null) {
-
-            switch ((DefaultBootstrapSize) exampleSize.getBootstrapSize()) {
-                case XS:
-                    exampleSize.setBootstrapSize(DefaultBootstrapSize.SM);
-                    break;
-                case SM:
-                    exampleSize.setBootstrapSize(DefaultBootstrapSize.MD);
-                    break;
-                case MD:
-                    exampleSize.setBootstrapSize(DefaultBootstrapSize.LG);
-                    break;
-                case LG:
-                    exampleSize.setBootstrapSize(DefaultBootstrapSize.XL);
-                    break;
-                case XL:
-                    exampleSize.setBootstrapSize(DefaultBootstrapSize.XS);
-                    break;
-            }
+        switch (size) {
+            case XS:
+                size = DefaultBootstrapSize.SM;
+                break;
+            case SM:
+                size = DefaultBootstrapSize.MD;
+                break;
+            case MD:
+                size = DefaultBootstrapSize.LG;
+                break;
+            case LG:
+                size = DefaultBootstrapSize.XL;
+                break;
+            case XL:
+                size = DefaultBootstrapSize.XS;
+                break;
         }
+        exampleSize.setBootstrapSize(size);
     }
 
     @OnClick(R.id.bbutton_example_theme) void onThemeExampleClicked() {
@@ -94,13 +93,7 @@ public class BootstrapButtonExample extends BaseActivity {
 
     private void setupCustomStyle() {
         // create a custom bootstrap size
-        exampleCustomStyle.setBootstrapSize(new BootstrapSize() {
-            @Override
-            public float scaleFactor(Context context) {
-                return 3.0f;
-            }
-        });
-
+        exampleCustomStyle.setBootstrapSize(3.0f);
 
         // create a Bootstrap Theme with holo colors
         exampleCustomStyle.setBootstrapBrand(new BootstrapBrand() {

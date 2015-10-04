@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
@@ -41,7 +40,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     private ViewGroupPosition viewGroupPosition = ViewGroupPosition.SOLO;
     private ButtonMode buttonMode = ButtonMode.REGULAR;
 
-    private BootstrapSize bootstrapSize;
+    private float bootstrapSize;
 
     private boolean roundedCorners;
     private boolean showOutline;
@@ -78,7 +77,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, -1);
             int modeOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_buttonMode, -1);
 
-            bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal);
+            bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
 
             final Resources res = getResources();
@@ -101,7 +100,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         bundle.putBoolean(RoundableView.KEY, roundedCorners);
         bundle.putBoolean(OutlineableView.KEY, showOutline);
         bundle.putInt(KEY_INDEX, parentIndex);
-        bundle.putSerializable(BootstrapSize.KEY, bootstrapSize);
+        bundle.putFloat(BootstrapSizeView.KEY, bootstrapSize);
         bundle.putSerializable(KEY_MODE, buttonMode);
         return bundle;
     }
@@ -114,17 +113,13 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             this.roundedCorners = bundle.getBoolean(RoundableView.KEY);
             this.showOutline = bundle.getBoolean(OutlineableView.KEY);
             this.parentIndex = bundle.getInt(KEY_INDEX);
+            this.bootstrapSize = bundle.getFloat(BootstrapSizeView.KEY);
 
-            Serializable size = bundle.getSerializable(BootstrapSize.KEY);
             Serializable m = bundle.getSerializable(KEY_MODE);
 
-            if (size instanceof BootstrapSize) {
-                bootstrapSize = (BootstrapSize) size;
-            }
             if (m instanceof ButtonMode) {
                 buttonMode = (ButtonMode) m;
             }
-            state = bundle.getParcelable(TAG);
         }
     }
 
@@ -135,18 +130,15 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         float cornerRadius = baselineCornerRadius;
         float strokeWidth = baselineStrokeWidth;
 
-        if (bootstrapSize != null) { // set padding & font size
-            final float factor = bootstrapSize.scaleFactor(getContext());
-            final float fontSize = baselineFontSize * factor;
+        final float fontSize = baselineFontSize * bootstrapSize;
 
-            int vert = (int) (baselineVertPadding * factor);
-            int hori = (int) (baselineHoriPadding * factor);
-            setPadding(hori, vert, hori, vert);
-            setTextSize(fontSize);
+        int vert = (int) (baselineVertPadding * bootstrapSize);
+        int hori = (int) (baselineHoriPadding * bootstrapSize);
+        setPadding(hori, vert, hori, vert);
+        setTextSize(fontSize);
 
-            cornerRadius *= factor;
-            strokeWidth *= factor;
-        }
+        cornerRadius *= bootstrapSize;
+        strokeWidth *= bootstrapSize;
 
         setTextColor(BootstrapDrawableFactory.bootstrapButtonText(
                 getContext(),
@@ -230,7 +222,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     void updateFromParent(BootstrapBrand bootstrapBrand,
-                          BootstrapSize bootstrapSize,
+                          float bootstrapSize,
                           ButtonMode buttonMode,
                           boolean outline,
                           boolean rounded) { // called when viewparent attrs are updated
@@ -248,10 +240,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     /*
      * Getters/Setters
      */
-
-    @Override public BootstrapSize getBootstrapSize() {
-        return bootstrapSize;
-    }
 
     @Override public boolean isShowOutline() {
         return showOutline;
@@ -271,11 +259,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         updateBootstrapState();
     }
 
-    @Override public void setBootstrapSize(BootstrapSize bootstrapSize) {
-        this.bootstrapSize = bootstrapSize;
-        updateBootstrapState();
-    }
-
     @NonNull @Override public ButtonMode getButtonMode() {
         return buttonMode;
     }
@@ -284,9 +267,17 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         this.buttonMode = buttonMode;
     }
 
-    /*
-     * Custom Bootstrap Brands which are specific to BootstrapButton
-     */
+    @Override public float getBootstrapSize() {
+        return bootstrapSize;
+    }
 
+    @Override public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
+        setBootstrapSize(bootstrapSize.scaleFactor());
+    }
+
+    @Override public void setBootstrapSize(float bootstrapSize) {
+        this.bootstrapSize = bootstrapSize;
+        updateBootstrapState();
+    }
 
 }

@@ -27,7 +27,8 @@ import static android.widget.ImageView.ScaleType.CENTER_CROP;
  * BootstrapBrand & borders working via getters/setters. Also overrides ImageView so that only
  * CENTER_CROP is allowed, and a callback is fired whenever the image source changes.
  */
-abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBrandView, BorderView {
+abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBrandView,
+        BorderView {//}, BootstrapSizeView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapBaseThumbnail";
 

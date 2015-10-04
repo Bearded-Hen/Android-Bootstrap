@@ -38,7 +38,7 @@ import static android.graphics.Bitmap.Config.ARGB_8888;
  * Striped effects and progress update animations are supported out of the box.
  */
 public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView,
-        RoundableView {
+        RoundableView {//}, BootstrapSizeView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.AwesomeTextView";
 

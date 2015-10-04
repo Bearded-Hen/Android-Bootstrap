@@ -23,11 +23,11 @@ import java.io.Serializable;
  * BootstrapEditText allows users to enter values like a regular Android EditText, and allows coloring
  * via BootstrapBrand, and rounding of its background.
  */
-public class BootstrapEditText extends EditText implements BootstrapBrandView, RoundableView {
+public class BootstrapEditText extends EditText implements BootstrapBrandView, RoundableView {//}, BootstrapSizeView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapEditText";
 
-    private static final float DEFAULT_PADDING = 8;
+    private static final float DEFAULT_PADDING = 8; // FIXME
 
     private BootstrapBrand bootstrapBrand;
     private boolean rounded;

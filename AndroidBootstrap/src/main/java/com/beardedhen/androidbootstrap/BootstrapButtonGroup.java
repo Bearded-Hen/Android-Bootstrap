@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapSize;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
@@ -46,7 +45,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButtonGroup";
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButtonGroup.MODE";
 
-    private BootstrapSize bootstrapSize;
+    private float bootstrapSize;
     private ButtonMode buttonMode;
     private BootstrapBrand bootstrapBrand;
 
@@ -81,7 +80,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
 
             this.buttonMode = ButtonMode.fromAttributeValue(typeOrdinal);
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(brandOrdinal);
-            this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal);
+            this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
         }
         finally {
             a.recycle();
@@ -199,17 +198,21 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
      * Getters / Setters
      */
 
-    @Override public void setBootstrapSize(BootstrapSize bootstrapSize) {
+    @Override public float getBootstrapSize() {
+        return bootstrapSize;
+    }
+
+    @Override public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
+        setBootstrapSize(bootstrapSize.scaleFactor());
+    }
+
+    @Override public void setBootstrapSize(float bootstrapSize) {
         this.bootstrapSize = bootstrapSize;
 
         for (int i = 0; i < getChildCount(); i++) {
             BootstrapButton button = retrieveButtonChild(i);
-            button.setBootstrapSize(bootstrapSize);
+            button.setBootstrapSize(this.bootstrapSize);
         }
-    }
-
-    @Override public BootstrapSize getBootstrapSize() {
-        return bootstrapSize;
     }
 
     @NonNull public ButtonMode getButtonMode() {
