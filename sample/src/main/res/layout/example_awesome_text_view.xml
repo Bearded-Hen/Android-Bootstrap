@@ -161,4 +161,16 @@
         app:typicon="ty_anchor"
         />
 
+
+    <TextView
+        style="@style/description_label"
+        android:text="Mix &amp; Match"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:id="@+id/example_mix_and_match"
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="info"
+        />
+
 </LinearLayout>

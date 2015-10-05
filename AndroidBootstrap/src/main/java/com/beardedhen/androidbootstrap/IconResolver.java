@@ -2,11 +2,9 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 
-import com.beardedhen.androidbootstrap.font.FontIcon;
-import com.beardedhen.androidbootstrap.font.FontIconSet;
-import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon;
-import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
-import com.beardedhen.androidbootstrap.font.defaults.TypiconsIcon;
+import com.beardedhen.androidbootstrap.font.FontAwesome;
+import com.beardedhen.androidbootstrap.font.IconSet;
+import com.beardedhen.androidbootstrap.font.Typicon;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 /**
@@ -55,17 +53,16 @@ class IconResolver {
 
                     if (startIndex >= 0 && endIndex < markdown.length()) {
                         String iconCode = markdown.substring(startIndex + 1, endIndex);
-
                         builder.addText(markdown.substring(lastAddedIndex, startIndex));
 
                         if (iconCode.matches(REGEX_FONT_AWESOME)) { // text is FontAwesome code
-                            builder.addIcon(resolveIconCode(iconCode, FontAwesomeIcon.values()));
+                            builder.addIcon(iconCode, TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH));
                         }
                         else if (iconCode.matches(REGEX_TYPICONS)) {
-                            builder.addIcon(resolveIconCode(iconCode, TypiconsIcon.values()));
+                            builder.addIcon(iconCode, TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH));
                         }
                         else {
-                            builder.addIcon(resolveUnknownIconCode(iconCode));
+                            builder.addIcon(iconCode, resolveIconSet(iconCode));
                         }
                         lastAddedIndex = endIndex + 1;
                     }
@@ -84,19 +81,19 @@ class IconResolver {
      * @param iconCode the font icon code
      * @return the unicode character matching the icon, or null if none matches
      */
-    private static FontIcon resolveUnknownIconCode(CharSequence iconCode) {
-        FontIcon fontIcon;
+    private static IconSet resolveIconSet(String iconCode) {
+        CharSequence unicode;
 
-        for (FontIconSet set : TypefaceProvider.getRegisteredIconSets()) {
+        for (IconSet set : TypefaceProvider.getRegisteredIconSets()) {
 
-            if (set.fontPath().equals(FontAwesomeIconSet.FONT_PATH)) {
-                continue; // already checked previously
+            if (set.fontPath().equals(FontAwesome.FONT_PATH) || set.fontPath().equals(Typicon.FONT_PATH)) {
+                continue; // already checked previously, ignore
             }
 
-            fontIcon = resolveIconCode(iconCode, set.allValues());
+            unicode = set.unicodeForKey(iconCode);
 
-            if (fontIcon != null) {
-                return fontIcon;
+            if (unicode != null) {
+                return set;
             }
         }
 
@@ -104,34 +101,6 @@ class IconResolver {
                 "please ensure that it is mapped to a valid font", iconCode);
 
         throw new IllegalArgumentException(message);
-    }
-
-    /**
-     * Searches for the unicode character value for the Font Icon Code, in the supplied values
-     *
-     * @param values   the FontIcon values for this font
-     * @param iconCode the font icon code
-     * @return the unicode character matching the icon, or null if none matches
-     */
-    private static FontIcon resolveIconCode(CharSequence iconCode, FontIcon[] values) {
-        for (FontIcon fontIcon : values) {
-            if (fontIcon.iconCode().equals(iconCode)) {
-                return fontIcon;
-            }
-        }
-        return null;
-    }
-
-
-    static FontIcon fromAttributeValue(int index, FontIconSet fontIconSet) {
-        FontIcon[] values = fontIconSet.allValues();
-
-        if (index < 0 || index > values.length) {
-            throw new IllegalArgumentException();
-        }
-        else {
-            return values[index];
-        }
     }
 
 }

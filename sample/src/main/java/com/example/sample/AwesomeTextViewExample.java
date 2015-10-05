@@ -8,10 +8,12 @@ import com.beardedhen.androidbootstrap.support.BootstrapText;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_ANDROID;
-import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_APPLE;
-import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_HEART;
-import static com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIcon.FA_TWITTER;
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_ANCHOR;
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_ANDROID;
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_APPLE;
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_HEART;
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_TWITTER;
+import static com.beardedhen.androidbootstrap.font.Typicon.TY_CODE;
 
 public class AwesomeTextViewExample extends BaseActivity {
 
@@ -35,6 +37,7 @@ public class AwesomeTextViewExample extends BaseActivity {
     @Bind(R.id.example_fa_text_rotate) AwesomeTextView exampleRotate;
     @Bind(R.id.example_fa_text_multi_change) AwesomeTextView exampleMultiChange;
     @Bind(R.id.example_fa_text_builder) AwesomeTextView exampleBuilder;
+    @Bind(R.id.example_mix_and_match) AwesomeTextView mixAndMatch;
 
     private boolean android = true;
     private boolean wikipedia = true;
@@ -45,18 +48,23 @@ public class AwesomeTextViewExample extends BaseActivity {
 
         BootstrapText text = new BootstrapText.Builder(this)
                 .addText("I ")
-                .addIcon(FA_HEART)
+                .addFontAwesomeIcon(FA_HEART)
                 .addText(" going on ")
-                .addIcon(FA_TWITTER)
+                .addFontAwesomeIcon(FA_TWITTER)
                 .build();
 
 
         exampleBuilder.setBootstrapText(text);
+
+        mixAndMatch.setBootstrapText(new BootstrapText.Builder(this)
+                .addFontAwesomeIcon(FA_ANCHOR)
+                .addTypicon(TY_CODE)
+                .build());
     }
 
     @OnClick(R.id.example_fa_text_change) void onChangeClicked() {
         android = !android;
-        exampleChange.setIcon(android ? FA_ANDROID : FA_APPLE);
+        exampleChange.setFontAwesomeIcon(android ? FA_ANDROID : FA_APPLE);
     }
 
     @OnClick(R.id.example_fa_text_multi_change) void onMultiChangeClicked() {

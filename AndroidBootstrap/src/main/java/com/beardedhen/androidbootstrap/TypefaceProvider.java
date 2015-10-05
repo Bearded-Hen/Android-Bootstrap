@@ -3,13 +3,12 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.graphics.Typeface;
 
-import com.beardedhen.androidbootstrap.font.FontIconSet;
-import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
-import com.beardedhen.androidbootstrap.font.defaults.TypiconsIconSet;
+import com.beardedhen.androidbootstrap.font.FontAwesome;
+import com.beardedhen.androidbootstrap.font.IconSet;
+import com.beardedhen.androidbootstrap.font.Typicon;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,30 +17,20 @@ import java.util.Map;
 public class TypefaceProvider {
 
     private final static Map<CharSequence, Typeface> TYPEFACE_MAP = new HashMap<>();
-    private final static List<FontIconSet> FONT_ICON_SET_LIST = new ArrayList<>();
+    private final static Map<CharSequence, IconSet> REGISTERED_ICON_SETS = new HashMap<>();
 
     /**
      * Returns a reference to the requested typeface, creating a new instance if none already exists
      *
      * @param context  the current context
-     * @param fontIcon the icon typeface
+     * @param iconSet the icon typeface
      * @return a reference to the typeface instance
      */
-    public static Typeface getTypeface(Context context, FontIconSet fontIcon) {
-        String path = fontIcon.fontPath().toString();
-        return getTypeface(context, path);
-    }
+    public static Typeface getTypeface(Context context, IconSet iconSet) {
+        String path = iconSet.fontPath().toString();
 
-    /**
-     * Returns a reference to the requested typeface, creating a new instance if none already exists
-     *
-     * @param context the current context
-     * @param path    the typeface path
-     * @return a reference to the typeface instance
-     */
-    static Typeface getTypeface(Context context, CharSequence path) {
         if (TYPEFACE_MAP.get(path) == null) {
-            final Typeface font = Typeface.createFromAsset(context.getAssets(), path.toString());
+            final Typeface font = Typeface.createFromAsset(context.getAssets(), path);
             TYPEFACE_MAP.put(path, font);
         }
         return TYPEFACE_MAP.get(path);
@@ -52,33 +41,36 @@ public class TypefaceProvider {
      * application. Currently the default icon set includes FontAwesome.
      */
     public static void registerDefaultIconSets() {
-        addIconSetIfNeeded(new FontAwesomeIconSet());
-        addIconSetIfNeeded(new TypiconsIconSet());
+        final FontAwesome fontAwesome = new FontAwesome();
+        final Typicon typicon = new Typicon();
+
+        REGISTERED_ICON_SETS.put(fontAwesome.fontPath(), fontAwesome);
+        REGISTERED_ICON_SETS.put(typicon.fontPath(), typicon);
     }
 
     /**
      * Performs setup of a custom FontIconSet, so that it is available throughout the whole application.
      *
-     * @param fontIconSet a custom FontIconSet
+     * @param iconSet a custom FontIcon
      */
-    public static void registerCustomIconSet(FontIconSet fontIconSet) {
-        addIconSetIfNeeded(fontIconSet);
+    public static void registerCustomIconSet(IconSet iconSet) {
+        REGISTERED_ICON_SETS.put(iconSet.fontPath(), iconSet);
     }
 
-    private static void addIconSetIfNeeded(FontIconSet fontIconSet) {
-        for (FontIconSet set : FONT_ICON_SET_LIST) {
-            if (set.equals(fontIconSet)) {
-                return;
-            }
+    public static IconSet retrieveRegisteredIconSet(String fontPath) {
+        final IconSet iconSet = REGISTERED_ICON_SETS.get(fontPath);
+
+        if (iconSet == null) {
+            throw new RuntimeException(String.format("Font '%s' not properly registered", fontPath));
         }
-        FONT_ICON_SET_LIST.add(fontIconSet);
+        return iconSet;
     }
 
     /**
-     * @return a list of registered FontIconSets.
+     * @return a collection of registered FontIconSets.
      */
-    public static List<FontIconSet> getRegisteredIconSets() {
-        return FONT_ICON_SET_LIST;
+    public static Collection<IconSet> getRegisteredIconSets() {
+        return REGISTERED_ICON_SETS.values();
     }
 
 }

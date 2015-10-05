@@ -2,75 +2,72 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="vertical"
-        app:roundedCorners="true"
-        app:bootstrapSize="lg"
-        app:bootstrapBrand="info"
         >
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_fontawesometext"
             style="@style/home_button"
             android:text="AwesomeTextView"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_button"
             style="@style/home_button"
             android:text="BootstrapButton"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_btn_group"
             style="@style/home_button"
             android:text="BootstrapButtonGroup"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_progress"
             style="@style/home_button"
-            android:text="BootstrapProgress"
+            android:text="BootstrapProgressBar"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_label"
             style="@style/home_button"
             android:text="BootstrapLabel"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_cricle_thumbnail"
             style="@style/home_button"
             android:text="BootstrapCircleThumbnail"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_thumbnail"
             style="@style/home_button"
             android:text="BootstrapThumbnail"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_edit_text"
             style="@style/home_button"
             android:text="BootstrapEditText"
             />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/example_bootstrap_input_group"
             style="@style/home_button"
             android:text="BootstrapInputGroup"
             android:visibility="gone"
-            /> <!-- TODO implement -->
+            />
+        <!-- TODO implement -->
 
-    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
 </ScrollView>

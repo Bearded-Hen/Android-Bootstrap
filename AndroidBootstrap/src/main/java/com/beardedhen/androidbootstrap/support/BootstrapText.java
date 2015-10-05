@@ -4,8 +4,11 @@ import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.beardedhen.androidbootstrap.font.AwesomeTypefaceSpan;
-import com.beardedhen.androidbootstrap.font.FontIcon;
+import com.beardedhen.androidbootstrap.font.FontAwesome;
+import com.beardedhen.androidbootstrap.font.IconSet;
+import com.beardedhen.androidbootstrap.font.Typicon;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -30,7 +33,7 @@ public class BootstrapText extends SpannableString implements Serializable {
         private final StringBuilder sb;
         private final Context context;
 
-        private final Map<Integer, FontIcon> fontIndicesMap;
+        private final Map<Integer, IconSet> fontIndicesMap;
 
         public Builder(Context context) {
             fontIndicesMap = new HashMap<>();
@@ -49,14 +52,37 @@ public class BootstrapText extends SpannableString implements Serializable {
             return this;
         }
 
+
         /**
          * Appends a FontIcon to the BootstrapText under construction
-         * @param fontIcon a font icon
          * @return the updated builder instance
          */
-        public Builder addIcon(FontIcon fontIcon) {
-            sb.append(fontIcon.unicode());
-            fontIndicesMap.put(sb.length(), fontIcon);
+        public Builder addFontAwesomeIcon(@FontAwesome.Icon CharSequence iconCode) {
+            IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH);
+            sb.append(iconSet.unicodeForKey(iconCode));
+            fontIndicesMap.put(sb.length(), iconSet);
+            return this;
+        }
+
+        /**
+         * Appends a FontIcon to the BootstrapText under construction
+         * @return the updated builder instance
+         */
+        public Builder addTypicon(@Typicon.Icon CharSequence iconCode) {
+            IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH);
+            sb.append(iconSet.unicodeForKey(iconCode));
+            fontIndicesMap.put(sb.length(), iconSet);
+            return this;
+        }
+
+        /**
+         * Appends a FontIcon to the BootstrapText under construction
+         * @param iconSet a font icon
+         * @return the updated builder instance
+         */
+        public Builder addIcon(CharSequence iconCode, IconSet iconSet) {
+            sb.append(iconSet.unicodeForKey(iconCode));
+            fontIndicesMap.put(sb.length(), iconSet);
             return this;
         }
 
@@ -66,7 +92,7 @@ public class BootstrapText extends SpannableString implements Serializable {
         public BootstrapText build() {
             BootstrapText bootstrapText = new BootstrapText(sb.toString());
 
-            for (Map.Entry<Integer, FontIcon> entry : fontIndicesMap.entrySet()) {
+            for (Map.Entry<Integer, IconSet> entry : fontIndicesMap.entrySet()) {
                 int index = entry.getKey();
 
                 AwesomeTypefaceSpan span = new AwesomeTypefaceSpan(context, entry.getValue());

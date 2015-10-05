@@ -18,9 +18,9 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
-import com.beardedhen.androidbootstrap.font.FontIcon;
-import com.beardedhen.androidbootstrap.font.defaults.FontAwesomeIconSet;
-import com.beardedhen.androidbootstrap.font.defaults.TypiconsIconSet;
+import com.beardedhen.androidbootstrap.font.FontAwesome;
+import com.beardedhen.androidbootstrap.font.IconSet;
+import com.beardedhen.androidbootstrap.font.Typicon;
 import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 import java.io.Serializable;
@@ -86,10 +86,12 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
 
             if (typiconOrdinal != -1) {
-                setIcon(IconResolver.fromAttributeValue(typiconOrdinal, new TypiconsIconSet()));
+                final IconSet typicon = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH);
+                setIcon(typicon.iconCodeForAttrIndex(typiconOrdinal), typicon);
             }
             if (faIconOrdinal != -1) {
-                setIcon(IconResolver.fromAttributeValue(faIconOrdinal, new FontAwesomeIconSet()));
+                final IconSet fontAwesome = TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH);
+                setIcon(fontAwesome.iconCodeForAttrIndex(faIconOrdinal), fontAwesome);
             }
 
             markdownText = a.getString(R.styleable.AwesomeTextView_bootstrapText);
@@ -187,10 +189,31 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
      * Sets the text to display a FontIcon, replacing whatever text is already present.
      * Used to set the text to display a FontAwesome Icon.
      *
-     * @param fontIcon - An implementation of FontIcon
+     * @param iconSet - An implementation of FontIcon
      */
-    public void setIcon(FontIcon fontIcon) {
-        setBootstrapText(new BootstrapText.Builder(getContext()).addIcon(fontIcon).build());
+    public void setIcon(CharSequence iconCode, IconSet iconSet) {
+        setBootstrapText(new BootstrapText.Builder(getContext()).addIcon(iconCode, iconSet).build());
+    }
+
+
+    /**
+     * Sets the text to display a FontIcon, replacing whatever text is already present.
+     * Used to set the text to display a FontAwesome Icon.
+     *
+     * @param iconSet - An implementation of FontIcon
+     */
+    public void setFontAwesomeIcon(@FontAwesome.Icon CharSequence iconCode) {
+        setBootstrapText(new BootstrapText.Builder(getContext()).addFontAwesomeIcon(iconCode).build());
+    }
+
+    /**
+     * Sets the text to display a FontIcon, replacing whatever text is already present.
+     * Used to set the text to display a FontAwesome Icon.
+     *
+     * @param iconSet - An implementation of FontIcon
+     */
+    public void setTypicon(@Typicon.Icon CharSequence iconCode) {
+        setBootstrapText(new BootstrapText.Builder(getContext()).addTypicon(iconCode).build());
     }
 
     @Override public void setMarkdownText(String text) {
