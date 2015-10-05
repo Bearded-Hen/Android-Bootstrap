@@ -69,7 +69,6 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private Bitmap progressBitmap;
     private Bitmap stripeTile;
 
-
     private float bootstrapSize;
 
     public BootstrapProgressBar(Context context) {
@@ -158,7 +157,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             this.striped = bundle.getBoolean(KEY_STRIPED);
             this.animated = bundle.getBoolean(KEY_ANIMATED);
             this.rounded = bundle.getBoolean(RoundableView.KEY);
-            this.bootstrapSize = bundle.getFloat(BootstrapBrand.KEY);
+            this.bootstrapSize = bundle.getFloat(BootstrapSizeView.KEY);
 
             state = bundle.getParcelable(TAG);
         }
@@ -279,6 +278,10 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     @Override protected void onDraw(Canvas canvas) {
         float w = getWidth();
         float h = getHeight();
+
+        if (w <= 0 || h <= 0) {
+            return;
+        }
 
         if (progressBitmap == null) {
             progressBitmap = Bitmap.createBitmap((int) w, (int) h, ARGB_8888);

@@ -17,7 +17,7 @@ public class BootstrapButtonExample extends BaseActivity {
         return R.layout.example_bootstrap_button;
     }
 
-    private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
+    private DefaultBootstrapSize size = DefaultBootstrapSize.LG;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
