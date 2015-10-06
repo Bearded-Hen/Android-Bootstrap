@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.fractalwrench.androidbootstrap.sample;
 
 public class BootstrapInputGroupExample extends BaseActivity {
 

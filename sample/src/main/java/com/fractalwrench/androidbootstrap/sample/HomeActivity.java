@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.fractalwrench.androidbootstrap.sample;
 
 import android.content.Intent;
 import android.os.Bundle;

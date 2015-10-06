@@ -61,7 +61,6 @@
         <attr name="buttonMode"/>
         <attr name="showOutline"/>
         <attr name="roundedCorners"/>
-        <attr name="toggleable"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
     </declare-styleable>

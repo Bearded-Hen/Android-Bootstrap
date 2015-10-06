@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.fractalwrench.androidbootstrap.sample;
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
