@@ -1,5 +1,6 @@
 package com.beardedhen.androidbootstrap;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -199,7 +200,7 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
         return bootstrapBrand;
     }
 
-    @Override public void setBorderDisplayed(boolean displayed) {
+    @TargetApi(16) @Override public void setBorderDisplayed(boolean displayed) {
         this.hasBorder = displayed;
         updateImageState();
     }

@@ -5,13 +5,13 @@ import android.support.annotation.DimenRes;
 
 import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
-import com.beardedhen.androidbootstrap.support.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 /**
  * Bootstrap provides styling for elements H1-H6, and sets their text size & padding using the
  * values supplied here.
  */
-public enum DefaultBootstrapHeading implements BootstrapHeading { // FIXME change values
+public enum DefaultBootstrapHeading implements BootstrapHeading {
 
     H1(R.dimen.bootstrap_h1_text_size,
        R.dimen.bootstrap_h1_vert_padding,
@@ -67,15 +67,15 @@ public enum DefaultBootstrapHeading implements BootstrapHeading { // FIXME chang
     }
 
     @Override public float getTextSize(Context context) {
-        return DimenUtils.textSizeFromDimenResource(context, textSize);
+        return DimenUtils.pixelsFromSpResource(context, textSize);
     }
 
     @Override public float verticalPadding(Context context) {
-        return context.getResources().getDimension(vertPadding);
+        return DimenUtils.pixelsFromDpResource(context, vertPadding);
     }
 
     @Override public float horizontalPadding(Context context) {
-        return context.getResources().getDimension(horiPadding);
+        return DimenUtils.pixelsFromDpResource(context, horiPadding);
     }
 
 }

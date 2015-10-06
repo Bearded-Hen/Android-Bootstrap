@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Holds static instances of Typefaces, and FontIcon sets.
+ * Holds static instances of Typefaces, and IconSets, allowing views to use them across the application
+ * without expensive initialisation.
  */
 public class TypefaceProvider {
 
@@ -37,8 +38,8 @@ public class TypefaceProvider {
     }
 
     /**
-     * Performs setup of the Default FontIconSets so that they are available throughout the whole
-     * application. Currently the default icon set includes FontAwesome.
+     * Registers instances of the Default IconSets so that they are available throughout the whole
+     * application. Currently the default icon sets include FontAwesome and Typicon.
      */
     public static void registerDefaultIconSets() {
         final FontAwesome fontAwesome = new FontAwesome();
@@ -49,14 +50,19 @@ public class TypefaceProvider {
     }
 
     /**
-     * Performs setup of a custom FontIconSet, so that it is available throughout the whole application.
+     * Registers a custom IconSet, so that it is available for use throughout the whole application.
      *
-     * @param iconSet a custom FontIcon
+     * @param iconSet a custom IconSet
      */
     public static void registerCustomIconSet(IconSet iconSet) {
         REGISTERED_ICON_SETS.put(iconSet.fontPath(), iconSet);
     }
 
+    /**
+     * Retrieves a registered IconSet whose font can be found in the asset directory at the given path
+     * @param fontPath the given path
+     * @return the registered IconSet instance
+     */
     public static IconSet retrieveRegisteredIconSet(String fontPath) {
         final IconSet iconSet = REGISTERED_ICON_SETS.get(fontPath);
 
@@ -67,7 +73,8 @@ public class TypefaceProvider {
     }
 
     /**
-     * @return a collection of registered FontIconSets.
+     * Retrieves a collection of all registered IconSets in the application
+     * @return a collection of registered IconSets.
      */
     public static Collection<IconSet> getRegisteredIconSets() {
         return REGISTERED_ICON_SETS.values();

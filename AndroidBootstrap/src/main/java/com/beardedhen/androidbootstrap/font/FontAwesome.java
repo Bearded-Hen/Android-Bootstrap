@@ -18,7 +18,6 @@ public class FontAwesome implements IconSet {
 
     public static final String FONT_PATH = "fontawesome-webfont-v440.ttf";
 
-
     @Override public CharSequence unicodeForKey(@Icon CharSequence key) {
         return ICON_MAP.get(key);
     }

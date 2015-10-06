@@ -2,7 +2,7 @@ package com.beardedhen.androidbootstrap.api.defaults;
 
 /**
  * Bootstrap provides 5 sizes - XS, SM, MD, LG, and XL. In the Android implementation the scale
- * factors used are 0.75, 0.83, 1.00, 1.50, and 2.00 respectively.
+ * factors used are 0.70, 0.85, 1.00, 1.30, and 1.60 respectively.
  */
 public enum DefaultBootstrapSize {
 

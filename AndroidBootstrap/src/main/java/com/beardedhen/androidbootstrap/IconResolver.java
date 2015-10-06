@@ -5,7 +5,6 @@ import android.content.Context;
 import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.beardedhen.androidbootstrap.font.IconSet;
 import com.beardedhen.androidbootstrap.font.Typicon;
-import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 /**
  * Resolves markdown strings using FA codes and produces BootstrapText instances.

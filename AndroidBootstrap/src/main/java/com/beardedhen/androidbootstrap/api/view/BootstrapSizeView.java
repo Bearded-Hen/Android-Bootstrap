@@ -15,7 +15,6 @@ public interface BootstrapSizeView {
      * For example, specifying that a Button should use a scale factor of 2.0 may increase its
      * padding and font size by that factor.
      *
-     * @param context the current context
      * @return the scale factor
      */
     float getBootstrapSize();
@@ -25,15 +24,14 @@ public interface BootstrapSizeView {
      * For example, specifying that a Button should use a scale factor of 2.0 may increase its
      * padding and font size by that factor.
      *
-     * @param bootstrapSize
-     * @return the scale factor
+     * @param bootstrapSize the scale factor
      */
     void setBootstrapSize(float bootstrapSize);
 
     /**
      * Convenience method that sets the scale factor using a default bootstrap size enum value.
      *
-     * @param bootstrapSize
+     * @param bootstrapSize a default scale factor
      */
     void setBootstrapSize(DefaultBootstrapSize bootstrapSize);
 

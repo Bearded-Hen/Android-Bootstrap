@@ -29,5 +29,4 @@ public interface IconSet {
      */
     CharSequence fontPath();
 
-
 }

@@ -1,12 +1,13 @@
-package com.beardedhen.androidbootstrap.support;
+package com.beardedhen.androidbootstrap.utils;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 
 /**
- * Utils class for manipulating Bootstrap colors
+ * Utils class for manipulating Bootstrap colors, and resolving colors from resource values.
  */
 public class ColorUtils {
 
@@ -16,14 +17,19 @@ public class ColorUtils {
     public static final float ACTIVE_OPACITY_FACTOR_EDGE = 0.025f;
 
     /**
-     * Resolves a color resource
+     * Resolves a color resource.
      *
      * @param color   the color resource
      * @param context the current context
      * @return a color int
      */
     public static @ColorInt int resolveColor(@ColorRes int color, Context context) {
-        return context.getResources().getColor(color);
+        if (Build.VERSION.SDK_INT >= 23) {
+            return context.getResources().getColor(color, context.getTheme());
+        }
+        else {
+            return context.getResources().getColor(color);
+        }
     }
 
     /**
@@ -34,7 +40,8 @@ public class ColorUtils {
      * @param percent the percent to decrease
      * @return a color int
      */
-    @ColorInt public static int decreaseRgbChannels(Context context, @ColorRes int res, float percent) {
+    @ColorInt public static int decreaseRgbChannels(Context context,
+                                                    @ColorRes int res, float percent) {
         int c = resolveColor(res, context);
 
         // reduce rgb channel values to produce box shadow effect

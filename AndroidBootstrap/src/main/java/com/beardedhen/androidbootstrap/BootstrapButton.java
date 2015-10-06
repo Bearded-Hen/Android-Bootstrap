@@ -20,7 +20,7 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.ButtonModeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
-import com.beardedhen.androidbootstrap.support.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 import java.io.Serializable;
 
@@ -81,7 +81,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
 
             final Resources res = getResources();
-            baselineFontSize = DimenUtils.textSizeFromDimenResource(getContext(), R.dimen.bootstrap_button_default_font_size);
+            baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size);
             baselineVertPadding = res.getDimension(R.dimen.bootstrap_button_default_vert_padding);
             baselineHoriPadding = res.getDimension(R.dimen.bootstrap_button_default_hori_padding);
             baselineStrokeWidth = res.getDimension(R.dimen.bootstrap_button_default_edge_width);

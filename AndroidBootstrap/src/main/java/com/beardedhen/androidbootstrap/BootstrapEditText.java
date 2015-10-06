@@ -18,7 +18,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
-import com.beardedhen.androidbootstrap.support.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 import java.io.Serializable;
 
@@ -73,7 +73,7 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
         }
 
         final Resources res = getResources();
-        baselineFontSize = DimenUtils.textSizeFromDimenResource(getContext(), R.dimen.bootstrap_edit_text_default_font_size);
+        baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_edit_text_default_font_size);
         baselineVertPadding = res.getDimension(R.dimen.bootstrap_edit_text_vert_padding);
         baselineHoriPadding = res.getDimension(R.dimen.bootstrap_edit_text_hori_padding);
         baselineStrokeWidth = res.getDimension(R.dimen.bootstrap_edit_text_edge_width);

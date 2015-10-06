@@ -7,10 +7,8 @@ import android.text.style.TypefaceSpan;
 
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
-// TODO see Iconify Span https://goo.gl/sdUwwm
-
 /**
- * A custom span which changes the text to the supplied typeface
+ * A custom span which paints text using the typeface specified by the IconSet passed to the constructor
  */
 public class AwesomeTypefaceSpan extends TypefaceSpan {
 

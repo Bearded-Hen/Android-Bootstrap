@@ -1,6 +1,5 @@
 package com.beardedhen.androidbootstrap;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -153,10 +152,6 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
     /*
      * Getters/setters
      */
-
-    @TargetApi(16) @Override public void setBorderDisplayed(boolean displayed) {
-        super.setBorderDisplayed(displayed);
-    }
 
     @Override public void setRounded(boolean rounded) {
         this.roundedCorners = rounded;

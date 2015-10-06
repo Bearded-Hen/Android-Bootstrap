@@ -21,7 +21,6 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
 import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.beardedhen.androidbootstrap.font.IconSet;
 import com.beardedhen.androidbootstrap.font.Typicon;
-import com.beardedhen.androidbootstrap.support.BootstrapText;
 
 import java.io.Serializable;
 
@@ -159,7 +158,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
     }
 
     /**
-     * Starts a rotating animation on the AwesomeTetView
+     * Starts a rotating animation on the AwesomeTextView
      *
      * @param clockwise true for clockwise, false for anti clockwise spinning
      * @param speed     how fast the item should rotate

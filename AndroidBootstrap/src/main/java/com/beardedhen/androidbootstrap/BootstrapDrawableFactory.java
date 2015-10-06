@@ -12,7 +12,7 @@ import android.support.annotation.ColorInt;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
-import com.beardedhen.androidbootstrap.support.ColorUtils;
+import com.beardedhen.androidbootstrap.utils.ColorUtils;
 
 /**
  * Provides a factory for generating Drawables which are used as the backgrounds for Bootstrap Views.

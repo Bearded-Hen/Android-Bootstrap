@@ -10,9 +10,8 @@ import java.util.Map;
 /**
  * Maps Typicons Icon Codes to unicode characters, allowing its use in AwesomeTextView.
  * See the <a href='http://typicons.com/'>Cheatsheet</a> for icon
- * code reference. <b>Please note that icon codes use underscores rather than hyphens in this
- * library.</b> For example, "fa-play" would become "fa_play". This is due to restrictions in how
- * Android Attributes can be named.
+ * code reference. <b>Please note that icon codes have been prefixed with "ty_".
+ * For example, "adjust_brightness" would become "ty_adjust_brightness".
  */
 public class Typicon implements IconSet {
 
@@ -33,7 +32,7 @@ public class Typicon implements IconSet {
         return FONT_PATH;
     }
 
-// Auto-generated Icon Set from 2015-10-05
+    // Auto-generated Icon Set from 2015-10-05
 
     @Retention(RetentionPolicy.SOURCE)
     @StringDef({
@@ -373,7 +372,8 @@ public class Typicon implements IconSet {
             TY_ZOOM_OUT,
             TY_ZOOM_OUT_OUTLINE,
             TY_ZOOM_OUTLINE,
-    })public @interface Icon {}
+    }) public @interface Icon {
+    }
 
     public static final String TY_ADJUST_BRIGHTNESS = "ty_adjust_brightness";
     public static final String TY_ADJUST_CONTRAST = "ty_adjust_contrast";

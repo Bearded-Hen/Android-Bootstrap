@@ -1,10 +1,9 @@
-package com.beardedhen.androidbootstrap.support;
+package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
 
-import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.beardedhen.androidbootstrap.font.AwesomeTypefaceSpan;
 import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.beardedhen.androidbootstrap.font.IconSet;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 /**
  * Bootstrap Text provides a Builder class, which allows convenient construction of SpannableStrings.
- * Currently regular text and FontAwesome icons can be added.
+ * Currently regular text, FontAwesome icons, and Typicons can be added.
  */
 public class BootstrapText extends SpannableString implements Serializable {
 
@@ -52,9 +51,8 @@ public class BootstrapText extends SpannableString implements Serializable {
             return this;
         }
 
-
         /**
-         * Appends a FontIcon to the BootstrapText under construction
+         * Appends a FontAwesomeIcon to the BootstrapText under construction
          * @return the updated builder instance
          */
         public Builder addFontAwesomeIcon(@FontAwesome.Icon CharSequence iconCode) {
@@ -65,7 +63,7 @@ public class BootstrapText extends SpannableString implements Serializable {
         }
 
         /**
-         * Appends a FontIcon to the BootstrapText under construction
+         * Appends a Typicon to the BootstrapText under construction
          * @return the updated builder instance
          */
         public Builder addTypicon(@Typicon.Icon CharSequence iconCode) {
@@ -76,7 +74,7 @@ public class BootstrapText extends SpannableString implements Serializable {
         }
 
         /**
-         * Appends a FontIcon to the BootstrapText under construction
+         * Appends a font icon to the BootstrapText under construction
          * @param iconSet a font icon
          * @return the updated builder instance
          */

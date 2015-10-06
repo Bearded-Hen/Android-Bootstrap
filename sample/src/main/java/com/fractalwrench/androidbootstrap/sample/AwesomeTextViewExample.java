@@ -3,7 +3,7 @@ package com.fractalwrench.androidbootstrap.sample;
 import android.os.Bundle;
 
 import com.beardedhen.androidbootstrap.AwesomeTextView;
-import com.beardedhen.androidbootstrap.support.BootstrapText;
+import com.beardedhen.androidbootstrap.BootstrapText;
 
 import butterknife.Bind;
 import butterknife.OnClick;

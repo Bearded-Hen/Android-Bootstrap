@@ -6,13 +6,13 @@ import android.support.annotation.ColorInt;
 import com.beardedhen.androidbootstrap.R;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 
-import static com.beardedhen.androidbootstrap.support.ColorUtils.ACTIVE_OPACITY_FACTOR_EDGE;
-import static com.beardedhen.androidbootstrap.support.ColorUtils.ACTIVE_OPACITY_FACTOR_FILL;
-import static com.beardedhen.androidbootstrap.support.ColorUtils.DISABLED_ALPHA_EDGE;
-import static com.beardedhen.androidbootstrap.support.ColorUtils.DISABLED_ALPHA_FILL;
-import static com.beardedhen.androidbootstrap.support.ColorUtils.decreaseRgbChannels;
-import static com.beardedhen.androidbootstrap.support.ColorUtils.increaseOpacity;
-import static com.beardedhen.androidbootstrap.support.ColorUtils.resolveColor;
+import static com.beardedhen.androidbootstrap.utils.ColorUtils.ACTIVE_OPACITY_FACTOR_EDGE;
+import static com.beardedhen.androidbootstrap.utils.ColorUtils.ACTIVE_OPACITY_FACTOR_FILL;
+import static com.beardedhen.androidbootstrap.utils.ColorUtils.DISABLED_ALPHA_EDGE;
+import static com.beardedhen.androidbootstrap.utils.ColorUtils.DISABLED_ALPHA_FILL;
+import static com.beardedhen.androidbootstrap.utils.ColorUtils.decreaseRgbChannels;
+import static com.beardedhen.androidbootstrap.utils.ColorUtils.increaseOpacity;
+import static com.beardedhen.androidbootstrap.utils.ColorUtils.resolveColor;
 
 /**
  * Bootstrap provides 6 brands by default - Primary, Success, Info, Warning, Danger, and Default.

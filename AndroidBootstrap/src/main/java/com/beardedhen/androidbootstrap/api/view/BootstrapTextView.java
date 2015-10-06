@@ -2,14 +2,14 @@ package com.beardedhen.androidbootstrap.api.view;
 
 import android.support.annotation.Nullable;
 
-import com.beardedhen.androidbootstrap.support.BootstrapText;
+import com.beardedhen.androidbootstrap.BootstrapText;
 
 /**
  * Views which implement this interface can set their text using BootstrapText
  */
 public interface BootstrapTextView {
 
-    String KEY = "com.beardedhen.androidbootstrap.support.BootstrapText";
+    String KEY = "com.beardedhen.androidbootstrap.BootstrapText";
 
     /**
      * Sets the view to display the given BootstrapText
