@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.example.sample"
+        applicationId "com.fractalwrench.androidbootstrap.sample"
         minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
@@ -26,7 +26,7 @@ android {
 }
 
 dependencies {
-    compile project (':AndroidBootstrap')
+    compile project (':AndroidBootstrap') // replace with Maven dependency in your app
 
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:appcompat-v7:23.0.1'

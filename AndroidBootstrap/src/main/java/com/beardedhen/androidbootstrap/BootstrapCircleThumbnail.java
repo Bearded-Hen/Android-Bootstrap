@@ -174,7 +174,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
                     getContext(),
                     bootstrapBrand,
                     (int) (baselineOuterBorderWidth * bootstrapSize),
-                    getResources().getColor(R.color.bthumbnail_background));
+                    getResources().getColor(R.color.bootstrap_thumbnail_background));
         }
         if (Build.VERSION.SDK_INT >= 16) {
             setBackground(bg);

@@ -19,22 +19,16 @@ public class BootstrapButtonExample extends BaseActivity {
 
     private DefaultBootstrapSize size = DefaultBootstrapSize.LG;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setupCustomStyle();
-    }
-
-
-    /*
-     * BootstrapButton example code
-     */
-
-
     @Bind(R.id.bbutton_example_corners) BootstrapButton exampleCorners;
     @Bind(R.id.bbutton_example_outline) BootstrapButton exampleOutline;
     @Bind(R.id.bbutton_example_size) BootstrapButton exampleSize;
     @Bind(R.id.bbutton_example_theme) BootstrapButton exampleTheme;
     @Bind(R.id.example_bbutton_custom_style) BootstrapButton exampleCustomStyle;
+
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setupCustomStyle();
+    }
 
     @OnClick(R.id.bbutton_example_corners) void onCornersExampleClicked() {
         exampleCorners.setRounded(!exampleCorners.isRounded());
@@ -106,7 +100,7 @@ public class BootstrapButtonExample extends BaseActivity {
             }
 
             @Override public int defaultTextColor(Context context) {
-                return context.getResources().getColor(R.color.white);
+                return context.getResources().getColor(android.R.color.white);
             }
 
             @Override public int activeFill(Context context) {
@@ -118,7 +112,7 @@ public class BootstrapButtonExample extends BaseActivity {
             }
 
             @Override public int activeTextColor(Context context) {
-                return context.getResources().getColor(R.color.black);
+                return context.getResources().getColor(android.R.color.black);
             }
 
             @Override public int disabledFill(Context context) {

@@ -9,7 +9,7 @@ import android.widget.ScrollView;
 import butterknife.ButterKnife;
 
 /**
- * Performs ButterKnife binding after adding example views to a scrollview root
+ * Performs ButterKnife binding after adding example views to the root ScrollView
  */
 abstract class BaseActivity extends AppCompatActivity {
 

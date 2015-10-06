@@ -20,11 +20,6 @@ public class BootstrapLabelExample extends BaseActivity {
         return R.layout.example_bootstrap_label;
     }
 
-    /**
-     * BootstrapLabel example code
-     */
-
-
     @Bind(R.id.example_blabel_change_color) BootstrapLabel lblChangeColor;
     @Bind(R.id.example_blabel_change_heading) BootstrapLabel lblChangeHeading;
     @Bind(R.id.example_blabel_change_rounded) BootstrapLabel lblChangeRounded;

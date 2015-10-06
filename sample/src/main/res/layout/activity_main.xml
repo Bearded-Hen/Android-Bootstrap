@@ -12,13 +12,6 @@
         android:layout_margin="16dp"
         android:orientation="vertical"
         >
-
-        <Button
-            android:id="@+id/example_fontawesometext"
-            style="@style/home_button"
-            android:text="AwesomeTextView"
-            />
-
         <Button
             android:id="@+id/example_bootstrap_button"
             style="@style/home_button"
@@ -29,6 +22,12 @@
             android:id="@+id/example_bootstrap_btn_group"
             style="@style/home_button"
             android:text="BootstrapButtonGroup"
+            />
+
+        <Button
+            android:id="@+id/example_fontawesometext"
+            style="@style/home_button"
+            android:text="AwesomeTextView"
             />
 
         <Button
@@ -44,6 +43,12 @@
             />
 
         <Button
+            android:id="@+id/example_bootstrap_edit_text"
+            style="@style/home_button"
+            android:text="BootstrapEditText"
+            />
+
+        <Button
             android:id="@+id/example_bootstrap_cricle_thumbnail"
             style="@style/home_button"
             android:text="BootstrapCircleThumbnail"
@@ -54,20 +59,6 @@
             style="@style/home_button"
             android:text="BootstrapThumbnail"
             />
-
-        <Button
-            android:id="@+id/example_bootstrap_edit_text"
-            style="@style/home_button"
-            android:text="BootstrapEditText"
-            />
-
-        <Button
-            android:id="@+id/example_bootstrap_input_group"
-            style="@style/home_button"
-            android:text="BootstrapInputGroup"
-            android:visibility="gone"
-            />
-        <!-- TODO implement -->
 
     </LinearLayout>
 </ScrollView>

@@ -12,7 +12,6 @@ import butterknife.OnClick;
 public class BootstrapProgressBarExample extends BaseActivity {
 
     enum ChangeState {
-
         FIRST(false, false),
         SECOND(false, true),
         THIRD(true, false),

@@ -675,7 +675,6 @@
         <enum name="fa_youtube" value="670"/>
         <enum name="fa_youtube_play" value="671"/>
         <enum name="fa_youtube_square" value="672"/>
-        <enum name="none" value="673"/>
     </attr>
 
 </resources>

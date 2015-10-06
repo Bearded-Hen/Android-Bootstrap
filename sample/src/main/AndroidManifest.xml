@@ -5,14 +5,14 @@
     >
 
     <application
-        android:name="com.fractalwrench.androidbootstrap.sample.SampleApplication"
+        android:name=".SampleApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         >
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.HomeActivity"
+            android:name=".HomeActivity"
             android:label="Android Bootstrap Examples"
             >
             <intent-filter>
@@ -21,40 +21,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapButtonExample"
+            android:name=".BootstrapButtonExample"
             android:label="BootstrapButton"
             />
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapLabelExample"
+            android:name=".BootstrapLabelExample"
             android:label="BootstrapLabel"
             />
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.AwesomeTextViewExample"
+            android:name=".AwesomeTextViewExample"
             android:label="AwesomeTextView"
             />
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapProgressBarExample"
+            android:name=".BootstrapProgressBarExample"
             android:label="BootstrapProgressBar"
             />
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapButtonGroupExample"
+            android:name=".BootstrapButtonGroupExample"
             android:label="BootstrapButtonGroup"
             />
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapCircleThumbnailExample"
+            android:name=".BootstrapCircleThumbnailExample"
             android:label="BootstrapCircleThumbnail"
             />
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapThumbnailExample"
+            android:name=".BootstrapThumbnailExample"
             android:label="BootstrapThumbnail"
             />
         <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapEditTextExample"
+            android:name=".BootstrapEditTextExample"
             android:label="BootstrapEditTextExample"
-            />
-        <activity
-            android:name="com.fractalwrench.androidbootstrap.sample.BootstrapInputGroupExample"
-            android:label="BootstrapInputGroupExample"
             />
     </application>
 

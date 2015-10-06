@@ -39,8 +39,6 @@
 
     <attr name="showOutline" format="boolean"/>
     <attr name="roundedCorners" format="boolean"/>
-    <attr name="toggleable" format="boolean"/>
-    <attr name="placeholderText" format="string"/>
     <attr name="hasBorder" format="boolean"/>
 
     <!-- View attributes -->
@@ -69,7 +67,6 @@
         <attr name="buttonMode"/>
         <attr name="showOutline"/>
         <attr name="roundedCorners"/>
-        <attr name="toggleable"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
     </declare-styleable>
@@ -77,8 +74,8 @@
     <declare-styleable name="BootstrapProgressBar">
         <attr name="striped" format="boolean"/>
         <attr name="animated" format="boolean"/>
-        <attr name="roundedCorners"/>
         <attr name="progress" format="integer"/>
+        <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
     </declare-styleable>

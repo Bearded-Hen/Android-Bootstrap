@@ -21,17 +21,6 @@ public class AwesomeTextViewExample extends BaseActivity {
         return R.layout.example_awesome_text_view;
     }
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setupFontAwesomeText();
-    }
-
-
-    /**
-     * FontAwesomeText example code
-     */
-
-
     @Bind(R.id.example_fa_text_change) AwesomeTextView exampleChange;
     @Bind(R.id.example_fa_text_flash) AwesomeTextView exampleFlash;
     @Bind(R.id.example_fa_text_rotate) AwesomeTextView exampleRotate;
@@ -41,6 +30,11 @@ public class AwesomeTextViewExample extends BaseActivity {
 
     private boolean android = true;
     private boolean wikipedia = true;
+
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setupFontAwesomeText();
+    }
 
     private void setupFontAwesomeText() {
         exampleFlash.startFlashing(true, AwesomeTextView.AnimationSpeed.FAST);
@@ -52,7 +46,6 @@ public class AwesomeTextViewExample extends BaseActivity {
                 .addText(" going on ")
                 .addFontAwesomeIcon(FA_TWITTER)
                 .build();
-
 
         exampleBuilder.setBootstrapText(text);
 

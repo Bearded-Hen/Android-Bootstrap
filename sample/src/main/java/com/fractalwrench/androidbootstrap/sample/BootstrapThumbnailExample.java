@@ -24,7 +24,6 @@ public class BootstrapThumbnailExample extends BaseActivity {
 
     private int resId = R.drawable.ladybird;
     private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
-    private final float baselineSize = 300;
 
     @Override protected int getContentLayoutId() {
         return R.layout.example_bootstrap_thumbnail;
@@ -39,11 +38,6 @@ public class BootstrapThumbnailExample extends BaseActivity {
     @Bind(R.id.bthumb_set_image_drawable_example) BootstrapThumbnail setDrawableExample;
     @Bind(R.id.bthumb_set_image_resource_example) BootstrapThumbnail setResourceExample;
 
-    private LinearLayout.LayoutParams getLayoutParams(float factor) {
-        float size = baselineSize * factor;
-        return new LinearLayout.LayoutParams((int)size, (int)size);
-    }
-
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -53,6 +47,12 @@ public class BootstrapThumbnailExample extends BaseActivity {
         setDrawableExample.setImageDrawable(getResources().getDrawable(R.drawable.ladybird));
         setResourceExample.setImageResource(R.drawable.caterpillar);
         sizeChange.setLayoutParams(getLayoutParams(size.scaleFactor()));
+    }
+
+    private LinearLayout.LayoutParams getLayoutParams(float factor) {
+        float baselineSize = 300;
+        float size = baselineSize * factor;
+        return new LinearLayout.LayoutParams((int)size, (int)size);
     }
 
     @OnClick(R.id.bthumb_theme_change_example) void onThemeChangeExampleClicked() {

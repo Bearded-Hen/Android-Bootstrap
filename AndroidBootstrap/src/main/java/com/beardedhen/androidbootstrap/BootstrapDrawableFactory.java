@@ -63,7 +63,7 @@ class BootstrapDrawableFactory {
     static ColorStateList bootstrapButtonText(Context context, boolean outline, BootstrapBrand brand) {
 
         int defaultColor = outline ? brand.defaultFill(context) : brand.defaultTextColor(context);
-        int activeColor = outline ? context.getResources().getColor(R.color.white) : brand.activeTextColor(context);
+        int activeColor = outline ? context.getResources().getColor(android.R.color.white) : brand.activeTextColor(context);
         int disabledColor = outline ? brand.disabledFill(context) : brand.disabledTextColor(context);
 
         if (outline && brand instanceof DefaultBootstrapBrand) { // special case
@@ -133,7 +133,7 @@ class BootstrapDrawableFactory {
 
         // stroke is larger when focused
         int defaultBorder = ColorUtils.resolveColor(R.color.bootstrap_brand_secondary_border, context);
-        int disabledBorder = ColorUtils.resolveColor(R.color.bbutton_edittext_disabled, context);
+        int disabledBorder = ColorUtils.resolveColor(R.color.bootstrap_edittext_disabled, context);
 
         activeDrawable.setStroke((int) strokeWidth, bootstrapBrand.defaultEdge(context));
         disabledDrawable.setStroke((int) strokeWidth, disabledBorder);

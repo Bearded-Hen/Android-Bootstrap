@@ -1,9 +1,0 @@
-package com.fractalwrench.androidbootstrap.sample;
-
-public class BootstrapInputGroupExample extends BaseActivity {
-
-    @Override protected int getContentLayoutId() {
-        return R.layout.example_bootstrap_input_group_view;
-    }
-
-}

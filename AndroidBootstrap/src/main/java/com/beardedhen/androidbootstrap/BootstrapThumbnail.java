@@ -106,7 +106,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
                     getContext(),
                     bootstrapBrand,
                     (int) (baselineOuterBorderWidth * bootstrapSize),
-                    getResources().getColor(R.color.bthumbnail_background),
+                    getResources().getColor(R.color.bootstrap_thumbnail_background),
                     roundedCorners);
         }
         if (Build.VERSION.SDK_INT >= 16) {

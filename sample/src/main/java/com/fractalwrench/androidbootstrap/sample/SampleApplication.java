@@ -12,7 +12,7 @@ public class SampleApplication extends Application {
     @Override public void onCreate() {
         super.onCreate();
 
-        // setup FontAwesome font
+        // setup default typefaces
         TypefaceProvider.registerDefaultIconSets();
     }
 

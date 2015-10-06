@@ -7,8 +7,6 @@ Fix/Priority List
 
 * Publish on play store
 * Generate gh-pages
-* Write short tutorial
-* Update Readme
 
 Feature (Wish)List
 =============

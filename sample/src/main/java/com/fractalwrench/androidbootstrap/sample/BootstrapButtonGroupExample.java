@@ -1,6 +1,5 @@
 package com.fractalwrench.androidbootstrap.sample;
 
-import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -18,10 +17,6 @@ public class BootstrapButtonGroupExample extends BaseActivity {
     }
 
     private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
-
-    @Override protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Bind(R.id.bbutton_group_orientation_change) BootstrapButtonGroup orientationChange;
     @Bind(R.id.bbutton_group_size_change) BootstrapButtonGroup sizeChange;
