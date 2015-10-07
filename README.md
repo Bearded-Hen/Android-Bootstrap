@@ -8,15 +8,16 @@ Android Bootstrap is a library which provides several custom views styled accord
 Quick Start
 ===========
  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap)
+ 
  Add the following dependency to your build.gradle:
  
  ```java
  dependencies {
-    compile 'com.beardedhen:androidbootstrap:{VERSION_ON_BADGE}'
+    compile 'com.beardedhen:androidbootstrap:LATEST_VERSION_HERE'
  }
  ```
  
- If you wish to use Glyph Icons, you should also override your application class with the following:
+ You should also override your application class with the following:
  
  ```java
  public class SampleApplication extends Application {
@@ -28,30 +29,23 @@ Quick Start
  ```
  
  You should then checkout the library and investigate the sample code, which covers most of the features.
- The sample code is also available as an app on [Google Play](TODO LINK). Javadoc for the project
- is hosted [here](TODO LINK)
+ The sample app is also available on [Google Play](https://play.google.com/store/apps/details?id=com.fractalwrench.androidbootstrap.sample).
  
  
 Contributing
 ============
-Pull Requests are very welcome! There are several views in the Bootstrap specification which are not
- yet implemented in this library, which would be good candidates for contributions. There is also a
- need for more default IconSets, and fixes for miscellaneous issues. Please raise an issue if
- you plan on doing anything substantial like writing a new view, to ensure nobody else is working on it!
-  
+Pull Requests are very welcome! There are several views in the [Twitter Bootstrap Specification](http://getbootstrap.com/) which are not yet implemented in this library, which would be good candidates for contributions. Adding more typefaces like FontAwesome/Typicon would also be very helpful.
+If you think you've found a bug or are unsure on how something works, then please raise an issue with details.
  
 Versioning
 ==========
-This project uses [Semantic Versioning](http://semver.org/), which means that major version changes
-may cause breaking changes in the library. There are several breaking changes in 2.X of the library,
-including:
+This project uses [Semantic Versioning](http://semver.org/). There are several breaking changes in V2.X of the library, including:
 
 - AwesomeTextView replaces FontAwesomeText
-- Altered method signatures/attributes for various views
+- Various altered method signatures/attributes for views
 - Global BootstrapBrand/BootstrapSize attributes replace view-specific enums
 
-Please check the library before upgrading!
-
+Please consider what effect these changes might have on your app before upgrading!
 
 Contact
 =======
@@ -63,7 +57,6 @@ If you have any questions, issues, or just want to let us know where you're usin
 Examples
 ============
 
-
 ###BootstrapButton
 A button that supports Glyph icons, and is themeable using Bootstrap Brands.
    ```xml
@@ -71,6 +64,11 @@ A button that supports Glyph icons, and is themeable using Bootstrap Brands.
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="BootstrapButton"
+    app:bootstrapBrand="success"
+    app:bootstrapSize="lg"
+    app:buttonMode="regular"
+    app:showOutline="false"
+    app:roundedCorners="true"
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_button.png "BootstrapButton")
@@ -82,20 +80,23 @@ Allows BootstrapButtons to be grouped together and their attributes controlled e
 <com.beardedhen.androidbootstrap.BootstrapButtonGroup
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="BootstrapButton"
+    android:text="BootstrapButtonGroup"
     android:orientation="vertical"
+    app:bootstrapBrand="success"
+    app:bootstrapSize="lg"
+    app:roundedCorners="true"
     >
-<com.beardedhen.androidbootstrap.BootstrapButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="BootstrapButton"
-    />
-<com.beardedhen.androidbootstrap.BootstrapButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="BootstrapButton"
-    />
-    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="BootstrapButton 1"
+       />
+    <com.beardedhen.androidbootstrap.BootstrapButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="BootstrapButton 2"
+       />
+</com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_button_group.png "BootstrapButtonGroup")
 
@@ -106,6 +107,8 @@ A text widget that displays Glyph icons, and is themeable using Bootstrap Brands
 <com.beardedhen.androidbootstrap.AwesomeTextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:bootstrapBrand="success"
+    app:fontAwesomeIcon="fa_android"
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/awesome_text_view.png "AwesomeTextView")
@@ -117,6 +120,10 @@ Displays progress in a bar from 0-100, and animates updates to the current progr
 <com.beardedhen.androidbootstrap.BootstrapProgressBar
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:animated="true"
+    app:bootstrapBrand="warning"
+    app:progress="78"
+    app:striped="true"
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_progress_bar.png "BootstrapProgressBar")
@@ -128,6 +135,10 @@ Displays non-clickable text in a widget similar to the BootstrapButton, sizable 
 <com.beardedhen.androidbootstrap.BootstrapLabel
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:bootstrapBrand="primary"
+    app:bootstrapHeading="h3"
+    app:roundedCorners="true"
+    android:text="Bootstrap Label"
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_label.png "BootstrapLabel")
@@ -139,6 +150,8 @@ Allows editing of text in a widget themed using BootstrapBrand.
 <com.beardedhen.androidbootstrap.BootstrapEditText
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:bootstrapSize="md"
+    app:bootstrapBrand="info"
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_edit_text.png "BootstrapEditText")
@@ -150,6 +163,9 @@ Displays images in a center-cropped Circular View, themed with BootstrapBrand.
 <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:src="@drawable/my_drawable"
+    app:bootstrapBrand="danger"
+    app:hasBorder="true"
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_circle_thumbnail.png "BootstrapCircleThumbnail")
@@ -161,6 +177,9 @@ Displays images in a rectangular View, themed with BootstrapBrand.
 <com.beardedhen.androidbootstrap.BootstrapThumbnail
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:src="@drawable/my_drawable"
+    app:bootstrapBrand="info"
+    app:hasBorder="true"
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_thumbnail.png "BootstrapThumbnail")
