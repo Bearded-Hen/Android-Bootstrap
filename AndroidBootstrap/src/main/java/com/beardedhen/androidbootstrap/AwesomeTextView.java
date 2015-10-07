@@ -180,7 +180,6 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
         rotate.setStartOffset(0);
         rotate.setRepeatMode(Animation.RESTART);
         rotate.setDuration(speed.getRotateDuration());
-
         startAnimation(rotate);
     }
 
@@ -194,12 +193,11 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
         setBootstrapText(new BootstrapText.Builder(getContext()).addIcon(iconCode, iconSet).build());
     }
 
-
     /**
      * Sets the text to display a FontIcon, replacing whatever text is already present.
      * Used to set the text to display a FontAwesome Icon.
      *
-     * @param iconSet - An implementation of FontIcon
+     * @param iconCode the fontawesome icon code e.g. "fa_play"
      */
     public void setFontAwesomeIcon(@FontAwesome.Icon CharSequence iconCode) {
         setBootstrapText(new BootstrapText.Builder(getContext()).addFontAwesomeIcon(iconCode).build());
@@ -207,9 +205,9 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
 
     /**
      * Sets the text to display a FontIcon, replacing whatever text is already present.
-     * Used to set the text to display a FontAwesome Icon.
+     * Used to set the text to display a Typicon.
      *
-     * @param iconSet - An implementation of FontIcon
+     * @param iconCode the typicon icon code e.g. "ty_adjust_brightness"
      */
     public void setTypicon(@Typicon.Icon CharSequence iconCode) {
         setBootstrapText(new BootstrapText.Builder(getContext()).addTypicon(iconCode).build());

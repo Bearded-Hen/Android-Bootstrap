@@ -15,6 +15,8 @@ import android.util.AttributeSet;
 
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.utils.ColorUtils;
+import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 /**
  * BootstrapCircleThumbnails display a circular image with an optional border, that can be themed
@@ -64,7 +66,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
             a.recycle();
         }
 
-        baselineOuterBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
+        baselineOuterBorderWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bthumbnail_outer_stroke);
         super.initialise(attrs);
     }
 
@@ -174,7 +176,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
                     getContext(),
                     bootstrapBrand,
                     (int) (baselineOuterBorderWidth * bootstrapSize),
-                    getResources().getColor(R.color.bootstrap_thumbnail_background));
+                    ColorUtils.resolveColor(R.color.bootstrap_thumbnail_background, getContext()));
         }
         if (Build.VERSION.SDK_INT >= 16) {
             setBackground(bg);

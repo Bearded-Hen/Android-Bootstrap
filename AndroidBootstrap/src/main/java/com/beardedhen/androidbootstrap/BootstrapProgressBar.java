@@ -3,7 +3,6 @@ package com.beardedhen.androidbootstrap;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -30,6 +29,8 @@ import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.ProgressView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
+import com.beardedhen.androidbootstrap.utils.ColorUtils;
+import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 import java.io.Serializable;
 
@@ -89,8 +90,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private void initialise(AttributeSet attrs) {
         ValueAnimator.setFrameDelay(15); // attempt 60fps
         tilePaint = new Paint();
-        Resources res = getContext().getResources();
-        baselineHeight = res.getDimensionPixelSize(R.dimen.bootstrap_progress_bar_height);
+        baselineHeight = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_progress_bar_height);
 
         progressPaint = new Paint();
         progressPaint.setStyle(Paint.Style.FILL);
@@ -102,7 +102,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         bgPaint = new Paint();
         bgPaint.setStyle(Paint.Style.FILL);
-        bgPaint.setColor(getContext().getResources().getColor(R.color.bootstrap_gray_light));
+        bgPaint.setColor(ColorUtils.resolveColor(R.color.bootstrap_gray_light, getContext()));
 
         // get attributes
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapProgressBar);

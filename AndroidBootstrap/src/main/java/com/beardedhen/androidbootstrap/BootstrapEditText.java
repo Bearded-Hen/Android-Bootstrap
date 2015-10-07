@@ -1,7 +1,6 @@
 package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -72,12 +71,11 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
             a.recycle();
         }
 
-        final Resources res = getResources();
         baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_edit_text_default_font_size);
-        baselineVertPadding = res.getDimension(R.dimen.bootstrap_edit_text_vert_padding);
-        baselineHoriPadding = res.getDimension(R.dimen.bootstrap_edit_text_hori_padding);
-        baselineStrokeWidth = res.getDimension(R.dimen.bootstrap_edit_text_edge_width);
-        baselineCornerRadius = res.getDimension(R.dimen.bootstrap_edit_text_corner_radius);
+        baselineVertPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_edit_text_vert_padding);
+        baselineHoriPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_edit_text_hori_padding);
+        baselineStrokeWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_edit_text_edge_width);
+        baselineCornerRadius = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_edit_text_corner_radius);
 
         setGravity(Gravity.CENTER_VERTICAL); // center text vertically by default
         updateBootstrapState();

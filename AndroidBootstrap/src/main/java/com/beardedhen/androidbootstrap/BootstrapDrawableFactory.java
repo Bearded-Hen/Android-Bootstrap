@@ -13,6 +13,7 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
+import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 /**
  * Provides a factory for generating Drawables which are used as the backgrounds for Bootstrap Views.
@@ -48,7 +49,7 @@ class BootstrapDrawableFactory {
             DefaultBootstrapBrand db = (DefaultBootstrapBrand) brand;
 
             if (db == DefaultBootstrapBrand.SECONDARY) {
-                int color = context.getResources().getColor(R.color.bootstrap_brand_secondary_border);
+                int color = ColorUtils.resolveColor(R.color.bootstrap_brand_secondary_border, context);
 
                 defaultGd.setStroke(strokeWidth, color);
                 activeGd.setStroke(strokeWidth, color);
@@ -63,7 +64,7 @@ class BootstrapDrawableFactory {
     static ColorStateList bootstrapButtonText(Context context, boolean outline, BootstrapBrand brand) {
 
         int defaultColor = outline ? brand.defaultFill(context) : brand.defaultTextColor(context);
-        int activeColor = outline ? context.getResources().getColor(android.R.color.white) : brand.activeTextColor(context);
+        int activeColor = outline ? ColorUtils.resolveColor(android.R.color.white, context) : brand.activeTextColor(context);
         int disabledColor = outline ? brand.disabledFill(context) : brand.disabledTextColor(context);
 
         if (outline && brand instanceof DefaultBootstrapBrand) { // special case
@@ -91,7 +92,7 @@ class BootstrapDrawableFactory {
                                    boolean rounded,
                                    float height) {
 
-        int cornerRadius = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_default_corner_radius);
+        int cornerRadius = (int) DimenUtils.pixelsFromDpResource(context, R.dimen.bootstrap_default_corner_radius);
 
         GradientDrawable drawable = new GradientDrawable();
         drawable.setColor(bootstrapBrand.defaultFill(context));
@@ -169,7 +170,7 @@ class BootstrapDrawableFactory {
         drawable.setColor(bg);
         drawable.setStroke(outerBorderWidth, bootstrapBrand.defaultEdge(context));
 
-        float r = context.getResources().getDimension(R.dimen.bthumbnail_rounded_corner);
+        float r = DimenUtils.pixelsFromDpResource(context, R.dimen.bthumbnail_rounded_corner);
 
         if (rounded) {
             drawable.setCornerRadii(new float[]{r, r, r, r, r, r, r, r});

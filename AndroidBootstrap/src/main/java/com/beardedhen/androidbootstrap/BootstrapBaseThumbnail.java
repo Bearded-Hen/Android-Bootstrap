@@ -20,6 +20,8 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.BorderView;
+import com.beardedhen.androidbootstrap.utils.ColorUtils;
+import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 import java.io.Serializable;
 
@@ -64,8 +66,8 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
     }
 
     protected void initialise(AttributeSet attrs) {
-        this.baselineOuterBorderWidth = getResources().getDimension(R.dimen.bthumbnail_outer_stroke);
-        this.baselineBorderWidth = getResources().getDimension(R.dimen.bthumbnail_default_border);
+        this.baselineOuterBorderWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bthumbnail_outer_stroke);
+        this.baselineBorderWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bthumbnail_default_border);
         setupPaints();
         updateImageState();
     }
@@ -100,7 +102,7 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
 
     private void setupPaints() {
         int strokeColor = bootstrapBrand.defaultEdge(getContext());
-        int placeholderColor = getContext().getResources().getColor(R.color.bootstrap_gray_light);
+        int placeholderColor = ColorUtils.resolveColor(R.color.bootstrap_gray_light, getContext());
 
         borderPaint.setColor(strokeColor);
         borderPaint.setAntiAlias(true);

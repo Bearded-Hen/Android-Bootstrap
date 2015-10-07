@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
+import com.beardedhen.androidbootstrap.utils.ColorUtils;
 
 // TODO document/finalise
 
@@ -80,7 +81,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
         }
 
         placeholderPaint = new Paint();
-        placeholderPaint.setColor(getResources().getColor(R.color.bootstrap_gray_light));
+        placeholderPaint.setColor(ColorUtils.resolveColor(R.color.bootstrap_gray_light, getContext()));
         placeholderPaint.setStyle(Paint.Style.FILL);
         placeholderPaint.setAntiAlias(true);
 
@@ -105,7 +106,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
                     getContext(),
                     bootstrapBrand,
                     (int) (baselineOuterBorderWidth * bootstrapSize),
-                    getResources().getColor(R.color.bootstrap_thumbnail_background),
+                    ColorUtils.resolveColor(R.color.bootstrap_thumbnail_background, getContext()),
                     roundedCorners);
         }
         if (Build.VERSION.SDK_INT >= 16) {

@@ -1,7 +1,6 @@
 package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -80,12 +79,11 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
 
-            final Resources res = getResources();
             baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size);
-            baselineVertPadding = res.getDimension(R.dimen.bootstrap_button_default_vert_padding);
-            baselineHoriPadding = res.getDimension(R.dimen.bootstrap_button_default_hori_padding);
-            baselineStrokeWidth = res.getDimension(R.dimen.bootstrap_button_default_edge_width);
-            baselineCornerRadius = res.getDimension(R.dimen.bootstrap_button_default_corner_radius);
+            baselineVertPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_vert_padding);
+            baselineHoriPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_hori_padding);
+            baselineStrokeWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_edge_width);
+            baselineCornerRadius = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_corner_radius);
         }
         finally {
             a.recycle();

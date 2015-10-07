@@ -7,13 +7,10 @@ Fix/Priority List
 Code Review
 ===========
 
-#API final points:
-Check that annotations are supplied and checked where necessary in implementation.
-
 #Implementation final points:
 Tidy up drawable factory
-Tidy up resource resolving
 
+* Final Lint check
 
 
 
