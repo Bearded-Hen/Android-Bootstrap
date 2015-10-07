@@ -2,6 +2,7 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -33,7 +34,9 @@ class BootstrapDrawableFactory {
         GradientDrawable disabledGd = new GradientDrawable();
 
         if (showOutline) {
+            defaultGd.setColor(Color.TRANSPARENT);
             activeGd.setColor(brand.activeFill(context));
+            disabledGd.setColor(Color.TRANSPARENT);
         }
         else {
             defaultGd.setColor(brand.defaultFill(context));

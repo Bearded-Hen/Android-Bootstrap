@@ -78,16 +78,16 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
-
-            baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size);
-            baselineVertPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_vert_padding);
-            baselineHoriPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_hori_padding);
-            baselineStrokeWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_edge_width);
-            baselineCornerRadius = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_corner_radius);
         }
         finally {
             a.recycle();
         }
+
+        baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size);
+        baselineVertPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_vert_padding);
+        baselineHoriPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_hori_padding);
+        baselineStrokeWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_edge_width);
+        baselineCornerRadius = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_corner_radius);
         updateBootstrapState();
     }
 
@@ -129,10 +129,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         float strokeWidth = baselineStrokeWidth;
 
         final float fontSize = baselineFontSize * bootstrapSize;
-
-        int vert = (int) (baselineVertPadding * bootstrapSize);
-        int hori = (int) (baselineHoriPadding * bootstrapSize);
-        setPadding(hori, vert, hori, vert);
         setTextSize(fontSize);
 
         cornerRadius *= bootstrapSize;
@@ -158,6 +154,10 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         else {
             setBackgroundDrawable(bg);
         }
+
+        int vert = (int) (baselineVertPadding * bootstrapSize);
+        int hori = (int) (baselineHoriPadding * bootstrapSize);
+        setPadding(hori, vert, hori, vert);
     }
 
     @Override public boolean onTouchEvent(@NonNull MotionEvent event) {

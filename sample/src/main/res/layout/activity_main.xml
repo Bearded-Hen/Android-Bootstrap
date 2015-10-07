@@ -12,6 +12,7 @@
         android:layout_margin="16dp"
         android:orientation="vertical"
         >
+
         <Button
             android:id="@+id/example_bootstrap_button"
             style="@style/home_button"
