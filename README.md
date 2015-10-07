@@ -34,8 +34,11 @@ Quick Start
  
 Contributing
 ============
-Pull Requests are very welcome! There are several views in the [Twitter Bootstrap Specification](http://getbootstrap.com/) which are not yet implemented in this library, which would be good candidates for contributions. Adding more typefaces like FontAwesome/Typicon would also be very helpful.
-If you think you've found a bug or are unsure on how something works, then please raise an issue with details.
+Contributions are very welcome! There are 3 main ways you can help out:
+
+1. Add more Icon Typefaces, using the instructions [here](https://github.com/Bearded-Hen/Android-Bootstrap/blob/master/ADD_FONT.md)
+2. Help implement views which are present in the  [Twitter Bootstrap Specification](http://getbootstrap.com/) but are not yet in this library.
+3. Raise an issue if you see a bug or are unsure on how something works, or even better - send a pull-request with a fix!
  
 Versioning
 ==========
