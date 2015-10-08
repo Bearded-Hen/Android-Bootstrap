@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 
 /**
- * Views which implement this interface change their text size & padding according to the
+ * Views which implement this interface change their text size and padding according to the
  * given Bootstrap Heading
  */
 public interface BootstrapHeadingView {
@@ -13,7 +13,7 @@ public interface BootstrapHeadingView {
     String KEY = "com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading";
 
     /**
-     * Sets this view to use the given Bootstrap Heading, changing its text size & padding
+     * Sets this view to use the given Bootstrap Heading, changing its text size and padding
      *
      * @param bootstrapHeading the Bootstrap Heading
      */

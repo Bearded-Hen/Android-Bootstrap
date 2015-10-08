@@ -20,7 +20,7 @@ import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 /**
  * BootstrapCircleThumbnails display a circular image with an optional border, that can be themed
- * using BootstrapBrand colors. The view extends ImageView, and will automatically center crop &
+ * using BootstrapBrand colors. The view extends ImageView, and will automatically center crop and
  * scale images.
  */
 public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
@@ -72,11 +72,9 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
 
     /**
      * This method is called when the Circle Image needs to be recreated due to changes in size etc.
-     * <p/>
      * A Paint object uses a BitmapShader to draw a center-cropped, circular image onto the View
      * Canvas. A Matrix on the BitmapShader scales the original Bitmap to match the current view
      * bounds, avoiding any inefficiencies in duplicating Bitmaps.
-     * <p/>
      * <a href="http://www.curious-creature.com/2012/12/11/android-recipe-1-image-with-rounded-corners">
      * Further reading</a>
      */

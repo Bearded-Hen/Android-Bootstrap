@@ -28,8 +28,8 @@ import java.io.Serializable;
 import static android.widget.ImageView.ScaleType.CENTER_CROP;
 
 /**
- * Parent class of Circle & Square Thumbnails - contains boilerplate code required to get
- * BootstrapBrand & borders working via getters/setters. Also overrides ImageView so that only
+ * Parent class of Circle and Square Thumbnails - contains boilerplate code required to get
+ * BootstrapBrand and borders working via getters/setters. Also overrides ImageView so that only
  * CENTER_CROP is allowed, and a callback is fired whenever the image source changes.
  */
 abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBrandView,
