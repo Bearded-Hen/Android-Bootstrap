@@ -1,1 +1,1 @@
-include ':AndroidBootstrap'
+include ':AndroidBootstrap', ':sample'

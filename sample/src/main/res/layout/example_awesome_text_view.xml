@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    style="@style/example_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <TextView
+        style="@style/description_label"
+        android:text="Single icons"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Click me --->"
+                />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/example_fa_text_change"
+                style="@style/wrapping_fa_text"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"
+                />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/example_fa_text_flash"
+                style="@style/wrapping_fa_text"
+                app:bootstrapBrand="primary"
+                app:fontAwesomeIcon="fa_github_alt"
+                />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/example_fa_text_rotate"
+                style="@style/wrapping_fa_text"
+                app:bootstrapBrand="danger"
+                app:fontAwesomeIcon="fa_wrench"
+                />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:id="@+id/example_fa_text_multi_change"
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="primary"
+        app:bootstrapText="{fa_wikipedia_w} is in the {fa_cloud}"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:id="@+id/example_fa_text_builder"
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="info"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Multiple icons"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                style="@style/wrapping_fa_text"
+                app:bootstrapBrand="success"
+                app:bootstrapText="{fa_android}{fa_play}{fa_apple}"
+                app:fontAwesomeIcon="fa_android"
+                />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                style="@style/wrapping_fa_text"
+                app:bootstrapBrand="warning"
+                app:bootstrapText="{fa_user} {fa_user_md} {fa_users} {fa_user_plus}"
+                />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                style="@style/wrapping_fa_text"
+                app:bootstrapBrand="danger"
+                app:bootstrapText="{fa_heart} {fa_yc} {fa_slack} {fa_stack_overflow} {fa_wikipedia_w} {fa_heart} "
+                />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Text with icons"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        android:textSize="30dp"
+        app:bootstrapBrand="success"
+        app:bootstrapText="I {fa_heart} {fa_github}"
+        app:fontAwesomeIcon="fa_android"
+        tools:ignore="SpUsage"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        android:textSize="30dp"
+        app:bootstrapBrand="primary"
+        app:bootstrapText="Share on {fa_facebook} with a {fa_thumbs_o_up}"
+        tools:ignore="SpUsage"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        android:textSize="30dp"
+        app:bootstrapBrand="danger"
+        app:bootstrapText="I love to ride my {fa_bicycle}, I love to read my {fa_bicycle}"
+        tools:ignore="SpUsage"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        android:textSize="30dp"
+        app:bootstrapBrand="primary"
+        app:bootstrapText="Escaped \{fa_facebook\} icon"
+        tools:ignore="SpUsage"
+        />
+
+    <TextView
+        style="@style/description_label"
+        android:text="Typicons"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="success"
+        app:bootstrapText="{ty_weather_cloudy}"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="danger"
+        app:typicon="ty_anchor"
+        />
+
+
+    <TextView
+        style="@style/description_label"
+        android:text="Mix &amp; Match"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:id="@+id/example_mix_and_match"
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="info"
+        />
+
+</LinearLayout>

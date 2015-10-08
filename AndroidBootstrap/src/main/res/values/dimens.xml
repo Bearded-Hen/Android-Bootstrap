@@ -1,0 +1,51 @@
+<resources>
+
+    <!-- Default button size -->
+    <dimen name="bootstrap_button_default_font_size">14sp</dimen>
+    <dimen name="bootstrap_button_default_vert_padding">5.75dp</dimen>
+    <dimen name="bootstrap_button_default_hori_padding">14dp</dimen>
+    <dimen name="bootstrap_button_default_corner_radius">4dp</dimen>
+    <dimen name="bootstrap_button_default_edge_width">1dp</dimen>
+
+    <!-- Default edit text size -->
+    <dimen name="bootstrap_edit_text_default_font_size">14sp</dimen>
+    <dimen name="bootstrap_edit_text_vert_padding">8dp</dimen>
+    <dimen name="bootstrap_edit_text_hori_padding">5.75dp</dimen>
+    <dimen name="bootstrap_edit_text_corner_radius">6dp</dimen>
+    <dimen name="bootstrap_edit_text_edge_width">1.5dp</dimen>
+
+    <!-- Thumbnails -->
+    <dimen name="bthumbnail_default_border">8dp</dimen>
+    <dimen name="bthumbnail_rounded_corner">8dp</dimen>
+    <dimen name="bthumbnail_outer_stroke">2dp</dimen>
+
+    <!-- Headings -->
+    <dimen name="bootstrap_h1_text_size">31.5sp</dimen>
+    <dimen name="bootstrap_h1_vert_padding">7.875dp</dimen>
+    <dimen name="bootstrap_h1_hori_padding">12.6dp</dimen>
+
+    <dimen name="bootstrap_h2_text_size">28sp</dimen>
+    <dimen name="bootstrap_h2_vert_padding">7dp</dimen>
+    <dimen name="bootstrap_h2_hori_padding">11.2dp</dimen>
+
+    <dimen name="bootstrap_h3_text_size">24.5sp</dimen>
+    <dimen name="bootstrap_h3_vert_padding">6.125dp</dimen>
+    <dimen name="bootstrap_h3_hori_padding">9.8dp</dimen>
+
+    <dimen name="bootstrap_h4_text_size">21sp</dimen>
+    <dimen name="bootstrap_h4_vert_padding">5.25dp</dimen>
+    <dimen name="bootstrap_h4_hori_padding">8.4dp</dimen>
+
+    <dimen name="bootstrap_h5_text_size">17.5sp</dimen>
+    <dimen name="bootstrap_h5_vert_padding">4.375dp</dimen>
+    <dimen name="bootstrap_h5_hori_padding">7dp</dimen>
+
+    <dimen name="bootstrap_h6_text_size">14dp</dimen>
+    <dimen name="bootstrap_h6_vert_padding">3.5dp</dimen>
+    <dimen name="bootstrap_h6_hori_padding">5.6dp</dimen>
+
+    <!-- Misc -->
+    <dimen name="bootstrap_default_corner_radius">3dp</dimen>
+    <dimen name="bootstrap_progress_bar_height">14dp</dimen>
+
+</resources>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common attributes -->
+
+    <attr name="bootstrapBrand" format="enum">
+        <enum name="primary" value="0"/>
+        <enum name="success" value="1"/>
+        <enum name="info" value="2"/>
+        <enum name="warning" value="3"/>
+        <enum name="danger" value="4"/>
+        <enum name="regular" value="5"/>
+        <enum name="secondary" value="6"/>
+    </attr>
+
+    <attr name="buttonMode" format="enum">
+        <enum name="regular" value="0"/>
+        <enum name="toggle" value="1"/>
+        <enum name="checkbox" value="2"/>
+        <enum name="radio" value="3"/>
+    </attr>
+
+    <attr name="bootstrapSize" format="enum">
+        <enum name="xs" value="0"/>
+        <enum name="sm" value="1"/>
+        <enum name="md" value="2"/>
+        <enum name="lg" value="3"/>
+        <enum name="xl" value="4"/>
+    </attr>
+
+    <attr name="bootstrapHeading" format="enum">
+        <enum name="h1" value="0"/>
+        <enum name="h2" value="1"/>
+        <enum name="h3" value="2"/>
+        <enum name="h4" value="3"/>
+        <enum name="h5" value="4"/>
+        <enum name="h6" value="5"/>
+    </attr>
+
+    <attr name="showOutline" format="boolean"/>
+    <attr name="roundedCorners" format="boolean"/>
+    <attr name="hasBorder" format="boolean"/>
+
+    <!-- View attributes -->
+
+    <declare-styleable name="AwesomeTextView">
+        <attr name="bootstrapText" format="string"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="fontAwesomeIcon"/>
+        <attr name="typicon"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapLabel">
+        <attr name="bootstrapHeading"/>
+        <attr name="roundedCorners"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapButton">
+        <attr name="buttonMode"/>
+        <attr name="showOutline"/>
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapButtonGroup">
+        <attr name="buttonMode"/>
+        <attr name="showOutline"/>
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapProgressBar">
+        <attr name="striped" format="boolean"/>
+        <attr name="animated" format="boolean"/>
+        <attr name="progress" format="integer"/>
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapCircleThumbnail">
+        <attr name="bootstrapBrand"/>
+        <attr name="hasBorder"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapThumbnail">
+        <attr name="bootstrapBrand"/>
+        <attr name="roundedCorners"/>
+        <attr name="hasBorder"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapEditText">
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+</resources>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.fractalwrench.androidbootstrap.sample"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <application
+        android:name=".SampleApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        >
+        <activity
+            android:name=".HomeActivity"
+            android:label="Android Bootstrap Examples"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BootstrapButtonExample"
+            android:label="BootstrapButton"
+            />
+        <activity
+            android:name=".BootstrapLabelExample"
+            android:label="BootstrapLabel"
+            />
+        <activity
+            android:name=".AwesomeTextViewExample"
+            android:label="AwesomeTextView"
+            />
+        <activity
+            android:name=".BootstrapProgressBarExample"
+            android:label="BootstrapProgressBar"
+            />
+        <activity
+            android:name=".BootstrapButtonGroupExample"
+            android:label="BootstrapButtonGroup"
+            />
+        <activity
+            android:name=".BootstrapCircleThumbnailExample"
+            android:label="BootstrapCircleThumbnail"
+            />
+        <activity
+            android:name=".BootstrapThumbnailExample"
+            android:label="BootstrapThumbnail"
+            />
+        <activity
+            android:name=".BootstrapEditTextExample"
+            android:label="BootstrapEditTextExample"
+            />
+    </application>
+
+</manifest>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    style="@style/example_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_default_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Default"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_default"
+            style="@style/progress_example"
+            app:bootstrapBrand="success"
+            app:progress="25"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_animated_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Animated"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_animated"
+            style="@style/progress_example"
+            app:animated="true"
+            app:bootstrapBrand="primary"
+            app:progress="40"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_striped_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Striped"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_striped"
+            style="@style/progress_example"
+            app:bootstrapBrand="info"
+            app:progress="60"
+            app:striped="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_progress_striped_animated_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Striped Animated"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_striped_animated"
+            style="@style/progress_example"
+            app:animated="true"
+            app:bootstrapBrand="warning"
+            app:progress="78"
+            app:striped="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <Button
+            android:id="@+id/example_size_change_btn"
+            style="@style/description_label"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Size"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_size_change"
+            style="@style/progress_example"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="md"
+            app:progress="85"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/progress_weight_container">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <Button
+                android:id="@+id/example_progress_change_type_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type"
+                />
+
+            <Button
+                android:id="@+id/example_progress_change_color_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Color"
+                />
+
+            <Button
+                android:id="@+id/example_progress_change_rounded_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Round"
+                />
+        </LinearLayout>
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/example_progress_change"
+            style="@style/progress_example"
+            app:bootstrapBrand="danger"
+            app:progress="75"
+            />
+    </LinearLayout>
+
+</LinearLayout>

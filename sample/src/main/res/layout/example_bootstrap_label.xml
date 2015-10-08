@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    style="@style/example_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <TextView
+        style="@style/description_label"
+        android:text="Interactive (click me)"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/example_blabel_change_color"
+                style="@style/wrapping_button"
+                android:text="Color"
+                app:bootstrapBrand="warning"
+                app:bootstrapHeading="h3"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/example_blabel_change_heading"
+                style="@style/wrapping_button"
+                android:text="Heading"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/example_blabel_change_rounded"
+                style="@style/wrapping_button"
+                android:text="Round"
+                app:bootstrapBrand="primary"
+                app:bootstrapHeading="h3"
+                app:roundedCorners="true"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Different sizes -->
+    <TextView
+        style="@style/description_label"
+        android:text="Default Labels"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="H1"
+                app:bootstrapBrand="regular"
+                app:bootstrapHeading="h1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="H2"
+                app:bootstrapBrand="primary"
+                app:bootstrapHeading="h2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="H3"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h3"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="H4"
+                app:bootstrapBrand="info"
+                app:bootstrapHeading="h4"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="H5"
+                app:bootstrapBrand="warning"
+                app:bootstrapHeading="h5"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="H6"
+                app:bootstrapBrand="danger"
+                app:bootstrapHeading="h6"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <!-- Different sizes -->
+    <TextView
+        style="@style/description_label"
+        android:text="Only Icons"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="danger"
+                app:bootstrapHeading="h6"
+                app:fontAwesomeIcon="fa_apple"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="warning"
+                app:bootstrapHeading="h5"
+                app:fontAwesomeIcon="fa_certificate"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="info"
+                app:bootstrapHeading="h4"
+                app:typicon="ty_thermometer"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h3"
+                app:typicon="ty_flag"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="primary"
+                app:bootstrapHeading="h2"
+                app:bootstrapText="{ty_shopping_bag} {ty_shopping_cart}"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                app:bootstrapBrand="secondary"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="{fa_play} {fa_stop}"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Different sizes -->
+    <TextView
+        style="@style/description_label"
+        android:text="Rounded 'Pill' Labels"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head1"
+                app:bootstrapBrand="danger"
+                app:bootstrapHeading="h1"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head2"
+                app:bootstrapBrand="warning"
+                app:bootstrapHeading="h2"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head3"
+                app:bootstrapBrand="info"
+                app:bootstrapHeading="h3"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head4"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h4"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head5"
+                app:bootstrapBrand="primary"
+                app:bootstrapHeading="h5"
+                app:roundedCorners="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                style="@style/wrapping_button"
+                android:text="Head6"
+                app:bootstrapBrand="regular"
+                app:bootstrapHeading="h6"
+                app:roundedCorners="true"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/micro_padding"
+        android:gravity="center"
+        android:text="Match Parent"
+        app:bootstrapBrand="primary"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/micro_padding"
+        android:orientation="horizontal"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:bootstrapBrand="success"
+            app:bootstrapText="Weight 1 {fa_gift}"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
+            android:layout_weight="2"
+            android:gravity="center"
+            app:bootstrapBrand="primary"
+            app:bootstrapText="{fa_play} Weight 2 {fa_group}"
+            />
+    </LinearLayout>
+
+</LinearLayout>

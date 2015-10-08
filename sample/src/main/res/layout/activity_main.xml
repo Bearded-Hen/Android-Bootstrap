@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/example_bootstrap_button"
+            style="@style/home_button"
+            android:text="BootstrapButton"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_btn_group"
+            style="@style/home_button"
+            android:text="BootstrapButtonGroup"
+            />
+
+        <Button
+            android:id="@+id/example_fontawesometext"
+            style="@style/home_button"
+            android:text="AwesomeTextView"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_progress"
+            style="@style/home_button"
+            android:text="BootstrapProgressBar"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_label"
+            style="@style/home_button"
+            android:text="BootstrapLabel"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_edit_text"
+            style="@style/home_button"
+            android:text="BootstrapEditText"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_cricle_thumbnail"
+            style="@style/home_button"
+            android:text="BootstrapCircleThumbnail"
+            />
+
+        <Button
+            android:id="@+id/example_bootstrap_thumbnail"
+            style="@style/home_button"
+            android:text="BootstrapThumbnail"
+            />
+
+    </LinearLayout>
+</ScrollView>
