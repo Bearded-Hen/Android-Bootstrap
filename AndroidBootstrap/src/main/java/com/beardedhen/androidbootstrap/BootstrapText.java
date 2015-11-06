@@ -57,7 +57,7 @@ public class BootstrapText extends SpannableString implements Serializable {
          */
         public Builder addFontAwesomeIcon(@FontAwesome.Icon CharSequence iconCode) {
             IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH);
-            sb.append(iconSet.unicodeForKey(iconCode));
+            sb.append(iconSet.unicodeForKey(iconCode.toString().replaceAll("\\-", "_")));
             fontIndicesMap.put(sb.length(), iconSet);
             return this;
         }
@@ -68,7 +68,7 @@ public class BootstrapText extends SpannableString implements Serializable {
          */
         public Builder addTypicon(@Typicon.Icon CharSequence iconCode) {
             IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH);
-            sb.append(iconSet.unicodeForKey(iconCode));
+            sb.append(iconSet.unicodeForKey(iconCode.toString().replaceAll("\\-", "_")));
             fontIndicesMap.put(sb.length(), iconSet);
             return this;
         }
@@ -79,7 +79,7 @@ public class BootstrapText extends SpannableString implements Serializable {
          * @return the updated builder instance
          */
         public Builder addIcon(CharSequence iconCode, IconSet iconSet) {
-            sb.append(iconSet.unicodeForKey(iconCode));
+            sb.append(iconSet.unicodeForKey(iconCode.toString().replaceAll("\\-", "_")));
             fontIndicesMap.put(sb.length(), iconSet);
             return this;
         }
