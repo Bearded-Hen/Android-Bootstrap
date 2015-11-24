@@ -60,23 +60,29 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
 
     public AwesomeTextView(Context context) {
         super(context);
-        initialise(null);
+        if(!View.isInEditMode()){
+            initialise(null);
+        }
     }
 
     public AwesomeTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialise(attrs);
+        if(!View.isInEditMode()){
+            initialise(attrs);
+        }
     }
 
     public AwesomeTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initialise(attrs);
+        if(!View.isInEditMode()){
+            initialise(attrs);
+        }
     }
 
     private void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.AwesomeTextView);
         String markdownText;
-
+        
         try {
             int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
             int faIconOrdinal = a.getInt(R.styleable.AwesomeTextView_fontAwesomeIcon, -1);
