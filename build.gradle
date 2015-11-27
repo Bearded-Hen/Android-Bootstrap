@@ -13,5 +13,8 @@ allprojects {
     group = GROUP
     repositories {
         mavenCentral()
+        maven {
+            url "https://jitpack.io" // for snapshot debugging
+        }
     }
 }

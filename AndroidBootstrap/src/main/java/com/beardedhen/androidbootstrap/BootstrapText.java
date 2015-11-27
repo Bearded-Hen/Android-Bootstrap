@@ -34,6 +34,13 @@ public class BootstrapText extends SpannableString implements Serializable {
         private final boolean editMode;
         private final Map<Integer, IconSet> fontIndicesMap;
 
+        public Builder(Context context) {
+            fontIndicesMap = new HashMap<>();
+            sb = new StringBuilder();
+            this.context = context.getApplicationContext();
+            this.editMode = false;
+        }
+
         public Builder(Context context, boolean editMode) {
             fontIndicesMap = new HashMap<>();
             sb = new StringBuilder();
