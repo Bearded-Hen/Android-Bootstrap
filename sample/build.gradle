@@ -31,8 +31,8 @@ android {
 }
 
 dependencies {
-//    compile project (':AndroidBootstrap') // replace with Maven dependency in your app
-    compile 'com.github.fractalwrench:Android-Bootstrap:-SNAPSHOT'
+    compile project (':AndroidBootstrap') // replace with Maven dependency in your app
+//    compile 'com.github.fractalwrench:Android-Bootstrap:-SNAPSHOT'
 
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:appcompat-v7:23.1.1'
