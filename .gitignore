@@ -13,3 +13,6 @@ local.properties
 .gradle
 build/
 gradle/
+
+# thumbnails
+.DS_STORE
