@@ -30,32 +30,6 @@ Quick Start
  
  You should then checkout the library and investigate the sample code, which covers most of the features.
  The sample app is also available on [Google Play](https://play.google.com/store/apps/details?id=com.fractalwrench.androidbootstrap.sample).
- 
- 
-Contributing
-============
-Contributions are very welcome! There are 3 main ways you can help out:
-
-1. Add more Icon Typefaces, using the instructions [here](https://github.com/Bearded-Hen/Android-Bootstrap/blob/master/ADD_FONT.md)
-2. Help implement views which are present in the  [Twitter Bootstrap Specification](http://getbootstrap.com/) but are not yet in this library.
-3. Raise an issue if you see a bug or are unsure on how something works, or even better - send a pull-request with a fix!
- 
-Versioning
-==========
-This project uses [Semantic Versioning](http://semver.org/). There are several breaking changes in V2.X of the library, including:
-
-- AwesomeTextView replaces FontAwesomeText
-- Various altered method signatures/attributes for views
-- Global BootstrapBrand/BootstrapSize attributes replace view-specific enums
-
-Please consider what effect these changes might have on your app before upgrading!
-
-Contact
-=======
-If you have any questions, issues, or just want to let us know where you're using Android Bootstrap
- tweet us at [@BeardedHen](https://twitter.com/beardedhen), email support@beardedhen.com,
-  or head over to our [website](http://beardedhen.com/) to see more of our creations.
-
 
 Examples
 ============
@@ -186,3 +160,43 @@ Displays images in a rectangular View, themed with BootstrapBrand.
     />
 ```
 ![alt text](https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_thumbnail.png "BootstrapThumbnail")
+
+ Custom Styles
+============
+Custom styles can be applied to any of the views in this library by creating a class which implements
+BootstrapBrand, and setting it on the View. Please see the sample code of BootstrapButton for more detail.
+
+ ```java
+
+     class CustomBootstrapStyle implements BootstrapBrand {
+         // specify desired colors here
+     }
+
+     BootstrapButton btn = new BootstrapButton(context);
+     btn.setBootstrapBrand(new CustomBootstrapStyle(this);
+ ```
+
+Contributing
+============
+Contributions are very welcome! There are 3 main ways you can help out:
+
+1. Add more Icon Typefaces, using the instructions [here](https://github.com/Bearded-Hen/Android-Bootstrap/blob/master/ADD_FONT.md)
+2. Help implement views which are present in the  [Twitter Bootstrap Specification](http://getbootstrap.com/) but are not yet in this library.
+3. Raise an issue if you see a bug or are unsure on how something works, or even better - send a pull-request with a fix!
+
+Versioning
+==========
+This project uses [Semantic Versioning](http://semver.org/). There are several breaking changes in V2.X of the library, including:
+
+- AwesomeTextView replaces FontAwesomeText
+- Various altered method signatures/attributes for views
+- Global BootstrapBrand/BootstrapSize attributes replace view-specific enums
+
+Please consider what effect these changes might have on your app before upgrading!
+
+Contact
+=======
+If you have any questions, issues, or just want to let us know where you're using Android Bootstrap
+ tweet us at [@BeardedHen](https://twitter.com/beardedhen), email support@beardedhen.com,
+  or head over to our [website](http://beardedhen.com/) to see more of our creations.
+
