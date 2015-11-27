@@ -77,7 +77,12 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
         baselineStrokeWidth = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_edit_text_edge_width);
         baselineCornerRadius = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_edit_text_corner_radius);
 
-        setGravity(Gravity.CENTER_VERTICAL); // center text vertically by default
+        a = getContext().obtainStyledAttributes(attrs, new int[] {android.R.attr.gravity});
+        try {
+            setGravity(a.getInt(0, Gravity.CENTER_VERTICAL)); // center text vertically by default
+        } finally {
+            a.recycle();
+        }
         updateBootstrapState();
         invalidate();
     }

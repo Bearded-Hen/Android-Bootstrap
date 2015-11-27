@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Maps Typicons Icon Codes to unicode characters, allowing its use in AwesomeTextView.
  * See the <a href='http://typicons.com/'>Cheatsheet</a> for icon
- * code reference. <b>Please note that icon codes have been prefixed with "ty_".
+ * code reference. <b>Please note that icon codes have been prefixed with "ty_".</b>
  * For example, "adjust_brightness" would become "ty_adjust_brightness".
  */
 public class Typicon implements IconSet {

@@ -8,7 +8,7 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapHeading;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 /**
- * Bootstrap provides styling for elements H1-H6, and sets their text size & padding using the
+ * Bootstrap provides styling for elements H1-H6, and sets their text size and padding using the
  * values supplied here.
  */
 public enum DefaultBootstrapHeading implements BootstrapHeading {
