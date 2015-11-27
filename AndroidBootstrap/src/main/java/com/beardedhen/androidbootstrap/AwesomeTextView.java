@@ -83,16 +83,22 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
             int typiconOrdinal = a.getInt(R.styleable.AwesomeTextView_typicon, -1);
 
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
+            boolean editMode = isInEditMode();
 
             if (typiconOrdinal != -1) {
-                final IconSet typicon = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH);
-                setIcon(typicon.iconCodeForAttrIndex(typiconOrdinal), typicon);
+                final IconSet typicon = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH, editMode);
+
+                if (!editMode) {
+                    setIcon(typicon.iconCodeForAttrIndex(typiconOrdinal), typicon);
+                }
             }
             if (faIconOrdinal != -1) {
-                final IconSet fontAwesome = TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH);
-                setIcon(fontAwesome.iconCodeForAttrIndex(faIconOrdinal), fontAwesome);
-            }
+                final IconSet fontAwesome = TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH, editMode);
 
+                if (!editMode) {
+                    setIcon(fontAwesome.iconCodeForAttrIndex(faIconOrdinal), fontAwesome);
+                }
+            }
             markdownText = a.getString(R.styleable.AwesomeTextView_bootstrapText);
         }
         finally {
@@ -190,7 +196,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
      * @param iconSet - An implementation of FontIcon
      */
     public void setIcon(CharSequence iconCode, IconSet iconSet) {
-        setBootstrapText(new BootstrapText.Builder(getContext()).addIcon(iconCode, iconSet).build());
+        setBootstrapText(new BootstrapText.Builder(getContext(), isInEditMode()).addIcon(iconCode, iconSet).build());
     }
 
     /**
@@ -200,7 +206,7 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
      * @param iconCode the fontawesome icon code e.g. "fa_play"
      */
     public void setFontAwesomeIcon(@FontAwesome.Icon CharSequence iconCode) {
-        setBootstrapText(new BootstrapText.Builder(getContext()).addFontAwesomeIcon(iconCode).build());
+        setBootstrapText(new BootstrapText.Builder(getContext(), isInEditMode()).addFontAwesomeIcon(iconCode).build());
     }
 
     /**
@@ -210,11 +216,11 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
      * @param iconCode the typicon icon code e.g. "ty_adjust_brightness"
      */
     public void setTypicon(@Typicon.Icon CharSequence iconCode) {
-        setBootstrapText(new BootstrapText.Builder(getContext()).addTypicon(iconCode).build());
+        setBootstrapText(new BootstrapText.Builder(getContext(), isInEditMode()).addTypicon(iconCode).build());
     }
 
     @Override public void setMarkdownText(String text) {
-        setBootstrapText(IconResolver.resolveMarkdown(getContext(), text));
+        setBootstrapText(IconResolver.resolveMarkdown(getContext(), text, isInEditMode()));
     }
 
     protected void updateBootstrapState() {

@@ -23,7 +23,7 @@ public class TypefaceProvider {
     /**
      * Returns a reference to the requested typeface, creating a new instance if none already exists
      *
-     * @param context  the current context
+     * @param context the current context
      * @param iconSet the icon typeface
      * @return a reference to the typeface instance
      */
@@ -60,20 +60,24 @@ public class TypefaceProvider {
 
     /**
      * Retrieves a registered IconSet whose font can be found in the asset directory at the given path
+     *
      * @param fontPath the given path
+     * @param editMode - whether the view requesting the icon set is displayed in the preview editor
      * @return the registered IconSet instance
      */
-    public static IconSet retrieveRegisteredIconSet(String fontPath) {
+    public static IconSet retrieveRegisteredIconSet(String fontPath, boolean editMode) {
         final IconSet iconSet = REGISTERED_ICON_SETS.get(fontPath);
 
-        if (iconSet == null) {
-            throw new RuntimeException(String.format("Font '%s' not properly registered", fontPath));
+        if (iconSet == null && !editMode) {
+            throw new RuntimeException(String.format("Font '%s' not properly registered, please" +
+                    " see the README at https://github.com/Bearded-Hen/Android-Bootstrap", fontPath));
         }
         return iconSet;
     }
 
     /**
      * Retrieves a collection of all registered IconSets in the application
+     *
      * @return a collection of registered IconSets.
      */
     public static Collection<IconSet> getRegisteredIconSets() {

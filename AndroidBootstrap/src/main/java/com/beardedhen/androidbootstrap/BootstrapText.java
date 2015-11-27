@@ -31,13 +31,14 @@ public class BootstrapText extends SpannableString implements Serializable {
 
         private final StringBuilder sb;
         private final Context context;
-
+        private final boolean editMode;
         private final Map<Integer, IconSet> fontIndicesMap;
 
-        public Builder(Context context) {
+        public Builder(Context context, boolean editMode) {
             fontIndicesMap = new HashMap<>();
             sb = new StringBuilder();
             this.context = context.getApplicationContext();
+            this.editMode = editMode;
         }
 
         /**
@@ -53,10 +54,11 @@ public class BootstrapText extends SpannableString implements Serializable {
 
         /**
          * Appends a FontAwesomeIcon to the BootstrapText under construction
+         *
          * @return the updated builder instance
          */
         public Builder addFontAwesomeIcon(@FontAwesome.Icon CharSequence iconCode) {
-            IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH);
+            IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH, editMode);
             sb.append(iconSet.unicodeForKey(iconCode.toString().replaceAll("\\-", "_")));
             fontIndicesMap.put(sb.length(), iconSet);
             return this;
@@ -64,10 +66,11 @@ public class BootstrapText extends SpannableString implements Serializable {
 
         /**
          * Appends a Typicon to the BootstrapText under construction
+         *
          * @return the updated builder instance
          */
         public Builder addTypicon(@Typicon.Icon CharSequence iconCode) {
-            IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH);
+            IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH, editMode);
             sb.append(iconSet.unicodeForKey(iconCode.toString().replaceAll("\\-", "_")));
             fontIndicesMap.put(sb.length(), iconSet);
             return this;
@@ -75,6 +78,7 @@ public class BootstrapText extends SpannableString implements Serializable {
 
         /**
          * Appends a font icon to the BootstrapText under construction
+         *
          * @param iconSet a font icon
          * @return the updated builder instance
          */

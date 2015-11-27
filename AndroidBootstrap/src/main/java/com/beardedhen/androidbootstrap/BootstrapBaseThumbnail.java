@@ -42,7 +42,6 @@ abstract class BootstrapBaseThumbnail extends ImageView implements BootstrapBran
 
     protected float baselineBorderWidth;
     protected float baselineOuterBorderWidth;
-
     protected float bootstrapSize;
 
     protected Bitmap sourceBitmap;
