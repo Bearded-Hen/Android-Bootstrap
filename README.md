@@ -13,7 +13,7 @@ Quick Start
  
  ```java
  dependencies {
-    compile 'com.beardedhen:androidbootstrap:2.0.0'
+    compile 'com.beardedhen:androidbootstrap:2.0.1'
  }
  ```
  
