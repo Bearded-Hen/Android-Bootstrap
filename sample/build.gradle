@@ -29,6 +29,6 @@ dependencies {
     compile project (':AndroidBootstrap') // replace with Maven dependency in your app
 
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:support-annotations:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:support-annotations:23.1.1'
 }

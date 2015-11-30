@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class FontAwesome implements IconSet {
 
-    public static final String FONT_PATH = "fontawesome-webfont-v440.ttf";
+    public static final String FONT_PATH = "fontawesome-webfont-v450.ttf";
 
     @Override public CharSequence unicodeForKey(@Icon CharSequence key) {
         return ICON_MAP.get(key);
@@ -111,6 +111,8 @@ public class FontAwesome implements IconSet {
             FA_BITBUCKET_SQUARE,
             FA_BITCOIN,
             FA_BLACK_TIE,
+            FA_BLUETOOTH,
+            FA_BLUETOOTH_B,
             FA_BOLD,
             FA_BOLT,
             FA_BOMB,
@@ -189,6 +191,7 @@ public class FontAwesome implements IconSet {
             FA_CODE,
             FA_CODE_FORK,
             FA_CODEPEN,
+            FA_CODIEPIE,
             FA_COFFEE,
             FA_COG,
             FA_COGS,
@@ -207,6 +210,7 @@ public class FontAwesome implements IconSet {
             FA_COPYRIGHT,
             FA_CREATIVE_COMMONS,
             FA_CREDIT_CARD,
+            FA_CREDIT_CARD_ALT,
             FA_CROP,
             FA_CROSSHAIRS,
             FA_CSS3,
@@ -229,6 +233,7 @@ public class FontAwesome implements IconSet {
             FA_DRIBBBLE,
             FA_DROPBOX,
             FA_DRUPAL,
+            FA_EDGE,
             FA_EDIT,
             FA_EJECT,
             FA_ELLIPSIS_H,
@@ -298,6 +303,7 @@ public class FontAwesome implements IconSet {
             FA_FOLDER_OPEN_O,
             FA_FONT,
             FA_FONTICONS,
+            FA_FORT_AWESOME,
             FA_FORUMBEE,
             FA_FORWARD,
             FA_FOURSQUARE,
@@ -344,6 +350,7 @@ public class FontAwesome implements IconSet {
             FA_HAND_SCISSORS_O,
             FA_HAND_SPOCK_O,
             FA_HAND_STOP_O,
+            FA_HASHTAG,
             FA_HDD_O,
             FA_HEADER,
             FA_HEADPHONES,
@@ -443,8 +450,10 @@ public class FontAwesome implements IconSet {
             FA_MINUS_CIRCLE,
             FA_MINUS_SQUARE,
             FA_MINUS_SQUARE_O,
+            FA_MIXCLOUD,
             FA_MOBILE,
             FA_MOBILE_PHONE,
+            FA_MODX,
             FA_MONEY,
             FA_MOON_O,
             FA_MORTAR_BOARD,
@@ -471,11 +480,14 @@ public class FontAwesome implements IconSet {
             FA_PARAGRAPH,
             FA_PASTE,
             FA_PAUSE,
+            FA_PAUSE_CIRCLE,
+            FA_PAUSE_CIRCLE_O,
             FA_PAW,
             FA_PAYPAL,
             FA_PENCIL,
             FA_PENCIL_SQUARE,
             FA_PENCIL_SQUARE_O,
+            FA_PERCENT,
             FA_PHONE,
             FA_PHONE_SQUARE,
             FA_PHOTO,
@@ -497,6 +509,7 @@ public class FontAwesome implements IconSet {
             FA_PLUS_SQUARE_O,
             FA_POWER_OFF,
             FA_PRINT,
+            FA_PRODUCT_HUNT,
             FA_PUZZLE_PIECE,
             FA_QQ,
             FA_QRCODE,
@@ -509,6 +522,7 @@ public class FontAwesome implements IconSet {
             FA_REBEL,
             FA_RECYCLE,
             FA_REDDIT,
+            FA_REDDIT_ALIEN,
             FA_REDDIT_SQUARE,
             FA_REFRESH,
             FA_REGISTERED,
@@ -533,6 +547,7 @@ public class FontAwesome implements IconSet {
             FA_SAFARI,
             FA_SAVE,
             FA_SCISSORS,
+            FA_SCRIBD,
             FA_SEARCH,
             FA_SEARCH_MINUS,
             FA_SEARCH_PLUS,
@@ -550,6 +565,8 @@ public class FontAwesome implements IconSet {
             FA_SHIELD,
             FA_SHIP,
             FA_SHIRTSINBULK,
+            FA_SHOPPING_BAG,
+            FA_SHOPPING_BASKET,
             FA_SHOPPING_CART,
             FA_SIGN_IN,
             FA_SIGN_OUT,
@@ -597,6 +614,8 @@ public class FontAwesome implements IconSet {
             FA_STICKY_NOTE,
             FA_STICKY_NOTE_O,
             FA_STOP,
+            FA_STOP_CIRCLE,
+            FA_STOP_CIRCLE_O,
             FA_STREET_VIEW,
             FA_STRIKETHROUGH,
             FA_STUMBLEUPON,
@@ -667,6 +686,7 @@ public class FontAwesome implements IconSet {
             FA_UNLOCK_ALT,
             FA_UNSORTED,
             FA_UPLOAD,
+            FA_USB,
             FA_USD,
             FA_USER,
             FA_USER_MD,
@@ -710,7 +730,8 @@ public class FontAwesome implements IconSet {
             FA_YOUTUBE,
             FA_YOUTUBE_PLAY,
             FA_YOUTUBE_SQUARE
-    })public @interface Icon {}
+    }) public @interface Icon {
+    }
 
     public static final String FA_ADJUST = "fa_adjust";
     public static final String FA_ADN = "fa_adn";
@@ -786,6 +807,8 @@ public class FontAwesome implements IconSet {
     public static final String FA_BITBUCKET_SQUARE = "fa_bitbucket_square";
     public static final String FA_BITCOIN = "fa_bitcoin";
     public static final String FA_BLACK_TIE = "fa_black_tie";
+    public static final String FA_BLUETOOTH = "fa_bluetooth";
+    public static final String FA_BLUETOOTH_B = "fa_bluetooth_b";
     public static final String FA_BOLD = "fa_bold";
     public static final String FA_BOLT = "fa_bolt";
     public static final String FA_BOMB = "fa_bomb";
@@ -864,6 +887,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_CODE = "fa_code";
     public static final String FA_CODE_FORK = "fa_code_fork";
     public static final String FA_CODEPEN = "fa_codepen";
+    public static final String FA_CODIEPIE = "fa_codiepie";
     public static final String FA_COFFEE = "fa_coffee";
     public static final String FA_COG = "fa_cog";
     public static final String FA_COGS = "fa_cogs";
@@ -882,6 +906,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_COPYRIGHT = "fa_copyright";
     public static final String FA_CREATIVE_COMMONS = "fa_creative_commons";
     public static final String FA_CREDIT_CARD = "fa_credit_card";
+    public static final String FA_CREDIT_CARD_ALT = "fa_credit_card_alt";
     public static final String FA_CROP = "fa_crop";
     public static final String FA_CROSSHAIRS = "fa_crosshairs";
     public static final String FA_CSS3 = "fa_css3";
@@ -904,6 +929,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_DRIBBBLE = "fa_dribbble";
     public static final String FA_DROPBOX = "fa_dropbox";
     public static final String FA_DRUPAL = "fa_drupal";
+    public static final String FA_EDGE = "fa_edge";
     public static final String FA_EDIT = "fa_edit";
     public static final String FA_EJECT = "fa_eject";
     public static final String FA_ELLIPSIS_H = "fa_ellipsis_h";
@@ -973,6 +999,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_FOLDER_OPEN_O = "fa_folder_open_o";
     public static final String FA_FONT = "fa_font";
     public static final String FA_FONTICONS = "fa_fonticons";
+    public static final String FA_FORT_AWESOME = "fa_fort_awesome";
     public static final String FA_FORUMBEE = "fa_forumbee";
     public static final String FA_FORWARD = "fa_forward";
     public static final String FA_FOURSQUARE = "fa_foursquare";
@@ -1019,6 +1046,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_HAND_SCISSORS_O = "fa_hand_scissors_o";
     public static final String FA_HAND_SPOCK_O = "fa_hand_spock_o";
     public static final String FA_HAND_STOP_O = "fa_hand_stop_o";
+    public static final String FA_HASHTAG = "fa_hashtag";
     public static final String FA_HDD_O = "fa_hdd_o";
     public static final String FA_HEADER = "fa_header";
     public static final String FA_HEADPHONES = "fa_headphones";
@@ -1118,8 +1146,10 @@ public class FontAwesome implements IconSet {
     public static final String FA_MINUS_CIRCLE = "fa_minus_circle";
     public static final String FA_MINUS_SQUARE = "fa_minus_square";
     public static final String FA_MINUS_SQUARE_O = "fa_minus_square_o";
+    public static final String FA_MIXCLOUD = "fa_mixcloud";
     public static final String FA_MOBILE = "fa_mobile";
     public static final String FA_MOBILE_PHONE = "fa_mobile_phone";
+    public static final String FA_MODX = "fa_modx";
     public static final String FA_MONEY = "fa_money";
     public static final String FA_MOON_O = "fa_moon_o";
     public static final String FA_MORTAR_BOARD = "fa_mortar_board";
@@ -1146,11 +1176,14 @@ public class FontAwesome implements IconSet {
     public static final String FA_PARAGRAPH = "fa_paragraph";
     public static final String FA_PASTE = "fa_paste";
     public static final String FA_PAUSE = "fa_pause";
+    public static final String FA_PAUSE_CIRCLE = "fa_pause_circle";
+    public static final String FA_PAUSE_CIRCLE_O = "fa_pause_circle_o";
     public static final String FA_PAW = "fa_paw";
     public static final String FA_PAYPAL = "fa_paypal";
     public static final String FA_PENCIL = "fa_pencil";
     public static final String FA_PENCIL_SQUARE = "fa_pencil_square";
     public static final String FA_PENCIL_SQUARE_O = "fa_pencil_square_o";
+    public static final String FA_PERCENT = "fa_percent";
     public static final String FA_PHONE = "fa_phone";
     public static final String FA_PHONE_SQUARE = "fa_phone_square";
     public static final String FA_PHOTO = "fa_photo";
@@ -1172,6 +1205,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_PLUS_SQUARE_O = "fa_plus_square_o";
     public static final String FA_POWER_OFF = "fa_power_off";
     public static final String FA_PRINT = "fa_print";
+    public static final String FA_PRODUCT_HUNT = "fa_product_hunt";
     public static final String FA_PUZZLE_PIECE = "fa_puzzle_piece";
     public static final String FA_QQ = "fa_qq";
     public static final String FA_QRCODE = "fa_qrcode";
@@ -1184,6 +1218,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_REBEL = "fa_rebel";
     public static final String FA_RECYCLE = "fa_recycle";
     public static final String FA_REDDIT = "fa_reddit";
+    public static final String FA_REDDIT_ALIEN = "fa_reddit_alien";
     public static final String FA_REDDIT_SQUARE = "fa_reddit_square";
     public static final String FA_REFRESH = "fa_refresh";
     public static final String FA_REGISTERED = "fa_registered";
@@ -1208,6 +1243,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_SAFARI = "fa_safari";
     public static final String FA_SAVE = "fa_save";
     public static final String FA_SCISSORS = "fa_scissors";
+    public static final String FA_SCRIBD = "fa_scribd";
     public static final String FA_SEARCH = "fa_search";
     public static final String FA_SEARCH_MINUS = "fa_search_minus";
     public static final String FA_SEARCH_PLUS = "fa_search_plus";
@@ -1225,6 +1261,8 @@ public class FontAwesome implements IconSet {
     public static final String FA_SHIELD = "fa_shield";
     public static final String FA_SHIP = "fa_ship";
     public static final String FA_SHIRTSINBULK = "fa_shirtsinbulk";
+    public static final String FA_SHOPPING_BAG = "fa_shopping_bag";
+    public static final String FA_SHOPPING_BASKET = "fa_shopping_basket";
     public static final String FA_SHOPPING_CART = "fa_shopping_cart";
     public static final String FA_SIGN_IN = "fa_sign_in";
     public static final String FA_SIGN_OUT = "fa_sign_out";
@@ -1272,6 +1310,8 @@ public class FontAwesome implements IconSet {
     public static final String FA_STICKY_NOTE = "fa_sticky_note";
     public static final String FA_STICKY_NOTE_O = "fa_sticky_note_o";
     public static final String FA_STOP = "fa_stop";
+    public static final String FA_STOP_CIRCLE = "fa_stop_circle";
+    public static final String FA_STOP_CIRCLE_O = "fa_stop_circle_o";
     public static final String FA_STREET_VIEW = "fa_street_view";
     public static final String FA_STRIKETHROUGH = "fa_strikethrough";
     public static final String FA_STUMBLEUPON = "fa_stumbleupon";
@@ -1342,6 +1382,7 @@ public class FontAwesome implements IconSet {
     public static final String FA_UNLOCK_ALT = "fa_unlock_alt";
     public static final String FA_UNSORTED = "fa_unsorted";
     public static final String FA_UPLOAD = "fa_upload";
+    public static final String FA_USB = "fa_usb";
     public static final String FA_USD = "fa_usd";
     public static final String FA_USER = "fa_user";
     public static final String FA_USER_MD = "fa_user_md";
@@ -1461,6 +1502,8 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_BITBUCKET_SQUARE, "\uf172");
         ICON_MAP.put(FA_BITCOIN, "\uf15a");
         ICON_MAP.put(FA_BLACK_TIE, "\uf27e");
+        ICON_MAP.put(FA_BLUETOOTH, "\uf293");
+        ICON_MAP.put(FA_BLUETOOTH_B, "\uf294");
         ICON_MAP.put(FA_BOLD, "\uf032");
         ICON_MAP.put(FA_BOLT, "\uf0e7");
         ICON_MAP.put(FA_BOMB, "\uf1e2");
@@ -1539,6 +1582,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_CODE, "\uf121");
         ICON_MAP.put(FA_CODE_FORK, "\uf126");
         ICON_MAP.put(FA_CODEPEN, "\uf1cb");
+        ICON_MAP.put(FA_CODIEPIE, "\uf284");
         ICON_MAP.put(FA_COFFEE, "\uf0f4");
         ICON_MAP.put(FA_COG, "\uf013");
         ICON_MAP.put(FA_COGS, "\uf085");
@@ -1557,6 +1601,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_COPYRIGHT, "\uf1f9");
         ICON_MAP.put(FA_CREATIVE_COMMONS, "\uf25e");
         ICON_MAP.put(FA_CREDIT_CARD, "\uf09d");
+        ICON_MAP.put(FA_CREDIT_CARD_ALT, "\uf283");
         ICON_MAP.put(FA_CROP, "\uf125");
         ICON_MAP.put(FA_CROSSHAIRS, "\uf05b");
         ICON_MAP.put(FA_CSS3, "\uf13c");
@@ -1579,6 +1624,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_DRIBBBLE, "\uf17d");
         ICON_MAP.put(FA_DROPBOX, "\uf16b");
         ICON_MAP.put(FA_DRUPAL, "\uf1a9");
+        ICON_MAP.put(FA_EDGE, "\uf282");
         ICON_MAP.put(FA_EDIT, "\uf044");
         ICON_MAP.put(FA_EJECT, "\uf052");
         ICON_MAP.put(FA_ELLIPSIS_H, "\uf141");
@@ -1648,6 +1694,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_FOLDER_OPEN_O, "\uf115");
         ICON_MAP.put(FA_FONT, "\uf031");
         ICON_MAP.put(FA_FONTICONS, "\uf280");
+        ICON_MAP.put(FA_FORT_AWESOME, "\uf286");
         ICON_MAP.put(FA_FORUMBEE, "\uf211");
         ICON_MAP.put(FA_FORWARD, "\uf04e");
         ICON_MAP.put(FA_FOURSQUARE, "\uf180");
@@ -1694,6 +1741,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_HAND_SCISSORS_O, "\uf257");
         ICON_MAP.put(FA_HAND_SPOCK_O, "\uf259");
         ICON_MAP.put(FA_HAND_STOP_O, "\uf256");
+        ICON_MAP.put(FA_HASHTAG, "\uf292");
         ICON_MAP.put(FA_HDD_O, "\uf0a0");
         ICON_MAP.put(FA_HEADER, "\uf1dc");
         ICON_MAP.put(FA_HEADPHONES, "\uf025");
@@ -1793,8 +1841,10 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_MINUS_CIRCLE, "\uf056");
         ICON_MAP.put(FA_MINUS_SQUARE, "\uf146");
         ICON_MAP.put(FA_MINUS_SQUARE_O, "\uf147");
+        ICON_MAP.put(FA_MIXCLOUD, "\uf289");
         ICON_MAP.put(FA_MOBILE, "\uf10b");
         ICON_MAP.put(FA_MOBILE_PHONE, "\uf10b");
+        ICON_MAP.put(FA_MODX, "\uf285");
         ICON_MAP.put(FA_MONEY, "\uf0d6");
         ICON_MAP.put(FA_MOON_O, "\uf186");
         ICON_MAP.put(FA_MORTAR_BOARD, "\uf19d");
@@ -1821,11 +1871,14 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_PARAGRAPH, "\uf1dd");
         ICON_MAP.put(FA_PASTE, "\uf0ea");
         ICON_MAP.put(FA_PAUSE, "\uf04c");
+        ICON_MAP.put(FA_PAUSE_CIRCLE, "\uf28b");
+        ICON_MAP.put(FA_PAUSE_CIRCLE_O, "\uf28c");
         ICON_MAP.put(FA_PAW, "\uf1b0");
         ICON_MAP.put(FA_PAYPAL, "\uf1ed");
         ICON_MAP.put(FA_PENCIL, "\uf040");
         ICON_MAP.put(FA_PENCIL_SQUARE, "\uf14b");
         ICON_MAP.put(FA_PENCIL_SQUARE_O, "\uf044");
+        ICON_MAP.put(FA_PERCENT, "\uf295");
         ICON_MAP.put(FA_PHONE, "\uf095");
         ICON_MAP.put(FA_PHONE_SQUARE, "\uf098");
         ICON_MAP.put(FA_PHOTO, "\uf03e");
@@ -1847,6 +1900,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_PLUS_SQUARE_O, "\uf196");
         ICON_MAP.put(FA_POWER_OFF, "\uf011");
         ICON_MAP.put(FA_PRINT, "\uf02f");
+        ICON_MAP.put(FA_PRODUCT_HUNT, "\uf288");
         ICON_MAP.put(FA_PUZZLE_PIECE, "\uf12e");
         ICON_MAP.put(FA_QQ, "\uf1d6");
         ICON_MAP.put(FA_QRCODE, "\uf029");
@@ -1859,6 +1913,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_REBEL, "\uf1d0");
         ICON_MAP.put(FA_RECYCLE, "\uf1b8");
         ICON_MAP.put(FA_REDDIT, "\uf1a1");
+        ICON_MAP.put(FA_REDDIT_ALIEN, "\uf281");
         ICON_MAP.put(FA_REDDIT_SQUARE, "\uf1a2");
         ICON_MAP.put(FA_REFRESH, "\uf021");
         ICON_MAP.put(FA_REGISTERED, "\uf25d");
@@ -1883,6 +1938,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_SAFARI, "\uf267");
         ICON_MAP.put(FA_SAVE, "\uf0c7");
         ICON_MAP.put(FA_SCISSORS, "\uf0c4");
+        ICON_MAP.put(FA_SCRIBD, "\uf28a");
         ICON_MAP.put(FA_SEARCH, "\uf002");
         ICON_MAP.put(FA_SEARCH_MINUS, "\uf010");
         ICON_MAP.put(FA_SEARCH_PLUS, "\uf00e");
@@ -1900,6 +1956,8 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_SHIELD, "\uf132");
         ICON_MAP.put(FA_SHIP, "\uf21a");
         ICON_MAP.put(FA_SHIRTSINBULK, "\uf214");
+        ICON_MAP.put(FA_SHOPPING_BAG, "\uf290");
+        ICON_MAP.put(FA_SHOPPING_BASKET, "\uf291");
         ICON_MAP.put(FA_SHOPPING_CART, "\uf07a");
         ICON_MAP.put(FA_SIGN_IN, "\uf090");
         ICON_MAP.put(FA_SIGN_OUT, "\uf08b");
@@ -1947,6 +2005,8 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_STICKY_NOTE, "\uf249");
         ICON_MAP.put(FA_STICKY_NOTE_O, "\uf24a");
         ICON_MAP.put(FA_STOP, "\uf04d");
+        ICON_MAP.put(FA_STOP_CIRCLE, "\uf28d");
+        ICON_MAP.put(FA_STOP_CIRCLE_O, "\uf28e");
         ICON_MAP.put(FA_STREET_VIEW, "\uf21d");
         ICON_MAP.put(FA_STRIKETHROUGH, "\uf0cc");
         ICON_MAP.put(FA_STUMBLEUPON, "\uf1a4");
@@ -2017,6 +2077,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_UNLOCK_ALT, "\uf13e");
         ICON_MAP.put(FA_UNSORTED, "\uf0dc");
         ICON_MAP.put(FA_UPLOAD, "\uf093");
+        ICON_MAP.put(FA_USB, "\uf287");
         ICON_MAP.put(FA_USD, "\uf155");
         ICON_MAP.put(FA_USER, "\uf007");
         ICON_MAP.put(FA_USER_MD, "\uf0f0");
@@ -2060,8 +2121,6 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_YOUTUBE, "\uf167");
         ICON_MAP.put(FA_YOUTUBE_PLAY, "\uf16a");
         ICON_MAP.put(FA_YOUTUBE_SQUARE, "\uf166");
-
-
 
 
         ATTR_MAP.put(0, FA_ADJUST);
@@ -2138,605 +2197,625 @@ public class FontAwesome implements IconSet {
         ATTR_MAP.put(71, FA_BITBUCKET_SQUARE);
         ATTR_MAP.put(72, FA_BITCOIN);
         ATTR_MAP.put(73, FA_BLACK_TIE);
-        ATTR_MAP.put(74, FA_BOLD);
-        ATTR_MAP.put(75, FA_BOLT);
-        ATTR_MAP.put(76, FA_BOMB);
-        ATTR_MAP.put(77, FA_BOOK);
-        ATTR_MAP.put(78, FA_BOOKMARK);
-        ATTR_MAP.put(79, FA_BOOKMARK_O);
-        ATTR_MAP.put(80, FA_BRIEFCASE);
-        ATTR_MAP.put(81, FA_BTC);
-        ATTR_MAP.put(82, FA_BUG);
-        ATTR_MAP.put(83, FA_BUILDING);
-        ATTR_MAP.put(84, FA_BUILDING_O);
-        ATTR_MAP.put(85, FA_BULLHORN);
-        ATTR_MAP.put(86, FA_BULLSEYE);
-        ATTR_MAP.put(87, FA_BUS);
-        ATTR_MAP.put(88, FA_BUYSELLADS);
-        ATTR_MAP.put(89, FA_CAB);
-        ATTR_MAP.put(90, FA_CALCULATOR);
-        ATTR_MAP.put(91, FA_CALENDAR);
-        ATTR_MAP.put(92, FA_CALENDAR_CHECK_O);
-        ATTR_MAP.put(93, FA_CALENDAR_MINUS_O);
-        ATTR_MAP.put(94, FA_CALENDAR_O);
-        ATTR_MAP.put(95, FA_CALENDAR_PLUS_O);
-        ATTR_MAP.put(96, FA_CALENDAR_TIMES_O);
-        ATTR_MAP.put(97, FA_CAMERA);
-        ATTR_MAP.put(98, FA_CAMERA_RETRO);
-        ATTR_MAP.put(99, FA_CAR);
-        ATTR_MAP.put(100, FA_CARET_DOWN);
-        ATTR_MAP.put(101, FA_CARET_LEFT);
-        ATTR_MAP.put(102, FA_CARET_RIGHT);
-        ATTR_MAP.put(103, FA_CARET_SQUARE_O_DOWN);
-        ATTR_MAP.put(104, FA_CARET_SQUARE_O_LEFT);
-        ATTR_MAP.put(105, FA_CARET_SQUARE_O_RIGHT);
-        ATTR_MAP.put(106, FA_CARET_SQUARE_O_UP);
-        ATTR_MAP.put(107, FA_CARET_UP);
-        ATTR_MAP.put(108, FA_CART_ARROW_DOWN);
-        ATTR_MAP.put(109, FA_CART_PLUS);
-        ATTR_MAP.put(110, FA_CC);
-        ATTR_MAP.put(111, FA_CC_AMEX);
-        ATTR_MAP.put(112, FA_CC_DINERS_CLUB);
-        ATTR_MAP.put(113, FA_CC_DISCOVER);
-        ATTR_MAP.put(114, FA_CC_JCB);
-        ATTR_MAP.put(115, FA_CC_MASTERCARD);
-        ATTR_MAP.put(116, FA_CC_PAYPAL);
-        ATTR_MAP.put(117, FA_CC_STRIPE);
-        ATTR_MAP.put(118, FA_CC_VISA);
-        ATTR_MAP.put(119, FA_CERTIFICATE);
-        ATTR_MAP.put(120, FA_CHAIN);
-        ATTR_MAP.put(121, FA_CHAIN_BROKEN);
-        ATTR_MAP.put(122, FA_CHECK);
-        ATTR_MAP.put(123, FA_CHECK_CIRCLE);
-        ATTR_MAP.put(124, FA_CHECK_CIRCLE_O);
-        ATTR_MAP.put(125, FA_CHECK_SQUARE);
-        ATTR_MAP.put(126, FA_CHECK_SQUARE_O);
-        ATTR_MAP.put(127, FA_CHEVRON_CIRCLE_DOWN);
-        ATTR_MAP.put(128, FA_CHEVRON_CIRCLE_LEFT);
-        ATTR_MAP.put(129, FA_CHEVRON_CIRCLE_RIGHT);
-        ATTR_MAP.put(130, FA_CHEVRON_CIRCLE_UP);
-        ATTR_MAP.put(131, FA_CHEVRON_DOWN);
-        ATTR_MAP.put(132, FA_CHEVRON_LEFT);
-        ATTR_MAP.put(133, FA_CHEVRON_RIGHT);
-        ATTR_MAP.put(134, FA_CHEVRON_UP);
-        ATTR_MAP.put(135, FA_CHILD);
-        ATTR_MAP.put(136, FA_CHROME);
-        ATTR_MAP.put(137, FA_CIRCLE);
-        ATTR_MAP.put(138, FA_CIRCLE_O);
-        ATTR_MAP.put(139, FA_CIRCLE_O_NOTCH);
-        ATTR_MAP.put(140, FA_CIRCLE_THIN);
-        ATTR_MAP.put(141, FA_CLIPBOARD);
-        ATTR_MAP.put(142, FA_CLOCK_O);
-        ATTR_MAP.put(143, FA_CLONE);
-        ATTR_MAP.put(144, FA_CLOSE);
-        ATTR_MAP.put(145, FA_CLOUD);
-        ATTR_MAP.put(146, FA_CLOUD_DOWNLOAD);
-        ATTR_MAP.put(147, FA_CLOUD_UPLOAD);
-        ATTR_MAP.put(148, FA_CNY);
-        ATTR_MAP.put(149, FA_CODE);
-        ATTR_MAP.put(150, FA_CODE_FORK);
-        ATTR_MAP.put(151, FA_CODEPEN);
-        ATTR_MAP.put(152, FA_COFFEE);
-        ATTR_MAP.put(153, FA_COG);
-        ATTR_MAP.put(154, FA_COGS);
-        ATTR_MAP.put(155, FA_COLUMNS);
-        ATTR_MAP.put(156, FA_COMMENT);
-        ATTR_MAP.put(157, FA_COMMENT_O);
-        ATTR_MAP.put(158, FA_COMMENTING);
-        ATTR_MAP.put(159, FA_COMMENTING_O);
-        ATTR_MAP.put(160, FA_COMMENTS);
-        ATTR_MAP.put(161, FA_COMMENTS_O);
-        ATTR_MAP.put(162, FA_COMPASS);
-        ATTR_MAP.put(163, FA_COMPRESS);
-        ATTR_MAP.put(164, FA_CONNECTDEVELOP);
-        ATTR_MAP.put(165, FA_CONTAO);
-        ATTR_MAP.put(166, FA_COPY);
-        ATTR_MAP.put(167, FA_COPYRIGHT);
-        ATTR_MAP.put(168, FA_CREATIVE_COMMONS);
-        ATTR_MAP.put(169, FA_CREDIT_CARD);
-        ATTR_MAP.put(170, FA_CROP);
-        ATTR_MAP.put(171, FA_CROSSHAIRS);
-        ATTR_MAP.put(172, FA_CSS3);
-        ATTR_MAP.put(173, FA_CUBE);
-        ATTR_MAP.put(174, FA_CUBES);
-        ATTR_MAP.put(175, FA_CUT);
-        ATTR_MAP.put(176, FA_CUTLERY);
-        ATTR_MAP.put(177, FA_DASHBOARD);
-        ATTR_MAP.put(178, FA_DASHCUBE);
-        ATTR_MAP.put(179, FA_DATABASE);
-        ATTR_MAP.put(180, FA_DEDENT);
-        ATTR_MAP.put(181, FA_DELICIOUS);
-        ATTR_MAP.put(182, FA_DESKTOP);
-        ATTR_MAP.put(183, FA_DEVIANTART);
-        ATTR_MAP.put(184, FA_DIAMOND);
-        ATTR_MAP.put(185, FA_DIGG);
-        ATTR_MAP.put(186, FA_DOLLAR);
-        ATTR_MAP.put(187, FA_DOT_CIRCLE_O);
-        ATTR_MAP.put(188, FA_DOWNLOAD);
-        ATTR_MAP.put(189, FA_DRIBBBLE);
-        ATTR_MAP.put(190, FA_DROPBOX);
-        ATTR_MAP.put(191, FA_DRUPAL);
-        ATTR_MAP.put(192, FA_EDIT);
-        ATTR_MAP.put(193, FA_EJECT);
-        ATTR_MAP.put(194, FA_ELLIPSIS_H);
-        ATTR_MAP.put(195, FA_ELLIPSIS_V);
-        ATTR_MAP.put(196, FA_EMPIRE);
-        ATTR_MAP.put(197, FA_ENVELOPE);
-        ATTR_MAP.put(198, FA_ENVELOPE_O);
-        ATTR_MAP.put(199, FA_ENVELOPE_SQUARE);
-        ATTR_MAP.put(200, FA_ERASER);
-        ATTR_MAP.put(201, FA_EUR);
-        ATTR_MAP.put(202, FA_EURO);
-        ATTR_MAP.put(203, FA_EXCHANGE);
-        ATTR_MAP.put(204, FA_EXCLAMATION);
-        ATTR_MAP.put(205, FA_EXCLAMATION_CIRCLE);
-        ATTR_MAP.put(206, FA_EXCLAMATION_TRIANGLE);
-        ATTR_MAP.put(207, FA_EXPAND);
-        ATTR_MAP.put(208, FA_EXPEDITEDSSL);
-        ATTR_MAP.put(209, FA_EXTERNAL_LINK);
-        ATTR_MAP.put(210, FA_EXTERNAL_LINK_SQUARE);
-        ATTR_MAP.put(211, FA_EYE);
-        ATTR_MAP.put(212, FA_EYE_SLASH);
-        ATTR_MAP.put(213, FA_EYEDROPPER);
-        ATTR_MAP.put(214, FA_FACEBOOK);
-        ATTR_MAP.put(215, FA_FACEBOOK_F);
-        ATTR_MAP.put(216, FA_FACEBOOK_OFFICIAL);
-        ATTR_MAP.put(217, FA_FACEBOOK_SQUARE);
-        ATTR_MAP.put(218, FA_FAST_BACKWARD);
-        ATTR_MAP.put(219, FA_FAST_FORWARD);
-        ATTR_MAP.put(220, FA_FAX);
-        ATTR_MAP.put(221, FA_FEED);
-        ATTR_MAP.put(222, FA_FEMALE);
-        ATTR_MAP.put(223, FA_FIGHTER_JET);
-        ATTR_MAP.put(224, FA_FILE);
-        ATTR_MAP.put(225, FA_FILE_ARCHIVE_O);
-        ATTR_MAP.put(226, FA_FILE_AUDIO_O);
-        ATTR_MAP.put(227, FA_FILE_CODE_O);
-        ATTR_MAP.put(228, FA_FILE_EXCEL_O);
-        ATTR_MAP.put(229, FA_FILE_IMAGE_O);
-        ATTR_MAP.put(230, FA_FILE_MOVIE_O);
-        ATTR_MAP.put(231, FA_FILE_O);
-        ATTR_MAP.put(232, FA_FILE_PDF_O);
-        ATTR_MAP.put(233, FA_FILE_PHOTO_O);
-        ATTR_MAP.put(234, FA_FILE_PICTURE_O);
-        ATTR_MAP.put(235, FA_FILE_POWERPOINT_O);
-        ATTR_MAP.put(236, FA_FILE_SOUND_O);
-        ATTR_MAP.put(237, FA_FILE_TEXT);
-        ATTR_MAP.put(238, FA_FILE_TEXT_O);
-        ATTR_MAP.put(239, FA_FILE_VIDEO_O);
-        ATTR_MAP.put(240, FA_FILE_WORD_O);
-        ATTR_MAP.put(241, FA_FILE_ZIP_O);
-        ATTR_MAP.put(242, FA_FILES_O);
-        ATTR_MAP.put(243, FA_FILM);
-        ATTR_MAP.put(244, FA_FILTER);
-        ATTR_MAP.put(245, FA_FIRE);
-        ATTR_MAP.put(246, FA_FIRE_EXTINGUISHER);
-        ATTR_MAP.put(247, FA_FIREFOX);
-        ATTR_MAP.put(248, FA_FLAG);
-        ATTR_MAP.put(249, FA_FLAG_CHECKERED);
-        ATTR_MAP.put(250, FA_FLAG_O);
-        ATTR_MAP.put(251, FA_FLASH);
-        ATTR_MAP.put(252, FA_FLASK);
-        ATTR_MAP.put(253, FA_FLICKR);
-        ATTR_MAP.put(254, FA_FLOPPY_O);
-        ATTR_MAP.put(255, FA_FOLDER);
-        ATTR_MAP.put(256, FA_FOLDER_O);
-        ATTR_MAP.put(257, FA_FOLDER_OPEN);
-        ATTR_MAP.put(258, FA_FOLDER_OPEN_O);
-        ATTR_MAP.put(259, FA_FONT);
-        ATTR_MAP.put(260, FA_FONTICONS);
-        ATTR_MAP.put(261, FA_FORUMBEE);
-        ATTR_MAP.put(262, FA_FORWARD);
-        ATTR_MAP.put(263, FA_FOURSQUARE);
-        ATTR_MAP.put(264, FA_FROWN_O);
-        ATTR_MAP.put(265, FA_FUTBOL_O);
-        ATTR_MAP.put(266, FA_GAMEPAD);
-        ATTR_MAP.put(267, FA_GAVEL);
-        ATTR_MAP.put(268, FA_GBP);
-        ATTR_MAP.put(269, FA_GE);
-        ATTR_MAP.put(270, FA_GEAR);
-        ATTR_MAP.put(271, FA_GEARS);
-        ATTR_MAP.put(272, FA_GENDERLESS);
-        ATTR_MAP.put(273, FA_GET_POCKET);
-        ATTR_MAP.put(274, FA_GG);
-        ATTR_MAP.put(275, FA_GG_CIRCLE);
-        ATTR_MAP.put(276, FA_GIFT);
-        ATTR_MAP.put(277, FA_GIT);
-        ATTR_MAP.put(278, FA_GIT_SQUARE);
-        ATTR_MAP.put(279, FA_GITHUB);
-        ATTR_MAP.put(280, FA_GITHUB_ALT);
-        ATTR_MAP.put(281, FA_GITHUB_SQUARE);
-        ATTR_MAP.put(282, FA_GITTIP);
-        ATTR_MAP.put(283, FA_GLASS);
-        ATTR_MAP.put(284, FA_GLOBE);
-        ATTR_MAP.put(285, FA_GOOGLE);
-        ATTR_MAP.put(286, FA_GOOGLE_PLUS);
-        ATTR_MAP.put(287, FA_GOOGLE_PLUS_SQUARE);
-        ATTR_MAP.put(288, FA_GOOGLE_WALLET);
-        ATTR_MAP.put(289, FA_GRADUATION_CAP);
-        ATTR_MAP.put(290, FA_GRATIPAY);
-        ATTR_MAP.put(291, FA_GROUP);
-        ATTR_MAP.put(292, FA_H_SQUARE);
-        ATTR_MAP.put(293, FA_HACKER_NEWS);
-        ATTR_MAP.put(294, FA_HAND_GRAB_O);
-        ATTR_MAP.put(295, FA_HAND_LIZARD_O);
-        ATTR_MAP.put(296, FA_HAND_O_DOWN);
-        ATTR_MAP.put(297, FA_HAND_O_LEFT);
-        ATTR_MAP.put(298, FA_HAND_O_RIGHT);
-        ATTR_MAP.put(299, FA_HAND_O_UP);
-        ATTR_MAP.put(300, FA_HAND_PAPER_O);
-        ATTR_MAP.put(301, FA_HAND_PEACE_O);
-        ATTR_MAP.put(302, FA_HAND_POINTER_O);
-        ATTR_MAP.put(303, FA_HAND_ROCK_O);
-        ATTR_MAP.put(304, FA_HAND_SCISSORS_O);
-        ATTR_MAP.put(305, FA_HAND_SPOCK_O);
-        ATTR_MAP.put(306, FA_HAND_STOP_O);
-        ATTR_MAP.put(307, FA_HDD_O);
-        ATTR_MAP.put(308, FA_HEADER);
-        ATTR_MAP.put(309, FA_HEADPHONES);
-        ATTR_MAP.put(310, FA_HEART);
-        ATTR_MAP.put(311, FA_HEART_O);
-        ATTR_MAP.put(312, FA_HEARTBEAT);
-        ATTR_MAP.put(313, FA_HISTORY);
-        ATTR_MAP.put(314, FA_HOME);
-        ATTR_MAP.put(315, FA_HOSPITAL_O);
-        ATTR_MAP.put(316, FA_HOTEL);
-        ATTR_MAP.put(317, FA_HOURGLASS);
-        ATTR_MAP.put(318, FA_HOURGLASS_1);
-        ATTR_MAP.put(319, FA_HOURGLASS_2);
-        ATTR_MAP.put(320, FA_HOURGLASS_3);
-        ATTR_MAP.put(321, FA_HOURGLASS_END);
-        ATTR_MAP.put(322, FA_HOURGLASS_HALF);
-        ATTR_MAP.put(323, FA_HOURGLASS_O);
-        ATTR_MAP.put(324, FA_HOURGLASS_START);
-        ATTR_MAP.put(325, FA_HOUZZ);
-        ATTR_MAP.put(326, FA_HTML5);
-        ATTR_MAP.put(327, FA_I_CURSOR);
-        ATTR_MAP.put(328, FA_ILS);
-        ATTR_MAP.put(329, FA_IMAGE);
-        ATTR_MAP.put(330, FA_INBOX);
-        ATTR_MAP.put(331, FA_INDENT);
-        ATTR_MAP.put(332, FA_INDUSTRY);
-        ATTR_MAP.put(333, FA_INFO);
-        ATTR_MAP.put(334, FA_INFO_CIRCLE);
-        ATTR_MAP.put(335, FA_INR);
-        ATTR_MAP.put(336, FA_INSTAGRAM);
-        ATTR_MAP.put(337, FA_INSTITUTION);
-        ATTR_MAP.put(338, FA_INTERNET_EXPLORER);
-        ATTR_MAP.put(339, FA_INTERSEX);
-        ATTR_MAP.put(340, FA_IOXHOST);
-        ATTR_MAP.put(341, FA_ITALIC);
-        ATTR_MAP.put(342, FA_JOOMLA);
-        ATTR_MAP.put(343, FA_JPY);
-        ATTR_MAP.put(344, FA_JSFIDDLE);
-        ATTR_MAP.put(345, FA_KEY);
-        ATTR_MAP.put(346, FA_KEYBOARD_O);
-        ATTR_MAP.put(347, FA_KRW);
-        ATTR_MAP.put(348, FA_LANGUAGE);
-        ATTR_MAP.put(349, FA_LAPTOP);
-        ATTR_MAP.put(350, FA_LASTFM);
-        ATTR_MAP.put(351, FA_LASTFM_SQUARE);
-        ATTR_MAP.put(352, FA_LEAF);
-        ATTR_MAP.put(353, FA_LEANPUB);
-        ATTR_MAP.put(354, FA_LEGAL);
-        ATTR_MAP.put(355, FA_LEMON_O);
-        ATTR_MAP.put(356, FA_LEVEL_DOWN);
-        ATTR_MAP.put(357, FA_LEVEL_UP);
-        ATTR_MAP.put(358, FA_LIFE_BOUY);
-        ATTR_MAP.put(359, FA_LIFE_BUOY);
-        ATTR_MAP.put(360, FA_LIFE_RING);
-        ATTR_MAP.put(361, FA_LIFE_SAVER);
-        ATTR_MAP.put(362, FA_LIGHTBULB_O);
-        ATTR_MAP.put(363, FA_LINE_CHART);
-        ATTR_MAP.put(364, FA_LINK);
-        ATTR_MAP.put(365, FA_LINKEDIN);
-        ATTR_MAP.put(366, FA_LINKEDIN_SQUARE);
-        ATTR_MAP.put(367, FA_LINUX);
-        ATTR_MAP.put(368, FA_LIST);
-        ATTR_MAP.put(369, FA_LIST_ALT);
-        ATTR_MAP.put(370, FA_LIST_OL);
-        ATTR_MAP.put(371, FA_LIST_UL);
-        ATTR_MAP.put(372, FA_LOCATION_ARROW);
-        ATTR_MAP.put(373, FA_LOCK);
-        ATTR_MAP.put(374, FA_LONG_ARROW_DOWN);
-        ATTR_MAP.put(375, FA_LONG_ARROW_LEFT);
-        ATTR_MAP.put(376, FA_LONG_ARROW_RIGHT);
-        ATTR_MAP.put(377, FA_LONG_ARROW_UP);
-        ATTR_MAP.put(378, FA_MAGIC);
-        ATTR_MAP.put(379, FA_MAGNET);
-        ATTR_MAP.put(380, FA_MAIL_FORWARD);
-        ATTR_MAP.put(381, FA_MAIL_REPLY);
-        ATTR_MAP.put(382, FA_MAIL_REPLY_ALL);
-        ATTR_MAP.put(383, FA_MALE);
-        ATTR_MAP.put(384, FA_MAP);
-        ATTR_MAP.put(385, FA_MAP_MARKER);
-        ATTR_MAP.put(386, FA_MAP_O);
-        ATTR_MAP.put(387, FA_MAP_PIN);
-        ATTR_MAP.put(388, FA_MAP_SIGNS);
-        ATTR_MAP.put(389, FA_MARS);
-        ATTR_MAP.put(390, FA_MARS_DOUBLE);
-        ATTR_MAP.put(391, FA_MARS_STROKE);
-        ATTR_MAP.put(392, FA_MARS_STROKE_H);
-        ATTR_MAP.put(393, FA_MARS_STROKE_V);
-        ATTR_MAP.put(394, FA_MAXCDN);
-        ATTR_MAP.put(395, FA_MEANPATH);
-        ATTR_MAP.put(396, FA_MEDIUM);
-        ATTR_MAP.put(397, FA_MEDKIT);
-        ATTR_MAP.put(398, FA_MEH_O);
-        ATTR_MAP.put(399, FA_MERCURY);
-        ATTR_MAP.put(400, FA_MICROPHONE);
-        ATTR_MAP.put(401, FA_MICROPHONE_SLASH);
-        ATTR_MAP.put(402, FA_MINUS);
-        ATTR_MAP.put(403, FA_MINUS_CIRCLE);
-        ATTR_MAP.put(404, FA_MINUS_SQUARE);
-        ATTR_MAP.put(405, FA_MINUS_SQUARE_O);
-        ATTR_MAP.put(406, FA_MOBILE);
-        ATTR_MAP.put(407, FA_MOBILE_PHONE);
-        ATTR_MAP.put(408, FA_MONEY);
-        ATTR_MAP.put(409, FA_MOON_O);
-        ATTR_MAP.put(410, FA_MORTAR_BOARD);
-        ATTR_MAP.put(411, FA_MOTORCYCLE);
-        ATTR_MAP.put(412, FA_MOUSE_POINTER);
-        ATTR_MAP.put(413, FA_MUSIC);
-        ATTR_MAP.put(414, FA_NAVICON);
-        ATTR_MAP.put(415, FA_NEUTER);
-        ATTR_MAP.put(416, FA_NEWSPAPER_O);
-        ATTR_MAP.put(417, FA_OBJECT_GROUP);
-        ATTR_MAP.put(418, FA_OBJECT_UNGROUP);
-        ATTR_MAP.put(419, FA_ODNOKLASSNIKI);
-        ATTR_MAP.put(420, FA_ODNOKLASSNIKI_SQUARE);
-        ATTR_MAP.put(421, FA_OPENCART);
-        ATTR_MAP.put(422, FA_OPENID);
-        ATTR_MAP.put(423, FA_OPERA);
-        ATTR_MAP.put(424, FA_OPTIN_MONSTER);
-        ATTR_MAP.put(425, FA_OUTDENT);
-        ATTR_MAP.put(426, FA_PAGELINES);
-        ATTR_MAP.put(427, FA_PAINT_BRUSH);
-        ATTR_MAP.put(428, FA_PAPER_PLANE);
-        ATTR_MAP.put(429, FA_PAPER_PLANE_O);
-        ATTR_MAP.put(430, FA_PAPERCLIP);
-        ATTR_MAP.put(431, FA_PARAGRAPH);
-        ATTR_MAP.put(432, FA_PASTE);
-        ATTR_MAP.put(433, FA_PAUSE);
-        ATTR_MAP.put(434, FA_PAW);
-        ATTR_MAP.put(435, FA_PAYPAL);
-        ATTR_MAP.put(436, FA_PENCIL);
-        ATTR_MAP.put(437, FA_PENCIL_SQUARE);
-        ATTR_MAP.put(438, FA_PENCIL_SQUARE_O);
-        ATTR_MAP.put(439, FA_PHONE);
-        ATTR_MAP.put(440, FA_PHONE_SQUARE);
-        ATTR_MAP.put(441, FA_PHOTO);
-        ATTR_MAP.put(442, FA_PICTURE_O);
-        ATTR_MAP.put(443, FA_PIE_CHART);
-        ATTR_MAP.put(444, FA_PIED_PIPER);
-        ATTR_MAP.put(445, FA_PIED_PIPER_ALT);
-        ATTR_MAP.put(446, FA_PINTEREST);
-        ATTR_MAP.put(447, FA_PINTEREST_P);
-        ATTR_MAP.put(448, FA_PINTEREST_SQUARE);
-        ATTR_MAP.put(449, FA_PLANE);
-        ATTR_MAP.put(450, FA_PLAY);
-        ATTR_MAP.put(451, FA_PLAY_CIRCLE);
-        ATTR_MAP.put(452, FA_PLAY_CIRCLE_O);
-        ATTR_MAP.put(453, FA_PLUG);
-        ATTR_MAP.put(454, FA_PLUS);
-        ATTR_MAP.put(455, FA_PLUS_CIRCLE);
-        ATTR_MAP.put(456, FA_PLUS_SQUARE);
-        ATTR_MAP.put(457, FA_PLUS_SQUARE_O);
-        ATTR_MAP.put(458, FA_POWER_OFF);
-        ATTR_MAP.put(459, FA_PRINT);
-        ATTR_MAP.put(460, FA_PUZZLE_PIECE);
-        ATTR_MAP.put(461, FA_QQ);
-        ATTR_MAP.put(462, FA_QRCODE);
-        ATTR_MAP.put(463, FA_QUESTION);
-        ATTR_MAP.put(464, FA_QUESTION_CIRCLE);
-        ATTR_MAP.put(465, FA_QUOTE_LEFT);
-        ATTR_MAP.put(466, FA_QUOTE_RIGHT);
-        ATTR_MAP.put(467, FA_RA);
-        ATTR_MAP.put(468, FA_RANDOM);
-        ATTR_MAP.put(469, FA_REBEL);
-        ATTR_MAP.put(470, FA_RECYCLE);
-        ATTR_MAP.put(471, FA_REDDIT);
-        ATTR_MAP.put(472, FA_REDDIT_SQUARE);
-        ATTR_MAP.put(473, FA_REFRESH);
-        ATTR_MAP.put(474, FA_REGISTERED);
-        ATTR_MAP.put(475, FA_REMOVE);
-        ATTR_MAP.put(476, FA_RENREN);
-        ATTR_MAP.put(477, FA_REORDER);
-        ATTR_MAP.put(478, FA_REPEAT);
-        ATTR_MAP.put(479, FA_REPLY);
-        ATTR_MAP.put(480, FA_REPLY_ALL);
-        ATTR_MAP.put(481, FA_RETWEET);
-        ATTR_MAP.put(482, FA_RMB);
-        ATTR_MAP.put(483, FA_ROAD);
-        ATTR_MAP.put(484, FA_ROCKET);
-        ATTR_MAP.put(485, FA_ROTATE_LEFT);
-        ATTR_MAP.put(486, FA_ROTATE_RIGHT);
-        ATTR_MAP.put(487, FA_ROUBLE);
-        ATTR_MAP.put(488, FA_RSS);
-        ATTR_MAP.put(489, FA_RSS_SQUARE);
-        ATTR_MAP.put(490, FA_RUB);
-        ATTR_MAP.put(491, FA_RUBLE);
-        ATTR_MAP.put(492, FA_RUPEE);
-        ATTR_MAP.put(493, FA_SAFARI);
-        ATTR_MAP.put(494, FA_SAVE);
-        ATTR_MAP.put(495, FA_SCISSORS);
-        ATTR_MAP.put(496, FA_SEARCH);
-        ATTR_MAP.put(497, FA_SEARCH_MINUS);
-        ATTR_MAP.put(498, FA_SEARCH_PLUS);
-        ATTR_MAP.put(499, FA_SELLSY);
-        ATTR_MAP.put(500, FA_SEND);
-        ATTR_MAP.put(501, FA_SEND_O);
-        ATTR_MAP.put(502, FA_SERVER);
-        ATTR_MAP.put(503, FA_SHARE);
-        ATTR_MAP.put(504, FA_SHARE_ALT);
-        ATTR_MAP.put(505, FA_SHARE_ALT_SQUARE);
-        ATTR_MAP.put(506, FA_SHARE_SQUARE);
-        ATTR_MAP.put(507, FA_SHARE_SQUARE_O);
-        ATTR_MAP.put(508, FA_SHEKEL);
-        ATTR_MAP.put(509, FA_SHEQEL);
-        ATTR_MAP.put(510, FA_SHIELD);
-        ATTR_MAP.put(511, FA_SHIP);
-        ATTR_MAP.put(512, FA_SHIRTSINBULK);
-        ATTR_MAP.put(513, FA_SHOPPING_CART);
-        ATTR_MAP.put(514, FA_SIGN_IN);
-        ATTR_MAP.put(515, FA_SIGN_OUT);
-        ATTR_MAP.put(516, FA_SIGNAL);
-        ATTR_MAP.put(517, FA_SIMPLYBUILT);
-        ATTR_MAP.put(518, FA_SITEMAP);
-        ATTR_MAP.put(519, FA_SKYATLAS);
-        ATTR_MAP.put(520, FA_SKYPE);
-        ATTR_MAP.put(521, FA_SLACK);
-        ATTR_MAP.put(522, FA_SLIDERS);
-        ATTR_MAP.put(523, FA_SLIDESHARE);
-        ATTR_MAP.put(524, FA_SMILE_O);
-        ATTR_MAP.put(525, FA_SOCCER_BALL_O);
-        ATTR_MAP.put(526, FA_SORT);
-        ATTR_MAP.put(527, FA_SORT_ALPHA_ASC);
-        ATTR_MAP.put(528, FA_SORT_ALPHA_DESC);
-        ATTR_MAP.put(529, FA_SORT_AMOUNT_ASC);
-        ATTR_MAP.put(530, FA_SORT_AMOUNT_DESC);
-        ATTR_MAP.put(531, FA_SORT_ASC);
-        ATTR_MAP.put(532, FA_SORT_DESC);
-        ATTR_MAP.put(533, FA_SORT_DOWN);
-        ATTR_MAP.put(534, FA_SORT_NUMERIC_ASC);
-        ATTR_MAP.put(535, FA_SORT_NUMERIC_DESC);
-        ATTR_MAP.put(536, FA_SORT_UP);
-        ATTR_MAP.put(537, FA_SOUNDCLOUD);
-        ATTR_MAP.put(538, FA_SPACE_SHUTTLE);
-        ATTR_MAP.put(539, FA_SPINNER);
-        ATTR_MAP.put(540, FA_SPOON);
-        ATTR_MAP.put(541, FA_SPOTIFY);
-        ATTR_MAP.put(542, FA_SQUARE);
-        ATTR_MAP.put(543, FA_SQUARE_O);
-        ATTR_MAP.put(544, FA_STACK_EXCHANGE);
-        ATTR_MAP.put(545, FA_STACK_OVERFLOW);
-        ATTR_MAP.put(546, FA_STAR);
-        ATTR_MAP.put(547, FA_STAR_HALF);
-        ATTR_MAP.put(548, FA_STAR_HALF_EMPTY);
-        ATTR_MAP.put(549, FA_STAR_HALF_FULL);
-        ATTR_MAP.put(550, FA_STAR_HALF_O);
-        ATTR_MAP.put(551, FA_STAR_O);
-        ATTR_MAP.put(552, FA_STEAM);
-        ATTR_MAP.put(553, FA_STEAM_SQUARE);
-        ATTR_MAP.put(554, FA_STEP_BACKWARD);
-        ATTR_MAP.put(555, FA_STEP_FORWARD);
-        ATTR_MAP.put(556, FA_STETHOSCOPE);
-        ATTR_MAP.put(557, FA_STICKY_NOTE);
-        ATTR_MAP.put(558, FA_STICKY_NOTE_O);
-        ATTR_MAP.put(559, FA_STOP);
-        ATTR_MAP.put(560, FA_STREET_VIEW);
-        ATTR_MAP.put(561, FA_STRIKETHROUGH);
-        ATTR_MAP.put(562, FA_STUMBLEUPON);
-        ATTR_MAP.put(563, FA_STUMBLEUPON_CIRCLE);
-        ATTR_MAP.put(564, FA_SUBSCRIPT);
-        ATTR_MAP.put(565, FA_SUBWAY);
-        ATTR_MAP.put(566, FA_SUITCASE);
-        ATTR_MAP.put(567, FA_SUN_O);
-        ATTR_MAP.put(568, FA_SUPERSCRIPT);
-        ATTR_MAP.put(569, FA_SUPPORT);
-        ATTR_MAP.put(570, FA_TABLE);
-        ATTR_MAP.put(571, FA_TABLET);
-        ATTR_MAP.put(572, FA_TACHOMETER);
-        ATTR_MAP.put(573, FA_TAG);
-        ATTR_MAP.put(574, FA_TAGS);
-        ATTR_MAP.put(575, FA_TASKS);
-        ATTR_MAP.put(576, FA_TAXI);
-        ATTR_MAP.put(577, FA_TELEVISION);
-        ATTR_MAP.put(578, FA_TENCENT_WEIBO);
-        ATTR_MAP.put(579, FA_TERMINAL);
-        ATTR_MAP.put(580, FA_TEXT_HEIGHT);
-        ATTR_MAP.put(581, FA_TEXT_WIDTH);
-        ATTR_MAP.put(582, FA_TH);
-        ATTR_MAP.put(583, FA_TH_LARGE);
-        ATTR_MAP.put(584, FA_TH_LIST);
-        ATTR_MAP.put(585, FA_THUMB_TACK);
-        ATTR_MAP.put(586, FA_THUMBS_DOWN);
-        ATTR_MAP.put(587, FA_THUMBS_O_DOWN);
-        ATTR_MAP.put(588, FA_THUMBS_O_UP);
-        ATTR_MAP.put(589, FA_THUMBS_UP);
-        ATTR_MAP.put(590, FA_TICKET);
-        ATTR_MAP.put(591, FA_TIMES);
-        ATTR_MAP.put(592, FA_TIMES_CIRCLE);
-        ATTR_MAP.put(593, FA_TIMES_CIRCLE_O);
-        ATTR_MAP.put(594, FA_TINT);
-        ATTR_MAP.put(595, FA_TOGGLE_DOWN);
-        ATTR_MAP.put(596, FA_TOGGLE_LEFT);
-        ATTR_MAP.put(597, FA_TOGGLE_OFF);
-        ATTR_MAP.put(598, FA_TOGGLE_ON);
-        ATTR_MAP.put(599, FA_TOGGLE_RIGHT);
-        ATTR_MAP.put(600, FA_TOGGLE_UP);
-        ATTR_MAP.put(601, FA_TRADEMARK);
-        ATTR_MAP.put(602, FA_TRAIN);
-        ATTR_MAP.put(603, FA_TRANSGENDER);
-        ATTR_MAP.put(604, FA_TRANSGENDER_ALT);
-        ATTR_MAP.put(605, FA_TRASH);
-        ATTR_MAP.put(606, FA_TRASH_O);
-        ATTR_MAP.put(607, FA_TREE);
-        ATTR_MAP.put(608, FA_TRELLO);
-        ATTR_MAP.put(609, FA_TRIPADVISOR);
-        ATTR_MAP.put(610, FA_TROPHY);
-        ATTR_MAP.put(611, FA_TRUCK);
-        ATTR_MAP.put(612, FA_TRY);
-        ATTR_MAP.put(613, FA_TTY);
-        ATTR_MAP.put(614, FA_TUMBLR);
-        ATTR_MAP.put(615, FA_TUMBLR_SQUARE);
-        ATTR_MAP.put(616, FA_TURKISH_LIRA);
-        ATTR_MAP.put(617, FA_TV);
-        ATTR_MAP.put(618, FA_TWITCH);
-        ATTR_MAP.put(619, FA_TWITTER);
-        ATTR_MAP.put(620, FA_TWITTER_SQUARE);
-        ATTR_MAP.put(621, FA_UMBRELLA);
-        ATTR_MAP.put(622, FA_UNDERLINE);
-        ATTR_MAP.put(623, FA_UNDO);
-        ATTR_MAP.put(624, FA_UNIVERSITY);
-        ATTR_MAP.put(625, FA_UNLINK);
-        ATTR_MAP.put(626, FA_UNLOCK);
-        ATTR_MAP.put(627, FA_UNLOCK_ALT);
-        ATTR_MAP.put(628, FA_UNSORTED);
-        ATTR_MAP.put(629, FA_UPLOAD);
-        ATTR_MAP.put(630, FA_USD);
-        ATTR_MAP.put(631, FA_USER);
-        ATTR_MAP.put(632, FA_USER_MD);
-        ATTR_MAP.put(633, FA_USER_PLUS);
-        ATTR_MAP.put(634, FA_USER_SECRET);
-        ATTR_MAP.put(635, FA_USER_TIMES);
-        ATTR_MAP.put(636, FA_USERS);
-        ATTR_MAP.put(637, FA_VENUS);
-        ATTR_MAP.put(638, FA_VENUS_DOUBLE);
-        ATTR_MAP.put(639, FA_VENUS_MARS);
-        ATTR_MAP.put(640, FA_VIACOIN);
-        ATTR_MAP.put(641, FA_VIDEO_CAMERA);
-        ATTR_MAP.put(642, FA_VIMEO);
-        ATTR_MAP.put(643, FA_VIMEO_SQUARE);
-        ATTR_MAP.put(644, FA_VINE);
-        ATTR_MAP.put(645, FA_VK);
-        ATTR_MAP.put(646, FA_VOLUME_DOWN);
-        ATTR_MAP.put(647, FA_VOLUME_OFF);
-        ATTR_MAP.put(648, FA_VOLUME_UP);
-        ATTR_MAP.put(649, FA_WARNING);
-        ATTR_MAP.put(650, FA_WECHAT);
-        ATTR_MAP.put(651, FA_WEIBO);
-        ATTR_MAP.put(652, FA_WEIXIN);
-        ATTR_MAP.put(653, FA_WHATSAPP);
-        ATTR_MAP.put(654, FA_WHEELCHAIR);
-        ATTR_MAP.put(655, FA_WIFI);
-        ATTR_MAP.put(656, FA_WIKIPEDIA_W);
-        ATTR_MAP.put(657, FA_WINDOWS);
-        ATTR_MAP.put(658, FA_WON);
-        ATTR_MAP.put(659, FA_WORDPRESS);
-        ATTR_MAP.put(660, FA_WRENCH);
-        ATTR_MAP.put(661, FA_XING);
-        ATTR_MAP.put(662, FA_XING_SQUARE);
-        ATTR_MAP.put(663, FA_Y_COMBINATOR);
-        ATTR_MAP.put(664, FA_Y_COMBINATOR_SQUARE);
-        ATTR_MAP.put(665, FA_YAHOO);
-        ATTR_MAP.put(666, FA_YC);
-        ATTR_MAP.put(667, FA_YC_SQUARE);
-        ATTR_MAP.put(668, FA_YELP);
-        ATTR_MAP.put(669, FA_YEN);
-        ATTR_MAP.put(670, FA_YOUTUBE);
-        ATTR_MAP.put(671, FA_YOUTUBE_PLAY);
-        ATTR_MAP.put(672, FA_YOUTUBE_SQUARE);
+        ATTR_MAP.put(74, FA_BLUETOOTH);
+        ATTR_MAP.put(75, FA_BLUETOOTH_B);
+        ATTR_MAP.put(76, FA_BOLD);
+        ATTR_MAP.put(77, FA_BOLT);
+        ATTR_MAP.put(78, FA_BOMB);
+        ATTR_MAP.put(79, FA_BOOK);
+        ATTR_MAP.put(80, FA_BOOKMARK);
+        ATTR_MAP.put(81, FA_BOOKMARK_O);
+        ATTR_MAP.put(82, FA_BRIEFCASE);
+        ATTR_MAP.put(83, FA_BTC);
+        ATTR_MAP.put(84, FA_BUG);
+        ATTR_MAP.put(85, FA_BUILDING);
+        ATTR_MAP.put(86, FA_BUILDING_O);
+        ATTR_MAP.put(87, FA_BULLHORN);
+        ATTR_MAP.put(88, FA_BULLSEYE);
+        ATTR_MAP.put(89, FA_BUS);
+        ATTR_MAP.put(90, FA_BUYSELLADS);
+        ATTR_MAP.put(91, FA_CAB);
+        ATTR_MAP.put(92, FA_CALCULATOR);
+        ATTR_MAP.put(93, FA_CALENDAR);
+        ATTR_MAP.put(94, FA_CALENDAR_CHECK_O);
+        ATTR_MAP.put(95, FA_CALENDAR_MINUS_O);
+        ATTR_MAP.put(96, FA_CALENDAR_O);
+        ATTR_MAP.put(97, FA_CALENDAR_PLUS_O);
+        ATTR_MAP.put(98, FA_CALENDAR_TIMES_O);
+        ATTR_MAP.put(99, FA_CAMERA);
+        ATTR_MAP.put(100, FA_CAMERA_RETRO);
+        ATTR_MAP.put(101, FA_CAR);
+        ATTR_MAP.put(102, FA_CARET_DOWN);
+        ATTR_MAP.put(103, FA_CARET_LEFT);
+        ATTR_MAP.put(104, FA_CARET_RIGHT);
+        ATTR_MAP.put(105, FA_CARET_SQUARE_O_DOWN);
+        ATTR_MAP.put(106, FA_CARET_SQUARE_O_LEFT);
+        ATTR_MAP.put(107, FA_CARET_SQUARE_O_RIGHT);
+        ATTR_MAP.put(108, FA_CARET_SQUARE_O_UP);
+        ATTR_MAP.put(109, FA_CARET_UP);
+        ATTR_MAP.put(110, FA_CART_ARROW_DOWN);
+        ATTR_MAP.put(111, FA_CART_PLUS);
+        ATTR_MAP.put(112, FA_CC);
+        ATTR_MAP.put(113, FA_CC_AMEX);
+        ATTR_MAP.put(114, FA_CC_DINERS_CLUB);
+        ATTR_MAP.put(115, FA_CC_DISCOVER);
+        ATTR_MAP.put(116, FA_CC_JCB);
+        ATTR_MAP.put(117, FA_CC_MASTERCARD);
+        ATTR_MAP.put(118, FA_CC_PAYPAL);
+        ATTR_MAP.put(119, FA_CC_STRIPE);
+        ATTR_MAP.put(120, FA_CC_VISA);
+        ATTR_MAP.put(121, FA_CERTIFICATE);
+        ATTR_MAP.put(122, FA_CHAIN);
+        ATTR_MAP.put(123, FA_CHAIN_BROKEN);
+        ATTR_MAP.put(124, FA_CHECK);
+        ATTR_MAP.put(125, FA_CHECK_CIRCLE);
+        ATTR_MAP.put(126, FA_CHECK_CIRCLE_O);
+        ATTR_MAP.put(127, FA_CHECK_SQUARE);
+        ATTR_MAP.put(128, FA_CHECK_SQUARE_O);
+        ATTR_MAP.put(129, FA_CHEVRON_CIRCLE_DOWN);
+        ATTR_MAP.put(130, FA_CHEVRON_CIRCLE_LEFT);
+        ATTR_MAP.put(131, FA_CHEVRON_CIRCLE_RIGHT);
+        ATTR_MAP.put(132, FA_CHEVRON_CIRCLE_UP);
+        ATTR_MAP.put(133, FA_CHEVRON_DOWN);
+        ATTR_MAP.put(134, FA_CHEVRON_LEFT);
+        ATTR_MAP.put(135, FA_CHEVRON_RIGHT);
+        ATTR_MAP.put(136, FA_CHEVRON_UP);
+        ATTR_MAP.put(137, FA_CHILD);
+        ATTR_MAP.put(138, FA_CHROME);
+        ATTR_MAP.put(139, FA_CIRCLE);
+        ATTR_MAP.put(140, FA_CIRCLE_O);
+        ATTR_MAP.put(141, FA_CIRCLE_O_NOTCH);
+        ATTR_MAP.put(142, FA_CIRCLE_THIN);
+        ATTR_MAP.put(143, FA_CLIPBOARD);
+        ATTR_MAP.put(144, FA_CLOCK_O);
+        ATTR_MAP.put(145, FA_CLONE);
+        ATTR_MAP.put(146, FA_CLOSE);
+        ATTR_MAP.put(147, FA_CLOUD);
+        ATTR_MAP.put(148, FA_CLOUD_DOWNLOAD);
+        ATTR_MAP.put(149, FA_CLOUD_UPLOAD);
+        ATTR_MAP.put(150, FA_CNY);
+        ATTR_MAP.put(151, FA_CODE);
+        ATTR_MAP.put(152, FA_CODE_FORK);
+        ATTR_MAP.put(153, FA_CODEPEN);
+        ATTR_MAP.put(154, FA_CODIEPIE);
+        ATTR_MAP.put(155, FA_COFFEE);
+        ATTR_MAP.put(156, FA_COG);
+        ATTR_MAP.put(157, FA_COGS);
+        ATTR_MAP.put(158, FA_COLUMNS);
+        ATTR_MAP.put(159, FA_COMMENT);
+        ATTR_MAP.put(160, FA_COMMENT_O);
+        ATTR_MAP.put(161, FA_COMMENTING);
+        ATTR_MAP.put(162, FA_COMMENTING_O);
+        ATTR_MAP.put(163, FA_COMMENTS);
+        ATTR_MAP.put(164, FA_COMMENTS_O);
+        ATTR_MAP.put(165, FA_COMPASS);
+        ATTR_MAP.put(166, FA_COMPRESS);
+        ATTR_MAP.put(167, FA_CONNECTDEVELOP);
+        ATTR_MAP.put(168, FA_CONTAO);
+        ATTR_MAP.put(169, FA_COPY);
+        ATTR_MAP.put(170, FA_COPYRIGHT);
+        ATTR_MAP.put(171, FA_CREATIVE_COMMONS);
+        ATTR_MAP.put(172, FA_CREDIT_CARD);
+        ATTR_MAP.put(173, FA_CREDIT_CARD_ALT);
+        ATTR_MAP.put(174, FA_CROP);
+        ATTR_MAP.put(175, FA_CROSSHAIRS);
+        ATTR_MAP.put(176, FA_CSS3);
+        ATTR_MAP.put(177, FA_CUBE);
+        ATTR_MAP.put(178, FA_CUBES);
+        ATTR_MAP.put(179, FA_CUT);
+        ATTR_MAP.put(180, FA_CUTLERY);
+        ATTR_MAP.put(181, FA_DASHBOARD);
+        ATTR_MAP.put(182, FA_DASHCUBE);
+        ATTR_MAP.put(183, FA_DATABASE);
+        ATTR_MAP.put(184, FA_DEDENT);
+        ATTR_MAP.put(185, FA_DELICIOUS);
+        ATTR_MAP.put(186, FA_DESKTOP);
+        ATTR_MAP.put(187, FA_DEVIANTART);
+        ATTR_MAP.put(188, FA_DIAMOND);
+        ATTR_MAP.put(189, FA_DIGG);
+        ATTR_MAP.put(190, FA_DOLLAR);
+        ATTR_MAP.put(191, FA_DOT_CIRCLE_O);
+        ATTR_MAP.put(192, FA_DOWNLOAD);
+        ATTR_MAP.put(193, FA_DRIBBBLE);
+        ATTR_MAP.put(194, FA_DROPBOX);
+        ATTR_MAP.put(195, FA_DRUPAL);
+        ATTR_MAP.put(196, FA_EDGE);
+        ATTR_MAP.put(197, FA_EDIT);
+        ATTR_MAP.put(198, FA_EJECT);
+        ATTR_MAP.put(199, FA_ELLIPSIS_H);
+        ATTR_MAP.put(200, FA_ELLIPSIS_V);
+        ATTR_MAP.put(201, FA_EMPIRE);
+        ATTR_MAP.put(202, FA_ENVELOPE);
+        ATTR_MAP.put(203, FA_ENVELOPE_O);
+        ATTR_MAP.put(204, FA_ENVELOPE_SQUARE);
+        ATTR_MAP.put(205, FA_ERASER);
+        ATTR_MAP.put(206, FA_EUR);
+        ATTR_MAP.put(207, FA_EURO);
+        ATTR_MAP.put(208, FA_EXCHANGE);
+        ATTR_MAP.put(209, FA_EXCLAMATION);
+        ATTR_MAP.put(210, FA_EXCLAMATION_CIRCLE);
+        ATTR_MAP.put(211, FA_EXCLAMATION_TRIANGLE);
+        ATTR_MAP.put(212, FA_EXPAND);
+        ATTR_MAP.put(213, FA_EXPEDITEDSSL);
+        ATTR_MAP.put(214, FA_EXTERNAL_LINK);
+        ATTR_MAP.put(215, FA_EXTERNAL_LINK_SQUARE);
+        ATTR_MAP.put(216, FA_EYE);
+        ATTR_MAP.put(217, FA_EYE_SLASH);
+        ATTR_MAP.put(218, FA_EYEDROPPER);
+        ATTR_MAP.put(219, FA_FACEBOOK);
+        ATTR_MAP.put(220, FA_FACEBOOK_F);
+        ATTR_MAP.put(221, FA_FACEBOOK_OFFICIAL);
+        ATTR_MAP.put(222, FA_FACEBOOK_SQUARE);
+        ATTR_MAP.put(223, FA_FAST_BACKWARD);
+        ATTR_MAP.put(224, FA_FAST_FORWARD);
+        ATTR_MAP.put(225, FA_FAX);
+        ATTR_MAP.put(226, FA_FEED);
+        ATTR_MAP.put(227, FA_FEMALE);
+        ATTR_MAP.put(228, FA_FIGHTER_JET);
+        ATTR_MAP.put(229, FA_FILE);
+        ATTR_MAP.put(230, FA_FILE_ARCHIVE_O);
+        ATTR_MAP.put(231, FA_FILE_AUDIO_O);
+        ATTR_MAP.put(232, FA_FILE_CODE_O);
+        ATTR_MAP.put(233, FA_FILE_EXCEL_O);
+        ATTR_MAP.put(234, FA_FILE_IMAGE_O);
+        ATTR_MAP.put(235, FA_FILE_MOVIE_O);
+        ATTR_MAP.put(236, FA_FILE_O);
+        ATTR_MAP.put(237, FA_FILE_PDF_O);
+        ATTR_MAP.put(238, FA_FILE_PHOTO_O);
+        ATTR_MAP.put(239, FA_FILE_PICTURE_O);
+        ATTR_MAP.put(240, FA_FILE_POWERPOINT_O);
+        ATTR_MAP.put(241, FA_FILE_SOUND_O);
+        ATTR_MAP.put(242, FA_FILE_TEXT);
+        ATTR_MAP.put(243, FA_FILE_TEXT_O);
+        ATTR_MAP.put(244, FA_FILE_VIDEO_O);
+        ATTR_MAP.put(245, FA_FILE_WORD_O);
+        ATTR_MAP.put(246, FA_FILE_ZIP_O);
+        ATTR_MAP.put(247, FA_FILES_O);
+        ATTR_MAP.put(248, FA_FILM);
+        ATTR_MAP.put(249, FA_FILTER);
+        ATTR_MAP.put(250, FA_FIRE);
+        ATTR_MAP.put(251, FA_FIRE_EXTINGUISHER);
+        ATTR_MAP.put(252, FA_FIREFOX);
+        ATTR_MAP.put(253, FA_FLAG);
+        ATTR_MAP.put(254, FA_FLAG_CHECKERED);
+        ATTR_MAP.put(255, FA_FLAG_O);
+        ATTR_MAP.put(256, FA_FLASH);
+        ATTR_MAP.put(257, FA_FLASK);
+        ATTR_MAP.put(258, FA_FLICKR);
+        ATTR_MAP.put(259, FA_FLOPPY_O);
+        ATTR_MAP.put(260, FA_FOLDER);
+        ATTR_MAP.put(261, FA_FOLDER_O);
+        ATTR_MAP.put(262, FA_FOLDER_OPEN);
+        ATTR_MAP.put(263, FA_FOLDER_OPEN_O);
+        ATTR_MAP.put(264, FA_FONT);
+        ATTR_MAP.put(265, FA_FONTICONS);
+        ATTR_MAP.put(266, FA_FORT_AWESOME);
+        ATTR_MAP.put(267, FA_FORUMBEE);
+        ATTR_MAP.put(268, FA_FORWARD);
+        ATTR_MAP.put(269, FA_FOURSQUARE);
+        ATTR_MAP.put(270, FA_FROWN_O);
+        ATTR_MAP.put(271, FA_FUTBOL_O);
+        ATTR_MAP.put(272, FA_GAMEPAD);
+        ATTR_MAP.put(273, FA_GAVEL);
+        ATTR_MAP.put(274, FA_GBP);
+        ATTR_MAP.put(275, FA_GE);
+        ATTR_MAP.put(276, FA_GEAR);
+        ATTR_MAP.put(277, FA_GEARS);
+        ATTR_MAP.put(278, FA_GENDERLESS);
+        ATTR_MAP.put(279, FA_GET_POCKET);
+        ATTR_MAP.put(280, FA_GG);
+        ATTR_MAP.put(281, FA_GG_CIRCLE);
+        ATTR_MAP.put(282, FA_GIFT);
+        ATTR_MAP.put(283, FA_GIT);
+        ATTR_MAP.put(284, FA_GIT_SQUARE);
+        ATTR_MAP.put(285, FA_GITHUB);
+        ATTR_MAP.put(286, FA_GITHUB_ALT);
+        ATTR_MAP.put(287, FA_GITHUB_SQUARE);
+        ATTR_MAP.put(288, FA_GITTIP);
+        ATTR_MAP.put(289, FA_GLASS);
+        ATTR_MAP.put(290, FA_GLOBE);
+        ATTR_MAP.put(291, FA_GOOGLE);
+        ATTR_MAP.put(292, FA_GOOGLE_PLUS);
+        ATTR_MAP.put(293, FA_GOOGLE_PLUS_SQUARE);
+        ATTR_MAP.put(294, FA_GOOGLE_WALLET);
+        ATTR_MAP.put(295, FA_GRADUATION_CAP);
+        ATTR_MAP.put(296, FA_GRATIPAY);
+        ATTR_MAP.put(297, FA_GROUP);
+        ATTR_MAP.put(298, FA_H_SQUARE);
+        ATTR_MAP.put(299, FA_HACKER_NEWS);
+        ATTR_MAP.put(300, FA_HAND_GRAB_O);
+        ATTR_MAP.put(301, FA_HAND_LIZARD_O);
+        ATTR_MAP.put(302, FA_HAND_O_DOWN);
+        ATTR_MAP.put(303, FA_HAND_O_LEFT);
+        ATTR_MAP.put(304, FA_HAND_O_RIGHT);
+        ATTR_MAP.put(305, FA_HAND_O_UP);
+        ATTR_MAP.put(306, FA_HAND_PAPER_O);
+        ATTR_MAP.put(307, FA_HAND_PEACE_O);
+        ATTR_MAP.put(308, FA_HAND_POINTER_O);
+        ATTR_MAP.put(309, FA_HAND_ROCK_O);
+        ATTR_MAP.put(310, FA_HAND_SCISSORS_O);
+        ATTR_MAP.put(311, FA_HAND_SPOCK_O);
+        ATTR_MAP.put(312, FA_HAND_STOP_O);
+        ATTR_MAP.put(313, FA_HASHTAG);
+        ATTR_MAP.put(314, FA_HDD_O);
+        ATTR_MAP.put(315, FA_HEADER);
+        ATTR_MAP.put(316, FA_HEADPHONES);
+        ATTR_MAP.put(317, FA_HEART);
+        ATTR_MAP.put(318, FA_HEART_O);
+        ATTR_MAP.put(319, FA_HEARTBEAT);
+        ATTR_MAP.put(320, FA_HISTORY);
+        ATTR_MAP.put(321, FA_HOME);
+        ATTR_MAP.put(322, FA_HOSPITAL_O);
+        ATTR_MAP.put(323, FA_HOTEL);
+        ATTR_MAP.put(324, FA_HOURGLASS);
+        ATTR_MAP.put(325, FA_HOURGLASS_1);
+        ATTR_MAP.put(326, FA_HOURGLASS_2);
+        ATTR_MAP.put(327, FA_HOURGLASS_3);
+        ATTR_MAP.put(328, FA_HOURGLASS_END);
+        ATTR_MAP.put(329, FA_HOURGLASS_HALF);
+        ATTR_MAP.put(330, FA_HOURGLASS_O);
+        ATTR_MAP.put(331, FA_HOURGLASS_START);
+        ATTR_MAP.put(332, FA_HOUZZ);
+        ATTR_MAP.put(333, FA_HTML5);
+        ATTR_MAP.put(334, FA_I_CURSOR);
+        ATTR_MAP.put(335, FA_ILS);
+        ATTR_MAP.put(336, FA_IMAGE);
+        ATTR_MAP.put(337, FA_INBOX);
+        ATTR_MAP.put(338, FA_INDENT);
+        ATTR_MAP.put(339, FA_INDUSTRY);
+        ATTR_MAP.put(340, FA_INFO);
+        ATTR_MAP.put(341, FA_INFO_CIRCLE);
+        ATTR_MAP.put(342, FA_INR);
+        ATTR_MAP.put(343, FA_INSTAGRAM);
+        ATTR_MAP.put(344, FA_INSTITUTION);
+        ATTR_MAP.put(345, FA_INTERNET_EXPLORER);
+        ATTR_MAP.put(346, FA_INTERSEX);
+        ATTR_MAP.put(347, FA_IOXHOST);
+        ATTR_MAP.put(348, FA_ITALIC);
+        ATTR_MAP.put(349, FA_JOOMLA);
+        ATTR_MAP.put(350, FA_JPY);
+        ATTR_MAP.put(351, FA_JSFIDDLE);
+        ATTR_MAP.put(352, FA_KEY);
+        ATTR_MAP.put(353, FA_KEYBOARD_O);
+        ATTR_MAP.put(354, FA_KRW);
+        ATTR_MAP.put(355, FA_LANGUAGE);
+        ATTR_MAP.put(356, FA_LAPTOP);
+        ATTR_MAP.put(357, FA_LASTFM);
+        ATTR_MAP.put(358, FA_LASTFM_SQUARE);
+        ATTR_MAP.put(359, FA_LEAF);
+        ATTR_MAP.put(360, FA_LEANPUB);
+        ATTR_MAP.put(361, FA_LEGAL);
+        ATTR_MAP.put(362, FA_LEMON_O);
+        ATTR_MAP.put(363, FA_LEVEL_DOWN);
+        ATTR_MAP.put(364, FA_LEVEL_UP);
+        ATTR_MAP.put(365, FA_LIFE_BOUY);
+        ATTR_MAP.put(366, FA_LIFE_BUOY);
+        ATTR_MAP.put(367, FA_LIFE_RING);
+        ATTR_MAP.put(368, FA_LIFE_SAVER);
+        ATTR_MAP.put(369, FA_LIGHTBULB_O);
+        ATTR_MAP.put(370, FA_LINE_CHART);
+        ATTR_MAP.put(371, FA_LINK);
+        ATTR_MAP.put(372, FA_LINKEDIN);
+        ATTR_MAP.put(373, FA_LINKEDIN_SQUARE);
+        ATTR_MAP.put(374, FA_LINUX);
+        ATTR_MAP.put(375, FA_LIST);
+        ATTR_MAP.put(376, FA_LIST_ALT);
+        ATTR_MAP.put(377, FA_LIST_OL);
+        ATTR_MAP.put(378, FA_LIST_UL);
+        ATTR_MAP.put(379, FA_LOCATION_ARROW);
+        ATTR_MAP.put(380, FA_LOCK);
+        ATTR_MAP.put(381, FA_LONG_ARROW_DOWN);
+        ATTR_MAP.put(382, FA_LONG_ARROW_LEFT);
+        ATTR_MAP.put(383, FA_LONG_ARROW_RIGHT);
+        ATTR_MAP.put(384, FA_LONG_ARROW_UP);
+        ATTR_MAP.put(385, FA_MAGIC);
+        ATTR_MAP.put(386, FA_MAGNET);
+        ATTR_MAP.put(387, FA_MAIL_FORWARD);
+        ATTR_MAP.put(388, FA_MAIL_REPLY);
+        ATTR_MAP.put(389, FA_MAIL_REPLY_ALL);
+        ATTR_MAP.put(390, FA_MALE);
+        ATTR_MAP.put(391, FA_MAP);
+        ATTR_MAP.put(392, FA_MAP_MARKER);
+        ATTR_MAP.put(393, FA_MAP_O);
+        ATTR_MAP.put(394, FA_MAP_PIN);
+        ATTR_MAP.put(395, FA_MAP_SIGNS);
+        ATTR_MAP.put(396, FA_MARS);
+        ATTR_MAP.put(397, FA_MARS_DOUBLE);
+        ATTR_MAP.put(398, FA_MARS_STROKE);
+        ATTR_MAP.put(399, FA_MARS_STROKE_H);
+        ATTR_MAP.put(400, FA_MARS_STROKE_V);
+        ATTR_MAP.put(401, FA_MAXCDN);
+        ATTR_MAP.put(402, FA_MEANPATH);
+        ATTR_MAP.put(403, FA_MEDIUM);
+        ATTR_MAP.put(404, FA_MEDKIT);
+        ATTR_MAP.put(405, FA_MEH_O);
+        ATTR_MAP.put(406, FA_MERCURY);
+        ATTR_MAP.put(407, FA_MICROPHONE);
+        ATTR_MAP.put(408, FA_MICROPHONE_SLASH);
+        ATTR_MAP.put(409, FA_MINUS);
+        ATTR_MAP.put(410, FA_MINUS_CIRCLE);
+        ATTR_MAP.put(411, FA_MINUS_SQUARE);
+        ATTR_MAP.put(412, FA_MINUS_SQUARE_O);
+        ATTR_MAP.put(413, FA_MIXCLOUD);
+        ATTR_MAP.put(414, FA_MOBILE);
+        ATTR_MAP.put(415, FA_MOBILE_PHONE);
+        ATTR_MAP.put(416, FA_MODX);
+        ATTR_MAP.put(417, FA_MONEY);
+        ATTR_MAP.put(418, FA_MOON_O);
+        ATTR_MAP.put(419, FA_MORTAR_BOARD);
+        ATTR_MAP.put(420, FA_MOTORCYCLE);
+        ATTR_MAP.put(421, FA_MOUSE_POINTER);
+        ATTR_MAP.put(422, FA_MUSIC);
+        ATTR_MAP.put(423, FA_NAVICON);
+        ATTR_MAP.put(424, FA_NEUTER);
+        ATTR_MAP.put(425, FA_NEWSPAPER_O);
+        ATTR_MAP.put(426, FA_OBJECT_GROUP);
+        ATTR_MAP.put(427, FA_OBJECT_UNGROUP);
+        ATTR_MAP.put(428, FA_ODNOKLASSNIKI);
+        ATTR_MAP.put(429, FA_ODNOKLASSNIKI_SQUARE);
+        ATTR_MAP.put(430, FA_OPENCART);
+        ATTR_MAP.put(431, FA_OPENID);
+        ATTR_MAP.put(432, FA_OPERA);
+        ATTR_MAP.put(433, FA_OPTIN_MONSTER);
+        ATTR_MAP.put(434, FA_OUTDENT);
+        ATTR_MAP.put(435, FA_PAGELINES);
+        ATTR_MAP.put(436, FA_PAINT_BRUSH);
+        ATTR_MAP.put(437, FA_PAPER_PLANE);
+        ATTR_MAP.put(438, FA_PAPER_PLANE_O);
+        ATTR_MAP.put(439, FA_PAPERCLIP);
+        ATTR_MAP.put(440, FA_PARAGRAPH);
+        ATTR_MAP.put(441, FA_PASTE);
+        ATTR_MAP.put(442, FA_PAUSE);
+        ATTR_MAP.put(443, FA_PAUSE_CIRCLE);
+        ATTR_MAP.put(444, FA_PAUSE_CIRCLE_O);
+        ATTR_MAP.put(445, FA_PAW);
+        ATTR_MAP.put(446, FA_PAYPAL);
+        ATTR_MAP.put(447, FA_PENCIL);
+        ATTR_MAP.put(448, FA_PENCIL_SQUARE);
+        ATTR_MAP.put(449, FA_PENCIL_SQUARE_O);
+        ATTR_MAP.put(450, FA_PERCENT);
+        ATTR_MAP.put(451, FA_PHONE);
+        ATTR_MAP.put(452, FA_PHONE_SQUARE);
+        ATTR_MAP.put(453, FA_PHOTO);
+        ATTR_MAP.put(454, FA_PICTURE_O);
+        ATTR_MAP.put(455, FA_PIE_CHART);
+        ATTR_MAP.put(456, FA_PIED_PIPER);
+        ATTR_MAP.put(457, FA_PIED_PIPER_ALT);
+        ATTR_MAP.put(458, FA_PINTEREST);
+        ATTR_MAP.put(459, FA_PINTEREST_P);
+        ATTR_MAP.put(460, FA_PINTEREST_SQUARE);
+        ATTR_MAP.put(461, FA_PLANE);
+        ATTR_MAP.put(462, FA_PLAY);
+        ATTR_MAP.put(463, FA_PLAY_CIRCLE);
+        ATTR_MAP.put(464, FA_PLAY_CIRCLE_O);
+        ATTR_MAP.put(465, FA_PLUG);
+        ATTR_MAP.put(466, FA_PLUS);
+        ATTR_MAP.put(467, FA_PLUS_CIRCLE);
+        ATTR_MAP.put(468, FA_PLUS_SQUARE);
+        ATTR_MAP.put(469, FA_PLUS_SQUARE_O);
+        ATTR_MAP.put(470, FA_POWER_OFF);
+        ATTR_MAP.put(471, FA_PRINT);
+        ATTR_MAP.put(472, FA_PRODUCT_HUNT);
+        ATTR_MAP.put(473, FA_PUZZLE_PIECE);
+        ATTR_MAP.put(474, FA_QQ);
+        ATTR_MAP.put(475, FA_QRCODE);
+        ATTR_MAP.put(476, FA_QUESTION);
+        ATTR_MAP.put(477, FA_QUESTION_CIRCLE);
+        ATTR_MAP.put(478, FA_QUOTE_LEFT);
+        ATTR_MAP.put(479, FA_QUOTE_RIGHT);
+        ATTR_MAP.put(480, FA_RA);
+        ATTR_MAP.put(481, FA_RANDOM);
+        ATTR_MAP.put(482, FA_REBEL);
+        ATTR_MAP.put(483, FA_RECYCLE);
+        ATTR_MAP.put(484, FA_REDDIT);
+        ATTR_MAP.put(485, FA_REDDIT_ALIEN);
+        ATTR_MAP.put(486, FA_REDDIT_SQUARE);
+        ATTR_MAP.put(487, FA_REFRESH);
+        ATTR_MAP.put(488, FA_REGISTERED);
+        ATTR_MAP.put(489, FA_REMOVE);
+        ATTR_MAP.put(490, FA_RENREN);
+        ATTR_MAP.put(491, FA_REORDER);
+        ATTR_MAP.put(492, FA_REPEAT);
+        ATTR_MAP.put(493, FA_REPLY);
+        ATTR_MAP.put(494, FA_REPLY_ALL);
+        ATTR_MAP.put(495, FA_RETWEET);
+        ATTR_MAP.put(496, FA_RMB);
+        ATTR_MAP.put(497, FA_ROAD);
+        ATTR_MAP.put(498, FA_ROCKET);
+        ATTR_MAP.put(499, FA_ROTATE_LEFT);
+        ATTR_MAP.put(500, FA_ROTATE_RIGHT);
+        ATTR_MAP.put(501, FA_ROUBLE);
+        ATTR_MAP.put(502, FA_RSS);
+        ATTR_MAP.put(503, FA_RSS_SQUARE);
+        ATTR_MAP.put(504, FA_RUB);
+        ATTR_MAP.put(505, FA_RUBLE);
+        ATTR_MAP.put(506, FA_RUPEE);
+        ATTR_MAP.put(507, FA_SAFARI);
+        ATTR_MAP.put(508, FA_SAVE);
+        ATTR_MAP.put(509, FA_SCISSORS);
+        ATTR_MAP.put(510, FA_SCRIBD);
+        ATTR_MAP.put(511, FA_SEARCH);
+        ATTR_MAP.put(512, FA_SEARCH_MINUS);
+        ATTR_MAP.put(513, FA_SEARCH_PLUS);
+        ATTR_MAP.put(514, FA_SELLSY);
+        ATTR_MAP.put(515, FA_SEND);
+        ATTR_MAP.put(516, FA_SEND_O);
+        ATTR_MAP.put(517, FA_SERVER);
+        ATTR_MAP.put(518, FA_SHARE);
+        ATTR_MAP.put(519, FA_SHARE_ALT);
+        ATTR_MAP.put(520, FA_SHARE_ALT_SQUARE);
+        ATTR_MAP.put(521, FA_SHARE_SQUARE);
+        ATTR_MAP.put(522, FA_SHARE_SQUARE_O);
+        ATTR_MAP.put(523, FA_SHEKEL);
+        ATTR_MAP.put(524, FA_SHEQEL);
+        ATTR_MAP.put(525, FA_SHIELD);
+        ATTR_MAP.put(526, FA_SHIP);
+        ATTR_MAP.put(527, FA_SHIRTSINBULK);
+        ATTR_MAP.put(528, FA_SHOPPING_BAG);
+        ATTR_MAP.put(529, FA_SHOPPING_BASKET);
+        ATTR_MAP.put(530, FA_SHOPPING_CART);
+        ATTR_MAP.put(531, FA_SIGN_IN);
+        ATTR_MAP.put(532, FA_SIGN_OUT);
+        ATTR_MAP.put(533, FA_SIGNAL);
+        ATTR_MAP.put(534, FA_SIMPLYBUILT);
+        ATTR_MAP.put(535, FA_SITEMAP);
+        ATTR_MAP.put(536, FA_SKYATLAS);
+        ATTR_MAP.put(537, FA_SKYPE);
+        ATTR_MAP.put(538, FA_SLACK);
+        ATTR_MAP.put(539, FA_SLIDERS);
+        ATTR_MAP.put(540, FA_SLIDESHARE);
+        ATTR_MAP.put(541, FA_SMILE_O);
+        ATTR_MAP.put(542, FA_SOCCER_BALL_O);
+        ATTR_MAP.put(543, FA_SORT);
+        ATTR_MAP.put(544, FA_SORT_ALPHA_ASC);
+        ATTR_MAP.put(545, FA_SORT_ALPHA_DESC);
+        ATTR_MAP.put(546, FA_SORT_AMOUNT_ASC);
+        ATTR_MAP.put(547, FA_SORT_AMOUNT_DESC);
+        ATTR_MAP.put(548, FA_SORT_ASC);
+        ATTR_MAP.put(549, FA_SORT_DESC);
+        ATTR_MAP.put(550, FA_SORT_DOWN);
+        ATTR_MAP.put(551, FA_SORT_NUMERIC_ASC);
+        ATTR_MAP.put(552, FA_SORT_NUMERIC_DESC);
+        ATTR_MAP.put(553, FA_SORT_UP);
+        ATTR_MAP.put(554, FA_SOUNDCLOUD);
+        ATTR_MAP.put(555, FA_SPACE_SHUTTLE);
+        ATTR_MAP.put(556, FA_SPINNER);
+        ATTR_MAP.put(557, FA_SPOON);
+        ATTR_MAP.put(558, FA_SPOTIFY);
+        ATTR_MAP.put(559, FA_SQUARE);
+        ATTR_MAP.put(560, FA_SQUARE_O);
+        ATTR_MAP.put(561, FA_STACK_EXCHANGE);
+        ATTR_MAP.put(562, FA_STACK_OVERFLOW);
+        ATTR_MAP.put(563, FA_STAR);
+        ATTR_MAP.put(564, FA_STAR_HALF);
+        ATTR_MAP.put(565, FA_STAR_HALF_EMPTY);
+        ATTR_MAP.put(566, FA_STAR_HALF_FULL);
+        ATTR_MAP.put(567, FA_STAR_HALF_O);
+        ATTR_MAP.put(568, FA_STAR_O);
+        ATTR_MAP.put(569, FA_STEAM);
+        ATTR_MAP.put(570, FA_STEAM_SQUARE);
+        ATTR_MAP.put(571, FA_STEP_BACKWARD);
+        ATTR_MAP.put(572, FA_STEP_FORWARD);
+        ATTR_MAP.put(573, FA_STETHOSCOPE);
+        ATTR_MAP.put(574, FA_STICKY_NOTE);
+        ATTR_MAP.put(575, FA_STICKY_NOTE_O);
+        ATTR_MAP.put(576, FA_STOP);
+        ATTR_MAP.put(577, FA_STOP_CIRCLE);
+        ATTR_MAP.put(578, FA_STOP_CIRCLE_O);
+        ATTR_MAP.put(579, FA_STREET_VIEW);
+        ATTR_MAP.put(580, FA_STRIKETHROUGH);
+        ATTR_MAP.put(581, FA_STUMBLEUPON);
+        ATTR_MAP.put(582, FA_STUMBLEUPON_CIRCLE);
+        ATTR_MAP.put(583, FA_SUBSCRIPT);
+        ATTR_MAP.put(584, FA_SUBWAY);
+        ATTR_MAP.put(585, FA_SUITCASE);
+        ATTR_MAP.put(586, FA_SUN_O);
+        ATTR_MAP.put(587, FA_SUPERSCRIPT);
+        ATTR_MAP.put(588, FA_SUPPORT);
+        ATTR_MAP.put(589, FA_TABLE);
+        ATTR_MAP.put(590, FA_TABLET);
+        ATTR_MAP.put(591, FA_TACHOMETER);
+        ATTR_MAP.put(592, FA_TAG);
+        ATTR_MAP.put(593, FA_TAGS);
+        ATTR_MAP.put(594, FA_TASKS);
+        ATTR_MAP.put(595, FA_TAXI);
+        ATTR_MAP.put(596, FA_TELEVISION);
+        ATTR_MAP.put(597, FA_TENCENT_WEIBO);
+        ATTR_MAP.put(598, FA_TERMINAL);
+        ATTR_MAP.put(599, FA_TEXT_HEIGHT);
+        ATTR_MAP.put(600, FA_TEXT_WIDTH);
+        ATTR_MAP.put(601, FA_TH);
+        ATTR_MAP.put(602, FA_TH_LARGE);
+        ATTR_MAP.put(603, FA_TH_LIST);
+        ATTR_MAP.put(604, FA_THUMB_TACK);
+        ATTR_MAP.put(605, FA_THUMBS_DOWN);
+        ATTR_MAP.put(606, FA_THUMBS_O_DOWN);
+        ATTR_MAP.put(607, FA_THUMBS_O_UP);
+        ATTR_MAP.put(608, FA_THUMBS_UP);
+        ATTR_MAP.put(609, FA_TICKET);
+        ATTR_MAP.put(610, FA_TIMES);
+        ATTR_MAP.put(611, FA_TIMES_CIRCLE);
+        ATTR_MAP.put(612, FA_TIMES_CIRCLE_O);
+        ATTR_MAP.put(613, FA_TINT);
+        ATTR_MAP.put(614, FA_TOGGLE_DOWN);
+        ATTR_MAP.put(615, FA_TOGGLE_LEFT);
+        ATTR_MAP.put(616, FA_TOGGLE_OFF);
+        ATTR_MAP.put(617, FA_TOGGLE_ON);
+        ATTR_MAP.put(618, FA_TOGGLE_RIGHT);
+        ATTR_MAP.put(619, FA_TOGGLE_UP);
+        ATTR_MAP.put(620, FA_TRADEMARK);
+        ATTR_MAP.put(621, FA_TRAIN);
+        ATTR_MAP.put(622, FA_TRANSGENDER);
+        ATTR_MAP.put(623, FA_TRANSGENDER_ALT);
+        ATTR_MAP.put(624, FA_TRASH);
+        ATTR_MAP.put(625, FA_TRASH_O);
+        ATTR_MAP.put(626, FA_TREE);
+        ATTR_MAP.put(627, FA_TRELLO);
+        ATTR_MAP.put(628, FA_TRIPADVISOR);
+        ATTR_MAP.put(629, FA_TROPHY);
+        ATTR_MAP.put(630, FA_TRUCK);
+        ATTR_MAP.put(631, FA_TRY);
+        ATTR_MAP.put(632, FA_TTY);
+        ATTR_MAP.put(633, FA_TUMBLR);
+        ATTR_MAP.put(634, FA_TUMBLR_SQUARE);
+        ATTR_MAP.put(635, FA_TURKISH_LIRA);
+        ATTR_MAP.put(636, FA_TV);
+        ATTR_MAP.put(637, FA_TWITCH);
+        ATTR_MAP.put(638, FA_TWITTER);
+        ATTR_MAP.put(639, FA_TWITTER_SQUARE);
+        ATTR_MAP.put(640, FA_UMBRELLA);
+        ATTR_MAP.put(641, FA_UNDERLINE);
+        ATTR_MAP.put(642, FA_UNDO);
+        ATTR_MAP.put(643, FA_UNIVERSITY);
+        ATTR_MAP.put(644, FA_UNLINK);
+        ATTR_MAP.put(645, FA_UNLOCK);
+        ATTR_MAP.put(646, FA_UNLOCK_ALT);
+        ATTR_MAP.put(647, FA_UNSORTED);
+        ATTR_MAP.put(648, FA_UPLOAD);
+        ATTR_MAP.put(649, FA_USB);
+        ATTR_MAP.put(650, FA_USD);
+        ATTR_MAP.put(651, FA_USER);
+        ATTR_MAP.put(652, FA_USER_MD);
+        ATTR_MAP.put(653, FA_USER_PLUS);
+        ATTR_MAP.put(654, FA_USER_SECRET);
+        ATTR_MAP.put(655, FA_USER_TIMES);
+        ATTR_MAP.put(656, FA_USERS);
+        ATTR_MAP.put(657, FA_VENUS);
+        ATTR_MAP.put(658, FA_VENUS_DOUBLE);
+        ATTR_MAP.put(659, FA_VENUS_MARS);
+        ATTR_MAP.put(660, FA_VIACOIN);
+        ATTR_MAP.put(661, FA_VIDEO_CAMERA);
+        ATTR_MAP.put(662, FA_VIMEO);
+        ATTR_MAP.put(663, FA_VIMEO_SQUARE);
+        ATTR_MAP.put(664, FA_VINE);
+        ATTR_MAP.put(665, FA_VK);
+        ATTR_MAP.put(666, FA_VOLUME_DOWN);
+        ATTR_MAP.put(667, FA_VOLUME_OFF);
+        ATTR_MAP.put(668, FA_VOLUME_UP);
+        ATTR_MAP.put(669, FA_WARNING);
+        ATTR_MAP.put(670, FA_WECHAT);
+        ATTR_MAP.put(671, FA_WEIBO);
+        ATTR_MAP.put(672, FA_WEIXIN);
+        ATTR_MAP.put(673, FA_WHATSAPP);
+        ATTR_MAP.put(674, FA_WHEELCHAIR);
+        ATTR_MAP.put(675, FA_WIFI);
+        ATTR_MAP.put(676, FA_WIKIPEDIA_W);
+        ATTR_MAP.put(677, FA_WINDOWS);
+        ATTR_MAP.put(678, FA_WON);
+        ATTR_MAP.put(679, FA_WORDPRESS);
+        ATTR_MAP.put(680, FA_WRENCH);
+        ATTR_MAP.put(681, FA_XING);
+        ATTR_MAP.put(682, FA_XING_SQUARE);
+        ATTR_MAP.put(683, FA_Y_COMBINATOR);
+        ATTR_MAP.put(684, FA_Y_COMBINATOR_SQUARE);
+        ATTR_MAP.put(685, FA_YAHOO);
+        ATTR_MAP.put(686, FA_YC);
+        ATTR_MAP.put(687, FA_YC_SQUARE);
+        ATTR_MAP.put(688, FA_YELP);
+        ATTR_MAP.put(689, FA_YEN);
+        ATTR_MAP.put(690, FA_YOUTUBE);
+        ATTR_MAP.put(691, FA_YOUTUBE_PLAY);
+        ATTR_MAP.put(692, FA_YOUTUBE_SQUARE);
     }
 
 }

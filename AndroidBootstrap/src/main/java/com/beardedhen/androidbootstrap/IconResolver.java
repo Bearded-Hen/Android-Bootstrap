@@ -6,6 +6,9 @@ import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.beardedhen.androidbootstrap.font.IconSet;
 import com.beardedhen.androidbootstrap.font.Typicon;
 
+import static com.beardedhen.androidbootstrap.TypefaceProvider.getRegisteredIconSets;
+import static com.beardedhen.androidbootstrap.TypefaceProvider.retrieveRegisteredIconSet;
+
 /**
  * Resolves markdown strings using FA codes and produces BootstrapText instances.
  */
@@ -20,14 +23,15 @@ class IconResolver {
      *
      * @param context  the current context
      * @param markdown the markdown string
+     * @param editMode - whether the view requesting the icon set is displayed in the preview editor
      * @return a constructed BootstrapText
      */
-    static BootstrapText resolveMarkdown(Context context, String markdown) {
+    static BootstrapText resolveMarkdown(Context context, String markdown, boolean editMode) {
         if (markdown == null) {
             return null;
         }
         else { // detect {fa_*} and split into spannable, ignore escaped chars
-            BootstrapText.Builder builder = new BootstrapText.Builder(context);
+            BootstrapText.Builder builder = new BootstrapText.Builder(context, editMode);
 
             int lastAddedIndex = 0;
             int startIndex = -1;
@@ -55,13 +59,28 @@ class IconResolver {
                         builder.addText(markdown.substring(lastAddedIndex, startIndex));
 
                         if (iconCode.matches(REGEX_FONT_AWESOME)) { // text is FontAwesome code
-                            builder.addIcon(iconCode, TypefaceProvider.retrieveRegisteredIconSet(FontAwesome.FONT_PATH));
+                            if (editMode) {
+                                builder.addText("?");
+                            }
+                            else {
+                                builder.addIcon(iconCode, retrieveRegisteredIconSet(FontAwesome.FONT_PATH, false));
+                            }
                         }
                         else if (iconCode.matches(REGEX_TYPICONS)) {
-                            builder.addIcon(iconCode, TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH));
+                            if (editMode) {
+                                builder.addText("?");
+                            }
+                            else {
+                                builder.addIcon(iconCode, retrieveRegisteredIconSet(Typicon.FONT_PATH, false));
+                            }
                         }
                         else {
-                            builder.addIcon(iconCode, resolveIconSet(iconCode));
+                            if (editMode) {
+                                builder.addText("?");
+                            }
+                            else {
+                                builder.addIcon(iconCode, resolveIconSet(iconCode));
+                            }
                         }
                         lastAddedIndex = endIndex + 1;
                     }
@@ -83,7 +102,7 @@ class IconResolver {
     private static IconSet resolveIconSet(String iconCode) {
         CharSequence unicode;
 
-        for (IconSet set : TypefaceProvider.getRegisteredIconSets()) {
+        for (IconSet set : getRegisteredIconSets()) {
 
             if (set.fontPath().equals(FontAwesome.FONT_PATH) || set.fontPath().equals(Typicon.FONT_PATH)) {
                 continue; // already checked previously, ignore

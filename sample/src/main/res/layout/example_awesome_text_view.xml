@@ -58,7 +58,7 @@
         android:id="@+id/example_fa_text_multi_change"
         style="@style/wrapping_fa_text"
         app:bootstrapBrand="primary"
-        app:bootstrapText="{fa_wikipedia_w} is in the {fa_cloud}"
+        app:bootstrapText="{fa_wikipedia_w} is in the {fa-cloud}"
         />
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
@@ -87,7 +87,7 @@
             <com.beardedhen.androidbootstrap.AwesomeTextView
                 style="@style/wrapping_fa_text"
                 app:bootstrapBrand="success"
-                app:bootstrapText="{fa_android}{fa_play}{fa_apple}"
+                app:bootstrapText="{fa_android}{fa-bluetooth}{fa_apple}"
                 app:fontAwesomeIcon="fa_android"
                 />
 
