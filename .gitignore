@@ -16,3 +16,5 @@ gradle/
 
 # thumbnails
 .DS_STORE
+
+classes/
