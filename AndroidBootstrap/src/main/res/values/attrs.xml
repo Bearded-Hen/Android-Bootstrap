@@ -40,6 +40,8 @@
     <attr name="showOutline" format="boolean"/>
     <attr name="roundedCorners" format="boolean"/>
     <attr name="hasBorder" format="boolean"/>
+    <attr name="checkedButton" format="reference"/>
+    <attr name="checked" format="boolean"/>
 
     <!-- View attributes -->
 
@@ -61,6 +63,7 @@
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
+        <attr name="checked"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapButtonGroup">
@@ -69,6 +72,7 @@
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
+        <attr name="checkedButton"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapProgressBar">
