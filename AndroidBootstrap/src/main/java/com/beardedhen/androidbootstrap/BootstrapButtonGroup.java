@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
@@ -52,6 +53,8 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
     private boolean rounded;
     private boolean outline;
 
+    private int checkedButtonId = 0;
+
     public BootstrapButtonGroup(Context context) {
         super(context);
         initialise(null);
@@ -78,6 +81,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
             int brandOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_bootstrapBrand, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_bootstrapSize, -1);
 
+            this.checkedButtonId = a.getResourceId(R.styleable.BootstrapButtonGroup_checkedButton, 0);
             this.buttonMode = ButtonMode.fromAttributeValue(typeOrdinal);
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(brandOrdinal);
             this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
@@ -164,6 +168,15 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
             }
             button.setViewGroupPosition(position, i);
             button.updateFromParent(bootstrapBrand, bootstrapSize, buttonMode, outline, rounded);
+            if (buttonMode == ButtonMode.RADIO && button.isMustBeSelected()) {
+                button.setSelected(true);
+                onRadioToggle(i);
+                checkedButtonId = 0; //BootstrapButton "checked" attribute is preferable
+            }
+            else if (buttonMode == ButtonMode.RADIO && button.getId() == checkedButtonId) {
+                button.setSelected(true);
+                onRadioToggle(i);
+            }
         }
     }
 
@@ -197,6 +210,10 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
     /*
      * Getters / Setters
      */
+
+    public void check(@IdRes int id) {
+        this.checkedButtonId = id;
+    }
 
     @Override public float getBootstrapSize() {
         return bootstrapSize;
