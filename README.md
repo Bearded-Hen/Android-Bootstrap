@@ -193,3 +193,7 @@ If you have any questions, issues, or just want to let us know where you're usin
  tweet us at [@BeardedHen](https://twitter.com/beardedhen), email support@beardedhen.com,
   or head over to our [website](http://beardedhen.com/) to see more of our creations.
 
+Hall of Fame
+======
+Checkout [AppBrain](http://www.appbrain.com/stats/libraries/details/androidbootstrap/android-bootstrap) to see some of the apps which use Android Bootstrap!
+
