@@ -103,5 +103,9 @@
         <attr name="bootstrapSize"/>
     </declare-styleable>
 
+    <declare-styleable name="BootstrapWell">
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
 </resources>
 

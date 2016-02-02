@@ -52,6 +52,10 @@
             android:name=".BootstrapEditTextExample"
             android:label="BootstrapEditTextExample"
             />
+        <activity
+            android:name=".BootstrapWellExample"
+            android:label="BootstrapEditTextExample"
+            />
     </application>
 
 </manifest>

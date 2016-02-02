@@ -61,5 +61,11 @@
             android:text="BootstrapThumbnail"
             />
 
+        <Button
+            android:id="@+id/example_bootstrap_well"
+            style="@style/home_button"
+            android:text="BootstrapWell"
+            />
+
     </LinearLayout>
 </ScrollView>
