@@ -23,6 +23,16 @@
     <dimen name="bootstrap_well_corner_radius">8dp</dimen>
     <dimen name="bootstrap_well_stroke_width">1dp</dimen>
     <dimen name="bootstrap_well_default_padding">6dp</dimen>
+    <!-- Default dropdown size -->
+    <dimen name="bootstrap_dropdown_default_item_font_size">14sp</dimen>
+    <dimen name="bootstrap_dropdown_default_font_size">14sp</dimen>
+    <dimen name="bootstrap_dropdown_default_item_left_padding">8dp</dimen>
+    <dimen name="bootstrap_dropdown_default_item_right_padding">8dp</dimen>
+    <dimen name="bootstrap_dropdown_default_corner_radius">3dp</dimen>
+    <dimen name="bootstrap_dropdown_default_edge_width">1dp</dimen>
+    <dimen name="bootstrap_dropdown_default_vert_padding">4dp</dimen>
+    <dimen name="bootstrap_dropdown_default_hori_padding">8dp</dimen>
+    <dimen name="bootstrap_dropdown_default_item_height">48dp</dimen>
 
     <!-- Headings -->
     <dimen name="bootstrap_h1_text_size">31.5sp</dimen>
