@@ -19,6 +19,11 @@
     <dimen name="bthumbnail_rounded_corner">8dp</dimen>
     <dimen name="bthumbnail_outer_stroke">2dp</dimen>
 
+    <!--Well-->
+    <dimen name="bootstrap_well_corner_radius">8dp</dimen>
+    <dimen name="bootstrap_well_stroke_width">1dp</dimen>
+    <dimen name="bootstrap_well_default_padding">6dp</dimen>
+
     <!-- Headings -->
     <dimen name="bootstrap_h1_text_size">31.5sp</dimen>
     <dimen name="bootstrap_h1_vert_padding">7.875dp</dimen>

@@ -196,6 +196,14 @@ class BootstrapDrawableFactory {
         return new ColorStateList(getStateList(), getColorList(defaultColor, activeColor, disabledColor));
     }
 
+    static Drawable bootstrapWell(@ColorInt int backgroundColor, int cornerRadius, int strokeWidth, @ColorInt int strokeColor) {
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(backgroundColor);
+        background.setCornerRadius(cornerRadius);
+        background.setStroke(strokeWidth, strokeColor);
+        return background;
+    }
+
     private static StateListDrawable setupStateDrawable(ViewGroupPosition position, int strokeWidth, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
         StateListDrawable stateListDrawable = new StateListDrawable();
         LayerDrawable defaultLayer = new LayerDrawable(new Drawable[]{defaultGd});
