@@ -51,4 +51,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, BootstrapWellExample.class));
     }
 
+    @OnClick(R.id.example_bootstrap_dropdown) void onBootstrapDropdownExampleClicked() {
+        startActivity(new Intent(this, BootstrapDropDownExample.class));
+    }
+
 }

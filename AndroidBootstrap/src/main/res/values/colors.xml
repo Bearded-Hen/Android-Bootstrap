@@ -28,6 +28,7 @@
     <color name="bootstrap_edittext_disabled">#ffe0e0e0</color>
     <color name="bootstrap_thumbnail_background">#ffffffff</color>
     <color name="bootstrap_well_background">#F5F5F5</color>
+    <color name="bootstrap_dropdown_divider">#e7e7e7</color>
     <color name="bootstrap_well_border_color">#E7E7E7</color>
 
 </resources>

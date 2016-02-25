@@ -60,12 +60,14 @@
             style="@style/home_button"
             android:text="BootstrapThumbnail"
             />
-
         <Button
             android:id="@+id/example_bootstrap_well"
             style="@style/home_button"
-            android:text="BootstrapWell"
-            />
-
+            android:text="BootstrapWell"/>
+        
+        <Button
+            android:id="@+id/example_bootstrap_dropdown"
+            style="@style/home_button"
+            android:text="BootstrapDropdown"/>   
     </LinearLayout>
 </ScrollView>
