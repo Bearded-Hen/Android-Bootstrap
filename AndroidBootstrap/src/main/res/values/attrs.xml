@@ -124,15 +124,5 @@
         <attr name="bootstrapSize"/>
     </declare-styleable>
 
-    <declare-styleable name="BootstrapDropDown">
-        <attr name="bootstrapExpandDirection"/>
-        <attr name="dropdownResource"/>
-        <attr name="showOutline"/>
-        <attr name="roundedCorners"/>
-        <attr name="bootstrapBrand"/>
-        <attr name="bootstrapSize"/>
-        <attr name="itemHeight"/>
-    </declare-styleable>
-
 </resources>
 

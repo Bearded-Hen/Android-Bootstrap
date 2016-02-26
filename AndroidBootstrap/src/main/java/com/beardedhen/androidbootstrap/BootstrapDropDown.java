@@ -33,6 +33,10 @@ import com.beardedhen.androidbootstrap.utils.DimenUtils;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
+/**
+ * BootstrapButtons are buttons which provide contextual menus, styled with BootstrapBrand colors,
+ * roundable corners, and an 'outlineable' mode.
+ */
 public class BootstrapDropDown extends AwesomeTextView implements View.OnClickListener, RoundableView, OutlineableView, PopupWindow.OnDismissListener {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapDropDown";
@@ -99,7 +103,8 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
             dropdownData = getContext().getResources().getStringArray(dataOrdinal);
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             itemHeight = a.getDimensionPixelSize(R.styleable.BootstrapDropDown_itemHeight, (int) DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_dropdown_default_item_height));
-        } finally {
+        }
+        finally {
             a.recycle();
         }
 
@@ -134,8 +139,9 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
 
         if (longestStringWidth < getMeasuredWidth()) {
             dropdownWindow.setWidth(DimenUtils.dpToPixels(getMeasuredWidth()));
-        } else {
-            dropdownWindow.setWidth((int)longestStringWidth + DimenUtils.dpToPixels(8));
+        }
+        else {
+            dropdownWindow.setWidth((int) longestStringWidth + DimenUtils.dpToPixels(8));
         }
     }
 
@@ -163,8 +169,9 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
                 @Override
                 public void onClick(View v) {
                     dropdownWindow.dismiss();
-                    if (onDropDownItemClickListener != null)
+                    if (onDropDownItemClickListener != null) {
                         onDropDownItemClickListener.onItemClick(dropdownView, v, v.getId());
+                    }
                 }
             });
 
@@ -173,15 +180,18 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
                 childView.setTextSize((baselineDropDownViewFontSize - 2F) * bootstrapSize);
                 childView.setClickable(false);
                 childView.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
-            } else if (Pattern.matches(SEARCH_REGEX_SEPARATOR, text)) {
+            }
+            else if (Pattern.matches(SEARCH_REGEX_SEPARATOR, text)) {
                 childView = new DividerView(getContext());
                 childView.setClickable(false);
                 childView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 3));
-            } else if (Pattern.matches(SEARCH_REGEX_DISABLED, text)) {
+            }
+            else if (Pattern.matches(SEARCH_REGEX_DISABLED, text)) {
                 childView.setEnabled(false);
                 childView.setId(clickableChildCounter++);
                 childView.setText(text.replaceFirst(REPLACE_REGEX_DISABLED, ""));
-            } else {
+            }
+            else {
                 childView.setText(text);
                 childView.setId(clickableChildCounter++);
             }
@@ -217,7 +227,7 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
 
         setCompoundDrawablesWithIntrinsicBounds(null, null,
                 BootstrapDrawableFactory.bootstrapDropDownArrow(getContext(),
-                        DimenUtils.dpToPixels(8 *bootstrapSize),
+                        DimenUtils.dpToPixels(8 * bootstrapSize),
                         DimenUtils.dpToPixels(12 * bootstrapSize),
                         expandDirection,
                         showOutline,
@@ -240,7 +250,8 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
 
         if (Build.VERSION.SDK_INT >= 16) {
             setBackground(bg);
-        } else {
+        }
+        else {
             setBackgroundDrawable(bg);
         }
 
@@ -290,6 +301,11 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         dropdownData = cleanArray;
     }
 
+    /**
+     * Sets a listener which will be called when an item is clicked in the dropdown.
+     *
+     * @param onDropDownItemClickListener the listener
+     */
     public void setOnDropDownItemClickListener(OnDropDownItemClickListener onDropDownItemClickListener) {
         this.onDropDownItemClickListener = onDropDownItemClickListener;
     }
@@ -302,10 +318,20 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         return roundedCorners;
     }
 
+    /**
+     * Gets the direction in which the dropdown expands.
+     *
+     * @return the direction
+     */
     public ExpandDirection getExpandDirection() {
         return expandDirection;
     }
 
+    /**
+     * Retrieves the data used to populate the dropdown.
+     *
+     * @return a string array of values
+     */
     public String[] getDropdownData() {
         return dropdownData;
     }
@@ -320,11 +346,21 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         updateDropDownState();
     }
 
+    /**
+     * Sets the direction in which the dropdown should expand.
+     *
+     * @param expandDirection the direction
+     */
     public void setExpandDirection(ExpandDirection expandDirection) {
         this.expandDirection = expandDirection;
         updateDropDownState();
     }
 
+    /**
+     * Sets the String values which should be used to populate the menu displayed in the dropdown.
+     *
+     * @param dropdownData an array of string values.
+     */
     public void setDropdownData(String[] dropdownData) {
         this.dropdownData = dropdownData;
         createDropDown();
@@ -337,17 +373,20 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
     }
 
     @Override public void onClick(View v) {
-        if (clickListener != null) clickListener.onClick(v);
+        if (clickListener != null) {
+            clickListener.onClick(v);
+        }
         //using 8dip on axisX offset to make dropdown view visually be at start of dropdown itself
         //using 4dip on axisY offset to make space between dropdown view and dropdown itself
         //all offsets are necessary because of the dialog_holo_light_frame to display correctly on screen(shadow was made by inset)
         int gravity;
         int axisXOffset;
         if (dropDownViewWidth + getX() > screenWidth) {
-            gravity = Gravity.TOP|Gravity.RIGHT;
+            gravity = Gravity.TOP | Gravity.RIGHT;
             axisXOffset = DimenUtils.dpToPixels(8);
-        } else {
-            gravity = Gravity.TOP|Gravity.LEFT;
+        }
+        else {
+            gravity = Gravity.TOP | Gravity.LEFT;
             axisXOffset = -DimenUtils.dpToPixels(8);
         }
         int axisYOffset = DimenUtils.dpToPixels(4);
@@ -401,22 +440,33 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         this.clickListener = clickListener;
     }
 
+    /**
+     * A listener which provides methods relating to {@link BootstrapDropDown}
+     */
     public interface OnDropDownItemClickListener {
+
+        /**
+         * Called when an item is clicked in a {@link BootstrapDropDown}
+         *
+         * @param parent the parent viewgroup
+         * @param v      the view
+         * @param id     the id
+         */
         void onItemClick(ViewGroup parent, View v, int id);
     }
 
-    private class DividerView extends TextView {
+    private static class DividerView extends TextView {
 
-        private Paint mPaint;
+        private final Paint paint;
 
         public DividerView(Context context) {
             super(context);
-            mPaint = new Paint();
-            mPaint.setColor(getResources().getColor(R.color.bootstrap_dropdown_divider));
+            paint = new Paint();
+            paint.setColor(getResources().getColor(R.color.bootstrap_dropdown_divider));
         }
 
         @Override protected void onDraw(Canvas canvas) {
-            canvas.drawLine(0, 1, canvas.getWidth(), 1, mPaint);
+            canvas.drawLine(0, 1, canvas.getWidth(), 1, paint);
             super.onDraw(canvas);
         }
     }
