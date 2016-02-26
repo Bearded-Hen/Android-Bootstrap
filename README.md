@@ -30,6 +30,10 @@ Quick Start
  
  You should then checkout the library and investigate the sample code, which covers most of the features.
  The sample app is also available on [Google Play](https://play.google.com/store/apps/details?id=com.fractalwrench.androidbootstrap.sample).
+ 
+Javadoc
+============
+The javadoc for the project is hosted on [Github](http://bearded-hen.github.io/Android-Bootstrap/).
 
 Examples
 ============
