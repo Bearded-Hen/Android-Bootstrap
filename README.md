@@ -158,6 +158,46 @@ Displays images in a rectangular View, themed with BootstrapBrand.
     />
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_thumbnail.png" width="450" alt="BootstrapThumbnail">
+
+###BootstrapWell
+Displays a view in a themed container.
+
+```xml
+<com.beardedhen.androidbootstrap.BootstrapWell
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        app:bootstrapSize="xl">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Look, I'm in a large well!"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapWell>
+```
+<img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_well.png" width="450" alt="BootstrapWell">
+
+
+###BootstrapDropDown
+Displays a view with dropdown options, supplied by an array of strings.
+
+```xml
+<com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="Medium {fa_thumbs_o_up}"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="md"
+                app:dropdownResource="@array/bootstrap_dropdown_example_data"
+                app:bootstrapExpandDirection="down"/>
+```
+<img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_dropdown.png" width="450" alt="BootstrapDropdown">
+
  Custom Styles
 ============
 Custom styles can be applied to any of the views in this library by creating a class which implements
@@ -172,6 +212,9 @@ BootstrapBrand, and setting it on the View. Please see the sample code of Bootst
      BootstrapButton btn = new BootstrapButton(context);
      btn.setBootstrapBrand(new CustomBootstrapStyle(this);
  ```
+
+
+
 
 Contributing
 ============
