@@ -11,6 +11,9 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
+/**
+ * BootstrapWells are used as a container layout for other views, typically text.
+ */
 public class BootstrapWell extends FrameLayout {
 
     private float bootstrapSize;
@@ -35,7 +38,6 @@ public class BootstrapWell extends FrameLayout {
 
         try {
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, -1);
-
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
         }
         finally {
