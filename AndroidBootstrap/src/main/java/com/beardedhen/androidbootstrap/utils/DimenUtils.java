@@ -32,5 +32,23 @@ public class DimenUtils {
         return context.getResources().getDimension(res);
     }
 
+    /**
+     * Converts density-independent pixels to pixels
+     * @param dip
+     * @return size in pixels
+     */
+    public static int dpToPixels(float dip) {
+        return (int) (dip * Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    /**
+     * Converts pixels to density-independent pixels
+     * @param pixels
+     * @return size in dp
+     */
+    public static int pixelsToDp(float pixels) {
+        return (int) (pixels / Resources.getSystem().getDisplayMetrics().density);
+    }
+
 
 }

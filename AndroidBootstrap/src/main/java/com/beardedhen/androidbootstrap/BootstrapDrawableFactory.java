@@ -2,7 +2,12 @@ package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -13,6 +18,7 @@ import android.support.annotation.ColorInt;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.ExpandDirection;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
@@ -196,6 +202,14 @@ class BootstrapDrawableFactory {
         return new ColorStateList(getStateList(), getColorList(defaultColor, activeColor, disabledColor));
     }
 
+    static Drawable bootstrapWell(@ColorInt int backgroundColor, int cornerRadius, int strokeWidth, @ColorInt int strokeColor) {
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(backgroundColor);
+        background.setCornerRadius(cornerRadius);
+        background.setStroke(strokeWidth, strokeColor);
+        return background;
+    }
+
     private static StateListDrawable setupStateDrawable(ViewGroupPosition position, int strokeWidth, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
         StateListDrawable stateListDrawable = new StateListDrawable();
         LayerDrawable defaultLayer = new LayerDrawable(new Drawable[]{defaultGd});
@@ -304,6 +318,74 @@ class BootstrapDrawableFactory {
             return new int[]{activeColor, activeColor, activeColor, activeColor, activeColor,
                     disabledColor, defaultColor};
         }
+    }
+
+    static StateListDrawable bootstrapDropDownArrow(Context context, int width, int height, ExpandDirection expandDirection, boolean outline, BootstrapBrand brand) {
+        StateListDrawable stateListDrawable = new StateListDrawable();
+
+        int defaultColor = outline ? brand.defaultFill(context) : brand.defaultTextColor(context);
+        int activeColor = outline ? ColorUtils.resolveColor(android.R.color.white, context) : brand.activeTextColor(context);
+        int disabledColor = outline ? brand.disabledFill(context) : brand.disabledTextColor(context);
+
+        if (Build.VERSION.SDK_INT >= 14) {
+            stateListDrawable.addState(new int[]{android.R.attr.state_hovered}, createArrowIcon(context, width, height, activeColor, expandDirection));
+        }
+
+        stateListDrawable.addState(new int[]{android.R.attr.state_activated}, createArrowIcon(context, width, height, activeColor, expandDirection));
+        stateListDrawable.addState(new int[]{android.R.attr.state_focused}, createArrowIcon(context, width, height, activeColor, expandDirection));
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, createArrowIcon(context, width, height, activeColor, expandDirection));
+        stateListDrawable.addState(new int[]{android.R.attr.state_selected}, createArrowIcon(context, width, height, activeColor, expandDirection));
+        stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, createArrowIcon(context, width, height, disabledColor, expandDirection));
+        stateListDrawable.addState(new int[]{}, createArrowIcon(context, width, height, defaultColor, expandDirection));
+        return stateListDrawable;
+    }
+
+    /**
+     * Creates arrow icon that depends on ExpandDirection
+     *
+     * @param context context
+     * @param width  width of icon in pixels
+     * @param height height of icon in pixels
+     * @param color arrow color
+     * @param expandDirection arrow direction
+     * @return icon drawable
+     */
+    private static Drawable createArrowIcon(Context context, int width, int height, int color, ExpandDirection expandDirection) {
+        Bitmap canvasBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(canvasBitmap);
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setStrokeWidth(1);
+        paint.setColor(color);
+        paint.setAntiAlias(true);
+        Path path = new Path();
+        path.setFillType(Path.FillType.EVEN_ODD);
+        switch (expandDirection) {
+            case UP:
+                path.moveTo(0, (height / 3) * 2);
+                path.lineTo(width, (height / 3) * 2);
+                path.lineTo(width / 2, height / 3);
+                path.lineTo(0, (height / 3) * 2);
+                break;
+            case DOWN:
+                path.moveTo(0, height / 3);
+                path.lineTo(width, height / 3);
+                path.lineTo(width / 2, (height / 3) * 2);
+                path.lineTo(0, height / 3);
+                break;
+        }
+        path.close();
+        canvas.drawPath(path, paint);
+        return new BitmapDrawable(context.getResources(), canvasBitmap);
+    }
+
+    static ColorStateList bootstrapDropDownViewText(Context context) {
+
+        int defaultColor = context.getResources().getColor(R.color.bootstrap_gray_dark);
+        int activeColor = context.getResources().getColor(android.R.color.black);
+        int disabledColor = context.getResources().getColor(R.color.bootstrap_gray_light);
+
+        return new ColorStateList(getStateList(), getColorList(defaultColor, activeColor, disabledColor));
     }
 
     private static void setInsetOnLayers(LayerDrawable[] ary, int l, int t, int r, int b) {

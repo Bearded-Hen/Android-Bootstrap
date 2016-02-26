@@ -43,6 +43,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     private boolean roundedCorners;
     private boolean showOutline;
+    private boolean mustBeSelected;
 
     private float baselineFontSize;
     private float baselineVertPadding;
@@ -72,6 +73,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         try {
             this.roundedCorners = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
             this.showOutline = a.getBoolean(R.styleable.BootstrapButton_showOutline, false);
+            this.mustBeSelected = a.getBoolean(R.styleable.BootstrapButton_checked, false);
 
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, -1);
             int modeOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_buttonMode, -1);
@@ -238,6 +240,14 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     /*
      * Getters/Setters
      */
+
+    public boolean isMustBeSelected() {
+        return mustBeSelected;
+    }
+
+    public void setChecked(boolean checked) {
+        this.mustBeSelected = checked;
+    }
 
     @Override public boolean isShowOutline() {
         return showOutline;

@@ -36,10 +36,19 @@
         <enum name="h5" value="4"/>
         <enum name="h6" value="5"/>
     </attr>
+    
+    <attr name="bootstrapExpandDirection" format="enum">
+        <enum name="up" value="0"/>
+        <enum name="down" value="1"/>
+    </attr>
 
     <attr name="showOutline" format="boolean"/>
     <attr name="roundedCorners" format="boolean"/>
     <attr name="hasBorder" format="boolean"/>
+    <attr name="checkedButton" format="reference"/>
+    <attr name="checked" format="boolean"/>
+    <attr name="dropdownResource" format="reference"/>
+    <attr name="itemHeight" format="dimension"/>
 
     <!-- View attributes -->
 
@@ -61,6 +70,7 @@
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
+        <attr name="checked"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapButtonGroup">
@@ -69,6 +79,7 @@
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
+        <attr name="checkedButton"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapProgressBar">
@@ -97,6 +108,30 @@
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapDropDown">
+        <attr name="bootstrapExpandDirection"/>
+        <attr name="dropdownResource"/>
+        <attr name="showOutline"/>
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+        <attr name="itemHeight"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapWell">
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapDropDown">
+        <attr name="bootstrapExpandDirection"/>
+        <attr name="dropdownResource"/>
+        <attr name="showOutline"/>
+        <attr name="roundedCorners"/>
+        <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+        <attr name="itemHeight"/>
     </declare-styleable>
 
 </resources>
