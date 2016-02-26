@@ -38,7 +38,6 @@ public class BootstrapWell extends FrameLayout {
 
         try {
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, -1);
-
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
         }
         finally {
