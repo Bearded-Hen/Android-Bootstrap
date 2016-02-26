@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    style="@style/example_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <TextView
+        style="@style/description_label"
+        android:text="Orientation"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_orientation_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_orientation_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="lg"
+            app:roundedCorners="true"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Size"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_size_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_size_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="regular"
+            app:bootstrapSize="lg"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Outline"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_outline_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_outline_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="lg"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Rounded"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_rounded_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_rounded_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Brand"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_brand_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modify"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_brand_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="horizontal"
+            app:bootstrapBrand="danger"
+            app:bootstrapSize="lg"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+
+    <TextView
+        style="@style/description_label"
+        android:text="Child Change"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bbutton_group_child_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            />
+
+        <Button
+            android:id="@+id/bbutton_group_child_remove_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:id="@+id/bbutton_group_child_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/micro_padding"
+            android:orientation="vertical"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+    </LinearLayout>
+
+    <TextView
+        style="@style/description_label"
+        android:text="Checkbox"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
+        android:orientation="horizontal"
+        app:bootstrapBrand="success"
+        app:buttonMode="checkbox"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+
+    <TextView
+        style="@style/description_label"
+        android:text="Toggle"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
+        android:orientation="horizontal"
+        app:buttonMode="toggle"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+
+    <TextView
+        style="@style/description_label"
+        android:text="Radio"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/micro_padding"
+        android:orientation="horizontal"
+        app:buttonMode="radio"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+</LinearLayout>

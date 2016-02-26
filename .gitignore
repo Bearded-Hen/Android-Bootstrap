@@ -1,0 +1,20 @@
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# IntelliJ files
+.idea
+*.iml
+
+# gradle directory
+.gradle
+build/
+gradle/
+
+# thumbnails
+.DS_STORE
+
+classes/

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="custom_default_fill">#33bbaa</color>
+    <color name="custom_default_edge">#119999</color>
+    <color name="custom_active_fill">#119999</color>
+    <color name="custom_active_edge">#008888</color>
+    <color name="custom_disabled_fill">#8833bbaa</color>
+    <color name="custom_disabled_edge">#bb33bbaa</color>
+
+</resources>

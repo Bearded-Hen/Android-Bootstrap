@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    style="@style/example_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bedit_text_change_theme_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Change Theme"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/bedit_text_change_theme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            app:bootstrapBrand="primary"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bedit_text_change_round_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Change Rounded"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/bedit_text_change_round"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            app:bootstrapBrand="success"
+            app:roundedCorners="true"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bedit_text_change_enabled_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Change Enabled"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/bedit_text_change_enabled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:hint="Enter Password"
+            app:bootstrapBrand="danger"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bedit_text_change_size_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Change Size"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/bedit_text_change_size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            app:bootstrapSize="md"
+            app:bootstrapBrand="info"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

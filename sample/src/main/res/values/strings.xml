@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Android Bootstrap</string>
+    <array name="bootstrap_dropdown_example_data">
+        <item>First item</item>
+        <item>Second item</item>
+        <item>{dropdown_disabled}Disabled item</item>
+        <item>{dropdown_header}Dropdown header</item>
+        <item>Fourth item</item>
+        <item>Fifth item</item>
+        <item>{dropdown_separator}</item>
+        <item>Separated item</item>
+    </array>
+</resources>
