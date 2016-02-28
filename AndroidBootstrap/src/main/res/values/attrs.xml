@@ -49,6 +49,9 @@
     <attr name="checked" format="boolean"/>
     <attr name="dropdownResource" format="reference"/>
     <attr name="itemHeight" format="dimension"/>
+    <attr name="strongText" format="string"/>
+    <attr name="messageText" format="string"/>
+    <attr name="dismissible" format="boolean"/>
 
     <!-- View attributes -->
 
@@ -122,6 +125,13 @@
 
     <declare-styleable name="BootstrapWell">
         <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapAlert">
+        <attr name="bootstrapBrand"/>
+        <attr name="strongText"/>
+        <attr name="messageText"/>
+        <attr name="dismissible"/>
     </declare-styleable>
 
 </resources>

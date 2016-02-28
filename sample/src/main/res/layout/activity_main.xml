@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:padding="16dp"
         android:orientation="vertical"
         >
 
@@ -68,6 +68,11 @@
         <Button
             android:id="@+id/example_bootstrap_dropdown"
             style="@style/home_button"
-            android:text="BootstrapDropdown"/>   
+            android:text="BootstrapDropdown"/>
+
+        <Button
+            android:id="@+id/example_bootstrap_alert"
+            style="@style/home_button"
+            android:text="BootstrapAlert"/>
     </LinearLayout>
 </ScrollView>

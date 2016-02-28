@@ -54,12 +54,16 @@
             />
         <activity
             android:name=".BootstrapWellExample"
-            android:label="BootstrapEditTextExample"
+            android:label="BootstrapWell"
             />
         <activity
             android:name=".BootstrapDropDownExample"
-            android:label="BootstrapDropDownExample"
-            />    
+            android:label="BootstrapDropDown"
+            />
+        <activity
+            android:name=".BootstrapAlertExample"
+            android:label="BootstrapAlert"
+            />
     </application>
 
 </manifest>

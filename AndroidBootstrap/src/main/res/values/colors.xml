@@ -30,5 +30,6 @@
     <color name="bootstrap_well_background">#F5F5F5</color>
     <color name="bootstrap_dropdown_divider">#e7e7e7</color>
     <color name="bootstrap_well_border_color">#E7E7E7</color>
+    <color name="bootstrap_alert_cross_default">#64818a91</color>
 
 </resources>

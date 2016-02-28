@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.beardedhen.androidbootstrap.BootstrapAlert
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dynamic_alert"
+        android:layout_margin="8dp"
+        app:bootstrapBrand="success"
+        app:strongText="Well done!"
+        app:messageText="You successfully read this important alert message."
+        app:dismissible="true"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapAlert
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dynamic_alert"
+        android:id="@+id/static_alert_1"
+        android:layout_margin="8dp"
+        app:bootstrapBrand="info"
+        app:strongText="Heads up! "
+        app:messageText="This alert needs your attention, but it's not super important."
+        app:dismissible="true"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapAlert
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/static_alert_1"
+        android:id="@+id/static_alert_2"
+        android:layout_margin="8dp"
+        app:bootstrapBrand="warning"
+        app:strongText="Warning!"
+        app:messageText="Better check yourself, you're not looking too good."
+        app:dismissible="true"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapAlert
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/static_alert_2"
+        android:id="@+id/static_alert_3"
+        android:layout_margin="8dp"
+        app:bootstrapBrand="primary"
+        app:strongText="Great!"
+        app:messageText="This is a short alert."
+        app:dismissible="true"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapAlert
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/static_alert_3"
+        android:layout_margin="8dp"
+        app:bootstrapBrand="danger"
+        app:strongText="Oh snap!"
+        app:messageText="Change a few things up and try submitting again."
+        app:dismissible="false"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hide/Show alert"
+        android:id="@+id/interactive_button"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
