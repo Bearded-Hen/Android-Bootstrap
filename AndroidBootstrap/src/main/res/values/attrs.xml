@@ -49,6 +49,7 @@
     <attr name="checked" format="boolean"/>
     <attr name="dropdownResource" format="reference"/>
     <attr name="itemHeight" format="dimension"/>
+    <attr name="allowZeroValue" format="boolean"/>
 
     <!-- View attributes -->
 
@@ -121,6 +122,11 @@
     </declare-styleable>
 
     <declare-styleable name="BootstrapWell">
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapBadge">
+        <attr name="allowZeroValue"/>
         <attr name="bootstrapSize"/>
     </declare-styleable>
 

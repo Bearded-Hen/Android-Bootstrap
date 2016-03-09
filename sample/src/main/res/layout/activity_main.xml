@@ -68,6 +68,11 @@
         <Button
             android:id="@+id/example_bootstrap_dropdown"
             style="@style/home_button"
-            android:text="BootstrapDropdown"/>   
+            android:text="BootstrapDropdown"/>
+
+        <Button
+            android:id="@+id/example_bootstrap_badge"
+            style="@style/home_button"
+            android:text="BootstrapBadge"/>
     </LinearLayout>
 </ScrollView>

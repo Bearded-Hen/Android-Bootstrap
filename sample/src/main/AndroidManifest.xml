@@ -59,7 +59,11 @@
         <activity
             android:name=".BootstrapDropDownExample"
             android:label="BootstrapDropDownExample"
-            />    
+            />
+        <activity
+            android:name=".BootstrapBadgeExample"
+            android:label="BootstrapBadgeExample"
+            />
     </application>
 
 </manifest>

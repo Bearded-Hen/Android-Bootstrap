@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -14,6 +15,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.text.TextPaint;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
@@ -377,6 +379,50 @@ class BootstrapDrawableFactory {
         path.close();
         canvas.drawPath(path, paint);
         return new BitmapDrawable(context.getResources(), canvasBitmap);
+    }
+
+    public static Drawable createBadgeDrawable(Context context, BootstrapBrand brand, int width, int height, int badgeCount, boolean allowZeroValue, boolean insideAnObject) {
+        if (allowZeroValue || badgeCount > 0) {
+            Paint badgePaint = new Paint();
+            Rect canvasBounds = new Rect();
+            TextPaint badgeTextPaint = new TextPaint();
+            badgePaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+            badgeTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+            badgeTextPaint.setTextAlign(Paint.Align.CENTER);
+            badgeTextPaint.setTextSize((float) (height * 0.7));
+
+            if (insideAnObject) {
+                badgePaint.setColor(brand.defaultTextColor(context));
+                badgeTextPaint.setColor(brand.defaultFill(context));
+            } else {
+                badgePaint.setColor(brand.defaultFill(context));
+                badgeTextPaint.setColor(brand.defaultTextColor(context));
+            }
+
+            int rectLength = (int) badgeTextPaint.measureText(String.valueOf(badgeCount).substring(0, String.valueOf(badgeCount).length() - 1));
+
+            Bitmap canvasBitmap = Bitmap.createBitmap(width + rectLength, height, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(canvasBitmap);
+            canvas.getClipBounds(canvasBounds);
+
+            int firstCircleDx = canvasBounds.left + canvasBounds.height() / 2;
+            int circleDy = canvasBounds.height() / 2;
+            int circleRadius = canvasBounds.height() / 2;
+            int secondCircleDx = firstCircleDx + rectLength;
+
+            Rect rect = new Rect();
+            rect.left = firstCircleDx;
+            rect.top = 0;
+            rect.right = rect.left + rectLength;
+            rect.bottom = canvasBounds.height();
+
+            canvas.drawCircle(firstCircleDx, circleDy, circleRadius, badgePaint);
+            canvas.drawRect(rect, badgePaint);
+            canvas.drawCircle(secondCircleDx, circleDy, circleRadius, badgePaint);
+            canvas.drawText(String.valueOf(badgeCount), canvasBounds.width() / 2, canvasBounds.height() / 2 - ((badgeTextPaint.descent() + badgeTextPaint.ascent()) / 2), badgeTextPaint);
+
+            return new BitmapDrawable(context.getResources(), canvasBitmap);
+        } else return null;
     }
 
     static ColorStateList bootstrapDropDownViewText(Context context) {

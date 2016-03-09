@@ -15,6 +15,7 @@ import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
 import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.api.view.BadgeContainerView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.ButtonModeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
@@ -29,7 +30,7 @@ import java.io.Serializable;
  * allowing the use of different selection modes e.g. Checkbox/Radio group.
  */
 public class BootstrapButton extends AwesomeTextView implements BootstrapSizeView,
-        OutlineableView, RoundableView, ButtonModeView {
+        OutlineableView, RoundableView, ButtonModeView, BadgeContainerView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButton.MODE";
@@ -50,6 +51,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     private float baselineHoriPadding;
     private float baselineStrokeWidth;
     private float baselineCornerRadius;
+    private BootstrapBadge bootstrapBadge;
 
     public BootstrapButton(Context context) {
         super(context);
@@ -102,6 +104,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         bundle.putInt(KEY_INDEX, parentIndex);
         bundle.putFloat(BootstrapSizeView.KEY, bootstrapSize);
         bundle.putSerializable(KEY_MODE, buttonMode);
+        if (bootstrapBadge != null) bundle.putInt(BadgeContainerView.KEY, bootstrapBadge.getBadgeCount());
         return bundle;
     }
 
@@ -113,6 +116,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             this.showOutline = bundle.getBoolean(OutlineableView.KEY);
             this.parentIndex = bundle.getInt(KEY_INDEX);
             this.bootstrapSize = bundle.getFloat(BootstrapSizeView.KEY);
+            if (bootstrapBadge != null) setBadgeCount(bundle.getInt(BadgeContainerView.KEY));
 
             Serializable m = bundle.getSerializable(KEY_MODE);
 
@@ -237,6 +241,15 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         updateBootstrapState();
     }
 
+    @Override public void displayBadgeDrawable() {
+        setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                null,
+                this.bootstrapBadge.getBadgeDrawable(),
+                null);
+        setCompoundDrawablePadding(DimenUtils.dpToPixels(4));
+    }
+
     /*
      * Getters/Setters
      */
@@ -275,8 +288,30 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         this.buttonMode = buttonMode;
     }
 
+    @Override public void setBadge(BootstrapBadge badge) {
+        this.bootstrapBadge = badge;
+        this.bootstrapBadge.setBootstrapBrand(getBootstrapBrand(), true);
+        this.bootstrapBadge.setBootstrapSize(getBootstrapSize());
+        displayBadgeDrawable();
+    }
+
+    @Override public void setBadgeCount(int badgeCount) {
+        if (bootstrapBadge != null && badgeCount >= 0) {
+            this.bootstrapBadge.setBadgeCount(badgeCount);
+            displayBadgeDrawable();
+        }
+    }
+
+    @Override public int getBadgeCount() {
+        if (bootstrapBadge != null) return bootstrapBadge.getBadgeCount();
+        else return 0;
+    }
     @Override public float getBootstrapSize() {
         return bootstrapSize;
+    }
+
+    @Override public BootstrapBadge getBootstrapBadge() {
+        return bootstrapBadge;
     }
 
     @Override public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
@@ -287,5 +322,4 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         this.bootstrapSize = bootstrapSize;
         updateBootstrapState();
     }
-
 }

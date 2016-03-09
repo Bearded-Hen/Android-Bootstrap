@@ -55,4 +55,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, BootstrapDropDownExample.class));
     }
 
+    @OnClick(R.id.example_bootstrap_badge) void onBootstrapBadgeExampleClicked() {
+        startActivity(new Intent(this, BootstrapBadgeExample.class));
+    }
+
 }
