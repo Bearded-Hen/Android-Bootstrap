@@ -14,6 +14,11 @@
     <dimen name="bootstrap_edit_text_corner_radius">6dp</dimen>
     <dimen name="bootstrap_edit_text_edge_width">1.5dp</dimen>
 
+    <!--Default alert size -->
+    <dimen name="bootstrap_alert_paddings">8dp</dimen>
+    <dimen name="bootstrap_alert_stroke_width">1dp</dimen>
+    <dimen name="bootstrap_alert_default_font_size">14sp</dimen>
+
     <!-- Thumbnails -->
     <dimen name="bthumbnail_default_border">8dp</dimen>
     <dimen name="bthumbnail_rounded_corner">8dp</dimen>

@@ -85,4 +85,5 @@ public interface BootstrapBrand extends Serializable {
      */
     @ColorInt int disabledTextColor(Context context);
 
+    @ColorInt int getColor();
 }

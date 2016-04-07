@@ -177,6 +177,19 @@ class BootstrapDrawableFactory {
         return drawable;
     }
 
+    static Drawable bootstrapAlert(Context context,
+                                   BootstrapBrand bootstrapBrand) {
+
+        GradientDrawable disabledGd = new GradientDrawable();
+
+        int strokeWidth = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_alert_stroke_width);
+
+        disabledGd.setColor(ColorUtils.increaseOpacity(context, bootstrapBrand.getColor(), 40));
+        disabledGd.setCornerRadius(6);
+        disabledGd.setStroke(strokeWidth, ColorUtils.increaseOpacity(context, bootstrapBrand.getColor(), 70));
+        return disabledGd;
+    }
+
     /**
      * Generates a colorstatelist for a bootstrap button
      *
@@ -340,6 +353,27 @@ class BootstrapDrawableFactory {
         return stateListDrawable;
     }
 
+    static StateListDrawable bootstrapAlertCloseIcon(Context context, int width, int height, int inset) {
+
+        StateListDrawable stateListDrawable = new StateListDrawable();
+
+        int defaultColor = ColorUtils.resolveColor(R.color.bootstrap_alert_cross_default, context);
+        int activeColor = ColorUtils.resolveColor(R.color.bootstrap_gray, context);
+        int disabledColor = ColorUtils.resolveColor(R.color.bootstrap_alert_cross_default, context);
+
+        if (Build.VERSION.SDK_INT >= 14) {
+            stateListDrawable.addState(new int[]{android.R.attr.state_hovered}, createCloseCrossIcon(context, width, height, activeColor, inset));
+        }
+
+        stateListDrawable.addState(new int[]{android.R.attr.state_activated}, createCloseCrossIcon(context, width, height, activeColor, inset));
+        stateListDrawable.addState(new int[]{android.R.attr.state_focused}, createCloseCrossIcon(context, width, height, activeColor, inset));
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, createCloseCrossIcon(context, width, height, activeColor, inset));
+        stateListDrawable.addState(new int[]{android.R.attr.state_selected}, createCloseCrossIcon(context, width, height, activeColor, inset));
+        stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, createCloseCrossIcon(context, width, height, disabledColor, inset));
+        stateListDrawable.addState(new int[]{}, createCloseCrossIcon(context, width, height, defaultColor, inset));
+        return stateListDrawable;
+    }
+
     /**
      * Creates arrow icon that depends on ExpandDirection
      *
@@ -374,6 +408,25 @@ class BootstrapDrawableFactory {
                 path.lineTo(0, height / 3);
                 break;
         }
+        path.close();
+        canvas.drawPath(path, paint);
+        return new BitmapDrawable(context.getResources(), canvasBitmap);
+    }
+
+    private static Drawable createCloseCrossIcon(Context context, int width, int height, int color, int inset) {
+        Bitmap canvasBitmap = Bitmap.createBitmap(width + inset * 2, height + inset * 2, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(canvasBitmap);
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setStrokeWidth(3);
+        paint.setColor(color);
+        paint.setAntiAlias(true);
+        Path path = new Path();
+        path.setFillType(Path.FillType.EVEN_ODD);
+        path.moveTo(inset, inset);
+        path.lineTo(width + inset, height + inset);
+        path.moveTo(width + inset, inset);
+        path.lineTo(inset, height + inset);
         path.close();
         canvas.drawPath(path, paint);
         return new BitmapDrawable(context.getResources(), canvasBitmap);

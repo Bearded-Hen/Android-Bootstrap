@@ -67,4 +67,8 @@ public class CustomBootstrapStyle implements BootstrapBrand {
     @Override public int disabledTextColor(Context context) {
         return disabledTextColor;
     }
+
+    @Override public int getColor() {
+        return defaultFill;
+    }
 }
