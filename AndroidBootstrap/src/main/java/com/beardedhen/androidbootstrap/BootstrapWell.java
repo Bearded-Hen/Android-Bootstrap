@@ -3,13 +3,13 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 /**
  * BootstrapWells are used as a container layout for other views, typically text.
@@ -52,12 +52,7 @@ public class BootstrapWell extends FrameLayout {
                 (int) DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_well_stroke_width),
                 ColorUtils.resolveColor(R.color.bootstrap_well_border_color, getContext()));
 
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
-        }
+        ViewUtils.setBackgroundDrawable(this, bg);
 
         int padding = (int) (DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_well_default_padding) * bootstrapSize * 2.5);
         setPadding(padding, padding, padding, padding);

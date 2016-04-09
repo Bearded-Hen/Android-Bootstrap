@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.fractalwrench.androidbootstrap.sample"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 23
-        versionCode 210
-        versionName "2.1.0"
+        versionCode = Integer.parseInt(VERSION_CODE)
+        versionName = VERSION_NAME
     }
     lintOptions {
         disable 'InvalidPackage'
@@ -29,6 +29,6 @@ dependencies {
     compile project (':AndroidBootstrap') // replace with Maven dependency in your app
 
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:support-annotations:23.2.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:support-annotations:23.3.0'
 }

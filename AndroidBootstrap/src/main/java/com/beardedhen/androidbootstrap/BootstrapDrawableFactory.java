@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -14,6 +15,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.text.TextPaint;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
@@ -184,9 +186,10 @@ class BootstrapDrawableFactory {
 
         int strokeWidth = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_alert_stroke_width);
 
-        disabledGd.setColor(ColorUtils.increaseOpacity(context, bootstrapBrand.getColor(), 40));
+        disabledGd.setColor(ColorUtils.increaseOpacityFromInt(context, bootstrapBrand.getColor(),
+                                                            40));
         disabledGd.setCornerRadius(6);
-        disabledGd.setStroke(strokeWidth, ColorUtils.increaseOpacity(context, bootstrapBrand.getColor(), 70));
+        disabledGd.setStroke(strokeWidth, ColorUtils.increaseOpacityFromInt(context, bootstrapBrand.getColor(), 70));
         return disabledGd;
     }
 
@@ -263,16 +266,16 @@ class BootstrapDrawableFactory {
         return stateListDrawable;
     }
 
-    private static void setupDrawableCorners(ViewGroupPosition position, boolean rounded, int cornerRadius, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
+    private static void setupDrawableCorners(ViewGroupPosition position, boolean rounded, int r,
+                                             GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
         if (rounded) {
             if (position == ViewGroupPosition.SOLO) {
-                defaultGd.setCornerRadius(cornerRadius);
-                activeGd.setCornerRadius(cornerRadius);
-                disabledGd.setCornerRadius(cornerRadius);
+                defaultGd.setCornerRadius(r);
+                activeGd.setCornerRadius(r);
+                disabledGd.setCornerRadius(r);
             }
             else {
                 float[] radii; // X/Y pairs for top-left, top-right, bottom-right, bottom-left.
-                float r = cornerRadius;
 
                 switch (position) {
                     case MIDDLE_HORI:
@@ -432,11 +435,63 @@ class BootstrapDrawableFactory {
         return new BitmapDrawable(context.getResources(), canvasBitmap);
     }
 
+    public static Drawable createBadgeDrawable(Context context, BootstrapBrand brand, int width,
+                                               int height, String badgeText, boolean insideAnObject) {
+
+        if (badgeText == null) {
+            return null;
+        }
+        else {
+            Paint badgePaint = new Paint();
+            Rect canvasBounds = new Rect();
+            TextPaint badgeTextPaint = new TextPaint();
+            badgePaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+            badgeTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+            badgeTextPaint.setTextAlign(Paint.Align.CENTER);
+            badgeTextPaint.setTextSize((float) (height * 0.7));
+
+            if (insideAnObject) {
+                badgePaint.setColor(brand.defaultTextColor(context));
+                badgeTextPaint.setColor(brand.defaultFill(context));
+            }
+            else {
+                badgePaint.setColor(brand.defaultFill(context));
+                badgeTextPaint.setColor(brand.defaultTextColor(context));
+            }
+
+            int rectLength = (int) badgeTextPaint.measureText(badgeText);
+
+            Bitmap canvasBitmap = Bitmap.createBitmap(width + rectLength, height, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(canvasBitmap);
+            canvas.getClipBounds(canvasBounds);
+
+            int firstCircleDx = canvasBounds.left + canvasBounds.height() / 2;
+            int circleDy = canvasBounds.height() / 2;
+            int circleRadius = canvasBounds.height() / 2;
+            int secondCircleDx = firstCircleDx + rectLength;
+
+            Rect rect = new Rect();
+            rect.left = firstCircleDx;
+            rect.top = 0;
+            rect.right = rect.left + rectLength;
+            rect.bottom = canvasBounds.height();
+
+            canvas.drawCircle(firstCircleDx, circleDy, circleRadius, badgePaint);
+            canvas.drawRect(rect, badgePaint);
+            canvas.drawCircle(secondCircleDx, circleDy, circleRadius, badgePaint);
+            canvas.drawText(badgeText, canvasBounds.width() / 2, canvasBounds.height() / 2 - ((badgeTextPaint.descent() +
+                                                                                               badgeTextPaint.ascent()) / 2),
+                            badgeTextPaint);
+
+            return new BitmapDrawable(context.getResources(), canvasBitmap);
+        }
+    }
+
     static ColorStateList bootstrapDropDownViewText(Context context) {
 
-        int defaultColor = context.getResources().getColor(R.color.bootstrap_gray_dark);
-        int activeColor = context.getResources().getColor(android.R.color.black);
-        int disabledColor = context.getResources().getColor(R.color.bootstrap_gray_light);
+        int defaultColor = ColorUtils.resolveColor(R.color.bootstrap_gray_dark, context);
+        int activeColor = ColorUtils.resolveColor(android.R.color.black, context);
+        int disabledColor = ColorUtils.resolveColor(R.color.bootstrap_gray_light, context);
 
         return new ColorStateList(getStateList(), getColorList(defaultColor, activeColor, disabledColor));
     }

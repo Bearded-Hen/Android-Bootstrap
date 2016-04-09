@@ -67,5 +67,6 @@
     <!-- Misc -->
     <dimen name="bootstrap_default_corner_radius">3dp</dimen>
     <dimen name="bootstrap_progress_bar_height">14dp</dimen>
+    <dimen name="bootstrap_badge_default_size">16dp</dimen>
 
 </resources>

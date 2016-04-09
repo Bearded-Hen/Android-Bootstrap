@@ -34,7 +34,7 @@ public class DimenUtils {
 
     /**
      * Converts density-independent pixels to pixels
-     * @param dip
+     * @param dip the dips
      * @return size in pixels
      */
     public static int dpToPixels(float dip) {
@@ -43,7 +43,7 @@ public class DimenUtils {
 
     /**
      * Converts pixels to density-independent pixels
-     * @param pixels
+     * @param pixels the pixels
      * @return size in dp
      */
     public static int pixelsToDp(float pixels) {

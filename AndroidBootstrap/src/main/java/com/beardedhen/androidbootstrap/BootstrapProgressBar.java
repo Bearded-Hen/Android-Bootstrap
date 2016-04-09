@@ -2,6 +2,7 @@ package com.beardedhen.androidbootstrap;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -407,10 +408,11 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
      */
 
 
+    @SuppressLint("DefaultLocale")
     @Override public void setProgress(int progress) {
         if (progress < 0 || progress > 100) {
-            String s = String.format("Invalid value '%d' - progress must be an integer in the range 0-100", progress);
-            throw new IllegalArgumentException(s);
+            throw new IllegalArgumentException(
+                    String.format("Invalid value '%d' - progress must be an integer in the range 0-100", progress));
         }
 
         this.userProgress = progress;

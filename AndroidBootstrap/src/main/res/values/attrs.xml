@@ -51,6 +51,7 @@
     <attr name="itemHeight" format="dimension"/>
     <attr name="strongText" format="string"/>
     <attr name="messageText" format="string"/>
+    <attr name="badgeText" format="string"/>
     <attr name="dismissible" format="boolean"/>
 
     <!-- View attributes -->
@@ -74,6 +75,7 @@
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
         <attr name="checked"/>
+        <attr name="badgeText"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapButtonGroup">
@@ -132,6 +134,11 @@
         <attr name="strongText"/>
         <attr name="messageText"/>
         <attr name="dismissible"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapBadge">
+        <attr name="badgeText"/>
+        <attr name="bootstrapSize"/>
     </declare-styleable>
 
 </resources>

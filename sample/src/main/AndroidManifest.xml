@@ -58,11 +58,15 @@
             />
         <activity
             android:name=".BootstrapDropDownExample"
-            android:label="BootstrapDropDown"
+            android:label="BootstrapDropDownExample"
+            />
+        <activity
+            android:name=".BootstrapBadgeExample"
+            android:label="BootstrapBadgeExample"
             />
         <activity
             android:name=".BootstrapAlertExample"
-            android:label="BootstrapAlert"
+            android:label="BootstrapAlertExample"
             />
     </application>
 

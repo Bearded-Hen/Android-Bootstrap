@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import com.beardedhen.androidbootstrap.BootstrapThumbnail;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.utils.DrawableUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -44,7 +45,8 @@ public class BootstrapThumbnailExample extends BaseActivity {
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.small_daffodils);
         setBitmapExample.setImageBitmap(bm);
 
-        setDrawableExample.setImageDrawable(getResources().getDrawable(R.drawable.ladybird));
+        setDrawableExample.setImageDrawable(DrawableUtils.resolveDrawable(R.drawable.ladybird,
+                                                                          this));
         setResourceExample.setImageResource(R.drawable.caterpillar);
         sizeChange.setLayoutParams(getLayoutParams(size.scaleFactor()));
     }

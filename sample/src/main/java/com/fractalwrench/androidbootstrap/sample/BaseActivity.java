@@ -20,7 +20,10 @@ abstract class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
-        scrollView.addView(LayoutInflater.from(this).inflate(getContentLayoutId(), scrollView, false));
+
+        if (scrollView != null) {
+            scrollView.addView(LayoutInflater.from(this).inflate(getContentLayoutId(), scrollView, false));
+        }
 
         ButterKnife.bind(this);
     }

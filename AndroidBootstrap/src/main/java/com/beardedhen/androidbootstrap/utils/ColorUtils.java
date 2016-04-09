@@ -23,6 +23,7 @@ public class ColorUtils {
      * @param context the current context
      * @return a color int
      */
+    @SuppressWarnings("deprecation")
     public static @ColorInt int resolveColor(@ColorRes int color, Context context) {
         if (Build.VERSION.SDK_INT >= 23) {
             return context.getResources().getColor(color, context.getTheme());
@@ -70,6 +71,11 @@ public class ColorUtils {
      */
     @ColorInt public static int increaseOpacity(Context context, @ColorRes int res, int alpha) {
         int c = resolveColor(res, context);
+        return increaseOpacityFromInt(context, resolveColor(res, context), alpha);
+    }
+
+    @ColorInt public static int increaseOpacityFromInt(Context context, @ColorInt int c, int
+            alpha) {
         return Color.argb(alpha, Color.red(c), Color.green(c), Color.blue(c));
     }
 

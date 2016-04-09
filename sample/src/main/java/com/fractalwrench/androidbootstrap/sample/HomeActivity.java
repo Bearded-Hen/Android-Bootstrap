@@ -58,4 +58,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, BootstrapAlertExample.class));
     }
 
+    @OnClick(R.id.example_bootstrap_badge) void onBootstrapBadgeExampleClicked() {
+        startActivity(new Intent(this, BootstrapBadgeExample.class));
+    }
+
 }

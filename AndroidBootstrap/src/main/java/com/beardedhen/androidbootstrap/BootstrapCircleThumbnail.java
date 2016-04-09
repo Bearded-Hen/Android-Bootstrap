@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 
@@ -17,6 +16,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 /**
  * BootstrapCircleThumbnails display a circular image with an optional border, that can be themed
@@ -176,12 +176,7 @@ public class BootstrapCircleThumbnail extends BootstrapBaseThumbnail {
                     (int) (baselineOuterBorderWidth * bootstrapSize),
                     ColorUtils.resolveColor(R.color.bootstrap_thumbnail_background, getContext()));
         }
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
-        }
+        ViewUtils.setBackgroundDrawable(this, bg);
     }
 
 }
