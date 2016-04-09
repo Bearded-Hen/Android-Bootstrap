@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
  * BootstrapButtons are buttons which provide contextual menus, styled with BootstrapBrand colors,
  * roundable corners, and an 'outlineable' mode.
  */
+@BetaApi
 public class BootstrapDropDown extends AwesomeTextView implements View.OnClickListener, RoundableView, OutlineableView, PopupWindow.OnDismissListener {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapDropDown";

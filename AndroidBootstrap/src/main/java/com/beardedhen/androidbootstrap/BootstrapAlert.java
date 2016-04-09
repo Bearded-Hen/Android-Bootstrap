@@ -27,7 +27,38 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * See <a href="http://getbootstrap.com/components/#badges>http://getbootstrap.com/components/#alerts</a>
  */
-public class BootstrapAlert extends RelativeLayout {
+@BetaApi
+public class BootstrapAlert extends RelativeLayout implements Animation.AnimationListener {
+
+    /**
+     * Provides methods which receive callbacks in response to changes in the view visibility.
+     */
+    public interface VisibilityChangeListener{
+
+        /**
+         * Called when the alert is set to be dismissed with an animation.
+         * @param alert the alert
+         */
+        void onAlertDismissStarted(BootstrapAlert alert);
+
+        /**
+         * Called when the alert is no longer visible.
+         * @param alert the alert
+         */
+        void onAlertDismissCompletion(BootstrapAlert alert);
+
+        /**
+         * Called when the alert set to appear with an animation
+         * @param alert the alert
+         */
+        void onAlertAppearStarted(BootstrapAlert alert);
+
+        /**
+         * Called when the alert is now visible.
+         * @param alert the alert
+         */
+        void onAlertAppearCompletion(BootstrapAlert alert);
+    }
 
     private ImageView closeButton;
 
@@ -42,10 +73,9 @@ public class BootstrapAlert extends RelativeLayout {
     private AlphaAnimation fadeInAnimation;
     private AlphaAnimation fadeOutAnimation;
 
-    private boolean dismissible;
-    private boolean hidden;
+    private boolean userDismissible;
 
-    private OnDismissListener onDismissListener;
+    private VisibilityChangeListener visibilityChangeListener;
 
     private static final AtomicInteger nextGeneratedId = new AtomicInteger(1);
 
@@ -74,7 +104,8 @@ public class BootstrapAlert extends RelativeLayout {
 
             strongText = a.getString(R.styleable.BootstrapAlert_strongText);
             messageText = a.getString(R.styleable.BootstrapAlert_messageText);
-            dismissible = a.getBoolean(R.styleable.BootstrapAlert_dismissible, false);
+            userDismissible = a.getBoolean(R.styleable.BootstrapAlert_dismissible, false);
+
             if (strongText == null) {
                 strongText = "";
             }
@@ -90,13 +121,14 @@ public class BootstrapAlert extends RelativeLayout {
                                                            R.dimen.bootstrap_button_default_font_size);
         baselinePadding = DimenUtils.pixelsFromDpResource(getContext(),
                                                           R.dimen.bootstrap_alert_paddings);
-
+        setupAnimations();
         updateBootstrapState();
     }
 
     private void updateBootstrapState() {
         TextView alertText = new TextView(getContext());
         closeButton = new ImageView(getContext());
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             alertText.setId(generateViewUniqueId());
             closeButton.setId(generateViewUniqueId());
@@ -105,37 +137,7 @@ public class BootstrapAlert extends RelativeLayout {
             alertText.setId(View.generateViewId());
             closeButton.setId(View.generateViewId());
         }
-        fadeInAnimation = new AlphaAnimation(0.0f, 1.0f);
-        fadeInAnimation.setDuration(300);
-        fadeInAnimation.setInterpolator(new AccelerateInterpolator());
-        fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
-        fadeOutAnimation.setDuration(300);
-        fadeOutAnimation.setInterpolator(new AccelerateInterpolator());
 
-        fadeInAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {setVisibility(VISIBLE);}
-
-            @Override
-            public void onAnimationEnd(Animation animation) {}
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {}
-        });
-
-        fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {}
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                setVisibility(GONE);
-                if (onDismissListener != null) { onDismissListener.onDismiss(); }
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {}
-        });
 
         LayoutParams textParams = new LayoutParams(LayoutParams.MATCH_PARENT,
                                                    LayoutParams.WRAP_CONTENT);
@@ -165,7 +167,8 @@ public class BootstrapAlert extends RelativeLayout {
         ViewUtils.setBackgroundDrawable(this, bg);
 
         addView(alertText);
-        if (dismissible) {
+
+        if (userDismissible) {
             addView(closeButton);
             ((View) closeButton.getParent()).post(new Runnable() {
                 @Override
@@ -185,7 +188,7 @@ public class BootstrapAlert extends RelativeLayout {
             closeButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    hide();
+                    dismiss(true);
                 }
             });
         }
@@ -195,22 +198,74 @@ public class BootstrapAlert extends RelativeLayout {
         setPadding(hori, vert, hori, vert);
     }
 
-    public void hide() {
-        hidden = true;
-        startAnimation(fadeOutAnimation);
+    private void setupAnimations() {
+        fadeInAnimation = new AlphaAnimation(0.0f, 1.0f);
+        fadeInAnimation.setDuration(300);
+        fadeInAnimation.setInterpolator(new AccelerateInterpolator());
+        fadeInAnimation.setAnimationListener(this);
+
+        fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
+        fadeOutAnimation.setDuration(300);
+        fadeOutAnimation.setInterpolator(new AccelerateInterpolator());
+        fadeOutAnimation.setAnimationListener(this);
     }
 
-    public void show() {
-        hidden = false;
-        startAnimation(fadeInAnimation);
+    /**
+     * Hides the alert with an animation, setting its visibility to {@link View#GONE}
+     * @param  animated whether the dismissal should be animated or not
+     */
+    public void dismiss(boolean animated) {
+        if (animated) {
+            if (visibilityChangeListener != null) {
+                visibilityChangeListener.onAlertDismissStarted(this);
+            }
+            startAnimation(fadeOutAnimation);
+        }
+        else {
+            setVisibility(GONE);
+        }
     }
 
-    public boolean isHidden() {
-        return hidden;
+    /**
+     * Shows the alert with an animation, setting its visibility to {@link View#VISIBLE}
+     * @param  animated whether the appearance should be animated or not
+     */
+    public void show(boolean animated) {
+        if (animated) {
+            if (visibilityChangeListener != null) {
+                visibilityChangeListener.onAlertAppearStarted(this);
+            }
+            startAnimation(fadeInAnimation);
+        }
+        else {
+            setVisibility(VISIBLE);
+        }
     }
 
-    public void setOnDismissListener(OnDismissListener onDismissListener) {
-        this.onDismissListener = onDismissListener;
+    /**
+     * Retrieves whether the user can dismiss the dialog or not
+     * @return true if dismissable
+     */
+    public boolean isUserDismissible() {
+        return userDismissible;
+    }
+
+    /**
+     * Sets whether the user can dismiss the dialog or not.
+     * @param userDismissible true if dismissable
+     */
+    public void setUserDismissible(boolean userDismissible) {
+        this.userDismissible = userDismissible;
+        updateBootstrapState();
+    }
+
+    /**
+     * Sets a {@link VisibilityChangeListener} that will be notified on changes
+     *
+     * @param visibilityChangeListener the listener
+     */
+    public void setVisibilityChangeListener(VisibilityChangeListener visibilityChangeListener) {
+        this.visibilityChangeListener = visibilityChangeListener;
     }
 
     private int generateViewUniqueId() {
@@ -227,7 +282,43 @@ public class BootstrapAlert extends RelativeLayout {
         }
     }
 
-    public interface OnDismissListener {
-        void onDismiss();
+    @Override
+    public void setVisibility(int visibility) {
+        super.setVisibility(visibility);
+
+        if (visibilityChangeListener != null) {
+            if (GONE == visibility) {
+                visibilityChangeListener.onAlertDismissCompletion(this);
+            }
+            else if (VISIBLE == visibility) {
+                visibilityChangeListener.onAlertAppearCompletion(this);
+            }
+        }
+    }
+
+    // Animation change listener
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+
+        if (animation == fadeInAnimation) {
+            setVisibility(VISIBLE);
+        }
+        else if (animation == fadeOutAnimation) {
+            setVisibility(GONE);
+        }
+        else {
+            throw new IllegalStateException("Unsupported animation attempted to use this listener");
+        }
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+
     }
 }

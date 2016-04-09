@@ -19,6 +19,7 @@ import com.beardedhen.androidbootstrap.utils.ViewUtils;
 /**
  * See <a href="http://getbootstrap.com/components/#badges>http://getbootstrap.com/components/#badges</a>
  */
+@BetaApi
 public class BootstrapBadge extends ImageView implements BootstrapSizeView, BootstrapBrandView,
                                                          BootstrapBadgeView {
 

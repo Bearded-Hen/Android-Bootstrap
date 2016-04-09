@@ -256,12 +256,15 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     @Override public void displayBadgeDrawable() {
         if (bootstrapBadge != null) {
-            setCompoundDrawablesWithIntrinsicBounds(
-                    null,
-                    null,
-                    this.bootstrapBadge.getBadgeDrawable(),
-                    null);
-            setCompoundDrawablePadding(DimenUtils.dpToPixels(4));
+            Drawable badgeDrawable = this.bootstrapBadge.getBadgeDrawable();
+
+            if (badgeDrawable != null) {
+                setCompoundDrawablesWithIntrinsicBounds(
+                        null,
+                        null, badgeDrawable,
+                        null);
+                setCompoundDrawablePadding(DimenUtils.dpToPixels(4));
+            }
         }
     }
 

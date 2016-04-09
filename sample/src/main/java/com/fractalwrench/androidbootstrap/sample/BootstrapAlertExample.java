@@ -1,31 +1,60 @@
 package com.fractalwrench.androidbootstrap.sample;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.beardedhen.androidbootstrap.BootstrapAlert;
 
-public class BootstrapAlertExample extends Activity {
+import butterknife.Bind;
+import butterknife.OnClick;
 
-    private BootstrapAlert alert;
+public class BootstrapAlertExample extends BaseActivity {
+
+    public static final String TAG = "BootstrapAlertExample";
+
+    @Bind(R.id.dynamic_alert) BootstrapAlert alert;
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.example_bootstrap_alert;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.example_bootstrap_alert);
-        alert = (BootstrapAlert) findViewById(R.id.dynamic_alert);
-        Button interactiveButton = (Button) findViewById(R.id.interactive_button);
-        interactiveButton.setOnClickListener(new View.OnClickListener() {
+
+        alert.setVisibilityChangeListener(new BootstrapAlert.VisibilityChangeListener() {
             @Override
-            public void onClick(View v) {
-                if (alert.isHidden()) {
-                    alert.show();
-                } else {
-                    alert.hide();
-                }
+            public void onAlertDismissStarted(BootstrapAlert alert) {
+                Log.d(TAG, "Started dismissing alert!");
+            }
+
+            @Override
+            public void onAlertDismissCompletion(BootstrapAlert alert) {
+                Log.d(TAG, "Finished dismissing alert!");
+            }
+
+            @Override
+            public void onAlertAppearStarted(BootstrapAlert alert) {
+                Log.d(TAG, "Started appearing alert!");
+            }
+
+            @Override
+            public void onAlertAppearCompletion(BootstrapAlert alert) {
+                Log.d(TAG, "Finished appearing alert!");
             }
         });
     }
+
+    @OnClick(R.id.interactive_button)
+    void onInteractiveButtonClicked() {
+        if (View.GONE == alert.getVisibility()) {
+            alert.show(true);
+        }
+        else {
+            alert.dismiss(true);
+        }
+    }
+
 }
