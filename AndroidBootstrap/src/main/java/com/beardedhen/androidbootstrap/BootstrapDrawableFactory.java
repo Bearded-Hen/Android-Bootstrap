@@ -447,7 +447,8 @@ class BootstrapDrawableFactory {
             if (insideAnObject) {
                 badgePaint.setColor(brand.defaultTextColor(context));
                 badgeTextPaint.setColor(brand.defaultFill(context));
-            } else {
+            }
+            else {
                 badgePaint.setColor(brand.defaultFill(context));
                 badgeTextPaint.setColor(brand.defaultTextColor(context));
             }
@@ -475,7 +476,10 @@ class BootstrapDrawableFactory {
             canvas.drawText(String.valueOf(badgeCount), canvasBounds.width() / 2, canvasBounds.height() / 2 - ((badgeTextPaint.descent() + badgeTextPaint.ascent()) / 2), badgeTextPaint);
 
             return new BitmapDrawable(context.getResources(), canvasBitmap);
-        } else return null;
+        }
+        else {
+            return null;
+        }
     }
 
     static ColorStateList bootstrapDropDownViewText(Context context) {

@@ -16,8 +16,11 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
 
-// TODO document/finalise
-
+/**
+ * BootstrapThumbnail displays a rectangular image with an optional border, that can be
+ * themed. The view extends ImageView, and will automatically center crop and
+ * scale images.
+ */
 public class BootstrapThumbnail extends BootstrapBaseThumbnail implements RoundableView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapThumbnail";

@@ -4,16 +4,21 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
-public class BootstrapBadge extends ImageView implements BootstrapSizeView {
+/**
+ * See <a href="http://getbootstrap.com/components/#badges>http://getbootstrap.com/components/#badges</a>
+ */
+public class BootstrapBadge extends ImageView implements BootstrapSizeView, BootstrapBrandView {
 
     private int badgeCount;
     private int size;
@@ -45,35 +50,31 @@ public class BootstrapBadge extends ImageView implements BootstrapSizeView {
             int sizeOrdinal = a.getInt(R.styleable.BootstrapBadge_bootstrapSize, -1);
 
             allowZeroValue = a.getBoolean(R.styleable.BootstrapBadge_allowZeroValue, false);
-            bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
-        } finally {
+            bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal)
+                                                .scaleFactor();
+        }
+        finally {
             a.recycle();
         }
 
-        size = (int) DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_badge_default_size);
+        size = (int) DimenUtils.pixelsFromDpResource(getContext(),
+                                                     R.dimen.bootstrap_badge_default_size);
         updateBootstrapState();
     }
 
     private void updateBootstrapState() {
-        badgeDrawable = BootstrapDrawableFactory.createBadgeDrawable(getContext(),
-                bootstrapBrand,
-                (int) (size * bootstrapSize),
-                (int) (size * bootstrapSize),
-                badgeCount,
-                allowZeroValue,
-                insideContainer);
+        badgeDrawable = BootstrapDrawableFactory.createBadgeDrawable(getContext(), bootstrapBrand,
+                                                                     (int) (size * bootstrapSize),
+                                                                     (int) (size * bootstrapSize),
+                                                                     badgeCount, allowZeroValue,
+                                                                     insideContainer);
 
         if (Build.VERSION.SDK_INT >= 16) {
             setBackground(badgeDrawable);
-        } else {
+        }
+        else {
             setBackgroundDrawable(badgeDrawable);
         }
-    }
-
-    public void setBootstrapBrand(BootstrapBrand bootstrapBrand, boolean insideContainer) {
-        this.bootstrapBrand = bootstrapBrand;
-        this.insideContainer = insideContainer;
-        updateBootstrapState();
     }
 
     public void setBadgeCount(int badgeCount) {
@@ -81,14 +82,8 @@ public class BootstrapBadge extends ImageView implements BootstrapSizeView {
         updateBootstrapState();
     }
 
-    @Override public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
-        this.bootstrapSize = bootstrapSize.scaleFactor();
-        updateBootstrapState();
-    }
-
-    @Override public void setBootstrapSize(float bootstrapSize) {
-        this.bootstrapSize = bootstrapSize;
-        updateBootstrapState();
+    public boolean isAllowZeroValue() {
+        return allowZeroValue;
     }
 
     public void setAllowZeroValue(boolean allowZeroValue) {
@@ -104,11 +99,42 @@ public class BootstrapBadge extends ImageView implements BootstrapSizeView {
         return badgeDrawable;
     }
 
-    @Override public float getBootstrapSize() {
-        return bootstrapSize;
+
+
+
+
+
+    public void setBootstrapBrand(BootstrapBrand bootstrapBrand, boolean insideContainer) {
+        this.insideContainer = insideContainer;
+        setBootstrapBrand(bootstrapBrand);
     }
 
-    public boolean isAllowZeroValue() {
-        return allowZeroValue;
+    @Override
+    public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
+        this.bootstrapBrand = bootstrapBrand;
+        updateBootstrapState();
+    }
+
+    @NonNull
+    @Override
+    public BootstrapBrand getBootstrapBrand() {
+        return bootstrapBrand;
+    }
+
+    @Override
+    public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
+        this.bootstrapSize = bootstrapSize.scaleFactor();
+        updateBootstrapState();
+    }
+
+    @Override
+    public void setBootstrapSize(float bootstrapSize) {
+        this.bootstrapSize = bootstrapSize;
+        updateBootstrapState();
+    }
+
+    @Override
+    public float getBootstrapSize() {
+        return bootstrapSize;
     }
 }

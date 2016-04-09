@@ -23,6 +23,9 @@ import com.beardedhen.androidbootstrap.utils.DimenUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * See <a href="http://getbootstrap.com/components/#badges>http://getbootstrap.com/components/#alerts</a>
+ */
 public class BootstrapAlert extends RelativeLayout {
 
     private ImageView closeButton;
@@ -78,12 +81,15 @@ public class BootstrapAlert extends RelativeLayout {
             if (messageText == null) {
                 messageText = "";
             }
-        } finally {
+        }
+        finally {
             a.recycle();
         }
 
-        baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size);
-        baselinePadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_alert_paddings);
+        baselineFontSize = DimenUtils.pixelsFromSpResource(getContext(),
+                                                           R.dimen.bootstrap_button_default_font_size);
+        baselinePadding = DimenUtils.pixelsFromDpResource(getContext(),
+                                                          R.dimen.bootstrap_alert_paddings);
 
         updateBootstrapState();
     }
@@ -94,7 +100,8 @@ public class BootstrapAlert extends RelativeLayout {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             alertText.setId(generateViewUniqueId());
             closeButton.setId(generateViewUniqueId());
-        } else {
+        }
+        else {
             alertText.setId(View.generateViewId());
             closeButton.setId(View.generateViewId());
         }
@@ -106,48 +113,60 @@ public class BootstrapAlert extends RelativeLayout {
         fadeOutAnimation.setInterpolator(new AccelerateInterpolator());
 
         fadeInAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override public void onAnimationStart(Animation animation) {setVisibility(VISIBLE);}
-            @Override public void onAnimationEnd(Animation animation) {}
-            @Override public void onAnimationRepeat(Animation animation) {}
+            @Override
+            public void onAnimationStart(Animation animation) {setVisibility(VISIBLE);}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {}
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
         });
 
         fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override public void onAnimationStart(Animation animation) {}
-            @Override public void onAnimationEnd(Animation animation) {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
                 setVisibility(GONE);
-                if (onDismissListener != null) onDismissListener.onDismiss();
+                if (onDismissListener != null) { onDismissListener.onDismiss(); }
             }
-            @Override public void onAnimationRepeat(Animation animation) {}
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
         });
 
-        LayoutParams textParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        LayoutParams closeParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams textParams = new LayoutParams(LayoutParams.MATCH_PARENT,
+                                                   LayoutParams.WRAP_CONTENT);
+        LayoutParams closeParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
+                                                    LayoutParams.WRAP_CONTENT);
         textParams.addRule(RelativeLayout.LEFT_OF, closeButton.getId());
         closeParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 
         alertText.setLayoutParams(textParams);
         alertText.setTextSize(baselineFontSize);
         alertText.setGravity(Gravity.LEFT);
-        alertText.setTextColor(BootstrapDrawableFactory.bootstrapButtonText(
-                getContext(),
-                true,
-                bootstrapBrand));
-        alertText.setText(Html.fromHtml(String.format("<b>%s</b>%s", strongText, (strongText.length() > 0 ? "&nbsp;" + messageText : messageText))));
+        alertText.setTextColor(
+                BootstrapDrawableFactory.bootstrapButtonText(getContext(), true, bootstrapBrand));
+        alertText.setText(Html.fromHtml(String.format("<b>%s</b>%s", strongText,
+                                                      (strongText.length() > 0 ?
+                                                              "&nbsp;" + messageText :
+                                                              messageText))));
 
         closeButton.setLayoutParams(closeParams);
-        closeButton.setBackgroundDrawable(BootstrapDrawableFactory.bootstrapAlertCloseIcon(
-                getContext(),
-                (int) baselineFontSize,
-                (int) baselineFontSize,
-                DimenUtils.dpToPixels(6)));
+        closeButton.setBackgroundDrawable(
+                BootstrapDrawableFactory.bootstrapAlertCloseIcon(getContext(),
+                                                                 (int) baselineFontSize,
+                                                                 (int) baselineFontSize,
+                                                                 DimenUtils.dpToPixels(6)));
 
-        Drawable bg = BootstrapDrawableFactory.bootstrapAlert(
-                getContext(),
-                bootstrapBrand);
+        Drawable bg = BootstrapDrawableFactory.bootstrapAlert(getContext(), bootstrapBrand);
 
         if (Build.VERSION.SDK_INT >= 16) {
             setBackground(bg);
-        } else {
+        }
+        else {
             setBackgroundDrawable(bg);
         }
         addView(alertText);
@@ -158,23 +177,22 @@ public class BootstrapAlert extends RelativeLayout {
                 public void run() {
                     Rect bounds = new Rect();
                     closeButton.getHitRect(bounds);
-                    bounds.top    -= DimenUtils.dpToPixels(6);
+                    bounds.top -= DimenUtils.dpToPixels(6);
                     bounds.bottom += DimenUtils.dpToPixels(6);
-                    bounds.left   -= DimenUtils.dpToPixels(6);
-                    bounds.right  += DimenUtils.dpToPixels(6);
+                    bounds.left -= DimenUtils.dpToPixels(6);
+                    bounds.right += DimenUtils.dpToPixels(6);
                     TouchDelegate touchDelegate = new TouchDelegate(bounds, closeButton);
                     if (View.class.isInstance(closeButton.getParent())) {
                         ((View) closeButton.getParent()).setTouchDelegate(touchDelegate);
                     }
                 }
             });
-            closeButton.setOnClickListener(
-                    new OnClickListener() {
-                        @Override public void onClick(View v) {
-                            hide();
-                        }
-                    }
-            );
+            closeButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    hide();
+                }
+            });
         }
 
         int vert = (int) (baselinePadding * 1.5);
@@ -201,11 +219,13 @@ public class BootstrapAlert extends RelativeLayout {
     }
 
     private int generateViewUniqueId() {
-        for (;;) {
+        for (; ; ) {
             final int result = nextGeneratedId.get();
             // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
             int newValue = result + 1;
-            if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
+            if (newValue > 0x00FFFFFF) {
+                newValue = 1; // Roll over to 1, not 0.
+            }
             if (nextGeneratedId.compareAndSet(result, newValue)) {
                 return result;
             }

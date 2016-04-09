@@ -382,11 +382,11 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         int gravity;
         int axisXOffset;
         if (dropDownViewWidth + getX() > screenWidth) {
-            gravity = Gravity.TOP | Gravity.RIGHT;
+            gravity = Gravity.TOP | Gravity.END;
             axisXOffset = DimenUtils.dpToPixels(8);
         }
         else {
-            gravity = Gravity.TOP | Gravity.LEFT;
+            gravity = Gravity.TOP | Gravity.START;
             axisXOffset = -DimenUtils.dpToPixels(8);
         }
         int axisYOffset = DimenUtils.dpToPixels(4);

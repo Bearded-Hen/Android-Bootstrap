@@ -104,7 +104,11 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         bundle.putInt(KEY_INDEX, parentIndex);
         bundle.putFloat(BootstrapSizeView.KEY, bootstrapSize);
         bundle.putSerializable(KEY_MODE, buttonMode);
-        if (bootstrapBadge != null) bundle.putInt(BadgeContainerView.KEY, bootstrapBadge.getBadgeCount());
+
+        if (bootstrapBadge != null) {
+            bundle.putInt(BadgeContainerView.KEY, bootstrapBadge
+                    .getBadgeCount());
+        }
         return bundle;
     }
 
@@ -303,8 +307,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     @Override public int getBadgeCount() {
-        if (bootstrapBadge != null) return bootstrapBadge.getBadgeCount();
-        else return 0;
+        return bootstrapBadge != null ? bootstrapBadge.getBadgeCount() : 0;
     }
     @Override public float getBootstrapSize() {
         return bootstrapSize;

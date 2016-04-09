@@ -64,6 +64,10 @@
             android:name=".BootstrapBadgeExample"
             android:label="BootstrapBadgeExample"
             />
+        <activity
+            android:name=".BootstrapAlertExample"
+            android:label="BootstrapAlertExample"
+            />
     </application>
 
 </manifest>
