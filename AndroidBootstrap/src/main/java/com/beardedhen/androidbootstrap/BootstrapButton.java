@@ -3,7 +3,6 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -21,6 +20,7 @@ import com.beardedhen.androidbootstrap.api.view.ButtonModeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 import java.io.Serializable;
 
@@ -158,12 +158,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                 showOutline,
                 roundedCorners);
 
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
-        }
+        ViewUtils.setBackgroundDrawable(this, bg);
 
         int vert = (int) (baselineVertPadding * bootstrapSize);
         int hori = (int) (baselineHoriPadding * bootstrapSize);

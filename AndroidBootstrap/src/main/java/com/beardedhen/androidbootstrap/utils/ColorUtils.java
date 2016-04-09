@@ -23,6 +23,7 @@ public class ColorUtils {
      * @param context the current context
      * @return a color int
      */
+    @SuppressWarnings("deprecation")
     public static @ColorInt int resolveColor(@ColorRes int color, Context context) {
         if (Build.VERSION.SDK_INT >= 23) {
             return context.getResources().getColor(color, context.getTheme());

@@ -3,7 +3,6 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -14,6 +13,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 /**
  * See <a href="http://getbootstrap.com/components/#badges>http://getbootstrap.com/components/#badges</a>
@@ -69,12 +69,7 @@ public class BootstrapBadge extends ImageView implements BootstrapSizeView, Boot
                                                                      badgeCount, allowZeroValue,
                                                                      insideContainer);
 
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(badgeDrawable);
-        }
-        else {
-            setBackgroundDrawable(badgeDrawable);
-        }
+        ViewUtils.setBackgroundDrawable(this, badgeDrawable);
     }
 
     public void setBadgeCount(int badgeCount) {

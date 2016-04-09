@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.widget.PopupWindowCompat;
@@ -28,7 +27,9 @@ import com.beardedhen.androidbootstrap.api.defaults.ExpandDirection;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
+import com.beardedhen.androidbootstrap.utils.ColorUtils;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;
@@ -160,10 +161,13 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
             childView.setPadding(DimenUtils.dpToPixels(baselineItemLeftPadding * bootstrapSize), 0,
                     DimenUtils.dpToPixels(baselineItemRightPadding * bootstrapSize), 0);
             childView.setTextSize(baselineDropDownViewFontSize * bootstrapSize);
-            childView.setTextColor(getResources().getColor(android.R.color.black));
-            childView.setBackgroundDrawable(getContext()
-                    .obtainStyledAttributes(null, new int[]{android.R.attr.selectableItemBackground}, 0, 0)
-                    .getDrawable(0));
+            childView.setTextColor(ColorUtils.resolveColor(android.R.color.black, getContext()));
+
+            Drawable background = getContext().obtainStyledAttributes(null, new int[]{
+                    android.R.attr.selectableItemBackground}, 0, 0)
+                                            .getDrawable(0);
+            ViewUtils.setBackgroundDrawable(childView, background);
+
             childView.setTextColor(BootstrapDrawableFactory.bootstrapDropDownViewText(getContext()));
             childView.setOnClickListener(new OnClickListener() {
                 @Override
@@ -179,7 +183,8 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
                 childView.setText(text.replaceFirst(REPLACE_REGEX_HEADER, ""));
                 childView.setTextSize((baselineDropDownViewFontSize - 2F) * bootstrapSize);
                 childView.setClickable(false);
-                childView.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
+                childView.setTextColor(ColorUtils.resolveColor(R.color.bootstrap_gray_light,
+                                                               getContext()));
             }
             else if (Pattern.matches(SEARCH_REGEX_SEPARATOR, text)) {
                 childView = new DividerView(getContext());
@@ -248,12 +253,7 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
                 showOutline,
                 roundedCorners);
 
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
-        }
+        ViewUtils.setBackgroundDrawable(this, bg);
 
         int vert = (int) (baselineVertPadding * bootstrapSize);
         int hori = (int) (baselineHoriPadding * bootstrapSize);
@@ -462,7 +462,7 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         public DividerView(Context context) {
             super(context);
             paint = new Paint();
-            paint.setColor(getResources().getColor(R.color.bootstrap_dropdown_divider));
+            paint.setColor(ColorUtils.resolveColor(R.color.bootstrap_dropdown_divider, context));
         }
 
         @Override protected void onDraw(Canvas canvas) {

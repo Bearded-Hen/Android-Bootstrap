@@ -484,9 +484,9 @@ class BootstrapDrawableFactory {
 
     static ColorStateList bootstrapDropDownViewText(Context context) {
 
-        int defaultColor = context.getResources().getColor(R.color.bootstrap_gray_dark);
-        int activeColor = context.getResources().getColor(android.R.color.black);
-        int disabledColor = context.getResources().getColor(R.color.bootstrap_gray_light);
+        int defaultColor = ColorUtils.resolveColor(R.color.bootstrap_gray_dark, context);
+        int activeColor = ColorUtils.resolveColor(android.R.color.black, context);
+        int disabledColor = ColorUtils.resolveColor(R.color.bootstrap_gray_light, context);
 
         return new ColorStateList(getStateList(), getColorList(defaultColor, activeColor, disabledColor));
     }

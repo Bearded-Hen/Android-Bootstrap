@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.utils.DrawableUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -22,8 +23,9 @@ import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand
 
 public class BootstrapCircleThumbnailExample extends BaseActivity {
 
+    private static final float BASELINE_SIZE = 300;
+
     private int resId = R.drawable.ladybird;
-    private final float baselineSize = 300;
     private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
 
     @Override protected int getContentLayoutId() {
@@ -44,14 +46,14 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.small_daffodils);
         setBitmapExample.setImageBitmap(bm);
 
-        setDrawableExample.setImageDrawable(getResources().getDrawable(R.drawable.ladybird));
+        setDrawableExample.setImageDrawable(DrawableUtils.resolveDrawable(R.drawable.ladybird, this));
         setResourceExample.setImageResource(R.drawable.caterpillar);
 
         sizeChange.setLayoutParams(getLayoutParams(size.scaleFactor()));
     }
 
     private LinearLayout.LayoutParams getLayoutParams(float factor) {
-        float size = baselineSize * factor;
+        float size = BASELINE_SIZE * factor;
         return new LinearLayout.LayoutParams((int)size, (int)size);
     }
 

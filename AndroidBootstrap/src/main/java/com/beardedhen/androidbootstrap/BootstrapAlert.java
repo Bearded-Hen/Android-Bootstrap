@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -29,7 +30,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BootstrapAlert extends RelativeLayout {
 
     private ImageView closeButton;
-    private TextView alertText;
 
     private BootstrapBrand bootstrapBrand;
 
@@ -95,7 +95,7 @@ public class BootstrapAlert extends RelativeLayout {
     }
 
     private void updateBootstrapState() {
-        alertText = new TextView(getContext());
+        TextView alertText = new TextView(getContext());
         closeButton = new ImageView(getContext());
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             alertText.setId(generateViewUniqueId());
@@ -146,7 +146,7 @@ public class BootstrapAlert extends RelativeLayout {
 
         alertText.setLayoutParams(textParams);
         alertText.setTextSize(baselineFontSize);
-        alertText.setGravity(Gravity.LEFT);
+        alertText.setGravity(Gravity.START);
         alertText.setTextColor(
                 BootstrapDrawableFactory.bootstrapButtonText(getContext(), true, bootstrapBrand));
         alertText.setText(Html.fromHtml(String.format("<b>%s</b>%s", strongText,
@@ -155,20 +155,15 @@ public class BootstrapAlert extends RelativeLayout {
                                                               messageText))));
 
         closeButton.setLayoutParams(closeParams);
-        closeButton.setBackgroundDrawable(
-                BootstrapDrawableFactory.bootstrapAlertCloseIcon(getContext(),
-                                                                 (int) baselineFontSize,
-                                                                 (int) baselineFontSize,
-                                                                 DimenUtils.dpToPixels(6)));
+        Drawable buttonBg = BootstrapDrawableFactory.bootstrapAlertCloseIcon(
+                getContext(), (int) baselineFontSize, (int) baselineFontSize,
+                DimenUtils.dpToPixels(6));
+
+        ViewUtils.setBackgroundDrawable(closeButton, buttonBg);
 
         Drawable bg = BootstrapDrawableFactory.bootstrapAlert(getContext(), bootstrapBrand);
+        ViewUtils.setBackgroundDrawable(this, bg);
 
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
-        }
         addView(alertText);
         if (dismissible) {
             addView(closeButton);

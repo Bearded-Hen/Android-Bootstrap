@@ -10,14 +10,13 @@ import com.beardedhen.androidbootstrap.BootstrapAlert;
 public class BootstrapAlertExample extends Activity {
 
     private BootstrapAlert alert;
-    private Button interactiveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.example_bootstrap_alert);
         alert = (BootstrapAlert) findViewById(R.id.dynamic_alert);
-        interactiveButton = (Button) findViewById(R.id.interactive_button);
+        Button interactiveButton = (Button) findViewById(R.id.interactive_button);
         interactiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

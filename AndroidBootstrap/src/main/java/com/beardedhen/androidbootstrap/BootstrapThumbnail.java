@@ -15,6 +15,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
+import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 /**
  * BootstrapThumbnail displays a rectangular image with an optional border, that can be
@@ -112,12 +113,7 @@ public class BootstrapThumbnail extends BootstrapBaseThumbnail implements Rounda
                     ColorUtils.resolveColor(R.color.bootstrap_thumbnail_background, getContext()),
                     roundedCorners);
         }
-        if (Build.VERSION.SDK_INT >= 16) {
-            setBackground(bg);
-        }
-        else {
-            setBackgroundDrawable(bg);
-        }
+        ViewUtils.setBackgroundDrawable(this, bg);
     }
 
     private void updatePadding() {
