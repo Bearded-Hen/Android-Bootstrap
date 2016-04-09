@@ -29,6 +29,7 @@ import com.beardedhen.androidbootstrap.api.view.OutlineableView;
 import com.beardedhen.androidbootstrap.api.view.RoundableView;
 import com.beardedhen.androidbootstrap.utils.ColorUtils;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
+import com.beardedhen.androidbootstrap.utils.DrawableUtils;
 import com.beardedhen.androidbootstrap.utils.ViewUtils;
 
 import java.io.Serializable;
@@ -131,7 +132,8 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         dropdownWindow = new PopupWindow();
         dropdownWindow.setFocusable(true);
         dropdownWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        dropdownWindow.setBackgroundDrawable(getResources().getDrawable(android.R.drawable.dialog_holo_light_frame));
+        dropdownWindow.setBackgroundDrawable(DrawableUtils.resolveDrawable(android.R.drawable
+                                                                                   .dialog_holo_light_frame, getContext()));
         dropdownWindow.setContentView(dropdownView);
         dropdownWindow.setOnDismissListener(this);
         dropdownWindow.setAnimationStyle(android.R.style.Animation_Activity);

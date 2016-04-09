@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="8dp">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_margin="8dp"
+              android:orientation="vertical"
+    >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
+        >
+
         <TextView
+            android:id="@+id/simple_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/simple_text_view"
-            android:text="Single badge"
             android:layout_marginRight="4dp"
+            android:text="Single badge"
             />
+
         <com.beardedhen.androidbootstrap.BootstrapBadge
+            android:id="@+id/lonely_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:id="@+id/lonely_badge"
             app:bootstrapSize="sm"
-            app:allowZeroValue="true"/>
+            app:badgeText="I am a Badge!!!"
+            />
     </LinearLayout>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/xml_badge_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/first_button"
+        android:layout_marginBottom="4dp"
         app:bootstrapBrand="primary"
         app:bootstrapText="Badge in button"
-        android:layout_marginBottom="4dp"/>
+        app:badgeText="Wahey!!!"
+        />
 
     <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/java_badge_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/second_button"
         app:bootstrapBrand="success"
-        app:roundedCorners="true"
+        app:bootstrapSize="xs"
         app:bootstrapText="Adapts to button BootstrapBrand and Size"
-        app:bootstrapSize="xs"/>
+        app:roundedCorners="true"
+        />
 </LinearLayout>

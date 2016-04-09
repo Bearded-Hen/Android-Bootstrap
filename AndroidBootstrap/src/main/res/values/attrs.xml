@@ -49,9 +49,9 @@
     <attr name="checked" format="boolean"/>
     <attr name="dropdownResource" format="reference"/>
     <attr name="itemHeight" format="dimension"/>
-    <attr name="allowZeroValue" format="boolean"/>
     <attr name="strongText" format="string"/>
     <attr name="messageText" format="string"/>
+    <attr name="badgeText" format="string"/>
     <attr name="dismissible" format="boolean"/>
 
     <!-- View attributes -->
@@ -75,6 +75,7 @@
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
         <attr name="checked"/>
+        <attr name="badgeText"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapButtonGroup">
@@ -136,7 +137,7 @@
     </declare-styleable>
 
     <declare-styleable name="BootstrapBadge">
-        <attr name="allowZeroValue"/>
+        <attr name="badgeText"/>
         <attr name="bootstrapSize"/>
     </declare-styleable>
 

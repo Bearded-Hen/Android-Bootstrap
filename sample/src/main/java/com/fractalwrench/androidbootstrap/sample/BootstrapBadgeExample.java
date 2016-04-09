@@ -1,55 +1,47 @@
 package com.fractalwrench.androidbootstrap.sample;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapBadge;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
-public class BootstrapBadgeExample extends Activity {
-    TextView label;
-    BootstrapBadge firstBadge;
-    BootstrapBadge badgeSecond;
-    BootstrapBadge badgeThird;
-    BootstrapButton firstButton;
-    BootstrapButton secondButton;
+import java.util.Random;
+
+import butterknife.Bind;
+import butterknife.OnClick;
+
+public class BootstrapBadgeExample extends BaseActivity {
+
+    @Bind(R.id.xml_badge_button) BootstrapButton xmlBadgeButton;
+    @Bind(R.id.java_badge_button) BootstrapButton javaBadgeButton;
+    @Bind(R.id.lonely_badge) BootstrapBadge lonelyBadge;
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.example_bootstrap_badge;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.example_bootstrap_badge);
-
-        firstBadge = (BootstrapBadge) findViewById(R.id.lonely_badge);
-        label = (TextView) findViewById(R.id.simple_text_view);
-        firstButton = (BootstrapButton) findViewById(R.id.first_button);
-        secondButton = (BootstrapButton) findViewById(R.id.second_button);
-
-        badgeSecond = new BootstrapBadge(this);
-        badgeThird = new BootstrapBadge(this);
-
-        badgeSecond.setAllowZeroValue(false);
-        badgeThird.setAllowZeroValue(true);
-
-        firstButton.setBadge(badgeSecond);
-        secondButton.setBadge(badgeThird);
-
-        firstButton.setBadgeCount(3);
-        firstBadge.setBadgeCount(10);
-
-        firstButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firstButton.setBadgeCount(firstButton.getBadgeCount() - 1);
-            }
-        });
-
-        secondButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                secondButton.setBadgeCount(secondButton.getBadgeCount() + 1);
-            }
-        });
+        BootstrapBadge badgeThird = new BootstrapBadge(this);
+        badgeThird.setBadgeText("Hi!");
+        javaBadgeButton.setBadge(badgeThird);
     }
+
+    @OnClick(R.id.lonely_badge)
+    void onLonelyButtonClicked() {
+        lonelyBadge.setBadgeText(String.valueOf(new Random().nextInt()));
+    }
+
+    @OnClick(R.id.xml_badge_button)
+    void onXmlButtonClicked() {
+        xmlBadgeButton.setBadgeText(String.valueOf(new Random().nextInt()));
+    }
+
+    @OnClick(R.id.java_badge_button)
+    void onJavaButtonClicked() {
+        javaBadgeButton.setBadgeText(String.valueOf(new Random().nextInt()));
+    }
+
 }

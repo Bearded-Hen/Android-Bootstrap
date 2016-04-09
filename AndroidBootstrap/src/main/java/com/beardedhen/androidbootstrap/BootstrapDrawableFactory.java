@@ -186,9 +186,10 @@ class BootstrapDrawableFactory {
 
         int strokeWidth = context.getResources().getDimensionPixelSize(R.dimen.bootstrap_alert_stroke_width);
 
-        disabledGd.setColor(ColorUtils.increaseOpacity(context, bootstrapBrand.getColor(), 40));
+        disabledGd.setColor(ColorUtils.increaseOpacityFromInt(context, bootstrapBrand.getColor(),
+                                                            40));
         disabledGd.setCornerRadius(6);
-        disabledGd.setStroke(strokeWidth, ColorUtils.increaseOpacity(context, bootstrapBrand.getColor(), 70));
+        disabledGd.setStroke(strokeWidth, ColorUtils.increaseOpacityFromInt(context, bootstrapBrand.getColor(), 70));
         return disabledGd;
     }
 
@@ -265,16 +266,16 @@ class BootstrapDrawableFactory {
         return stateListDrawable;
     }
 
-    private static void setupDrawableCorners(ViewGroupPosition position, boolean rounded, int cornerRadius, GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
+    private static void setupDrawableCorners(ViewGroupPosition position, boolean rounded, int r,
+                                             GradientDrawable defaultGd, GradientDrawable activeGd, GradientDrawable disabledGd) {
         if (rounded) {
             if (position == ViewGroupPosition.SOLO) {
-                defaultGd.setCornerRadius(cornerRadius);
-                activeGd.setCornerRadius(cornerRadius);
-                disabledGd.setCornerRadius(cornerRadius);
+                defaultGd.setCornerRadius(r);
+                activeGd.setCornerRadius(r);
+                disabledGd.setCornerRadius(r);
             }
             else {
                 float[] radii; // X/Y pairs for top-left, top-right, bottom-right, bottom-left.
-                float r = cornerRadius;
 
                 switch (position) {
                     case MIDDLE_HORI:
@@ -434,8 +435,13 @@ class BootstrapDrawableFactory {
         return new BitmapDrawable(context.getResources(), canvasBitmap);
     }
 
-    public static Drawable createBadgeDrawable(Context context, BootstrapBrand brand, int width, int height, int badgeCount, boolean allowZeroValue, boolean insideAnObject) {
-        if (allowZeroValue || badgeCount > 0) {
+    public static Drawable createBadgeDrawable(Context context, BootstrapBrand brand, int width,
+                                               int height, String badgeText, boolean insideAnObject) {
+
+        if (badgeText == null) {
+            return null;
+        }
+        else {
             Paint badgePaint = new Paint();
             Rect canvasBounds = new Rect();
             TextPaint badgeTextPaint = new TextPaint();
@@ -453,7 +459,7 @@ class BootstrapDrawableFactory {
                 badgeTextPaint.setColor(brand.defaultTextColor(context));
             }
 
-            int rectLength = (int) badgeTextPaint.measureText(String.valueOf(badgeCount).substring(0, String.valueOf(badgeCount).length() - 1));
+            int rectLength = (int) badgeTextPaint.measureText(badgeText);
 
             Bitmap canvasBitmap = Bitmap.createBitmap(width + rectLength, height, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(canvasBitmap);
@@ -473,12 +479,11 @@ class BootstrapDrawableFactory {
             canvas.drawCircle(firstCircleDx, circleDy, circleRadius, badgePaint);
             canvas.drawRect(rect, badgePaint);
             canvas.drawCircle(secondCircleDx, circleDy, circleRadius, badgePaint);
-            canvas.drawText(String.valueOf(badgeCount), canvasBounds.width() / 2, canvasBounds.height() / 2 - ((badgeTextPaint.descent() + badgeTextPaint.ascent()) / 2), badgeTextPaint);
+            canvas.drawText(badgeText, canvasBounds.width() / 2, canvasBounds.height() / 2 - ((badgeTextPaint.descent() +
+                                                                                               badgeTextPaint.ascent()) / 2),
+                            badgeTextPaint);
 
             return new BitmapDrawable(context.getResources(), canvasBitmap);
-        }
-        else {
-            return null;
         }
     }
 

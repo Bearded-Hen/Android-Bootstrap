@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.beardedhen.androidbootstrap.api.view.BootstrapBadgeView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapBrandView;
 import com.beardedhen.androidbootstrap.api.view.BootstrapSizeView;
 import com.beardedhen.androidbootstrap.utils.DimenUtils;
@@ -18,11 +19,11 @@ import com.beardedhen.androidbootstrap.utils.ViewUtils;
 /**
  * See <a href="http://getbootstrap.com/components/#badges>http://getbootstrap.com/components/#badges</a>
  */
-public class BootstrapBadge extends ImageView implements BootstrapSizeView, BootstrapBrandView {
+public class BootstrapBadge extends ImageView implements BootstrapSizeView, BootstrapBrandView,
+                                                         BootstrapBadgeView {
 
-    private int badgeCount;
+    private String badgeText;
     private int size;
-    private boolean allowZeroValue;
     private boolean insideContainer;
     private BootstrapBrand bootstrapBrand = DefaultBootstrapBrand.REGULAR;
     private float bootstrapSize;
@@ -49,7 +50,10 @@ public class BootstrapBadge extends ImageView implements BootstrapSizeView, Boot
         try {
             int sizeOrdinal = a.getInt(R.styleable.BootstrapBadge_bootstrapSize, -1);
 
-            allowZeroValue = a.getBoolean(R.styleable.BootstrapBadge_allowZeroValue, false);
+            if (badgeText == null) {
+                badgeText = a.getString(R.styleable.BootstrapBadge_badgeText);
+            }
+
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal)
                                                 .scaleFactor();
         }
@@ -57,8 +61,7 @@ public class BootstrapBadge extends ImageView implements BootstrapSizeView, Boot
             a.recycle();
         }
 
-        size = (int) DimenUtils.pixelsFromDpResource(getContext(),
-                                                     R.dimen.bootstrap_badge_default_size);
+        size = (int) DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_badge_default_size);
         updateBootstrapState();
     }
 
@@ -66,38 +69,24 @@ public class BootstrapBadge extends ImageView implements BootstrapSizeView, Boot
         badgeDrawable = BootstrapDrawableFactory.createBadgeDrawable(getContext(), bootstrapBrand,
                                                                      (int) (size * bootstrapSize),
                                                                      (int) (size * bootstrapSize),
-                                                                     badgeCount, allowZeroValue,
+                                                                     badgeText,
                                                                      insideContainer);
 
         ViewUtils.setBackgroundDrawable(this, badgeDrawable);
     }
 
-    public void setBadgeCount(int badgeCount) {
-        this.badgeCount = badgeCount;
-        updateBootstrapState();
-    }
-
-    public boolean isAllowZeroValue() {
-        return allowZeroValue;
-    }
-
-    public void setAllowZeroValue(boolean allowZeroValue) {
-        this.allowZeroValue = allowZeroValue;
-        updateBootstrapState();
-    }
-
-    public int getBadgeCount() {
-        return badgeCount;
-    }
-
-    public Drawable getBadgeDrawable() {
+    Drawable getBadgeDrawable() {
         return badgeDrawable;
     }
 
+    @Override public String getBadgeText() {
+        return badgeText;
+    }
 
-
-
-
+    @Override public void setBadgeText(String badgeText) {
+        this.badgeText = badgeText;
+        updateBootstrapState();
+    }
 
     public void setBootstrapBrand(BootstrapBrand bootstrapBrand, boolean insideContainer) {
         this.insideContainer = insideContainer;

@@ -71,6 +71,11 @@ public class ColorUtils {
      */
     @ColorInt public static int increaseOpacity(Context context, @ColorRes int res, int alpha) {
         int c = resolveColor(res, context);
+        return increaseOpacityFromInt(context, resolveColor(res, context), alpha);
+    }
+
+    @ColorInt public static int increaseOpacityFromInt(Context context, @ColorInt int c, int
+            alpha) {
         return Color.argb(alpha, Color.red(c), Color.green(c), Color.blue(c));
     }
 
