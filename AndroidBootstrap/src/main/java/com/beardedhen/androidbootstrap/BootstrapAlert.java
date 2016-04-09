@@ -25,7 +25,8 @@ import com.beardedhen.androidbootstrap.utils.ViewUtils;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * See <a href="http://getbootstrap.com/components/#badges>http://getbootstrap.com/components/#alerts</a>
+ * See
+ * <a href="http://getbootstrap.com/components/#badges">http://getbootstrap.com/components/#alerts</a>
  */
 @BetaApi
 public class BootstrapAlert extends RelativeLayout implements Animation.AnimationListener {
