@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/simple_text_view"
+            android:text="Single badge"
+            android:layout_marginRight="4dp"
+            />
+        <com.beardedhen.androidbootstrap.BootstrapBadge
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/lonely_badge"
+            app:bootstrapSize="sm"
+            app:allowZeroValue="true"/>
+    </LinearLayout>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/first_button"
+        app:bootstrapBrand="primary"
+        app:bootstrapText="Badge in button"
+        android:layout_marginBottom="4dp"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/second_button"
+        app:bootstrapBrand="success"
+        app:roundedCorners="true"
+        app:bootstrapText="Adapts to button BootstrapBrand and Size"
+        app:bootstrapSize="xs"/>
+</LinearLayout>

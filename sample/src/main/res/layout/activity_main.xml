@@ -74,5 +74,10 @@
             android:id="@+id/example_bootstrap_alert"
             style="@style/home_button"
             android:text="BootstrapAlert"/>
+
+        <Button
+            android:id="@+id/example_bootstrap_badge"
+            style="@style/home_button"
+            android:text="BootstrapBadge"/>
     </LinearLayout>
 </ScrollView>
