@@ -9,11 +9,11 @@ Quick Start
 ===========
  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap)
  
- Add the following dependency to your build.gradle:
+ Add the following dependency to your build.gradle, ensuring you replace 'X.X.X' with the latest version on the button above:
  
  ```java
  dependencies {
-    compile 'com.beardedhen:androidbootstrap:2.1.0'
+    compile 'com.beardedhen:androidbootstrap:{X.X.X}'
  }
  ```
  
