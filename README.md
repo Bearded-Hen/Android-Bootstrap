@@ -1,9 +1,8 @@
 Android-Bootstrap
 =================
-Android Bootstrap is a library which provides several custom views styled according to the
+Android Bootstrap is an Android library which provides custom views styled according to the
  [Twitter Bootstrap Specification](http://getbootstrap.com/). This allows you to spend more time
   on development rather than trying to get a consistent theme across your app, especially if you are already familiar with the Bootstrap Framework.
-  
   
 Quick Start
 ===========
@@ -30,6 +29,12 @@ Quick Start
  
  You should then checkout the library and investigate the sample code, which covers most of the features.
  The sample app is also available on [Google Play](https://play.google.com/store/apps/details?id=com.fractalwrench.androidbootstrap.sample).
+ 
+Support
+==============
+If you have a question about how to use the project, please ask a question on [StackOverflow](http://stackoverflow.com/questions/tagged/android-bootstrap-widgets), using the tag **android-bootstrap-widgets**.
+
+If you think you have found a bug in the library, you should [create a new issue](https://github.com/Bearded-Hen/Android-Bootstrap/issues/new) instead.
  
 Javadoc
 ============
