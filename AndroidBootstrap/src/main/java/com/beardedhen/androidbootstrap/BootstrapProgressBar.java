@@ -112,7 +112,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             this.animated = a.getBoolean(R.styleable.BootstrapProgressBar_animated, false);
             this.rounded = a.getBoolean(R.styleable.BootstrapProgressBar_roundedCorners, false);
             this.striped = a.getBoolean(R.styleable.BootstrapProgressBar_striped, false);
-            this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_progress, 0);
+            this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_bootstrapProgress, 0);
 
             int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapProgressBar_bootstrapSize, -1);

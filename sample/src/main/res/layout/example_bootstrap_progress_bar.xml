@@ -21,7 +21,7 @@
             android:id="@+id/example_progress_default"
             style="@style/progress_example"
             app:bootstrapBrand="success"
-            app:progress="25"
+            app:bootstrapProgress="25"
             />
     </LinearLayout>
 
@@ -41,7 +41,7 @@
             style="@style/progress_example"
             app:animated="true"
             app:bootstrapBrand="primary"
-            app:progress="40"
+            app:bootstrapProgress="40"
             />
     </LinearLayout>
 
@@ -60,7 +60,7 @@
             android:id="@+id/example_progress_striped"
             style="@style/progress_example"
             app:bootstrapBrand="info"
-            app:progress="60"
+            app:bootstrapProgress="60"
             app:striped="true"
             />
     </LinearLayout>
@@ -81,7 +81,7 @@
             style="@style/progress_example"
             app:animated="true"
             app:bootstrapBrand="warning"
-            app:progress="78"
+            app:bootstrapProgress="78"
             app:striped="true"
             />
     </LinearLayout>
@@ -102,7 +102,7 @@
             style="@style/progress_example"
             app:bootstrapBrand="success"
             app:bootstrapSize="md"
-            app:progress="85"
+            app:bootstrapProgress="85"
             />
     </LinearLayout>
 
@@ -142,7 +142,7 @@
             android:id="@+id/example_progress_change"
             style="@style/progress_example"
             app:bootstrapBrand="danger"
-            app:progress="75"
+            app:bootstrapProgress="75"
             />
     </LinearLayout>
 
