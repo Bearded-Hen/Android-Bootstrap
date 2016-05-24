@@ -61,6 +61,7 @@
         <attr name="bootstrapBrand"/>
         <attr name="fontAwesomeIcon"/>
         <attr name="typicon"/>
+        <attr name="android:clickable" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapLabel">

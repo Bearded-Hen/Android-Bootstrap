@@ -509,4 +509,29 @@
         android:text="Custom Style"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
+            android:gravity="center"
+            android:text="Clickable Button"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
+            android:gravity="center"
+            android:text="Unclickable Button"
+            android:clickable="false"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
 </LinearLayout>

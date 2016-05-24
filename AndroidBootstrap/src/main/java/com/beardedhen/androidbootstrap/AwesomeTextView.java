@@ -82,6 +82,8 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
             int faIconOrdinal = a.getInt(R.styleable.AwesomeTextView_fontAwesomeIcon, -1);
             int typiconOrdinal = a.getInt(R.styleable.AwesomeTextView_typicon, -1);
 
+            boolean clickable = a.getBoolean(R.styleable.AwesomeTextView_android_clickable, true);
+
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
             boolean editMode = isInEditMode();
 
@@ -100,11 +102,12 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
                 }
             }
             markdownText = a.getString(R.styleable.AwesomeTextView_bootstrapText);
+
+            setClickable(clickable); // allows view to reach android:state_pressed
         }
         finally {
             a.recycle();
         }
-        setClickable(true); // allows view to reach android:state_pressed
         setGravity(Gravity.CENTER);
 
         if (markdownText != null) {
