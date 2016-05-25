@@ -1,6 +1,7 @@
 package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewParent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
@@ -35,6 +37,11 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                                                                 OutlineableView, RoundableView, ButtonModeView, BadgeContainerView,
                                                                 BootstrapBadgeView {
 
+
+    public interface OnCheckedChangedListener{
+        public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked);
+    }
+
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButton.MODE";
     private static final String KEY_INDEX = "com.beardedhen.androidbootstrap.BootstrapButton.KEY_INDEX";
@@ -56,6 +63,8 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     private float baselineCornerRadius;
     private BootstrapBadge bootstrapBadge;
     private String badgeText;
+
+    private OnCheckedChangedListener onCheckedChangedListener;
 
     public BootstrapButton(Context context) {
         super(context);
@@ -191,6 +200,14 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                 return handleRadioEvent(event);
             default:
                 return super.onTouchEvent(event);
+        }
+    }
+
+    @Override
+    public void setSelected(boolean selected) {
+        super.setSelected(selected);
+        if (onCheckedChangedListener != null) {
+            onCheckedChangedListener.OnCheckedChanged(this, selected);
         }
     }
 
@@ -342,5 +359,9 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     @Override public void setBootstrapSize(float bootstrapSize) {
         this.bootstrapSize = bootstrapSize;
         updateBootstrapState();
+    }
+
+    public void setOnCheckedChangedListener(OnCheckedChangedListener listener){
+        onCheckedChangedListener = listener;
     }
 }

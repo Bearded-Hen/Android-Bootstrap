@@ -370,6 +370,7 @@
 
     <TextView
         style="@style/description_label"
+        android:id="@+id/bbutton_group_checked_text"
         android:text="Radio"
         />
 
@@ -382,18 +383,21 @@
         >
 
         <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/bbutton_group_checked1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/bbutton_group_checked2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/bbutton_group_checked3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"
