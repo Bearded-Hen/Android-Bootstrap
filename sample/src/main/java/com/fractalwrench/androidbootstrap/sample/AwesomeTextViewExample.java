@@ -52,6 +52,7 @@ public class AwesomeTextViewExample extends BaseActivity {
         mixAndMatch.setBootstrapText(new BootstrapText.Builder(this)
                 .addFontAwesomeIcon(FA_ANCHOR)
                 .addTypicon(TY_CODE)
+                .addMaterialIcon("md_add_a_photo")
                 .build());
     }
 
