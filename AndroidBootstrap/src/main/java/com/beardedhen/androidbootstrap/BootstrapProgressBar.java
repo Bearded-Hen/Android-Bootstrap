@@ -57,6 +57,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private int userProgress;
     private int drawnProgress;
 
+    private int maxProgress;
+
     private boolean striped;
     private boolean animated;
     private boolean rounded;
@@ -113,6 +115,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             this.rounded = a.getBoolean(R.styleable.BootstrapProgressBar_roundedCorners, false);
             this.striped = a.getBoolean(R.styleable.BootstrapProgressBar_striped, false);
             this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_bootstrapProgress, 0);
+            this.maxProgress = a.getInt(R.styleable.BootstrapProgressBar_bootstrapMaxProgress, 100);
 
             int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapProgressBar_bootstrapSize, -1);
@@ -127,6 +130,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         updateBootstrapState();
         setProgress(this.userProgress);
+        setMaxProgress(this.maxProgress);
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -292,7 +296,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         }
         progressCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
 
-        float ratio = (float) (drawnProgress / 100.0);
+        float ratio = (float) (drawnProgress / (float) maxProgress);
         int lineEnd = (int) (w * ratio);
 
         float offset = 0;
@@ -309,7 +313,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
             float start = 0 - offset;
 
-            while (start < lineEnd) {
+            while (start < lineEnd) { // FIXME
                 progressCanvas.drawBitmap(stripeTile, start, 0, tilePaint);
                 start += stripeTile.getWidth();
             }
@@ -410,9 +414,9 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
     @SuppressLint("DefaultLocale")
     @Override public void setProgress(int progress) {
-        if (progress < 0 || progress > 100) {
+        if (progress < 0 || progress > maxProgress) {
             throw new IllegalArgumentException(
-                    String.format("Invalid value '%d' - progress must be an integer in the range 0-100", progress));
+                    String.format("Invalid value '%d' - progress must be an integer in the range 0-%d", progress, maxProgress));
         }
 
         this.userProgress = progress;
@@ -480,6 +484,19 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
     @Override public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
         setBootstrapSize(bootstrapSize.scaleFactor());
+    }
+
+    public int getMaxProgress(){
+        return maxProgress;
+    }
+
+    public void setMaxProgress(int newMaxProgress){
+        if (getProgress() <= newMaxProgress) {
+            maxProgress = newMaxProgress;
+        }else{
+            throw new IllegalArgumentException(
+                    String.format("MaxProgress cant be smaller than the current progress %d<%d", getProgress(), maxProgress));
+        }
     }
 
 }
