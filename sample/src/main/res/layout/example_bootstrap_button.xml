@@ -28,10 +28,10 @@
                 style="@style/wrapping_button"
                 android:text="Corners"
                 app:bootstrapBrand="success"
-                app:bootstrapSize="lg"
                 app:buttonMode="regular"
                 app:showOutline="false"
                 app:roundedCorners="true"
+                app:bootstrapSize="lg"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton

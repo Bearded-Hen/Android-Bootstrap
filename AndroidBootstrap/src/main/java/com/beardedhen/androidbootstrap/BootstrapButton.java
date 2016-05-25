@@ -83,7 +83,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             this.badgeText = a.getString(R.styleable.BootstrapButton_badgeText);
 
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, -1);
-            int modeOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_buttonMode, -1);
+            int modeOrdinal = a.getInt(R.styleable.BootstrapButton_buttonMode, -1);
 
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
@@ -180,7 +180,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     @Override public boolean onTouchEvent(@NonNull MotionEvent event) {
-
         switch (buttonMode) {
             case REGULAR:
                 return super.onTouchEvent(event);
