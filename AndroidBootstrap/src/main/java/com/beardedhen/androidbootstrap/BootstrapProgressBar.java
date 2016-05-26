@@ -20,6 +20,8 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
@@ -42,7 +44,7 @@ import static android.graphics.Bitmap.Config.ARGB_8888;
  * Striped effects and progress update animations are supported out of the box.
  */
 public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView,
-        RoundableView, BootstrapSizeView {
+        RoundableView, BootstrapSizeView, Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.AwesomeTextView";
 
@@ -123,8 +125,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
             this.drawnProgress = userProgress;
-        }
-        finally {
+        } finally {
             a.recycle();
         }
 
@@ -133,7 +134,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         setMaxProgress(this.maxProgress);
     }
 
-    @Override public Parcelable onSaveInstanceState() {
+    @Override
+    public Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable(TAG, super.onSaveInstanceState());
 
@@ -147,7 +149,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         return bundle;
     }
 
-    @Override public void onRestoreInstanceState(Parcelable state) {
+    @Override
+    public void onRestoreInstanceState(Parcelable state) {
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
 
@@ -194,30 +197,34 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         progressAnimator.setRepeatMode(ValueAnimator.RESTART);
         progressAnimator.setInterpolator(new DecelerateInterpolator());
 
-        progressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-
-            @Override public void onAnimationUpdate(ValueAnimator animation) {
-                drawnProgress = (int) ((float) animation.getAnimatedValue());
-                invalidate();
-            }
-        });
+        progressAnimator.addUpdateListener(this);
 
         // start striped animation after progress update if needed
-        progressAnimator.addListener(new Animator.AnimatorListener() {
-            @Override public void onAnimationStart(Animator animation) {
-            }
-
-            @Override public void onAnimationEnd(Animator animation) {
-                startStripedAnimationIfNeeded(); // start striped animation after progress update
-            }
-
-            @Override public void onAnimationCancel(Animator animation) {
-            }
-
-            @Override public void onAnimationRepeat(Animator animation) {
-            }
-        });
+        progressAnimator.addListener(this);
         progressAnimator.start();
+    }
+
+    @Override
+    public void onAnimationUpdate(ValueAnimator animation) {
+        drawnProgress = (int) ((float) animation.getAnimatedValue());
+        invalidate();
+    }
+
+    @Override
+    public void onAnimationStart(Animator animation) {
+    }
+
+    @Override
+    public void onAnimationEnd(Animator animation) {
+        startStripedAnimationIfNeeded(); // start striped animation after progress update
+    }
+
+    @Override
+    public void onAnimationCancel(Animator animation) {
+    }
+
+    @Override
+    public void onAnimationRepeat(Animator animation) {
     }
 
     /**
@@ -239,7 +246,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         progressAnimator.setInterpolator(new LinearInterpolator());
         progressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override public void onAnimationUpdate(ValueAnimator animation) {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
                 invalidate();
             }
         });
@@ -250,7 +258,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
      * Custom Measuring/Drawing
      */
 
-    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // restrict view to default progressbar height
 
         int width = MeasureSpec.getSize(widthMeasureSpec);
@@ -272,7 +281,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         setMeasuredDimension(width, height);
     }
 
-    @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         if (h != oldh) {
             stripeTile = null; // dereference cached bitmap
         }
@@ -280,7 +290,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         super.onSizeChanged(w, h, oldw, oldh);
     }
 
-    @Override protected void onDraw(Canvas canvas) {
+    @Override
+    protected void onDraw(Canvas canvas) {
         float w = getWidth();
         float h = getHeight();
 
@@ -323,6 +334,9 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         }
 
         progressCanvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
+
+        //progressCanvas.drawText("100%", ); TODO:
+
 
         float corners = rounded ? h / 2 : 0;
         Bitmap round = createRoundedBitmap(progressBitmap, corners);
@@ -413,7 +427,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
 
     @SuppressLint("DefaultLocale")
-    @Override public void setProgress(int progress) {
+    @Override
+    public void setProgress(int progress) {
         if (progress < 0 || progress > maxProgress) {
             throw new IllegalArgumentException(
                     String.format("Invalid value '%d' - progress must be an integer in the range 0-%d", progress, maxProgress));
@@ -428,75 +443,104 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             this.drawnProgress = progress;
             invalidate();
         }
+
+        ViewParent parent = getParent();
+        if (parent != null) {
+            if (parent instanceof BootstrapProgressBarGroup) {
+                BootstrapProgressBarGroup parentGroup = (BootstrapProgressBarGroup) parent;
+                parentGroup.onProgressChanged(this);
+            }
+        }
     }
 
-    @Override public int getProgress() {
+    @Override
+    public int getProgress() {
         return userProgress;
     }
 
-    @Override public void setStriped(boolean striped) {
+    @Override
+    public void setStriped(boolean striped) {
         this.striped = striped;
         invalidate();
         startStripedAnimationIfNeeded();
     }
 
-    @Override public boolean isStriped() {
+    @Override
+    public boolean isStriped() {
         return striped;
     }
 
-    @Override public void setAnimated(boolean animated) {
+    @Override
+    public void setAnimated(boolean animated) {
         this.animated = animated;
         invalidate();
         startStripedAnimationIfNeeded();
     }
 
-    @Override public boolean isAnimated() {
+    @Override
+    public boolean isAnimated() {
         return animated;
     }
 
-    @Override public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
+    @Override
+    public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
         this.bootstrapBrand = bootstrapBrand;
         updateBootstrapState();
     }
 
-    @NonNull @Override public BootstrapBrand getBootstrapBrand() {
+    @NonNull
+    @Override
+    public BootstrapBrand getBootstrapBrand() {
         return bootstrapBrand;
     }
 
-    @Override public void setRounded(boolean rounded) {
+    @Override
+    public void setRounded(boolean rounded) {
         this.rounded = rounded;
         updateBootstrapState();
     }
 
-    @Override public boolean isRounded() {
+    @Override
+    public boolean isRounded() {
         return rounded;
     }
 
-    @Override public float getBootstrapSize() {
+    @Override
+    public float getBootstrapSize() {
         return bootstrapSize;
     }
 
-    @Override public void setBootstrapSize(float bootstrapSize) {
+    @Override
+    public void setBootstrapSize(float bootstrapSize) {
         this.bootstrapSize = bootstrapSize;
         requestLayout();
         updateBootstrapState();
     }
 
-    @Override public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
+    @Override
+    public void setBootstrapSize(DefaultBootstrapSize bootstrapSize) {
         setBootstrapSize(bootstrapSize.scaleFactor());
     }
 
-    public int getMaxProgress(){
+    public int getMaxProgress() {
         return maxProgress;
     }
 
-    public void setMaxProgress(int newMaxProgress){
+    public void setMaxProgress(int newMaxProgress) {
         if (getProgress() <= newMaxProgress) {
             maxProgress = newMaxProgress;
-        }else{
+        }
+        else {
             throw new IllegalArgumentException(
                     String.format("MaxProgress cant be smaller than the current progress %d<%d", getProgress(), maxProgress));
         }
+        invalidate();
+        BootstrapProgressBarGroup parent = (BootstrapProgressBarGroup) getParent();
+//        if (parent != null) {
+//            if (parent instanceof BootstrapProgressBarGroup) {
+//                BootstrapProgressBarGroup parentGroup = (BootstrapProgressBarGroup) parent;
+//                parentGroup.onProgressChanged(this);
+//            } TODO: is this nessasery? it curerntly causes an infinate loop
+//        }
     }
-
 }

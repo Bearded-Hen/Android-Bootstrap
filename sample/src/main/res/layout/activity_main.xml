@@ -38,6 +38,12 @@
             />
 
         <Button
+            android:id="@+id/example_bootstrap_progress_group"
+            style="@style/home_button"
+            android:text="BootstrapProgressBarGroup"
+            />
+
+        <Button
             android:id="@+id/example_bootstrap_label"
             style="@style/home_button"
             android:text="BootstrapLabel"

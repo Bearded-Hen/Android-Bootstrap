@@ -68,6 +68,11 @@
             android:name=".BootstrapAlertExample"
             android:label="BootstrapAlertExample"
             />
+
+        <activity
+            android:name=".BootstrapProgressBarGroupExample"
+            android:label="BootstrapProgressBarGroupExample"
+            />
     </application>
 
 </manifest>

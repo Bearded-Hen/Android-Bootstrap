@@ -93,8 +93,14 @@
         <attr name="striped" format="boolean"/>
         <attr name="animated" format="boolean"/>
         <attr name="bootstrapProgress" format="integer"/>
+        <attr name="bootstrapMaxProgress" format="integer"/>
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
+        <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapProgressBarGroup">
+        <attr name="bootstrapMaxProgress"/>
         <attr name="bootstrapSize"/>
     </declare-styleable>
 
