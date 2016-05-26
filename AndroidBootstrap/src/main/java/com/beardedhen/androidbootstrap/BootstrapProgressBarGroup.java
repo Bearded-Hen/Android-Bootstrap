@@ -175,4 +175,13 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
         checkCumulativeSmallerThanMax(maxProgress, cumulativeProgress);
         this.maxProgress = maxProgress;
     }
+
+    public void setRounded(boolean rounded){
+        this.rounded = rounded;
+        updateBootstrapGroup();
+    }
+
+    public boolean getRounded(){
+        return rounded;
+    }
 }
