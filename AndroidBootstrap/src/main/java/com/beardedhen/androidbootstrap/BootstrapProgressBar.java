@@ -18,6 +18,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewParent;
@@ -54,6 +56,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private Paint progressPaint;
     private Paint stripePaint;
     private Paint bgPaint;
+    private Paint textPaint;
 
     private int userProgress;
     private int drawnProgress;
@@ -75,6 +78,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private Bitmap stripeTile;
 
     private float bootstrapSize;
+    private boolean showPercentage;
 
     public BootstrapProgressBar(Context context) {
         super(context);
@@ -104,6 +108,12 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         stripePaint.setStyle(Paint.Style.FILL);
         stripePaint.setAntiAlias(true);
 
+        textPaint = new Paint();
+        textPaint.setStyle(Paint.Style.FILL);
+        textPaint.setAntiAlias(true);
+        textPaint.setColor(ColorUtils.resolveColor(android.R.color.black, getContext()));
+        textPaint.setTextSize(DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_progress_bar_default_font_size));
+
         bgPaint = new Paint();
         bgPaint.setStyle(Paint.Style.FILL);
         bgPaint.setColor(ColorUtils.resolveColor(R.color.bootstrap_gray_light, getContext()));
@@ -115,6 +125,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             this.animated = a.getBoolean(R.styleable.BootstrapProgressBar_animated, false);
             this.rounded = a.getBoolean(R.styleable.BootstrapProgressBar_roundedCorners, false);
             this.striped = a.getBoolean(R.styleable.BootstrapProgressBar_striped, false);
+            this.showPercentage = a.getBoolean(R.styleable.BootstrapProgressBar_bootstrapshowPercentage, false);
             this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_bootstrapProgress, 0);
             this.maxProgress = a.getInt(R.styleable.BootstrapProgressBar_bootstrapMaxProgress, 100);
 
@@ -128,6 +139,8 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             a.recycle();
         }
 
+        textPaint.setColor(bootstrapBrand.defaultTextColor(getContext()));
+        textPaint.setTextSize((DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size)) * this.bootstrapSize );
         updateBootstrapState();
         setProgress(this.userProgress);
         setMaxProgress(this.maxProgress);
@@ -334,12 +347,19 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
         progressCanvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
 
-        //progressCanvas.drawText("100%", ); TODO:
-
-
         float corners = rounded ? h / 2 : 0;
         Bitmap round = createRoundedBitmap(progressBitmap, corners);
         canvas.drawBitmap(round, 0, 0, tilePaint);
+
+        if(showPercentage) {
+            String percent = getProgress() + "%";
+            int xPos = (lineEnd / 2);
+            xPos = xPos - (int) (textPaint.measureText(percent) / 2);
+            int yPos = (int) ((canvas.getHeight() / 2) - ((textPaint.descent() + textPaint.ascent()) / 2));
+            //((textPaint.descent() + textPaint.ascent()) / 2) is the distance from the baseline to the center.
+
+            canvas.drawText(percent, xPos, yPos, textPaint);
+        }
     }
 
     /**
@@ -484,6 +504,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     @Override
     public void setBootstrapBrand(@NonNull BootstrapBrand bootstrapBrand) {
         this.bootstrapBrand = bootstrapBrand;
+        textPaint.setColor(bootstrapBrand.defaultTextColor(getContext()));
         updateBootstrapState();
     }
 
@@ -512,6 +533,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     @Override
     public void setBootstrapSize(float bootstrapSize) {
         this.bootstrapSize = bootstrapSize;
+        textPaint.setTextSize((DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size)) * this.bootstrapSize );
         requestLayout();
         updateBootstrapState();
     }
@@ -531,7 +553,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         }
         else {
             throw new IllegalArgumentException(
-                    String.format("MaxProgress cant be smaller than the current progress %d<%d", getProgress(), maxProgress));
+                    String.format("MaxProgress cant be smaller than the current progress %d<%d", getProgress(), newMaxProgress));
         }
         invalidate();
         BootstrapProgressBarGroup parent = (BootstrapProgressBarGroup) getParent();

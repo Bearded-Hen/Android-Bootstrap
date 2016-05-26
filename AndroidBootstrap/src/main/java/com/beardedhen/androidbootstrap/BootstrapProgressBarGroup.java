@@ -124,7 +124,16 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
         for (int i = 0; i < numChildren; i++) {
             total += getChildProgress(i);
         }
+        checkCumulativeSmallerThanMax(maxProgress, total);
         return total;
+    }
+
+    private void checkCumulativeSmallerThanMax(int max, int cumulative){
+        if (max < cumulative){
+            throw new IllegalStateException(String.format("Max Progress Cant be smaller than cumulative progress. Max = %d, cumlative = %d", max, cumulative));
+
+        }
+
     }
 
     private int getChildProgress(int i){
@@ -152,6 +161,7 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
     }
 
     public void setMaxProgress(int maxProgress){
+        checkCumulativeSmallerThanMax(maxProgress, cumulativeProgress);
         this.maxProgress = maxProgress;
     }
 }

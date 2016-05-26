@@ -103,6 +103,7 @@
             style="@style/progress_example"
             app:bootstrapBrand="success"
             app:bootstrapProgress="85"
+            app:bootstrapshowPercentage="true"
             app:bootstrapSize="md"
             />
     </LinearLayout>

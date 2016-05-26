@@ -102,5 +102,4 @@ public enum DefaultBootstrapBrand implements BootstrapBrand {
         return color;
     }
 
-
 }

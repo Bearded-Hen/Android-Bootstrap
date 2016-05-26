@@ -94,6 +94,7 @@
         <attr name="animated" format="boolean"/>
         <attr name="bootstrapProgress" format="integer"/>
         <attr name="bootstrapMaxProgress" format="integer"/>
+        <attr name="bootstrapshowPercentage" format="boolean"/>
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>

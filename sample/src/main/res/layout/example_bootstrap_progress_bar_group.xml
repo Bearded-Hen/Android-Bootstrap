@@ -8,7 +8,7 @@
     <com.beardedhen.androidbootstrap.BootstrapProgressBarGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:bootstrapSize="md"
+        app:bootstrapSize="lg"
         app:bootstrapMaxProgress="60">
 
         <com.beardedhen.androidbootstrap.BootstrapProgressBar
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             app:bootstrapSize="md"
-            app:bootstrapMaxProgress="60">
+            app:bootstrapMaxProgress="100">
 
             <com.beardedhen.androidbootstrap.BootstrapProgressBar
                 android:layout_width="0dp"

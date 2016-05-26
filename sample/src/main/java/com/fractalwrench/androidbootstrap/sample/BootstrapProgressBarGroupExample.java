@@ -24,8 +24,10 @@ public class BootstrapProgressBarGroupExample extends BaseActivity {
         BootstrapProgressBar bar = new BootstrapProgressBar(this);
         bar.setProgress(10);
         bar.setBootstrapBrand(DefaultBootstrapBrand.WARNING);
-        if(group.getCumulativeProgress() + 10 < 100) {
+        if(group.getCumulativeProgress() + 10 <= 100) {
             group.addView(bar);
+        }else{
+            group.removeViews(2, group.getChildCount() - 3);
         }
     }
 }
