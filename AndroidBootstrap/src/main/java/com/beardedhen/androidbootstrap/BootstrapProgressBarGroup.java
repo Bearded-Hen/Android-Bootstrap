@@ -3,7 +3,6 @@ package com.beardedhen.androidbootstrap;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,9 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
     private final BootstrapProgressBar emptyProgressBar = new BootstrapProgressBar(getContext());
     private int sizeOrdinal;
 
-    boolean isEmptyBeingAdded = false;
+
+    private boolean isEmptyBeingAdded = false;
+    private boolean rounded;
 
     public BootstrapProgressBarGroup(Context context) {
         super(context);
@@ -39,6 +40,7 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
         try {
             this.maxProgress = a.getInt(R.styleable.BootstrapProgressBarGroup_bootstrapMaxProgress, 100);
             this.sizeOrdinal = a.getInt(R.styleable.BootstrapProgressBarGroup_bootstrapSize, 2);
+            this.rounded = a.getBoolean(R.styleable.BootstrapProgressBarGroup_roundedCorners, false);
         } finally {
             a.recycle();
         }
@@ -98,7 +100,16 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
             retrieveChild(i).setMaxProgress(retrieveChild(i).getProgress());
             retrieveChild(i).setBootstrapSize(sizeOrdinal);
 
+
+            retrieveChild(i).setRounded(rounded);
+            //tells only the first child to draw the left edge as rounded, and only the last to draw right edge as rounded
+
+            retrieveChild(i).setCornerRounding(false, false);
         }
+
+        retrieveChild(0).setCornerRounding(true, false);
+
+        retrieveChild(numChildren - 1).setCornerRounding(false, true);
 
         //update empty progressbar attributes
 

@@ -103,6 +103,7 @@
     <declare-styleable name="BootstrapProgressBarGroup">
         <attr name="bootstrapMaxProgress"/>
         <attr name="bootstrapSize"/>
+        <attr name="roundedCorners"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapCircleThumbnail">

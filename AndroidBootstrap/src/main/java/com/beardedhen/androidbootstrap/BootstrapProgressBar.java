@@ -18,8 +18,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewParent;
@@ -66,6 +64,10 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private boolean striped;
     private boolean animated;
     private boolean rounded;
+
+    //used for progressbarGroup so that only the currect corners will be rounded
+    private boolean canRoundLeft = true;
+    private boolean canRoundRight = true;
 
     private ValueAnimator progressAnimator;
     private Paint tilePaint;
@@ -319,7 +321,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         }
         progressCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
 
-        float ratio = (float) (drawnProgress / (float) maxProgress);
+        float ratio = (drawnProgress / (float) maxProgress);
         int lineEnd = (int) (w * ratio);
 
         float offset = 0;
@@ -348,7 +350,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         progressCanvas.drawRect(lineEnd, 0, w, h, bgPaint); // draw bg
 
         float corners = rounded ? h / 2 : 0;
-        Bitmap round = createRoundedBitmap(progressBitmap, corners);
+        Bitmap round = createRoundedBitmap(progressBitmap, corners, canRoundRight, canRoundLeft);
         canvas.drawBitmap(round, 0, 0, tilePaint);
 
         if(showPercentage) {
@@ -403,22 +405,38 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
      *
      * @param bitmap       the original bitmap
      * @param cornerRadius the radius of the corners
+     * @param roundRight if you should round the corners on the right, note that if set to true and cornerRadius == 0 it will create a square
+     * @param roundLeft if you should round the corners on the right, note that if set to true and cornerRadius == 0 it will create a square
      * @return a rounded bitmap
      */
-    private static Bitmap createRoundedBitmap(Bitmap bitmap, float cornerRadius) {
+    private static Bitmap createRoundedBitmap(Bitmap bitmap, float cornerRadius, boolean roundRight, boolean  roundLeft) {
         Bitmap roundedBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), ARGB_8888);
         Canvas canvas = new Canvas(roundedBitmap);
 
         final Paint paint = new Paint();
         final Rect frame = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
 
+//        final Rect frameLeft = new Rect(0, 0, bitmap.getWidth() /2, bitmap.getHeight());
+//        final Rect frameRight = new Rect(bitmap.getWidth() /2, bitmap.getHeight(), bitmap.getWidth(), bitmap.getHeight());
+
+        final Rect leftRect = new Rect(0, 0, bitmap.getWidth() / 2, bitmap.getHeight());
+        final Rect rightRect = new Rect(bitmap.getWidth() / 2, 0, bitmap.getWidth(), bitmap.getHeight());
+
         // prepare canvas for transfer
         paint.setAntiAlias(true);
         paint.setColor(0xFFFFFFFF);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawARGB(0, 0, 0, 0);
+
         canvas.drawRoundRect(new RectF(frame), cornerRadius, cornerRadius, paint);
 
+        if (!roundLeft){
+            canvas.drawRect(leftRect, paint);
+        }
+
+        if (!roundRight){
+            canvas.drawRect(rightRect, paint);
+        }
         // draw bitmap
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, frame, frame, paint);
@@ -563,5 +581,18 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 //                parentGroup.onProgressChanged(this);
 //            } TODO: is this nessasery? it curerntly causes an infinate loop
 //        }
+    }
+
+    public void setCornerRounding(boolean left, boolean right){
+        canRoundLeft = left;
+        canRoundRight = right;
+    }
+
+    public boolean getCornerRoundingLeft(){
+        return canRoundLeft;
+    }
+
+    public boolean getCornerRoundingRight(){
+        return canRoundRight;
     }
 }
