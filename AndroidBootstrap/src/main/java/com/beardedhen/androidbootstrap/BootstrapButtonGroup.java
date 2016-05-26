@@ -8,8 +8,6 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
@@ -39,6 +37,7 @@ import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.T
  * to set the properties of all children with one method call to this view. Options include
  * BootstrapBrand colors, roundable corners, 'outlineable' mode and different selection modes
  * e.g. Checkbox/Radio group.
+ * If button mode is set to radio only one button is a button group may be selected at a time.
  */
 public class BootstrapButtonGroup extends BootstrapGroup implements BootstrapSizeView,
         OutlineableView, RoundableView, BootstrapBrandView, ButtonModeView {

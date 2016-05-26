@@ -5,6 +5,14 @@ import com.beardedhen.androidbootstrap.font.IconSet;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Maps Googles Meterial Design Icon Codes to unicode characters, allowing its use in AwesomeTextView.
+ * See the <a href="https://design.google.com/icons//">link</a> for icons
+ * . <b>Please note that icon codes use underscores rather than hyphens in this
+ * library.</b> All icons are prefixed with md_ EG: md_build.
+ *
+ * Most of this class is auto genarated by the project <a href="">here</a>.
+ */
 public class MaterialIcons implements IconSet {
 
 

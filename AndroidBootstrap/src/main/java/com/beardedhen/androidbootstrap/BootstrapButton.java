@@ -38,6 +38,9 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                                                                 BootstrapBadgeView {
 
 
+    /**
+     * instances of this can be used with .setOnCheckedChangedLisener to notify you when the state of a radio, togle or checkbox button has changed.
+     */
     public interface OnCheckedChangedListener{
         public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked);
     }

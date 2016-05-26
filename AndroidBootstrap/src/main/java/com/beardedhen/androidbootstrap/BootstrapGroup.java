@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+/**
+ * This is a base class that provies methods to get updates when a view is removed or added or rotated and contains abstract methods for the set up of the class.
+ *  @see BootstrapProgressBarGroup
+ *  @see BootstrapButtonGroup
+ */
 abstract class BootstrapGroup extends LinearLayout {
 
     public BootstrapGroup(Context context) {

@@ -8,6 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+/**
+ * BootstrapProgressBarGroups are a LinearLayout which exclusively holds BootstrapProgressBars in a horizontal orientation.
+ * This can be used to create the effect of stacked progress bars see <a href="http://getbootstrap.com/components/#progress-stacked">here</a>
+ *
+ * Each child will have there weight and max progress set to there progress. An empty progressbar emptyProgressBar will then be added to the end of layout if the bar is not full.
+ */
 public class BootstrapProgressBarGroup extends BootstrapGroup {
 
     private int cumulativeProgress;
@@ -63,6 +69,9 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
         updateBootstrapGroup();
     }
 
+    /**
+     * This looks for instances of emptyProgressBar and removes them if they are not at the end and then adds one at the end if its needed.
+     */
     private void addEmptyProgressBar(){
         int whereIsEmpty = -1;
         for (int i = 0; i < getChildCount(); i++) {
@@ -73,6 +82,7 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
 
         if (whereIsEmpty != getChildCount() - 1) {
             if (whereIsEmpty != -1) {
+                //the flowing true/false is to stop empty progressbar being added more than once as removeView and addView indirectly call this method
                 isEmptyBeingAdded = true;
                 removeView(emptyProgressBar);
                 isEmptyBeingAdded = false;
@@ -100,19 +110,14 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
             retrieveChild(i).setMaxProgress(retrieveChild(i).getProgress());
             retrieveChild(i).setBootstrapSize(sizeOrdinal);
 
-
             retrieveChild(i).setRounded(rounded);
-            //tells only the first child to draw the left edge as rounded, and only the last to draw right edge as rounded
-
             retrieveChild(i).setCornerRounding(false, false);
         }
-
+        //this means that rounded corners will display correctly by telling only the first child to draw the left edge as rounded and only the last to draw right edge as rounded
         retrieveChild(0).setCornerRounding(true, false);
-
         retrieveChild(numChildren - 1).setCornerRounding(false, true);
 
         //update empty progressbar attributes
-
         LayoutParams layoutParams = getDefultlayoutParams();
         layoutParams.weight = (float) maxProgress - cumulativeProgress;
         emptyProgressBar.setLayoutParams(layoutParams);
@@ -129,6 +134,10 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
         return layoutParams;
     }
 
+    /**
+     * This get the total progress of all the children
+     * @return the CumulativeProgress i.e. the total progress of all children
+     */
     public int getCumulativeProgress(){
         int numChildren = getChildCount();
         int total = 0;
@@ -162,6 +171,10 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
         }
     }
 
+    /**
+     * this should be called by all children to notify the BootstrapProgressBarGroup that there progress has changed
+     * @param bootstrapProgressBar the child View
+     */
     public void onProgressChanged(BootstrapProgressBar bootstrapProgressBar){
         int progress = bootstrapProgressBar.getProgress();
         updateBootstrapGroup();
@@ -176,6 +189,10 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
         this.maxProgress = maxProgress;
     }
 
+    /**
+     *
+     * @param rounded if it should display rounded corners. true will round the corners, false wont
+     */
     public void setRounded(boolean rounded){
         this.rounded = rounded;
         updateBootstrapGroup();
