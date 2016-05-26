@@ -20,7 +20,6 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
@@ -119,7 +118,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
             this.userProgress = a.getInt(R.styleable.BootstrapProgressBar_bootstrapProgress, 0);
             this.maxProgress = a.getInt(R.styleable.BootstrapProgressBar_bootstrapMaxProgress, 100);
 
-            int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
+            int typeOrdinal = a.getInt(R.styleable.BootstrapProgressBar_bootstrapBrand, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapProgressBar_bootstrapSize, -1);
 
             this.bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
