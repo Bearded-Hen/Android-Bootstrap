@@ -19,6 +19,12 @@ public class BootstrapProgressBarGroupExample extends BaseActivity {
     @Bind(R.id.example_progress_bar_group_round_group)
     BootstrapProgressBarGroup groupRound;
 
+    @Bind(R.id.example_progress_bar_group_progress_1)
+    BootstrapProgressBar bootstrapProgressBar1;
+
+    @Bind(R.id.example_progress_bar_group_progress_2)
+    BootstrapProgressBar bootstrapProgressBar2;
+
     boolean rounded = false;
 
     @Override
@@ -48,5 +54,21 @@ public class BootstrapProgressBarGroupExample extends BaseActivity {
     void onRoundClick(){
         rounded = !rounded;
         groupRound.setRounded(rounded);
+    }
+
+    @OnClick(R.id.example_progress_bar_group_progress)
+    void onClickProgressChange(){
+        //TODO randomly select one of 2 bars, set progress between 10-40
+        Random rand = new Random();
+        int progress = rand.nextInt(30) + 10;
+        switch(rand.nextInt(2)){
+            case 0:
+                bootstrapProgressBar1.setProgress(progress);
+                break;
+            case 1:
+                bootstrapProgressBar2.setProgress(progress);
+                break;
+        }
+
     }
 }

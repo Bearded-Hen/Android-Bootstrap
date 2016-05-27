@@ -8,22 +8,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.beardedhen.androidbootstrap.api.view.ProgressView;
+import com.beardedhen.androidbootstrap.api.view.RoundableView;
+
 /**
  * BootstrapProgressBarGroups are a LinearLayout which exclusively holds BootstrapProgressBars in a horizontal orientation.
  * This can be used to create the effect of stacked progress bars see <a href="http://getbootstrap.com/components/#progress-stacked">here</a>
  *
  * Each child will have there weight and max progress set to there progress. An empty progressbar emptyProgressBar will then be added to the end of layout if the bar is not full.
  */
-public class BootstrapProgressBarGroup extends BootstrapGroup {
+public class BootstrapProgressBarGroup extends BootstrapGroup implements ProgressView, RoundableView {
 
     private int cumulativeProgress;
     private int maxProgress;
     private final BootstrapProgressBar emptyProgressBar = new BootstrapProgressBar(getContext());
     private int sizeOrdinal;
 
+    private boolean striped = false;
 
     private boolean isEmptyBeingAdded = false;
     private boolean rounded;
+    private boolean animated;
 
     public BootstrapProgressBarGroup(Context context) {
         super(context);
@@ -149,8 +154,17 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
     }
 
     private void checkCumulativeSmallerThanMax(int max, int cumulative){
+        StringBuilder builder = new StringBuilder();
+        builder.append("Max Progress Cant be smaller than cumulative progress. Max = ");
+        builder.append(max);
+        builder.append(", cumlative = ");
+        builder.append(cumulative);
+        builder.append(". \n");
+        for (int i = 0; i < getChildCount(); i++) {
+            builder.append("Child ").append(i).append(" has progress ").append(getChildProgress(i));
+        }
         if (max < cumulative){
-            throw new IllegalStateException(String.format("Max Progress Cant be smaller than cumulative progress. Max = %d, cumlative = %d", max, cumulative));
+            throw new IllegalStateException(builder.toString());
 
         }
 
@@ -176,14 +190,21 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
      * @param bootstrapProgressBar the child View
      */
     public void onProgressChanged(BootstrapProgressBar bootstrapProgressBar){
-        int progress = bootstrapProgressBar.getProgress();
         updateBootstrapGroup();
     }
 
+    /**
+     *
+     * @return int maxProgress. Returns the maxProgress value
+     */
     public int getMaxProgress(){
         return maxProgress;
     }
 
+    /**
+     * Used for settings the maxprogress. Also check if Cumulative progress is smaller than the max before asigning, see {@link #checkCumulativeSmallerThanMax}.
+     * @param maxProgress the maxProgress value
+     */
     public void setMaxProgress(int maxProgress){
         checkCumulativeSmallerThanMax(maxProgress, cumulativeProgress);
         this.maxProgress = maxProgress;
@@ -193,12 +214,71 @@ public class BootstrapProgressBarGroup extends BootstrapGroup {
      *
      * @param rounded if it should display rounded corners. true will round the corners, false wont
      */
+    @Override
     public void setRounded(boolean rounded){
         this.rounded = rounded;
         updateBootstrapGroup();
     }
 
-    public boolean getRounded(){
+    /**
+     *
+     * @return a boolean weather the progressbarGroup will have rounded edges
+     */
+    @Override
+    public boolean isRounded(){
         return rounded;
+    }
+
+    @Override
+    public void setProgress(int progress) {
+        throw new IllegalStateException("This method not applicable for type BootstrapProgressBarGroup");
+    }
+
+    @Override
+    public int getProgress() {
+        throw new IllegalStateException("This method not applicable for type BootstrapProgressBarGroup");
+    }
+
+    /**
+     * This will set all children to striped.
+     * @param striped true for a striped pattern, false for a plain pattern
+     */
+    @Override
+    public void setStriped(boolean striped) {
+        this.striped = striped;
+        for (int i = 0; i < getChildCount(); i++) {
+            retrieveChild(i).setStriped(striped);
+        }
+    }
+
+    /**
+     * This will only be true if setStriped(true) was called
+     * @return striped true for a striped pattern, false for a plain pattern
+     */
+    @Override
+    public boolean isStriped() {
+        return striped;
+    }
+
+
+    /**
+     *
+     * @param animated whether the view should animate its updates or not.
+     */
+    @Override
+    public void setAnimated(boolean animated) {
+        this.animated = animated;
+        for (int i = 0; i < getChildCount(); i++) {
+            retrieveChild(i).setAnimated(animated);
+        }
+    }
+
+    /**
+     * This will only be true if setAnimated(true) was called
+     * @return animated if all children have been set to be animated (through the Group)
+     */
+    @Override
+    public boolean isAnimated() {
+        return animated;
     }
 }

@@ -42,6 +42,11 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
      * instances of this can be used with .setOnCheckedChangedLisener to notify you when the state of a radio, togle or checkbox button has changed.
      */
     public interface OnCheckedChangedListener{
+        /**
+         * This method will get called when the state of a radio button, checkbox or toggle button changes.
+         * @param bootstrapButton the view thats state is changing
+         * @param isChecked weather the button is checked or not.
+         */
         public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked);
     }
 
@@ -364,7 +369,22 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
         updateBootstrapState();
     }
 
+    /**
+     * NOTE this method only works if the buttons mode is not set to regular.
+     * for non Toggle, checkbox and radio see {@link BootstrapButton#setOnClickListener}
+     * @param listener OnCheckedChangedListener that will be fired when the schecked state ofa button is changed.
+     */
     public void setOnCheckedChangedListener(OnCheckedChangedListener listener){
         onCheckedChangedListener = listener;
+    }
+
+    /**
+     * NOTE this method only works if the buttons mode is set to regular.
+     * for Toggle, checkbox and radio see {@link BootstrapButton#setOnCheckedChangedListener}
+     * @param l OnClickListener that will be fired on click.
+     */
+    @Override
+    public void setOnClickListener(OnClickListener l) {
+        super.setOnClickListener(l);
     }
 }

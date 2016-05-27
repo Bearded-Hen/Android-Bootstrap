@@ -73,7 +73,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 
     private ValueAnimator progressAnimator;
     private Paint tilePaint;
-    private float baselineHeight;
+    private final float baselineHeight = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_progress_bar_height);
 
     private BootstrapBrand bootstrapBrand;
 
@@ -102,7 +102,6 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     private void initialise(AttributeSet attrs) {
         ValueAnimator.setFrameDelay(15); // attempt 60fps
         tilePaint = new Paint();
-        baselineHeight = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_progress_bar_height);
 
         progressPaint = new Paint();
         progressPaint.setStyle(Paint.Style.FILL);
@@ -468,9 +467,14 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     @SuppressLint("DefaultLocale")
     @Override
     public void setProgress(int progress) {
-        if (progress < 0 || progress > maxProgress) {
-            throw new IllegalArgumentException(
-                    String.format("Invalid value '%d' - progress must be an integer in the range 0-%d", progress, maxProgress));
+        if (getParent() instanceof BootstrapProgressBarGroup){
+            this.userProgress = 0;
+            setMaxProgress(progress);
+        }else {
+            if (progress < 0 || progress > maxProgress) {
+                throw new IllegalArgumentException(
+                        String.format("Invalid value '%d' - progress must be an integer in the range 0-%d", progress, maxProgress));
+            }
         }
 
         this.userProgress = progress;
@@ -553,7 +557,7 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
     @Override
     public void setBootstrapSize(float bootstrapSize) {
         this.bootstrapSize = bootstrapSize;
-        textPaint.setTextSize((DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_button_default_font_size)) * this.bootstrapSize );
+        textPaint.setTextSize((DimenUtils.pixelsFromSpResource(getContext(), R.dimen.bootstrap_progress_bar_default_font_size)) * this.bootstrapSize );
         requestLayout();
         updateBootstrapState();
     }
@@ -563,10 +567,18 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         setBootstrapSize(bootstrapSize.scaleFactor());
     }
 
+    /**
+     *
+     * @return int, the max progress.
+     */
     public int getMaxProgress() {
         return maxProgress;
     }
 
+    /**
+     * Used for settings the maxprogress. Also check if currentProgress is smaller than newMaxProgress.
+     * @param newMaxProgress the maxProgress value
+     */
     public void setMaxProgress(int newMaxProgress) {
         if (getProgress() <= newMaxProgress) {
             maxProgress = newMaxProgress;
@@ -585,16 +597,16 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
 //        }
     }
 
-    public void setCornerRounding(boolean left, boolean right){
+    void setCornerRounding(boolean left, boolean right){
         canRoundLeft = left;
         canRoundRight = right;
     }
 
-    public boolean getCornerRoundingLeft(){
+    boolean getCornerRoundingLeft(){
         return canRoundLeft;
     }
 
-    public boolean getCornerRoundingRight(){
+    boolean getCornerRoundingRight(){
         return canRoundRight;
     }
 }
