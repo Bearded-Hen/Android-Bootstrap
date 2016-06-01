@@ -58,7 +58,6 @@ public class BootstrapProgressBarGroupExample extends BaseActivity {
 
     @OnClick(R.id.example_progress_bar_group_progress)
     void onClickProgressChange(){
-        //TODO randomly select one of 2 bars, set progress between 10-40
         Random rand = new Random();
         int progress = rand.nextInt(30) + 10;
         switch(rand.nextInt(2)){

@@ -589,12 +589,6 @@ public class BootstrapProgressBar extends View implements ProgressView, Bootstra
         }
         invalidate();
         BootstrapProgressBarGroup parent = (BootstrapProgressBarGroup) getParent();
-//        if (parent != null) {
-//            if (parent instanceof BootstrapProgressBarGroup) {
-//                BootstrapProgressBarGroup parentGroup = (BootstrapProgressBarGroup) parent;
-//                parentGroup.onProgressChanged(this);
-//            } TODO: is this nessasery? it curerntly causes an infinate loop
-//        }
     }
 
     void setCornerRounding(boolean left, boolean right){
