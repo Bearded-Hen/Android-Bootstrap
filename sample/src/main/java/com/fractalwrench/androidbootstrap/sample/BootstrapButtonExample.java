@@ -1,6 +1,7 @@
 package com.fractalwrench.androidbootstrap.sample;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;

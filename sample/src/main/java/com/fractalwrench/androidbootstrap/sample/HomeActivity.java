@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.beardedhen.androidbootstrap.BootstrapProgressBarGroup;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -29,6 +31,10 @@ public class HomeActivity extends AppCompatActivity {
 
     @OnClick(R.id.example_bootstrap_progress) void onBootstrapProgressExampleClicked() {
         startActivity(new Intent(this, BootstrapProgressBarExample.class));
+    }
+
+    @OnClick(R.id.example_bootstrap_progress_group) void onBootstrapProgressGroupExampleClicked() {
+        startActivity(new Intent(this, BootstrapProgressBarGroupExample.class));
     }
 
     @OnClick(R.id.example_bootstrap_btn_group) void onBootstrapButtonGroupExampleClicked() {

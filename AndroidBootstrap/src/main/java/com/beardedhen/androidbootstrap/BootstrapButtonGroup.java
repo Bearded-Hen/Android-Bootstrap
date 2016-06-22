@@ -8,8 +8,6 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition;
@@ -39,8 +37,9 @@ import static com.beardedhen.androidbootstrap.api.attributes.ViewGroupPosition.T
  * to set the properties of all children with one method call to this view. Options include
  * BootstrapBrand colors, roundable corners, 'outlineable' mode and different selection modes
  * e.g. Checkbox/Radio group.
+ * If button mode is set to radio only one button is a button group may be selected at a time.
  */
-public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeView,
+public class BootstrapButtonGroup extends BootstrapGroup implements BootstrapSizeView,
         OutlineableView, RoundableView, BootstrapBrandView, ButtonModeView {
 
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButtonGroup";
@@ -70,7 +69,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         initialise(attrs);
     }
 
-    private void initialise(AttributeSet attrs) {
+    protected void initialise(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BootstrapButtonGroup);
 
         try {
@@ -89,7 +88,7 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
         finally {
             a.recycle();
         }
-        updateBootstrapPositions();
+        updateBootstrapGroup();
     }
 
     @Override public Parcelable onSaveInstanceState() {
@@ -125,10 +124,20 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
             state = bundle.getParcelable(TAG);
         }
         super.onRestoreInstanceState(state);
-        updateBootstrapPositions();
+        updateBootstrapGroup();
     }
 
-    private void updateBootstrapPositions() {
+    @Override
+    protected void onBootstrapViewAdded() {
+        updateBootstrapGroup();
+    }
+
+    @Override
+    protected void onBootstrapViewRemoved() {
+        updateBootstrapGroup();
+    }
+
+    protected void updateBootstrapGroup() {
         int childCount = getChildCount();
         int orientation = getOrientation();
 
@@ -282,102 +291,6 @@ public class BootstrapButtonGroup extends LinearLayout implements BootstrapSizeV
 
     @Override public boolean isRounded() {
         return rounded;
-    }
-
-    /*
-     * Overrides
-     */
-
-
-    @Override public void setOrientation(int orientation) {
-        super.setOrientation(orientation);
-        updateBootstrapPositions();
-    }
-
-    @Override public void addView(@NonNull View child) {
-        super.addView(child);
-        updateBootstrapPositions();
-    }
-
-    @Override public void addView(@NonNull View child, int index) {
-        super.addView(child, index);
-        updateBootstrapPositions();
-    }
-
-    @Override public void addView(@NonNull View child, int index, ViewGroup.LayoutParams params) {
-        super.addView(child, index, params);
-        updateBootstrapPositions();
-    }
-
-    @Override public void addView(@NonNull View child, ViewGroup.LayoutParams params) {
-        super.addView(child, params);
-        updateBootstrapPositions();
-    }
-
-    @Override public void addView(@NonNull View child, int width, int height) {
-        super.addView(child, width, height);
-        updateBootstrapPositions();
-    }
-
-    @Override
-    protected boolean addViewInLayout(
-            @NonNull View child, int index, ViewGroup.LayoutParams params) {
-        boolean b = super.addViewInLayout(child, index, params);
-        updateBootstrapPositions();
-        return b;
-    }
-
-    @Override
-    protected boolean addViewInLayout(@NonNull
-                                      View child, int index, ViewGroup.LayoutParams params, boolean preventRequestLayout) {
-        boolean b = super.addViewInLayout(child, index, params, preventRequestLayout);
-        updateBootstrapPositions();
-        return b;
-    }
-
-    @Override public void removeView(@NonNull View view) {
-        super.removeView(view);
-        updateBootstrapPositions();
-    }
-
-    @Override protected void removeDetachedView(@NonNull View child, boolean animate) {
-        super.removeDetachedView(child, animate);
-        updateBootstrapPositions();
-    }
-
-    @Override public void removeAllViews() {
-        super.removeAllViews();
-        updateBootstrapPositions();
-    }
-
-    @Override public void removeAllViewsInLayout() {
-        super.removeAllViewsInLayout();
-        updateBootstrapPositions();
-    }
-
-    @Override public void removeViewAt(int index) {
-        super.removeViewAt(index);
-        updateBootstrapPositions();
-    }
-
-    @Override public void removeViewInLayout(@NonNull View view) {
-        super.removeViewInLayout(view);
-        updateBootstrapPositions();
-    }
-
-    @Override public void removeViews(int start, int count) {
-        super.removeViews(start, count);
-        updateBootstrapPositions();
-    }
-
-    @Override public void removeViewsInLayout(int start, int count) {
-        super.removeViewsInLayout(start, count);
-        updateBootstrapPositions();
-    }
-
-    @Override protected void onFinishInflate() {
-        super.onFinishInflate();
-        updateBootstrapPositions();
     }
 
 }

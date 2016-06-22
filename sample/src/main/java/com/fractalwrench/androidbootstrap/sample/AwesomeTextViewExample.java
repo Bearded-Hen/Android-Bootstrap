@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.beardedhen.androidbootstrap.AwesomeTextView;
 import com.beardedhen.androidbootstrap.BootstrapText;
+import com.beardedhen.androidbootstrap.font.MaterialIcons;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -52,6 +53,7 @@ public class AwesomeTextViewExample extends BaseActivity {
         mixAndMatch.setBootstrapText(new BootstrapText.Builder(this)
                 .addFontAwesomeIcon(FA_ANCHOR)
                 .addTypicon(TY_CODE)
+                .addMaterialIcon(MaterialIcons.MD_PHOTO)
                 .build());
     }
 

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/example_container"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.beardedhen.androidbootstrap.BootstrapProgressBarGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="lg"
+        app:bootstrapMaxProgress="60"
+        app:roundedCorners="true">
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="success"
+            app:bootstrapProgress="20"
+            app:bootstrapSize="md"
+            app:striped="true"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="success"
+            app:bootstrapProgress="20"
+            app:bootstrapSize="md"
+            />
+
+    </com.beardedhen.androidbootstrap.BootstrapProgressBarGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/micro_padding">
+
+        <Button
+            android:id="@+id/example_progress_bar_group_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add something"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBarGroup
+            android:id="@+id/example_progress_bar_group_add_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:bootstrapSize="md"
+            app:bootstrapMaxProgress="100">
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:bootstrapProgress="20"
+                app:bootstrapSize="md"
+                app:striped="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="warning"
+                app:bootstrapProgress="20"
+                app:bootstrapSize="md"
+                />
+
+        </com.beardedhen.androidbootstrap.BootstrapProgressBarGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/micro_padding">
+
+        <Button
+            android:id="@+id/example_progress_bar_group_round"
+
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:text="rounded"
+            android:layout_height="wrap_content"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBarGroup
+            android:id="@+id/example_progress_bar_group_round_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:bootstrapSize="md"
+            app:bootstrapMaxProgress="100">
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:bootstrapProgress="20"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="danger"
+                app:bootstrapProgress="20"
+                />
+
+        </com.beardedhen.androidbootstrap.BootstrapProgressBarGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/micro_padding">
+
+        <Button
+            android:id="@+id/example_progress_bar_group_progress"
+
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:text="change progress"
+            android:layout_height="wrap_content"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBarGroup
+            android:id="@+id/example_progress_bar_group_progress_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:bootstrapSize="md"
+            app:bootstrapMaxProgress="80">
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:id="@+id/example_progress_bar_group_progress_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:bootstrapProgress="20"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:id="@+id/example_progress_bar_group_progress_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="danger"
+                app:bootstrapProgress="20"
+                />
+
+        </com.beardedhen.androidbootstrap.BootstrapProgressBarGroup>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

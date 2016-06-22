@@ -112,6 +112,35 @@ Displays progress in a bar from 0-100, and animates updates to the current progr
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_progress_bar.png" width="450" alt="BootstrapProgressBar">
 
+### BootstrapProgressBarGroup
+Allows BootstrapProgressBars to be group together to have the effect of <a href="http://getbootstrap.com/components/#progress-stacked">stacked progress bar</a>.
+   ```xml
+        <com.beardedhen.androidbootstrap.BootstrapProgressBarGroup
+            android:id="@+id/example_progress_bar_group_round_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:bootstrapSize="md"
+            app:bootstrapMaxProgress="100">
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:bootstrapProgress="20"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="danger"
+                app:bootstrapProgress="20"
+                />
+
+            </com.beardedhen.androidbootstrap.BootstrapProgressBarGroup>
+```
+<img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_progress_bar_group.png" width="450" alt="BootstrapProgressBarGroup">
+
 ###BootstrapLabel
 Displays non-clickable text in a widget similar to the BootstrapButton, sizable using H1-H6 elements.
    ```xml

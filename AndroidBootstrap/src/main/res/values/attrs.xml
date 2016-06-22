@@ -61,6 +61,8 @@
         <attr name="bootstrapBrand"/>
         <attr name="fontAwesomeIcon"/>
         <attr name="typicon"/>
+        <attr name="materialIcon" />
+        <attr name="android:clickable" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapLabel">
@@ -90,10 +92,18 @@
     <declare-styleable name="BootstrapProgressBar">
         <attr name="striped" format="boolean"/>
         <attr name="animated" format="boolean"/>
-        <attr name="progress" format="integer"/>
+        <attr name="bootstrapProgress" format="integer"/>
+        <attr name="bootstrapMaxProgress" format="integer"/>
+        <attr name="bootstrapshowPercentage" format="boolean"/>
         <attr name="roundedCorners"/>
         <attr name="bootstrapBrand"/>
         <attr name="bootstrapSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="BootstrapProgressBarGroup">
+        <attr name="bootstrapMaxProgress"/>
+        <attr name="bootstrapSize"/>
+        <attr name="roundedCorners"/>
     </declare-styleable>
 
     <declare-styleable name="BootstrapCircleThumbnail">

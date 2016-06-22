@@ -1,6 +1,7 @@
 package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewParent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
@@ -35,6 +37,19 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                                                                 OutlineableView, RoundableView, ButtonModeView, BadgeContainerView,
                                                                 BootstrapBadgeView {
 
+
+    /**
+     * instances of this can be used with .setOnCheckedChangedLisener to notify you when the state of a radio, togle or checkbox button has changed.
+     */
+    public interface OnCheckedChangedListener{
+        /**
+         * This method will get called when the state of a radio button, checkbox or toggle button changes.
+         * @param bootstrapButton the view thats state is changing
+         * @param isChecked weather the button is checked or not.
+         */
+        public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked);
+    }
+
     private static final String TAG = "com.beardedhen.androidbootstrap.BootstrapButton";
     private static final String KEY_MODE = "com.beardedhen.androidbootstrap.BootstrapButton.MODE";
     private static final String KEY_INDEX = "com.beardedhen.androidbootstrap.BootstrapButton.KEY_INDEX";
@@ -56,6 +71,8 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     private float baselineCornerRadius;
     private BootstrapBadge bootstrapBadge;
     private String badgeText;
+
+    private OnCheckedChangedListener onCheckedChangedListener;
 
     public BootstrapButton(Context context) {
         super(context);
@@ -83,7 +100,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
             this.badgeText = a.getString(R.styleable.BootstrapButton_badgeText);
 
             int sizeOrdinal = a.getInt(R.styleable.BootstrapButton_bootstrapSize, -1);
-            int modeOrdinal = a.getInt(R.styleable.BootstrapButtonGroup_buttonMode, -1);
+            int modeOrdinal = a.getInt(R.styleable.BootstrapButton_buttonMode, -1);
 
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             buttonMode = ButtonMode.fromAttributeValue(modeOrdinal);
@@ -180,7 +197,6 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     @Override public boolean onTouchEvent(@NonNull MotionEvent event) {
-
         switch (buttonMode) {
             case REGULAR:
                 return super.onTouchEvent(event);
@@ -192,6 +208,14 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
                 return handleRadioEvent(event);
             default:
                 return super.onTouchEvent(event);
+        }
+    }
+
+    @Override
+    public void setSelected(boolean selected) {
+        super.setSelected(selected);
+        if (onCheckedChangedListener != null) {
+            onCheckedChangedListener.OnCheckedChanged(this, selected);
         }
     }
 
@@ -343,5 +367,24 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     @Override public void setBootstrapSize(float bootstrapSize) {
         this.bootstrapSize = bootstrapSize;
         updateBootstrapState();
+    }
+
+    /**
+     * NOTE this method only works if the buttons mode is not set to regular.
+     * for non Toggle, checkbox and radio see {@link BootstrapButton#setOnClickListener}
+     * @param listener OnCheckedChangedListener that will be fired when the schecked state ofa button is changed.
+     */
+    public void setOnCheckedChangedListener(OnCheckedChangedListener listener){
+        onCheckedChangedListener = listener;
+    }
+
+    /**
+     * NOTE this method only works if the buttons mode is set to regular.
+     * for Toggle, checkbox and radio see {@link BootstrapButton#setOnCheckedChangedListener}
+     * @param l OnClickListener that will be fired on click.
+     */
+    @Override
+    public void setOnClickListener(OnClickListener l) {
+        super.setOnClickListener(l);
     }
 }

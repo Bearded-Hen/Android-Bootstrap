@@ -1,6 +1,8 @@
 package com.fractalwrench.androidbootstrap.sample;
 
+import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
@@ -24,6 +26,43 @@ public class BootstrapButtonGroupExample extends BaseActivity {
     @Bind(R.id.bbutton_group_rounded_change) BootstrapButtonGroup roundedChange;
     @Bind(R.id.bbutton_group_brand_change) BootstrapButtonGroup brandChange;
     @Bind(R.id.bbutton_group_child_change) BootstrapButtonGroup childChange;
+
+    @Bind(R.id.bbutton_group_checked_text) TextView checkedText;
+
+    @Bind(R.id.bbutton_group_checked1) BootstrapButton radioButton1;
+    @Bind(R.id.bbutton_group_checked2) BootstrapButton radioButton2;
+    @Bind(R.id.bbutton_group_checked3) BootstrapButton radioButton3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        radioButton1.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener() {
+            @Override
+            public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
+                if (isChecked) {
+                    checkedText.setText("radio, button 1 checked");
+                }
+            }
+        });
+
+        radioButton2.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener() {
+            @Override
+            public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
+                if (isChecked) {
+                    checkedText.setText("radio, button 2 checked");
+                }
+            }
+        });
+
+        radioButton3.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener() {
+            @Override
+            public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
+                if (isChecked) {
+                    checkedText.setText("radio, button 3 checked");
+                }
+            }
+        });
+    }
 
     @OnClick(R.id.bbutton_group_orientation_change_btn) void onOrientationChangeExampleClicked() {
         boolean isHorizontal = orientationChange.getOrientation() == LinearLayout.HORIZONTAL;

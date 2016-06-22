@@ -7,6 +7,7 @@ import android.text.Spanned;
 import com.beardedhen.androidbootstrap.font.AwesomeTypefaceSpan;
 import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.beardedhen.androidbootstrap.font.IconSet;
+import com.beardedhen.androidbootstrap.font.MaterialIcons;
 import com.beardedhen.androidbootstrap.font.Typicon;
 
 import java.io.Serializable;
@@ -78,6 +79,18 @@ public class BootstrapText extends SpannableString implements Serializable {
          */
         public Builder addTypicon(@Typicon.Icon CharSequence iconCode) {
             IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(Typicon.FONT_PATH, editMode);
+            sb.append(iconSet.unicodeForKey(iconCode.toString().replaceAll("\\-", "_")));
+            fontIndicesMap.put(sb.length(), iconSet);
+            return this;
+        }
+
+        /**
+         * Appends a Typicon to the BootstrapText under construction
+         *
+         * @return the updated builder instance
+         */
+        public Builder addMaterialIcon( CharSequence iconCode) {
+            IconSet iconSet = TypefaceProvider.retrieveRegisteredIconSet(MaterialIcons.FONT_PATH, editMode);
             sb.append(iconSet.unicodeForKey(iconCode.toString().replaceAll("\\-", "_")));
             fontIndicesMap.put(sb.length(), iconSet);
             return this;
