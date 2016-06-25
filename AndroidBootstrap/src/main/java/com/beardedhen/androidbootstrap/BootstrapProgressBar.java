@@ -42,7 +42,7 @@ import static android.graphics.Bitmap.Config.ARGB_8888;
  * BootstrapProgressBar displays determinate progress to the user, and is colored with BootstrapBrands.
  * Striped effects and progress update animations are supported out of the box.
  *
- * Its possible to group multiple together in an {@link BootstrapProgressBarGroup} to give the appearance of a <a href="http://getbootstrap.com/components/#progress-stacked">stacked</a> progressbar.
+ * Its possible to group multiple together in an {@link com.beardedhen.androidbootstrap.BootstrapProgressBarGroup BootstrapProgressBarGroup} to give the appearance of a <a href="http://getbootstrap.com/components/#progress-stacked">stacked</a> progressbar.
  */
 public class BootstrapProgressBar extends View implements ProgressView, BootstrapBrandView,
         RoundableView, BootstrapSizeView, Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener {
