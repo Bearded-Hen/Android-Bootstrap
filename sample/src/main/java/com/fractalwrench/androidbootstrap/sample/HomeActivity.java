@@ -1,10 +1,9 @@
 package com.fractalwrench.androidbootstrap.sample;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
-import com.beardedhen.androidbootstrap.BootstrapProgressBarGroup;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -15,6 +14,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.github_btn) void onGithubClicked() {
+        Intent intent = new Intent(Intent.ACTION_VIEW); startActivity(intent);
+        intent.setData(Uri.parse("https://github.com/Bearded-Hen/Android-Bootstrap"));
+        startActivity(intent);
     }
 
     @OnClick(R.id.example_bootstrap_button) void onBootstrapButtonExampleClicked() {

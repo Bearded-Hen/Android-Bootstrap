@@ -58,6 +58,11 @@
     <style name="home_button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="bootstrapBrand">primary</item>
+        <item name="bootstrapSize">lg</item>
+        <item name="showOutline">true</item>
+        <item name="roundedCorners">true</item>
     </style>
 
 </resources>
