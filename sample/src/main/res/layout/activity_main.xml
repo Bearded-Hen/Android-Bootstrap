@@ -18,7 +18,14 @@
             android:id="@+id/github_btn"
             style="@style/home_button"
             app:bootstrapBrand="danger"
+            app:bootstrapSize="xl"
             app:bootstrapText="{fa-github} Fork me on Github {fa-heart}"
+            app:showOutline="false"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -49,42 +56,36 @@
             android:id="@+id/example_bootstrap_progress"
             style="@style/home_button"
             android:text="BootstrapProgressBar"
-            app:bootstrapBrand="success"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_progress_group"
             style="@style/home_button"
             android:text="BootstrapProgressBarGroup"
-            app:bootstrapBrand="success"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_cricle_thumbnail"
             style="@style/home_button"
             android:text="BootstrapCircleThumbnail"
-            app:bootstrapBrand="warning"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_thumbnail"
             style="@style/home_button"
             android:text="BootstrapThumbnail"
-            app:bootstrapBrand="warning"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_edit_text"
             style="@style/home_button"
             android:text="BootstrapEditText"
-            app:bootstrapBrand="info"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_well"
             style="@style/home_button"
             android:text="BootstrapWell"
-            app:bootstrapBrand="regular"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -97,14 +98,12 @@
             android:id="@+id/example_bootstrap_alert"
             style="@style/home_button"
             android:text="BootstrapAlert"
-            app:bootstrapBrand="danger"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/example_bootstrap_badge"
             style="@style/home_button"
             android:text="BootstrapBadge"
-            app:bootstrapBrand="warning"
             />
     </LinearLayout>
 </ScrollView>
