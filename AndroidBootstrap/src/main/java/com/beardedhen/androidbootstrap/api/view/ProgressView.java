@@ -1,7 +1,5 @@
 package com.beardedhen.androidbootstrap.api.view;
 
-import android.support.annotation.IntRange;
-
 /**
  * Views which implement this interface visually display ongoing progress to users
  */
@@ -57,7 +55,8 @@ public interface ProgressView {
 
 
     /**
-     * Used for settings the maxprogress. Also check if Cumulative progress is smaller than the max before asigning, see {@link #checkCumulativeSmallerThanMax}.
+     * Used for settings the maxprogress. Also check if Cumulative progress is smaller than the
+     * max before asigning.
      * @param maxProgress the maxProgress value
      */
     void setMaxProgress(int maxProgress);
