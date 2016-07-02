@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.beardedhen.androidbootstrap.font.IconSet;
+import com.beardedhen.androidbootstrap.font.MaterialIcons;
 import com.beardedhen.androidbootstrap.font.Typicon;
 
 import static com.beardedhen.androidbootstrap.TypefaceProvider.getRegisteredIconSets;
@@ -16,6 +17,7 @@ class IconResolver {
 
     private static final String REGEX_FONT_AWESOME = "(fa_|fa-)[a-z_0-9]+";
     private static final String REGEX_TYPICONS = "(ty_|ty-)[a-z_0-9]+";
+    private static final String REGEX_MATERIAL_ICONS = "(md_)[a-z_0-9]+";
 
     /**
      * Resolves markdown to produce a BootstrapText instance. e.g. "{fa_android}" would be replaced
@@ -74,6 +76,14 @@ class IconResolver {
                                 builder.addIcon(iconCode, retrieveRegisteredIconSet(Typicon.FONT_PATH, false));
                             }
                         }
+                        else if(iconCode.matches(REGEX_MATERIAL_ICONS)){
+                            if (editMode) {
+                                builder.addText("?");
+                            }
+                            else {
+                                builder.addIcon(iconCode, retrieveRegisteredIconSet(MaterialIcons.FONT_PATH, false));
+                            }
+                        }
                         else {
                             if (editMode) {
                                 builder.addText("?");
@@ -104,7 +114,7 @@ class IconResolver {
 
         for (IconSet set : getRegisteredIconSets()) {
 
-            if (set.fontPath().equals(FontAwesome.FONT_PATH) || set.fontPath().equals(Typicon.FONT_PATH)) {
+            if (set.fontPath().equals(FontAwesome.FONT_PATH) || set.fontPath().equals(Typicon.FONT_PATH) || set.fontPath().equals(MaterialIcons.FONT_PATH)) {
                 continue; // already checked previously, ignore
             }
 

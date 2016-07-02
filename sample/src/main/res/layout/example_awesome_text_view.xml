@@ -173,4 +173,14 @@
         app:bootstrapBrand="info"
         />
 
+    <TextView
+        style="@style/description_label"
+        android:text="Meterial Design Icons:"
+        />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        style="@style/wrapping_fa_text"
+        app:bootstrapBrand="info"
+        app:bootstrapText="{md_share} {md_whatshot}"/>
+
 </LinearLayout>
