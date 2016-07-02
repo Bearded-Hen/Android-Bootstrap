@@ -10,8 +10,6 @@ import java.util.Map;
  * See the <a href="https://design.google.com/icons//">link</a> for icons
  * . <b>Please note that icon codes use underscores rather than hyphens in this
  * library.</b> All icons are prefixed with md_ EG: md_build.
- *
- * Most of this class is auto genarated by the project <a href="">here</a>.
  */
 public class MaterialIcons implements IconSet {
 
