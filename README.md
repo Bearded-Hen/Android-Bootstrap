@@ -1,19 +1,18 @@
 Android-Bootstrap
 =================
-Android Bootstrap is a library which provides several custom views styled according to the
+Android Bootstrap is an Android library which provides custom views styled according to the
  [Twitter Bootstrap Specification](http://getbootstrap.com/). This allows you to spend more time
   on development rather than trying to get a consistent theme across your app, especially if you are already familiar with the Bootstrap Framework.
-  
   
 Quick Start
 ===========
  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap)
  
- Add the following dependency to your build.gradle:
+ Add the following dependency to your build.gradle, ensuring you replace 'X.X.X' with the latest version on the button above:
  
  ```java
  dependencies {
-    compile 'com.beardedhen:androidbootstrap:2.1.0'
+    compile 'com.beardedhen:androidbootstrap:{X.X.X}'
  }
  ```
  
@@ -30,6 +29,12 @@ Quick Start
  
  You should then checkout the library and investigate the sample code, which covers most of the features.
  The sample app is also available on [Google Play](https://play.google.com/store/apps/details?id=com.fractalwrench.androidbootstrap.sample).
+ 
+Support
+==============
+If you have a question about how to use the project, please ask a question on [StackOverflow](http://stackoverflow.com/questions/tagged/android-bootstrap-widgets), using the tag **android-bootstrap-widgets**.
+
+If you think you have found a bug in the library, you should [create a new issue](https://github.com/Bearded-Hen/Android-Bootstrap/issues/new) instead.
  
 Javadoc
 ============
@@ -106,6 +111,35 @@ Displays progress in a bar from 0-100, and animates updates to the current progr
     />
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_progress_bar.png" width="450" alt="BootstrapProgressBar">
+
+### BootstrapProgressBarGroup
+Allows BootstrapProgressBars to be group together to have the effect of <a href="http://getbootstrap.com/components/#progress-stacked">stacked progress bar</a>.
+   ```xml
+        <com.beardedhen.androidbootstrap.BootstrapProgressBarGroup
+            android:id="@+id/example_progress_bar_group_round_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:bootstrapSize="md"
+            app:bootstrapMaxProgress="100">
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:bootstrapProgress="20"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="danger"
+                app:bootstrapProgress="20"
+                />
+
+            </com.beardedhen.androidbootstrap.BootstrapProgressBarGroup>
+```
+<img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_progress_bar_group.png" width="450" alt="BootstrapProgressBarGroup">
 
 ###BootstrapLabel
 Displays non-clickable text in a widget similar to the BootstrapButton, sizable using H1-H6 elements.

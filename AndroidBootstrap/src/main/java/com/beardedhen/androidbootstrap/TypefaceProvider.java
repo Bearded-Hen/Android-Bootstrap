@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 
 import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.beardedhen.androidbootstrap.font.IconSet;
+import com.beardedhen.androidbootstrap.font.MaterialIcons;
 import com.beardedhen.androidbootstrap.font.Typicon;
 
 import java.util.Collection;
@@ -44,9 +45,11 @@ public class TypefaceProvider {
     public static void registerDefaultIconSets() {
         final FontAwesome fontAwesome = new FontAwesome();
         final Typicon typicon = new Typicon();
+        final MaterialIcons materialIcons = new MaterialIcons();
 
         REGISTERED_ICON_SETS.put(fontAwesome.fontPath(), fontAwesome);
         REGISTERED_ICON_SETS.put(typicon.fontPath(), typicon);
+        REGISTERED_ICON_SETS.put(materialIcons.fontPath(), materialIcons);
     }
 
     /**
