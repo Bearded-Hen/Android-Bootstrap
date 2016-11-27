@@ -12,7 +12,6 @@ local.properties
 # gradle directory
 .gradle
 build/
-gradle/
 
 # thumbnails
 .DS_STORE
