@@ -9,7 +9,7 @@ import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class BootstrapButtonGroupExample extends BaseActivity {
@@ -20,18 +20,18 @@ public class BootstrapButtonGroupExample extends BaseActivity {
 
     private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
 
-    @Bind(R.id.bbutton_group_orientation_change) BootstrapButtonGroup orientationChange;
-    @Bind(R.id.bbutton_group_size_change) BootstrapButtonGroup sizeChange;
-    @Bind(R.id.bbutton_group_outline_change) BootstrapButtonGroup outlineChange;
-    @Bind(R.id.bbutton_group_rounded_change) BootstrapButtonGroup roundedChange;
-    @Bind(R.id.bbutton_group_brand_change) BootstrapButtonGroup brandChange;
-    @Bind(R.id.bbutton_group_child_change) BootstrapButtonGroup childChange;
+    @BindView(R.id.bbutton_group_orientation_change) BootstrapButtonGroup orientationChange;
+    @BindView(R.id.bbutton_group_size_change) BootstrapButtonGroup sizeChange;
+    @BindView(R.id.bbutton_group_outline_change) BootstrapButtonGroup outlineChange;
+    @BindView(R.id.bbutton_group_rounded_change) BootstrapButtonGroup roundedChange;
+    @BindView(R.id.bbutton_group_brand_change) BootstrapButtonGroup brandChange;
+    @BindView(R.id.bbutton_group_child_change) BootstrapButtonGroup childChange;
 
-    @Bind(R.id.bbutton_group_checked_text) TextView checkedText;
+    @BindView(R.id.bbutton_group_checked_text) TextView checkedText;
 
-    @Bind(R.id.bbutton_group_checked1) BootstrapButton radioButton1;
-    @Bind(R.id.bbutton_group_checked2) BootstrapButton radioButton2;
-    @Bind(R.id.bbutton_group_checked3) BootstrapButton radioButton3;
+    @BindView(R.id.bbutton_group_checked1) BootstrapButton radioButton1;
+    @BindView(R.id.bbutton_group_checked2) BootstrapButton radioButton2;
+    @BindView(R.id.bbutton_group_checked3) BootstrapButton radioButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

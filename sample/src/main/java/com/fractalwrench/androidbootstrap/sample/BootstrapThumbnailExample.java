@@ -10,7 +10,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.utils.DrawableUtils;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.DANGER;
@@ -30,14 +30,14 @@ public class BootstrapThumbnailExample extends BaseActivity {
         return R.layout.example_bootstrap_thumbnail;
     }
 
-    @Bind(R.id.bthumb_image_change_example) BootstrapThumbnail imageChange;
-    @Bind(R.id.bthumb_theme_change_example) BootstrapThumbnail themeChange;
-    @Bind(R.id.bthumb_border_change_example) BootstrapThumbnail borderChange;
-    @Bind(R.id.bthumb_rounded_change_example) BootstrapThumbnail roundedChange;
-    @Bind(R.id.bthumb_size_change_example) BootstrapThumbnail sizeChange;
-    @Bind(R.id.bthumb_set_image_bitmap_example) BootstrapThumbnail setBitmapExample;
-    @Bind(R.id.bthumb_set_image_drawable_example) BootstrapThumbnail setDrawableExample;
-    @Bind(R.id.bthumb_set_image_resource_example) BootstrapThumbnail setResourceExample;
+    @BindView(R.id.bthumb_image_change_example) BootstrapThumbnail imageChange;
+    @BindView(R.id.bthumb_theme_change_example) BootstrapThumbnail themeChange;
+    @BindView(R.id.bthumb_border_change_example) BootstrapThumbnail borderChange;
+    @BindView(R.id.bthumb_rounded_change_example) BootstrapThumbnail roundedChange;
+    @BindView(R.id.bthumb_size_change_example) BootstrapThumbnail sizeChange;
+    @BindView(R.id.bthumb_set_image_bitmap_example) BootstrapThumbnail setBitmapExample;
+    @BindView(R.id.bthumb_set_image_drawable_example) BootstrapThumbnail setDrawableExample;
+    @BindView(R.id.bthumb_set_image_resource_example) BootstrapThumbnail setResourceExample;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
