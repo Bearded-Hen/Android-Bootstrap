@@ -1,7 +1,6 @@
 package com.beardedhen.androidbootstrap;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewParent;
 
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
@@ -221,17 +219,12 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
 
     private boolean handleRadioEvent(@NonNull MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (isSelected()) {
-                setSelected(false);
-            }
-            else { // notify parent to deselect any peers
-                setSelected(true);
+            setSelected(true); // notify parent to deselect any peers
 
-                ViewParent parent = getParent();
+            ViewParent parent = getParent();
 
-                if (parent instanceof BootstrapButtonGroup) {
-                    ((BootstrapButtonGroup) parent).onRadioToggle(parentIndex);
-                }
+            if (parent instanceof BootstrapButtonGroup) {
+                ((BootstrapButtonGroup) parent).onRadioToggle(parentIndex);
             }
             return true;
         }
