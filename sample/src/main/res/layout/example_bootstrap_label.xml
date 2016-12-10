@@ -244,8 +244,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/micro_padding"
-        android:gravity="center"
-        android:text="Match Parent"
+        android:gravity="end"
+        android:text="Match Parent (gravity end)"
         app:bootstrapBrand="primary"
         />
 
