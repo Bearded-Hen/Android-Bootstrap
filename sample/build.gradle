@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion Integer.parseInt(TARGET_SDK_INT)
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.fractalwrench.androidbootstrap.sample"
-        minSdkVersion 14
-        targetSdkVersion 23
+        minSdkVersion Integer.parseInt(MIN_SDK_INT)
+        targetSdkVersion Integer.parseInt(TARGET_SDK_INT)
         versionCode = Integer.parseInt(VERSION_CODE)
         versionName = VERSION_NAME
     }
@@ -28,7 +28,9 @@ android {
 dependencies {
     compile project (':AndroidBootstrap') // replace with Maven dependency in your app
 
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:support-annotations:23.4.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:support-annotations:25.0.1'
 }
