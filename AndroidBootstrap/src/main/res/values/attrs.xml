@@ -63,6 +63,7 @@
         <attr name="typicon"/>
         <attr name="materialIcon" />
         <attr name="android:clickable" />
+        <attr name="android:gravity" />
     </declare-styleable>
 
     <declare-styleable name="BootstrapLabel">

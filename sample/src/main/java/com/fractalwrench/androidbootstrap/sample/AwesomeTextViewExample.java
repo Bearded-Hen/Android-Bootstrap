@@ -6,7 +6,7 @@ import com.beardedhen.androidbootstrap.AwesomeTextView;
 import com.beardedhen.androidbootstrap.BootstrapText;
 import com.beardedhen.androidbootstrap.font.MaterialIcons;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_ANCHOR;
@@ -22,12 +22,12 @@ public class AwesomeTextViewExample extends BaseActivity {
         return R.layout.example_awesome_text_view;
     }
 
-    @Bind(R.id.example_fa_text_change) AwesomeTextView exampleChange;
-    @Bind(R.id.example_fa_text_flash) AwesomeTextView exampleFlash;
-    @Bind(R.id.example_fa_text_rotate) AwesomeTextView exampleRotate;
-    @Bind(R.id.example_fa_text_multi_change) AwesomeTextView exampleMultiChange;
-    @Bind(R.id.example_fa_text_builder) AwesomeTextView exampleBuilder;
-    @Bind(R.id.example_mix_and_match) AwesomeTextView mixAndMatch;
+    @BindView(R.id.example_fa_text_change) AwesomeTextView exampleChange;
+    @BindView(R.id.example_fa_text_flash) AwesomeTextView exampleFlash;
+    @BindView(R.id.example_fa_text_rotate) AwesomeTextView exampleRotate;
+    @BindView(R.id.example_fa_text_multi_change) AwesomeTextView exampleMultiChange;
+    @BindView(R.id.example_fa_text_builder) AwesomeTextView exampleBuilder;
+    @BindView(R.id.example_mix_and_match) AwesomeTextView mixAndMatch;
 
     private boolean android = true;
     private boolean wikipedia = true;

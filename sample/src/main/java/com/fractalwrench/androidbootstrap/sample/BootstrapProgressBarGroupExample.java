@@ -8,21 +8,21 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class BootstrapProgressBarGroupExample extends BaseActivity {
 
-    @Bind(R.id.example_progress_bar_group_add_group)
+    @BindView(R.id.example_progress_bar_group_add_group)
     BootstrapProgressBarGroup groupAdd;
 
-    @Bind(R.id.example_progress_bar_group_round_group)
+    @BindView(R.id.example_progress_bar_group_round_group)
     BootstrapProgressBarGroup groupRound;
 
-    @Bind(R.id.example_progress_bar_group_progress_1)
+    @BindView(R.id.example_progress_bar_group_progress_1)
     BootstrapProgressBar bootstrapProgressBar1;
 
-    @Bind(R.id.example_progress_bar_group_progress_2)
+    @BindView(R.id.example_progress_bar_group_progress_2)
     BootstrapProgressBar bootstrapProgressBar2;
 
     boolean rounded = false;

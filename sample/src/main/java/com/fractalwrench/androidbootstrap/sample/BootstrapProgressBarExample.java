@@ -6,7 +6,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class BootstrapProgressBarExample extends BaseActivity {
@@ -49,12 +49,12 @@ public class BootstrapProgressBarExample extends BaseActivity {
         return R.layout.example_bootstrap_progress_bar;
     }
 
-    @Bind(R.id.example_progress_default) BootstrapProgressBar defaultExample;
-    @Bind(R.id.example_progress_animated) BootstrapProgressBar animatedExample;
-    @Bind(R.id.example_progress_striped) BootstrapProgressBar stripedExample;
-    @Bind(R.id.example_progress_striped_animated) BootstrapProgressBar stripedAnimExample;
-    @Bind(R.id.example_progress_change) BootstrapProgressBar changeExample;
-    @Bind(R.id.example_size_change) BootstrapProgressBar sizeExample;
+    @BindView(R.id.example_progress_default) BootstrapProgressBar defaultExample;
+    @BindView(R.id.example_progress_animated) BootstrapProgressBar animatedExample;
+    @BindView(R.id.example_progress_striped) BootstrapProgressBar stripedExample;
+    @BindView(R.id.example_progress_striped_animated) BootstrapProgressBar stripedAnimExample;
+    @BindView(R.id.example_progress_change) BootstrapProgressBar changeExample;
+    @BindView(R.id.example_size_change) BootstrapProgressBar sizeExample;
 
     @OnClick(R.id.example_progress_default_btn) void onDefaultClicked() {
         defaultExample.setProgress(randomProgress(defaultExample.getProgress(), 100));

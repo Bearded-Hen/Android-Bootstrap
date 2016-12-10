@@ -51,6 +51,7 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
     private static final String REPLACE_REGEX_HEADER = "\\{dropdown_header\\}";
     private static final String REPLACE_REGEX_SEPARATOR = "\\{dropdown_separator\\}";
     private static final String REPLACE_REGEX_DISABLED = "\\{dropdown_disabled\\}";
+    private static final int SCREEN_WIDTH_GUESS = 1000;
 
     private ExpandDirection expandDirection;
     private PopupWindow dropdownWindow;
@@ -103,9 +104,16 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
             int sizeOrdinal = a.getInt(R.styleable.BootstrapDropDown_bootstrapSize, -1);
 
             expandDirection = ExpandDirection.fromAttributeValue(directionOrdinal);
-            dropdownData = getContext().getResources().getStringArray(dataOrdinal);
+
             bootstrapSize = DefaultBootstrapSize.fromAttributeValue(sizeOrdinal).scaleFactor();
             itemHeight = a.getDimensionPixelSize(R.styleable.BootstrapDropDown_itemHeight, (int) DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_dropdown_default_item_height));
+
+            if (isInEditMode()) {
+                dropdownData = new String[] {"Android Studio", "Layout Preview", "Is Always", "Breaking"};
+            }
+            else {
+                dropdownData = getContext().getResources().getStringArray(dataOrdinal);
+            }
         }
         finally {
             a.recycle();
@@ -120,9 +128,14 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         baselineVertPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_vert_padding);
         baselineHoriPadding = DimenUtils.pixelsFromDpResource(getContext(), R.dimen.bootstrap_button_default_hori_padding);
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
-        screenWidth = metrics.widthPixels;
+        if (isInEditMode()) {
+            screenWidth = SCREEN_WIDTH_GUESS; // take a sensible guess
+        }
+        else {
+            DisplayMetrics metrics = new DisplayMetrics();
+            ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
+            screenWidth = metrics.widthPixels;
+        }
 
         createDropDown();
         updateDropDownState();
@@ -133,8 +146,12 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         dropdownWindow = new PopupWindow();
         dropdownWindow.setFocusable(true);
         dropdownWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        dropdownWindow.setBackgroundDrawable(DrawableUtils.resolveDrawable(android.R.drawable
-                                                                                   .dialog_holo_light_frame, getContext()));
+
+        if (!isInEditMode()) {
+            dropdownWindow.setBackgroundDrawable(DrawableUtils.resolveDrawable(android.R.drawable
+                                                                                       .dialog_holo_light_frame, getContext()));
+        }
+
         dropdownWindow.setContentView(dropdownView);
         dropdownWindow.setOnDismissListener(this);
         dropdownWindow.setAnimationStyle(android.R.style.Animation_Activity);
@@ -155,14 +172,16 @@ public class BootstrapDropDown extends AwesomeTextView implements View.OnClickLi
         int clickableChildCounter = 0;
 
         dropdownView.setOrientation(LinearLayout.VERTICAL);
-        LayoutParams childParams = new LayoutParams(LayoutParams.MATCH_PARENT, DimenUtils.pixelsToDp(itemHeight * bootstrapSize));
+        int height = (int) (itemHeight * bootstrapSize);
+        LayoutParams childParams = new LayoutParams(LayoutParams.MATCH_PARENT, height);
 
         for (String text : dropdownData) {
             TextView childView = new TextView(getContext());
             childView.setGravity(Gravity.CENTER_VERTICAL);
             childView.setLayoutParams(childParams);
-            childView.setPadding(DimenUtils.dpToPixels(baselineItemLeftPadding * bootstrapSize), 0,
-                    DimenUtils.dpToPixels(baselineItemRightPadding * bootstrapSize), 0);
+
+            int padding = (int) (baselineItemLeftPadding * bootstrapSize);
+            childView.setPadding(padding, 0, padding, 0);
             childView.setTextSize(baselineDropDownViewFontSize * bootstrapSize);
             childView.setTextColor(ColorUtils.resolveColor(android.R.color.black, getContext()));
 

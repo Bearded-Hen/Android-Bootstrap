@@ -4,7 +4,7 @@ import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.DANGER;
@@ -23,10 +23,10 @@ public class BootstrapEditTextExample extends BaseActivity {
 
     private DefaultBootstrapSize size = DefaultBootstrapSize.MD;
 
-    @Bind(R.id.bedit_text_change_enabled) BootstrapEditText changeEnabled;
-    @Bind(R.id.bedit_text_change_round) BootstrapEditText changeRound;
-    @Bind(R.id.bedit_text_change_theme) BootstrapEditText changeTheme;
-    @Bind(R.id.bedit_text_change_size) BootstrapEditText sizeExample;
+    @BindView(R.id.bedit_text_change_enabled) BootstrapEditText changeEnabled;
+    @BindView(R.id.bedit_text_change_round) BootstrapEditText changeRound;
+    @BindView(R.id.bedit_text_change_theme) BootstrapEditText changeTheme;
+    @BindView(R.id.bedit_text_change_size) BootstrapEditText sizeExample;
 
     @OnClick(R.id.bedit_text_change_enabled_btn) void onChangeEnabledExampleClicked() {
         changeEnabled.setEnabled(!changeEnabled.isEnabled());
