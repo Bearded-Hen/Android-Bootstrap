@@ -140,7 +140,8 @@
         style="@style/wrapping_fa_text"
         android:textSize="30dp"
         app:bootstrapBrand="primary"
-        app:bootstrapText="Escaped \{fa_facebook\} icon"
+        app:bootstrapText="Escaped \{fa_facebook\} icon (gravity=start)"
+        android:gravity="start"
         tools:ignore="SpUsage"
         />
 

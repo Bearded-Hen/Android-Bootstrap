@@ -10,7 +10,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.beardedhen.androidbootstrap.utils.DrawableUtils;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand.DANGER;
@@ -32,13 +32,13 @@ public class BootstrapCircleThumbnailExample extends BaseActivity {
         return R.layout.example_bootstrap_circle_thumbnail;
     }
 
-    @Bind(R.id.bcircle_image_change_example) BootstrapCircleThumbnail imageChange;
-    @Bind(R.id.bcircle_theme_change_example) BootstrapCircleThumbnail themeChange;
-    @Bind(R.id.bcircle_border_change_example) BootstrapCircleThumbnail borderChange;
-    @Bind(R.id.bcircle_size_change_example) BootstrapCircleThumbnail sizeChange;
-    @Bind(R.id.bcircle_set_image_bitmap_example) BootstrapCircleThumbnail setBitmapExample;
-    @Bind(R.id.bcircle_set_image_drawable_example) BootstrapCircleThumbnail setDrawableExample;
-    @Bind(R.id.bcircle_set_image_resource_example) BootstrapCircleThumbnail setResourceExample;
+    @BindView(R.id.bcircle_image_change_example) BootstrapCircleThumbnail imageChange;
+    @BindView(R.id.bcircle_theme_change_example) BootstrapCircleThumbnail themeChange;
+    @BindView(R.id.bcircle_border_change_example) BootstrapCircleThumbnail borderChange;
+    @BindView(R.id.bcircle_size_change_example) BootstrapCircleThumbnail sizeChange;
+    @BindView(R.id.bcircle_set_image_bitmap_example) BootstrapCircleThumbnail setBitmapExample;
+    @BindView(R.id.bcircle_set_image_drawable_example) BootstrapCircleThumbnail setDrawableExample;
+    @BindView(R.id.bcircle_set_image_resource_example) BootstrapCircleThumbnail setResourceExample;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

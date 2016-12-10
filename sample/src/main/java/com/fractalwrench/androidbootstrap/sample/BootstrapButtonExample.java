@@ -7,7 +7,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class BootstrapButtonExample extends BaseActivity {
@@ -18,11 +18,11 @@ public class BootstrapButtonExample extends BaseActivity {
 
     private DefaultBootstrapSize size = DefaultBootstrapSize.LG;
 
-    @Bind(R.id.bbutton_example_corners) BootstrapButton exampleCorners;
-    @Bind(R.id.bbutton_example_outline) BootstrapButton exampleOutline;
-    @Bind(R.id.bbutton_example_size) BootstrapButton exampleSize;
-    @Bind(R.id.bbutton_example_theme) BootstrapButton exampleTheme;
-    @Bind(R.id.example_bbutton_custom_style) BootstrapButton exampleCustomStyle;
+    @BindView(R.id.bbutton_example_corners) BootstrapButton exampleCorners;
+    @BindView(R.id.bbutton_example_outline) BootstrapButton exampleOutline;
+    @BindView(R.id.bbutton_example_size) BootstrapButton exampleSize;
+    @BindView(R.id.bbutton_example_theme) BootstrapButton exampleTheme;
+    @BindView(R.id.example_bbutton_custom_style) BootstrapButton exampleCustomStyle;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

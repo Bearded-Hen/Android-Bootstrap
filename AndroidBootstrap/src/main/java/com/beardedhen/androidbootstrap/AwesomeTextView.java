@@ -113,11 +113,13 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
             markdownText = a.getString(R.styleable.AwesomeTextView_bootstrapText);
 
             setClickable(clickable); // allows view to reach android:state_pressed
+
+            int gravity = a.getInt(R.styleable.AwesomeTextView_android_gravity, Gravity.CENTER);
+            setGravity(gravity);
         }
         finally {
             a.recycle();
         }
-        setGravity(Gravity.CENTER);
 
         if (markdownText != null) {
             setMarkdownText(markdownText);

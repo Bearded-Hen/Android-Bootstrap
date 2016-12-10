@@ -6,14 +6,14 @@ import android.view.View;
 
 import com.beardedhen.androidbootstrap.BootstrapAlert;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class BootstrapAlertExample extends BaseActivity {
 
     public static final String TAG = "BootstrapAlertExample";
 
-    @Bind(R.id.dynamic_alert) BootstrapAlert alert;
+    @BindView(R.id.dynamic_alert) BootstrapAlert alert;
 
     @Override
     protected int getContentLayoutId() {

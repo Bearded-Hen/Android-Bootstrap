@@ -7,14 +7,14 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class BootstrapBadgeExample extends BaseActivity {
 
-    @Bind(R.id.xml_badge_button) BootstrapButton xmlBadgeButton;
-    @Bind(R.id.java_badge_button) BootstrapButton javaBadgeButton;
-    @Bind(R.id.lonely_badge) BootstrapBadge lonelyBadge;
+    @BindView(R.id.xml_badge_button) BootstrapButton xmlBadgeButton;
+    @BindView(R.id.java_badge_button) BootstrapButton javaBadgeButton;
+    @BindView(R.id.lonely_badge) BootstrapBadge lonelyBadge;
 
     @Override
     protected int getContentLayoutId() {

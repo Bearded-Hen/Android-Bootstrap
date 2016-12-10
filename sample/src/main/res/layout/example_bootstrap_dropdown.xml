@@ -1,161 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp"
+    >
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
+
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bootstrapText="XSmall {fa_thumbs_o_up}"
-                app:roundedCorners="true"
-                app:bootstrapSize="xs"
                 app:bootstrapBrand="success"
+                app:bootstrapExpandDirection="down"
+                app:bootstrapSize="xs"
+                app:bootstrapText="XSmall {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="down" />
+                app:roundedCorners="true"
+                />
 
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="Small {fa_thumbs_o_up}"
                 app:bootstrapBrand="danger"
+                app:bootstrapExpandDirection="down"
                 app:bootstrapSize="sm"
-                app:roundedCorners="true"
+                app:bootstrapText="Small {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="down"/>
+                app:roundedCorners="true"
+                />
 
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="Medium {fa_thumbs_o_up}"
                 app:bootstrapBrand="regular"
-                app:roundedCorners="true"
+                app:bootstrapExpandDirection="down"
                 app:bootstrapSize="md"
+                app:bootstrapText="Medium {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="down"/>
+                app:roundedCorners="true"
+                />
+
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="Large {fa_thumbs_o_up}"
                 app:bootstrapBrand="secondary"
-                app:roundedCorners="true"
+                app:bootstrapExpandDirection="down"
                 app:bootstrapSize="lg"
+                app:bootstrapText="Large {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="down"/>
+                app:roundedCorners="true"
+                />
+
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="XLarge {fa_thumbs_o_up}"
                 app:bootstrapBrand="warning"
-                app:roundedCorners="true"
+                app:bootstrapExpandDirection="down"
                 app:bootstrapSize="xl"
+                app:bootstrapText="XLarge {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="down"/>
+                app:roundedCorners="true"
+                />
         </LinearLayout>
     </HorizontalScrollView>
+
     <com.beardedhen.androidbootstrap.BootstrapDropDown
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        app:bootstrapExpandDirection="down"
         app:bootstrapText="Left"
+        android:gravity="start"
         app:dropdownResource="@array/bootstrap_dropdown_example_data"
-        app:bootstrapExpandDirection="down" />
+        />
+
     <com.beardedhen.androidbootstrap.BootstrapDropDown
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        app:bootstrapExpandDirection="down"
         app:bootstrapText="Center"
         app:dropdownResource="@array/bootstrap_dropdown_example_data"
-        app:bootstrapExpandDirection="down" />
+        />
+
     <com.beardedhen.androidbootstrap.BootstrapDropDown
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:bootstrapText="Right"
-        app:roundedCorners="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        app:bootstrapExpandDirection="down"
+        app:bootstrapText="Right"
+        android:gravity="end"
         app:dropdownResource="@array/bootstrap_dropdown_example_data"
-        app:bootstrapExpandDirection="down" />
+        app:roundedCorners="true"
+        />
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
+
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bootstrapText="XSmall {fa_thumbs_o_up}"
-                app:roundedCorners="true"
-                app:showOutline="true"
-                app:bootstrapSize="xs"
                 app:bootstrapBrand="success"
+                app:bootstrapExpandDirection="up"
+                app:bootstrapSize="xs"
+                app:bootstrapText="XSmall {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="up" />
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
 
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="Small {fa_thumbs_o_up}"
                 app:bootstrapBrand="danger"
-                app:showOutline="true"
+                app:bootstrapExpandDirection="up"
                 app:bootstrapSize="sm"
-                app:roundedCorners="true"
+                app:bootstrapText="Small {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="up"/>
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
 
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="Medium {fa_thumbs_o_up}"
                 app:bootstrapBrand="regular"
-                app:roundedCorners="true"
-                app:showOutline="true"
+                app:bootstrapExpandDirection="up"
                 app:bootstrapSize="md"
+                app:bootstrapText="Medium {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="up"/>
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
+
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="Large {fa_thumbs_o_up}"
                 app:bootstrapBrand="secondary"
+                app:bootstrapExpandDirection="up"
+                app:bootstrapSize="lg"
+                app:bootstrapText="Large {fa_thumbs_o_up}"
+                app:dropdownResource="@array/bootstrap_dropdown_example_data"
                 app:roundedCorners="true"
                 app:showOutline="true"
-                app:bootstrapSize="lg"
-                app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="up"/>
+                />
+
             <com.beardedhen.androidbootstrap.BootstrapDropDown
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                app:bootstrapText="XLarge {fa_thumbs_o_up}"
                 app:bootstrapBrand="warning"
-                app:showOutline="true"
-                app:roundedCorners="true"
+                app:bootstrapExpandDirection="up"
                 app:bootstrapSize="xl"
+                app:bootstrapText="XLarge {fa_thumbs_o_up}"
                 app:dropdownResource="@array/bootstrap_dropdown_example_data"
-                app:bootstrapExpandDirection="up"/>
+                app:roundedCorners="true"
+                app:showOutline="true"
+                />
         </LinearLayout>
     </HorizontalScrollView>
 </RelativeLayout>

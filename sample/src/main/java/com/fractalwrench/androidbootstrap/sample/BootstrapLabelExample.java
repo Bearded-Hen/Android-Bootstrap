@@ -4,7 +4,7 @@ import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 import static com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapHeading.H1;
@@ -20,9 +20,9 @@ public class BootstrapLabelExample extends BaseActivity {
         return R.layout.example_bootstrap_label;
     }
 
-    @Bind(R.id.example_blabel_change_color) BootstrapLabel lblChangeColor;
-    @Bind(R.id.example_blabel_change_heading) BootstrapLabel lblChangeHeading;
-    @Bind(R.id.example_blabel_change_rounded) BootstrapLabel lblChangeRounded;
+    @BindView(R.id.example_blabel_change_color) BootstrapLabel lblChangeColor;
+    @BindView(R.id.example_blabel_change_heading) BootstrapLabel lblChangeHeading;
+    @BindView(R.id.example_blabel_change_rounded) BootstrapLabel lblChangeRounded;
 
     @OnClick(R.id.example_blabel_change_heading) void onHeadingChangeClicked() {
         switch ((DefaultBootstrapHeading) lblChangeHeading.getBootstrapHeading()) {

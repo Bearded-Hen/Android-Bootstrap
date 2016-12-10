@@ -49,7 +49,7 @@ public class BootstrapLabel extends AwesomeTextView implements RoundableView, Bo
 
         try {
             int attrValue = a.getInt(R.styleable.BootstrapLabel_bootstrapHeading, 5);
-            this.roundable = a.getBoolean(R.styleable.BootstrapButton_roundedCorners, false);
+            this.roundable = a.getBoolean(R.styleable.BootstrapLabel_roundedCorners, false);
 
             this.bootstrapHeading = DefaultBootstrapHeading.fromAttributeValue(attrValue);
         }

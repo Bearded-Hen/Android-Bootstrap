@@ -466,8 +466,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/micro_padding"
-        android:gravity="center"
-        android:text="Matching"
+        android:gravity="right"
+        android:text="Matching (gravity right)"
         app:bootstrapBrand="info"
         />
 
