@@ -7,6 +7,7 @@ Android Bootstrap is an Android library which provides custom views styled accor
 Quick Start
 ===========
  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap)
+ [![CircleCI](https://circleci.com/gh/Bearded-Hen/Android-Bootstrap/tree/develop.svg?style=shield)](https://circleci.com/gh/Bearded-Hen/Android-Bootstrap/tree/develop)
  
  Add the following dependency to your build.gradle, ensuring you replace 'X.X.X' with the latest version on the button above:
  
