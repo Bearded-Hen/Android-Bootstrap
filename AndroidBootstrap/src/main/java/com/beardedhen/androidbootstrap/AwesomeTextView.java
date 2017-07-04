@@ -283,4 +283,14 @@ public class AwesomeTextView extends TextView implements BootstrapTextView, Boot
         bootstrapText = null;
     }
 
+    @Override
+    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+        super.onTextChanged(text, start, lengthBefore, lengthAfter);
+        if(!(text!=null && text.length()>0)){
+            setVisibility(GONE);
+        }else{
+            setVisibility(VISIBLE);
+        }
+    }
+
 }
