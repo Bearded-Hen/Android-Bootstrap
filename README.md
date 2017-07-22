@@ -8,6 +8,7 @@ Quick Start
 ===========
  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.beardedhen/androidbootstrap)
  [![CircleCI](https://circleci.com/gh/Bearded-Hen/Android-Bootstrap/tree/develop.svg?style=shield)](https://circleci.com/gh/Bearded-Hen/Android-Bootstrap/tree/develop)
+ <a href="http://www.methodscount.com/?lib=com.beardedhen%3Aandroidbootstrap%3A%2B"><img src="https://img.shields.io/badge/Methods and size-core: 913 | deps: 10417 | 431 KB-e91e63.svg"/></a>
  
  Add the following dependency to your build.gradle, ensuring you replace 'X.X.X' with the latest version on the button above:
  
