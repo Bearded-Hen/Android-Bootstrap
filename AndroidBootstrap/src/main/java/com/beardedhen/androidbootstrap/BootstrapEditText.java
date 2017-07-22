@@ -61,7 +61,7 @@ public class BootstrapEditText extends EditText implements BootstrapBrandView, R
         try {
             this.rounded = a.getBoolean(R.styleable.BootstrapEditText_roundedCorners, false);
 
-            int typeOrdinal = a.getInt(R.styleable.AwesomeTextView_bootstrapBrand, -1);
+            int typeOrdinal = a.getInt(R.styleable.BootstrapEditText_bootstrapBrand, -1);
             int sizeOrdinal = a.getInt(R.styleable.BootstrapEditText_bootstrapSize, -1);
 
             this.bootstrapBrand = DefaultBootstrapBrand.fromAttributeValue(typeOrdinal);
