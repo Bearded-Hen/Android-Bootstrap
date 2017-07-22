@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class FontAwesome implements IconSet {
 
-    public static final String FONT_PATH = "fontawesome-webfont-v450.ttf";
+    public static final String FONT_PATH = "fontawesome-webfont-v470.ttf";
 
     @Override public CharSequence unicodeForKey(@Icon CharSequence key) {
         return ICON_MAP.get(key);
@@ -729,7 +729,98 @@ public class FontAwesome implements IconSet {
             FA_YEN,
             FA_YOUTUBE,
             FA_YOUTUBE_PLAY,
-            FA_YOUTUBE_SQUARE
+            FA_YOUTUBE_SQUARE,
+            //4.6
+            FA_AMERICAN_SIGN_LANGUAGE_INTERPRETING,
+            FA_ASL_INTERPRETING,
+            FA_ASSISTIVE_LISTENING_SYSTEMS,
+            FA_AUDIO_DESCRIPTION,
+            FA_BLIND,
+            FA_BRAILLE,
+            FA_DEAF,
+            FA_DEAFNESS,
+            FA_ENVIRA,
+            FA_FA,
+            FA_FIRST_ORDER,
+            FA_FONT_AWESOME,
+            FA_GITLAB,
+            FA_GLIDE,
+            FA_GLIDE_G,
+            FA_GOOGLE_PLUS_CIRCLE,
+            FA_GOOGLE_PLUS_OFFICIAL,
+            FA_HARD_OF_HEARING,
+            FA_LOW_VISION,
+            FA_QUESTION_CIRCLE_O,
+            FA_SIGN_LANGUAGE,
+            FA_SIGNING,
+            FA_SNAPCHAT,
+            FA_SNAPCHAT_GHOST,
+            FA_SNAPCHAT_SQUARE,
+            FA_THEMEISLE,
+            FA_UNIVERSAL_ACCESS,
+            FA_VIADEO,
+            FA_VIADEO_SQUARE,
+            FA_VOLUME_CONTROL_PHONE,
+            FA_WHEELCHAIR_ALT,
+            FA_WPBEGINNER,
+            FA_WPFORMS,
+            FA_YOAST,
+            //4.7
+            FA_ADDRESS_BOOK,
+            FA_ADDRESS_BOOK_O,
+            FA_ADDRESS_CARD,
+            FA_ADDRESS_CARD_O,
+            FA_BANDCAMP,
+            FA_BATH,
+            FA_BATHTUB,
+            FA_DRIVERS_LICENSE,
+            FA_DRIVERS_LICENSE_O,
+            FA_EERCAST,
+            FA_ENVELOPE_OPEN,
+            FA_ENVELOPE_OPEN_O,
+            FA_ETSY,
+            FA_FREE_CODE_CAMP,
+            FA_GRAV,
+            FA_HANDSHAKE_O,
+            FA_ID_BADGE,
+            FA_ID_CARD,
+            FA_ID_CARD_O,
+            FA_IMDB,
+            FA_LINODE,
+            FA_MEETUP,
+            FA_MICROCHIP,
+            FA_PODCAST,
+            FA_QUORA,
+            FA_RAVELRY,
+            FA_S15,
+            FA_SHOWER,
+            FA_SNOWFLAKE_O,
+            FA_SUPERPOWERS,
+            FA_TELEGRAM,
+            FA_THERMOMETER,
+            FA_THERMOMETER_0,
+            FA_THERMOMETER_1,
+            FA_THERMOMETER_2,
+            FA_THERMOMETER_3,
+            FA_THERMOMETER_4,
+            FA_THERMOMETER_EMPTY,
+            FA_THERMOMETER_FULL,
+            FA_THERMOMETER_HALF,
+            FA_THERMOMETER_QUARTER,
+            FA_THERMOMETER_THREE_QUARTERS,
+            FA_TIMES_RECTANGLE,
+            FA_TIMES_RECTANGLE_O,
+            FA_USER_CIRCLE,
+            FA_USER_CIRCLE_O,
+            FA_USER_O,
+            FA_VCARD,
+            FA_VCARD_O,
+            FA_WINDOW_CLOSE,
+            FA_WINDOW_CLOSE_O,
+            FA_WINDOW_MAXIMIZE,
+            FA_WINDOW_MINIMIZE,
+            FA_WINDOW_RESTORE,
+            FA_WPEXPLORER
     }) public @interface Icon {
     }
 
@@ -1426,6 +1517,97 @@ public class FontAwesome implements IconSet {
     public static final String FA_YOUTUBE = "fa_youtube";
     public static final String FA_YOUTUBE_PLAY = "fa_youtube_play";
     public static final String FA_YOUTUBE_SQUARE = "fa_youtube_square";
+    //4.6
+    public static final String FA_AMERICAN_SIGN_LANGUAGE_INTERPRETING = "fa_american_sign_language_interpreting";
+    public static final String FA_ASL_INTERPRETING = "fa_asl_interpreting";
+    public static final String FA_ASSISTIVE_LISTENING_SYSTEMS = "fa_assistive_listening_systems";
+    public static final String FA_AUDIO_DESCRIPTION = "fa_audio_description";
+    public static final String FA_BLIND = "fa_blind";
+    public static final String FA_BRAILLE = "fa_braille";
+    public static final String FA_DEAF = "fa_deaf";
+    public static final String FA_DEAFNESS = "fa_deafness";
+    public static final String FA_ENVIRA = "fa_envira";
+    public static final String FA_FA = "fa_fa";
+    public static final String FA_FIRST_ORDER = "fa_first_order";
+    public static final String FA_FONT_AWESOME = "fa_font_awesome";
+    public static final String FA_GITLAB = "fa_gitlab";
+    public static final String FA_GLIDE = "fa_glide";
+    public static final String FA_GLIDE_G = "fa_glide_g";
+    public static final String FA_GOOGLE_PLUS_CIRCLE = "fa_google_plus_circle";
+    public static final String FA_GOOGLE_PLUS_OFFICIAL = "fa_google_plus_official";
+    public static final String FA_HARD_OF_HEARING = "fa_hard_of_hearing";
+    public static final String FA_LOW_VISION = "fa_low_vision";
+    public static final String FA_QUESTION_CIRCLE_O = "fa_question_circle_o";
+    public static final String FA_SIGN_LANGUAGE = "fa_sign_language";
+    public static final String FA_SIGNING = "fa_signing";
+    public static final String FA_SNAPCHAT = "fa_snapchat";
+    public static final String FA_SNAPCHAT_GHOST = "fa_snapchat_ghost";
+    public static final String FA_SNAPCHAT_SQUARE = "fa_snapchat_square";
+    public static final String FA_THEMEISLE = "fa_themeisle";
+    public static final String FA_UNIVERSAL_ACCESS = "fa_universal_access";
+    public static final String FA_VIADEO = "fa_viadeo";
+    public static final String FA_VIADEO_SQUARE = "fa_viadeo_square";
+    public static final String FA_VOLUME_CONTROL_PHONE = "fa_volume_control_phone";
+    public static final String FA_WHEELCHAIR_ALT = "fa_wheelchair_alt";
+    public static final String FA_WPBEGINNER = "fa_wpbeginner";
+    public static final String FA_WPFORMS = "fa_wpforms";
+    public static final String FA_YOAST = "fa_yoast";
+    //4.7
+    public static final String FA_ADDRESS_BOOK = "fa_address_book";
+    public static final String FA_ADDRESS_BOOK_O = "fa_address_book_o";
+    public static final String FA_ADDRESS_CARD = "fa_address_card";
+    public static final String FA_ADDRESS_CARD_O = "fa_address_card_o";
+    public static final String FA_BANDCAMP = "fa_bandcamp";
+    public static final String FA_BATH = "fa_bath";
+    public static final String FA_BATHTUB = "fa_bathtub";
+    public static final String FA_DRIVERS_LICENSE = "fa_drivers_license";
+    public static final String FA_DRIVERS_LICENSE_O = "fa_drivers_license_o";
+    public static final String FA_EERCAST = "fa_eercast";
+    public static final String FA_ENVELOPE_OPEN = "fa_envelope_open";
+    public static final String FA_ENVELOPE_OPEN_O = "fa_envelope_open_o";
+    public static final String FA_ETSY = "fa_etsy";
+    public static final String FA_FREE_CODE_CAMP = "fa_free_code_camp";
+    public static final String FA_GRAV = "fa_grav";
+    public static final String FA_HANDSHAKE_O = "fa_handshake_o";
+    public static final String FA_ID_BADGE = "fa_id_badge";
+    public static final String FA_ID_CARD = "fa_id_card";
+    public static final String FA_ID_CARD_O = "fa_id_card_o";
+    public static final String FA_IMDB = "fa_imdb";
+    public static final String FA_LINODE = "fa_linode";
+    public static final String FA_MEETUP = "fa_meetup";
+    public static final String FA_MICROCHIP = "fa_microchip";
+    public static final String FA_PODCAST = "fa_podcast";
+    public static final String FA_QUORA = "fa_quora";
+    public static final String FA_RAVELRY = "fa_ravelry";
+    public static final String FA_S15 = "fa_s15";
+    public static final String FA_SHOWER = "fa_shower";
+    public static final String FA_SNOWFLAKE_O = "fa_snowflake_o";
+    public static final String FA_SUPERPOWERS = "fa_superpowers";
+    public static final String FA_TELEGRAM = "fa_telegram";
+    public static final String FA_THERMOMETER = "fa_thermometer";
+    public static final String FA_THERMOMETER_0 = "fa_thermometer_0";
+    public static final String FA_THERMOMETER_1 = "fa_thermometer_1";
+    public static final String FA_THERMOMETER_2 = "fa_thermometer_2";
+    public static final String FA_THERMOMETER_3 = "fa_thermometer_3";
+    public static final String FA_THERMOMETER_4 = "fa_thermometer_4";
+    public static final String FA_THERMOMETER_EMPTY = "fa_thermometer_empty";
+    public static final String FA_THERMOMETER_FULL = "fa_thermometer_full";
+    public static final String FA_THERMOMETER_HALF = "fa_thermometer_half";
+    public static final String FA_THERMOMETER_QUARTER = "fa_thermometer_quarter";
+    public static final String FA_THERMOMETER_THREE_QUARTERS = "fa_thermometer_three_quarters";
+    public static final String FA_TIMES_RECTANGLE = "fa_times_rectangle";
+    public static final String FA_TIMES_RECTANGLE_O = "fa_times_rectangle_o";
+    public static final String FA_USER_CIRCLE = "fa_user_circle";
+    public static final String FA_USER_CIRCLE_O = "fa_user_circle_o";
+    public static final String FA_USER_O = "fa_user_o";
+    public static final String FA_VCARD = "fa_vcard";
+    public static final String FA_VCARD_O = "fa_vcard_o";
+    public static final String FA_WINDOW_CLOSE = "fa_window_close";
+    public static final String FA_WINDOW_CLOSE_O = "fa_window_close_o";
+    public static final String FA_WINDOW_MAXIMIZE = "fa_window_maximize";
+    public static final String FA_WINDOW_MINIMIZE = "fa_window_minimize";
+    public static final String FA_WINDOW_RESTORE = "fa_window_restore";
+    public static final String FA_WPEXPLORER = "fa_wpexplorer";
 
     static {
         ICON_MAP.put(FA_ADJUST, "\uf042");
@@ -1884,7 +2066,7 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_PHOTO, "\uf03e");
         ICON_MAP.put(FA_PICTURE_O, "\uf03e");
         ICON_MAP.put(FA_PIE_CHART, "\uf200");
-        ICON_MAP.put(FA_PIED_PIPER, "\uf1a7");
+        ICON_MAP.put(FA_PIED_PIPER, "\uf2ae");
         ICON_MAP.put(FA_PIED_PIPER_ALT, "\uf1a8");
         ICON_MAP.put(FA_PINTEREST, "\uf0d2");
         ICON_MAP.put(FA_PINTEREST_P, "\uf231");
@@ -2121,6 +2303,97 @@ public class FontAwesome implements IconSet {
         ICON_MAP.put(FA_YOUTUBE, "\uf167");
         ICON_MAP.put(FA_YOUTUBE_PLAY, "\uf16a");
         ICON_MAP.put(FA_YOUTUBE_SQUARE, "\uf166");
+        //4.6
+        ICON_MAP.put(FA_AMERICAN_SIGN_LANGUAGE_INTERPRETING, "\uf2a3");
+        ICON_MAP.put(FA_ASL_INTERPRETING, "\uf2a3");
+        ICON_MAP.put(FA_ASSISTIVE_LISTENING_SYSTEMS, "\uf2a2");
+        ICON_MAP.put(FA_AUDIO_DESCRIPTION, "\uf29e");
+        ICON_MAP.put(FA_BLIND, "\uf29d");
+        ICON_MAP.put(FA_BRAILLE, "\uf2a1");
+        ICON_MAP.put(FA_DEAF, "\uf2a4");
+        ICON_MAP.put(FA_DEAFNESS, "\uf2a4");
+        ICON_MAP.put(FA_ENVIRA, "\uf299");
+        ICON_MAP.put(FA_FA, "\uf2b4");
+        ICON_MAP.put(FA_FIRST_ORDER, "\uf2b0");
+        ICON_MAP.put(FA_FONT_AWESOME, "\uf2b4");
+        ICON_MAP.put(FA_GITLAB, "\uf296");
+        ICON_MAP.put(FA_GLIDE, "\uf2a5");
+        ICON_MAP.put(FA_GLIDE_G, "\uf2a6");
+        ICON_MAP.put(FA_GOOGLE_PLUS_CIRCLE, "\uf2b3");
+        ICON_MAP.put(FA_GOOGLE_PLUS_OFFICIAL, "\uf2b3");
+        ICON_MAP.put(FA_HARD_OF_HEARING, "\uf2a4");
+        ICON_MAP.put(FA_LOW_VISION, "\uf2a8");
+        ICON_MAP.put(FA_QUESTION_CIRCLE_O, "\uf29c");
+        ICON_MAP.put(FA_SIGN_LANGUAGE, "\uf2a7");
+        ICON_MAP.put(FA_SIGNING, "\uf2a7");
+        ICON_MAP.put(FA_SNAPCHAT, "\uf2ab");
+        ICON_MAP.put(FA_SNAPCHAT_GHOST, "\uf2ac");
+        ICON_MAP.put(FA_SNAPCHAT_SQUARE, "\uf2ad");
+        ICON_MAP.put(FA_THEMEISLE, "\uf2b2");
+        ICON_MAP.put(FA_UNIVERSAL_ACCESS, "\uf29a");
+        ICON_MAP.put(FA_VIADEO, "\uf2a9");
+        ICON_MAP.put(FA_VIADEO_SQUARE, "\uf2aa");
+        ICON_MAP.put(FA_VOLUME_CONTROL_PHONE, "\uf2a0");
+        ICON_MAP.put(FA_WHEELCHAIR_ALT, "\uf29b");
+        ICON_MAP.put(FA_WPBEGINNER, "\uf297");
+        ICON_MAP.put(FA_WPFORMS, "\uf298");
+        ICON_MAP.put(FA_YOAST, "\uf2b1");
+        //4.7
+        ICON_MAP.put(FA_ADDRESS_BOOK, "\uf2b9");
+        ICON_MAP.put(FA_ADDRESS_BOOK_O, "\uf2ba");
+        ICON_MAP.put(FA_ADDRESS_CARD, "\uf2bb");
+        ICON_MAP.put(FA_ADDRESS_CARD_O, "\uf2bc");
+        ICON_MAP.put(FA_BANDCAMP, "\uf2d5");
+        ICON_MAP.put(FA_BATH, "\uf2cd");
+        ICON_MAP.put(FA_BATHTUB, "\uf2cd");
+        ICON_MAP.put(FA_DRIVERS_LICENSE, "\uf2c2");
+        ICON_MAP.put(FA_DRIVERS_LICENSE_O, "\uf2c3");
+        ICON_MAP.put(FA_EERCAST, "\uf2da");
+        ICON_MAP.put(FA_ENVELOPE_OPEN, "\uf2b6");
+        ICON_MAP.put(FA_ENVELOPE_OPEN_O, "\uf2b7");
+        ICON_MAP.put(FA_ETSY, "\uf2d7");
+        ICON_MAP.put(FA_FREE_CODE_CAMP, "\uf2c5");
+        ICON_MAP.put(FA_GRAV, "\uf2d6");
+        ICON_MAP.put(FA_HANDSHAKE_O, "\uf2b5");
+        ICON_MAP.put(FA_ID_BADGE, "\uf2c1");
+        ICON_MAP.put(FA_ID_CARD, "\uf2c2");
+        ICON_MAP.put(FA_ID_CARD_O, "\uf2c3");
+        ICON_MAP.put(FA_IMDB, "\uf2d8");
+        ICON_MAP.put(FA_LINODE, "\uf2b8");
+        ICON_MAP.put(FA_MEETUP, "\uf2e0");
+        ICON_MAP.put(FA_MICROCHIP, "\uf2db");
+        ICON_MAP.put(FA_PODCAST, "\uf2ce");
+        ICON_MAP.put(FA_QUORA, "\uf2c4");
+        ICON_MAP.put(FA_RAVELRY, "\uf2d9");
+        ICON_MAP.put(FA_S15, "\uf2cd");
+        ICON_MAP.put(FA_SHOWER, "\uf2cc");
+        ICON_MAP.put(FA_SNOWFLAKE_O, "\uf2dc");
+        ICON_MAP.put(FA_SUPERPOWERS, "\uf2dd");
+        ICON_MAP.put(FA_TELEGRAM, "\uf2c6");
+        ICON_MAP.put(FA_THERMOMETER, "\uf2c7");
+        ICON_MAP.put(FA_THERMOMETER_0, "\uf2cb");
+        ICON_MAP.put(FA_THERMOMETER_1, "\uf2ca");
+        ICON_MAP.put(FA_THERMOMETER_2, "\uf2c9");
+        ICON_MAP.put(FA_THERMOMETER_3, "\uf2c8");
+        ICON_MAP.put(FA_THERMOMETER_4, "\uf2c7");
+        ICON_MAP.put(FA_THERMOMETER_EMPTY, "\uf2cb");
+        ICON_MAP.put(FA_THERMOMETER_FULL, "\uf2c7");
+        ICON_MAP.put(FA_THERMOMETER_HALF, "\uf2c9");
+        ICON_MAP.put(FA_THERMOMETER_QUARTER, "\uf2ca");
+        ICON_MAP.put(FA_THERMOMETER_THREE_QUARTERS, "\uf2c8");
+        ICON_MAP.put(FA_TIMES_RECTANGLE, "\uf2d3");
+        ICON_MAP.put(FA_TIMES_RECTANGLE_O, "\uf2d4");
+        ICON_MAP.put(FA_USER_CIRCLE, "\uf2bd");
+        ICON_MAP.put(FA_USER_CIRCLE_O, "\uf2be");
+        ICON_MAP.put(FA_USER_O, "\uf2c0");
+        ICON_MAP.put(FA_VCARD, "\uf2bb");
+        ICON_MAP.put(FA_VCARD_O, "\uf2bc");
+        ICON_MAP.put(FA_WINDOW_CLOSE, "\uf2d3");
+        ICON_MAP.put(FA_WINDOW_CLOSE_O, "\uf2d4");
+        ICON_MAP.put(FA_WINDOW_MAXIMIZE, "\uf2d0");
+        ICON_MAP.put(FA_WINDOW_MINIMIZE, "\uf2d1");
+        ICON_MAP.put(FA_WINDOW_RESTORE, "\uf2d2");
+        ICON_MAP.put(FA_WPEXPLORER, "\uf2de");
 
 
         ATTR_MAP.put(0, FA_ADJUST);
@@ -2816,6 +3089,98 @@ public class FontAwesome implements IconSet {
         ATTR_MAP.put(690, FA_YOUTUBE);
         ATTR_MAP.put(691, FA_YOUTUBE_PLAY);
         ATTR_MAP.put(692, FA_YOUTUBE_SQUARE);
+        //4.6
+        ATTR_MAP.put(693, FA_AMERICAN_SIGN_LANGUAGE_INTERPRETING);
+        ATTR_MAP.put(694, FA_ASL_INTERPRETING);
+        ATTR_MAP.put(695, FA_ASSISTIVE_LISTENING_SYSTEMS);
+        ATTR_MAP.put(696, FA_AUDIO_DESCRIPTION);
+        ATTR_MAP.put(697, FA_BLIND);
+        ATTR_MAP.put(698, FA_BRAILLE);
+        ATTR_MAP.put(699, FA_DEAF);
+        ATTR_MAP.put(700, FA_DEAFNESS);
+        ATTR_MAP.put(701, FA_ENVIRA);
+        ATTR_MAP.put(702, FA_FA);
+        ATTR_MAP.put(703, FA_FIRST_ORDER);
+        ATTR_MAP.put(704, FA_FONT_AWESOME);
+        ATTR_MAP.put(705, FA_GITLAB);
+        ATTR_MAP.put(706, FA_GLIDE);
+        ATTR_MAP.put(707, FA_GLIDE_G);
+        ATTR_MAP.put(708, FA_GOOGLE_PLUS_CIRCLE);
+        ATTR_MAP.put(709, FA_GOOGLE_PLUS_OFFICIAL);
+        ATTR_MAP.put(710, FA_HARD_OF_HEARING);
+        ATTR_MAP.put(711, FA_LOW_VISION);
+        ATTR_MAP.put(712, FA_QUESTION_CIRCLE_O);
+        ATTR_MAP.put(713, FA_SIGN_LANGUAGE);
+        ATTR_MAP.put(714, FA_SIGNING);
+        ATTR_MAP.put(715, FA_SNAPCHAT);
+        ATTR_MAP.put(716, FA_SNAPCHAT_GHOST);
+        ATTR_MAP.put(717, FA_SNAPCHAT_SQUARE);
+        ATTR_MAP.put(718, FA_THEMEISLE);
+        ATTR_MAP.put(719, FA_UNIVERSAL_ACCESS);
+        ATTR_MAP.put(720, FA_VIADEO);
+        ATTR_MAP.put(721, FA_VIADEO_SQUARE);
+        ATTR_MAP.put(722, FA_VOLUME_CONTROL_PHONE);
+        ATTR_MAP.put(723, FA_WHEELCHAIR_ALT);
+        ATTR_MAP.put(724, FA_WPBEGINNER);
+        ATTR_MAP.put(725, FA_WPFORMS);
+        ATTR_MAP.put(726, FA_YOAST);
+        //4.7
+        ATTR_MAP.put(727, FA_ADDRESS_BOOK);
+        ATTR_MAP.put(728, FA_ADDRESS_BOOK_O);
+        ATTR_MAP.put(729, FA_ADDRESS_CARD);
+        ATTR_MAP.put(730, FA_ADDRESS_CARD_O);
+        ATTR_MAP.put(731, FA_BANDCAMP);
+        ATTR_MAP.put(732, FA_BATH);
+        ATTR_MAP.put(733, FA_BATHTUB);
+        ATTR_MAP.put(734, FA_DRIVERS_LICENSE);
+        ATTR_MAP.put(735, FA_DRIVERS_LICENSE_O);
+        ATTR_MAP.put(736, FA_EERCAST);
+        ATTR_MAP.put(737, FA_ENVELOPE_OPEN);
+        ATTR_MAP.put(738, FA_ENVELOPE_OPEN_O);
+        ATTR_MAP.put(739, FA_ETSY);
+        ATTR_MAP.put(740, FA_FREE_CODE_CAMP);
+        ATTR_MAP.put(741, FA_GRAV);
+        ATTR_MAP.put(742, FA_HANDSHAKE_O);
+        ATTR_MAP.put(743, FA_ID_BADGE);
+        ATTR_MAP.put(744, FA_ID_CARD);
+        ATTR_MAP.put(745, FA_ID_CARD_O);
+        ATTR_MAP.put(746, FA_IMDB);
+        ATTR_MAP.put(747, FA_LINODE);
+        ATTR_MAP.put(748, FA_MEETUP);
+        ATTR_MAP.put(749, FA_MICROCHIP);
+        ATTR_MAP.put(750, FA_PODCAST);
+        ATTR_MAP.put(751, FA_QUORA);
+        ATTR_MAP.put(752, FA_RAVELRY);
+        ATTR_MAP.put(753, FA_S15);
+        ATTR_MAP.put(754, FA_SHOWER);
+        ATTR_MAP.put(755, FA_SNOWFLAKE_O);
+        ATTR_MAP.put(756, FA_SUPERPOWERS);
+        ATTR_MAP.put(757, FA_TELEGRAM);
+        ATTR_MAP.put(758, FA_THERMOMETER);
+        ATTR_MAP.put(759, FA_THERMOMETER_0);
+        ATTR_MAP.put(760, FA_THERMOMETER_1);
+        ATTR_MAP.put(761, FA_THERMOMETER_2);
+        ATTR_MAP.put(762, FA_THERMOMETER_3);
+        ATTR_MAP.put(763, FA_THERMOMETER_4);
+        ATTR_MAP.put(764, FA_THERMOMETER_EMPTY);
+        ATTR_MAP.put(765, FA_THERMOMETER_FULL);
+        ATTR_MAP.put(766, FA_THERMOMETER_HALF);
+        ATTR_MAP.put(767, FA_THERMOMETER_QUARTER);
+        ATTR_MAP.put(768, FA_THERMOMETER_THREE_QUARTERS);
+        ATTR_MAP.put(769, FA_TIMES_RECTANGLE);
+        ATTR_MAP.put(770, FA_TIMES_RECTANGLE_O);
+        ATTR_MAP.put(771, FA_USER_CIRCLE);
+        ATTR_MAP.put(772, FA_USER_CIRCLE_O);
+        ATTR_MAP.put(773, FA_USER_O);
+        ATTR_MAP.put(774, FA_VCARD);
+        ATTR_MAP.put(775, FA_VCARD_O);
+        ATTR_MAP.put(776, FA_WINDOW_CLOSE);
+        ATTR_MAP.put(777, FA_WINDOW_CLOSE_O);
+        ATTR_MAP.put(778, FA_WINDOW_MAXIMIZE);
+        ATTR_MAP.put(779, FA_WINDOW_MINIMIZE);
+        ATTR_MAP.put(780, FA_WINDOW_RESTORE);
+        ATTR_MAP.put(781, FA_WPEXPLORER);
+
     }
 
 }
