@@ -44,7 +44,7 @@ The javadoc for the project is hosted on [Github](http://bearded-hen.github.io/A
 Examples
 ============
 
-###BootstrapButton
+### BootstrapButton
 A button that supports Glyph icons, and is themeable using Bootstrap Brands.
    ```xml
 <com.beardedhen.androidbootstrap.BootstrapButton
@@ -87,7 +87,7 @@ Allows BootstrapButtons to be grouped together and their attributes controlled e
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_button_group.png" width="450" alt="BootstrapButtonGroup">
 
 
-###AwesomeTextView
+### AwesomeTextView
 A text widget that displays Glyph icons, and is themeable using Bootstrap Brands.
    ```xml
 <com.beardedhen.androidbootstrap.AwesomeTextView
@@ -156,7 +156,7 @@ Displays non-clickable text in a widget similar to the BootstrapButton, sizable 
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_label.png" width="450" alt="BootstrapLabel">
 
-###BootstrapEditText
+### BootstrapEditText
 Allows editing of text in a widget themed using BootstrapBrand.
    ```xml
 <com.beardedhen.androidbootstrap.BootstrapEditText
@@ -181,7 +181,7 @@ Displays images in a center-cropped Circular View, themed with BootstrapBrand.
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_circle_thumbnail.png" width="450" alt="BootstrapCircleThumbnail">
 
-###BootstrapThumbnail
+### BootstrapThumbnail
 Displays images in a rectangular View, themed with BootstrapBrand.
    ```xml
 <com.beardedhen.androidbootstrap.BootstrapThumbnail
