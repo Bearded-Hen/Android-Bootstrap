@@ -61,7 +61,7 @@ A button that supports Glyph icons, and is themeable using Bootstrap Brands.
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_button.png" width="450" alt="BootstrapButton">
 
-###BootstrapButtonGroup
+### BootstrapButtonGroup
 Allows BootstrapButtons to be grouped together and their attributes controlled en masse.
    ```xml
 <com.beardedhen.androidbootstrap.BootstrapButtonGroup
@@ -100,7 +100,7 @@ A text widget that displays Glyph icons, and is themeable using Bootstrap Brands
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/awesome_text_view.png" width="450" alt="AwesomeTextView">
 
-###BootstrapProgressBar
+### BootstrapProgressBar
 Displays progress in a bar from 0-100, and animates updates to the current progress.
    ```xml
 <com.beardedhen.androidbootstrap.BootstrapProgressBar
@@ -143,7 +143,7 @@ Allows BootstrapProgressBars to be group together to have the effect of <a href=
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_progress_bar_group.png" width="450" alt="BootstrapProgressBarGroup">
 
-###BootstrapLabel
+### BootstrapLabel
 Displays non-clickable text in a widget similar to the BootstrapButton, sizable using H1-H6 elements.
    ```xml
 <com.beardedhen.androidbootstrap.BootstrapLabel
@@ -169,7 +169,7 @@ Allows editing of text in a widget themed using BootstrapBrand.
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_edit_text.png" width="450" alt="BootstrapEditText">
 
-###BootstrapCircleThumbnail
+### BootstrapCircleThumbnail
 Displays images in a center-cropped Circular View, themed with BootstrapBrand.
    ```xml
 <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
@@ -195,7 +195,7 @@ Displays images in a rectangular View, themed with BootstrapBrand.
 ```
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_thumbnail.png" width="450" alt="BootstrapThumbnail">
 
-###BootstrapWell
+### BootstrapWell
 Displays a view in a themed container.
 
 ```xml
@@ -217,7 +217,7 @@ Displays a view in a themed container.
 <img src="https://raw.github.com/Bearded-Hen/Android-Bootstrap/master/images/bootstrap_well.png" width="450" alt="BootstrapWell">
 
 
-###BootstrapDropDown
+### BootstrapDropDown
 Displays a view with dropdown options, supplied by an array of strings.
 
 ```xml
