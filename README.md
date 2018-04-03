@@ -14,7 +14,7 @@ Quick Start
  
  ```java
  dependencies {
-    compile 'com.beardedhen:androidbootstrap:{X.X.X}'
+    implementation 'com.beardedhen:androidbootstrap:{X.X.X}'
  }
  ```
  
