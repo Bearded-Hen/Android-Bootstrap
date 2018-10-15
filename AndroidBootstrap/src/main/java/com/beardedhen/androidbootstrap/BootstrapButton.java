@@ -218,7 +218,7 @@ public class BootstrapButton extends AwesomeTextView implements BootstrapSizeVie
     }
 
     private boolean handleRadioEvent(@NonNull MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
             setSelected(true); // notify parent to deselect any peers
 
             ViewParent parent = getParent();
